@@ -4,6 +4,9 @@
   "description": "Dashboard to manage GraphQL API Gateway",
   "main": "index.js",
   "scripts": {
+    "start": "npm run start:frontend && npm run start:backend",
+    "start:frontend": "",
+    "start:backend": ""
   },
   "repository": {
     "type": "git",
