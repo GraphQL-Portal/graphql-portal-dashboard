@@ -1,0 +1,12 @@
+type HealthResponseEntity {
+  db: String!
+  internet: String!
+  redis: String!
+  version: String!
+  uptime: Float!
+  serviceName: String!
+}
+
+type Query {
+  hello(name: String!): String!
+}

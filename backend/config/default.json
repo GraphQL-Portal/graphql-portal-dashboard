@@ -1,0 +1,26 @@
+{
+  "name": "graphql-portal-dashboard-backend",
+  "application": {
+    "env": "default",
+    "port": 3000,
+    "useSwaggerUi": true,
+    "graphQL": {
+      "playground": true,
+      "debug": true
+    },
+    "logLevel": "log"
+  },
+  "db": {
+    "redis": {
+      "host": "",
+      "port": 0
+    },
+    "postgres": {
+      "database": "",
+      "port": 0,
+      "host": "",
+      "username": "",
+      "password": ""
+    }
+  }
+}
