@@ -1,0 +1,22 @@
+{
+  "name": "graphql-portal-dashboard",
+  "version": "0.0.1",
+  "description": "Dashboard to manage GraphQL API Gateway",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-store-platform/graphql-portal-dashboard.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "gateway"
+  ],
+  "author": "code.store",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/code-store-platform/graphql-portal-dashboard/issues"
+  },
+  "homepage": "https://github.com/code-store-platform/graphql-portal-dashboard#readme"
+}
