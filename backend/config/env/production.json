@@ -1,0 +1,10 @@
+{
+  "application": {
+    "env": "production",
+    "useSwaggerUi": false,
+    "graphQL": {
+      "playground": false,
+      "debug": false
+    }
+  }
+}

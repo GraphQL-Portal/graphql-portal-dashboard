@@ -1,0 +1,10 @@
+{
+  "application": {
+    "env": "staging",
+    "useSwaggerUi": false,
+    "graphQL": {
+      "playground": false,
+      "debug": false
+    }
+  }
+}
