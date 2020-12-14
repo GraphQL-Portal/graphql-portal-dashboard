@@ -1,5 +1,4 @@
-export const MAIN = '/';
-export const DASHBOARD = '/';
+export const DASHBOARD = '/dashboard';
 
 // API Management
 export const APIS = '/your-apis';
@@ -13,6 +12,6 @@ export const WEBHOOKS = '/webhooks';
 export const NODES = '/gateway-nodes';
 
 // Help
-export const HELP = '/documentation';
+export const DOCUMENTATION = '/documentation';
 export const SUPPORT = '/support';
 export const SERVICES = '/services';

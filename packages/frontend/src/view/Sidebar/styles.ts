@@ -9,7 +9,6 @@ export const useStyles = makeStyles(({ palette }: Theme) => ({
     whiteSpace: 'nowrap',
   },
   paper: {
-    background: palette.background.default,
     border: 0,
   }
 }));
