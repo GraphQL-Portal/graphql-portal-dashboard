@@ -55,6 +55,7 @@
     }
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.1.6",
     "eslint-config-prettier": "^7.0.0",
     "husky": "^4.3.5",
     "lint-staged": "^10.5.3",
