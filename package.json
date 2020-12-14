@@ -7,7 +7,7 @@
   "scripts": {
     "backend": "yarn workspace graphql-portal-dashboard-backend start",
     "frontend": "yarn workspace graphql-portal-dashboard-frontend start",
-    "start": "concurrently --kill-others-on-fail 'yarn server' 'yarn client'"
+    "start": "concurrently --kill-others-on-fail 'yarn backend' 'yarn frontend'"
   },
   "repository": {
     "type": "git",
