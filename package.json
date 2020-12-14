@@ -3,14 +3,12 @@
   "version": "0.0.1",
   "description": "GraphQL API Gateway management dashboard",
   "private": true,
+  "workspaces": ["packages/*"],
   "scripts": {
-    "backend": "yarn workspace backend start",
-    "frontend": "yarn workspace frontend start",
+    "backend": "yarn workspace graphql-portal-dashboard-backend start",
+    "frontend": "yarn workspace graphql-portal-dashboard-frontend start",
     "start": "concurrently --kill-others-on-fail 'yarn server' 'yarn client'"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/code-store-platform/graphql-portal-dashboard.git"

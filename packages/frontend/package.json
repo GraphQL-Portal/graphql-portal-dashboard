@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "graphql-portal-dashboard-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,11 +28,12 @@
   },
   "eslintConfig": {
     "extends": [
+      "prettier",
       "react-app",
-      "react-app/jest",
-      "prettier"
+      "react-app/jest"
     ]
   },
+  "prettier": "../../.prettierrc.json",
   "browserslist": {
     "production": [
       ">0.2%",
