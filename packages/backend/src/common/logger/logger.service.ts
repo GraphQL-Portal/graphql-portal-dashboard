@@ -21,7 +21,7 @@ export default class LoggerService implements ILoggerService {
     }
 
     let { logLevel } = config.application;
-    if (!LogLevels[logLevel]) {
+    if (!LogLevels[logLevel as LogLevels]) {
       this.warn(`Wrong log level: ${config.application.logLevel}, default level will be used (${this.defaultLevel})`, this.constructor.name, {});
       logLevel = this.defaultLevel;
     }

@@ -16,7 +16,9 @@
     "suppressExcessPropertyErrors": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "noImplicitThis": true
+    "noImplicitThis": true,
+    "baseUrl": "./",
+    "typeRoots": ["./node_modules/@types"]
   },
   "exclude": [
     "node_modules",
