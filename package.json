@@ -6,8 +6,11 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "backend": "yarn workspace graphql-portal-dashboard-backend start",
+    "backend:clear": "yarn workspace graphql-portal-dashboard-backend clear",
     "frontend": "yarn workspace graphql-portal-dashboard-frontend start",
-    "start": "concurrently --kill-others-on-fail 'yarn backend' 'yarn frontend'"
+    "frontend:clear": "yarn workspace graphql-portal-dashboard-frontend clear",
+    "start": "concurrently --kill-others-on-fail 'yarn backend' 'yarn frontend'",
+    "clear": "rm -rf node_modules && yarn frontend:clear && yarn backend:clear"
   },
   "repository": {
     "type": "git",

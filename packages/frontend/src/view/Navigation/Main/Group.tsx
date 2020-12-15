@@ -4,7 +4,7 @@ import { getKeyFromText } from '../../../utils/getKeyFromText';
 import { H6 } from '../../../ui';
 import { Item } from './Item';
 import { Group as Type } from './types';
-import { useStyles } from './styles';
+import { useStyles } from './useStyles';
 
 export const Group:React.FC<Type> = ({ name, items }) => {
   const { group, groupName } = useStyles();

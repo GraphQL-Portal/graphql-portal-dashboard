@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { TextButton } from '../../../ui';
 import { GroupItem } from './types';
-import { useStyles } from './styles';
+import { useStyles } from './useStyles';
 
 export const Item:React.FC<GroupItem> = ({ link, text }) => {
   const { item, activeItem, button } = useStyles();
