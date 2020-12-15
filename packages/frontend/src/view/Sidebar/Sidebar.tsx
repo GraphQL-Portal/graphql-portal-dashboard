@@ -2,8 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import { Drawer } from '@material-ui/core';
 
-import { useStyles } from './styles';
 import { MainNavigation } from '../Navigation';
+import { useStyles } from './useStyles';
 
 export const Sidebar:React.FC = () => {
   const { drawer, paper } = useStyles();
