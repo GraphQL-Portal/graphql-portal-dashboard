@@ -5,6 +5,6 @@
 
 Dashboard for GraphQL Portal Gateway – configurable and distributed GraphQL Gateway based on GraphQL Mesh and built with ❤️ by code.store
 
-
 ## License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcode-store-platform%2Fgraphql-portal-dashboard.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcode-store-platform%2Fgraphql-portal-dashboard?ref=badge_large)
