@@ -1,0 +1,1 @@
+export { GlobalSettings } from './GlobalSettings';
