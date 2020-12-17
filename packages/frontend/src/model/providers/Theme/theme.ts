@@ -32,6 +32,10 @@ export const theme = createMuiTheme({
         fontWeight: 700,
         letterSpacing: '0.5px',
       },
+      startIcon: {
+        marginLeft: 0,
+        marginRight: '16px',
+      },
     },
   },
   typography: {

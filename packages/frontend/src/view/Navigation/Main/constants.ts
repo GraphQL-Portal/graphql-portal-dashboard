@@ -27,12 +27,12 @@ export const GROUPS = [
     name: 'API Management',
     items: [
       {
-        text: 'Your APIs',
+        text: 'My APIs',
         link: ROUTES.APIS,
         Icon: FormatListBulleted,
       },
       {
-        text: 'Back-end data sources',
+        text: 'My Data Sources',
         link: ROUTES.DATA_SOURCES,
         Icon: VerticalSplit,
       },

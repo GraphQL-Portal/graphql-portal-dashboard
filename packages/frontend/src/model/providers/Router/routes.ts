@@ -1,7 +1,7 @@
 export const DASHBOARD = '/dashboard';
 
 // API Management
-export const APIS = '/your-apis';
+export const APIS = '/my-apis';
 export const DATA_SOURCES = '/data-sources';
 export const METRICS_AND_LOGS = '/metrics-and-logs';
 

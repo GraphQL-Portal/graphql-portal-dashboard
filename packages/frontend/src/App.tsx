@@ -6,7 +6,7 @@ import {
   Content,
   Sidebar,
   Dashboard,
-  YourAPI,
+  MyAPI,
   DataSources,
   MetricsAndLogs,
   Users,
@@ -27,7 +27,7 @@ function App() {
           <Switch>
             <Route path="/" exact><Redirect to={ROUTES.DASHBOARD} /></Route>
             <Route path={ROUTES.DASHBOARD}><Dashboard /></Route>
-            <Route path={ROUTES.APIS}><YourAPI /></Route>
+            <Route path={ROUTES.APIS}><MyAPI /></Route>
             <Route path={ROUTES.DATA_SOURCES}><DataSources /></Route>
             <Route path={ROUTES.METRICS_AND_LOGS}><MetricsAndLogs /></Route>
             <Route path={ROUTES.USERS}><Users /></Route>
