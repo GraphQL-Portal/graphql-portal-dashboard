@@ -2,25 +2,21 @@
   "name": "graphql-portal-dashboard-backend",
   "application": {
     "env": "default",
-    "port": 3000,
+    "port": 3030,
     "useSwaggerUi": true,
     "graphQL": {
       "playground": true,
       "debug": true
     },
-    "logLevel": "log"
+    "logLevel": "debug",
+    "secret": ""
   },
   "db": {
     "redis": {
-      "host": "",
-      "port": 0
+      "connectionString": "redis://localhost:6379"
     },
-    "postgres": {
-      "database": "",
-      "port": 0,
-      "host": "",
-      "username": "",
-      "password": ""
+    "mongodb": {
+      "connectionString": "mongodb://localhost:27017/graphql-portal-dashboard"
     }
   }
 }

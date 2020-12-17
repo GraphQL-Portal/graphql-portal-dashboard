@@ -8,18 +8,10 @@ declare module "node-config-ts" {
   }
   interface Db {
     redis: Redis
-    postgres: Postgres
-  }
-  interface Postgres {
-    database: string
-    port: number
-    host: string
-    username: string
-    password: string
+    mongodb: Redis
   }
   interface Redis {
-    host: string
-    port: number
+    connectionString: string
   }
   interface Application {
     env: string
@@ -27,6 +19,7 @@ declare module "node-config-ts" {
     useSwaggerUi: boolean
     graphQL: GraphQL
     logLevel: string
+    secret: string
   }
   interface GraphQL {
     playground: boolean

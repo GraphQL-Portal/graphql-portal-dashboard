@@ -1,0 +1,17 @@
+scalar JSONObject
+
+type Source {
+  _id: String
+  name: String
+  handler: JSONObject
+  transforms: [JSONObject]
+}
+
+type Query {
+  getSources: [Source]
+}
+
+type Mutation {
+  createSource(name: String, handler: JSONObject, transforms: [JSONObject]): Source
+  deleteSource(name: String): Int
+}
