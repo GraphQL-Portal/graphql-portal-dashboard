@@ -7,9 +7,9 @@ import Provider from '../../common/enum/provider.enum';
 export default class RedisService {
   public constructor(@Inject(Provider.REDIS) private readonly redis: Redis, private readonly logger: LoggerService) {}
 
-  public async publishApisUpdated(): Promise<number> {
-    this.logger.log('Publish event "apis-updated"', this.constructor.name);
-    return this.redis.publish('apis-updated', '');
+  public async publishApiDefsUpdated(): Promise<number> {
+    this.logger.log('Publish event "api-defs-updated"', this.constructor.name);
+    return this.redis.publish('api-defs-updated', '');
   }
 
   public async on(channel: string, handler: (message: string) => any): Promise<number> {

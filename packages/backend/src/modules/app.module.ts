@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { config } from 'node-config-ts';
 import { LoggerModule } from '../common/logger';
-import ApiModule from './api/api.module';
+import ApiDefModule from './api-def/api-def.module';
 import GatewayModule from './gateway/gateway.module';
 import RedisModule from './redis/redis.module';
 import SourceModule from './source/source.module';
@@ -19,7 +19,7 @@ import SourceModule from './source/source.module';
       context: ({ req }) => ({ req }),
     }),
     LoggerModule.forRoot(config),
-    ApiModule,
+    ApiDefModule,
     SourceModule,
     GatewayModule,
   ],

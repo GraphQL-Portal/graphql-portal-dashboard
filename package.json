@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "GraphQL API Gateway management dashboard",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "backend": "yarn workspace graphql-portal-dashboard-backend start",
     "backend:clear": "yarn workspace graphql-portal-dashboard-backend clear",
