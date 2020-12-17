@@ -11,7 +11,7 @@ export const Group:React.FC<Type> = ({ name, items }) => {
   return (
     <section className={group}>
       {!!name && <H6 className={groupName}>{name}</H6>}
-      {items.map(({ text, link }) => <Item text={text} link={link} key={getKeyFromText(text)} />)}
+      {items.map((item) => <Item {...item} key={getKeyFromText(item.text)} />)}
     </section>
   );
 }

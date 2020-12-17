@@ -1,7 +1,13 @@
 import React from 'react';
 
-import { UnderConstruction } from '../UnderConstruction';
+import { Header, PrimaryButton } from '../../ui';
 
 export const GatewayNodes:React.FC = () => {
-  return <UnderConstruction name="Gateway Nodes" />;
+  return (
+    <>
+      <Header title="Active Gateway Nodes">
+        <PrimaryButton>Sync configuration</PrimaryButton>
+      </Header>
+    </>
+  );
 }

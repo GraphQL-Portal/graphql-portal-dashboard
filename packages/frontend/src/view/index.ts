@@ -10,4 +10,4 @@ export { SupportForum } from './SupportForum';
 export { Services } from './Services';
 export { Users } from './Users';
 export { Webhooks } from './Webhooks';
-export { YourAPI } from './YourAPI';
+export { MyAPI } from './MyAPI';
