@@ -3,6 +3,7 @@ scalar Timestamp
 type Gateway {
   nodeId: String
   lastPingAt: Timestamp
+  configTimestamp: Timestamp
 }
 
 type Query {

@@ -1,3 +1,5 @@
+scalar Timestamp
+
 type ApiDef {
   _id: String
   name: String
@@ -5,8 +7,14 @@ type ApiDef {
   sources: [Source]
 }
 
+type ApiDefsWithTimestamp {
+  apiDefs: [ApiDef]
+  timestamp: Timestamp
+}
+
 type Query {
-  getApiDefs: [ApiDef]
+  getApiDefs: ApiDefsWithTimestamp
+  publishApiDefsUpdated: Int
 }
 
 type Mutation {

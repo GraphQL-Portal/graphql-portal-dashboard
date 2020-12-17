@@ -1,13 +1,18 @@
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import IApiDef from '../../common/interface/api-def.interface';
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import ApiDefService from './api-def.service';
+import ApiDefService, { ApiDefsWithTimestamp } from './api-def.service';
 
 @Resolver('ApiDef')
 export default class ApiDefResolver {
   public constructor(private readonly service: ApiDefService) {}
 
   @Query()
-  public getApiDefs(): Promise<IApiDef[]> {
+  public publishApiDefsUpdated(): Promise<number> {
+    return this.service.publishApiDefsUpdated();
+  }
+
+  @Query()
+  public getApiDefs(): Promise<ApiDefsWithTimestamp> {
     return this.service.findAll();
   }
 

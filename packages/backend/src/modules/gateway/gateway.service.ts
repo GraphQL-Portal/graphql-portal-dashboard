@@ -15,11 +15,9 @@ export default class GatewayService {
     this.redis.on('ping', this.onPing.bind(this));
   }
 
-  private async onPing(nodeId: string): Promise<void> {
-    if (this.nodes[nodeId]) {
-      this.nodes[nodeId].lastPingAt = Date.now();
-    }
-    this.nodes[nodeId] = { nodeId, lastPingAt: Date.now() };
+  private async onPing(data: string): Promise<void> {
+    const { nodeId, configTimestamp } = JSON.parse(data);
+    this.nodes[nodeId] = { nodeId, lastPingAt: Date.now(), configTimestamp };
   }
 
   public async findAll(): Promise<IGateway[]> {

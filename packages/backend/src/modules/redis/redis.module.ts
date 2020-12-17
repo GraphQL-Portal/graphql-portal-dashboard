@@ -13,9 +13,9 @@ class RedisClient extends IORedisClient {
 @Module({})
 export default class RedisModule {
   public static forRoot(connectionString: string): DynamicModule {
-    const redisProvider: FactoryProvider<Redis> = {
+    const redisProvider: FactoryProvider<[Redis, Redis]> = {
       provide: ProviderEnum.REDIS,
-      useFactory: (): Redis => new RedisClient(connectionString),
+      useFactory: (): [Redis, Redis] => [new RedisClient(connectionString), new RedisClient(connectionString)],
     };
     return {
       module: RedisModule,
