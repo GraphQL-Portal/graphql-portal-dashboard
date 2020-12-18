@@ -12,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=
       - POSTGRES_DB=
   node-app:
-    image: node:12.18.3
+    image: node:12.20.0
     container_name: node-app
     command: npm start
     environment:
