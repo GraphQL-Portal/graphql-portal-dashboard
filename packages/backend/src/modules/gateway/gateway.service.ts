@@ -1,3 +1,4 @@
+import { Channel } from '@graphql-portal/types';
 import { Injectable } from '@nestjs/common';
 import IGateway from '../../common/interface/gateway.interface';
 import { LoggerService } from '../../common/logger';
@@ -12,7 +13,7 @@ export default class GatewayService {
   public constructor(private readonly logger: LoggerService, private readonly redis: RedisService) {}
 
   public onApplicationBootstrap(): void {
-    this.redis.on('ping', this.onPing.bind(this));
+    this.redis.on(Channel.ping, this.onPing.bind(this));
   }
 
   private async onPing(data: string): Promise<void> {

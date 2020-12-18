@@ -1,6 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import IApiDef from '../../common/interface/api-def.interface';
 import ApiDefService, { ApiDefsWithTimestamp } from './api-def.service';
+import ApiDefCreateDto from './dto/api-def-create.dto';
 
 @Resolver('ApiDef')
 export default class ApiDefResolver {
@@ -17,12 +18,8 @@ export default class ApiDefResolver {
   }
 
   @Mutation()
-  public createApiDef(
-    @Args('name') name: string,
-    @Args('endpoint') endpoint: string,
-    @Args('sources') sources: string[]
-  ): Promise<IApiDef> {
-    return this.service.create({ name, endpoint, sources });
+  public createApiDef(@Args() data: ApiDefCreateDto): Promise<IApiDef> {
+    return this.service.create(data.apiDef, data.sources);
   }
 
   @Mutation()

@@ -5,6 +5,7 @@ import IApiDef from '../../common/interface/api-def.interface';
 import { LoggerService } from '../../common/logger';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import RedisService from '../redis/redis.service';
+import SourceService from '../source/source.service';
 
 export type ApiDefsWithTimestamp = { apiDefs: IApiDef[]; timestamp: number };
 
@@ -15,7 +16,8 @@ export default class ApiDefService {
   public constructor(
     @InjectModel('ApiDef') private apiDefModel: Model<IApiDefDocument>,
     private readonly logger: LoggerService,
-    private readonly redisService: RedisService
+    private readonly redisService: RedisService,
+    private readonly sourceService: SourceService
   ) {
     this.setLastUpdateTime();
   }
@@ -33,7 +35,11 @@ export default class ApiDefService {
     return this.lastUpdateTime;
   }
 
-  public async create(data: any): Promise<IApiDef> {
+  public async create(data: IApiDef, sourcesIds: string[]): Promise<IApiDef> {
+    data.sources = await this.sourceService.findByIds(sourcesIds);
+    if (data.sources.length < sourcesIds.length) {
+      throw new Error(`${sourcesIds.length - data.sources.length} sources were not found`);
+    }
     const apiDef = await this.apiDefModel.create(data);
     this.logger.log(`Created apiDef ${data.name}`, this.constructor.name, data);
 

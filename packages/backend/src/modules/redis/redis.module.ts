@@ -4,6 +4,16 @@ import ProviderEnum from '../../common/enum/provider.enum';
 import RedisService from './redis.service';
 
 class RedisClient extends IORedisClient {
+  public async onModuleInit(): Promise<void> {
+    await new Promise((resolve, reject) => {
+      this.on('error', (e) => {
+        this.disconnect();
+        reject(e);
+      });
+      this.on('connect', resolve);
+    });
+  }
+
   public async onModuleDestroy(): Promise<void> {
     await this.quit();
   }

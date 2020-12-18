@@ -7,5 +7,6 @@ import SourceService from './source.service';
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'Source', schema: sourceSchema }])],
   providers: [SourceService, SourceResolver],
+  exports: [SourceService],
 })
 export default class SourceModule {}

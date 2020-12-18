@@ -1,5 +1,6 @@
 import { Source } from '@graphql-mesh/types/config';
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import SourceCreateDto from './dto/source-create.dto';
 import SourceService from './source.service';
 
 @Resolver('Source')
@@ -12,12 +13,8 @@ export default class SourceResolver {
   }
 
   @Mutation()
-  public createSource(
-    @Args('name') name: string,
-    @Args('handler') handler: string,
-    @Args('transforms') transforms: string[]
-  ): Promise<Source> {
-    return this.sourceService.create({ name, handler, transforms });
+  public createSource(@Args() data: SourceCreateDto): Promise<Source> {
+    return this.sourceService.create(data.source);
   }
 
   @Mutation()

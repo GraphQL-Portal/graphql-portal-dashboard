@@ -1,4 +1,4 @@
-import { INestApplication } from '@nestjs/common';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express, { Express } from 'express';
@@ -17,6 +17,7 @@ const bootstrap = async (): Promise<void> => {
     logger,
   });
   app.enableCors();
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(config.application.port, () => {
     logger.log(`Start listen ${config.application.port}, secret: "${config.application.secret}"`, 'bootstrap');

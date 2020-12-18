@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { LoggerService } from '../../common/logger';
 import { Model } from 'mongoose';
-import { Source } from '@graphql-mesh/types/config';
 import { ISourceDocument } from '../../data/schema/source.schema';
+import { SourceConfig } from '@graphql-portal/types';
 
 @Injectable()
 export default class SourceService {
@@ -12,11 +12,15 @@ export default class SourceService {
     private readonly logger: LoggerService
   ) {}
 
-  public findAll(): Promise<Source[]> {
+  public findAll(): Promise<SourceConfig[]> {
     return this.sourceModel.find().lean().exec();
   }
 
-  public async create(data: any): Promise<Source> {
+  public findByIds(ids: string[]): Promise<SourceConfig[]> {
+    return this.sourceModel.find().where('_id').in(ids).lean().exec();
+  }
+
+  public async create(data: SourceConfig): Promise<SourceConfig> {
     const source = await this.sourceModel.create(data);
 
     this.logger.log(`Created source ${data.name}`, this.constructor.name, data);

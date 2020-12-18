@@ -18,6 +18,7 @@
     "clear": "rm -rf node_modules"
   },
   "dependencies": {
+    "@graphql-portal/types": "^0.0.1",
     "@graphql-mesh/types": "^0.23.0",
     "@nestjs/common": "^7.4.4",
     "@nestjs/core": "^7.6.1",
@@ -40,6 +41,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
+    "class-validator-mongo-object-id": "^1.2.0",
     "type-graphql": "^1.0.0"
   },
   "devDependencies": {
