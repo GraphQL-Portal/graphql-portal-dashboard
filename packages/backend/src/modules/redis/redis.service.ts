@@ -1,17 +1,21 @@
 import { Channel } from '@graphql-portal/types';
 import { Inject, Injectable } from '@nestjs/common';
+import { RedisPubSub } from 'graphql-redis-subscriptions';
 import { Redis } from 'ioredis';
 import Provider from '../../common/enum/provider.enum';
+import Subscription from '../../common/enum/subscription.enum';
 import { LoggerService } from '../../common/logger';
 
 @Injectable({})
 export default class RedisService {
   private publisher: Redis;
   private subscriber: Redis;
+  public readonly pubSub: RedisPubSub;
 
   public constructor(@Inject(Provider.REDIS) redisClients: [Redis, Redis], private readonly logger: LoggerService) {
     this.publisher = redisClients[0];
     this.subscriber = redisClients[1];
+    this.pubSub = new RedisPubSub({ publisher: this.publisher, subscriber: this.subscriber });
   }
 
   public async publishApiDefsUpdated(timestamp: number): Promise<number> {
@@ -27,5 +31,9 @@ export default class RedisService {
       }
     });
     return this.subscriber.subscribe(channel);
+  }
+
+  public async publishGraphql(channel: Subscription, data: any): Promise<void> {
+    this.pubSub.publish(channel, { [channel]: data });
   }
 }

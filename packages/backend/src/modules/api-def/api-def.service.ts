@@ -30,7 +30,7 @@ export default class ApiDefService {
     };
   }
 
-  public async setLastUpdateTime(): Promise<number> {
+  public setLastUpdateTime(): number {
     this.lastUpdateTime = Date.now();
     return this.lastUpdateTime;
   }
@@ -43,7 +43,7 @@ export default class ApiDefService {
     const apiDef = await this.apiDefModel.create(data);
     this.logger.log(`Created apiDef ${data.name}`, this.constructor.name, data);
 
-    await this.setLastUpdateTime();
+    this.setLastUpdateTime();
     this.publishApiDefsUpdated();
 
     await apiDef.populate('sources').execPopulate();
@@ -55,7 +55,7 @@ export default class ApiDefService {
     this.logger.log(`Deleted apiDef ${name}`, this.constructor.name);
 
     if (deletedCount) {
-      await this.setLastUpdateTime();
+      this.setLastUpdateTime();
       this.publishApiDefsUpdated();
     }
 
