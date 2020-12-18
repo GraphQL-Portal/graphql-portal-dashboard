@@ -13,6 +13,7 @@ import SourceModule from './source/source.module';
     MongooseModule.forRoot(config.db.mongodb.connectionString, { useNewUrlParser: true, useUnifiedTopology: true }),
     RedisModule.forRoot(config.db.redis.connectionString),
     GraphQLModule.forRoot({
+      installSubscriptionHandlers: true,
       playground: config.application.graphQL.playground,
       debug: config.application.graphQL.debug,
       typePaths: ['./**/*.gql'],

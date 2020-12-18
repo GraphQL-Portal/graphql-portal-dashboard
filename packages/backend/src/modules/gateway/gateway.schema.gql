@@ -13,3 +13,7 @@ type Query {
 type Mutation {
   registerGateway(nodeId: String): Boolean
 }
+
+type Subscription {
+  gatewaysUpdated: [Gateway]
+}
