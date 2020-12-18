@@ -1,0 +1,15 @@
+scalar Timestamp
+
+type Gateway {
+  nodeId: String
+  lastPingAt: Timestamp
+  configTimestamp: Timestamp
+}
+
+type Query {
+  getGateways: [Gateway]
+}
+
+type Mutation {
+  registerGateway(nodeId: String): Boolean
+}

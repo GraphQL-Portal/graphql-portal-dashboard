@@ -15,12 +15,8 @@ export default class LoggerModule {
     };
     return {
       module: LoggerModule,
-      providers: [
-        loggerServiceFactory,
-      ],
-      exports: [
-        loggerServiceFactory,
-      ],
+      providers: [loggerServiceFactory],
+      exports: [loggerServiceFactory],
     };
   }
 }

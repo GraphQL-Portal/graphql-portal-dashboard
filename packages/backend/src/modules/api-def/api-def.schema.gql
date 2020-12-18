@@ -1,0 +1,28 @@
+scalar Timestamp
+
+type ApiDef {
+  _id: ID
+  name: String
+  endpoint: String
+  sources: [Source]
+}
+
+input CreateApiDef {
+  name: String
+  endpoint: String
+}
+
+type ApiDefsWithTimestamp {
+  apiDefs: [ApiDef]
+  timestamp: Timestamp
+}
+
+type Query {
+  getApiDefs: ApiDefsWithTimestamp
+  publishApiDefsUpdated: Int
+}
+
+type Mutation {
+  createApiDef(apiDef: CreateApiDef, sources: [ID]): ApiDef
+  deleteApiDef(name: String): Int
+}

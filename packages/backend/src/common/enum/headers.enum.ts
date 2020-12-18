@@ -1,5 +1,5 @@
 enum Header {
-    X_POWERED_BY = 'x-powered-by'
+  X_POWERED_BY = 'x-powered-by',
 }
 
 export default Header;

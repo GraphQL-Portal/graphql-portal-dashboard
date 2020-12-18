@@ -7,7 +7,13 @@ import LogLevels from './enum/log.level.enum';
 export default class LoggerService implements ILoggerService {
   private levels = Object.values(LogLevels);
 
-  private printMessage: (message: string | Object, data: any, color: (s: string) => string, context: string, trace?: string) => void;
+  private printMessage: (
+    message: string | Object,
+    data: any,
+    color: (s: string) => string,
+    context: string,
+    trace?: string
+  ) => void;
 
   private enabledLevels: LogLevels[] = [];
 
@@ -22,7 +28,11 @@ export default class LoggerService implements ILoggerService {
 
     let { logLevel } = config.application;
     if (!LogLevels[logLevel as LogLevels]) {
-      this.warn(`Wrong log level: ${config.application.logLevel}, default level will be used (${this.defaultLevel})`, this.constructor.name, {});
+      this.warn(
+        `Wrong log level: ${config.application.logLevel}, default level will be used (${this.defaultLevel})`,
+        this.constructor.name,
+        {}
+      );
       logLevel = this.defaultLevel;
     }
 
@@ -46,15 +56,9 @@ export default class LoggerService implements ILoggerService {
     const stackArray = stack!.split('\n');
     const currentMethodIndex = stackArray.findIndex((str) => str.includes('Proxy.error'));
     const trimedStack = stackArray.slice(currentMethodIndex + 1).join('\n');
-    const message = (error as Error).message || error as string;
+    const message = (error as Error).message || (error as string);
 
-    this.printMessage(
-      message,
-      data,
-      cliColor.red,
-      context,
-      trace || trimedStack,
-    );
+    this.printMessage(message, data, cliColor.red, context, trace || trimedStack);
   }
 
   public warn(message: any, context: string, data?: any): void {
@@ -80,23 +84,32 @@ export default class LoggerService implements ILoggerService {
       data = {};
     }
 
-    process.stdout.write(`${JSON.stringify({
-      context,
-      message,
-      data,
-      timestamp: Date.now(),
-    })}\n`);
+    process.stdout.write(
+      `${JSON.stringify({
+        context,
+        message,
+        data,
+        timestamp: Date.now(),
+      })}\n`
+    );
   }
 
-  private printMessageAsText(message: string | Object, data: any, color: (s: string) => string, context = '', trace = ''): void {
-    const output = message && typeof message === 'object'
-      ? `Object:\n${JSON.stringify(message, null, 2)}\n`
-      : message as string;
+  private printMessageAsText(
+    message: string | Object,
+    data: any,
+    color: (s: string) => string,
+    context = '',
+    trace = ''
+  ): void {
+    const output =
+      message && typeof message === 'object' ? `Object:\n${JSON.stringify(message, null, 2)}\n` : (message as string);
     const colorOutput = color(output);
     const timestamp = new Date().toISOString();
     const pidMessage = color(`[Nest] ${process.pid} - `);
     const contextMessage = context ? cliColor.yellow(`[${context}] `) : '';
-    let fullMessage = `${pidMessage}${timestamp} ${contextMessage}${/\n$/.test(output) ? colorOutput : `${colorOutput}`}\n`;
+    let fullMessage = `${pidMessage}${timestamp} ${contextMessage}${
+      /\n$/.test(output) ? colorOutput : `${colorOutput}`
+    }\n`;
     if (trace) {
       fullMessage += `${cliColor.red(trace)}\n`;
     }
