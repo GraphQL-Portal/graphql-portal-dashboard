@@ -7,6 +7,5 @@
   "major": {
     "automerge": false
   },
-  "labels": ["dependencies"],
-  "rangeStrategy": "bump"
+  "labels": ["dependencies"]
 }
