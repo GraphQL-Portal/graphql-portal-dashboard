@@ -1,6 +1,6 @@
 {
   "name": "graphql-portal-dashboard-backend",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Backend part of graphql-portal-dashboard",
   "author": "code.store",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "clear": "rm -rf node_modules"
   },
   "dependencies": {
-    "@graphql-portal/types": "0.0.1",
+    "@graphql-portal/types": "^0.1.0",
     "@graphql-mesh/types": "0.23.1",
     "@nestjs/common": "7.6.1",
     "@nestjs/core": "7.6.3",
@@ -42,7 +42,8 @@
     "rimraf": "3.0.2",
     "rxjs": "6.6.3",
     "class-validator-mongo-object-id": "1.2.0",
-    "type-graphql": "1.1.1"
+    "type-graphql": "1.1.1",
+    "graphql-redis-subscriptions": "^2.3.1"
   },
   "devDependencies": {
     "@nestjs/cli": "7.5.4",
