@@ -27,7 +27,7 @@ function App() {
           <Content>
             <Switch>
               <Route path="/" exact>
-                <Redirect to={ROUTES.DASHBOARD} />
+                <Redirect to={ROUTES.NODES} />
               </Route>
               <Route path={ROUTES.DASHBOARD}>
                 <Dashboard />
