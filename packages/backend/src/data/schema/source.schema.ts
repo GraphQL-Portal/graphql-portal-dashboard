@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
-import { Source } from '@graphql-mesh/types/config';
+import { SourceConfig } from '@graphql-portal/types';
 
-const sourceSchema = new mongoose.Schema<Source>(
+const sourceSchema = new mongoose.Schema<SourceConfig>(
   {
     name: String,
     handler: Object,
@@ -14,4 +14,4 @@ sourceSchema.index({ name: 1 }, { unique: true, sparse: true });
 
 export default sourceSchema;
 
-export interface ISourceDocument extends Source, mongoose.Document {}
+export interface ISourceDocument extends mongoose.Document, SourceConfig {}

@@ -13,11 +13,11 @@ export default class SourceService {
   ) {}
 
   public findAll(): Promise<SourceConfig[]> {
-    return this.sourceModel.find().lean().exec();
+    return this.sourceModel.find().exec();
   }
 
   public findByIds(ids: string[]): Promise<SourceConfig[]> {
-    return this.sourceModel.find().where('_id').in(ids).lean().exec();
+    return this.sourceModel.find().where('_id').in(ids).exec();
   }
 
   public async create(data: SourceConfig): Promise<SourceConfig> {
@@ -25,7 +25,7 @@ export default class SourceService {
 
     this.logger.log(`Created source ${data.name}`, this.constructor.name, data);
 
-    return source.toObject();
+    return source;
   }
 
   public async delete(name: string): Promise<number> {

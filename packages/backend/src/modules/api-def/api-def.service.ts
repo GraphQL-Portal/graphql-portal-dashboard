@@ -23,7 +23,7 @@ export default class ApiDefService {
   }
 
   public async findAll(): Promise<ApiDefsWithTimestamp> {
-    const apiDefs = await this.apiDefModel.find().populate('sources').lean().exec();
+    const apiDefs = await this.apiDefModel.find().populate('sources').exec();
     return {
       apiDefs,
       timestamp: this.lastUpdateTime,
@@ -47,7 +47,7 @@ export default class ApiDefService {
     this.publishApiDefsUpdated();
 
     await apiDef.populate('sources').execPopulate();
-    return apiDef.toObject();
+    return apiDef;
   }
 
   public async delete(name: string): Promise<number> {
