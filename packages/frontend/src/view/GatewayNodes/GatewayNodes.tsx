@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { Header, HugeWidget, PrimaryButton, WidgetRow } from '../../ui';
+import { Header, HugeWidget, PrimaryButton, WidgetRow, WidgetHeader } from '../../ui';
 import { useGatewayNodes } from '../../presenter/GatewayNodes';
-
-import { useStyles } from './useStyles';
 
 export const GatewayNodes:React.FC = () => {
   const { data, onSyncClick } = useGatewayNodes();
-  const { body } = useStyles();
+
+  const title = (data && data.hello) || 'No data yet';
 
   return (
     <>
@@ -16,7 +15,7 @@ export const GatewayNodes:React.FC = () => {
       </Header>
       <WidgetRow>
         <HugeWidget>
-          <div className={body}>{(data && data.hello) || 'No data yet'}</div>
+          <WidgetHeader title={title} />
         </HugeWidget>
       </WidgetRow>
     </>

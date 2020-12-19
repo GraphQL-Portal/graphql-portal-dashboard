@@ -9,4 +9,5 @@ export {
   BigWidget,
   MediumWidget,
   SmallWidget,
+  WidgetHeader,
 } from './Widgets';

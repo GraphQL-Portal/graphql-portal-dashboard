@@ -3,3 +3,6 @@ export { HugeWidget } from './Huge';
 export { BigWidget } from './Big';
 export { MediumWidget } from './Medium';
 export { SmallWidget } from './Small';
+
+// Widget Parts
+export { WidgetHeader } from './WidgetHeader/index'
