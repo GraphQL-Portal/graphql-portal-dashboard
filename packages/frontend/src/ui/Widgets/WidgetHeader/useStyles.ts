@@ -1,5 +1,7 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
+const TRANSPARENT_WHITE = 'rgba(255, 255, 255, 0.75)';
+
 export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   widgetHeader: {
     padding: spacing(2),
@@ -25,13 +27,13 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
       opacity: 1,
     },
   },
-  tooltip: {
+  tooltipRoot: {
     fontSize: '1rem',
-    background: palette.action.active,
+    background: TRANSPARENT_WHITE,
     padding: spacing(1),
     color: palette.background.default,
   },
   arrow: {
-    color: palette.action.active,
+    color: TRANSPARENT_WHITE,
   },
 }));

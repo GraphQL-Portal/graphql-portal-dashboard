@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import { Header, HugeWidget, PrimaryButton, WidgetRow, WidgetHeader } from '../../ui';
 import { useGatewayNodes } from '../../presenter/GatewayNodes';
@@ -10,12 +11,15 @@ export const GatewayNodes:React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Gateway Nodes</title>
+      </Helmet>
       <Header title="Active Gateway Nodes">
         <PrimaryButton onClick={onSyncClick}>Sync configuration</PrimaryButton>
       </Header>
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title={title} />
+          <WidgetHeader title={title} tooltip="test tooltip to display near the title"/>
         </HugeWidget>
       </WidgetRow>
     </>
