@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
-const TRANSPARENT_WHITE = 'rgba(255, 255, 255, 0.75)';
+const TRANSPARENT_WHITE = 'rgba(255, 255, 255, 0.85)';
 
 export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   tooltip: {
