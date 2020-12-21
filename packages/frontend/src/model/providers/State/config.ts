@@ -1,1 +1,1 @@
-export const URI = 'http://localhost:3000/graphql';
+export const URI = 'http://localhost:3030/graphql';
