@@ -10,4 +10,6 @@ export {
   MediumWidget,
   SmallWidget,
   WidgetHeader,
+  WidgetBody,
+  WidgetActions,
 } from './Widgets';

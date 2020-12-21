@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { Header, HugeWidget, PrimaryButton, WidgetRow, WidgetHeader } from '../../ui';
+import { Header, HugeWidget, PrimaryButton, WidgetRow, WidgetHeader, WidgetBody, WidgetActions } from '../../ui';
 import { useGatewayNodes } from '../../presenter/GatewayNodes';
 
 export const GatewayNodes:React.FC = () => {
@@ -20,6 +20,8 @@ export const GatewayNodes:React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title={title} tooltip="test tooltip to display near the title"/>
+          <WidgetBody>Widget Body here</WidgetBody>
+          <WidgetActions justify="flex-end">Buttons</WidgetActions>
         </HugeWidget>
       </WidgetRow>
     </>
