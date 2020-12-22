@@ -1,0 +1,7 @@
+{
+  "db": {
+    "mongodb": {
+      "connectionString": "mongodb://localhost:27017/graphql-portal-dashboard-test"
+    }
+  }
+}

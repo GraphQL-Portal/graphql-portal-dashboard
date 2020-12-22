@@ -25,6 +25,15 @@ export default class ApiDefService {
     this.setLastUpdateTime();
   }
 
+  public setLastUpdateTime(): number {
+    this.lastUpdateTime = Date.now();
+    return this.lastUpdateTime;
+  }
+
+  public publishApiDefsUpdated(): Promise<number> {
+    return this.redisService.publishApiDefsUpdated(this.lastUpdateTime);
+  }
+
   public async findAll(): Promise<ApiDefsWithTimestamp> {
     const apiDefs = await this.apiDefModel.find().populate('sources').exec();
     return {
@@ -37,12 +46,7 @@ export default class ApiDefService {
     return this.apiDefModel.findOne({ name }).exec();
   }
 
-  public setLastUpdateTime(): number {
-    this.lastUpdateTime = Date.now();
-    return this.lastUpdateTime;
-  }
-
-  public async create(data: IApiDef, sourcesIds: string[]): Promise<IApiDef> {
+  public async create(data: IApiDef, sourcesIds: string[]): Promise<IApiDefDocument> {
     data.sources = await this.validateSourceIds(sourcesIds);
     const apiDef = await this.apiDefModel.create(data);
     this.logger.log(`Created apiDef ${data.name}`, this.constructor.name, data);
@@ -79,10 +83,6 @@ export default class ApiDefService {
     }
 
     return Boolean(deletedCount);
-  }
-
-  public publishApiDefsUpdated(): Promise<number> {
-    return this.redisService.publishApiDefsUpdated(this.lastUpdateTime);
   }
 
   public async isSourceUsed(id: ObjectID): Promise<IApiDefDocument | null> {

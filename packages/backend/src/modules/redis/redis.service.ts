@@ -1,5 +1,5 @@
 import { Channel } from '@graphql-portal/types';
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, OnModuleDestroy } from '@nestjs/common';
 import { RedisPubSub } from 'graphql-redis-subscriptions';
 import { Redis } from 'ioredis';
 import Provider from '../../common/enum/provider.enum';
@@ -7,7 +7,7 @@ import Subscription from '../../common/enum/subscription.enum';
 import { LoggerService } from '../../common/logger';
 
 @Injectable({})
-export default class RedisService {
+export default class RedisService implements OnModuleDestroy {
   private publisher: Redis;
   private subscriber: Redis;
   public readonly pubSub: RedisPubSub;
@@ -16,6 +16,10 @@ export default class RedisService {
     this.publisher = redisClients[0];
     this.subscriber = redisClients[1];
     this.pubSub = new RedisPubSub({ publisher: this.publisher, subscriber: this.subscriber });
+  }
+
+  public async onModuleDestroy(): Promise<void> {
+    await this.pubSub.close();
   }
 
   public async publishApiDefsUpdated(timestamp: number): Promise<number> {

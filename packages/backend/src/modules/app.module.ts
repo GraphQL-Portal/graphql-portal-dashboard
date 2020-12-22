@@ -10,7 +10,11 @@ import SourceModule from './source/source.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(config.db.mongodb.connectionString, { useNewUrlParser: true, useUnifiedTopology: true }),
+    MongooseModule.forRoot(config.db.mongodb.connectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    }),
     RedisModule.forRoot(config.db.redis.connectionString),
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,

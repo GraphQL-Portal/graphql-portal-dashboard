@@ -35,6 +35,7 @@ export default class GatewayService {
     }
     this.clearNodes[nodeId] = setTimeout(() => {
       delete this.nodes[nodeId];
+      delete this.clearNodes[nodeId];
       this.gatewaysUpdated();
     }, 60000);
   }
