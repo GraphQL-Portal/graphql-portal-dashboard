@@ -6,6 +6,7 @@ import { config } from 'node-config-ts';
 import AppModule from './modules/app.module';
 import Header from './common/enum/headers.enum';
 import { LoggerService } from './common/logger';
+import ValidationExceptionFilter from './common/error-handling/exception-filter';
 
 const bootstrap = async (): Promise<void> => {
   const logger = new LoggerService(config);
@@ -18,6 +19,7 @@ const bootstrap = async (): Promise<void> => {
   });
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new ValidationExceptionFilter());
 
   await app.listen(config.application.port, () => {
     logger.log(`Start listen ${config.application.port}, secret: "${config.application.secret}"`, 'bootstrap');

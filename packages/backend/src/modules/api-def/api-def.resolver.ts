@@ -23,7 +23,15 @@ export default class ApiDefResolver {
   }
 
   @Mutation()
-  public deleteApiDef(@Args('name') name: string): Promise<number> {
+  public updateApiDef(
+    @Args('name') name: string,
+    @Args() { apiDef, sources }: ApiDefCreateDto
+  ): Promise<IApiDef | null> {
+    return this.service.update(name, apiDef, sources);
+  }
+
+  @Mutation()
+  public deleteApiDef(@Args('name') name: string): Promise<boolean> {
     return this.service.delete(name);
   }
 }

@@ -1,9 +1,6 @@
-import { Source } from '@graphql-mesh/types/config';
+import { ApiDef } from '@graphql-portal/types';
 
-export default interface IApiDef {
+export default interface IApiDef extends ApiDef {
   createdAt?: Date;
   updatedAt?: Date;
-  name: string;
-  endpoint: string;
-  sources: Source[];
 }

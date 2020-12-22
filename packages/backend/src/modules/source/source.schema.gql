@@ -18,6 +18,7 @@ type Query {
 }
 
 type Mutation {
-  createSource(source: CreateSource): Source
-  deleteSource(name: String): Int
+  createSource(source: CreateSource!): Source
+  updateSource(name: String!, source: CreateSource!): Source
+  deleteSource(name: String!): Boolean
 }
