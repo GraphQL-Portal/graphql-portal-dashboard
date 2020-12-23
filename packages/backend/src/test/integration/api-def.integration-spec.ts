@@ -6,6 +6,8 @@ import supertest from 'supertest';
 import AppModule from '../../modules/app.module';
 import { Method, requestTo, RequestToResult, apiDefExample } from '../common';
 
+jest.mock('ioredis');
+
 describe('ApiDefResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
@@ -25,7 +27,6 @@ describe('ApiDefResolver', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
-    await app.listen(4000);
 
     request = requestTo(app);
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
