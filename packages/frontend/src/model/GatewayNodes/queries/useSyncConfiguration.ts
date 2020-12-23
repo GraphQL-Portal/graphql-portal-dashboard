@@ -1,29 +1,20 @@
 import { useLazyQuery, gql } from '@apollo/client';
 
-/**
- * @TODO send request to update configuration status
- */
-
 const SYNC_CONFIGURATION = gql`
-  query hello($name: String!) {
-    hello(name: $name)
+  {
+    publishApiDefsUpdated
+    getApiDefs {
+      timestamp
+    }
   }
 `;
 
 export const useSyncConfiguration = () => {
-  const [onSyncConfiguration, { loading, data, error, refetch }] = useLazyQuery(SYNC_CONFIGURATION,
-    {
-      variables: {
-        name: 'Configuration'
-      },
-    },
-  );
+  const [onSyncConfiguration, { data, refetch }] = useLazyQuery(SYNC_CONFIGURATION);
 
   return {
     onSyncConfiguration,
-    loading,
-    data,
-    error,
+    syncData: data,
     refetch,
   };
 };
