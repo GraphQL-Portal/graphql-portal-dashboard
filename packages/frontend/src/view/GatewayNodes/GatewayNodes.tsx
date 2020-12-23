@@ -12,10 +12,13 @@ import { useGatewayNodes } from '../../presenter/GatewayNodes';
 import { EmptyGatewayNodes } from './Empty';
 import { GatewayNodesList } from './List';
 import { useStyles } from './useStyles';
+import { Loading } from '../Loading';
 
 export const GatewayNodes:React.FC = () => {
-  const { data, onSyncClick, timestamp } = useGatewayNodes();
+  const { data, onSyncClick, timestamp, loading } = useGatewayNodes();
   const { config } = useStyles();
+
+  if (loading) return <Loading />
 
   return (
     <>
