@@ -1,15 +1,18 @@
-
 import { useEffect } from 'react';
-import { useSyncConfiguration } from '../../model/GatewayNodes/queries';
+import { useGateways, useSyncConfiguration } from '../../model/GatewayNodes/queries';
 
 export const useGatewayNodes = () => {
-  const { loading, data, error, onSyncConfiguration, refetch } = useSyncConfiguration();
-  useEffect(() => {
-    onSyncConfiguration();
-  }, [onSyncConfiguration]);
+  const { refetch, onSyncConfiguration, syncData } = useSyncConfiguration();
+  const { loading, data, error } = useGateways();
+
+  useEffect(() => { onSyncConfiguration() }, [onSyncConfiguration]);
 
   // to prevent TS complaining on React onClick types signature
   const onSyncClick = () => refetch!();
 
-  return { loading, data, error, onSyncClick };
+  const {
+    getApiDefs: { timestamp = 0 },
+  } = syncData || { getApiDefs: {} };
+
+  return { loading, data, error, onSyncClick, timestamp };
 }
