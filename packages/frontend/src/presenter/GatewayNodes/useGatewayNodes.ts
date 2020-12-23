@@ -14,5 +14,5 @@ export const useGatewayNodes = () => {
     getApiDefs: { timestamp = 0 },
   } = syncData || { getApiDefs: {} };
 
-  return { loading, data, error, onSyncClick, timestamp };
+  return { loading, data, onSyncClick, timestamp };
 }

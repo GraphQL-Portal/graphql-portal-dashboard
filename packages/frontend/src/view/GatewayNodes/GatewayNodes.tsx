@@ -6,15 +6,11 @@ import {
   HugeWidget,
   PrimaryButton,
   WidgetRow,
-  WidgetHeader,
-  WidgetBody,
-  TableHead,
-  Table,
-  TableBody, TableRow, TableCell } from '../../ui';
+} from '../../ui';
 import { useGatewayNodes } from '../../presenter/GatewayNodes';
-import { getKeyFromText } from '../../utils/getKeyFromText';
 
-import { TABLE_HEAD } from './constants';
+import { EmptyGatewayNodes } from './Empty';
+import { GatewayNodesList } from './List';
 import { useStyles } from './useStyles';
 
 export const GatewayNodes:React.FC = () => {
@@ -36,29 +32,7 @@ export const GatewayNodes:React.FC = () => {
       </Header>
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title="List of Active Nodes" />
-          <WidgetBody>
-            <Table>
-              <TableHead>
-                {TABLE_HEAD.map((cell, idx) => (
-                  <TableCell key={getKeyFromText(cell)} align={idx === 0 ? 'left' : 'right'}>
-                    {cell}
-                  </TableCell>
-                ))}
-              </TableHead>
-              <TableBody>
-                {data.map((node, idx) => (
-                  <TableRow key={`node-${idx}`}>
-                    {node.map((item: any, indx: any) => (
-                      <TableCell key={`node-${idx}-item-${indx}`} align={indx === 0 ? 'left' : 'right'}>
-                        {item}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </WidgetBody>
+          {data.length === 0 ? <EmptyGatewayNodes /> : <GatewayNodesList list={data} />}
         </HugeWidget>
       </WidgetRow>
     </>

@@ -1,4 +1,5 @@
 export { PrimaryButton, TextButton } from './Buttons';
+export { Emoji } from './Emoji';
 export { Grid, Row, Col } from './Grid';
 export { Header } from './Header';
 export { SvgIcon } from './SvgIcon';
