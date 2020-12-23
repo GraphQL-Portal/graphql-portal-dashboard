@@ -7,6 +7,8 @@ import AppModule from '../../modules/app.module';
 import { Method, requestTo, RequestToResult } from '../common';
 import IGateway from '../../common/interface/gateway.interface';
 
+jest.mock('ioredis');
+
 describe('GatewayResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
@@ -24,7 +26,6 @@ describe('GatewayResolver', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
-    await app.listen(4000);
 
     request = requestTo(app);
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
