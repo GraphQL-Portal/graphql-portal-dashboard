@@ -22,6 +22,7 @@ const createNodeList = (data: Gateway[]) => {
   if (!data) return [];
 
   return data.reduce((acc: any[], gateway: Gateway, idx: number) => {
+    // We can mutate acc because we have new [] each time we call this function
     acc[idx] = [gateway.nodeId, 'active', gateway.lastPingAt, gateway.configTimestamp];
     return acc;
   }, []);
@@ -32,7 +33,7 @@ export const useGateways = () => {
 
   subscribeToMore({
     document: GATEWAYS_UPDATE,
-    updateQuery: (prev, { subscriptionData }) => {
+    updateQuery: (_, { subscriptionData }) => {
       return { getGateways: createNodeList(subscriptionData.data.gatewaysUpdated) };
     },
   });
