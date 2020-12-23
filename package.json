@@ -9,8 +9,12 @@
   "scripts": {
     "backend": "yarn workspace graphql-portal-dashboard-backend start",
     "backend:clear": "yarn workspace graphql-portal-dashboard-backend clear",
+    "backend:build": "yarn workspace graphql-portal-dashboard-backend build",
+    "backend:test": "yarn workspace graphql-portal-dashboard-backend test",
     "frontend": "yarn workspace graphql-portal-dashboard-frontend start",
     "frontend:clear": "yarn workspace graphql-portal-dashboard-frontend clear",
+    "frontend:build": "yarn workspace graphql-portal-dashboard-frontend build",
+    "build": "yarn frontend:build && yarn backend:build",
     "start": "concurrently --kill-others-on-fail 'yarn backend' 'yarn frontend'",
     "clear": "rm -rf node_modules && yarn frontend:clear && yarn backend:clear"
   },
