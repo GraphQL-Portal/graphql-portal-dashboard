@@ -1,0 +1,25 @@
+input UserInput {
+  firstName: String
+  lastName: String
+  role: String
+  email: String!
+  password: String!
+}
+
+type User {
+  firstName: String
+  lastName: String
+  role: String!
+  email: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Mutation {
+  login(email: String!, password: String!): String!
+  register(data: UserInput!): String!
+}
+
+type Query {
+  getProfile: User
+}

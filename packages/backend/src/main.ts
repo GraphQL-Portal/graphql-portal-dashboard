@@ -1,5 +1,5 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express, { Express } from 'express';
 import { config } from 'node-config-ts';
@@ -17,9 +17,11 @@ const bootstrap = async (): Promise<void> => {
   const app: INestApplication = await NestFactory.create(AppModule, new ExpressAdapter(expressApp), {
     logger,
   });
+  const { httpAdapter } = app.get(HttpAdapterHost);
+
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new ValidationExceptionFilter());
+  app.useGlobalFilters(new ValidationExceptionFilter(httpAdapter));
 
   await app.listen(config.application.port, () => {
     logger.log(`Start listen ${config.application.port}, secret: "${config.application.secret}"`, 'bootstrap');
