@@ -3,7 +3,16 @@ import React from 'react';
 import { Content } from '../Content';
 import { LogoFull } from '../../icons';
 import { useStyles } from './useStyles';
-import { Grid, Row, Col, Widget, WidgetBody, Input, PrimaryButton, WidgetActions } from '../../ui';
+import {
+  Grid,
+  Row,
+  Col,
+  Input,
+  PrimaryButton,
+  Widget,
+  WidgetBody,
+  WidgetActions,
+} from '../../ui';
 
 export const Login:React.FC = () => {
   const { content, logo, formFrame, formField } = useStyles();

@@ -8,8 +8,8 @@ export { MetricsAndLogs } from './MetricsAndLogs'
 export { Login } from './Login';
 export { MyAPI } from './MyAPI';
 export { ProtectedRoutes } from './ProtectedRoutes';
+export { Services } from './Services';
 export { Sidebar } from './Sidebar';
 export { SupportForum } from './SupportForum';
-export { Services } from './Services';
 export { Users } from './Users';
 export { Webhooks } from './Webhooks';
