@@ -37,6 +37,12 @@ export const theme = createMuiTheme({
         marginRight: '16px',
       },
     },
+    // MuiOutlinedInput: {
+    //   input: {
+    //     padding: 16,
+    //     fontSize: '1rem',
+    //   }
+    // }
   },
   typography: {
     htmlFontSize: 16,

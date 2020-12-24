@@ -1,3 +1,6 @@
+export const LOGIN = '/login';
+
+export const MAIN = "/";
 export const DASHBOARD = '/dashboard';
 
 // API Management
