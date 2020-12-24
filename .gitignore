@@ -1,3 +1,6 @@
+# front-end build directory
+packages/frontend/build
+
 # IDEs and editors
 /.idea
 .project
@@ -112,3 +115,5 @@ dist
 
 # TernJS port file
 .tern-port
+
+packages/backend/globalConfig.json

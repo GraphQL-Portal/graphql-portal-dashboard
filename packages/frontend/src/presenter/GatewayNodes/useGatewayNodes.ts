@@ -3,7 +3,7 @@ import { useGateways, useSyncConfiguration } from '../../model/GatewayNodes/quer
 
 export const useGatewayNodes = () => {
   const { refetch, onSyncConfiguration, syncData } = useSyncConfiguration();
-  const { loading, data, error } = useGateways();
+  const { loading, data } = useGateways();
 
   useEffect(() => { onSyncConfiguration() }, [onSyncConfiguration]);
 
@@ -14,5 +14,5 @@ export const useGatewayNodes = () => {
     getApiDefs: { timestamp = 0 },
   } = syncData || { getApiDefs: {} };
 
-  return { loading, data, error, onSyncClick, timestamp };
+  return { loading, data, onSyncClick, timestamp };
 }

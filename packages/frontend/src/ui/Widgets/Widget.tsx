@@ -1,8 +1,13 @@
 import { Paper } from '@material-ui/core';
 import React from 'react';
+import clsx from 'clsx';
 
 import { useStyles } from './useStyles';
-export const Widget:React.FC = ({ children }) => {
+import { Widget as Type } from './types';
+
+export const Widget:React.FC<Type> = ({ children, className }) => {
   const { widget } = useStyles();
-  return <Paper className={widget}>{children}</Paper>;
+  const widgetClassName = clsx(widget, className);
+
+  return <Paper className={widgetClassName}>{children}</Paper>;
 }

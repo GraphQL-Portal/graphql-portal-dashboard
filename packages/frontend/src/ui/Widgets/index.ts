@@ -8,3 +8,5 @@ export { SmallWidget } from './Small';
 export { WidgetHeader } from './WidgetHeader/index'
 export { WidgetBody } from './WidgetBody/index'
 export { WidgetActions } from './WidgetActions/index'
+
+export { Widget } from './Widget'
