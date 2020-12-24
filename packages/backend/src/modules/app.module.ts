@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { config } from 'node-config-ts';
 import { LoggerModule } from '../common/logger';
-import { randomString } from '../test/common';
+import { randomString } from '../common/tool';
 import ApiDefModule from './api-def/api-def.module';
 import GatewayModule from './gateway/gateway.module';
 import RedisModule from './redis/redis.module';
