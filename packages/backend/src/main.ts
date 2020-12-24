@@ -19,7 +19,7 @@ const bootstrap = async (): Promise<void> => {
   });
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new ValidationExceptionFilter());
+  app.useGlobalFilters(new ValidationExceptionFilter(app.getHttpAdapter()));
 
   await app.listen(config.application.port, () => {
     logger.log(`Start listen ${config.application.port}, secret: "${config.application.secret}"`, 'bootstrap');
