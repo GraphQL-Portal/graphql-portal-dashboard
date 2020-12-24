@@ -1,13 +1,13 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import IUser from 'src/common/interface/user.interface';
-import AuthService from './auth.service';
+import UserService from './user.service';
 import { AuthorizationEntity, Roles } from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
 import { IUserDocument } from 'src/data/schema/user.schema';
 
-@Resolver('Auth')
-export default class AuthResolver {
-  public constructor(private readonly service: AuthService) { }
+@Resolver('User')
+export default class UserResolver {
+  public constructor(private readonly service: UserService) { }
 
   @Mutation()
   public login(@Args('email') email: string, @Args('password') password: string): Promise<string> {

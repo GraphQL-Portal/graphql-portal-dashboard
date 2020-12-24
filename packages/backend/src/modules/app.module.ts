@@ -6,7 +6,7 @@ import AuthenticationMiddleware from 'src/common/middlewares/auth.middleware';
 import { LoggerModule } from '../common/logger';
 import { randomString } from '../common/tool';
 import ApiDefModule from './api-def/api-def.module';
-import AuthModule from './auth/auth.module';
+import UserModule from './user/user.module';
 import GatewayModule from './gateway/gateway.module';
 import RedisModule from './redis/redis.module';
 import SourceModule from './source/source.module';
@@ -34,7 +34,7 @@ import SourceModule from './source/source.module';
     LoggerModule.forRoot(config),
     ApiDefModule,
     SourceModule,
-    AuthModule,
+    UserModule,
     GatewayModule,
   ]
 })

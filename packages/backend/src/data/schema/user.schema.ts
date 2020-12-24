@@ -41,6 +41,7 @@ UserSchema.methods.isValidPassword = function (password: string) {
 };
 
 export interface IUserDocument extends IUser, mongoose.Document {
+  _id: string,
   setPassword(password: string): void,
   isValidPassword(password: string): boolean,
 }

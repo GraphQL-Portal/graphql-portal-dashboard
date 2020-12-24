@@ -34,8 +34,8 @@ export default class ApiDefService {
     return this.redisService.publishApiDefsUpdated(this.lastUpdateTime);
   }
 
-  public async findAll(): Promise<ApiDefsWithTimestamp> {
-    const apiDefs = await this.apiDefModel.find().populate('sources').exec();
+  public async findAllByUser(user: string): Promise<ApiDefsWithTimestamp> {
+    const apiDefs = await this.apiDefModel.find({ user }).populate('sources').exec();
     return {
       apiDefs,
       timestamp: this.lastUpdateTime,
@@ -46,9 +46,9 @@ export default class ApiDefService {
     return this.apiDefModel.findOne({ name }).exec();
   }
 
-  public async create(data: IApiDef, sourcesIds: string[]): Promise<IApiDefDocument> {
+  public async create(data: IApiDef, sourcesIds: string[], user: string): Promise<IApiDefDocument> {
     data.sources = await this.validateSourceIds(sourcesIds);
-    const apiDef = await this.apiDefModel.create(data);
+    const apiDef = await this.apiDefModel.create({ ...data, user });
     this.logger.log(`Created apiDef ${data.name}`, this.constructor.name, data);
 
     this.setLastUpdateTime();
@@ -58,9 +58,9 @@ export default class ApiDefService {
     return apiDef;
   }
 
-  public async update(name: string, data: IApiDef, sourcesIds: string[]): Promise<IApiDefDocument> {
+  public async update(name: string, data: IApiDef, sourcesIds: string[], user: string): Promise<IApiDefDocument> {
     data.sources = await this.validateSourceIds(sourcesIds);
-    const { nModified } = await this.apiDefModel.updateOne({ name }, data);
+    const { nModified } = await this.apiDefModel.updateOne({ name, user }, data);
     if (!nModified) {
       throw new ValidationError(`API "${name}" does not exist`);
     }
@@ -73,8 +73,8 @@ export default class ApiDefService {
     return updated;
   }
 
-  public async delete(name: string): Promise<boolean> {
-    const { deletedCount } = await this.apiDefModel.deleteOne({ name });
+  public async delete(name: string, user: string): Promise<boolean> {
+    const { deletedCount } = await this.apiDefModel.deleteOne({ name, user });
 
     if (deletedCount) {
       this.logger.log(`Deleted apiDef ${name}`, this.constructor.name);

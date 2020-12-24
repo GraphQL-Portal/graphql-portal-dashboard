@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {AuthenticationError } from 'apollo-server-express';
+import { AuthenticationError } from 'apollo-server-express';
 import { LoggerService } from '../../common/logger';
 import { IUserDocument } from 'src/data/schema/user.schema';
 import IUser from 'src/common/interface/user.interface';
 import * as jwt from '../../common/tool/token.tool';
 
 @Injectable()
-export default class AuthService {
+export default class UserService {
   public lastUpdateTime: number;
 
   public constructor(
@@ -30,9 +30,9 @@ export default class AuthService {
 
   public async register(data: IUser): Promise<string> {
     const user = await this.userModel.create(data);
-    
+
     const token = jwt.sign(user._id);
-    
+
     this.logger.log(`Successfully created user with email: ${data.email}`, this.constructor.name);
 
     return token;
