@@ -45,8 +45,6 @@ jobs:
 
       - name: Install dependencies with Yarn
         run: yarn install --ignore-engines
-      - name: Build
-        run: yarn build
 
       - name: Test
         run: yarn test
