@@ -3,6 +3,7 @@ import IUser from 'src/common/interface/user.interface';
 import AuthService from './auth.service';
 import { AuthorizationEntity, Roles } from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
+import { IUserDocument } from 'src/data/schema/user.schema';
 
 @Resolver('Auth')
 export default class AuthResolver {
@@ -18,9 +19,9 @@ export default class AuthResolver {
     return this.service.register(data);
   }
 
-  // @Roles([RolesEnum.USER, RolesEnum.ADMIN])
-  // @Query()
-  // public getProfile(@AuthorizationEntity() user: IUser): IUser {
-    // 
-  // }
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Query()
+  public getProfile(@AuthorizationEntity() user: IUserDocument): IUser {
+    return user;
+  }
 }

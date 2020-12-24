@@ -39,9 +39,9 @@ import SourceModule from './source/source.module';
   ]
 })
 export default class AppModule {
-  // configure(consumer: MiddlewareConsumer): void {
-  //   consumer
-  //     .apply(AuthenticationMiddleware)
-  //     .forRoutes({ path: '*', method: RequestMethod.ALL });
-  // }
+  configure(consumer: MiddlewareConsumer): void {
+    consumer
+      .apply(AuthenticationMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
 }

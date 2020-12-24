@@ -1,6 +1,6 @@
 enum Header {
   X_POWERED_BY = 'x-powered-by',
-  AUTHORIZATION = 'Authorization',
+  AUTHORIZATION = 'authorization',
 }
 
 export default Header;
