@@ -36,10 +36,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-14-yarn-
 
+      - name: MongoDB Memory Server cache
+        uses: actions/cache@v2
+        id: mongodb-memory-cache
+        with:
+          path: .packages/backend/node_modules/.cache/mongodb-memory-server
+          key: ${{ runner.os }}-14-mongo-${{ hashFiles('.packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries/*/mongod') }}
+
       - name: Install dependencies with Yarn
         run: yarn install --ignore-engines
-      - name: Build
-        run: yarn build
 
       - name: Test
         run: yarn test
