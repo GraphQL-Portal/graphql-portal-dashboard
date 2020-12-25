@@ -10,12 +10,12 @@ export const getTokenFromHeaders = (headers: Headers): string | undefined => {
 
 export const verify = (token: string): { userId: string } => {
   try {
-    return jwt.verify(token, config.application.secret) as { userId: string };
+    return jwt.verify(token, config.application.jwtSecret) as { userId: string };
   } catch (error) {
     throw new AuthenticationError('Bad JWT token.');
   }
 }
 
 export const sign = (userId: string) => {
-  return jwt.sign({ userId }, config.application.secret, { expiresIn: TokenExpirationTime.DAY });
+  return jwt.sign({ userId }, config.application.jwtSecret, { expiresIn: TokenExpirationTime.DAY });
 }

@@ -20,6 +20,8 @@ declare module "node-config-ts" {
     graphQL: GraphQL
     logLevel: string
     secret: string
+    jwtSecret: string
+    salt: string
   }
   interface GraphQL {
     playground: boolean

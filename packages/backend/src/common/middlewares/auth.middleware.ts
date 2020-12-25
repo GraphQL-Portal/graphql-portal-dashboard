@@ -14,9 +14,9 @@ export default class AuthenticationMiddleware implements NestMiddleware {
     const context = `${this.constructor.name}:${this.use.name}`;
     try {
       if (!req.headers) return next();
-      const token = TokenTool.getTokenFromHeaders(req.headers);
 
-      this.logger.debug('Got token from headers', context);
+      this.logger.debug('Getting token from headers', context);
+      const token = TokenTool.getTokenFromHeaders(req.headers);
       if (!token) return next();
 
       this.logger.debug('Verifying token', context, { token });

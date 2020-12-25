@@ -32,11 +32,11 @@ const UserSchema = new mongoose.Schema<IUser>(
 );
 
 UserSchema.methods.setPassword = function (password: string) {
-  this.password = crypto.pbkdf2Sync(password, config.application.secret, 10000, 512, 'sha512').toString('hex');
+  this.password = crypto.pbkdf2Sync(password, config.application.salt, 10000, 512, 'sha512').toString('hex');
 };
 
 UserSchema.methods.isValidPassword = function (password: string) {
-  const hash = crypto.pbkdf2Sync(password, config.application.secret, 10000, 512, 'sha512').toString('hex');
+  const hash = crypto.pbkdf2Sync(password, config.application.salt, 10000, 512, 'sha512').toString('hex');
   return this.password === hash;
 };
 
