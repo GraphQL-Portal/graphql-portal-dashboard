@@ -18,7 +18,6 @@ export default class RolesGuard implements CanActivate {
     if (!roles) return true;
 
     const user = PermissionTool.getUserFromRequest(context);
-
     if (!user) throw new AuthenticationError('User not found');
 
     if (!roles.includes(user.role)) throw new AuthenticationError(`User role is: ${user.role}, but required one of: ${roles}`);
