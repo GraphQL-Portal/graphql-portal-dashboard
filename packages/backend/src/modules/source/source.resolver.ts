@@ -1,6 +1,8 @@
 import { SourceConfig } from '@graphql-portal/types';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { AuthorizationParam } from 'src/common/decorators';
+import { AccessControl, AuthorizationParam, Roles } from 'src/common/decorators';
+import AccessControlModels from 'src/common/enum/access-control-models.enum';
+import RolesEnum from '../../common/enum/roles.enum';
 import SourceCreateDto from './dto/source-create.dto';
 import SourceService from './source.service';
 
@@ -9,6 +11,7 @@ export default class SourceResolver {
   public constructor(private readonly service: SourceService) { }
 
   @Query()
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
   public getSources(
     @AuthorizationParam('_id') user: string,
   ): Promise<SourceConfig[]> {
@@ -16,6 +19,7 @@ export default class SourceResolver {
   }
 
   @Mutation()
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
   public createSource(
     @Args() data: SourceCreateDto,
     @AuthorizationParam('_id') user: string,
@@ -24,19 +28,21 @@ export default class SourceResolver {
   }
 
   @Mutation()
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @AccessControl(AccessControlModels.Source)
   public updateSource(
-    @Args('name') name: string,
+    @Args('id') id: string,
     @Args() { source }: SourceCreateDto,
-    @AuthorizationParam('_id') user: string,
   ): Promise<SourceConfig | null> {
-    return this.service.update(name, source, user);
+    return this.service.update(id, source);
   }
 
   @Mutation()
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @AccessControl(AccessControlModels.Source)
   public deleteSource(
-    @Args('name') name: string,
-    @AuthorizationParam('_id') user: string,
+    @Args('id') id: string
   ): Promise<boolean> {
-    return this.service.delete(name, user);
+    return this.service.delete(id);
   }
 }

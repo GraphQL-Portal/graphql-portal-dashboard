@@ -34,16 +34,20 @@ export default class ApiDefService {
     return this.redisService.publishApiDefsUpdated(this.lastUpdateTime);
   }
 
-  public async findAllByUser(user: string): Promise<ApiDefsWithTimestamp> {
-    const apiDefs = await this.apiDefModel.find({ user }).populate('sources').exec();
+  public async findAll(): Promise<ApiDefsWithTimestamp> {
+    const apiDefs = await this.apiDefModel.find().populate('sources').exec();
     return {
       apiDefs,
       timestamp: this.lastUpdateTime,
     };
   }
 
-  public findByName(name: string): Promise<IApiDefDocument | null> {
-    return this.apiDefModel.findOne({ name }).exec();
+  public async findAllByUser(user: string): Promise<ApiDefsWithTimestamp> {
+    const apiDefs = await this.apiDefModel.find({ user }).populate('sources').exec();
+    return {
+      apiDefs,
+      timestamp: this.lastUpdateTime,
+    };
   }
 
   public async create(data: IApiDef, sourcesIds: string[], user: string): Promise<IApiDefDocument> {
@@ -58,35 +62,33 @@ export default class ApiDefService {
     return apiDef;
   }
 
-  public async update(name: string, data: IApiDef, sourcesIds: string[], user: string): Promise<IApiDefDocument> {
-    data.sources = await this.validateSourceIds(sourcesIds);
-    const { nModified } = await this.apiDefModel.updateOne({ name, user }, data);
-    if (!nModified) {
-      throw new ValidationError(`API "${name}" does not exist`);
-    }
+  public async update(id: string, apiDef: IApiDef, sourcesIds: string[]): Promise<IApiDefDocument> {
+    apiDef.sources = await this.validateSourceIds(sourcesIds);
 
-    const updated = (await this.findByName(data.name)) as IApiDefDocument;
-    this.logger.log(`Updated API ${name}`, this.constructor.name, data);
+    const updated = (await this.apiDefModel.findByIdAndUpdate(id, apiDef, { new: true }))!;
+
+    this.logger.log(`Updated API ${updated._id}`, this.constructor.name, apiDef);
+
     this.setLastUpdateTime();
     this.publishApiDefsUpdated();
 
     return updated;
   }
 
-  public async delete(name: string, user: string): Promise<boolean> {
-    const { deletedCount } = await this.apiDefModel.deleteOne({ name, user });
+  public async delete(id: string): Promise<boolean> {
+    const deleted = await this.apiDefModel.findByIdAndDelete(id);
 
-    if (deletedCount) {
-      this.logger.log(`Deleted apiDef ${name}`, this.constructor.name);
+    if (deleted) {
+      this.logger.log(`Deleted apiDef ${deleted._id}`, this.constructor.name);
       this.setLastUpdateTime();
       this.publishApiDefsUpdated();
     }
 
-    return Boolean(deletedCount);
+    return Boolean(deleted);
   }
 
-  public async isSourceUsed(id: ObjectID): Promise<IApiDefDocument | null> {
-    return this.apiDefModel.findOne({ sources: id });
+  public async isSourceUsed(sources: ObjectID): Promise<IApiDefDocument | null> {
+    return this.apiDefModel.findOne({ sources });
   }
 
   private async validateSourceIds(ids: string[]): Promise<ISourceDocument[]> {
@@ -95,5 +97,9 @@ export default class ApiDefService {
       throw new ValidationError(`${ids.length - sources.length} sources were not found`);
     }
     return sources;
+  }
+
+  public async isOwner(user: string, _id: string): Promise<boolean> {
+    return Boolean(await this.apiDefModel.findOne({ _id, user }));
   }
 }

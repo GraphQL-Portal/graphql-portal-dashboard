@@ -27,6 +27,7 @@ apiDefSchema.index({ name: 1 }, { unique: true, sparse: true });
 export default apiDefSchema;
 
 export interface IApiDefDocument extends IApiDef, mongoose.Document {
+  _id: string;
   sources: ISourceDocument[];
   user: IUserDocument;
 }

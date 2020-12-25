@@ -1,4 +1,5 @@
 import { Module, RequestMethod, MiddlewareConsumer } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { config } from 'node-config-ts';
@@ -10,6 +11,8 @@ import UserModule from './user/user.module';
 import GatewayModule from './gateway/gateway.module';
 import RedisModule from './redis/redis.module';
 import SourceModule from './source/source.module';
+import AccessControlGuard from 'src/common/guards/access-control-service.guard';
+import RolesGuard from 'src/common/guards/roles.guard';
 
 @Module({
   imports: [
@@ -36,7 +39,14 @@ import SourceModule from './source/source.module';
     SourceModule,
     UserModule,
     GatewayModule,
-  ]
+  ],
+  providers: [{
+    provide: APP_GUARD,
+    useClass: AccessControlGuard,
+  }, {
+    provide: APP_GUARD,
+    useClass: RolesGuard,
+  }],
 })
 export default class AppModule {
   configure(consumer: MiddlewareConsumer): void {
