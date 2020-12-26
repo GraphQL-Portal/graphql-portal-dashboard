@@ -37,7 +37,8 @@ describe('ApiDefService', () => {
   describe('setLastUpdateTime', () => {
     it('should set current timestamp', async () => {
       const timestamp = apiDefService.setLastUpdateTime();
-      expect(timestamp / 10).toBeCloseTo(Date.now() / 10, 0);
+      const timeDiff = (Date.now() - timestamp) / 10;
+      expect(timeDiff).toBeLessThanOrEqual(2);
       expect(apiDefService.lastUpdateTime).toBe(timestamp);
     });
   });
