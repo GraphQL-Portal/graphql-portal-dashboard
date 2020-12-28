@@ -3,8 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AuthenticationError } from 'apollo-server-express';
 import { LoggerService } from '../../common/logger';
-import { IUserDocument } from 'src/data/schema/user.schema';
-import IUser from 'src/common/interface/user.interface';
+import { IUserDocument } from '../../data/schema/user.schema';
+import IUser from '../../common/interface/user.interface';
 import * as jwt from '../../common/tool/token.tool';
 
 @Injectable()
@@ -21,7 +21,7 @@ export default class UserService {
 
     if (!user || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
 
-    const token = jwt.sign(user._id);
+    const token = jwt.sign(user._id!);
 
     this.logger.log(`User with email: ${user.email} successfully logged in`, this.constructor.name);
 
@@ -31,7 +31,7 @@ export default class UserService {
   public async register(data: IUser): Promise<string> {
     const user = await this.userModel.create(data);
 
-    const token = jwt.sign(user._id);
+    const token = jwt.sign(user._id!);
 
     this.logger.log(`Successfully created user with email: ${data.email}`, this.constructor.name);
 

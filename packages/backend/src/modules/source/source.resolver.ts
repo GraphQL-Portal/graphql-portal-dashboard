@@ -1,7 +1,7 @@
 import { SourceConfig } from '@graphql-portal/types';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { AccessControl, AuthorizationParam, Roles } from 'src/common/decorators';
-import AccessControlModels from 'src/common/enum/access-control-models.enum';
+import { AccessControl, AuthorizationParam, Roles } from '../../common/decorators';
+import AccessControlModels from '../../common/enum/access-control-models.enum';
 import RolesEnum from '../../common/enum/roles.enum';
 import SourceCreateDto from './dto/source-create.dto';
 import SourceService from './source.service';

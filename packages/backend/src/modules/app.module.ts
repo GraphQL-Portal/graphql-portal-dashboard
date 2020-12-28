@@ -3,7 +3,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { config } from 'node-config-ts';
-import AuthenticationMiddleware from 'src/common/middlewares/auth.middleware';
+import AuthenticationMiddleware from '../common/middlewares/auth.middleware';
 import { LoggerModule } from '../common/logger';
 import { randomString } from '../common/tool';
 import ApiDefModule from './api-def/api-def.module';
@@ -11,8 +11,8 @@ import UserModule from './user/user.module';
 import GatewayModule from './gateway/gateway.module';
 import RedisModule from './redis/redis.module';
 import SourceModule from './source/source.module';
-import AccessControlGuard from 'src/common/guards/access-control-service.guard';
-import RolesGuard from 'src/common/guards/roles.guard';
+import AccessControlGuard from '../common/guards/access-control-service.guard';
+import RolesGuard from '../common/guards/roles.guard';
 
 @Module({
   imports: [
@@ -32,7 +32,7 @@ import RolesGuard from 'src/common/guards/roles.guard';
       playground: config.application.graphQL.playground,
       debug: config.application.graphQL.debug,
       typePaths: ['./**/*.gql'],
-      context: ({ req, res }) => ({ req, res }),
+      context: ({ req }) => ({ req }),
     }),
     LoggerModule.forRoot(config),
     ApiDefModule,

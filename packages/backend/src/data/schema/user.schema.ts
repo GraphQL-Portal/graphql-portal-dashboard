@@ -1,10 +1,10 @@
 import * as mongoose from 'mongoose';
 import crypto from 'crypto';
 import { config } from 'node-config-ts';
-import Roles from 'src/common/enum/roles.enum';
-import IUser from 'src/common/interface/user.interface';
+import Roles from '../../common/enum/roles.enum';
+import IUser from '../../common/interface/user.interface';
 
-const UserSchema = new mongoose.Schema<IUser>(
+const UserSchema = new mongoose.Schema(
   {
     firstName: String,
     lastName: String,
@@ -41,7 +41,7 @@ UserSchema.methods.isValidPassword = function (password: string) {
 };
 
 export interface IUserDocument extends IUser, mongoose.Document {
-  _id: string,
+  _id?: string,
   setPassword(password: string): void,
   isValidPassword(password: string): boolean,
 }

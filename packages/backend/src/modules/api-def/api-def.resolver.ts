@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { AccessControl, AuthorizationParam, Roles } from 'src/common/decorators';
-import AccessControlModels from 'src/common/enum/access-control-models.enum';
+import { AccessControl, AuthorizationParam, Roles } from '../../common/decorators';
+import AccessControlModels from '../../common/enum/access-control-models.enum';
 import RolesEnum from '../../common/enum/roles.enum';
 import IApiDef from '../../common/interface/api-def.interface';
 import ApiDefService, { ApiDefsWithTimestamp } from './api-def.service';

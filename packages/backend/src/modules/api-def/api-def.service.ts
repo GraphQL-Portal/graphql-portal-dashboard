@@ -8,7 +8,7 @@ import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import RedisService from '../redis/redis.service';
 import SourceService from '../source/source.service';
 import { ValidationError } from 'apollo-server-express';
-import { ISourceDocument } from 'src/data/schema/source.schema';
+import { ISourceDocument } from '../../data/schema/source.schema';
 
 export type ApiDefsWithTimestamp = { apiDefs: IApiDef[]; timestamp: number };
 
@@ -65,7 +65,11 @@ export default class ApiDefService {
   public async update(id: string, apiDef: IApiDef, sourcesIds: string[]): Promise<IApiDefDocument> {
     apiDef.sources = await this.validateSourceIds(sourcesIds);
 
-    const updated = (await this.apiDefModel.findByIdAndUpdate(id, apiDef, { new: true }))!;
+    const toUpdate = await this.apiDefModel.findById(id);
+
+    if (!toUpdate) throw new ValidationError(`ApiDef with id ${id} does not exist`);
+
+    const updated = (await this.apiDefModel.findByIdAndUpdate(toUpdate._id, apiDef, { new: true }))!;
 
     this.logger.log(`Updated API ${updated._id}`, this.constructor.name, apiDef);
 

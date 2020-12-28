@@ -32,10 +32,11 @@ export default class SourceService {
   }
 
   public async update(id: string, data: SourceConfig): Promise<ISourceDocument> {
-    const source = await this.sourceModel.findByIdAndUpdate(id, data, { new: true });
-    if (!source) {
-      throw new ValidationError(`Source "${id}" does not exist`);
-    }
+    const toUpdate = await this.sourceModel.findById(id);
+
+    if (!toUpdate) throw new ValidationError(`Source with id ${id} does not exist`);
+
+    const source = (await this.sourceModel.findByIdAndUpdate(id, data, { new: true }))!;
 
     if (await this.apiDefService.isSourceUsed(source._id)) {
       this.apiDefService.setLastUpdateTime();

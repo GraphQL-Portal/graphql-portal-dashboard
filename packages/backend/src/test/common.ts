@@ -1,9 +1,10 @@
 import { SourceConfig } from '@graphql-portal/types';
 import { INestApplication } from '@nestjs/common';
-import IApiDef from '../common/interface/api-def.interface';
 import supertest from 'supertest';
-import { IApiDefDocument } from 'src/data/schema/api-def.schema';
-import { ISourceDocument } from 'src/data/schema/source.schema';
+import { ObjectId } from 'mongodb';
+import IApiDef from '../common/interface/api-def.interface';
+import { IApiDefDocument } from '../data/schema/api-def.schema';
+import { ISourceDocument } from '../data/schema/source.schema';
 
 export enum Method {
   get = 'get',
@@ -50,6 +51,8 @@ export const apiDefSchema = {
   name: expect.any(String),
   endpoint: expect.any(String),
 };
+
+export const randomObjectId = () => new ObjectId().toHexString();
 
 export const expectSource = (source: ISourceDocument): void =>
   expect(source.toJSON()).toMatchObject({ ...sourceSchema, ...mongoDocumentSchema });

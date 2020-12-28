@@ -8,8 +8,8 @@ import PermissionTool from '../tool/permission.tool';
 import Metadata from '../enum/metadata.enum';
 import IAccessControlService from '../interface/access-control.interface';
 import { AuthenticationError } from 'apollo-server-express';
-import ApiDefService from 'src/modules/api-def/api-def.service';
-import SourceService from 'src/modules/source/source.service';
+import ApiDefService from '../../modules/api-def/api-def.service';
+import SourceService from '../../modules/source/source.service';
 import Roles from '../enum/roles.enum';
 import AccessControlModels from '../enum/access-control-models.enum';
 
@@ -44,7 +44,7 @@ export default class AccessControlGuard implements CanActivate {
     const id = PermissionTool.getIdFromGqlRequest(context, access.pathToId)
     if (!id) throw new Error('Id is not defined');
 
-    const isOwner = await service.isOwner(user._id, id);
+    const isOwner = await service.isOwner(user._id!, id);
     if (!isOwner) throw new AuthenticationError('You do not have access to do this');
 
     return true;

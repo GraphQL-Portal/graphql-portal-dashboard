@@ -1,9 +1,9 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import IUser from 'src/common/interface/user.interface';
+import IUser from '../../common/interface/user.interface';
 import UserService from './user.service';
 import { AuthorizationEntity, Roles } from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
-import { IUserDocument } from 'src/data/schema/user.schema';
+import { IUserDocument } from '../../data/schema/user.schema';
 
 @Resolver('User')
 export default class UserResolver {

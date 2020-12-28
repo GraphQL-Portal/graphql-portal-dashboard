@@ -3,15 +3,22 @@ import * as mongoose from 'mongoose';
 import AppModule from '../../modules/app.module';
 import SourceService from '../../modules/source/source.service';
 import { SourceConfig } from '@graphql-portal/types';
-import { ISourceDocument } from 'src/data/schema/source.schema';
+import { ISourceDocument } from '../../data/schema/source.schema';
 import ApiDefService from '../../modules/api-def/api-def.service';
-import { sourceExample, mongoDocumentSchema, expectSource } from '../common';
+import {
+  sourceExample,
+  mongoDocumentSchema,
+  expectSource,
+  randomObjectId,
+} from '../common';
 
 describe('SourceService', () => {
   let app: TestingModule;
   let sourceService: SourceService;
   let apiDefService: ApiDefService;
   let source: ISourceDocument;
+
+  const userId = randomObjectId();
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
@@ -29,19 +36,19 @@ describe('SourceService', () => {
 
   describe('create', () => {
     it('findAll returns empty array', async () => {
-      const result = await sourceService.findAll();
+      const result = await sourceService.findAll(userId);
       expect(result).toBeDefined();
       expect(result).toHaveLength(0);
     });
 
     it('should create a source', async () => {
-      source = await sourceService.create(sourceExample);
+      source = await sourceService.create(sourceExample, userId);
       expect(source).toBeDefined();
       expectSource(source);
     });
 
     it('findAll returns a source', async () => {
-      const result = await sourceService.findAll();
+      const result = await sourceService.findAll(userId);
       expect(result).toBeDefined();
       expect(result).toHaveLength(1);
     });
@@ -52,18 +59,13 @@ describe('SourceService', () => {
       expect(result).toBeDefined();
       expect(result).toHaveLength(1);
     });
-
-    it('findByName returns a source', async () => {
-      const result = await sourceService.findByName(source.name);
-      expect(result).toBeDefined();
-      expect(result!.id).toBe(source.id);
-    });
   });
 
   describe('update', () => {
     it('should throw for wrong name', async () => {
       expect.assertions(1);
-      await expect(() => sourceService.update('', {} as SourceConfig)).rejects.toThrow('does not exist');
+      const id = randomObjectId();
+      await expect(() => sourceService.update(id, {} as SourceConfig)).rejects.toThrow(`Source with id ${id} does not exist`);
     });
 
     it('should update document and call publishApiDefsUpdated', async () => {
@@ -72,7 +74,7 @@ describe('SourceService', () => {
       const publishApiDefsUpdatedMock = jest.spyOn(apiDefService, 'publishApiDefsUpdated').mockResolvedValueOnce(1);
 
       const newData = { ...source.toJSON(), transforms: [{}] } as SourceConfig;
-      const result = await sourceService.update(source.name, newData);
+      const result = await sourceService.update(source._id, newData);
 
       expect(result).toBeDefined();
       expect(result.toJSON()).toMatchObject({ ...newData, ...mongoDocumentSchema });
@@ -86,14 +88,14 @@ describe('SourceService', () => {
     it('should throw for wrong name', async () => {
       expect.assertions(2);
       const isSourceUsedMock = jest.spyOn(apiDefService, 'isSourceUsed').mockResolvedValueOnce(1 as any);
-      await expect(() => sourceService.delete(source.name)).rejects.toThrow('is used');
+      await expect(() => sourceService.delete(source._id)).rejects.toThrow('is used');
       expect(isSourceUsedMock).toHaveBeenCalledTimes(1);
     });
 
     it('should delete document and call publishApiDefsUpdated', async () => {
       const isSourceUsedMock = jest.spyOn(apiDefService, 'isSourceUsed').mockResolvedValueOnce(0 as any);
 
-      const result = await sourceService.delete(source.name);
+      const result = await sourceService.delete(source._id);
 
       expect(result).toBe(true);
       expect(isSourceUsedMock).toHaveBeenCalledTimes(1);

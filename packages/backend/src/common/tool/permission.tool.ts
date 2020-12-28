@@ -1,6 +1,6 @@
 import { ExecutionContext } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { IUserDocument } from 'src/data/schema/user.schema';
+import { IUserDocument } from '../../data/schema/user.schema';
 import Metadata from '../enum/metadata.enum';
 import { getObjectKey } from './index';
 
