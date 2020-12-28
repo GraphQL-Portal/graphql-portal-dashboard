@@ -5,6 +5,10 @@ import { ObjectId } from 'mongodb';
 import IApiDef from '../common/interface/api-def.interface';
 import { IApiDefDocument } from '../data/schema/api-def.schema';
 import { ISourceDocument } from '../data/schema/source.schema';
+import { randomString } from '../common/tool';
+import UserService from '../modules/user/user.service';
+import Roles from '../common/enum/roles.enum';
+import IUser from '../common/interface/user.interface';
 
 export enum Method {
   get = 'get',
@@ -19,6 +23,8 @@ export type RequestToResult = (method: Method, route: string) => supertest.Test;
 export const requestTo = (app: INestApplication) => (method: Method, route: string): RequestResult =>
   supertest(app.getHttpServer())[method](route);
 
+export const randomObjectId = () => new ObjectId().toHexString();
+
 export const mongoDocumentSchema = {
   _id: expect.anything(),
   createdAt: expect.any(Date),
@@ -26,6 +32,7 @@ export const mongoDocumentSchema = {
 };
 
 export const sourceExample: SourceConfig = {
+  _id: randomObjectId(),
   name: 'source',
   handler: {
     graphql: { endpoint: 'http://endpoint/graphql' },
@@ -34,6 +41,7 @@ export const sourceExample: SourceConfig = {
 };
 
 export const apiDefExample: IApiDef = {
+  _id: randomObjectId(),
   name: 'api',
   endpoint: 'http://endpoint/graphql',
   sources: [sourceExample],
@@ -52,7 +60,22 @@ export const apiDefSchema = {
   endpoint: expect.any(String),
 };
 
-export const randomObjectId = () => new ObjectId().toHexString();
+
+export const createUser = async (service: UserService,
+  data: { [key: string]: any } = {
+    email: `${randomString()}@example.com`,
+    password: 'Secret123',
+    role: Roles.USER
+  }
+): Promise<IUser & { token: string }> => {
+  const token = await service.register(data as any);
+  const user = await service.findByEmail(data.email);
+
+  return {
+    ...(user!.toJSON()),
+    token,
+  }
+};
 
 export const expectSource = (source: ISourceDocument): void =>
   expect(source.toJSON()).toMatchObject({ ...sourceSchema, ...mongoDocumentSchema });

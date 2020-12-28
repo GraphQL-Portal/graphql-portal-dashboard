@@ -35,8 +35,8 @@ describe('SourceService', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('create', () => {
-    it('findAll returns empty array', async () => {
-      const result = await sourceService.findAll(userId);
+    it('findAllByUser returns empty array', async () => {
+      const result = await sourceService.findAllByUser(userId);
       expect(result).toBeDefined();
       expect(result).toHaveLength(0);
     });
@@ -47,8 +47,8 @@ describe('SourceService', () => {
       expectSource(source);
     });
 
-    it('findAll returns a source', async () => {
-      const result = await sourceService.findAll(userId);
+    it('findAllByUser returns a source', async () => {
+      const result = await sourceService.findAllByUser(userId);
       expect(result).toBeDefined();
       expect(result).toHaveLength(1);
     });

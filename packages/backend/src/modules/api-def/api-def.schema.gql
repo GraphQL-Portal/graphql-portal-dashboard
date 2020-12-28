@@ -8,6 +8,7 @@ type ApiDef {
 }
 
 input CreateApiDef {
+  _id: String
   name: String
   endpoint: String
 }
@@ -25,6 +26,6 @@ type Query {
 
 type Mutation {
   createApiDef(apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
-  updateApiDef(id: String!, apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
-  deleteApiDef(id: String!): Boolean
+  updateApiDef(id: ID!, apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
+  deleteApiDef(id: ID!): Boolean
 }

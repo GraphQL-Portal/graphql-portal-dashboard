@@ -15,7 +15,7 @@ export default class SourceService {
     @Inject(forwardRef(() => ApiDefService)) private readonly apiDefService: ApiDefService
   ) { }
 
-  public findAll(user: string): Promise<ISourceDocument[]> {
+  public findAllByUser(user: string): Promise<ISourceDocument[]> {
     return this.sourceModel.find({ user }).exec();
   }
 

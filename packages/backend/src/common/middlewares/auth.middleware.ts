@@ -27,9 +27,9 @@ export default class AuthenticationMiddleware implements NestMiddleware {
 
       this.logger.debug('Setting user to request', context, { email: user?.email });
       (req as any)[Metadata.USER] = user;
+      next();
     } catch (error) {
       this.logger.error(error, null, context);
-    } finally {
       next();
     }
   }

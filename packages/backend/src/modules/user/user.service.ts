@@ -41,4 +41,8 @@ export default class UserService {
   public async findById(id: string): Promise<IUserDocument | null> {
     return this.userModel.findById(id);
   }
+
+  public async findByEmail(email: string): Promise<IUserDocument | null> {
+    return this.userModel.findOne({ email });
+  }
 }

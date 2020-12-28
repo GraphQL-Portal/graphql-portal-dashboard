@@ -4,7 +4,10 @@ import * as mongoose from 'mongoose';
 import ApiDefService from '../../modules/api-def/api-def.service';
 import supertest from 'supertest';
 import AppModule from '../../modules/app.module';
-import { Method, requestTo, RequestToResult, apiDefExample } from '../common';
+import { Method, requestTo, RequestToResult, apiDefExample, createUser } from '../common';
+import UserService from '../../modules/user/user.service';
+import HeadersEnum from '../../common/enum/headers.enum';
+import IUser from 'src/common/interface/user.interface';
 
 jest.mock('ioredis');
 
@@ -12,6 +15,8 @@ describe('ApiDefResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
   let apiDefService: ApiDefService;
+  let userService: UserService;
+  let user: IUser & { token: string };
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
@@ -19,9 +24,11 @@ describe('ApiDefResolver', () => {
       .useValue({
         publishApiDefsUpdated: jest.fn().mockResolvedValue(1),
         findAll: jest.fn().mockResolvedValue([apiDefExample]),
+        findAllByUser: jest.fn().mockResolvedValue([apiDefExample]),
         create: jest.fn().mockResolvedValue(apiDefExample),
         update: jest.fn().mockResolvedValue(apiDefExample),
         delete: jest.fn().mockResolvedValue(true),
+        isOwner: jest.fn().mockResolvedValue(true),
       })
       .compile();
 
@@ -31,6 +38,9 @@ describe('ApiDefResolver', () => {
     request = requestTo(app);
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     apiDefService = app.get<ApiDefService>(ApiDefService);
+    userService = app.get<UserService>(UserService);
+
+    user = await createUser(userService);
   });
 
   afterAll(async () => {
@@ -40,13 +50,17 @@ describe('ApiDefResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    const graphQlRequest = (query: string, variables = {}, headers = {}): supertest.Test =>
-      request(Method.post, '/graphql').set(headers).send({ query, variables });
+    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
     const createApiDef = { ...apiDefExample, sources: undefined };
+
+    beforeAll(() => {
+      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.token }): supertest.Test =>
+        request(Method.post, '/graphql').set(headers).send({ query, variables });
+    })
 
     describe('getApiDefs', () => {
       it('should call findAll', async () => {
-        await graphQlRequest(
+        const { body } = await graphQlRequest(
           `query {
             getApiDefs {
               timestamp
@@ -60,10 +74,34 @@ describe('ApiDefResolver', () => {
                 }
               }
             }
-          }`
+          }`,
         ).expect(HttpStatus.OK);
 
-        expect(apiDefService.findAll).toHaveBeenCalledTimes(1);
+        expect(apiDefService.findAllByUser).toHaveBeenCalledTimes(1);
+      });
+
+      it('return unauthorized without token', async () => {
+        const { body } = await graphQlRequest(
+          `query {
+            getApiDefs {
+              timestamp
+              apiDefs {
+                name
+                endpoint
+                sources {
+                  name
+                  handler
+                  transforms
+                }
+              }
+            }
+          }`,
+          {},
+          {},
+        ).expect(HttpStatus.OK);
+
+        expect(body.errors[0].extensions.code).toBe('UNAUTHENTICATED');
+        expect(apiDefService.findAllByUser).toHaveBeenCalledTimes(0);
       });
     });
 
@@ -82,19 +120,19 @@ describe('ApiDefResolver', () => {
               }
             }
           }`,
-          { apiDef: createApiDef, sources: [] }
+          { apiDef: createApiDef, sources: [] },
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.create).toHaveBeenCalledTimes(1);
-        expect(apiDefService.create).toHaveBeenCalledWith(createApiDef, []);
+        expect(apiDefService.create).toHaveBeenCalledWith(createApiDef, [], user._id);
       });
     });
 
     describe('updateApiDef', () => {
       it('should call update', async () => {
         await graphQlRequest(
-          `mutation($name:String!, $apiDef: CreateApiDef!, $sources:[ID!]!) {
-            updateApiDef(name:$name, apiDef: $apiDef, sources: $sources) {
+          `mutation($id:ID!, $apiDef: CreateApiDef!, $sources:[ID!]!) {
+            updateApiDef(id:$id, apiDef: $apiDef, sources: $sources) {
               name
               endpoint
               sources {
@@ -105,25 +143,49 @@ describe('ApiDefResolver', () => {
               }
             }
           }`,
-          { name: createApiDef.name, apiDef: createApiDef, sources: [] }
+          { id: createApiDef._id, apiDef: createApiDef, sources: [] }
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.update).toHaveBeenCalledTimes(1);
-        expect(apiDefService.update).toHaveBeenCalledWith(createApiDef.name, createApiDef, []);
+        expect(apiDefService.update).toHaveBeenCalledWith(createApiDef._id, createApiDef, []);
+      });
+      it('another user cant update service', async () => {
+        jest.spyOn(apiDefService, 'isOwner').mockResolvedValueOnce(false);
+        const anotherUser = await createUser(userService);
+
+        const { body } = await graphQlRequest(
+          `mutation($id:ID!, $apiDef: CreateApiDef!, $sources:[ID!]!) {
+            updateApiDef(id:$id, apiDef: $apiDef, sources: $sources) {
+              name
+              endpoint
+              sources {
+                _id
+                name
+                handler
+                transforms
+              }
+            }
+          }`,
+          { id: createApiDef._id, apiDef: createApiDef, sources: [] },
+          { [HeadersEnum.AUTHORIZATION]: anotherUser.token }
+        ).expect(HttpStatus.OK);
+
+        expect(apiDefService.update).toHaveBeenCalledTimes(0);
+        expect(body.errors[0].message).toMatch('You do not have access to do this');
       });
     });
 
     describe('deleteApiDef', () => {
-      it('should call update', async () => {
+      it('should call delete', async () => {
         await graphQlRequest(
-          `mutation($name:String!){
-            deleteApiDef(name:$name)
+          `mutation($id:ID!){
+            deleteApiDef(id:$id)
           }`,
-          { name: createApiDef.name }
+          { id: createApiDef._id }
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.delete).toHaveBeenCalledTimes(1);
-        expect(apiDefService.delete).toHaveBeenCalledWith(createApiDef.name);
+        expect(apiDefService.delete).toHaveBeenCalledWith(createApiDef._id);
       });
     });
   });

@@ -15,7 +15,7 @@ export default class SourceResolver {
   public getSources(
     @AuthorizationParam('_id') user: string,
   ): Promise<SourceConfig[]> {
-    return this.service.findAll(user);
+    return this.service.findAllByUser(user);
   }
 
   @Mutation()
