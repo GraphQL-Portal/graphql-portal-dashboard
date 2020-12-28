@@ -60,7 +60,7 @@ describe('ApiDefResolver', () => {
 
     describe('getApiDefs', () => {
       it('should call findAll', async () => {
-        const { body } = await graphQlRequest(
+        await graphQlRequest(
           `query {
             getApiDefs {
               timestamp

@@ -60,7 +60,6 @@ export const apiDefSchema = {
   endpoint: expect.any(String),
 };
 
-
 export const createUser = async (service: UserService,
   data: { [key: string]: any } = {
     email: `${randomString()}@example.com`,
