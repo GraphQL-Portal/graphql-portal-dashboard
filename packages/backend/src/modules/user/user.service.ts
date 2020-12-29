@@ -7,7 +7,7 @@ import { IUserDocument } from '../../data/schema/user.schema';
 import IUser from '../../common/interface/user.interface';
 import ITokens from './interfaces/tokens.interface';
 import TokenService from '../user/token.service';
-import Roles from 'src/common/enum/roles.enum';
+import Roles from '../../common/enum/roles.enum';
 
 @Injectable()
 export default class UserService {
