@@ -49,45 +49,40 @@ const LOGIN = gql`
 `;
 
 export const useLogin = () => {
-  const { showSuccessToast } = useToast();
+  const { showSuccessToast, showErrorToast } = useToast();
   const { handleSubmit, control, errors } = useForm<LoginFormInput>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'admin@admin.com',
+      password: 'Secret123!',
     },
   });
 
   useFormErrors(errors);
 
-  const onSubmit = ({ email, password }: LoginFormInput) => {
-    const { setAuth } = useAuth();
+  const { setAuth } = useAuth();
 
-    const [login] = useMutation(LOGIN, {
-      onError: (e) => console.error(e),
+  const [login] = useMutation(LOGIN, {
+    onError: (e) => showErrorToast(e.message),
+  });
+
+  const onSubmit = async ({ email, password }: LoginFormInput) => {
+    const { data } = await login({
+      variables: {
+        email,
+        password,
+        device: window.navigator.userAgent
+      }
     });
 
-    const onSubmit = async ({ email, password }: LoginFormInput) => {
-      console.log('EMAIL IS: ', email);
-      console.log('PASSWORD IS: ', password);
+    setAuth(data.login);
+    showSuccessToast('Successfully logged in');
+  }
 
-      showSuccessToast('successfully loged in');
-      const { data: { login: tokens } } = await login({
-        variables: {
-          email,
-          password,
-          device: window.navigator.userAgent
-        }
-      });
-
-      setAuth(tokens);
-    }
-
-    return {
-      control,
-      onSubmit: handleSubmit(onSubmit),
-      errors,
-    }
+  return {
+    control,
+    onSubmit: handleSubmit(onSubmit),
+    errors,
   }
 }
