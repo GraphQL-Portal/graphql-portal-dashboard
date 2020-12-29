@@ -2,6 +2,8 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test } from 'vest';
 import enforce from 'vest/enforceExtended';
+import { gql, useMutation } from '@apollo/client';
+import { useAuth } from '../../model/providers/Auth';
 
 type LoginFormInput = {
   email: string;
@@ -34,6 +36,15 @@ const validationSuite = vest.create('login_form', ({ email, password }: LoginFor
   });
 });
 
+const LOGIN = gql`
+  mutation login($email: String!, $password: String!, $device: String!) {
+    login(email: $email, password: $password, device: $device) {
+     accessToken,
+     refreshToken,
+    }
+  }
+`;
+
 export const useLogin = () => {
   const { handleSubmit, control, errors } = useForm<LoginFormInput>({
     reValidateMode: 'onSubmit',
@@ -44,10 +55,25 @@ export const useLogin = () => {
     },
   });
 
-  const onSubmit = ({ email, password }: LoginFormInput) => {
+  const { setAuth } = useAuth();
+
+  const [login] = useMutation(LOGIN, {
+    onError: (e) => console.error(e),
+  });
+
+  const onSubmit = async ({ email, password }: LoginFormInput) => {
     console.log('EMAIL IS: ', email);
     console.log('PASSWORD IS: ', password);
     // @TODO send request to the server
+    const { data } = await login({
+      variables: {
+        email,
+        password,
+        device: window.navigator.userAgent
+      }
+    });
+
+    setAuth((data).login);
   }
 
   return {

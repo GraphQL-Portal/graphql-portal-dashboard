@@ -46,7 +46,7 @@ describe('ApiDefService', () => {
         expectTokens(result);
       });
 
-      it('previous refresh token does not work anymore', async () => {
+      it('can\'t refresh token using previous one', async () => {
         await expect(tokenService.refreshTokens(tokens.refreshToken, device)).rejects.toThrow('Refresh token is invalid');
       });
     });

@@ -7,6 +7,7 @@ import { IUserDocument } from '../../data/schema/user.schema';
 import IUser from '../../common/interface/user.interface';
 import ITokens from './interfaces/tokens.interface';
 import TokenService from '../user/token.service';
+import Roles from 'src/common/enum/roles.enum';
 
 @Injectable()
 export default class UserService {
@@ -17,6 +18,10 @@ export default class UserService {
     private readonly logger: LoggerService,
     private readonly tokenService: TokenService,
   ) { }
+
+  private async onModuleInit() {
+    await this.createDefaultUser();
+  }
 
   public async login(email: string, password: string, device: string): Promise<ITokens> {
     const user = await this.userModel.findOne({ email });
@@ -46,5 +51,16 @@ export default class UserService {
 
   public async findByEmail(email: string): Promise<IUserDocument | null> {
     return this.userModel.findOne({ email });
+  }
+
+  public async createDefaultUser() {
+    const toCreate = await this.userModel.findOne({ role: Roles.ADMIN });
+    if (!toCreate) {
+      await this.userModel.create({
+        email: "admin@admin.com",
+        password: "Secret123!",
+        role: Roles.ADMIN,
+      })
+    }
   }
 }
