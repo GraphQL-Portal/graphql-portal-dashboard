@@ -1,32 +1,45 @@
-import React, { useContext, useState, createContext} from 'react';
-import { useHistory } from 'react-router-dom';
-import { ROUTES } from '../Router';
+import React, { useContext, useState, createContext } from 'react';
 
-type Tokens = {
-  accessToken: string;
-  refreshToken: string;
-};
-
-type AuthContextShape = {
-  setAuth(data: Tokens): void;
-  signOut(): void;
-} & Tokens;
+import {
+  getAccessToken,
+  getRefreshToken,
+  storeAccessToken,
+  storeRefreshToken,
+  removeAccessToken,
+  removeRefreshToken,
+} from './helpers';
+import { AuthContextShape, Tokens } from './types';
 
 const AuthContext = createContext<null | AuthContextShape>(null);
 export const useAuth = () => useContext(AuthContext)!;
 const { Provider } = AuthContext;
 
+const ACCESS_TOKEN = getAccessToken() || '';
+const REFRESH_TOKEN = getRefreshToken() || '';
+
 export const AuthProvider:React.FC = ({ children }) => {
-  const { push } = useHistory();
-  const [accessToken, setAccessToken] = useState<string>('');
-  const [refreshToken, setRefreshToken] = useState<string>('');
+  const [accessToken, setAccessToken] = useState<string>(ACCESS_TOKEN);
+  const [refreshToken, setRefreshToken] = useState<string>(REFRESH_TOKEN);
 
   const setAuth = ({ accessToken, refreshToken }: Tokens) => {
-    if (accessToken) setAccessToken(accessToken);
-    if (refreshToken) setRefreshToken(refreshToken);
+    // set access token to state and cookie
+    setAccessToken(accessToken);
+    storeAccessToken(accessToken);
+
+    // set refresh token to state and cookie
+    setRefreshToken(refreshToken);
+    storeRefreshToken(refreshToken);
   };
 
-  const signOut = () => push(ROUTES.LOGIN);
+  const signOut = () => {
+    // remove tokens from cookie
+    removeAccessToken();
+    removeRefreshToken();
+
+    // remove tokens from state
+    setAccessToken('');
+    setRefreshToken('');
+  }
 
   return (<Provider value={{ accessToken, refreshToken, setAuth, signOut }}>{children}</Provider>);
 };

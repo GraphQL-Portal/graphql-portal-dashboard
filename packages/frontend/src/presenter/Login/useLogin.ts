@@ -2,11 +2,11 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test } from 'vest';
 import enforce from 'vest/enforceExtended';
-import { gql, useMutation } from '@apollo/client';
 import { useAuth } from '../../model/providers/Auth';
 
 import { useFormErrors } from '../../hooks';
-import { useToast } from '../../model/providers';
+// import { useToast } from '../../model/providers';
+import { useLogin as login } from '../../model/Login/commands';
 
 type LoginFormInput = {
   email: string;
@@ -39,17 +39,9 @@ const validationSuite = vest.create('login_form', ({ email, password }: LoginFor
   });
 });
 
-const LOGIN = gql`
-  mutation login($email: String!, $password: String!, $device: String!) {
-    login(email: $email, password: $password, device: $device) {
-     accessToken,
-     refreshToken,
-    }
-  }
-`;
-
 export const useLogin = () => {
-  const { showSuccessToast, showErrorToast } = useToast();
+  // const { showErrorToast } = useToast();
+  const { setAuth } = useAuth();
   const { handleSubmit, control, errors } = useForm<LoginFormInput>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
@@ -59,25 +51,28 @@ export const useLogin = () => {
     },
   });
 
+  const handleLogin = (data: any) => {
+    console.log('DATA IS: ', data);
+    console.log('SUCCESSFULLY LOGED IN');
+    setAuth(data.login);
+  }
+
+  // @TODO use showErrorToast with message to show why error appeared
+  const handleError = (err: any) => console.error;
+
+  const { onLogin } = login({ onCompleted: handleLogin, onError: handleError });
+
   useFormErrors(errors);
 
-  const { setAuth } = useAuth();
 
-  const [login] = useMutation(LOGIN, {
-    onError: (e) => showErrorToast(e.message),
-  });
-
-  const onSubmit = async ({ email, password }: LoginFormInput) => {
-    const { data } = await login({
+  const onSubmit = ({ email, password }: LoginFormInput) => {
+    onLogin({
       variables: {
         email,
         password,
         device: window.navigator.userAgent
       }
     });
-
-    setAuth(data.login);
-    showSuccessToast('Successfully logged in');
   }
 
   return {
