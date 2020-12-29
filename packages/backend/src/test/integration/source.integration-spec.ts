@@ -8,6 +8,7 @@ import UserService from '../../modules/user/user.service';
 import { createUser, Method, requestTo, RequestToResult, sourceExample } from '../common';
 import IUser from '../../common/interface/user.interface';
 import HeadersEnum from '../../common/enum/headers.enum';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
 
 jest.mock('ioredis');
 
@@ -16,7 +17,7 @@ describe('SourceResolver', () => {
   let app: INestApplication;
   let sourceService: SourceService;
   let userService: UserService;
-  let user: IUser & { token: string };
+  let user: IUser & ITokens;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
@@ -51,7 +52,7 @@ describe('SourceResolver', () => {
     let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
 
     beforeAll(() => {
-      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.token }): supertest.Test =>
+      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }): supertest.Test =>
         request(Method.post, '/graphql').set(headers).send({ query, variables });
     });
 

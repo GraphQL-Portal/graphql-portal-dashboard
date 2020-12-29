@@ -9,6 +9,7 @@ import { randomString } from '../common/tool';
 import UserService from '../modules/user/user.service';
 import Roles from '../common/enum/roles.enum';
 import IUser from '../common/interface/user.interface';
+import ITokens from '../modules/user/interfaces/tokens.interface';
 
 export enum Method {
   get = 'get',
@@ -66,18 +67,24 @@ export const createUser = async (service: UserService,
     password: 'Secret123',
     role: Roles.USER
   }
-): Promise<IUser & { token: string }> => {
-  const token = await service.register(data as any);
+): Promise<IUser & ITokens> => {
+  const tokens = await service.register(data as any, randomString());
   const user = await service.findByEmail(data.email);
 
   return {
     ...(user!.toJSON()),
-    token,
+    ...tokens,
   }
 };
 
 export const expectSource = (source: ISourceDocument): void =>
   expect(source.toJSON()).toMatchObject({ ...sourceSchema, ...mongoDocumentSchema });
+
+export const expectTokens = (result: ITokens) =>
+  expect(result).toMatchObject({
+    accessToken: expect.any(String),
+    refreshToken: expect.any(String),
+  });
 
 export const expectApiDef = (apiDef: IApiDefDocument): void => {
   expect(apiDef.toJSON()).toMatchObject({

@@ -16,6 +16,6 @@ export const verify = (token: string): { userId: string } => {
   }
 }
 
-export const sign = (userId: string) => {
-  return jwt.sign({ userId }, config.application.jwtSecret, { expiresIn: TokenExpirationTime.DAY });
+export const sign = (userId: string, expiresIn: TokenExpirationTime) => {
+  return jwt.sign({ userId }, config.application.jwtSecret, { expiresIn });
 }

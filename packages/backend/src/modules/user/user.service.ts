@@ -5,7 +5,8 @@ import { AuthenticationError } from 'apollo-server-express';
 import { LoggerService } from '../../common/logger';
 import { IUserDocument } from '../../data/schema/user.schema';
 import IUser from '../../common/interface/user.interface';
-import * as jwt from '../../common/tool/token.tool';
+import ITokens from './interfaces/tokens.interface';
+import TokenService from '../user/token.service';
 
 @Injectable()
 export default class UserService {
@@ -14,28 +15,29 @@ export default class UserService {
   public constructor(
     @InjectModel('User') private userModel: Model<IUserDocument>,
     private readonly logger: LoggerService,
+    private readonly tokenService: TokenService,
   ) { }
 
-  public async login(email: string, password: string): Promise<string> {
+  public async login(email: string, password: string, device: string): Promise<ITokens> {
     const user = await this.userModel.findOne({ email });
 
     if (!user || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
 
-    const token = jwt.sign(user._id!);
+    const tokens = this.tokenService.issueTokens(user._id!, device);
 
     this.logger.log(`User with email: ${user.email} successfully logged in`, this.constructor.name);
 
-    return token;
+    return tokens;
   }
 
-  public async register(data: IUser): Promise<string> {
+  public async register(data: IUser, device: string): Promise<ITokens> {
     const user = await this.userModel.create(data);
 
-    const token = jwt.sign(user._id!);
+    const tokens = this.tokenService.issueTokens(user._id!, device);
 
     this.logger.log(`Successfully created user with email: ${data.email}`, this.constructor.name);
 
-    return token;
+    return tokens;
   }
 
   public async findById(id: string): Promise<IUserDocument | null> {

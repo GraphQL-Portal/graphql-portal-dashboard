@@ -7,7 +7,8 @@ import AppModule from '../../modules/app.module';
 import { Method, requestTo, RequestToResult, apiDefExample, createUser } from '../common';
 import UserService from '../../modules/user/user.service';
 import HeadersEnum from '../../common/enum/headers.enum';
-import IUser from 'src/common/interface/user.interface';
+import IUser from '../../common/interface/user.interface';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
 
 jest.mock('ioredis');
 
@@ -16,7 +17,7 @@ describe('ApiDefResolver', () => {
   let app: INestApplication;
   let apiDefService: ApiDefService;
   let userService: UserService;
-  let user: IUser & { token: string };
+  let user: IUser & ITokens;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
@@ -54,7 +55,7 @@ describe('ApiDefResolver', () => {
     const createApiDef = { ...apiDefExample, sources: undefined };
 
     beforeAll(() => {
-      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.token }): supertest.Test =>
+      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }): supertest.Test =>
         request(Method.post, '/graphql').set(headers).send({ query, variables });
     })
 
@@ -167,7 +168,7 @@ describe('ApiDefResolver', () => {
             }
           }`,
           { id: createApiDef._id, apiDef: createApiDef, sources: [] },
-          { [HeadersEnum.AUTHORIZATION]: anotherUser.token }
+          { [HeadersEnum.AUTHORIZATION]: anotherUser.accessToken }
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.update).toHaveBeenCalledTimes(0);

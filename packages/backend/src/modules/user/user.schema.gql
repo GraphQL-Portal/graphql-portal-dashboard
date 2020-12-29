@@ -15,9 +15,15 @@ type User {
   updatedAt: String!
 }
 
+type Tokens {
+  accessToken: String!
+  refreshToken: String!
+}
+
 type Mutation {
-  login(email: String!, password: String!): String!
-  register(data: UserInput!): String!
+  login(email: String!, password: String!, device: String!): Tokens!
+  register(data: UserInput!, device: String!): Tokens!
+  refreshTokens(refreshToken: String!, device: String!): Tokens!
 }
 
 type Query {

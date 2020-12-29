@@ -3,21 +3,25 @@ import * as mongoose from 'mongoose';
 import Roles from '../../common/enum/roles.enum';
 import { randomString } from '../../common/tool';
 import UserService from '../../modules/user/user.service';
+import TokenService from '../../modules/user/token.service';
 import AppModule from '../../modules/app.module';
-import * as jwt from '../../common/tool/token.tool';
-import { IUserDocument } from 'src/data/schema/user.schema';
+import { IUserDocument } from '../../data/schema/user.schema';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
 import { randomObjectId } from '../common';
 
 describe('ApiDefService', () => {
   let app: TestingModule;
   let userService: UserService;
-  let spySign: jest.SpyInstance;
+  let tokenService: TokenService;
+
+  let spyRefreshTokens: jest.SpyInstance;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     userService = app.get<UserService>(UserService);
+    tokenService = app.get<TokenService>(TokenService);
   });
 
   afterAll(async () => {
@@ -27,35 +31,39 @@ describe('ApiDefService', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('register', () => {
+    const device = 'device';
     const password = 'Secret123';
-    const token = randomString();
+    const tokens: ITokens = {
+      accessToken: randomString(),
+      refreshToken: randomString(),
+    };
     const registrationData = {
       email: `${randomString()}@example.com`,
       role: Roles.USER,
       password,
     };
 
-    beforeAll(async () => {
-      spySign = await jest.spyOn(jwt as any, 'sign').mockResolvedValue(token);
+    beforeAll(() => {
+      spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
     })
 
     it('creates user', async () => {
-      const result = await userService.register(registrationData);
+      const result = await userService.register(registrationData, device);
 
-      expect(result).toBe(token);
-      expect(spySign).toBeCalledTimes(1);
+      expect(result).toMatchObject(tokens);
+      expect(spyRefreshTokens).toBeCalledTimes(1);
     });
 
     describe('login', () => {
       it('throws error on invalid credentials', async () => {
-        await expect(userService.login('invalid@email.com', 'password123')).rejects.toThrow('Wrong email or password');
+        await expect(userService.login('invalid@email.com', 'password123', device)).rejects.toThrow('Wrong email or password');
       });
 
       it('returns token', async () => {
-        const token = await userService.login(registrationData.email, password);
+        const result = await userService.login(registrationData.email, password, device);
 
-        expect(spySign).toBeCalledTimes(1);
-        expect(token).toBe(token);
+        expect(result).toMatchObject(tokens);
+        expect(spyRefreshTokens).toBeCalledTimes(1);
       });
     });
 
@@ -76,7 +84,6 @@ describe('ApiDefService', () => {
 
         expect(user).toBeDefined();
         expectUser(user);
-
         id = user._id!;
       });
 

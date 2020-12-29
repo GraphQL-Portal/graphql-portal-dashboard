@@ -3,10 +3,10 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import supertest from 'supertest';
 import AppModule from '../../modules/app.module';
-import { Method, requestTo, RequestToResult } from '../common';
-import UserService from '../../modules/user/user.service';
+import { expectTokens, Method, requestTo, RequestToResult } from '../common';
 import HeadersEnum from '../../common/enum/headers.enum';
 import { randomString } from '../../common/tool';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
 import Roles from '../../common/enum/roles.enum';
 
 jest.mock('ioredis');
@@ -14,8 +14,9 @@ jest.mock('ioredis');
 describe('ApiDefResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
-  let token: string;
+  let tokens: ITokens;
 
+  const device = randomString();
   const authenticationData = {
     email: `${randomString()}@email.com`,
     password: 'Secret123',
@@ -50,15 +51,19 @@ describe('ApiDefResolver', () => {
     describe('register', () => {
       it('should call register', async () => {
         const { body } = await graphQlRequest(
-          `mutation($data: UserInput!) {
-            register(data: $data)
+          `mutation($data: UserInput!, $device: String!) {
+            register(data: $data, device: $device) {
+              accessToken
+              refreshToken
+            }
           }`,
-          { data: authenticationData }
+          { data: authenticationData, device }
         ).expect(HttpStatus.OK);
 
-        token = body?.data?.register;
+        tokens = body?.data?.register;
 
-        expect(token).toBeDefined();
+        expect(tokens).toBeDefined();
+        expectTokens(tokens);
       });
 
       it('should return user profile', async () => {
@@ -75,7 +80,7 @@ describe('ApiDefResolver', () => {
           }`,
           {},
           {
-            [HeadersEnum.AUTHORIZATION]: token
+            [HeadersEnum.AUTHORIZATION]: tokens.accessToken
           }
         ).expect(HttpStatus.OK);
 
@@ -87,25 +92,67 @@ describe('ApiDefResolver', () => {
     });
 
     describe('login', () => {
+      let refreshToken: string;
+
       it('should return token', async () => {
         const { body } = await graphQlRequest(
-          `mutation($email: String!, $password: String!) {
-            login(email: $email, password: $password)
+          `mutation($email: String!, $password: String!, $device: String!) {
+            login(email: $email, password: $password, device: $device) {
+              accessToken
+              refreshToken
+            }
           }`,
-          { ...authenticationData }
+          { ...authenticationData, device }
         ).expect(HttpStatus.OK);
 
-        expect(body.data.login).toBeDefined();
+        const tokens = body.data.login;
+        expectTokens(tokens);
+        refreshToken = tokens.refreshToken;
       });
+
       it('should throw error on invalid credentials', async () => {
         const { body } = await graphQlRequest(
-          `mutation($email: String!, $password: String!) {
-            login(email: $email, password: $password)
+          `mutation($email: String!, $password: String!, $device: String!) {
+            login(email: $email, password: $password, device: $device) {
+              accessToken
+              refreshToken
+            }
           }`,
-          { ...authenticationData, password: "wrong123" }
+          { ...authenticationData, password: "wrong123", device }
         ).expect(HttpStatus.OK);
 
         expect(body.errors[0].message).toMatch('Wrong email or password');
+      });
+
+
+      describe('refreshTokens', () => {
+        it('should not refresh tokens with invalid device', async () => {
+          const { body } = await graphQlRequest(
+            `mutation($refreshToken: String!, $device: String!) {
+              refreshTokens(refreshToken: $refreshToken, device: $device) {
+                accessToken
+                refreshToken
+              }
+            }`,
+            { refreshToken, device: 'invalid' }
+          ).expect(HttpStatus.OK);
+
+          expect(body.errors[0].message).toBe('Refresh token is invalid');
+        });
+
+        it('should refresh tokens', async () => {
+          const { body } = await graphQlRequest(
+            `mutation($refreshToken: String!, $device: String!) {
+              refreshTokens(refreshToken: $refreshToken, device: $device) {
+                accessToken
+                refreshToken
+              }
+            }`,
+            { refreshToken, device }
+          ).expect(HttpStatus.OK);
+
+          expectTokens(body.data.refreshTokens);
+        });
       });
     });
   });
