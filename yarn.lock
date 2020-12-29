@@ -1380,7 +1380,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@graphql-portal/types@0.2.0":
+"@graphql-portal/types@0.2.0", "@graphql-portal/types@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.2.0.tgz#e9acce21ebe9caf753cdf21633c866a0598b6236"
   integrity sha512-nY28l+74WR87+UF01pzznFEnqXk8BnJDY7VVy2zhbJWpsUxTOW0P0KlxRhk4OFXuc0yGbABxS+GNefTLp4InZg==

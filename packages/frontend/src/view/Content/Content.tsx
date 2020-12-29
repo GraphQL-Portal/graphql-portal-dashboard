@@ -2,9 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 
 import { useStyles } from './useStyles';
-import { Content as Type } from './types';
+import { Content as Props } from './types';
 
-export const Content:React.FC<Type> = ({ children, className }) => {
+export const Content:React.FC<Props> = ({ children, className }) => {
   const { main } = useStyles();
   const mainClassName = clsx(main, className);
 
