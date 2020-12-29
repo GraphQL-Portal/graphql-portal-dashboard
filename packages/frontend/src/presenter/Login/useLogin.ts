@@ -5,6 +5,9 @@ import enforce from 'vest/enforceExtended';
 import { gql, useMutation } from '@apollo/client';
 import { useAuth } from '../../model/providers/Auth';
 
+import { useFormErrors } from '../../hooks';
+import { useToast } from '../../model/providers';
+
 type LoginFormInput = {
   email: string;
   password: string;
@@ -46,6 +49,7 @@ const LOGIN = gql`
 `;
 
 export const useLogin = () => {
+  const { showSuccessToast } = useToast();
   const { handleSubmit, control, errors } = useForm<LoginFormInput>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
@@ -55,30 +59,35 @@ export const useLogin = () => {
     },
   });
 
-  const { setAuth } = useAuth();
+  useFormErrors(errors);
 
-  const [login] = useMutation(LOGIN, {
-    onError: (e) => console.error(e),
-  });
+  const onSubmit = ({ email, password }: LoginFormInput) => {
+    const { setAuth } = useAuth();
 
-  const onSubmit = async ({ email, password }: LoginFormInput) => {
-    console.log('EMAIL IS: ', email);
-    console.log('PASSWORD IS: ', password);
-    // @TODO send request to the server
-    const { data } = await login({
-      variables: {
-        email,
-        password,
-        device: window.navigator.userAgent
-      }
+    const [login] = useMutation(LOGIN, {
+      onError: (e) => console.error(e),
     });
 
-    setAuth((data).login);
-  }
+    const onSubmit = async ({ email, password }: LoginFormInput) => {
+      console.log('EMAIL IS: ', email);
+      console.log('PASSWORD IS: ', password);
 
-  return {
-    control,
-    onSubmit: handleSubmit(onSubmit),
-    errors,
+      showSuccessToast('successfully loged in');
+      const { data: { login: tokens } } = await login({
+        variables: {
+          email,
+          password,
+          device: window.navigator.userAgent
+        }
+      });
+
+      setAuth(tokens);
+    }
+
+    return {
+      control,
+      onSubmit: handleSubmit(onSubmit),
+      errors,
+    }
   }
 }
