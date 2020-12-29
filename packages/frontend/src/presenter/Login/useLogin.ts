@@ -3,6 +3,9 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test } from 'vest';
 import enforce from 'vest/enforceExtended';
 
+import { useFormErrors } from '../../hooks';
+import { useToast } from '../../model/providers';
+
 type LoginFormInput = {
   email: string;
   password: string;
@@ -35,6 +38,7 @@ const validationSuite = vest.create('login_form', ({ email, password }: LoginFor
 });
 
 export const useLogin = () => {
+  const { showSuccessToast } = useToast();
   const { handleSubmit, control, errors } = useForm<LoginFormInput>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
@@ -44,10 +48,13 @@ export const useLogin = () => {
     },
   });
 
+  useFormErrors(errors);
+
   const onSubmit = ({ email, password }: LoginFormInput) => {
     console.log('EMAIL IS: ', email);
     console.log('PASSWORD IS: ', password);
     // @TODO send request to the server
+    showSuccessToast('successfully loged in');
   }
 
   return {
