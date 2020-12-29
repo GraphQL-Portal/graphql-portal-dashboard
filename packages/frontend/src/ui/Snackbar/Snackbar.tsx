@@ -11,7 +11,7 @@ export const Snackbar:React.FC<Props> = ({ children, severity, isVisible, onClos
   return (
     <MuiSnackbar
       open={isVisible}
-      autoHideDuration={40000}
+      autoHideDuration={4000}
       onClose={onClose}
       anchorOrigin={{
         vertical: 'bottom',
