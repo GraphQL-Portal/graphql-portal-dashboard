@@ -7,6 +7,7 @@ import { useAuth } from '../../model/providers/Auth';
 import { useFormErrors } from '../../hooks';
 // import { useToast } from '../../model/providers';
 import { useLogin as login } from '../../model/Login/commands';
+import { UA } from '../../model/providers/Auth/constants';
 
 type LoginFormInput = {
   email: string;
@@ -68,7 +69,7 @@ export const useLogin = () => {
       variables: {
         email,
         password,
-        device: window.navigator.userAgent
+        device: UA,
       }
     });
   }

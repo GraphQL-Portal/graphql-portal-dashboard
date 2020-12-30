@@ -1,7 +1,17 @@
-import { ApolloClient, HttpLink, InMemoryCache, split } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, split, from, Observable } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
+import { onError } from '@apollo/client/link/error';
+
+import { storeAccessToken, storeRefreshToken } from '../Auth/helpers';
 import { URI, wsURI } from './config';
+import { promise2Observable } from './promise2Observable';
+import { refreshTokens } from './refreshToken';
+import { STATUS_401 } from './constants';
+
+type ErrorCallback = Observable<any> | undefined;
+
+let client: ApolloClient<any>;
 
 export const createClient = (token: string) => {
   const headers = Object.assign({}, (token ? { authorization: token } : {}))
@@ -22,9 +32,30 @@ export const createClient = (token: string) => {
     httpLink
   );
 
-  const client = new ApolloClient({
+  const errorLink = onError(
+    ({ operation, forward, graphQLErrors }): ErrorCallback => {
+      if (graphQLErrors) {
+        for (let err of graphQLErrors) {
+          if (err!.extensions!.code === STATUS_401) {
+            return promise2Observable(
+              refreshTokens(createClient).then(({ accessToken, refreshToken }) => {
+                storeAccessToken(accessToken);
+                storeRefreshToken(refreshToken);
+                operation.setContext(({ headers = {} }) => ({
+                  headers: { ...headers, authorization: accessToken },
+                }));
+                return forward(operation);
+              })
+            );
+          }
+        }
+      }
+    }
+  );
+
+  client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: splitLink,
+    link: from([errorLink, splitLink]),
   });
 
   return client;
