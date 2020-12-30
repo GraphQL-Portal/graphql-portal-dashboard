@@ -5,7 +5,6 @@ import { URI, wsURI } from './config';
 
 export const createClient = (token: string) => {
   const headers = Object.assign({}, (token ? { authorization: token } : {}))
-  console.log('HEADERS IS: ', headers);
   const httpLink = new HttpLink({ uri: URI, headers });
   const wsLink = new WebSocketLink({
     uri: wsURI,

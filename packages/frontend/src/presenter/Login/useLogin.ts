@@ -52,8 +52,6 @@ export const useLogin = () => {
   });
 
   const handleLogin = (data: any) => {
-    console.log('DATA IS: ', data);
-    console.log('SUCCESSFULLY LOGED IN');
     setAuth(data.login);
   }
 
