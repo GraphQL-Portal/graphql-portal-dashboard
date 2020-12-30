@@ -3,7 +3,7 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 
-import { storeAccessToken, storeRefreshToken } from '../Auth/helpers';
+import { storeAccessToken, storeRefreshToken, removeAccessToken, removeRefreshToken } from '../Auth/helpers';
 import { URI, wsURI } from './config';
 import { promise2Observable } from './promise2Observable';
 import { refreshTokens } from './refreshToken';
@@ -36,7 +36,16 @@ export const createClient = (token: string) => {
     ({ operation, forward, graphQLErrors }): ErrorCallback => {
       if (graphQLErrors) {
         for (let err of graphQLErrors) {
-          if (err!.extensions!.code === STATUS_401) {
+          const { extensions = {}, message } = err;
+          if (extensions.code === STATUS_401) {
+
+            // Sign out if refresh token is invalid
+            if (message.indexOf('Refresh token is invalid') !== -1) {
+              removeAccessToken();
+              removeRefreshToken();
+              window.location.href = '/login';
+            }
+
             return promise2Observable(
               refreshTokens(createClient).then(({ accessToken, refreshToken }) => {
                 storeAccessToken(accessToken);
