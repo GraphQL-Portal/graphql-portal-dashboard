@@ -56,6 +56,3 @@ UserSchema.pre<IUserDocument>('save', function (next) {
 });
 
 export default UserSchema;
-
-
-
