@@ -15,6 +15,8 @@ import { Sidebar } from '../Sidebar';
 import { SupportForum } from '../SupportForum';
 import { Users } from '../Users';
 import { Webhooks } from '../Webhooks';
+import { EditApi } from '../MyAPI/Edit';
+import { CreateApi } from '../MyAPI/Create';
 
 export const ProtectedRoutes:React.FC = () => {
   const { accessToken } = useAuth();
@@ -31,6 +33,12 @@ export const ProtectedRoutes:React.FC = () => {
           </Route>
           <Route path={ROUTES.DASHBOARD}>
             <Dashboard />
+          </Route>
+          <Route path={ROUTES.API_CREATE}>
+            <CreateApi />
+          </Route>
+          <Route path={ROUTES.API_EDIT}>
+            <EditApi />
           </Route>
           <Route path={ROUTES.APIS}>
             <MyAPI />
