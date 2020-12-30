@@ -5,7 +5,7 @@ import PermissionTool from '../tool/permission.tool';
 
 export default createParamDecorator((data, ctx): IUserDocument => {
   const user = PermissionTool.getUserFromRequest(ctx);
-  if (!user) throw new AuthenticationError('User not found');
+  if (!user) throw new AuthenticationError('Unauthorized');
 
   return user;
 });

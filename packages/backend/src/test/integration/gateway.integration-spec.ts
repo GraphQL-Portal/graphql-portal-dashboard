@@ -4,15 +4,21 @@ import * as mongoose from 'mongoose';
 import GatewayService from '../../modules/gateway/gateway.service';
 import supertest from 'supertest';
 import AppModule from '../../modules/app.module';
-import { Method, requestTo, RequestToResult } from '../common';
+import { createUser, Method, requestTo, RequestToResult } from '../common';
+import HeadersEnum from '../../common/enum/headers.enum';
 import IGateway from '../../common/interface/gateway.interface';
+import UserService from '../../modules/user/user.service';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
+import IUser from '../../common/interface/user.interface';
 
 jest.mock('ioredis');
 
 describe('GatewayResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
+  let user: IUser & ITokens;
   let gatewayService: GatewayService;
+  let userService: UserService;
 
   const gatewayExample: IGateway = { nodeId: 'nodeId', configTimestamp: Date.now(), lastPingAt: Date.now() };
 
@@ -30,6 +36,10 @@ describe('GatewayResolver', () => {
     request = requestTo(app);
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     gatewayService = app.get<GatewayService>(GatewayService);
+
+    userService = app.get<UserService>(UserService);
+
+    user = await createUser(userService);
   });
 
   afterAll(async () => {
@@ -39,8 +49,12 @@ describe('GatewayResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    const graphQlRequest = (query: string, variables = {}, headers = {}): supertest.Test =>
-      request(Method.post, '/graphql').set(headers).send({ query, variables });
+    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
+
+      beforeAll(() => {
+        graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }): supertest.Test =>
+          request(Method.post, '/graphql').set(headers).send({ query, variables });
+      })
 
     describe('getGateways', () => {
       it('should call findAll', async () => {

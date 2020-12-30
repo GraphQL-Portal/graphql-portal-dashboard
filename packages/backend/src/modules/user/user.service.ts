@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { config } from 'node-config-ts';
 import { AuthenticationError } from 'apollo-server-express';
 import { LoggerService } from '../../common/logger';
 import { IUserDocument } from '../../data/schema/user.schema';
@@ -54,11 +55,11 @@ export default class UserService {
   }
 
   public async createDefaultUser() {
-    const toCreate = await this.userModel.findOne({ role: Roles.ADMIN });
+    const toCreate = await this.userModel.findOne({ email: config.application.defaultAdmin.email });
     if (!toCreate) {
       await this.userModel.create({
-        email: "admin@admin.com",
-        password: "Secret123!",
+        email: config.application.defaultAdmin.email,
+        password: config.application.defaultAdmin.password,
         role: Roles.ADMIN,
       })
     }

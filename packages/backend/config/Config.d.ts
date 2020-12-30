@@ -22,6 +22,11 @@ declare module "node-config-ts" {
     secret: string
     jwtSecret: string
     salt: string
+    defaultAdmin: DefaultAdmin
+  }
+  interface DefaultAdmin {
+    email: string
+    password: string
   }
   interface GraphQL {
     playground: boolean
