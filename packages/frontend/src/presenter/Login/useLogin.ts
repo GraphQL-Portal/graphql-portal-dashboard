@@ -47,7 +47,7 @@ export const useLogin = () => {
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
     defaultValues: {
-      email: 'admin@admin.com',
+      email: 'admin@example.com',
       password: 'Secret123!',
     },
   });
@@ -57,7 +57,7 @@ export const useLogin = () => {
   }
 
   // @TODO use showErrorToast with message to show why error appeared
-  const handleError = (err: any) => console.error;
+  const handleError = (err: any) => console.error(err);
 
   const { onLogin } = login({ onCompleted: handleLogin, onError: handleError });
 

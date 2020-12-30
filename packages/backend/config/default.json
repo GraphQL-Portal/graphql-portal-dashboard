@@ -11,7 +11,11 @@
     "logLevel": "debug",
     "secret": "",
     "jwtSecret": "jwtSecret",
-    "salt": "salt"
+    "salt": "salt",
+    "defaultAdmin": {
+      "email": "admin@example.com",
+      "password": "Secret123!"
+    }
   },
   "db": {
     "redis": {

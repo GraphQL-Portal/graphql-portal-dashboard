@@ -25,6 +25,3 @@ export interface ITokenDocument extends IToken, mongoose.Document {
 }
 
 export default TokenSchema;
-
-
-
