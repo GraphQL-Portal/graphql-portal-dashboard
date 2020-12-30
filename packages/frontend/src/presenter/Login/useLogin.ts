@@ -46,7 +46,7 @@ export const useLogin = () => {
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
     defaultValues: {
-      email: 'admin@admin.com',
+      email: 'admin@example.com',
       password: 'Secret123!',
     },
   });
