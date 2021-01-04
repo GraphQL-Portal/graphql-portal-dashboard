@@ -8,6 +8,7 @@ type Source {
 }
 
 input CreateSource {
+  _id: ID
   name: String
   handler: JSONObject
   transforms: [JSONObject]
@@ -19,6 +20,6 @@ type Query {
 
 type Mutation {
   createSource(source: CreateSource!): Source
-  updateSource(name: String!, source: CreateSource!): Source
-  deleteSource(name: String!): Boolean
+  updateSource(id: ID!, source: CreateSource!): Source
+  deleteSource(id: ID!): Boolean
 }

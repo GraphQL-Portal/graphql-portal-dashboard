@@ -1,9 +1,15 @@
 import { SourceConfig } from '@graphql-portal/types';
 import { INestApplication } from '@nestjs/common';
-import IApiDef from '../common/interface/api-def.interface';
 import supertest from 'supertest';
-import { IApiDefDocument } from 'src/data/schema/api-def.schema';
-import { ISourceDocument } from 'src/data/schema/source.schema';
+import { ObjectId } from 'mongodb';
+import IApiDef from '../common/interface/api-def.interface';
+import { IApiDefDocument } from '../data/schema/api-def.schema';
+import { ISourceDocument } from '../data/schema/source.schema';
+import { randomString } from '../common/tool';
+import UserService from '../modules/user/user.service';
+import Roles from '../common/enum/roles.enum';
+import IUser from '../common/interface/user.interface';
+import ITokens from '../modules/user/interfaces/tokens.interface';
 
 export enum Method {
   get = 'get',
@@ -18,6 +24,8 @@ export type RequestToResult = (method: Method, route: string) => supertest.Test;
 export const requestTo = (app: INestApplication) => (method: Method, route: string): RequestResult =>
   supertest(app.getHttpServer())[method](route);
 
+export const randomObjectId = () => new ObjectId().toHexString();
+
 export const mongoDocumentSchema = {
   _id: expect.anything(),
   createdAt: expect.any(Date),
@@ -25,6 +33,7 @@ export const mongoDocumentSchema = {
 };
 
 export const sourceExample: SourceConfig = {
+  _id: randomObjectId(),
   name: 'source',
   handler: {
     graphql: { endpoint: 'http://endpoint/graphql' },
@@ -33,6 +42,7 @@ export const sourceExample: SourceConfig = {
 };
 
 export const apiDefExample: IApiDef = {
+  _id: randomObjectId(),
   name: 'api',
   endpoint: 'http://endpoint/graphql',
   sources: [sourceExample],
@@ -51,8 +61,30 @@ export const apiDefSchema = {
   endpoint: expect.any(String),
 };
 
+export const createUser = async (service: UserService,
+  data: { [key: string]: any } = {
+    email: `${randomString()}@example.com`,
+    password: 'Secret123',
+    role: Roles.USER
+  }
+): Promise<IUser & ITokens> => {
+  const tokens = await service.register(data as any, randomString());
+  const user = await service.findByEmail(data.email);
+
+  return {
+    ...(user!.toJSON()),
+    ...tokens,
+  }
+};
+
 export const expectSource = (source: ISourceDocument): void =>
   expect(source.toJSON()).toMatchObject({ ...sourceSchema, ...mongoDocumentSchema });
+
+export const expectTokens = (result: ITokens) =>
+  expect(result).toMatchObject({
+    accessToken: expect.any(String),
+    refreshToken: expect.any(String),
+  });
 
 export const expectApiDef = (apiDef: IApiDefDocument): void => {
   expect(apiDef.toJSON()).toMatchObject({

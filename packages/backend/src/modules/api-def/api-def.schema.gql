@@ -8,6 +8,7 @@ type ApiDef {
 }
 
 input CreateApiDef {
+  _id: String
   name: String
   endpoint: String
 }
@@ -19,11 +20,12 @@ type ApiDefsWithTimestamp {
 
 type Query {
   getApiDefs: ApiDefsWithTimestamp
+  getAllApiDefs: ApiDefsWithTimestamp
   publishApiDefsUpdated: Int
 }
 
 type Mutation {
   createApiDef(apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
-  updateApiDef(name: String!, apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
-  deleteApiDef(name: String!): Boolean
+  updateApiDef(id: ID!, apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
+  deleteApiDef(id: ID!): Boolean
 }

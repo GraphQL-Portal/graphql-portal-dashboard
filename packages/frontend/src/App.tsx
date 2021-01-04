@@ -13,9 +13,9 @@ import { ProtectedRoutes, Login } from './view';
 
 function App() {
   return (
-    <StateProvider>
-      <Router>
-        <AuthProvider>
+    <AuthProvider>
+      <StateProvider>
+        <Router>
           <ThemeProvider>
             <ToastProvider>
               <Switch>
@@ -28,9 +28,9 @@ function App() {
               </Switch>
             </ToastProvider>
           </ThemeProvider>
-        </AuthProvider>
-      </Router>
-    </StateProvider>
+        </Router>
+      </StateProvider>
+    </AuthProvider>
   );
 }
 

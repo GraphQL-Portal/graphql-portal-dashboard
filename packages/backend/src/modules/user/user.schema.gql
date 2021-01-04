@@ -1,0 +1,31 @@
+input UserInput {
+  firstName: String
+  lastName: String
+  role: String
+  email: String!
+  password: String!
+}
+
+type User {
+  firstName: String
+  lastName: String
+  role: String!
+  email: String!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Tokens {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type Mutation {
+  login(email: String!, password: String!, device: String!): Tokens!
+  register(data: UserInput!, device: String!): Tokens!
+  refreshTokens(refreshToken: String!, device: String!): Tokens!
+}
+
+type Query {
+  getProfile: User
+}

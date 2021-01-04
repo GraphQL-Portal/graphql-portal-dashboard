@@ -13,56 +13,55 @@ export default class SourceService {
     @InjectModel('Source') private sourceModel: Model<ISourceDocument>,
     private readonly logger: LoggerService,
     @Inject(forwardRef(() => ApiDefService)) private readonly apiDefService: ApiDefService
-  ) {}
+  ) { }
 
-  public findAll(): Promise<ISourceDocument[]> {
-    return this.sourceModel.find().exec();
+  public findAllByUser(user: string): Promise<ISourceDocument[]> {
+    return this.sourceModel.find({ user }).exec();
   }
 
   public findByIds(ids: string[]): Promise<ISourceDocument[]> {
     return this.sourceModel.find().where('_id').in(ids).exec();
   }
 
-  public findByName(name: string): Promise<ISourceDocument | null> {
-    return this.sourceModel.findOne({ name }).exec();
-  }
-
-  public async create(data: SourceConfig): Promise<ISourceDocument> {
-    const source = await this.sourceModel.create(data);
+  public async create(data: SourceConfig, user: string): Promise<ISourceDocument> {
+    const source = await this.sourceModel.create({ ...data, user });
 
     this.logger.log(`Created source ${data.name}`, this.constructor.name, data);
 
     return source;
   }
 
-  public async update(name: string, data: SourceConfig): Promise<ISourceDocument> {
-    const { nModified } = await this.sourceModel.updateOne({ name }, data);
-    if (!nModified) {
-      throw new ValidationError(`Source "${name}" does not exist`);
-    }
+  public async update(id: string, data: SourceConfig): Promise<ISourceDocument> {
+    const toUpdate = await this.sourceModel.findById(id);
 
-    const updated = (await this.findByName(data.name)) as ISourceDocument;
-    this.logger.log(`Updated source ${name}`, this.constructor.name, data);
+    if (!toUpdate) throw new ValidationError(`Source with id ${id} does not exist`);
 
-    if (await this.apiDefService.isSourceUsed(updated._id)) {
+    const source = (await this.sourceModel.findByIdAndUpdate(id, data, { new: true }))!;
+
+    if (await this.apiDefService.isSourceUsed(source._id)) {
       this.apiDefService.setLastUpdateTime();
       this.apiDefService.publishApiDefsUpdated();
     }
 
-    return updated;
+    return source;
   }
 
-  public async delete(name: string): Promise<boolean> {
-    const toDelete = await this.findByName(name);
+  public async delete(id: string): Promise<boolean> {
+    const toDelete = await this.sourceModel.findById(id);
+
     if (toDelete) {
       const usedInApiDef = await this.apiDefService.isSourceUsed(toDelete._id);
       if (usedInApiDef) {
-        throw new ValidationError(`Source "${name}" is used in API "${usedInApiDef.name}"`);
+        throw new ValidationError(`Source "${id}" is used in API "${usedInApiDef.name}"`);
       }
+      await toDelete?.delete();
     }
+    this.logger.log(`Deleted source ${id}`, this.constructor.name);
 
-    await this.sourceModel.deleteOne({ name });
-    this.logger.log(`Deleted source ${name}`, this.constructor.name);
-    return true;
+    return Boolean(toDelete);
+  }
+
+  public async isOwner(user: string, _id: string): Promise<boolean> {
+    return Boolean(await this.sourceModel.findOne({ _id, user }));
   }
 }

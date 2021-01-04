@@ -17,6 +17,7 @@ const bootstrap = async (): Promise<void> => {
   const app: INestApplication = await NestFactory.create(AppModule, new ExpressAdapter(expressApp), {
     logger,
   });
+
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new ValidationExceptionFilter(app.getHttpAdapter()));

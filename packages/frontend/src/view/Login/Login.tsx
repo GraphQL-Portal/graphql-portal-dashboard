@@ -1,6 +1,8 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
+import { ROUTES, useAuth } from '../../model/providers';
 import { useLogin } from '../../presenter/Login';
 import { LogoFull } from '../../icons';
 import {
@@ -16,11 +18,13 @@ import {
 import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
+
 export const Login:React.FC = () => {
   const { content, logo, formFrame, formField } = useStyles();
   const { control, onSubmit, errors } = useLogin();
+  const { accessToken } = useAuth();
 
-  console.log('ERRORS IS: ', errors)
+  if (accessToken) return <Redirect to={ROUTES.MAIN} />
 
   return (
     <Content className={content}>

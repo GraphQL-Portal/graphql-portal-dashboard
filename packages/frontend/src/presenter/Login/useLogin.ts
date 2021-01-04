@@ -2,9 +2,12 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test } from 'vest';
 import enforce from 'vest/enforceExtended';
+import { useAuth } from '../../model/providers/Auth';
 
 import { useFormErrors } from '../../hooks';
-import { useToast } from '../../model/providers';
+// import { useToast } from '../../model/providers';
+import { useLogin as login } from '../../model/Login/commands';
+import { UA } from '../../model/providers/Auth/constants';
 
 type LoginFormInput = {
   email: string;
@@ -38,23 +41,37 @@ const validationSuite = vest.create('login_form', ({ email, password }: LoginFor
 });
 
 export const useLogin = () => {
-  const { showSuccessToast } = useToast();
+  // const { showErrorToast } = useToast();
+  const { setAuth } = useAuth();
   const { handleSubmit, control, errors } = useForm<LoginFormInput>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'admin@example.com',
+      password: 'Secret123!',
     },
   });
 
+  const handleLogin = (data: any) => {
+    setAuth(data.login);
+  }
+
+  // @TODO use showErrorToast with message to show why error appeared
+  const handleError = (err: any) => console.error(err);
+
+  const { onLogin } = login({ onCompleted: handleLogin, onError: handleError });
+
   useFormErrors(errors);
 
+
   const onSubmit = ({ email, password }: LoginFormInput) => {
-    console.log('EMAIL IS: ', email);
-    console.log('PASSWORD IS: ', password);
-    // @TODO send request to the server
-    showSuccessToast('successfully loged in');
+    onLogin({
+      variables: {
+        email,
+        password,
+        device: UA,
+      }
+    });
   }
 
   return {

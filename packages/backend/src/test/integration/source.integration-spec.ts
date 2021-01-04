@@ -4,7 +4,11 @@ import * as mongoose from 'mongoose';
 import SourceService from '../../modules/source/source.service';
 import supertest from 'supertest';
 import AppModule from '../../modules/app.module';
-import { Method, requestTo, RequestToResult, sourceExample } from '../common';
+import UserService from '../../modules/user/user.service';
+import { createUser, Method, requestTo, RequestToResult, sourceExample } from '../common';
+import IUser from '../../common/interface/user.interface';
+import HeadersEnum from '../../common/enum/headers.enum';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
 
 jest.mock('ioredis');
 
@@ -12,15 +16,18 @@ describe('SourceResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
   let sourceService: SourceService;
+  let userService: UserService;
+  let user: IUser & ITokens;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
       .overrideProvider(SourceService)
       .useValue({
-        findAll: jest.fn().mockResolvedValue([sourceExample]),
+        findAllByUser: jest.fn().mockResolvedValue([sourceExample]),
         create: jest.fn().mockResolvedValue(sourceExample),
         update: jest.fn().mockResolvedValue(sourceExample),
         delete: jest.fn().mockResolvedValue(true),
+        isOwner: jest.fn().mockResolvedValue(true),
       })
       .compile();
 
@@ -30,6 +37,9 @@ describe('SourceResolver', () => {
     request = requestTo(app);
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     sourceService = app.get<SourceService>(SourceService);
+    userService = app.get<UserService>(UserService);
+
+    user = await createUser(userService);
   });
 
   afterAll(async () => {
@@ -39,8 +49,12 @@ describe('SourceResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    const graphQlRequest = (query: string, variables = {}, headers = {}): supertest.Test =>
-      request(Method.post, '/graphql').set(headers).send({ query, variables });
+    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
+
+    beforeAll(() => {
+      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }): supertest.Test =>
+        request(Method.post, '/graphql').set(headers).send({ query, variables });
+    });
 
     describe('getSources', () => {
       it('should call findAll', async () => {
@@ -55,7 +69,8 @@ describe('SourceResolver', () => {
           }`
         ).expect(HttpStatus.OK);
 
-        expect(sourceService.findAll).toHaveBeenCalledTimes(1);
+        expect(sourceService.findAllByUser).toHaveBeenCalledTimes(1);
+        expect(sourceService.findAllByUser).toHaveBeenCalledWith(user._id);
       });
     });
 
@@ -73,38 +88,38 @@ describe('SourceResolver', () => {
         ).expect(HttpStatus.OK);
 
         expect(sourceService.create).toHaveBeenCalledTimes(1);
-        expect(sourceService.create).toHaveBeenCalledWith(sourceExample);
+        expect(sourceService.create).toHaveBeenCalledWith(sourceExample, user._id);
       });
     });
 
     describe('updateSource', () => {
       it('should call update', async () => {
         await graphQlRequest(
-          `mutation($name:String!, $source: CreateSource!) {
-            updateSource(name: $name, source: $source) {
+          `mutation($id:ID!, $source: CreateSource!) {
+            updateSource(id: $id, source: $source) {
               _id
               name
             }
           }`,
-          { name: sourceExample.name, source: sourceExample }
+          { id: sourceExample._id, source: sourceExample }
         ).expect(HttpStatus.OK);
 
         expect(sourceService.update).toHaveBeenCalledTimes(1);
-        expect(sourceService.update).toHaveBeenCalledWith(sourceExample.name, sourceExample);
+        expect(sourceService.update).toHaveBeenCalledWith(sourceExample._id, sourceExample);
       });
     });
 
     describe('deleteSource', () => {
       it('should call update', async () => {
         await graphQlRequest(
-          `mutation($name:String!){
-            deleteSource(name:$name)
+          `mutation($id:ID!){
+            deleteSource(id:$id)
           }`,
-          { name: sourceExample.name }
+          { id: sourceExample._id }
         ).expect(HttpStatus.OK);
 
         expect(sourceService.delete).toHaveBeenCalledTimes(1);
-        expect(sourceService.delete).toHaveBeenCalledWith(sourceExample.name);
+        expect(sourceService.delete).toHaveBeenCalledWith(sourceExample._id);
       });
     });
   });

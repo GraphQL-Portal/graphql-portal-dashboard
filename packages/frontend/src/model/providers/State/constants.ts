@@ -1,0 +1,1 @@
+export const STATUS_401 = 'UNAUTHENTICATED';
