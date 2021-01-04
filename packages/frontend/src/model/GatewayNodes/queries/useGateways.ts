@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_GATEWAYS } from '../../../commands';
 
-import { GATEWAYS_UPDATE } from '../subscriptions';
+import { GATEWAYS_UPDATE } from '../../../commands/subscriptions';
 
 
 type Gateway = {

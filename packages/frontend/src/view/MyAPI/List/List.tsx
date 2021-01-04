@@ -8,8 +8,8 @@ import {
   TableBody,
   TableRow,
   IconButton
-} from '../../ui';
-import { getKeyFromText } from '../../utils/getKeyFromText';
+} from '../../../ui';
+import { getKeyFromText } from '../../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
 import { useStyles } from './useStyles';
 import { ApiDefsListFC } from './types';

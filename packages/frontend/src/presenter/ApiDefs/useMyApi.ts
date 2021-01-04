@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useApiDefs, useDeleteApiDef } from '../../model/ApiDefs/queries';
-import { ApiDef } from '../../view/MyAPI/types';
+import { ApiDef } from './types';
 import { createApiDefList } from './helpers';
 
 export const useMyApi = () => {
