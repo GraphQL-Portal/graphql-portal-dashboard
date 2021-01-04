@@ -8,17 +8,10 @@ import {
 import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
 import { Loading } from '../Loading';
-import { useApiDefs, useDeleteApiDef } from '../../model/ApiDefs/queries';
-import { useHistory } from 'react-router-dom';
+import { useMyApi } from '../../presenter/ApiDef/useMyApi';
 
 export const MyAPI:React.FC = () => {
-  const { data, loading } = useApiDefs();
-  const history = useHistory();
-
-  const [deleteApiDef] = useDeleteApiDef();
-  const onDelete = async (id: string) => await deleteApiDef({ variables: { id }});
-  const onUpdate = async (id: string) => history.push(`/my-apis/${id}`);
-  const onCreate = async () => history.push('/my-apis/new');
+  const { data, loading, onDelete, onUpdate, onCreate } = useMyApi();
 
   if (loading) return <Loading />
 

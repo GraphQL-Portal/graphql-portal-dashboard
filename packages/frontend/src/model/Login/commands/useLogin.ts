@@ -1,13 +1,7 @@
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../../commands';
 
-const LOGIN = gql`
-  mutation login($email: String!, $password: String!, $device: String!) {
-    login(email: $email, password: $password, device: $device) {
-      accessToken
-      refreshToken
-    }
-  }
-`;
+
 
 export const useLogin = (options: any) => {
   const [onLogin] = useMutation(LOGIN, options);

@@ -1,4 +1,4 @@
-import { ApiDef } from './types';
+import { ApiDef } from '../../view/MyAPI/types';
 
 export const createApiDefList = (data: ApiDef[]): string[][] => {
   if (!data) return [];

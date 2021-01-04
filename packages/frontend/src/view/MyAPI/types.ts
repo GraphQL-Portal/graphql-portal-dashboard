@@ -6,7 +6,7 @@ export type ApiDef = {
 };
 
 export type ApiDefsListFC = {
-  list: ApiDef[];
-  onDelete: (id: string) => Promise<any>;
-  onUpdate: (id: string) => Promise<any>;
+  list: string[][];
+  onDelete: (index: number) => any;
+  onUpdate: (index: number) => any;
 }

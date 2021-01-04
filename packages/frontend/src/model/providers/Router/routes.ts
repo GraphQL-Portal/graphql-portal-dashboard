@@ -5,8 +5,8 @@ export const DASHBOARD = '/dashboard';
 
 // API Management
 export const APIS = '/my-apis';
-export const API_CREATE = '/my-apis/new';
-export const API_EDIT = '/my-apis/:id';
+export const API_CREATE = `${APIS}/new`;
+export const API_EDIT = `${APIS}/:id`;
 export const DATA_SOURCES = '/data-sources';
 export const METRICS_AND_LOGS = '/metrics-and-logs';
 

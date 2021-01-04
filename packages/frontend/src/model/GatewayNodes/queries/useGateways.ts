@@ -1,16 +1,8 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { QUERY_GATEWAYS } from '../../../commands';
 
 import { GATEWAYS_UPDATE } from '../subscriptions';
 
-const QUERY_GATEWAYS = gql`
-  {
-    getGateways {
-      nodeId
-      lastPingAt
-      configTimestamp
-    }
-  }
-`;
 
 type Gateway = {
   nodeId: string;

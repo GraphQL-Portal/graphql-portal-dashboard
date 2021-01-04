@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Delete, Edit } from '@material-ui/icons';
 import {
@@ -12,7 +11,6 @@ import {
 } from '../../ui';
 import { getKeyFromText } from '../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
-import { createApiDefList } from './helpers';
 import { useStyles } from './useStyles';
 import { ApiDefsListFC } from './types';
 
@@ -32,7 +30,7 @@ export const ApiDefsList:React.FC<ApiDefsListFC> = ({ list, onDelete, onUpdate }
             ))}
           </TableHead>
           <TableBody>
-            {createApiDefList(list).map((node, idx) => (
+            {list.map((node, idx) => (
               <TableRow key={`node-${idx}`}>
                 {node.map((item: any, indx: any) => (
                   <TableCell key={`node-${idx}-item-${indx}`} align={getCellAlign(indx)}>
@@ -41,10 +39,10 @@ export const ApiDefsList:React.FC<ApiDefsListFC> = ({ list, onDelete, onUpdate }
                 ))}
                 <TableCell align="right" className={actionCell}>
                   <IconButton>
-                    <Edit onClick={() => onUpdate(list[idx]._id)} />
+                    <Edit onClick={onUpdate.bind(this, idx)} />
                   </IconButton>
                   <IconButton>
-                    <Delete onClick={() => onDelete(list[idx]._id)} />
+                    <Delete onClick={onDelete.bind(this, idx)} />
                   </IconButton>
                 </TableCell>
               </TableRow>
