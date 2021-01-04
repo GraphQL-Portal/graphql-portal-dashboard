@@ -28,4 +28,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     width: '60%',
     textAlign: 'center',
   },
+  actionCell: {
+    padding: spacing(0, 1, 0, 2),
+  },
 }));
