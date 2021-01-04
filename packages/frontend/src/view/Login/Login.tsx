@@ -24,11 +24,8 @@ export const Login:React.FC = () => {
   const { control, onSubmit, errors } = useLogin();
   const { accessToken } = useAuth();
 
-<<<<<<< HEAD
   if (accessToken) return <Redirect to={ROUTES.MAIN} />
 
-=======
->>>>>>> a17be44... [F] search and add button
   return (
     <Content className={content}>
       <div className={logo}>
