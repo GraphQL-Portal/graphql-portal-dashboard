@@ -64,4 +64,10 @@ export default class UserService {
       })
     }
   }
+
+  public async getUsers(exceptUser: string): Promise<IUserDocument[]> {
+    return this.userModel.find({
+      _id: { $ne: exceptUser }
+    });
+  }
 }

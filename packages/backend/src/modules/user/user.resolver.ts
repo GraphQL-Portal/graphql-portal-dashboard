@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import IUser from '../../common/interface/user.interface';
 import UserService from './user.service';
 import TokenService from './token.service';
-import { AuthorizationEntity, Roles } from '../../common/decorators';
+import { AuthorizationEntity, AuthorizationParam, Roles } from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
 import { IUserDocument } from '../../data/schema/user.schema';
 import ITokens from './interfaces/tokens.interface';
@@ -41,7 +41,13 @@ export default class UserResolver {
 
   @Roles([RolesEnum.USER, RolesEnum.ADMIN])
   @Query()
-  public getProfile(@AuthorizationEntity() user: IUserDocument): IUser {
+  public getProfile(@AuthorizationEntity() user: IUserDocument): IUserDocument {
     return user;
+  }
+
+  @Roles([RolesEnum.ADMIN])
+  @Query()
+  public getUsers(@AuthorizationParam('_id') userId: string): Promise<IUserDocument[]> {
+    return this.service.getUsers(userId);
   }
 }

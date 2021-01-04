@@ -1,4 +1,4 @@
-import { useMutation, gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!, $device: String!) {
@@ -8,19 +8,6 @@ export const LOGIN = gql`
     }
   }
 `;
-
-// export const QUERY_USERS = gql`
-//   {
-//     getUsers {
-//       firstName
-//       lastName
-//       role
-//       email
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// `;
 
 export const useLogin = (options: any) => {
   const [onLogin] = useMutation(LOGIN, options);

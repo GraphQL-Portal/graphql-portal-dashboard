@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { ROUTES } from '../../model/providers';
-import { MyAPI } from './MyAPI';
+import { MyAPI } from './List/MyAPI';
 import { CreateApi } from './Create';
 import { EditApi } from './Edit';
 

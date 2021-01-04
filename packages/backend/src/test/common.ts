@@ -5,7 +5,7 @@ import { ObjectId } from 'mongodb';
 import IApiDef from '../common/interface/api-def.interface';
 import { IApiDefDocument } from '../data/schema/api-def.schema';
 import { ISourceDocument } from '../data/schema/source.schema';
-import { randomString } from '../common/tool';
+import { randomEmail, randomString } from '../common/tool';
 import UserService from '../modules/user/user.service';
 import Roles from '../common/enum/roles.enum';
 import IUser from '../common/interface/user.interface';
@@ -62,14 +62,17 @@ export const apiDefSchema = {
 };
 
 export const createUser = async (service: UserService,
-  data: { [key: string]: any } = {
-    email: `${randomString()}@example.com`,
-    password: 'Secret123',
-    role: Roles.USER
-  }
+  role = Roles.USER,
+  email = randomEmail(),
+  password = 'Secret123',
 ): Promise<IUser & ITokens> => {
-  const tokens = await service.register(data as any, randomString());
-  const user = await service.findByEmail(data.email);
+  const tokens = await service.register({
+    email,
+    password,
+    role
+  }, randomString());
+
+  const user = await service.findByEmail(email);
 
   return {
     ...(user!.toJSON()),

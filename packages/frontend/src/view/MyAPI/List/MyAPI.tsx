@@ -4,11 +4,11 @@ import {
   HugeWidget,
   PrimaryButton,
   WidgetRow,
-} from '../../ui';
+} from '../../../ui';
 import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
-import { Loading } from '../Loading';
-import { useMyApi } from '../../presenter/ApiDef/useMyApi';
+import { Loading } from '../../Loading';
+import { useMyApi } from '../../../presenter/ApiDefs/useMyApi';
 
 export const MyAPI:React.FC = () => {
   const { data, loading, onDelete, onUpdate, onCreate } = useMyApi();

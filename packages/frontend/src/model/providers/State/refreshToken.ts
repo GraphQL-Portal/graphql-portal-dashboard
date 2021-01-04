@@ -1,5 +1,4 @@
 import { ApolloClient, gql } from "@apollo/client";
-
 import { getRefreshToken } from '../Auth/helpers';
 import { UA } from '../Auth/constants';
 

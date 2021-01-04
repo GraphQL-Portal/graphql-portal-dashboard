@@ -1,13 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import Roles from '../../common/enum/roles.enum';
-import { randomString } from '../../common/tool';
+import { randomEmail, randomString } from '../../common/tool';
 import UserService from '../../modules/user/user.service';
 import TokenService from '../../modules/user/token.service';
 import AppModule from '../../modules/app.module';
 import { IUserDocument } from '../../data/schema/user.schema';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
-import { randomObjectId } from '../common';
+import { createUser, randomObjectId } from '../common';
 
 describe('ApiDefService', () => {
   let app: TestingModule;
@@ -38,7 +38,7 @@ describe('ApiDefService', () => {
       refreshToken: randomString(),
     };
     const registrationData = {
-      email: `${randomString()}@example.com`,
+      email: randomEmail(),
       role: Roles.USER,
       password,
     };
@@ -69,6 +69,7 @@ describe('ApiDefService', () => {
 
     describe('findByEmail', () => {
       let id: string;
+      let user: IUserDocument;
 
       const expectUser = (data: IUserDocument) => {
         expect(data).toMatchObject({
@@ -80,7 +81,7 @@ describe('ApiDefService', () => {
       };
 
       it('should return user', async () => {
-        const user = (await userService.findByEmail(registrationData.email))!;
+        user = (await userService.findByEmail(registrationData.email))!;
 
         expect(user).toBeDefined();
         expectUser(user);
@@ -88,7 +89,7 @@ describe('ApiDefService', () => {
       });
 
       it('should return null', async () => {
-        const user = await userService.findByEmail(`email@email.com`);
+        const user = await userService.findByEmail(randomEmail());
 
         expect(user).toBeNull();
       });
@@ -105,6 +106,22 @@ describe('ApiDefService', () => {
           const user = await userService.findById(randomObjectId());
 
           expect(user).toBeNull();
+        });
+      });
+
+      describe('getUsers', () => {
+        let adminId: string;
+
+        beforeAll(async () => {
+          adminId = (await createUser(userService, Roles.ADMIN))._id!;
+        });
+
+        it('should return user', async () => {
+          const users = await userService.getUsers(adminId);
+
+          expect(users).toBeDefined();
+          expect(users).toHaveLength(1);
+          expect(!users.some(({ _id }) => _id === adminId)).toBeTruthy();
         });
       });
     });

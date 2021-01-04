@@ -1,1 +1,1 @@
-export { GATEWAYS_UPDATE } from './useGatewayUpdate';
+export { GATEWAYS_UPDATE } from './useGatewaysUpdate';

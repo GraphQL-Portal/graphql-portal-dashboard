@@ -1,5 +1,5 @@
 import React from 'react';
-import { Emoji, EmptyContainer, EmptyIcon, EmptyText } from '../../ui';
+import { Emoji, EmptyContainer, EmptyIcon, EmptyText } from '../../../ui';
 
 export const EmptyApiDefs:React.FC = () => {
   return (
