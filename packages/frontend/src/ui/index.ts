@@ -1,5 +1,6 @@
-export { PrimaryButton, TextButton } from './Buttons';
+export { IconButton, PrimaryButton, TextButton } from './Buttons';
 export { Emoji } from './Emoji';
+export { EmptyContainer, EmptyIcon, EmptyText } from './Empty';
 export { Errors } from './Errors';
 export { Grid, Row, Col } from './Grid';
 export { Header } from './Header';
@@ -9,6 +10,7 @@ export { Spinner } from './Spinner';
 export { SvgIcon } from './SvgIcon';
 export { Switch } from './Switch';
 export { Table, TableHead, TableBody, TableRow, TableCell } from './Table';
+export { Tooltip } from './Tooltip';
 export { H1, H2, H3, H4, H5, H6 } from './Typography';
 export {
   Widget,

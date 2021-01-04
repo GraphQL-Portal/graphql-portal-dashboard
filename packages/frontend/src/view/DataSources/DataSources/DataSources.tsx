@@ -1,14 +1,18 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { Header, HugeWidget, WidgetBody, WidgetHeader, WidgetRow } from '../../ui';
+import { Header, HugeWidget, WidgetBody, WidgetHeader, WidgetRow } from '../../../ui';
 
-import { useDataSources  } from '../../presenter/DataSources';
-
+import { useDataSources  } from '../../../presenter/DataSources';
+import { Loading } from '../../Loading';
 import { AvailableList } from './AvailableList';
+import { EmptySources } from './Empty';
+import { ConnectedList } from './ConnectedList';
 
 export const DataSources:React.FC = () => {
-  const { available } = useDataSources();
+  const { loading, connected } = useDataSources();
+
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -18,17 +22,14 @@ export const DataSources:React.FC = () => {
       <Header title="My Data Sources" />
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title="My connected data-sources" />
-          <WidgetBody>
-            List of data sources or empty state
-          </WidgetBody>
+          {connected.length === 0 ? <EmptySources /> : <ConnectedList />}
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title="Search available data connectors" />
           <WidgetBody>
-            <AvailableList list={available}/>
+            <AvailableList />
           </WidgetBody>
         </HugeWidget>
       </WidgetRow>

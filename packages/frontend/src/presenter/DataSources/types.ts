@@ -1,6 +1,13 @@
-type DataSource = {
+export type DataSource = {
   title: string;
   type: string;
+  description: string;
 };
 
-export type SourceSchema = { [key: string]: DataSource };
+type RawSource = Omit<DataSource, 'description'>;
+
+export type SourceSchema = { [key: string]: RawSource };
+
+export type SearchInput = {
+  search: string;
+};

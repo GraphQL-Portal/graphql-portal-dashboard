@@ -24,8 +24,11 @@ export const Login:React.FC = () => {
   const { control, onSubmit, errors } = useLogin();
   const { accessToken } = useAuth();
 
+<<<<<<< HEAD
   if (accessToken) return <Redirect to={ROUTES.MAIN} />
 
+=======
+>>>>>>> a17be44... [F] search and add button
   return (
     <Content className={content}>
       <div className={logo}>
@@ -45,6 +48,9 @@ export const Login:React.FC = () => {
                     label="Your Email"
                     name="email"
                     error={!!(errors && errors.email)}
+                    InputProps={{
+                      autoComplete: 'off',
+                    }}
                   />
                   <Controller
                     as={Input}
@@ -55,6 +61,9 @@ export const Login:React.FC = () => {
                     name="password"
                     type="password"
                     error={!!(errors && errors.password)}
+                    InputProps={{
+                      autoComplete: 'off',
+                    }}
                   />
                 </WidgetBody>
                 <WidgetActions>

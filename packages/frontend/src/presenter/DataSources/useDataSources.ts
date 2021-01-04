@@ -1,7 +1,10 @@
-import { AVAILABLE_SOURCE_SCHEMAS } from './constants';
+import { useSources } from '../../model/DataSources/queries';
 
 export const useDataSources = () => {
+  const { data, loading } = useSources();
+
   return {
-    available: AVAILABLE_SOURCE_SCHEMAS,
+    connected: data,
+    loading,
   };
 }
