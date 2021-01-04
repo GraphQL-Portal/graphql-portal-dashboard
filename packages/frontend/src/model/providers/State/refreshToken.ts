@@ -1,9 +1,15 @@
-import { ApolloClient } from "@apollo/client";
-
+import { ApolloClient, gql } from "@apollo/client";
 import { getRefreshToken } from '../Auth/helpers';
 import { UA } from '../Auth/constants';
-import { REFRESH_TOKEN } from '../../../commands';
 
+export const REFRESH_TOKEN = gql`
+  mutation RefreshTokens($refreshToken: String!, $device: String!) {
+    refreshTokens(refreshToken: $refreshToken, device: $device) {
+      accessToken
+      refreshToken
+    }
+  }
+`;
 
 export const refreshTokens = async (createClient: (token: string) => ApolloClient<any>): Promise<{
   accessToken: string;

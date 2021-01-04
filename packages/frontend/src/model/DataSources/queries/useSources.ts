@@ -1,5 +1,14 @@
-import { useQuery } from '@apollo/client';
-import { DATA_SOURCES } from '../../../commands';
+import { useQuery, gql } from '@apollo/client';
+
+export const DATA_SOURCES = gql`
+  {
+    getSources {
+      name
+      handler
+      transforms
+    }
+  }
+`;
 
 export const useSources = () => {
   const { data, loading, error } = useQuery(DATA_SOURCES);

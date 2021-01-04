@@ -1,6 +1,13 @@
-import { useLazyQuery } from '@apollo/client';
-import { SYNC_CONFIGURATION } from '../../../commands';
+import { useLazyQuery, gql } from '@apollo/client';
 
+export const SYNC_CONFIGURATION = gql`
+  {
+    publishApiDefsUpdated
+    getApiDefs {
+      timestamp
+    }
+  }
+`;
 
 export const useSyncConfiguration = () => {
   const [onSyncConfiguration, { data, refetch }] = useLazyQuery(SYNC_CONFIGURATION);
