@@ -11,11 +11,11 @@ import {
 } from '../../ui';
 import { getKeyFromText } from '../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
-import { GatewayNodesList as Type } from './types';
+import { GatewayNodesList as Props } from './types';
 
 const getCellAlign = (idx: number) => idx === 0 ? 'left' : 'right';
 
-export const GatewayNodesList:React.FC<Type> = ({ list }) => {
+export const GatewayNodesList:React.FC<Props> = ({ list }) => {
   return (
     <>
       <WidgetHeader title="List of Active Nodes" />

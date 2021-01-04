@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Emoji as Type } from './types';
+import { Emoji as Props } from './types';
 
-export const Emoji:React.FC<Type> = ({ className, label = '', children }) => {
+export const Emoji:React.FC<Props> = ({ className, label = '', children }) => {
   return (
     <span
       className={className}
