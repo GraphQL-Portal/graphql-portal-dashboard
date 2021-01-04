@@ -1,18 +1,25 @@
 import { useHistory } from 'react-router-dom';
-import { useApiDefs, useDeleteApiDef } from '../../model/ApiDefs/queries';
+import { generatePath } from 'react-router';
+
+import { useApiDefs } from '../../model/ApiDefs/queries';
+import { useDeleteApiDef } from '../../model/ApiDefs/commands';
+import { ROUTES } from '../../model/providers';
 import { ApiDef } from '../../view/MyAPI/types';
 import { createApiDefList } from './helpers';
 
 export const useMyApi = () => {
-  const history = useHistory();
+  const { push } = useHistory();
   const { data, loading } = useApiDefs();
   const [deleteApiDef] = useDeleteApiDef();
 
   const getApiDef = (index: number): ApiDef => data[index];
 
   const onDelete = (index: number) => deleteApiDef({ variables: { id: getApiDef(index)._id } });
-  const onUpdate = (index: number) => history.push(`/my-apis/${getApiDef(index)._id}`);
-  const onCreate = () => history.push('/my-apis/new');
+  const onUpdate = (index: number) =>
+    push(
+      generatePath(ROUTES.API_EDIT, { id: getApiDef(index)._id })
+    );
+  const onCreate = () => push(ROUTES.API_CREATE);
 
   return {
     data: createApiDefList(data),

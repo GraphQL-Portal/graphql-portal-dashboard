@@ -1,5 +1,18 @@
-import { useQuery } from '@apollo/client';
-import { QUERY_API_DEFS } from '../../../commands';
+import { useQuery, gql } from '@apollo/client';
+
+export const QUERY_API_DEFS = gql`
+  {
+    getApiDefs {
+      apiDefs {
+        _id
+        name
+        createdAt
+        updatedAt
+      }
+      timestamp
+    }
+  }
+`;
 
 export const useApiDefs = () => {
   const { data, loading, error } = useQuery(QUERY_API_DEFS);
