@@ -7,6 +7,7 @@ input UserInput {
 }
 
 type User {
+  _id: ID!
   firstName: String
   lastName: String
   role: String!
@@ -28,4 +29,5 @@ type Mutation {
 
 type Query {
   getProfile: User
+  getUsers: [User]!
 }
