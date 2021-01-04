@@ -4,10 +4,10 @@ import { Help } from '@material-ui/icons';
 
 import { H6 } from '../../Typography';
 import { Tooltip } from '../../Tooltip';
-import { WidgetHeader as Type } from '../types';
+import { WidgetHeader as Props } from '../types';
 import { useStyles } from './useStyles';
 
-export const WidgetHeader:React.FC<Type> = ({ title, children, tooltip }) => {
+export const WidgetHeader:React.FC<Props> = ({ title, children, tooltip }) => {
   const { widgetHeader, widgetHeaderTitle, titleText, iconRoot } = useStyles();
 
   return (

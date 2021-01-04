@@ -3,10 +3,10 @@ import React from 'react';
 import { getKeyFromText } from '../../../utils/getKeyFromText';
 import { H6 } from '../../../ui';
 import { Item } from './Item';
-import { Group as Type } from './types';
+import { Group as Props } from './types';
 import { useStyles } from './useStyles';
 
-export const Group:React.FC<Type> = ({ name, items }) => {
+export const Group:React.FC<Props> = ({ name, items }) => {
   const { group, groupName } = useStyles();
   return (
     <section className={group}>

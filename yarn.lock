@@ -1387,6 +1387,13 @@
   dependencies:
     ajv "^6.12.6"
 
+"@graphql-portal/types@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.3.0.tgz#44e6a88417342a2b13e8539d2bd9e655fcc9c612"
+  integrity sha512-9HTxbNa/Yx35R/gv/1gAEtwlOZ4eCkosztck4k8YOF0zrHcz+OyYoMGaW4YNfXkTJf/Jmq0Y8PAZau4cWEGhSw==
+  dependencies:
+    ajv "^6.12.6"
+
 "@graphql-tools/batch-delegate@^6.2.4", "@graphql-tools/batch-delegate@^6.2.6":
   version "6.2.6"
   resolved "https://registry.yarnpkg.com/@graphql-tools/batch-delegate/-/batch-delegate-6.2.6.tgz#fbea98dc825f87ef29ea5f3f371912c2a2aa2f2c"
@@ -1708,7 +1715,7 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hookform/resolvers@1.3.1":
+"@hookform/resolvers@^1.3.1":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.3.1.tgz#129533db26f7d25d10145fe95e17367c9127e042"
   integrity sha512-RrTZHRVSL1UvFWf8/HxGXzfkbYtgdauVBo4gCZ61euQZU3hk5jbWIk05/vQmEctUeUggxDcnUnVqd9yAf5z0zg==

@@ -1,1 +1,1 @@
-export { DataSources } from './DataSources';
+export { Routes as DataSources } from './Routes';
