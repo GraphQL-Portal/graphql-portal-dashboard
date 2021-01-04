@@ -5,6 +5,8 @@ type ApiDef {
   name: String
   endpoint: String
   sources: [Source]
+  createdAt: String
+  updatedAt: String
 }
 
 input CreateApiDef {

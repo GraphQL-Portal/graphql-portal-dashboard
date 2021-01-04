@@ -1,1 +1,1 @@
-export { MyAPI } from './MyAPI';
+export { Routes as MyAPI } from './Routes';
