@@ -1,8 +1,8 @@
 import { sourceSchema } from '@graphql-portal/types';
 
-import { getAvailableSources } from './helpers';
-import { SourceSchema } from './types';
+import { getAvailableSources, getHandlers } from './helpers';
 
-const RAW_SOURCE_SCHEMA: SourceSchema = sourceSchema.definitions;
+const handlers = getHandlers(sourceSchema);
 
-export const AVAILABLE_SOURCE_SCHEMAS = getAvailableSources(RAW_SOURCE_SCHEMA);
+export const AVAILABLE_DATA_SOURCES = getAvailableSources(handlers, sourceSchema);
+export const RAW_SOURCE_SCHEMA = sourceSchema;
