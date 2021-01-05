@@ -13,6 +13,7 @@ const getCellAlign = (idx: number, length: number) => idx + 1 === length ? 'righ
 export const AvailableList:React.FC = () => {
   const { length } = AVAILABLE_HEAD;
   const { available, control, onReset, onSubmit, showClearButton, onKeyDown } = useAvailableSources();
+  console.log('AVAILABLE: ', available);
   const { form, searchIcon, actionCell } = useStyles();
 
   return (
@@ -45,11 +46,11 @@ export const AvailableList:React.FC = () => {
           ))}
         </TableHead>
         <TableBody>
-          {available.map((node, idx) => (
+          {Object.keys(available).map((key: string, idx: number) => (
             <TableRow key={`node-${idx}`}>
-              <TableCell>{node.title}</TableCell>
-              <TableCell>{node.type}</TableCell>
-              <TableCell>{node.description}</TableCell>
+              <TableCell>{available[key].title}</TableCell>
+              <TableCell>{available[key].type}</TableCell>
+              <TableCell>{available[key].description}</TableCell>
               <TableCell align="right" className={actionCell}>
                 <Tooltip title="Add connector" placement="left" aria-label="add connector">
                   <span>

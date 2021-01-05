@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 
-import { AVAILABLE_SOURCE_SCHEMAS } from './constants';
-import { getFilteredList } from './helpers';
+import { AVAILABLE_DATA_SOURCES } from './constants';
+import { getFilteredSources } from './helpers';
 import { SearchInput } from './types';
 
 export const useAvailableSources = () => {
@@ -25,7 +25,7 @@ export const useAvailableSources = () => {
   const search = watch('search');
 
   return {
-    available: getFilteredList(search, AVAILABLE_SOURCE_SCHEMAS),
+    available: getFilteredSources(search, AVAILABLE_DATA_SOURCES),
     showClearButton: !!search,
     control,
     onSubmit: handleSubmit(onSubmit),
