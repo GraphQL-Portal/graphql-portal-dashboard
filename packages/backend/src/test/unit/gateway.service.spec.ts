@@ -4,6 +4,7 @@ import Subscription from '../../common/enum/subscription.enum';
 import AppModule from '../../modules/app.module';
 import GatewayService from '../../modules/gateway/gateway.service';
 import RedisService from '../../modules/redis/redis.service';
+import GatewayStatusTimers from '../../common/enum/gateway-status-timers.enum';
 
 jest.useFakeTimers();
 
@@ -64,6 +65,17 @@ describe('GatewayService', () => {
     it('onPing should save a timer in memory and remove a node then', async () => {
       const gatewaysUpdatedMock = jest.spyOn(gatewayService as any, 'gatewaysUpdated').mockReturnValue(1);
       const nodeId = '1';
+      (gatewayService as any).nodes = {
+        '1': {
+          hostname: 'test.local',
+          nodeId: '1',
+          lastPingAt: Date.now() - GatewayStatusTimers.REMOVE_TIMEOUT * 2,
+          status: 'active',
+        },
+      };
+      // need this for time comparison condition in setTimer
+      const fakeDate = Date.now() + GatewayStatusTimers.REMOVE_TIMEOUT * 2;
+      const dateNowMock = jest.spyOn(global.Date, 'now').mockReturnValue(fakeDate);
 
       (gatewayService as any).setTimer(nodeId);
       expect(setTimeout).toHaveBeenCalledTimes(1);
@@ -75,10 +87,18 @@ describe('GatewayService', () => {
       expect((gatewayService as any).clearNodes[nodeId]).toBeDefined();
       expect(gatewaysUpdatedMock).toHaveBeenCalledTimes(0);
 
+      // first time, sets node's status to 'idle'
+      jest.runOnlyPendingTimers();
+      expect((gatewayService as any).clearNodes[nodeId]).toBeDefined();
+      expect((gatewayService as any).nodes[nodeId].status).toBe('idle');
+
+      // second time, clears the node
       jest.runOnlyPendingTimers();
       expect((gatewayService as any).clearNodes[nodeId]).not.toBeDefined();
-      expect(gatewaysUpdatedMock).toHaveBeenCalledTimes(1);
+      expect(gatewaysUpdatedMock).toHaveBeenCalledTimes(2);
+
       gatewaysUpdatedMock.mockRestore();
+      dateNowMock.mockRestore();
     });
   });
 

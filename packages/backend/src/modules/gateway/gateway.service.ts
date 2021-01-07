@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import Subscription from '../../common/enum/subscription.enum';
 import IGateway from '../../common/interface/gateway.interface';
 import RedisService from '../redis/redis.service';
+import GatewayStatusTimers from '../../common/enum/gateway-status-timers.enum';
 
 export type GatewayNodes = { [key: string]: IGateway };
 export type ClearTimers = { [key: string]: NodeJS.Timeout };
@@ -36,7 +37,7 @@ export default class GatewayService {
     this.clearNodes[nodeId] = setTimeout(() => {
       const lastPingAgo = Date.now() - this.nodes[nodeId].lastPingAt;
 
-      if (this.nodes[nodeId].status === 'idle' && lastPingAgo > 300_000) {
+      if (this.nodes[nodeId].status === 'idle' && lastPingAgo > GatewayStatusTimers.REMOVE_TIMEOUT) {
         delete this.nodes[nodeId];
         delete this.clearNodes[nodeId];
       } else {
@@ -45,7 +46,7 @@ export default class GatewayService {
       }
 
       this.gatewaysUpdated();
-    }, 20_000);
+    }, GatewayStatusTimers.STATUS_UPDATE);
   }
 
   private gatewaysUpdated(): void {

@@ -20,7 +20,13 @@ describe('GatewayResolver', () => {
   let gatewayService: GatewayService;
   let userService: UserService;
 
-  const gatewayExample: IGateway = { nodeId: 'nodeId', configTimestamp: Date.now(), lastPingAt: Date.now() };
+  const gatewayExample: IGateway = {
+    nodeId: 'nodeId',
+    configTimestamp: Date.now(),
+    hostname: 'test.local',
+    status: 'active',
+    lastPingAt: Date.now(),
+  };
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
