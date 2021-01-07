@@ -1,6 +1,5 @@
-import { useQuery, gql} from '@apollo/client';
-
-import { GATEWAYS_UPDATE } from '../subscriptions';
+import { useQuery, gql } from '@apollo/client';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 export const QUERY_GATEWAYS = gql`
   {
@@ -8,6 +7,8 @@ export const QUERY_GATEWAYS = gql`
       nodeId
       lastPingAt
       configTimestamp
+      hostname
+      status
     }
   }
 `;
@@ -16,26 +17,29 @@ type Gateway = {
   nodeId: string;
   configTimestamp: number;
   lastPingAt: number;
+  hostname: string;
+  status: string;
 };
 
 const createNodeList = (data: Gateway[]) => {
   if (!data) return [];
 
-  return data.reduce((acc: any[], gateway: Gateway, idx: number) => {
-    // We can mutate acc because we have new [] each time we call this function
-    acc[idx] = [gateway.nodeId, 'active', gateway.lastPingAt, gateway.configTimestamp];
-    return acc;
-  }, []);
+  return data
+    .slice()
+    .sort((a, b) => b.lastPingAt - a.lastPingAt)
+    .reduce((acc: any[], gateway: Gateway, idx: number) => {
+      const lastPingFormatted = formatDistanceToNow(gateway.lastPingAt, { addSuffix: true });
+      // We can mutate acc because we have new [] each time we call this function
+      acc[idx] = [gateway.nodeId, gateway.hostname, gateway.status, lastPingFormatted, gateway.configTimestamp];
+      return acc;
+    }, []);
 };
 
 export const useGateways = () => {
-  const { data, loading, error, subscribeToMore } = useQuery(QUERY_GATEWAYS);
-
-  subscribeToMore({
-    document: GATEWAYS_UPDATE,
-    updateQuery: (_, { subscriptionData }) => {
-      return { getGateways: createNodeList(subscriptionData.data.gatewaysUpdated) };
-    },
+  // random interval between 5 and 20 secs
+  const randomPollInterval = (Math.floor(Math.random() * 16) + 5) * 1000;
+  const { data, loading, error } = useQuery(QUERY_GATEWAYS, {
+    pollInterval: randomPollInterval,
   });
 
   const { getGateways = [] } = data || {};

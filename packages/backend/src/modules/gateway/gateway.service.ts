@@ -23,8 +23,8 @@ export default class GatewayService {
   }
 
   private onPing(data: string): void {
-    const { nodeId, configTimestamp } = JSON.parse(data);
-    this.nodes[nodeId] = { nodeId, lastPingAt: Date.now(), configTimestamp };
+    const { nodeId, configTimestamp, hostname } = JSON.parse(data);
+    this.nodes[nodeId] = { nodeId, lastPingAt: Date.now(), configTimestamp, hostname, status: 'active' };
     this.setTimer(nodeId);
     this.gatewaysUpdated();
   }
@@ -34,10 +34,18 @@ export default class GatewayService {
       clearTimeout(this.clearNodes[nodeId]);
     }
     this.clearNodes[nodeId] = setTimeout(() => {
-      delete this.nodes[nodeId];
-      delete this.clearNodes[nodeId];
+      const lastPingAgo = Date.now() - this.nodes[nodeId].lastPingAt;
+
+      if (this.nodes[nodeId].status === 'idle' && lastPingAgo > 300_000) {
+        delete this.nodes[nodeId];
+        delete this.clearNodes[nodeId];
+      } else {
+        this.nodes[nodeId].status = 'idle';
+        this.setTimer(nodeId);
+      }
+
       this.gatewaysUpdated();
-    }, 60000);
+    }, 20_000);
   }
 
   private gatewaysUpdated(): void {

@@ -6,7 +6,7 @@ import { AuthenticationError } from 'apollo-server-express';
 
 export const getTokenFromHeaders = (headers: Headers): string | undefined => {
   return ((headers as any)[HeadersEnum.AUTHORIZATION] || '').split(' ').pop();
-}
+};
 
 export const verify = (token: string): { userId: string } => {
   try {
@@ -14,8 +14,8 @@ export const verify = (token: string): { userId: string } => {
   } catch (error) {
     throw new AuthenticationError('Bad JWT token.');
   }
-}
+};
 
-export const sign = (userId: string, expiresIn: TokenExpirationTime) => {
+export const sign = (userId: string, expiresIn: TokenExpirationTime): string => {
   return jwt.sign({ userId }, config.application.jwtSecret, { expiresIn });
-}
+};

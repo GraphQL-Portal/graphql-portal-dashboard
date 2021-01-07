@@ -1,8 +1,4 @@
-import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import PermissionTool from '../tool/permission.tool';
 import Metadata from '../enum/metadata.enum';
@@ -18,20 +14,23 @@ export default class AccessControlGuard implements CanActivate {
   public constructor(
     private reflector: Reflector,
     private apiDefService: ApiDefService,
-    private sourceService: SourceService,
-  ) { }
+    private sourceService: SourceService
+  ) {}
 
   public getService(modelName: AccessControlModels): IAccessControlService {
     const modelToService = {
       ApiDef: this.apiDefService,
       Source: this.sourceService,
-    }
+    };
 
     return modelToService[modelName];
   }
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
-    const access: { model: AccessControlModels, pathToId?: string } = this.reflector.get(Metadata.ACCESS, context.getHandler());
+    const access: { model: AccessControlModels; pathToId?: string } = this.reflector.get(
+      Metadata.ACCESS,
+      context.getHandler()
+    );
     if (!access) return true;
 
     const user = PermissionTool.getUserFromRequest(context);
@@ -41,7 +40,7 @@ export default class AccessControlGuard implements CanActivate {
     const service = this.getService(access.model);
     if (!service) throw new Error('Service is not defined');
 
-    const id = PermissionTool.getIdFromGqlRequest(context, access.pathToId)
+    const id = PermissionTool.getIdFromGqlRequest(context, access.pathToId);
     if (!id) throw new Error('Id is not defined');
 
     const isOwner = await service.isOwner(user._id!, id);

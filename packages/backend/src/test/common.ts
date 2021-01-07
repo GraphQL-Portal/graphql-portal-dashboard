@@ -61,23 +61,27 @@ export const apiDefSchema = {
   endpoint: expect.any(String),
 };
 
-export const createUser = async (service: UserService,
+export const createUser = async (
+  service: UserService,
   role = Roles.USER,
   email = randomEmail(),
-  password = 'Secret123',
+  password = 'Secret123'
 ): Promise<IUser & ITokens> => {
-  const tokens = await service.register({
-    email,
-    password,
-    role
-  }, randomString());
+  const tokens = await service.register(
+    {
+      email,
+      password,
+      role,
+    },
+    randomString()
+  );
 
   const user = await service.findByEmail(email);
 
   return {
-    ...(user!.toJSON()),
+    ...user!.toJSON(),
     ...tokens,
-  }
+  };
 };
 
 export const expectSource = (source: ISourceDocument): void =>

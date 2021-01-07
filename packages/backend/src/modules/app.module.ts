@@ -40,18 +40,19 @@ import RolesGuard from '../common/guards/roles.guard';
     UserModule,
     GatewayModule,
   ],
-  providers: [{
-    provide: APP_GUARD,
-    useClass: AccessControlGuard,
-  }, {
-    provide: APP_GUARD,
-    useClass: RolesGuard,
-  }],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AccessControlGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export default class AppModule {
-  configure(consumer: MiddlewareConsumer): void {
-    consumer
-      .apply(AuthenticationMiddleware)
-      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  public configure(consumer: MiddlewareConsumer): void {
+    consumer.apply(AuthenticationMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL });
   }
 }

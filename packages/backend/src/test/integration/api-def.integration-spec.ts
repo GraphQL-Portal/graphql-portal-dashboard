@@ -55,9 +55,12 @@ describe('ApiDefResolver', () => {
     const createApiDef = { ...apiDefExample, sources: undefined };
 
     beforeAll(() => {
-      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }): supertest.Test =>
-        request(Method.post, '/graphql').set(headers).send({ query, variables });
-    })
+      graphQlRequest = (
+        query: string,
+        variables = {},
+        headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }
+      ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+    });
 
     describe('getApiDefs', () => {
       it('should call findAll', async () => {
@@ -75,7 +78,7 @@ describe('ApiDefResolver', () => {
                 }
               }
             }
-          }`,
+          }`
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.findAllByUser).toHaveBeenCalledTimes(1);
@@ -98,7 +101,7 @@ describe('ApiDefResolver', () => {
             }
           }`,
           {},
-          {},
+          {}
         ).expect(HttpStatus.OK);
 
         expect(body.errors[0].extensions.code).toBe('UNAUTHENTICATED');
@@ -121,7 +124,7 @@ describe('ApiDefResolver', () => {
               }
             }
           }`,
-          { apiDef: createApiDef, sources: [] },
+          { apiDef: createApiDef, sources: [] }
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.create).toHaveBeenCalledTimes(1);
