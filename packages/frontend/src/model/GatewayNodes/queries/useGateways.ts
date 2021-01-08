@@ -28,9 +28,14 @@ const createNodeList = (data: Gateway[]) => {
     .slice()
     .sort((a, b) => b.lastPingAt - a.lastPingAt)
     .reduce((acc: any[], gateway: Gateway, idx: number) => {
-      const lastPingFormatted = formatDistanceToNow(gateway.lastPingAt, { addSuffix: true });
       // We can mutate acc because we have new [] each time we call this function
-      acc[idx] = [gateway.nodeId, gateway.hostname, gateway.status, lastPingFormatted, gateway.configTimestamp];
+      acc[idx] = [
+        gateway.nodeId,
+        gateway.hostname,
+        gateway.status,
+        formatDistanceToNow(gateway.lastPingAt, { addSuffix: true }),
+        gateway.configTimestamp,
+      ];
       return acc;
     }, []);
 };
