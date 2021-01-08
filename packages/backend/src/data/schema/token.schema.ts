@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import IToken from '../../common/interface/token.interface';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const TokenSchema = new mongoose.Schema(
   {
     device: {
@@ -21,7 +22,7 @@ const TokenSchema = new mongoose.Schema(
 );
 
 export interface ITokenDocument extends IToken, mongoose.Document {
-  _id?: string,
+  _id?: string;
 }
 
 export default TokenSchema;

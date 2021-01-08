@@ -7,7 +7,8 @@ export const randomString = (length = 10): string => {
 };
 
 export const randomEmail = (length = 10, domainLength = 3): string => {
-  return `${randomString(length)}@${randomString(domainLength)}.com`
+  return `${randomString(length)}@${randomString(domainLength)}.com`;
 };
 
-export const getObjectKey = (obj: { [key: string]: any; }, path: string) => path.split('.').reduce((o, i) => o?.[i], obj);
+export const getObjectKey = (obj: { [key: string]: any }, path: string) =>
+  path.split('.').reduce((o, i) => o?.[i], obj);

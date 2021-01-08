@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test } from 'vest';
 import enforce from 'vest/enforceExtended';
-import { useAuth } from '../../model/providers/Auth';
+import { useAuth } from '../../model/providers';
 
 import { useFormErrors } from '../../hooks';
 // import { useToast } from '../../model/providers';
@@ -54,7 +54,7 @@ export const useLogin = () => {
 
   const handleLogin = (data: any) => {
     setAuth(data.login);
-  }
+  };
 
   // @TODO use showErrorToast with message to show why error appeared
   const handleError = (err: any) => console.error(err);
@@ -63,20 +63,19 @@ export const useLogin = () => {
 
   useFormErrors(errors);
 
-
   const onSubmit = ({ email, password }: LoginFormInput) => {
     onLogin({
       variables: {
         email,
         password,
         device: UA,
-      }
+      },
     });
-  }
+  };
 
   return {
     control,
     onSubmit: handleSubmit(onSubmit),
     errors,
-  }
-}
+  };
+};

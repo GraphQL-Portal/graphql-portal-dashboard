@@ -20,7 +20,13 @@ describe('GatewayResolver', () => {
   let gatewayService: GatewayService;
   let userService: UserService;
 
-  const gatewayExample: IGateway = { nodeId: 'nodeId', configTimestamp: Date.now(), lastPingAt: Date.now() };
+  const gatewayExample: IGateway = {
+    nodeId: 'nodeId',
+    configTimestamp: Date.now(),
+    hostname: 'test.local',
+    status: 'active',
+    lastPingAt: Date.now(),
+  };
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
@@ -51,10 +57,13 @@ describe('GatewayResolver', () => {
   describe('GraphQL', () => {
     let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
 
-      beforeAll(() => {
-        graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }): supertest.Test =>
-          request(Method.post, '/graphql').set(headers).send({ query, variables });
-      })
+    beforeAll(() => {
+      graphQlRequest = (
+        query: string,
+        variables = {},
+        headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }
+      ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+    });
 
     describe('getGateways', () => {
       it('should call findAll', async () => {

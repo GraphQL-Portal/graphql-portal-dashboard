@@ -6,6 +6,8 @@ export const GATEWAYS_UPDATE = gql`
       nodeId
       lastPingAt
       configTimestamp
+      hostname
+      status
     }
   }
 `;

@@ -3,9 +3,4 @@ import AuthorizationParam from './auth.param.decorator';
 import Roles from './roles.decorator';
 import AccessControl from './access-control.decorator';
 
-export {
-  Roles,
-  AccessControl,
-  AuthorizationParam,
-  AuthorizationEntity,
-}
+export { Roles, AccessControl, AuthorizationParam, AuthorizationEntity };

@@ -45,7 +45,7 @@ describe('ApiDefService', () => {
 
     beforeAll(() => {
       spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
-    })
+    });
 
     it('creates user', async () => {
       const result = await userService.register(registrationData, device);
@@ -56,7 +56,9 @@ describe('ApiDefService', () => {
 
     describe('login', () => {
       it('throws error on invalid credentials', async () => {
-        await expect(userService.login('invalid@email.com', 'password123', device)).rejects.toThrow('Wrong email or password');
+        await expect(userService.login('invalid@email.com', 'password123', device)).rejects.toThrow(
+          'Wrong email or password'
+        );
       });
 
       it('returns token', async () => {

@@ -8,18 +8,26 @@ import { URI, wsURI } from './config';
 import { promise2Observable } from './promise2Observable';
 import { refreshTokens } from './refreshToken';
 import { STATUS_401 } from './constants';
+import { setContext } from '@apollo/client/link/context';
 
 type ErrorCallback = Observable<any> | undefined;
 
 let client: ApolloClient<any>;
 
 export const createClient = (token: string) => {
-  const headers = Object.assign({}, (token ? { authorization: token } : {}))
+  const headers = Object.assign({}, token ? { authorization: token } : {});
   const httpLink = new HttpLink({ uri: URI, headers });
+
+  const wsAuthLink = setContext((request, previousContext) => ({
+    headers: {
+      authorization: token,
+    },
+  }));
   const wsLink = new WebSocketLink({
     uri: wsURI,
     options: {
       reconnect: true,
+      connectionParams: { headers: { authorization: token } },
     },
   });
 
@@ -38,7 +46,6 @@ export const createClient = (token: string) => {
         for (let err of graphQLErrors) {
           const { extensions = {}, message } = err;
           if (extensions.code === STATUS_401) {
-
             // Sign out if refresh token is invalid
             if (message.indexOf('Refresh token is invalid') !== -1) {
               removeAccessToken();
@@ -64,8 +71,8 @@ export const createClient = (token: string) => {
 
   client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: from([errorLink, splitLink]),
+    link: from([errorLink, wsAuthLink, splitLink]),
   });
 
   return client;
-}
+};

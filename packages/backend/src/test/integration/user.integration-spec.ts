@@ -28,8 +28,7 @@ describe('ApiDefResolver', () => {
   };
 
   beforeAll(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
-      .compile();
+    const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] }).compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
@@ -37,7 +36,7 @@ describe('ApiDefResolver', () => {
     request = requestTo(app);
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     userService = app.get<UserService>(UserService);
-    admin = (await createUser(userService, Roles.ADMIN));
+    admin = await createUser(userService, Roles.ADMIN);
   });
 
   afterAll(async () => {
@@ -52,7 +51,7 @@ describe('ApiDefResolver', () => {
     beforeAll(() => {
       graphQlRequest = (query: string, variables = {}, headers = {}): supertest.Test =>
         request(Method.post, '/graphql').set(headers).send({ query, variables });
-    })
+    });
 
     describe('register', () => {
       it('should call register', async () => {
@@ -71,8 +70,10 @@ describe('ApiDefResolver', () => {
         expect(tokens).toBeDefined();
         expectTokens(tokens);
 
-        graphQlRequest = (query: string, variables = {}, headers =
-          { [HeadersEnum.AUTHORIZATION]: tokens.accessToken }
+        graphQlRequest = (
+          query: string,
+          variables = {},
+          headers = { [HeadersEnum.AUTHORIZATION]: tokens.accessToken }
         ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
       });
 
@@ -90,7 +91,7 @@ describe('ApiDefResolver', () => {
           }`,
           {},
           {
-            [HeadersEnum.AUTHORIZATION]: tokens.accessToken
+            [HeadersEnum.AUTHORIZATION]: tokens.accessToken,
           }
         ).expect(HttpStatus.OK);
 
@@ -128,12 +129,11 @@ describe('ApiDefResolver', () => {
               refreshToken
             }
           }`,
-          { ...authenticationData, password: "wrong123", device }
+          { ...authenticationData, password: 'wrong123', device }
         ).expect(HttpStatus.OK);
 
         expect(body.errors[0].message).toMatch('Wrong email or password');
       });
-
 
       describe('refreshTokens', () => {
         it('should not refresh tokens with invalid device', async () => {
@@ -167,10 +167,11 @@ describe('ApiDefResolver', () => {
 
       describe('getUsers', () => {
         beforeAll(async () => {
-          graphQlRequest = (query: string, variables = {}, headers =
-            { [HeadersEnum.AUTHORIZATION]: admin.accessToken }
-          ): supertest.Test =>
-            request(Method.post, '/graphql').set(headers).send({ query, variables });
+          graphQlRequest = (
+            query: string,
+            variables = {},
+            headers = { [HeadersEnum.AUTHORIZATION]: admin.accessToken }
+          ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
         });
 
         it('should throw error', async () => {
@@ -188,7 +189,7 @@ describe('ApiDefResolver', () => {
             `query {
               getUsers { email }
             }`,
-            {},
+            {}
           ).expect(HttpStatus.OK);
 
           expect(body.data.getUsers).toBeDefined();

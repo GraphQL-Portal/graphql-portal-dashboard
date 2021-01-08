@@ -7,15 +7,13 @@ import * as TokenTool from '../tool/token.tool';
 
 @Injectable()
 export default class AuthenticationMiddleware implements NestMiddleware {
+  public constructor(private service: UserService, private logger: LoggerService) {}
 
-  constructor(private service: UserService, private logger: LoggerService) { }
-
-  async use(req: Request, res: Response, next: NextFunction) {
+  public async use(req: Request, res: Response, next: NextFunction): Promise<void> {
     const context = `${this.constructor.name}:${this.use.name}`;
     try {
       if (!req.headers) return next();
 
-      this.logger.debug('Getting token from headers', context);
       const token = TokenTool.getTokenFromHeaders(req.headers);
       if (!token) return next();
 

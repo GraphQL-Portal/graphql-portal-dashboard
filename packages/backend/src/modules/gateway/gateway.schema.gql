@@ -4,6 +4,8 @@ type Gateway {
   nodeId: String
   lastPingAt: Timestamp
   configTimestamp: Timestamp
+  hostname: String
+  status: String
 }
 
 type Query {

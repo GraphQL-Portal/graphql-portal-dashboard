@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import Subscription from '../../common/enum/subscription.enum';
 import IGateway from '../../common/interface/gateway.interface';
 import RedisService from '../redis/redis.service';
+import GatewayStatusTimers from '../../common/enum/gateway-status-timers.enum';
 
 export type GatewayNodes = { [key: string]: IGateway };
 export type ClearTimers = { [key: string]: NodeJS.Timeout };
@@ -23,8 +24,8 @@ export default class GatewayService {
   }
 
   private onPing(data: string): void {
-    const { nodeId, configTimestamp } = JSON.parse(data);
-    this.nodes[nodeId] = { nodeId, lastPingAt: Date.now(), configTimestamp };
+    const { nodeId, configTimestamp, hostname } = JSON.parse(data);
+    this.nodes[nodeId] = { nodeId, lastPingAt: Date.now(), configTimestamp, hostname, status: 'active' };
     this.setTimer(nodeId);
     this.gatewaysUpdated();
   }
@@ -34,10 +35,18 @@ export default class GatewayService {
       clearTimeout(this.clearNodes[nodeId]);
     }
     this.clearNodes[nodeId] = setTimeout(() => {
-      delete this.nodes[nodeId];
-      delete this.clearNodes[nodeId];
+      const lastPingAgo = Date.now() - this.nodes[nodeId].lastPingAt;
+
+      if (this.nodes[nodeId].status === 'idle' && lastPingAgo > GatewayStatusTimers.REMOVE_TIMEOUT) {
+        delete this.nodes[nodeId];
+        delete this.clearNodes[nodeId];
+      } else {
+        this.nodes[nodeId].status = 'idle';
+        this.setTimer(nodeId);
+      }
+
       this.gatewaysUpdated();
-    }, 60000);
+    }, GatewayStatusTimers.STATUS_UPDATE);
   }
 
   private gatewaysUpdated(): void {
