@@ -1,45 +1,54 @@
-import { getProp, getPath, compose } from '../../utils';
+import { getProp, getPath, compose, isPOJO, isObject, isArray } from '../../utils';
 
-const getProperties = getProp('properties');
-const getRef = getProp('$ref');
-const getDescription = getProp('description');
+const deconstructRef = (ref: string) => ref.split('/').slice(1);
 
-const getHandlerRef = compose(getRef, getProp('handler'), getProperties);
-export const getHandlers = (sourceSchema: any) => compose(
-  getProperties,
-  getPath(sourceSchema),
-  deconstructRef,
-  getHandlerRef
-)(sourceSchema);
+export const getProperties = getProp('properties');
 
-
-export const getAvailableSources = (handlers: any, sourceSchema: any) => {
-  return Object.keys(handlers).reduce((acc: any, key: string) => {
-    const handler = getProp(key)(handlers);
-    acc[key] = Object.assign(
-      {},
-      { description: getDescription(handler) || '' },
-      compose(getPath(sourceSchema), deconstructRef, getRef)(handler)
-    );
-    return acc;
-  }, {});
-};
+export const getHandler = compose(getProperties, getProp('handler'));
+export const getTransforms = compose(getProp('items'), getProp('transforms'));
 
 const stringHas = (str: string, query: string) =>
   str
     .toLocaleLowerCase()
-    .indexOf(query.toLocaleLowerCase()) !== -1;
+    .indexOf(query.toLowerCase()) !== -1;
 
 export const getFilteredSources = (query: string, sources: any) =>
   Object.keys(sources).reduce(
     (acc: any, key) => {
-      const source = sources[key];
+      const source = getProp(key)(sources);
       const { title, description } = source;
-      if (stringHas(title, query) || stringHas(description, query)) {
+      if (stringHas(title || '', query) || stringHas(description || '', query)) {
         acc[key] = source;
       }
       return acc
     }, {}
   );
 
-export const deconstructRef = (ref: string) => ref.split('/').slice(1);
+const isRef = (key: string) => key === '$ref';
+
+const resolveItem = (schema: any) => (item: string) => {
+  return compose(resolveRefs(schema), getPath(schema), deconstructRef)(item)
+}
+
+const resolveObject = (schema: any, obj: any) => {
+  if (isArray(obj)) {
+    return obj.map((item: any) => isPOJO(item) ? resolveRefs(schema)(item) : item);
+  }
+
+  return resolveRefs(schema)(obj);
+};
+
+export const resolveRefs = (schema: any) => (cursor: any) => {
+  if (!isPOJO(cursor)) return {};
+
+  return Object.keys(cursor).reduce((acc: any, key: string) => {
+    const item = getProp(key)(cursor);
+    if (isRef(key)) {
+      acc = Object.assign({}, resolveItem(schema)(item), acc);
+    } else {
+      acc[key] = isObject(item) ? resolveObject(schema, item) : item;
+    }
+
+    return acc;
+  }, {});
+};
