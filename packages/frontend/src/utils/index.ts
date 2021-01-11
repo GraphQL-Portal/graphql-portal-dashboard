@@ -4,6 +4,8 @@ export { formatTimestamp } from './formatTimestamp';
 export { getKeyFromText } from './getKeyFromText';
 export { getPath } from './getPath';
 export { getProp } from './getProp';
+export { hasIndex } from './hasIndex';
 export { isArray } from './isArray';
 export { isObject, isPOJO } from './isObject';
 export { NOOP } from './noop';
+export { toLowerCase } from './toLowerCase';
