@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
-import vest, { test } from 'vest';
-import enforce from 'vest/enforceExtended';
+import vest, { test, enforce } from 'vest';
+import isEmail from 'validator/es/lib/isEmail';
 import { useAuth } from '../../model/providers';
 
 import { useFormErrors } from '../../hooks';
@@ -13,6 +13,8 @@ type LoginFormInput = {
   email: string;
   password: string;
 };
+
+enforce.extend({ isEmail });
 
 const validationSuite = vest.create('login_form', ({ email, password }: LoginFormInput) => {
   test('email', 'Email is required', () => {
