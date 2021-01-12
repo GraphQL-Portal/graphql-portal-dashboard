@@ -1,5 +1,13 @@
 {
   "application": {
     "env": "development"
+  },
+  "db": {
+    "redis": {
+      "connectionString": "@@REDIS_CONNECTION_STRING"
+    },
+    "mongodb": {
+      "connectionString": "@@MONGODB_CONNECTION_STRING"
+    }
   }
 }
