@@ -1,21 +1,26 @@
-import { Module, RequestMethod, MiddlewareConsumer } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { config } from 'node-config-ts';
-import AuthenticationMiddleware from '../common/middlewares/auth.middleware';
+import { join } from 'path';
+import AccessControlGuard from '../common/guards/access-control-service.guard';
+import RolesGuard from '../common/guards/roles.guard';
 import { LoggerModule } from '../common/logger';
+import AuthenticationMiddleware from '../common/middlewares/auth.middleware';
 import { randomString } from '../common/tool';
 import ApiDefModule from './api-def/api-def.module';
-import UserModule from './user/user.module';
 import GatewayModule from './gateway/gateway.module';
 import RedisModule from './redis/redis.module';
 import SourceModule from './source/source.module';
-import AccessControlGuard from '../common/guards/access-control-service.guard';
-import RolesGuard from '../common/guards/roles.guard';
+import UserModule from './user/user.module';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', '..', '..', 'frontend', 'build'),
+    }),
     MongooseModule.forRoot(
       process.env.NODE_ENV === 'test'
         ? config.db.mongodb.connectionString.split('/').slice(0, -1).join('/') + `/${randomString()}`
