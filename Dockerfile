@@ -1,4 +1,4 @@
-FROM node:12.20.1
+FROM node:14
 
 WORKDIR /usr/app
 
@@ -6,4 +6,6 @@ COPY ./ ./
 
 RUN yarn install --frozen-lockfile
 
-CMD ["yarn", "backend"]
+RUN yarn build
+
+CMD ["yarn", "start"]
