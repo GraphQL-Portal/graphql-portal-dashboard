@@ -8,4 +8,4 @@ RUN yarn install --frozen-lockfile
 
 RUN yarn build
 
-CMD ["yarn", "backend"]
+CMD ["yarn", "start:prod"]
