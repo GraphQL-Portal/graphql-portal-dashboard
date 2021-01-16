@@ -28,7 +28,7 @@
     "@nestjs/swagger": "4.7.9",
     "apollo-server-express": "2.19.0",
     "class-transformer": "0.3.1",
-    "class-validator": "0.12.2",
+    "class-validator": "0.13.1",
     "class-validator-mongo-object-id": "1.2.0",
     "cli-color": "2.0.0",
     "envsub": "4.0.7",
