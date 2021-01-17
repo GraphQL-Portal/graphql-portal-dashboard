@@ -2,10 +2,13 @@
   "application": {
     "env": "production",
     "useSwaggerUi": false,
+    "port": "@@DASHBOARD_PORT",
     "graphQL": {
       "playground": false,
       "debug": false
-    }
+    },
+    "logLevel": "@@LOG_LEVEL",
+    "secret": "@@SECRET"
   },
   "db": {
     "redis": {
