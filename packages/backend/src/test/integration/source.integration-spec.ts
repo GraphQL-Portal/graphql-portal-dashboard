@@ -1,14 +1,14 @@
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
-import SourceService from '../../modules/source/source.service';
 import supertest from 'supertest';
+import HeadersEnum from '../../common/enum/headers.enum';
+import IUser from '../../common/interface/user.interface';
 import AppModule from '../../modules/app.module';
+import SourceService from '../../modules/source/source.service';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
 import UserService from '../../modules/user/user.service';
 import { createUser, Method, requestTo, RequestToResult, sourceExample } from '../common';
-import IUser from '../../common/interface/user.interface';
-import HeadersEnum from '../../common/enum/headers.enum';
-import ITokens from '../../modules/user/interfaces/tokens.interface';
 
 jest.mock('ioredis');
 
@@ -52,8 +52,11 @@ describe('SourceResolver', () => {
     let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
 
     beforeAll(() => {
-      graphQlRequest = (query: string, variables = {}, headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }): supertest.Test =>
-        request(Method.post, '/graphql').set(headers).send({ query, variables });
+      graphQlRequest = (
+        query: string,
+        variables = {},
+        headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }
+      ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
     });
 
     describe('getSources', () => {

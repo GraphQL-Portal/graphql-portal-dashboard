@@ -1,15 +1,15 @@
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
-import GatewayService from '../../modules/gateway/gateway.service';
 import supertest from 'supertest';
-import AppModule from '../../modules/app.module';
-import { createUser, Method, requestTo, RequestToResult } from '../common';
 import HeadersEnum from '../../common/enum/headers.enum';
 import IGateway from '../../common/interface/gateway.interface';
-import UserService from '../../modules/user/user.service';
-import ITokens from '../../modules/user/interfaces/tokens.interface';
 import IUser from '../../common/interface/user.interface';
+import AppModule from '../../modules/app.module';
+import GatewayService from '../../modules/gateway/gateway.service';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
+import UserService from '../../modules/user/user.service';
+import { createUser, Method, requestTo, RequestToResult } from '../common';
 
 jest.mock('ioredis');
 

@@ -1,15 +1,17 @@
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
+import { config } from 'node-config-ts';
 import supertest from 'supertest';
-import AppModule from '../../modules/app.module';
-import { createUser, expectTokens, Method, requestTo, RequestToResult } from '../common';
 import HeadersEnum from '../../common/enum/headers.enum';
-import { randomString } from '../../common/tool';
-import ITokens from '../../modules/user/interfaces/tokens.interface';
 import Roles from '../../common/enum/roles.enum';
+import IUser from '../../common/interface/user.interface';
+import { LoggerService } from '../../common/logger';
+import { randomString } from '../../common/tool';
+import AppModule from '../../modules/app.module';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
 import UserService from '../../modules/user/user.service';
-import IUser from 'src/common/interface/user.interface';
+import { createUser, expectTokens, Method, requestTo, RequestToResult } from '../common';
 
 jest.mock('ioredis');
 
@@ -31,6 +33,7 @@ describe('ApiDefResolver', () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] }).compile();
 
     app = moduleFixture.createNestApplication();
+    app.useLogger(new LoggerService(config));
     await app.init();
 
     request = requestTo(app);
