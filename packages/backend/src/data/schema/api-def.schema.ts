@@ -7,6 +7,7 @@ const apiDefSchema = new mongoose.Schema(
   {
     name: String,
     endpoint: String,
+    authentication: String,
     sources: [
       {
         type: mongoose.Schema.Types.ObjectId,

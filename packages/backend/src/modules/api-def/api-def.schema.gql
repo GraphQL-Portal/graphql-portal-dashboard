@@ -7,12 +7,14 @@ type ApiDef {
   sources: [Source]
   createdAt: String
   updatedAt: String
+  authentication: String
 }
 
 input CreateApiDef {
   _id: String
   name: String
   endpoint: String
+  authentication: String
 }
 
 type ApiDefsWithTimestamp {

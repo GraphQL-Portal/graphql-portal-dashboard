@@ -24,7 +24,7 @@ export type RequestToResult = (method: Method, route: string) => supertest.Test;
 export const requestTo = (app: INestApplication) => (method: Method, route: string): RequestResult =>
   supertest(app.getHttpServer())[method](route);
 
-export const randomObjectId = () => new ObjectId().toHexString();
+export const randomObjectId = (): string => new ObjectId().toHexString();
 
 export const mongoDocumentSchema = {
   _id: expect.anything(),
@@ -46,6 +46,7 @@ export const apiDefExample: IApiDef = {
   name: 'api',
   endpoint: 'http://endpoint/graphql',
   sources: [sourceExample],
+  authentication: 'key',
 };
 
 export const sourceSchema = {
@@ -59,6 +60,7 @@ export const sourceSchema = {
 export const apiDefSchema = {
   name: expect.any(String),
   endpoint: expect.any(String),
+  authentication: expect.any(String),
 };
 
 export const createUser = async (
@@ -87,7 +89,7 @@ export const createUser = async (
 export const expectSource = (source: ISourceDocument): void =>
   expect(source.toJSON()).toMatchObject({ ...sourceSchema, ...mongoDocumentSchema });
 
-export const expectTokens = (result: ITokens) =>
+export const expectTokens = (result: ITokens): void =>
   expect(result).toMatchObject({
     accessToken: expect.any(String),
     refreshToken: expect.any(String),
