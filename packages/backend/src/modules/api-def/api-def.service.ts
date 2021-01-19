@@ -1,14 +1,13 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { ValidationError } from 'apollo-server-express';
 import { Model } from 'mongoose';
-import { ObjectID } from 'mongodb';
 import IApiDef from '../../common/interface/api-def.interface';
 import { LoggerService } from '../../common/logger';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
+import { ISourceDocument } from '../../data/schema/source.schema';
 import RedisService from '../redis/redis.service';
 import SourceService from '../source/source.service';
-import { ValidationError } from 'apollo-server-express';
-import { ISourceDocument } from '../../data/schema/source.schema';
 
 export type ApiDefsWithTimestamp = { apiDefs: IApiDef[]; timestamp: number };
 
@@ -17,7 +16,7 @@ export default class ApiDefService {
   public lastUpdateTime: number;
 
   public constructor(
-    @InjectModel('ApiDef') private apiDefModel: Model<IApiDefDocument>,
+    @InjectModel('ApiDef') private apiDefModel: Model<any>,
     private readonly logger: LoggerService,
     private readonly redisService: RedisService,
     @Inject(forwardRef(() => SourceService)) private readonly sourceService: SourceService
@@ -91,7 +90,7 @@ export default class ApiDefService {
     return Boolean(deleted);
   }
 
-  public async isSourceUsed(sources: ObjectID): Promise<IApiDefDocument | null> {
+  public async isSourceUsed(sources: string): Promise<IApiDefDocument | null> {
     return this.apiDefModel.findOne({ sources });
   }
 

@@ -7,13 +7,7 @@ import ApiDefService from '../../modules/api-def/api-def.service';
 import AppModule from '../../modules/app.module';
 import RedisService from '../../modules/redis/redis.service';
 import SourceService from '../../modules/source/source.service';
-import {
-  apiDefExample,
-  expectApiDef,
-  mongoDocumentSchema,
-  randomObjectId,
-  sourceExample,
-} from '../common';
+import { apiDefExample, expectApiDef, mongoDocumentSchema, randomObjectId, sourceExample } from '../common';
 
 describe('ApiDefService', () => {
   let app: TestingModule;
@@ -90,12 +84,13 @@ describe('ApiDefService', () => {
     it('should throw for wrong id', async () => {
       expect.assertions(1);
       const id = randomObjectId();
-      await expect(() => apiDefService.update(id, {} as IApiDef, [])).rejects
-        .toThrow(`ApiDef with id ${id} does not exist`);
+      await expect(() => apiDefService.update(id, {} as IApiDef, [])).rejects.toThrow(
+        `ApiDef with id ${id} does not exist`
+      );
     });
 
     it('should update document and call publishApiDefsUpdated', async () => {
-      const newData = { ...apiDef.toJSON(), endpoint: 'new-endpoint' } as IApiDef;
+      const newData = ({ ...apiDef.toJSON(), endpoint: 'new-endpoint' } as any) as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 
       expect(result).toBeDefined();

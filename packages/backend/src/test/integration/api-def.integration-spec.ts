@@ -1,14 +1,16 @@
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
-import ApiDefService from '../../modules/api-def/api-def.service';
+import { config } from 'node-config-ts';
 import supertest from 'supertest';
-import AppModule from '../../modules/app.module';
-import { Method, requestTo, RequestToResult, apiDefExample, createUser } from '../common';
-import UserService from '../../modules/user/user.service';
 import HeadersEnum from '../../common/enum/headers.enum';
 import IUser from '../../common/interface/user.interface';
+import { LoggerService } from '../../common/logger';
+import ApiDefService from '../../modules/api-def/api-def.service';
+import AppModule from '../../modules/app.module';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
+import UserService from '../../modules/user/user.service';
+import { apiDefExample, createUser, Method, requestTo, RequestToResult } from '../common';
 
 jest.mock('ioredis');
 
@@ -34,6 +36,7 @@ describe('ApiDefResolver', () => {
       .compile();
 
     app = moduleFixture.createNestApplication();
+    app.useLogger(new LoggerService(config));
     await app.init();
 
     request = requestTo(app);

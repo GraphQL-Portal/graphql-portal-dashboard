@@ -19,4 +19,4 @@ sourceSchema.index({ name: 1 }, { unique: true, sparse: true });
 
 export default sourceSchema;
 
-export interface ISourceDocument extends mongoose.Document, SourceConfig { }
+export interface ISourceDocument extends mongoose.Document, SourceConfig {}
