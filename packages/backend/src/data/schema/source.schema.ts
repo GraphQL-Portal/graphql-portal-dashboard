@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { SourceConfig } from '@graphql-portal/types';
 
-const sourceSchema = new mongoose.Schema<SourceConfig>(
+const sourceSchema = new mongoose.Schema(
   {
     name: String,
     handler: Object,

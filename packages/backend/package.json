@@ -39,7 +39,7 @@
     "ioredis": "4.19.4",
     "jsonwebtoken": "8.5.1",
     "mongodb": "3.6.3",
-    "mongoose": "5.11.8",
+    "mongoose": "^5.11.12",
     "node-config-ts": "3.1.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",

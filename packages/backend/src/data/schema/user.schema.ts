@@ -4,8 +4,14 @@ import { config } from 'node-config-ts';
 import Roles from '../../common/enum/roles.enum';
 import IUser from '../../common/interface/user.interface';
 
+export interface IUserDocument extends IUser, mongoose.Document {
+  _id?: string;
+  setPassword(password: string): void;
+  isValidPassword(password: string): boolean;
+}
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const UserSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema<IUserDocument>(
   {
     firstName: String,
     lastName: String,
@@ -41,12 +47,6 @@ UserSchema.methods.isValidPassword = function (password: string): boolean {
   const hash = crypto.pbkdf2Sync(password, config.application.salt, 10000, 512, 'sha512').toString('hex');
   return this.password === hash;
 };
-
-export interface IUserDocument extends IUser, mongoose.Document {
-  _id?: string;
-  setPassword(password: string): void;
-  isValidPassword(password: string): boolean;
-}
 
 UserSchema.pre<IUserDocument>('save', function (next) {
   try {

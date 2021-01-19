@@ -3,7 +3,7 @@ import IApiDef from '../../common/interface/api-def.interface';
 import { ISourceDocument } from './source.schema';
 import { IUserDocument } from './user.schema';
 
-const apiDefSchema = new mongoose.Schema<IApiDef>(
+const apiDefSchema = new mongoose.Schema(
   {
     name: String,
     endpoint: String,
