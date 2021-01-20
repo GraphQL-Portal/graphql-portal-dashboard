@@ -75,7 +75,7 @@ export default class MetricService {
   private async aggregateRequestMetric(requestId: string): Promise<void> {
     const rawData: AnyMetric[] = (await this.redis.lrange(requestId, 0, -1)).map(s => JSON.parse(s));
 
-    const resolvers = this.reduceResolvers(rawData);
+    const resolvers = this.reduceResolvers(rawData.filter(this.isResolverMetric) as AnyResolverMetric[]);
 
     const sentResponse: ISentResponse | undefined = (rawData.find(({ event }) => event === MetricsChannels.SENT_RESPONSE) as any);
     const gotRequest: IGotRequest | undefined = (rawData.find(({ event }) => event === MetricsChannels.GOT_REQUEST) as any);
@@ -94,7 +94,7 @@ export default class MetricService {
       request: gotRequest?.request,
       rawResponseBody: sentResponse?.rawResponseBody,
       contentLength: sentResponse?.contentLength,
-      error: gotError?.error,
+      error: gotError?.error || null,
       requestDate: gotRequest?.date,
       responseDate: sentResponse?.date,
     });
@@ -107,8 +107,8 @@ export default class MetricService {
   }
 
 
-  private reduceResolvers(rawData: AnyMetric[]): IReducedResolver[] {
-    const resolvers = rawData.filter(this.isResolverMetric).reduce((acc: any, resolverData: AnyResolverMetric) => {
+  private reduceResolvers(rawData: AnyResolverMetric[]): IReducedResolver[] {
+    const resolvers = rawData.reduce((acc: any, resolverData: AnyResolverMetric) => {
       const { event, path } = resolverData;
 
       if (!acc[path]) {
