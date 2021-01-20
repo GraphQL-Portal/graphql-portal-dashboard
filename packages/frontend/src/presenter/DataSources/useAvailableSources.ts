@@ -29,10 +29,10 @@ export const useAvailableSources = () => {
 
   const search = watch('search');
 
-  const onAddClick = (connector: any) => () => {
-    setSource(connector);
+  const onAddClick = (connector: any, key: string) => () => {
+    setSource({ connector, key });
     push(ROUTES.DATA_SOURCE_ADD)
-  }
+  };
 
   return {
     available: getFilteredSources(search, AVAILABLE_DATA_SOURCES),

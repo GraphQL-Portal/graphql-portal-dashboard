@@ -4,7 +4,7 @@ import { FormCaption as Props } from './types';
 import { useStyles } from './useStyles';
 
 export const FormCaption:React.FC<Props> = ({ title, description }) => {
-  const { formCaption, formCaptionItem } = useStyles();
+  const { formCaption, formCaptionItem } = useStyles({});
   return (
     <section className={formCaption}>
       {title && (

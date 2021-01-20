@@ -1,5 +1,7 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
+import { EditorWrapper } from './types';
+
 export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
   formCaption: {
     marginBottom: spacing(2),
@@ -10,7 +12,7 @@ export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
 
     '& > span': {
       color: palette.text.secondary,
-    }
+    },
   },
   code: {
     '& .jsoneditor': {
@@ -33,6 +35,7 @@ export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
   },
   editorsWrapper: {
     display: 'flex',
+    marginBottom: ({ gapBottom }: EditorWrapper) => spacing(gapBottom || 0),
   },
   editorCell: {
     flexGrow: 0,

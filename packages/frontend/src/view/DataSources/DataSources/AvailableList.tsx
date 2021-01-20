@@ -54,18 +54,18 @@ export const AvailableList:React.FC = () => {
           ))}
         </TableHead>
         <TableBody>
-          {Object.keys(available).map((key: string, idx: number) => {
+          {Object.keys(available).map((key: string) => {
             const source = available[key];
             const { title, type, description } = source;
             return (
-              <TableRow key={`node-${idx}`}>
+              <TableRow key={key}>
                 <TableCell>{title}</TableCell>
                 <TableCell>{type}</TableCell>
                 <TableCell>{description}</TableCell>
                 <TableCell align="right" className={actionCell}>
                   <Tooltip title="Add connector" placement="left" aria-label="add connector">
                     <span>
-                      <IconButton onClick={onAddClick(source)}>
+                      <IconButton onClick={onAddClick(source, key)}>
                         <Add />
                       </IconButton>
                     </span>
