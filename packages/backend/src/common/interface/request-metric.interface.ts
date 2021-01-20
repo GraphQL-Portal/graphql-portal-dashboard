@@ -1,5 +1,6 @@
 import { Request } from 'express';
 import { IReducedResolver } from '../../modules/metric/interfaces';
+
 export default interface IRequestMetric {
   requestId: string;
   nodeId: string;
