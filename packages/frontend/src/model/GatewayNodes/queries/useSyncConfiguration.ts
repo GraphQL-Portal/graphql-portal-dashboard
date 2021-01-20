@@ -1,20 +1,28 @@
-import { useLazyQuery, gql } from '@apollo/client';
+import { useLazyQuery, useQuery,  gql } from '@apollo/client';
 
-export const SYNC_CONFIGURATION = gql`
+const GET_API_DEFS = gql`
   {
-    publishApiDefsUpdated
     getApiDefs {
       timestamp
     }
   }
 `;
 
+const SYNC_CONFIGURATION = gql`
+  {
+    publishApiDefsUpdated
+  }
+`;
+
 export const useSyncConfiguration = () => {
-  const [onSyncConfiguration, { data, refetch }] = useLazyQuery(SYNC_CONFIGURATION);
+  const { data, refetch } = useQuery(GET_API_DEFS);
+  const [onSyncConfiguration] = useLazyQuery(SYNC_CONFIGURATION, {
+    onCompleted: refetch,
+    fetchPolicy: 'network-only',
+  });
 
   return {
     onSyncConfiguration,
     syncData: data,
-    refetch,
   };
 };
