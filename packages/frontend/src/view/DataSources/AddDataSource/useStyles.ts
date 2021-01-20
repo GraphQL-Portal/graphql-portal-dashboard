@@ -51,6 +51,9 @@ export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
   editorHeader: {
     marginBottom: spacing(1),
   },
+  editorErrorHeader: {
+    color: palette.error.main,
+  },
   editor: {
     height: '100%',
     '& .jsoneditor': {

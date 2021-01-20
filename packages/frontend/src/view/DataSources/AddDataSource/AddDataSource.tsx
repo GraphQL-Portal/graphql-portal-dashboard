@@ -25,10 +25,11 @@ import { useStyles } from './useStyles';
 
 export const AddDataSource:React.FC = () => {
   const { source, control, onSubmit, errors } = useAddDataSource();
-  const { visibleOverflow, editor, code, schema, editorHeader } = useStyles({});
+  const { visibleOverflow, editor, code, schema, editorHeader, editorErrorHeader } = useStyles({});
 
   const editorClassName = clsx(editor, code);
   const schemaClassName = clsx(editor, schema);
+  const editorConnectorHeader = clsx(editor, !!(errors && errors.handler) && editorErrorHeader );
 
   if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />
 
@@ -60,7 +61,7 @@ export const AddDataSource:React.FC = () => {
               </EditorWrapper>
               <EditorWrapper>
                 <EditorCell>
-                  <H6 className={editorHeader}>Connector config:</H6>
+                  <H6 className={editorConnectorHeader}>Connector config:</H6>
                 </EditorCell>
                 <EditorCell>
                   <H6 className={editorHeader}>Connector schema:</H6>
