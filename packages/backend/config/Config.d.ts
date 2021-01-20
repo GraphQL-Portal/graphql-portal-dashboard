@@ -23,6 +23,12 @@ declare module "node-config-ts" {
     jwtSecret: string
     salt: string
     defaultAdmin: DefaultAdmin
+    metrics: Metrics
+  }
+  interface Metrics {
+    enabled: boolean
+    chunk: number
+    delay: number
   }
   interface DefaultAdmin {
     email: string
