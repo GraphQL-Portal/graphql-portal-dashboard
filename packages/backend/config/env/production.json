@@ -7,8 +7,7 @@
       "playground": false,
       "debug": false
     },
-    "logLevel": "@@LOG_LEVEL",
-    "secret": "@@SECRET"
+    "logLevel": "log"
   },
   "db": {
     "redis": {
