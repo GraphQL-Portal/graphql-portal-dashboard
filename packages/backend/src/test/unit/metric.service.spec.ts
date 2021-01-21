@@ -2,20 +2,24 @@ import { MetricsChannels } from '@graphql-portal/types';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
-import { AnyMetric, AnyResolverMetric } from 'src/modules/metric/interfaces';
+import Provider from '../../common/enum/provider.enum';
+import { AnyMetric, AnyResolverMetric } from '../../modules/metric/interfaces';
 import AppModule from '../../modules/app.module';
 import MetricService from '../../modules/metric/metric.service';
+import { redisMock } from '../common';
 
 jest.useFakeTimers();
 
-jest.mock('ioredis');
-
-describe('SourceService', () => {
+describe('MetricService', () => {
   let app: TestingModule;
   let metricService: MetricService;
 
   beforeAll(async () => {
-    app = await Test.createTestingModule({ imports: [AppModule] }).compile();
+    app = await Test.createTestingModule({ imports: [AppModule] })
+      .overrideProvider(Provider.REDIS)
+      .useValue([redisMock, redisMock])
+      .compile();
+
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     metricService = app.get<MetricService>(MetricService);
@@ -131,7 +135,7 @@ describe('SourceService', () => {
       const spyLtrim = jest.spyOn((metricService as any).redis, 'ltrim').mockImplementation(() => { });
       const spyReduceResolvers = jest.spyOn((metricService as any), 'reduceResolvers').mockReturnValue(resolvers);
 
-      const requestId = 1;
+      const requestId = '1';
       await (metricService as any).aggregateRequestMetric(requestId);
 
       expect(spyLrange).toBeCalledTimes(1);

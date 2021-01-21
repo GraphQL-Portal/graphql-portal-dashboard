@@ -103,3 +103,9 @@ export const expectApiDef = (apiDef: IApiDefDocument): void => {
     expectSource(source);
   });
 };
+
+export const redisMock = {
+  on: jest.fn(),
+  lrange: jest.fn(),
+  ltrim: jest.fn(),
+};
