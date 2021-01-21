@@ -4,7 +4,7 @@ import vest, { test, enforce } from 'vest';
 
 import { useFormErrors  } from '../../model/Hooks';
 import { useCreateSource } from '../../model/DataSources/commands';
-import { useDataSourceContext, useToast } from '../../model/providers';
+import { useDataSourceContext } from '../../model/providers';
 import { validateAvj, getHandlerSchema } from './helpers';
 import { AJV_SCHEMA_TEMPLATE, definitions } from './constants';
 
@@ -15,41 +15,44 @@ type DataSourceFormInput = {
   handler: any;
 };
 
-// enforce.extend({
-//   isValidSchema() {
-//     return {
-//       pass: true,
-//       message: () => '',
-//     }
-//   }
-// })
-
-const validationSuite = vest.create('login_form', ({ name }: DataSourceFormInput) => {
-  test('name', 'Name is required', () => {
-    enforce(name).isNotEmpty();
-  });
-
-  // test('handler', () => {
-  //   enforce(handler).isValidSchema();
-  // });
-});
-
-
-
 export const useAddDataSource = () => {
-  const { showErrorToast } = useToast();
   const { source, clearSource } = useDataSourceContext();
   const { key = '', connector } = source || {};
 
-  const onCompleted = (data: any) => {
-    console.log('CREATE SUCCESS: ', data);
+  const onCompleted = () => {
+    // @TODO I need to refetch data-source from here
+    // or I need to tell useDataSource to refetch :)
+    clearSource();
   }
 
   const onError = (err: any) => {
     console.error('CREATE ERROR: ', err);
+    // @TODO probably I need to show error message
   }
 
   const { createSource } = useCreateSource({ onCompleted, onError });
+
+  enforce.extend({
+    isValidSchema(handler: any) {
+
+      return validate({
+        properties: {
+          [key]: getHandlerSchema(definitions)(key),
+        },
+      })({ [key]: handler });
+    },
+  });
+
+  const validationSuite = vest.create('login_form', ({ name, handler }: DataSourceFormInput) => {
+    test('name', 'Name is required', () => {
+      enforce(name).isNotEmpty();
+    });
+
+    test('handler', 'Please provide correct connector configuration', () => {
+      enforce(handler).isValidSchema();
+    });
+  });
+
 
   const { control, handleSubmit, errors } = useForm({
     reValidateMode: 'onSubmit',
@@ -62,31 +65,15 @@ export const useAddDataSource = () => {
 
   useFormErrors(errors);
 
-  const onHandlerValidate = (data: any) =>
-    validate({
-      properties: {
-        [key]: getHandlerSchema(definitions)(key),
-      },
-    })({ [key]: data });
-
-  console.log(source, clearSource);
-
   const onSubmit = (source: any) => {
-
-    // message is function because I've tried to use vest
-    // I'm waiting on a fix for typings
-    const { pass, message } = onHandlerValidate(source.handler);
-
-    if (pass) {
-      createSource({
-        variables: {
-          source,
-        },
-      });
-    } else {
-      showErrorToast(message());
-    }
+    createSource({
+      variables: {
+        source,
+      },
+    });
   };
+
+  console.log('ERRORS useForm ARE: ', errors);
 
   return {
     source: connector,

@@ -8,7 +8,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   toolbarRoot: {
     justifyContent: 'space-between',
   },
-  rightSide: {
+  side: {
     display: 'flex',
     alignItems: 'center',
   }

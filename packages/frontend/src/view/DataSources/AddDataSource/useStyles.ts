@@ -3,6 +3,15 @@ import { makeStyles, Theme } from '@material-ui/core';
 import { EditorWrapper } from './types';
 
 export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
+  backArrow: {
+    display: 'block',
+    color: palette.text.primary,
+    marginRight: spacing(1),
+
+    '& > svg': {
+      display: 'block',
+    },
+  },
   formCaption: {
     marginBottom: spacing(2),
   },
