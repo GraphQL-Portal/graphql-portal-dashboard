@@ -123,12 +123,16 @@ describe('SourceService', () => {
 
       const spyCreate = jest.spyOn((metricService as any).requestMetricModel, 'create').mockImplementation();
       const spyLrange = jest.spyOn((metricService as any).redis, 'lrange').mockResolvedValue(records.map(r => JSON.stringify(r)));
+      const spyLtrim = jest.spyOn((metricService as any).redis, 'ltrim').mockImplementation(() => {});
       const spyReduceResolvers = jest.spyOn((metricService as any), 'reduceResolvers').mockReturnValue(resolvers);
 
       const requestId = 1;
       await (metricService as any).aggregateRequestMetric(requestId);
 
       expect(spyLrange).toBeCalledTimes(1);
+      expect(spyLrange).toBeCalledWith(requestId, 0, -1);
+      expect(spyLtrim).toBeCalledTimes(1);
+      expect(spyLtrim).toBeCalledWith(requestId, 0, -1);
       expect(spyReduceResolvers).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledWith({

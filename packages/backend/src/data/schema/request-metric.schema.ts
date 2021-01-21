@@ -5,7 +5,7 @@ const RequestMetricSchema = new mongoose.Schema(
   {
     requestId: String,
     nodeId: String,
-    query: String,
+    query: Object,
     userAgent: String,
     ip: String,
     resolvers: [Object],

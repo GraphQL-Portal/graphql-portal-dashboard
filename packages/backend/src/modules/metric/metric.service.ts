@@ -74,6 +74,7 @@ export default class MetricService {
 
   private async aggregateRequestMetric(requestId: string): Promise<void> {
     const rawData: AnyMetric[] = (await this.redis.lrange(requestId, 0, -1)).map(s => JSON.parse(s));
+    await this.redis.ltrim(requestId, 0, -1);
 
     const resolvers = this.reduceResolvers(rawData.filter(this.isResolverMetric) as AnyResolverMetric[]);
 
@@ -88,7 +89,7 @@ export default class MetricService {
       resolvers,
       latency,
       nodeId: gotRequest?.nodeId,
-      query: gotRequest?.query || { query: "", variables: null },
+      query: (gotRequest?.query) instanceof Object ? gotRequest.query : { query: "", variables: null },
       userAgent: gotRequest?.userAgent,
       ip: gotRequest?.ip,
       request: gotRequest?.request,

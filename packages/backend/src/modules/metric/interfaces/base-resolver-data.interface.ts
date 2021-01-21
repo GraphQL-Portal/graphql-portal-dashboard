@@ -5,6 +5,6 @@ export default interface IBaseResolverData {
   info: any,
   args: any,
   path: string,
-  source: string | undefined,
+  source?: string,
   date: number,
 }
