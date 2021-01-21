@@ -7,8 +7,11 @@ export const validateAvj = (schemaTemplate: any) => (validationObject: any) => (
   const validate = (new Ajv()).compile(schema);
 
   if (validate(data)) {
-    return { pass: true, message: () => '' };
+    return { pass: true, message: '' };
   } else {
-    return { pass: false, message: () => getFirstMessage(validate.errors!) };
+    return {
+      pass: false,
+      message: () => getFirstMessage(validate.errors!) || ''
+    };
   }
 }

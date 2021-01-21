@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Controller } from 'react-hook-form'
 import clsx from 'clsx';
 import { JsonEditor as Editor } from 'jsoneditor-react';
@@ -16,16 +16,18 @@ import {
   H6,
   Input,
   PrimaryButton,
+  Header,
 } from '../../../ui';
 import { EditorWrapper } from './EditorWrapper';
 import { EditorCell } from './EditorCell';
 import { FormCaption } from './FormCaption';
 import { useStyles } from './useStyles';
+import { ArrowBack } from '@material-ui/icons';
 
 
 export const AddDataSource:React.FC = () => {
   const { source, control, onSubmit, errors } = useAddDataSource();
-  const { visibleOverflow, editor, code, schema, editorHeader, editorErrorHeader } = useStyles({});
+  const { visibleOverflow, editor, code, schema, editorHeader, editorErrorHeader, backArrow } = useStyles({});
 
   const editorClassName = clsx(editor, code);
   const schemaClassName = clsx(editor, schema);
@@ -40,6 +42,14 @@ export const AddDataSource:React.FC = () => {
       <Helmet>
         <title>Add new connector</title>
       </Helmet>
+      <Header
+        startChildren={
+          <Link to={ROUTES.DATA_SOURCES} className={backArrow}>
+            <ArrowBack />
+          </Link>
+        }
+        title="Back to data-sources"
+      />
       <WidgetRow>
         <HugeWidget className={visibleOverflow}>
           <WidgetHeader title="Configure a data source" />
