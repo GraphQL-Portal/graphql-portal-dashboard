@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import INetworkMetric from '../../common/interface/network-metric.interface';
 
-const NetworkMetricSchema = new mongoose.Schema(
+const networkMetricSchema = new mongoose.Schema(
   {
     nodeId: String,
     bytesIn: Number,
@@ -12,6 +12,6 @@ const NetworkMetricSchema = new mongoose.Schema(
   { versionKey: false, timestamps: true }
 );
 
-export interface INetworkMetricDocument extends INetworkMetric, mongoose.Document {}
+export interface INetworkMetricDocument extends INetworkMetric, mongoose.Document { }
 
-export default NetworkMetricSchema;
+export default networkMetricSchema;

@@ -14,7 +14,7 @@ import {
   IGotError,
   IGotRequest,
   ISentResponse,
-  IReducedResolver
+  IReducedResolver,
 } from './interfaces';
 
 @Injectable()
@@ -31,11 +31,11 @@ export default class MetricService {
     [this.redis] = this.redisClients;
   }
 
-  private onModuleInit() {
+  private onModuleInit(): void {
     this.init();
   }
 
-  public init() {
+  public init(): void {
     const { enabled = true, chunk = 10, delay = 5000 } = config.application.metrics;
 
     if (!enabled) return;
@@ -45,8 +45,8 @@ export default class MetricService {
       this.intervals = [];
     }
 
-    this.intervals.push(setTimeout(this.fetchMetrics.bind(this, MetricsChannels.REQUEST_IDS, chunk), delay));
-    this.intervals.push(setTimeout(this.fetchMetrics.bind(this, MetricsChannels.NETWORK, chunk), delay));
+    this.intervals.push(setInterval(this.fetchMetrics.bind(this, MetricsChannels.REQUEST_IDS, chunk), delay));
+    this.intervals.push(setInterval(this.fetchMetrics.bind(this, MetricsChannels.NETWORK, chunk), delay));
   }
 
   private async fetchMetrics(channel: MetricsChannels.REQUEST_IDS | MetricsChannels.NETWORK, chunk: number): Promise<void> {
@@ -57,6 +57,8 @@ export default class MetricService {
 
     try {
       const records = await this.getRecords(channel, chunk);
+      if (!records.length) return;
+
       await Promise.all(records.map(aggregateFunction));
     } catch (error) {
       this.logger.error(error, null, `${this.constructor.name}:${this.fetchMetrics.name}`, { channel, chunk });
@@ -64,17 +66,17 @@ export default class MetricService {
   }
 
   private async getRecords(channel: MetricsChannels.REQUEST_IDS | MetricsChannels.NETWORK, chunk: number): Promise<string[]> {
-    const [[_, records]] = await this.redis
+    const [[error, records]] = await this.redis
       .multi()
       .lrange(channel, 0, chunk)
-      .ltrim(channel, 0, chunk)
+      .ltrim(channel, chunk + 1, -1)
       .exec();
     return records;
   }
 
   private async aggregateRequestMetric(requestId: string): Promise<void> {
     const rawData: AnyMetric[] = (await this.redis.lrange(requestId, 0, -1)).map(s => JSON.parse(s));
-    await this.redis.ltrim(requestId, 0, -1);
+    await this.redis.ltrim(requestId, rawData.length, -1);
 
     const resolvers = this.reduceResolvers(rawData.filter(this.isResolverMetric) as AnyResolverMetric[]);
 
@@ -110,22 +112,21 @@ export default class MetricService {
 
   private reduceResolvers(rawData: AnyResolverMetric[]): IReducedResolver[] {
     const resolvers = rawData.reduce((acc: any, resolverData: AnyResolverMetric) => {
-      const { event, path } = resolverData;
+      const { path } = resolverData;
 
       if (!acc[path]) {
         acc[path] = {};
       }
 
       acc[path] = {
-        path,
         ...acc[path],
-        [event]: resolverData,
+        ...this.transformResolverData(resolverData),
       };
 
       const resolver = acc[path];
 
-      const doneAt = resolver[MetricsChannels.RESOLVER_DONE]?.date || resolver[MetricsChannels.RESOLVER_ERROR]?.date;
-      const calledAt = resolver[MetricsChannels.RESOLVER_CALLED]?.date;
+      const doneAt = resolver.doneAt || resolver.errorAt;
+      const calledAt = resolver.calledAt;
       if (calledAt && doneAt && !resolver.latency) {
         resolver.latency = doneAt - calledAt;
       }
@@ -135,6 +136,31 @@ export default class MetricService {
 
     return Object.values(resolvers);
   };
+
+  private transformResolverData(data: AnyResolverMetric): Partial<IReducedResolver> {
+    switch (data.event) {
+      case MetricsChannels.RESOLVER_CALLED:
+        return {
+          path: data.path,
+          source: data.source,
+          info: data.info,
+          args: data.args,
+          calledAt: data.date,
+        };
+      case MetricsChannels.RESOLVER_DONE:
+        return {
+          doneAt: data.date,
+          result: data.result,
+        };
+      case MetricsChannels.RESOLVER_ERROR:
+        return {
+          errorAt: data.date,
+          error: data.error,
+        };
+      default:
+        return {};
+    }
+  }
 
   private isResolverMetric(metric: AnyMetric): boolean {
     return [MetricsChannels.RESOLVER_CALLED, MetricsChannels.RESOLVER_DONE, MetricsChannels.RESOLVER_ERROR].includes(metric.event);

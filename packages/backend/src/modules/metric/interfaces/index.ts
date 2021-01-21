@@ -9,7 +9,7 @@ import IReducedResolver from './reduced-resolver.interface';
 
 export type AnyMetric = IGotRequest | IGotError | ISentResponse | IResolverCalled | IResolverDone | IResolverError;
 
-export type AnyResolverMetric = IResolverCalled | IResolverDone | IResolverError
+export type AnyResolverMetric = IResolverCalled | IResolverDone | IResolverError;
 
 export {
   IGotRequest,
@@ -19,4 +19,4 @@ export {
   IGotError,
   ISentResponse,
   IReducedResolver,
-}
+};

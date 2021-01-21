@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import IRequestMetric from '../../common/interface/request-metric.interface';
 
-const RequestMetricSchema = new mongoose.Schema(
+const requestMetricSchema = new mongoose.Schema(
   {
     requestId: String,
     nodeId: String,
@@ -15,7 +15,7 @@ const RequestMetricSchema = new mongoose.Schema(
     responseDate: Date,
     latency: Number,
     contentLength: Number,
-    error: String,
+    error: Object,
   },
   { versionKey: false, timestamps: true }
 );
@@ -23,4 +23,4 @@ const RequestMetricSchema = new mongoose.Schema(
 export interface IRequestMetricDocument extends IRequestMetric, mongoose.Document { }
 
 
-export default RequestMetricSchema;
+export default requestMetricSchema;

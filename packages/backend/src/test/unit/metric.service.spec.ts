@@ -8,6 +8,8 @@ import MetricService from '../../modules/metric/metric.service';
 
 jest.useFakeTimers();
 
+jest.mock('ioredis');
+
 describe('SourceService', () => {
   let app: TestingModule;
   let metricService: MetricService;
@@ -20,6 +22,9 @@ describe('SourceService', () => {
   });
 
   afterAll(async () => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+    await mongoose.connection.close();
     await app.close();
   });
 
@@ -32,7 +37,7 @@ describe('SourceService', () => {
       const spyFetchMetrics = jest.spyOn(metricService as any, 'fetchMetrics').mockImplementation(() => { });
 
       metricService.init();
-      jest.advanceTimersByTime(config.application.metrics.delay)
+      jest.advanceTimersByTime(config.application.metrics.delay);
 
       expect(spyFetchMetrics).toBeCalledTimes(2);
       expect(spyFetchMetrics).nthCalledWith(1, MetricsChannels.REQUEST_IDS, config.application.metrics.chunk);
@@ -82,7 +87,7 @@ describe('SourceService', () => {
         },
         date: 4,
         nodeId: 'nodeId',
-      }
+      };
       const spyCreate = jest.spyOn((metricService as any).networkMetricModel, 'create').mockImplementation();
 
       await (metricService as any).aggregateNetworkMetric(JSON.stringify(data));
@@ -118,12 +123,12 @@ describe('SourceService', () => {
           contentLength,
           date: responseDate,
         },
-      ]
+      ];
       const resolvers = [{ path: 'path', latency: 100500 }];
 
       const spyCreate = jest.spyOn((metricService as any).requestMetricModel, 'create').mockImplementation();
       const spyLrange = jest.spyOn((metricService as any).redis, 'lrange').mockResolvedValue(records.map(r => JSON.stringify(r)));
-      const spyLtrim = jest.spyOn((metricService as any).redis, 'ltrim').mockImplementation(() => {});
+      const spyLtrim = jest.spyOn((metricService as any).redis, 'ltrim').mockImplementation(() => { });
       const spyReduceResolvers = jest.spyOn((metricService as any), 'reduceResolvers').mockReturnValue(resolvers);
 
       const requestId = 1;
@@ -132,7 +137,7 @@ describe('SourceService', () => {
       expect(spyLrange).toBeCalledTimes(1);
       expect(spyLrange).toBeCalledWith(requestId, 0, -1);
       expect(spyLtrim).toBeCalledTimes(1);
-      expect(spyLtrim).toBeCalledWith(requestId, 0, -1);
+      expect(spyLtrim).toBeCalledWith(requestId, records.length, -1);
       expect(spyReduceResolvers).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledWith({
@@ -149,18 +154,23 @@ describe('SourceService', () => {
         error: null,
         requestDate,
         responseDate,
-      })
+      });
     });
 
     it('reduceResolvers', () => {
       const info = { info: 'smth' };
       const args = { args: 'smth' };
       const path = 'a';
+      const source = 'b';
+      const error = 'error';
       const resolverCalledDate = 1;
       const resolverDoneDate = 2;
+      const resolverErrorDate = 3;
+      const result = 'result';
       const resolvers: AnyResolverMetric[] = [
         {
           event: MetricsChannels.RESOLVER_CALLED,
+          source,
           info,
           args,
           path,
@@ -168,31 +178,34 @@ describe('SourceService', () => {
         },
         {
           event: MetricsChannels.RESOLVER_DONE,
-          info,
-          args,
+          source,
           path,
           date: resolverDoneDate,
-          result: 'b',
+          result,
         },
         {
           event: MetricsChannels.RESOLVER_ERROR,
-          info,
-          args,
+          source,
           path,
-          date: 3,
-          error: 'error',
-        }]
+          date: resolverErrorDate,
+          error,
+        }];
 
-      const result = (metricService as any).reduceResolvers(resolvers);
-      expect(result).toMatchObject([
+      const data = (metricService as any).reduceResolvers(resolvers);
+      expect(data).toMatchObject([
         {
           path,
           latency: resolverDoneDate - resolverCalledDate,
-          [MetricsChannels.RESOLVER_CALLED]: resolvers[0],
-          [MetricsChannels.RESOLVER_DONE]: resolvers[1],
-          [MetricsChannels.RESOLVER_ERROR]: resolvers[2],
+          info,
+          args,
+          source,
+          result,
+          doneAt: resolverDoneDate,
+          calledAt: resolverCalledDate,
+          errorAt: resolverErrorDate,
+          error,
         }
-      ])
+      ]);
     });
   });
 });
