@@ -4,6 +4,8 @@ import LogLevel from '../../common/logger/enum/log.level.enum';
 
 jest.useFakeTimers();
 
+jest.mock('ioredis');
+
 describe('LoggerService', () => {
   let loggerService: LoggerService;
   let spiedPrintMessage: jest.MockedFunction<any>;

@@ -11,6 +11,8 @@ import { apiDefExample, expectApiDef, mongoDocumentSchema, randomObjectId, sourc
 
 jest.useFakeTimers();
 
+jest.mock('ioredis');
+
 describe('ApiDefService', () => {
   let app: TestingModule;
   let sourceService: SourceService;

@@ -14,6 +14,8 @@ import {
 
 jest.useFakeTimers();
 
+jest.mock('ioredis');
+
 describe('SourceService', () => {
   let app: TestingModule;
   let sourceService: SourceService;

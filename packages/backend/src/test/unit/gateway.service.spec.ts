@@ -8,6 +8,8 @@ import GatewayStatusTimers from '../../common/enum/gateway-status-timers.enum';
 
 jest.useFakeTimers();
 
+jest.mock('ioredis');
+
 describe('GatewayService', () => {
   let app: TestingModule;
   let gatewayService: GatewayService;

@@ -11,6 +11,8 @@ import { createUser, randomObjectId } from '../common';
 
 jest.useFakeTimers();
 
+jest.mock('ioredis');
+
 describe('ApiDefService', () => {
   let app: TestingModule;
   let userService: UserService;
@@ -75,7 +77,7 @@ describe('ApiDefService', () => {
       let id: string;
       let user: IUserDocument;
 
-      const expectUser = (data: IUserDocument) => {
+      const expectUser = (data: IUserDocument): void => {
         expect(data).toMatchObject({
           ...registrationData,
           createdAt: expect.any(Date),
