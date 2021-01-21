@@ -9,6 +9,8 @@ import * as jwt from '../../common/tool/token.tool';
 
 jest.spyOn(jwt as any, 'verify').mockResolvedValue(true);
 
+jest.useFakeTimers();
+
 describe('ApiDefService', () => {
   let app: TestingModule;
   let tokenService: TokenService;

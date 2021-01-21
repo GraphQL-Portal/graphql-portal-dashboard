@@ -2,23 +2,20 @@ import { MetricsChannels } from '@graphql-portal/types';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
-import Provider from '../../common/enum/provider.enum';
 import { AnyMetric, AnyResolverMetric } from '../../modules/metric/interfaces';
 import AppModule from '../../modules/app.module';
 import MetricService from '../../modules/metric/metric.service';
-import { redisMock } from '../common';
 
 jest.useFakeTimers();
+
+jest.mock('ioredis');
 
 describe('MetricService', () => {
   let app: TestingModule;
   let metricService: MetricService;
 
   beforeAll(async () => {
-    app = await Test.createTestingModule({ imports: [AppModule] })
-      .overrideProvider(Provider.REDIS)
-      .useValue([redisMock, redisMock])
-      .compile();
+    app = await Test.createTestingModule({ imports: [AppModule] }).compile();
 
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 

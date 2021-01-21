@@ -12,6 +12,8 @@ import {
   randomObjectId,
 } from '../common';
 
+jest.useFakeTimers();
+
 describe('SourceService', () => {
   let app: TestingModule;
   let sourceService: SourceService;

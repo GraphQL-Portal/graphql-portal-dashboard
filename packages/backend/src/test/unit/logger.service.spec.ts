@@ -2,6 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { LoggerModule, LoggerService } from '../../common/logger';
 import LogLevel from '../../common/logger/enum/log.level.enum';
 
+jest.useFakeTimers();
+
 describe('LoggerService', () => {
   let loggerService: LoggerService;
   let spiedPrintMessage: jest.MockedFunction<any>;
