@@ -1,47 +1,29 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, Redirect } from 'react-router-dom';
-import { Controller } from 'react-hook-form'
+import { Redirect } from 'react-router-dom';
+import { Controller } from 'react-hook-form';
 import clsx from 'clsx';
 import { JsonEditor as Editor } from 'jsoneditor-react';
 import 'jsoneditor-react/es/editor.min.css';
 
 import { ROUTES } from '../../../model/providers';
 import { useAddDataSource } from '../../../presenter/DataSources';
-import {
-  WidgetRow,
-  HugeWidget,
-  WidgetHeader,
-  WidgetBody,
-  H6,
-  Input,
-  PrimaryButton,
-  Header,
-} from '../../../ui';
+import { WidgetRow, HugeWidget, WidgetHeader, WidgetBody, H6, Input, PrimaryButton } from '../../../ui';
 import { EditorWrapper } from './EditorWrapper';
 import { EditorCell } from './EditorCell';
 import { FormCaption } from './FormCaption';
+import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
-import { ArrowBack } from '@material-ui/icons';
 
-
-export const AddDataSource:React.FC = () => {
+export const AddDataSource: React.FC = () => {
   const { source, control, onSubmit, errors } = useAddDataSource();
-  const {
-    visibleOverflow,
-    editor,
-    code,
-    schema,
-    editorHeader,
-    editorErrorHeader,
-    backArrow,
-  } = useStyles({});
+  const { visibleOverflow, editor, code, schema, editorHeader, editorErrorHeader } = useStyles({});
 
   const editorClassName = clsx(editor, code);
   const schemaClassName = clsx(editor, schema);
-  const editorConnectorHeader = clsx(editor, !!(errors && errors.handler) && editorErrorHeader );
+  const editorConnectorHeader = clsx(editor, !!(errors && errors.handler) && editorErrorHeader);
 
-  if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />
+  if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;
 
   const { title, description } = source;
 
@@ -50,17 +32,10 @@ export const AddDataSource:React.FC = () => {
       <Helmet>
         <title>Add new connector</title>
       </Helmet>
-      <Header
-        startChildren={
-          <Link to={ROUTES.DATA_SOURCES} className={backArrow}>
-            <ArrowBack />
-          </Link>
-        }
-        title="Back to data-sources"
-      />
+      <AddDataSourceHeader />
       <WidgetRow>
         <HugeWidget className={visibleOverflow}>
-          <WidgetHeader title="Configure a data source" />
+          <WidgetHeader title="Configure a data-source" />
           <WidgetBody>
             <FormCaption title={title} description={description} />
             <form onSubmit={onSubmit}>
@@ -75,7 +50,7 @@ export const AddDataSource:React.FC = () => {
                     error={!!(errors && errors.name)}
                   />
                 </EditorCell>
-                <EditorCell></EditorCell>
+                <EditorCell />
               </EditorWrapper>
               <EditorWrapper>
                 <EditorCell>
@@ -122,4 +97,4 @@ export const AddDataSource:React.FC = () => {
       </WidgetRow>
     </>
   );
-}
+};

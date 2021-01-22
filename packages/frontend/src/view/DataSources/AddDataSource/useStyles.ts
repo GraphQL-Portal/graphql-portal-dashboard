@@ -3,24 +3,19 @@ import { makeStyles, Theme } from '@material-ui/core';
 import { EditorWrapper } from './types';
 
 export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
-  backArrow: {
-    display: 'block',
+  backButton: {
+    display: 'flex',
+    alignItems: 'center',
+    textDecoration: 'none',
     color: palette.text.primary,
-    marginRight: spacing(1),
 
     '& > svg': {
       display: 'block',
+      marginRight: spacing(1.5),
     },
-  },
-  formCaption: {
-    marginBottom: spacing(2),
-  },
-  formCaptionItem: {
-    margin: 0,
-    marginBottom: spacing(1),
 
-    '& > span': {
-      color: palette.text.secondary,
+    '& > h3': {
+      lineHeight: 0.8,
     },
   },
   code: {

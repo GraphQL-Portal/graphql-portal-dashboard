@@ -1,4 +1,7 @@
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme } from '@material-ui/core';
+
+import { RGBA } from './helpers';
+import { FONT_STACK, BOLD_FONT } from './constants';
 
 export const theme = createMuiTheme({
   overrides: {
@@ -8,7 +11,7 @@ export const theme = createMuiTheme({
           overflowX: 'hidden',
           maxWidth: '100%',
           minHeight: '100vh',
-          fontFamily: "'PT Sans', 'Roboto', 'Helvetica', 'Arial',  sans-serif",
+          fontFamily: FONT_STACK,
         },
         '#root': {
           height: '100vh',
@@ -21,6 +24,10 @@ export const theme = createMuiTheme({
       root: {
         textTransform: 'none',
         padding: '0.5rem 1.5rem',
+
+        '&:hover': {
+          backgroundColor: RGBA(0.08),
+        },
       },
       text: {
         padding: '0.5rem 1rem',
@@ -44,12 +51,16 @@ export const theme = createMuiTheme({
     MuiTableBody: {
       root: {
         '& > tr > td': {
-          backgroundColor: 'rgba(200, 200, 255, 0.06)',
+          backgroundColor: RGBA(0.06),
+          borderTop: `1px solid ${RGBA(0.06)}`,
+          borderBottom: `1px solid ${RGBA(0.08)}`,
           '&:first-child': {
             borderRadius: '8px 0 0 8px',
+            borderLeft: `1px solid ${RGBA(0.06)}`,
           },
           '&:last-child': {
             borderRadius: ' 0 8px 8px 0',
+            borderRight: `1px solid ${RGBA(0.06)}`,
           },
         },
       },
@@ -59,14 +70,14 @@ export const theme = createMuiTheme({
         borderBottom: 0,
       },
       head: {
-        fontWeight: 700,
+        fontWeight: BOLD_FONT,
       },
     },
   },
   typography: {
     htmlFontSize: 16,
     fontSize: 16,
-    fontFamily: "'PT Sans', 'Roboto', 'Helvetica', 'Arial',  sans-serif",
+    fontFamily: FONT_STACK,
     h1: {
       fontSize: '3rem',
     },
@@ -113,7 +124,12 @@ export const theme = createMuiTheme({
       dark: '#CB2A3A',
     },
     action: {
-      hover: 'rgba(200, 200, 255, 0.08)',
+      active: '#fff',
+      hover: RGBA(0.08),
+      selected: RGBA(0.16),
+      disabled: RGBA(0.26),
+      disabledBackground: RGBA(0.12),
+      focus: RGBA(0.12),
     },
   },
   shape: {

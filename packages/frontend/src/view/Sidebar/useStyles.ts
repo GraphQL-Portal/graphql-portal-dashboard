@@ -9,7 +9,7 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     width: DRAWER_WIDTH,
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    padding: spacing(6),
+    padding: spacing(4, 6),
   },
   paper: {
     border: 0,
