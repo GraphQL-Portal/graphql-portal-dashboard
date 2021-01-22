@@ -17,7 +17,6 @@ import {
   Input,
   PrimaryButton,
   Header,
-  Select,
 } from '../../../ui';
 import { EditorWrapper } from './EditorWrapper';
 import { EditorCell } from './EditorCell';
@@ -28,7 +27,15 @@ import { ArrowBack } from '@material-ui/icons';
 
 export const AddDataSource:React.FC = () => {
   const { source, control, onSubmit, errors } = useAddDataSource();
-  const { visibleOverflow, editor, code, schema, editorHeader, editorErrorHeader, backArrow } = useStyles({});
+  const {
+    visibleOverflow,
+    editor,
+    code,
+    schema,
+    editorHeader,
+    editorErrorHeader,
+    backArrow,
+  } = useStyles({});
 
   const editorClassName = clsx(editor, code);
   const schemaClassName = clsx(editor, schema);
@@ -105,19 +112,6 @@ export const AddDataSource:React.FC = () => {
                     }}
                     mode="view"
                     navigationBar={false}
-                  />
-                </EditorCell>
-              </EditorWrapper>
-              <EditorWrapper>
-                <EditorCell>
-                  <Select
-                    fullWidth
-                    options={[
-                      {value: 1, label: 'first value'},
-                      {value: 2, label: 'second value'}
-                    ]}
-                    label="Transforms"
-                    labelId="transforms"
                   />
                 </EditorCell>
               </EditorWrapper>

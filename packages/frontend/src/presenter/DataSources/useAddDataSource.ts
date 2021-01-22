@@ -73,8 +73,6 @@ export const useAddDataSource = () => {
     });
   };
 
-  console.log('ERRORS useForm ARE: ', errors);
-
   return {
     source: connector,
     onSubmit: handleSubmit(onSubmit),

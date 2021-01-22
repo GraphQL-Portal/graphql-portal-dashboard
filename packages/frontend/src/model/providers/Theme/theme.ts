@@ -20,16 +20,14 @@ export const theme = createMuiTheme({
     MuiButton: {
       root: {
         textTransform: 'none',
-        fontSize: '0.875rem',
-        padding: '0.5rem 1rem',
+        padding: '0.5rem 1.5rem',
       },
       text: {
         padding: '0.5rem 1rem',
       },
       containedPrimary: {
-        background: 'linear-gradient(45deg, #BD54D3 10%, #6B9FF1 90%)',
+        background: 'linear-gradient(#BD54D3 10%, #9C2EB2 90%)',
         textShadow: `1px 1px 0 #24292d85`,
-        fontWeight: 700,
         letterSpacing: '0.5px',
       },
       startIcon: {
@@ -37,12 +35,33 @@ export const theme = createMuiTheme({
         marginRight: '16px',
       },
     },
-    // MuiOutlinedInput: {
-    //   input: {
-    //     padding: 16,
-    //     fontSize: '1rem',
-    //   }
-    // }
+    MuiTable: {
+      root: {
+        borderSpacing: '0 16px',
+        borderCollapse: 'separate',
+      },
+    },
+    MuiTableBody: {
+      root: {
+        '& > tr > td': {
+          backgroundColor: 'rgba(200, 200, 255, 0.06)',
+          '&:first-child': {
+            borderRadius: '8px 0 0 8px',
+          },
+          '&:last-child': {
+            borderRadius: ' 0 8px 8px 0',
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      root: {
+        borderBottom: 0,
+      },
+      head: {
+        fontWeight: 700,
+      },
+    },
   },
   typography: {
     htmlFontSize: 16,
@@ -70,13 +89,13 @@ export const theme = createMuiTheme({
   palette: {
     type: 'dark',
     background: {
-      default: '#24292d',
-      paper: '#1B1F22',
+      paper: '#24292D',
+      default: '#1B1F22',
     },
     primary: {
       light: '#CD7DDE',
       main: '#BD54D3',
-      dark: '#B53CCD',
+      dark: '#9C2EB2',
     },
     secondary: {
       light: '#8FB6F5',
@@ -93,5 +112,11 @@ export const theme = createMuiTheme({
       main: '#d73a49',
       dark: '#CB2A3A',
     },
+    action: {
+      hover: 'rgba(200, 200, 255, 0.08)',
+    },
+  },
+  shape: {
+    borderRadius: 8,
   },
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Help } from '@material-ui/icons';
 
-import { H6 } from '../../Typography';
+import { H5 } from '../../Typography';
 import { Tooltip } from '../../Tooltip';
 import { WidgetHeader as Props } from '../types';
 import { useStyles } from './useStyles';
@@ -12,7 +12,7 @@ export const WidgetHeader:React.FC<Props> = ({ title, children, tooltip }) => {
   return (
     <header className={widgetHeader}>
       <div className={widgetHeaderTitle}>
-        <H6 className={titleText}>{title}</H6>
+        <H5 className={titleText}>{title}</H5>
         {tooltip && (
           <Tooltip title={tooltip} interactive>
             <Help fontSize="small" classes={{ root: iconRoot }} />
