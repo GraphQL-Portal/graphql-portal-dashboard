@@ -14,7 +14,7 @@
     "date-fns": "2.16.1",
     "graphql": "15.4.0",
     "js-cookie": "2.2.1",
-    "jsoneditor": "9.1.8",
+    "jsoneditor": "9.1.9",
     "jsoneditor-react": "3.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
