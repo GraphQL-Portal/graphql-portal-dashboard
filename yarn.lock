@@ -1313,17 +1313,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@graphql-portal/types@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.3.0.tgz#44e6a88417342a2b13e8539d2bd9e655fcc9c612"
-  integrity sha512-9HTxbNa/Yx35R/gv/1gAEtwlOZ4eCkosztck4k8YOF0zrHcz+OyYoMGaW4YNfXkTJf/Jmq0Y8PAZau4cWEGhSw==
-  dependencies:
-    ajv "^6.12.6"
-
-"@graphql-portal/types@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.6.0.tgz#35d7f5f2973bcc87c334a2136ca5bf7b1a126a37"
-  integrity sha512-520K64/HYTJ6qTsXXQP7fjnFSFHI5tTsWJbFVvz5B+XNf7AGY3/u4GArRXOfnQJYa3R/aW77MamphzJsSWEw7Q==
+"@graphql-portal/types@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.7.0.tgz#f2f842615408c98a02f89d13012ae6f0b4fc763c"
+  integrity sha512-nIiu23sEDy2nEk2lr2qqETSb/RXgAC/dUygRYmHJbJbfxJD4sFegfg/OacYt0g+aNLmXno1r+oIphq3hFGKUPw==
   dependencies:
     ajv "^6.12.6"
 
