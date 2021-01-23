@@ -1320,7 +1320,7 @@
   dependencies:
     ajv "^6.12.6"
 
-"@graphql-portal/types@^0.6.0":
+"@graphql-portal/types@0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.6.0.tgz#35d7f5f2973bcc87c334a2136ca5bf7b1a126a37"
   integrity sha512-520K64/HYTJ6qTsXXQP7fjnFSFHI5tTsWJbFVvz5B+XNf7AGY3/u4GArRXOfnQJYa3R/aW77MamphzJsSWEw7Q==
@@ -2697,7 +2697,7 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/jsoneditor@^8.6.0":
+"@types/jsoneditor@8.6.0":
   version "8.6.0"
   resolved "https://registry.yarnpkg.com/@types/jsoneditor/-/jsoneditor-8.6.0.tgz#c2d575f572827d7c03e49b7dd55f7a5c240ccddb"
   integrity sha512-JJZd+yGLK8GQvk+ejtrbrg6pfXnTQ0Pk0vyMbn+/1CPRrwZVQ3rOy10XqywNfJ46tkZqDeKkjWGm+QtDBGB9Jw==
@@ -2968,7 +2968,7 @@
   resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.0.0.tgz#365f1bf936aeaddd0856fc41aa1d6f82d88ee5b3"
   integrity sha512-WAy5txG7aFX8Vw3sloEKp5p/t/Xt8jD3GRD9DacnFv6Vo8ubudAsRTXgxpQwU0mpzY/H8U4db3roDuCMjShBmw==
 
-"@types/validator@^13.1.3":
+"@types/validator@13.1.3", "@types/validator@^13.1.3":
   version "13.1.3"
   resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.1.3.tgz#366b394aa3fbeed2392bf0a20ded606fa4a3d35e"
   integrity sha512-DaOWN1zf7j+8nHhqXhIgNmS+ltAC53NXqGxYuBhWqWgqolRhddKzfZU814lkHQSTG0IUfQxU7Cg0gb8fFWo2mA==
@@ -3540,7 +3540,7 @@ ajv@6.12.6, ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.0, ajv@^6.12.2, ajv@
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^7.0.2, ajv@^7.0.3:
+ajv@7.0.3, ajv@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.0.3.tgz#13ae747eff125cafb230ac504b2406cf371eece2"
   integrity sha512-R50QRlXSxqXcQP5SvKUrw8VZeypvo12i2IX0EeR5PiZ7bEKeHWgzgo264LDadUsCU42lTJVhFikTqJwNeH34gQ==
@@ -9523,26 +9523,26 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-jsoneditor-react@^3.1.0:
+jsoneditor-react@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/jsoneditor-react/-/jsoneditor-react-3.1.0.tgz#7d0629451121a23959aa4ab1091dc5031d184570"
   integrity sha512-t45VAYlgeqYnZTeaKH181D8XenQTgIdZChhc7figQXf5LNkZseXRcdwVoOwTPzWRfggCDFB7aAYoyEnh9c8fWQ==
   dependencies:
     prop-types "^15.7.2"
 
-jsoneditor@^9.1.7:
-  version "9.1.7"
-  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.1.7.tgz#eda50d23bf5f83a8096f1c1a3afa33af93279e20"
-  integrity sha512-ykJOWFc98XJgyzSRDFZJET2MeW9BvZ0oUDo7FrInf7RSVQMRTb22kYjXlCEG9f3tN/bspaJeEtIXEU97sNa1Ww==
+jsoneditor@9.1.8:
+  version "9.1.8"
+  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.1.8.tgz#f5ebdd586ece1210352fa26da8eedca2a5312bc8"
+  integrity sha512-T7iZjrYdtFqVuUFelwni9UKp6jXklYa0O0VmohMhYjBBx356h9S7qHZnxoVenXBSmLrYA4SthIt8cY+4zKvFRQ==
   dependencies:
     ace-builds "^1.4.12"
     ajv "^6.12.6"
     javascript-natural-sort "^0.7.1"
     jmespath "^0.15.0"
     json-source-map "^0.6.1"
+    jsonrepair "^2.0.0"
     mobius1-selectr "^2.4.13"
     picomodal "^3.0.0"
-    simple-json-repair "^1.1.0"
     vanilla-picker "^2.11.0"
 
 jsonfile@^4.0.0:
@@ -9560,6 +9560,11 @@ jsonfile@^6.0.1:
     universalify "^2.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jsonrepair@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jsonrepair/-/jsonrepair-2.0.0.tgz#816ab546b0e0864ea3faa4d456e61ff0d23814d0"
+  integrity sha512-beGD14VPmrQNt/Sspi12sCGT+N3w7FWM1T2UJx7biEMfGIUUpqBBPjHq8ETKA992+JS+fSnrSHxKHq7AIgdgcA==
 
 jsonwebtoken@8.5.1:
   version "8.5.1"
@@ -10500,7 +10505,7 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.11.12, mongoose@^5.11.8:
+mongoose@5.11.12, mongoose@^5.11.8:
   version "5.11.12"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.11.12.tgz#452d28ef04b9c6a9601e62a54064851c3b57d4ee"
   integrity sha512-70wST9hnVlPbt5nKClPKJo54ULIACOVGYdg8fyj17sWtCJLyURCDahhzUh+oUA7WVykOW2ZMqWm2kujBIWYagg==
@@ -13551,11 +13556,6 @@ signedsource@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/signedsource/-/signedsource-1.0.0.tgz#1ddace4981798f93bd833973803d80d52e93ad6a"
   integrity sha1-HdrOSYF5j5O9gzlzgD2A1S6TrWo=
-
-simple-json-repair@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/simple-json-repair/-/simple-json-repair-1.1.0.tgz#87ab6fe0184687d32c2996bb822756da832287d4"
-  integrity sha512-i/5WfNV1HC00v9cYqHPJMkPwfh/Wrlimy76+1tOViFKU5u9wVn4jbsvIS3ljMjT1s4kKG9qyBv1D8Hfop3GpbQ==
 
 simple-swizzle@^0.2.2:
   version "0.2.2"
