@@ -1333,10 +1333,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@graphql-portal/types@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.7.0.tgz#f2f842615408c98a02f89d13012ae6f0b4fc763c"
-  integrity sha512-nIiu23sEDy2nEk2lr2qqETSb/RXgAC/dUygRYmHJbJbfxJD4sFegfg/OacYt0g+aNLmXno1r+oIphq3hFGKUPw==
+"@graphql-portal/types@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.8.0.tgz#87dacc0f9ce8a765d8136bb31b9fb42782f91805"
+  integrity sha512-ikwcDWBpiWgHx0OZG4vrex+IkMedmlnv6AH8/ttysl0//6XeNPJGl/ZR2rkrxZ+xwEKyJqT/mGEKJtqVdyz+tA==
   dependencies:
     ajv "^6.12.6"
 
@@ -9621,10 +9621,10 @@ jsoneditor-react@3.1.0:
   dependencies:
     prop-types "^15.7.2"
 
-jsoneditor@9.1.8:
-  version "9.1.8"
-  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.1.8.tgz#f5ebdd586ece1210352fa26da8eedca2a5312bc8"
-  integrity sha512-T7iZjrYdtFqVuUFelwni9UKp6jXklYa0O0VmohMhYjBBx356h9S7qHZnxoVenXBSmLrYA4SthIt8cY+4zKvFRQ==
+jsoneditor@9.1.9:
+  version "9.1.9"
+  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.1.9.tgz#1a2143eb1365df69d584d2098e9280b33270f5c2"
+  integrity sha512-Vu33B2lAuj93yP32CJE8Cm62nFdluyj95kbakiGUHqwHSzObFil9muNG547q3Qy7d4q9ahckUDovEbDiN17a/A==
   dependencies:
     ace-builds "^1.4.12"
     ajv "^6.12.6"
