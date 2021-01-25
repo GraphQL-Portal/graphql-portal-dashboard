@@ -4,8 +4,8 @@ declare module "node-config-ts" {
   interface IConfig {
     name: string
     application: Application
-    db: Db
     client: Client
+    db: Db
   }
   interface Db {
     redis: Redis
@@ -13,6 +13,9 @@ declare module "node-config-ts" {
   }
   interface Redis {
     connectionString: string
+  }
+  interface Client {
+    host: string
   }
   interface Application {
     env: string
@@ -28,19 +31,16 @@ declare module "node-config-ts" {
     sendgrid: Sendgrid
     maxmind: Maxmind
   }
-  interface Client {
-    host: string
+  interface Maxmind {
+    dbPath: string
+    licenseKey: string
+    accountId: string
   }
   interface Sendgrid {
     senderEmail: string
     apiKey: string
     confirmationTemplateId: string
     resetPasswordTemplateId: string
-  }
-  interface Maxmind {
-    dbPath: string
-    accountId: string
-    licenseKey: string
   }
   interface Metrics {
     enabled: boolean

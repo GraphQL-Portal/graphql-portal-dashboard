@@ -9,7 +9,7 @@ import AppModule from '../../modules/app.module';
 import { IUserDocument } from '../../data/schema/user.schema';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import { createUser, randomObjectId } from '../common';
-import { CodeTypes, CodeExpirationTime } from '../../modules/user/enum';
+import { CodeTypes } from '../../modules/user/enum';
 
 jest.useFakeTimers();
 
