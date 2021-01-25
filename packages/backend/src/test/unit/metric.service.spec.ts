@@ -14,12 +14,38 @@ describe('MetricService', () => {
   let app: TestingModule;
   let metricService: MetricService;
 
+  const geo = {
+    country: 'country',
+    city: 'city',
+    location: {
+      latitude: 90,
+      longitude: 180,
+    },
+  };
+  const maxmind = {
+    country: jest.fn(() => ({
+      country: {
+        names: {
+          en: geo.country,
+        }
+      }
+    })),
+    city: jest.fn(() => ({
+      city: {
+        names: {
+          en: geo.city
+        }
+      }, location: geo.location,
+    }))
+  };
+
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
 
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     metricService = app.get<MetricService>(MetricService);
+    (metricService as any).maxmind = maxmind;
   });
 
   afterAll(async () => {
@@ -138,6 +164,10 @@ describe('MetricService', () => {
       expect(spyLrange).toBeCalledTimes(1);
       expect(spyLrange).toBeCalledWith(requestId, 0, -1);
       expect(spyLtrim).toBeCalledTimes(1);
+      expect((metricService as any).maxmind.city).toBeCalledTimes(1);
+      expect((metricService as any).maxmind.city).toBeCalledWith(ip);
+      expect((metricService as any).maxmind.country).toBeCalledTimes(1);
+      expect((metricService as any).maxmind.country).toBeCalledWith(ip);
       expect(spyLtrim).toBeCalledWith(requestId, records.length, -1);
       expect(spyReduceResolvers).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledTimes(1);
@@ -149,6 +179,7 @@ describe('MetricService', () => {
         query,
         userAgent,
         ip,
+        geo,
         request,
         rawResponseBody,
         contentLength,

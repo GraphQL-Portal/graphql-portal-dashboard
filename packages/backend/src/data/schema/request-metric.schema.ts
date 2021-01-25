@@ -10,6 +10,7 @@ const requestMetricSchema = new mongoose.Schema(
     ip: String,
     resolvers: [Object],
     request: Object,
+    geo: Object,
     rawResponseBody: String,
     requestDate: Date,
     responseDate: Date,

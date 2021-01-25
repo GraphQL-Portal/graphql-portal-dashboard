@@ -24,6 +24,12 @@ declare module "node-config-ts" {
     salt: string
     defaultAdmin: DefaultAdmin
     metrics: Metrics
+    maxmind: Maxmind
+  }
+  interface Maxmind {
+    dbPath: string
+    accountId: string
+    licenseKey: string
   }
   interface Metrics {
     enabled: boolean

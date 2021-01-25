@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import { Redis } from 'ioredis';
+import { Reader, ReaderModel, WebServiceClient, LocationRecord } from '@maxmind/geoip2-node';
 import { MetricsChannels } from '@graphql-portal/types';
 import { LoggerService } from '../../common/logger';
 import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
@@ -20,6 +21,7 @@ import {
 @Injectable()
 export default class MetricService {
   private redis: Redis;
+  private maxmind: ReaderModel | WebServiceClient | void;
   private intervals: NodeJS.Timer[] = [];
 
   public constructor(
@@ -31,8 +33,9 @@ export default class MetricService {
     [this.redis] = this.redisClients;
   }
 
-  private onModuleInit(): void {
+  private async onModuleInit(): Promise<void> {
     this.init();
+    await this.setMaxmindClient();
   }
 
   public init(): void {
@@ -94,6 +97,7 @@ export default class MetricService {
       query: (gotRequest?.query) instanceof Object ? gotRequest.query : { query: "", variables: null },
       userAgent: gotRequest?.userAgent,
       ip: gotRequest?.ip,
+      geo: await this.getGeoData(gotRequest?.ip),
       request: gotRequest?.request,
       rawResponseBody: sentResponse?.rawResponseBody,
       contentLength: sentResponse?.contentLength,
@@ -164,5 +168,45 @@ export default class MetricService {
 
   private isResolverMetric(metric: AnyMetric): boolean {
     return [MetricsChannels.RESOLVER_CALLED, MetricsChannels.RESOLVER_DONE, MetricsChannels.RESOLVER_ERROR].includes(metric.event);
+  }
+
+  private async setMaxmindClient(): Promise<void> {
+    const context = `${this.constructor.name}:${this.setMaxmindClient.name}`;
+    const { dbPath, accountId, licenseKey } = config.application.maxmind;
+    if (dbPath) {
+      this.logger.debug('Maxmind uses local db', context, { dbPath });
+      this.maxmind = await Reader.open(dbPath).catch(error => {
+        this.logger.error(error, null, context, { dbPath });
+      });
+    } else if (accountId && licenseKey) {
+      this.logger.debug('Maxmind uses web service client', context, { accountId, licenseKey });
+      this.maxmind = new WebServiceClient(accountId, licenseKey);
+    } else {
+      this.logger.debug('Maxmind is not used, request-metrics will not have geo data', context);
+    }
+  }
+
+  private async getGeoData(ip: string | undefined): Promise<
+    {
+      city: string | undefined;
+      location: LocationRecord | undefined;
+      country: string | undefined;
+    } | Record<string, never>> {
+    if (!ip || !this.maxmind) return {};
+    const context = `${this.constructor.name}:${this.getGeoData.name}`;
+
+    try {
+      const { city, location } = await this.maxmind.city(ip);
+      const { country } = await this.maxmind.country(ip);
+      this.logger.debug(`Looking for geo data for ip: ${ip}`, context);
+      return {
+        city: city?.names.en,
+        country: country?.names.en,
+        location,
+      };
+    } catch (error) {
+      this.logger.error(error, null, context);
+      return {};
+    }
   }
 }

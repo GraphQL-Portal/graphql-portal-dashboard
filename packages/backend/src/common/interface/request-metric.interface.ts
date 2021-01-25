@@ -6,13 +6,21 @@ export default interface IRequestMetric {
   nodeId: string;
   query: string;
   userAgent: string;
-  ip: string
-  resolvers: IReducedResolver[],
-  request: Request,
-  rawResponseBody: string,
-  contentLength: number,
-  error: Error | string | null,
+  ip?: string;
+  resolvers: IReducedResolver[];
+  geo: {
+    city?: string;
+    country?: string;
+    location?: {
+      latitude: string;
+      longitude: string;
+    };
+  };
+  request: Request;
+  rawResponseBody: string;
+  contentLength: number;
+  error: Error | string | null;
   requestDate: Date;
   responseDate: Date;
-  latency: number,
+  latency: number;
 }

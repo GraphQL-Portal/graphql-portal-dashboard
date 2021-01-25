@@ -20,6 +20,11 @@
       "enabled": true,
       "chunk": 100,
       "delay": 5000
+    },
+    "maxmind": {
+      "dbPath": "",
+      "licenseKey": "",
+      "accountId": ""
     }
   },
   "db": {
