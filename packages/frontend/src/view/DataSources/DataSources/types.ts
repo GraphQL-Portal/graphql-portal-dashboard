@@ -1,0 +1,14 @@
+type DataSource = {
+  _id: string;
+  name: string;
+  type?: string;
+  status?: string;
+  createdAt?: string;
+  handler: any;
+  transforms: any;
+};
+
+export type ConnectedList = {
+  sources: DataSource[];
+  onDelete(id: string): any;
+};

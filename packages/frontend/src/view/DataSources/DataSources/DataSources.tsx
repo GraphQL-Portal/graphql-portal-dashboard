@@ -10,7 +10,7 @@ import { EmptySources } from './Empty';
 import { ConnectedList } from './ConnectedList';
 
 export const DataSources:React.FC = () => {
-  const { loading, connected } = useDataSources();
+  const { loading, connected, onDelete } = useDataSources();
 
   if (loading) return <Loading />;
 
@@ -22,7 +22,11 @@ export const DataSources:React.FC = () => {
       <Header title="My Data Sources" />
       <WidgetRow>
         <HugeWidget>
-          {connected.length === 0 ? <EmptySources /> : <ConnectedList />}
+          {
+            connected.length === 0
+              ? <EmptySources />
+              : <ConnectedList sources={connected} onDelete={onDelete} />
+          }
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>

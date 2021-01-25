@@ -7,7 +7,9 @@ export const DASHBOARD = '/dashboard';
 export const APIS = '/my-apis';
 export const API_CREATE = `${APIS}/new`;
 export const API_EDIT = `${APIS}/:id`;
+
 export const DATA_SOURCES = '/data-sources';
+export const DATA_SOURCE_ADD = `${DATA_SOURCES}/add`
 export const METRICS_AND_LOGS = '/metrics-and-logs';
 
 // Settings

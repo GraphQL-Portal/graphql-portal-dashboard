@@ -1,5 +1,10 @@
 scalar Timestamp
 
+type ApiDefAuthentication {
+  auth_header_name: String
+  auth_tokens: [String!]!
+}
+
 type ApiDef {
   _id: ID
   name: String
@@ -7,12 +12,19 @@ type ApiDef {
   sources: [Source]
   createdAt: String
   updatedAt: String
+  authentication: ApiDefAuthentication
+}
+
+input CreateApiDefAuthentication {
+  auth_header_name: String
+  auth_tokens: [String!]!
 }
 
 input CreateApiDef {
   _id: String
   name: String
   endpoint: String
+  authentication: CreateApiDefAuthentication
 }
 
 type ApiDefsWithTimestamp {

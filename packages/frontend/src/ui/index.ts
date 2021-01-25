@@ -5,6 +5,7 @@ export { Errors } from './Errors';
 export { Grid, Row, Col } from './Grid';
 export { Header } from './Header';
 export { Input } from './Input';
+export { Select } from './Select';
 export { Snackbar } from './Snackbar';
 export { Spinner } from './Spinner';
 export { SvgIcon } from './SvgIcon';
