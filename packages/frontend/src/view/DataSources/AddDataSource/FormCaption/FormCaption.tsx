@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FormCaption as Props } from '../types';
+import { FormCaption as Props } from '../../../../types';
 import { useStyles } from './useStyles';
 
 export const FormCaption: React.FC<Props> = ({ title, description }) => {

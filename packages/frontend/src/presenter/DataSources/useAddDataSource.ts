@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test, enforce } from 'vest';
 
-import { useFormErrors  } from '../../model/Hooks';
+import { useFormErrors } from '../../model/Hooks';
 import { useCreateSource } from '../../model/DataSources/commands';
 import { useDataSourceContext } from '../../model/providers';
 import { validateAvj, getHandlerSchema } from './helpers';
@@ -23,18 +23,17 @@ export const useAddDataSource = () => {
     // @TODO I need to refetch data-source from here
     // or I need to tell useDataSource to refetch :)
     clearSource();
-  }
+  };
 
   const onError = (err: any) => {
     console.error('CREATE ERROR: ', err);
     // @TODO probably I need to show error message
-  }
+  };
 
   const { createSource } = useCreateSource({ onCompleted, onError });
 
   enforce.extend({
     isValidSchema(handler: any) {
-
       return validate({
         properties: {
           [key]: getHandlerSchema(definitions)(key),
@@ -43,16 +42,18 @@ export const useAddDataSource = () => {
     },
   });
 
-  const validationSuite = vest.create('login_form', ({ name, handler }: DataSourceFormInput) => {
-    test('name', 'Name is required', () => {
-      enforce(name).isNotEmpty();
-    });
+  const validationSuite = vest.create(
+    'login_form',
+    ({ name, handler }: DataSourceFormInput) => {
+      test('name', 'Name is required', () => {
+        enforce(name).isNotEmpty();
+      });
 
-    test('handler', 'Please provide correct connector configuration', () => {
-      enforce(handler).isValidSchema();
-    });
-  });
-
+      test('handler', () => {
+        enforce(handler).isValidSchema();
+      });
+    }
+  );
 
   const { control, handleSubmit, errors } = useForm({
     reValidateMode: 'onSubmit',
@@ -79,4 +80,4 @@ export const useAddDataSource = () => {
     control,
     errors,
   };
-}
+};
