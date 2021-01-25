@@ -62,7 +62,7 @@ export default class MetricService {
       const records = await this.getRecords(channel, chunk);
       if (!records.length) return;
 
-      await Promise.all(records.map(aggregateFunction));
+      await Promise.all(records.map(async (r) => aggregateFunction(r)));
     } catch (error) {
       this.logger.error(error, null, `${this.constructor.name}:${this.fetchMetrics.name}`, { channel, chunk });
     }

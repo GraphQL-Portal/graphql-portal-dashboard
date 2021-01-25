@@ -85,9 +85,9 @@ describe('MetricService', () => {
         expect(spyGetRecords).toBeCalledTimes(1);
         expect(spyGetRecords).toBeCalledWith(MetricsChannels.REQUEST_IDS, chunk);
         expect(spyAggregateRequestMetric).toBeCalledTimes(records.length);
-        expect(spyAggregateRequestMetric).nthCalledWith(1, records[0], 0, records);
-        expect(spyAggregateRequestMetric).nthCalledWith(2, records[1], 1, records);
-        expect(spyAggregateRequestMetric).nthCalledWith(3, records[2], 2, records);
+        expect(spyAggregateRequestMetric).nthCalledWith(1, records[0]);
+        expect(spyAggregateRequestMetric).nthCalledWith(2, records[1]);
+        expect(spyAggregateRequestMetric).nthCalledWith(3, records[2]);
       });
 
       it('fetchMetrics should call aggregateNetworkMetric', async () => {
@@ -99,9 +99,9 @@ describe('MetricService', () => {
         expect(spyGetRecords).toBeCalledTimes(1);
         expect(spyGetRecords).toBeCalledWith(MetricsChannels.NETWORK, chunk);
         expect(spyAggregateNetworkMetric).toBeCalledTimes(records.length);
-        expect(spyAggregateNetworkMetric).nthCalledWith(1, records[0], 0, records);
-        expect(spyAggregateNetworkMetric).nthCalledWith(2, records[1], 1, records);
-        expect(spyAggregateNetworkMetric).nthCalledWith(3, records[2], 2, records);
+        expect(spyAggregateNetworkMetric).nthCalledWith(1, records[0]);
+        expect(spyAggregateNetworkMetric).nthCalledWith(2, records[1]);
+        expect(spyAggregateNetworkMetric).nthCalledWith(3, records[2]);
       });
     });
 
