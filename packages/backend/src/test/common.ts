@@ -67,14 +67,16 @@ export const createUser = async (
   email = randomEmail(),
   password = 'Secret123'
 ): Promise<IUser & ITokens> => {
-  const tokens = await service.register(
+  jest.spyOn(service, 'sendEmailConfirmationCode').mockResolvedValue();
+  await service.register(
     {
       email,
       password,
       role,
-    },
-    randomString()
+    }
   );
+  jest.spyOn(service, 'isEmailConfirmed').mockResolvedValue(true);
+  const tokens = await service.login(email, password, randomString());
 
   const user = await service.findByEmail(email);
 

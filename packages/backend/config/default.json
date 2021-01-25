@@ -2,6 +2,7 @@
   "name": "graphql-portal-dashboard-backend",
   "application": {
     "env": "default",
+    "host": "localhost",
     "port": 3030,
     "useSwaggerUi": true,
     "graphQL": {
@@ -20,7 +21,16 @@
       "enabled": true,
       "chunk": 100,
       "delay": 5000
+    },
+    "sendgrid": {
+      "senderEmail": "no-reply@example",
+      "apiKey": "SG.example",
+      "confirmationTemplateId": "confirmationTemplateId",
+      "resetPasswordTemplateId": "resetPasswordTemplateId"
     }
+  },
+  "client": {
+    "host": "localhost:8080"
   },
   "db": {
     "redis": {

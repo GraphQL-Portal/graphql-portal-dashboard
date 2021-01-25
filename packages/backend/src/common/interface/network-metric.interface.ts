@@ -1,7 +1,7 @@
 export default interface INetworkMetric {
-  nodeId: string,
-  bytesIn: number,
-  bytesOut: number,
-  connections: number,
-  recordedAt: number,
+  nodeId: string;
+  bytesIn: number;
+  bytesOut: number;
+  connections: number;
+  recordedAt: number;
 }

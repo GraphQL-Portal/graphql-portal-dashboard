@@ -26,6 +26,7 @@
     "@nestjs/platform-express": "7.6.5",
     "@nestjs/serve-static": "2.1.4",
     "@nestjs/swagger": "4.7.11",
+    "@sendgrid/mail": "^7.4.2",
     "apollo-server-express": "2.19.2",
     "class-transformer": "0.3.2",
     "class-validator": "0.13.1",
@@ -44,7 +45,8 @@
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
     "rxjs": "6.6.3",
-    "type-graphql": "1.1.1"
+    "type-graphql": "1.1.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@nestjs/cli": "7.5.4",

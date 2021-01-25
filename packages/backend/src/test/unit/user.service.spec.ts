@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
+import { config } from 'node-config-ts';
 import Roles from '../../common/enum/roles.enum';
 import { randomEmail, randomString } from '../../common/tool';
 import UserService from '../../modules/user/user.service';
@@ -8,17 +9,24 @@ import AppModule from '../../modules/app.module';
 import { IUserDocument } from '../../data/schema/user.schema';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import { createUser, randomObjectId } from '../common';
+import { CodeTypes, CodeExpirationTime } from '../../modules/user/enum';
 
 jest.useFakeTimers();
 
 jest.mock('ioredis');
 
-describe('ApiDefService', () => {
+jest.mock('@sendgrid/mail', () => ({
+  setApiKey: jest.fn(),
+  send: jest.fn(),
+}));
+
+describe('UserService', () => {
   let app: TestingModule;
   let userService: UserService;
   let tokenService: TokenService;
+  let user: IUserDocument;
 
-  let spyRefreshTokens: jest.SpyInstance;
+  const codeEntity = { code: 'code' };
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
@@ -32,7 +40,10 @@ describe('ApiDefService', () => {
     await app.close();
   });
 
-  afterEach(() => jest.clearAllMocks());
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+  });
 
   describe('register', () => {
     const device = 'device';
@@ -42,41 +53,55 @@ describe('ApiDefService', () => {
       refreshToken: randomString(),
     };
     const registrationData = {
+      firstName: 'firstName',
+      lastName: 'lastName',
       email: randomEmail(),
       role: Roles.USER,
       password,
     };
 
-    beforeAll(() => {
-      spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
-    });
-
     it('creates user', async () => {
-      const result = await userService.register(registrationData, device);
+      const spySendCode = jest.spyOn(userService, 'sendEmailConfirmationCode').mockResolvedValue();
+      await userService.register(registrationData);
 
-      expect(result).toMatchObject(tokens);
-      expect(spyRefreshTokens).toBeCalledTimes(1);
+      expect(spySendCode).toBeCalledTimes(1);
     });
 
     describe('login', () => {
       it('throws error on invalid credentials', async () => {
+        const spyIsEmailConfirmed = jest.spyOn(userService, 'isEmailConfirmed').mockResolvedValue(true);
         await expect(userService.login('invalid@email.com', 'password123', device)).rejects.toThrow(
           'Wrong email or password'
         );
+        expect(spyIsEmailConfirmed).toBeCalledTimes(1);
       });
 
       it('returns token', async () => {
+        const spyIsEmailConfirmed = jest.spyOn(userService, 'isEmailConfirmed').mockResolvedValue(true);
+        const spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
         const result = await userService.login(registrationData.email, password, device);
 
         expect(result).toMatchObject(tokens);
+        expect(spyIsEmailConfirmed).toBeCalledTimes(1);
         expect(spyRefreshTokens).toBeCalledTimes(1);
+      });
+      it('throws error on unconfirmed email and sends confirmation again', async () => {
+        const spyIsEmailConfirmed = jest.spyOn(userService, 'isEmailConfirmed').mockResolvedValue(false);
+        const spySendCode = jest.spyOn(userService, 'sendEmailConfirmationCode').mockResolvedValue();
+        const spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
+        await expect(userService.login(registrationData.email, password, device))
+          .rejects.toThrow('We have sent a confirmation to you. Confirm your email address, please.');
+
+        expect(spyRefreshTokens).toBeCalledTimes(0);
+        expect(spyIsEmailConfirmed).toBeCalledTimes(1);
+        expect(spyIsEmailConfirmed).toBeCalledWith(registrationData.email);
+        expect(spySendCode).toBeCalledTimes(1);
+        expect(spySendCode).toBeCalledWith(registrationData.email);
       });
     });
 
     describe('findByEmail', () => {
       let id: string;
-      let user: IUserDocument;
-
       const expectUser = (data: IUserDocument): void => {
         expect(data).toMatchObject({
           ...registrationData,
@@ -129,6 +154,116 @@ describe('ApiDefService', () => {
           expect(users).toHaveLength(1);
           expect(!users.some(({ _id }) => _id === adminId)).toBeTruthy();
         });
+      });
+    });
+  });
+
+  describe('resetPassword', () => {
+
+    it('resetPasswordRequest', async () => {
+      const spyFindByEmail = jest.spyOn(userService, 'findByEmail').mockResolvedValue(user);
+      const spyCreateNewCodeAndDeletePrevious = jest.spyOn(userService as any, 'createNewCodeAndDeletePrevious').mockResolvedValue(codeEntity);
+      const spySendgridSend = jest.spyOn((userService as any).sendgrid, 'send').mockImplementation(() => { });
+
+      await userService.resetPasswordRequest(user.email);
+
+      expect(spyFindByEmail).toBeCalledTimes(1);
+      expect(spyFindByEmail).toBeCalledWith(user.email);
+      expect(spyCreateNewCodeAndDeletePrevious).toBeCalledTimes(1);
+      expect(spyCreateNewCodeAndDeletePrevious).toBeCalledWith(user.email, CodeTypes.RESET_PASSWORD);
+      expect(spySendgridSend).toBeCalledTimes(1);
+      expect(spySendgridSend).toBeCalledWith(
+        {
+          from: config.application.sendgrid.senderEmail,
+          to: user.email,
+          templateId: config.application.sendgrid.resetPasswordTemplateId,
+          dynamicTemplateData: {
+            resetPasswordUrl: `${config.client.host}/reset-password?code=${codeEntity.code}&email=${user.email}`,
+            firstName: user.firstName,
+          }
+        }
+      );
+    });
+
+    it('resetPassword: success', async () => {
+      const password = 'newpassword';
+      const spyIsConfirmed = jest.spyOn(userService, 'acceptConfirmationCode').mockResolvedValue(true);
+      const spyUpdate = jest.spyOn((userService as any).userModel, 'updateOne').mockImplementation(() => { });
+
+      await userService.resetPassword(user.email, codeEntity.code, password);
+
+      expect(spyIsConfirmed).toBeCalledTimes(1);
+      expect(spyIsConfirmed).toBeCalledWith(user.email, CodeTypes.RESET_PASSWORD, codeEntity.code);
+      expect(spyUpdate).toBeCalledTimes(1);
+      expect(spyUpdate).toBeCalledWith({ email: user.email }, { password });
+    });
+
+    it('resetPassword: fail', async () => {
+      const password = 'newpassword';
+      const spyIsConfirmed = jest.spyOn(userService, 'acceptConfirmationCode').mockResolvedValue(false);
+      const spyUpdate = jest.spyOn((userService as any).userModel, 'updateOne').mockImplementation(() => { });
+
+      await expect(userService.resetPassword(user.email, codeEntity.code, password)).rejects.toThrow('Confirmation code was not found');
+
+      expect(spyIsConfirmed).toBeCalledTimes(1);
+      expect(spyIsConfirmed).toBeCalledWith(user.email, CodeTypes.RESET_PASSWORD, codeEntity.code);
+      expect(spyUpdate).toBeCalledTimes(0);
+    });
+  });
+
+  describe('acceptConfirmationCode', () => {
+    it('returns false if code entity was not found', async () => {
+      await expect(userService.acceptConfirmationCode('email', CodeTypes.RESET_PASSWORD, 'code')).resolves.toBeFalsy();
+    });
+
+    it('returns true and delete all codes if code entity was found', async () => {
+      const email = 'email';
+      const code = 'code';
+      const type = CodeTypes.RESET_PASSWORD;
+      const spyFind = jest.spyOn((userService as any).codeModel, 'findOne').mockResolvedValue(true);
+      const spyDelete = jest.spyOn((userService as any).codeModel, 'deleteMany').mockImplementation();
+
+      await expect(userService.acceptConfirmationCode('email', type, 'code')).resolves.toBeTruthy();
+
+      expect(spyFind).toBeCalledTimes(1);
+      expect(spyFind).toBeCalledWith({
+        code,
+        email,
+        type,
+        expiredAt: {
+          $gte: expect.any(Date),
+        }
+      });
+      expect(spyDelete).toBeCalledTimes(1);
+      expect(spyDelete).toBeCalledWith({
+        email, type
+      });
+    });
+  });
+
+  describe('Confirm email', () => {
+    it('throws error if user does not exist', async () => {
+      const spyFindByEmail = jest.spyOn(userService, 'findByEmail').mockResolvedValue(null);
+      await expect(userService.sendEmailConfirmationCode(user.email)).rejects.toThrow('User with this email does not exist');
+      expect(spyFindByEmail).toBeCalledTimes(1);
+      expect(spyFindByEmail).toBeCalledWith(user.email);
+    });
+    it('should create code and send it', async () => {
+      const spyCreate = jest.spyOn((userService as any), 'createNewCodeAndDeletePrevious').mockResolvedValue(codeEntity);
+      const spySendgridSend = jest.spyOn((userService as any).sendgrid, 'send').mockImplementation(() => { });
+      await userService.sendEmailConfirmationCode(user.email);
+
+      expect(spyCreate).toBeCalledTimes(1);
+      expect(spyCreate).toBeCalledWith(user.email, CodeTypes.EMAIL_CONFIRMATION);
+      expect(spySendgridSend).toBeCalledTimes(1);
+      expect(spySendgridSend).toBeCalledWith({
+        from: config.application.sendgrid.senderEmail,
+        to: user.email,
+        templateId: config.application.sendgrid.confirmationTemplateId,
+        dynamicTemplateData: {
+          confirmationUrl: `${config.application.host}/user/confirm-email?code=${codeEntity.code}&email=${user.email}`,
+          firstName: user.firstName,
+        }
       });
     });
   });

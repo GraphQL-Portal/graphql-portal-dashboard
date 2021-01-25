@@ -5,6 +5,7 @@ declare module "node-config-ts" {
     name: string
     application: Application
     db: Db
+    client: Client
   }
   interface Db {
     redis: Redis
@@ -15,6 +16,7 @@ declare module "node-config-ts" {
   }
   interface Application {
     env: string
+    host: string
     port: number
     useSwaggerUi: boolean
     graphQL: GraphQL
@@ -24,6 +26,16 @@ declare module "node-config-ts" {
     salt: string
     defaultAdmin: DefaultAdmin
     metrics: Metrics
+    sendgrid: Sendgrid
+  }
+  interface Client {
+    host: string
+  }
+  interface Sendgrid {
+    senderEmail: string
+    apiKey: string
+    confirmationTemplateId: string
+    resetPasswordTemplateId: string
   }
   interface Metrics {
     enabled: boolean

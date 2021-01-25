@@ -1,10 +1,20 @@
 {
   "application": {
     "env": "staging",
+    "host": "@@HOST",
     "useSwaggerUi": false,
     "graphQL": {
       "playground": false,
       "debug": false
+    },
+    "sendgrid": {
+      "senderEmail": "@@SENDGRID_SENDER_EMAIL",
+      "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",
+      "resetPasswordTemplateId": "@@SENDGRID_RESET_PASSWORD_TEMPLATE",
+      "apiKey": "@@SENDGRID_API_KEY"
+    },
+    "client": {
+      "host": "@@CLIENT_HOST"
     }
   },
   "db": {
