@@ -7,7 +7,12 @@ const apiDefSchema = new mongoose.Schema(
   {
     name: String,
     endpoint: String,
-    authentication: String,
+    authentication: {
+      type: {
+        auth_header_name: String,
+        auth_tokens: [String],
+      },
+    },
     sources: [
       {
         type: mongoose.Schema.Types.ObjectId,
