@@ -12,4 +12,7 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
   actionCell: {
     padding: spacing(0, 1, 0, 2),
   },
+  addButton: {
+    display: 'inline-block',
+  },
 }));

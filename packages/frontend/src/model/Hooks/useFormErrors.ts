@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useToast } from '../model/providers';
+import { useToast } from '../providers';
 
 export const useFormErrors = (errors: any) => {
   const { showErrorToast } = useToast();

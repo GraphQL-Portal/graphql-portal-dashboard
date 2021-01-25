@@ -11,5 +11,5 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   },
   arrow: {
     color: TRANSPARENT_WHITE,
-  },
+  }
 }));

@@ -4,7 +4,7 @@ import vest, { test, enforce } from 'vest';
 import validator from 'validator';
 import { useAuth } from '../../model/providers';
 
-import { useFormErrors } from '../../hooks';
+import { useFormErrors } from '../../model/Hooks';
 // import { useToast } from '../../model/providers';
 import { useLogin as login } from '../../model/Login/commands';
 import { UA } from '../../model/providers/Auth/constants';
