@@ -34,12 +34,12 @@ export default class MetricService {
   }
 
   private async onModuleInit(): Promise<void> {
-    this.init();
     await this.setMaxmindClient();
+    this.init();
   }
 
   public init(): void {
-    const { enabled = true, chunk = 10, delay = 5000 } = config.application.metrics;
+    const { enabled = true, chunk = 100, delay = 5000 } = config.application.metrics;
 
     if (!enabled) return;
 
