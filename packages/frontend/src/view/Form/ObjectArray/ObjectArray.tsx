@@ -1,0 +1,76 @@
+import React from 'react';
+import { Add, Remove } from '@material-ui/icons';
+import { Controller } from 'react-hook-form';
+import clsx from 'clsx';
+
+import { ObjectArray as Props } from '../../../types';
+import { Col, IconButton, Row, Input, Tooltip } from '../../../ui';
+import { useStyles } from './useStyles';
+
+export const ObjectArray: React.FC<Props> = ({
+  onAdd,
+  onRemove,
+  control,
+  errors,
+  title,
+  fields,
+  name,
+}) => {
+  const { objectField, lastField, objectRow } = useStyles();
+
+  const lastObjectField = clsx(objectField, lastField);
+  console.log(fields);
+
+  return (
+    <>
+      <Row className={objectRow} spacing={2}>
+        <Col xs={6} className={objectField}>
+          {title}
+        </Col>
+        <Col xs={6} className={lastObjectField}>
+          <Tooltip title={`Add ${title}`} placement="left">
+            <div>
+              <IconButton onClick={onAdd}>
+                <Add />
+              </IconButton>
+            </div>
+          </Tooltip>
+        </Col>
+      </Row>
+      {fields.length > 0 &&
+        fields.map((field, idx) => (
+          <Row className={objectRow} key={field.id} spacing={2}>
+            <Col xs={5} className={objectField}>
+              <Controller
+                as={Input}
+                control={control}
+                label="key"
+                name={`${name}[${idx}].key`}
+                fullWidth
+                defaultValue=""
+              />
+            </Col>
+            <Col xs={5} className={objectField}>
+              <Controller
+                as={Input}
+                control={control}
+                label="value"
+                name={`${name}[${idx}].value`}
+                fullWidth
+                defaultValue=""
+              />
+            </Col>
+            <Col xs={2} className={lastObjectField}>
+              <Tooltip title="Remove field" placement="left">
+                <div>
+                  <IconButton onClick={() => onRemove(field.id)}>
+                    <Remove />
+                  </IconButton>
+                </div>
+              </Tooltip>
+            </Col>
+          </Row>
+        ))}
+    </>
+  );
+};

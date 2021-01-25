@@ -16,6 +16,7 @@ import {
 import { EditorWrapper, EditorCell, Editors } from './Editors';
 import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
+import { GraphQLHandler } from './GraphQLHandler';
 import { useStyles } from './useStyles';
 
 export const AddDataSource: React.FC = () => {
@@ -37,7 +38,7 @@ export const AddDataSource: React.FC = () => {
           <WidgetHeader title="Configure a data-source" />
           <WidgetBody>
             <FormCaption title={title} description={description} />
-            <form onSubmit={onSubmit}>
+            <form noValidate autoComplete="off" onSubmit={onSubmit}>
               <EditorWrapper gapBottom={4}>
                 <EditorCell>
                   <Controller
@@ -57,7 +58,7 @@ export const AddDataSource: React.FC = () => {
                 title={title}
                 errors={errors}
               />
-
+              <GraphQLHandler control={control} errors={errors} />
               <PrimaryButton type="submit">Save</PrimaryButton>
             </form>
           </WidgetBody>
