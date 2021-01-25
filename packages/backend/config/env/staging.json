@@ -10,12 +10,17 @@
     "sendgrid": {
       "senderEmail": "@@SENDGRID_SENDER_EMAIL",
       "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",
-      "resetPasswordTemplateId": "@@SENDGRID_RESET_PASSWORD_TEMPLATE",
-      "apiKey": "@@SENDGRID_API_KEY"
+      "apiKey": "@@SENDGRID_API_KEY",
+      "resetPasswordTemplateId": "@@SENDGRID_RESET_PASSWORD_TEMPLATE"
     },
-    "client": {
-      "host": "@@CLIENT_HOST"
+    "maxmind": {
+      "dbPath": "@@MAXMIND_DB_PATH",
+      "licenseKey": "@@MAXMIND_LICENSE_KEY",
+      "accountId": "@@MAXMIND_ACCOUNT_ID"
     }
+  },
+  "client": {
+    "host": "@@CLIENT_HOST"
   },
   "db": {
     "redis": {

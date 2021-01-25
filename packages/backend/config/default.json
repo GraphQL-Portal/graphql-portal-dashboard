@@ -10,7 +10,6 @@
       "debug": true
     },
     "logLevel": "debug",
-    "secret": "",
     "jwtSecret": "jwtSecret",
     "salt": "salt",
     "defaultAdmin": {
@@ -27,6 +26,11 @@
       "apiKey": "SG.example",
       "confirmationTemplateId": "confirmationTemplateId",
       "resetPasswordTemplateId": "resetPasswordTemplateId"
+    },
+    "maxmind": {
+      "dbPath": "",
+      "licenseKey": "",
+      "accountId": ""
     }
   },
   "client": {

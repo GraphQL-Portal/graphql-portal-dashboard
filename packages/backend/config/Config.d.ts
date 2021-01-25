@@ -21,12 +21,12 @@ declare module "node-config-ts" {
     useSwaggerUi: boolean
     graphQL: GraphQL
     logLevel: string
-    secret: string
     jwtSecret: string
     salt: string
     defaultAdmin: DefaultAdmin
     metrics: Metrics
     sendgrid: Sendgrid
+    maxmind: Maxmind
   }
   interface Client {
     host: string
@@ -36,6 +36,11 @@ declare module "node-config-ts" {
     apiKey: string
     confirmationTemplateId: string
     resetPasswordTemplateId: string
+  }
+  interface Maxmind {
+    dbPath: string
+    accountId: string
+    licenseKey: string
   }
   interface Metrics {
     enabled: boolean

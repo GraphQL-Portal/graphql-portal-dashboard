@@ -46,6 +46,9 @@ export const apiDefExample: IApiDef = {
   name: 'api',
   endpoint: 'http://endpoint/graphql',
   sources: [sourceExample],
+  authentication: {
+    auth_tokens: ['key'],
+  },
 };
 
 export const sourceSchema = {
@@ -59,6 +62,9 @@ export const sourceSchema = {
 export const apiDefSchema = {
   name: expect.any(String),
   endpoint: expect.any(String),
+  authentication: expect.objectContaining({
+    auth_tokens: expect.arrayContaining([expect.any(String)]),
+  }),
 };
 
 export const createUser = async (

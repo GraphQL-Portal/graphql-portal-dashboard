@@ -14,12 +14,38 @@ describe('MetricService', () => {
   let app: TestingModule;
   let metricService: MetricService;
 
+  const geo = {
+    country: 'country',
+    city: 'city',
+    location: {
+      latitude: 90,
+      longitude: 180,
+    },
+  };
+  const maxmind = {
+    country: jest.fn(() => ({
+      country: {
+        names: {
+          en: geo.country,
+        }
+      }
+    })),
+    city: jest.fn(() => ({
+      city: {
+        names: {
+          en: geo.city
+        }
+      }, location: geo.location,
+    }))
+  };
+
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
 
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     metricService = app.get<MetricService>(MetricService);
+    (metricService as any).maxmind = maxmind;
   });
 
   afterAll(async () => {
@@ -46,7 +72,7 @@ describe('MetricService', () => {
     });
 
     describe('fetchMetrics', () => {
-      const chunk = 10;
+      const chunk = 100;
       const records = [1, 2, 3];
 
 
@@ -54,28 +80,28 @@ describe('MetricService', () => {
         const spyGetRecords = jest.spyOn((metricService as any), 'getRecords').mockResolvedValue(records);
         const spyAggregateRequestMetric = jest.spyOn((metricService as any), 'aggregateRequestMetric').mockImplementation();
 
-        await (metricService as any).fetchMetrics(MetricsChannels.REQUEST_IDS, 10);
+        await (metricService as any).fetchMetrics(MetricsChannels.REQUEST_IDS, chunk);
 
         expect(spyGetRecords).toBeCalledTimes(1);
         expect(spyGetRecords).toBeCalledWith(MetricsChannels.REQUEST_IDS, chunk);
         expect(spyAggregateRequestMetric).toBeCalledTimes(records.length);
-        expect(spyAggregateRequestMetric.mock.calls[0][0]).toBe(records[0]);
-        expect(spyAggregateRequestMetric.mock.calls[1][0]).toBe(records[1]);
-        expect(spyAggregateRequestMetric.mock.calls[2][0]).toBe(records[2]);
+        expect(spyAggregateRequestMetric).nthCalledWith(1, records[0]);
+        expect(spyAggregateRequestMetric).nthCalledWith(2, records[1]);
+        expect(spyAggregateRequestMetric).nthCalledWith(3, records[2]);
       });
 
       it('fetchMetrics should call aggregateNetworkMetric', async () => {
         const spyGetRecords = jest.spyOn((metricService as any), 'getRecords').mockResolvedValue(records);
-        const spyNetworkMetric = jest.spyOn((metricService as any), 'aggregateNetworkMetric').mockImplementation();
+        const spyAggregateNetworkMetric = jest.spyOn((metricService as any), 'aggregateNetworkMetric').mockImplementation();
 
         await (metricService as any).fetchMetrics(MetricsChannels.NETWORK, chunk);
 
         expect(spyGetRecords).toBeCalledTimes(1);
         expect(spyGetRecords).toBeCalledWith(MetricsChannels.NETWORK, chunk);
-        expect(spyNetworkMetric).toBeCalledTimes(records.length);
-        expect(spyNetworkMetric.mock.calls[0][0]).toBe(records[0]);
-        expect(spyNetworkMetric.mock.calls[1][0]).toBe(records[1]);
-        expect(spyNetworkMetric.mock.calls[2][0]).toBe(records[2]);
+        expect(spyAggregateNetworkMetric).toBeCalledTimes(records.length);
+        expect(spyAggregateNetworkMetric).nthCalledWith(1, records[0]);
+        expect(spyAggregateNetworkMetric).nthCalledWith(2, records[1]);
+        expect(spyAggregateNetworkMetric).nthCalledWith(3, records[2]);
       });
     });
 
@@ -138,6 +164,10 @@ describe('MetricService', () => {
       expect(spyLrange).toBeCalledTimes(1);
       expect(spyLrange).toBeCalledWith(requestId, 0, -1);
       expect(spyLtrim).toBeCalledTimes(1);
+      expect((metricService as any).maxmind.city).toBeCalledTimes(1);
+      expect((metricService as any).maxmind.city).toBeCalledWith(ip);
+      expect((metricService as any).maxmind.country).toBeCalledTimes(1);
+      expect((metricService as any).maxmind.country).toBeCalledWith(ip);
       expect(spyLtrim).toBeCalledWith(requestId, records.length, -1);
       expect(spyReduceResolvers).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledTimes(1);
@@ -149,6 +179,7 @@ describe('MetricService', () => {
         query,
         userAgent,
         ip,
+        geo,
         request,
         rawResponseBody,
         contentLength,

@@ -4,7 +4,8 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   group: {
     display: 'flex',
     flexDirection: 'column',
-    padding: spacing(2),
+    paddingTop: spacing(2),
+    paddingBottom: spacing(2),
   },
   groupName: {
     textTransform: 'uppercase',

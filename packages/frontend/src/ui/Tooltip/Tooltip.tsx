@@ -5,5 +5,7 @@ import { useStyles } from './useStyles';
 
 export const Tooltip:React.FC<TooltipProps> = (props) => {
   const { tooltip, arrow } = useStyles();
-  return <MuiTooltip {...props} classes={{ tooltip, arrow }} arrow />;
+  return (
+    <MuiTooltip {...props} classes={{ tooltip, arrow }} arrow />
+  );
 }

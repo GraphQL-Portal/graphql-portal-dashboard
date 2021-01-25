@@ -6,8 +6,16 @@ export default interface IRequestMetric {
   nodeId: string;
   query: string;
   userAgent: string;
-  ip: string;
+  ip?: string;
   resolvers: IReducedResolver[];
+  geo: {
+    city?: string;
+    country?: string;
+    location?: {
+      latitude: string;
+      longitude: string;
+    };
+  };
   request: Request;
   rawResponseBody: string;
   contentLength: number;

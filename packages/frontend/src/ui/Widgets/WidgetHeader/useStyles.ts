@@ -12,7 +12,6 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     alignItems: 'center',
   },
   titleText: {
-    fontWeight: 700,
     marginRight: spacing(1.5),
   },
   iconRoot: {
