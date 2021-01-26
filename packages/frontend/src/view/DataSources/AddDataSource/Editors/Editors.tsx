@@ -6,8 +6,7 @@ import 'jsoneditor-react/es/editor.min.css';
 
 import { H6 } from '../../../../ui';
 import { Editors as Props } from '../../../../types';
-import { EditorCell } from './EditorCell';
-import { EditorWrapper } from './EditorWrapper';
+import { HandlerCol, HandlerRow } from '../../Layout';
 
 import { useStyles } from './useStyles';
 
@@ -17,29 +16,24 @@ export const Editors: React.FC<Props> = ({
   source,
   title,
 }) => {
-  const { editor, code, schema, editorErrorHeader, editorHeader } = useStyles(
-    {}
-  );
+  const { editor, code, schema, editorErrorHeader } = useStyles({});
 
   const editorClassName = clsx(editor, code);
   const schemaClassName = clsx(editor, schema);
-  const editorConnectorHeader = clsx(
-    editor,
-    !!(errors && errors.handler) && editorErrorHeader
-  );
+  const editorConnectorHeader = clsx(!!errors?.handler && editorErrorHeader);
 
   return (
     <>
-      <EditorWrapper>
-        <EditorCell>
+      <HandlerRow>
+        <HandlerCol>
           <H6 className={editorConnectorHeader}>Connector config:</H6>
-        </EditorCell>
-        <EditorCell>
-          <H6 className={editorHeader}>Connector schema:</H6>
-        </EditorCell>
-      </EditorWrapper>
-      <EditorWrapper gapBottom={4}>
-        <EditorCell>
+        </HandlerCol>
+        <HandlerCol>
+          <H6>Connector schema:</H6>
+        </HandlerCol>
+      </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
           <Controller
             control={control}
             name="handler"
@@ -55,8 +49,8 @@ export const Editors: React.FC<Props> = ({
               />
             )}
           />
-        </EditorCell>
-        <EditorCell>
+        </HandlerCol>
+        <HandlerCol>
           <Editor
             value={source}
             name={`${title} schema`}
@@ -66,8 +60,8 @@ export const Editors: React.FC<Props> = ({
             mode="view"
             navigationBar={false}
           />
-        </EditorCell>
-      </EditorWrapper>
+        </HandlerCol>
+      </HandlerRow>
     </>
   );
 };

@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import clsx from 'clsx';
 
 import { ObjectArray as Props } from '../../../types';
-import { Col, IconButton, Row, Input, Tooltip } from '../../../ui';
+import { Col, IconButton, Row, Input, Tooltip, H6 } from '../../../ui';
 import { useStyles } from './useStyles';
 
 export const ObjectArray: React.FC<Props> = ({
@@ -19,13 +19,12 @@ export const ObjectArray: React.FC<Props> = ({
   const { objectField, lastField, objectRow } = useStyles();
 
   const lastObjectField = clsx(objectField, lastField);
-  console.log(fields);
 
   return (
     <>
       <Row className={objectRow} spacing={2}>
         <Col xs={6} className={objectField}>
-          {title}
+          <H6>{title}</H6>
         </Col>
         <Col xs={6} className={lastObjectField}>
           <Tooltip title={`Add ${title}`} placement="left">

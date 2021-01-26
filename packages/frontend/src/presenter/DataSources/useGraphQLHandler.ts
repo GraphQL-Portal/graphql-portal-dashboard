@@ -1,7 +1,18 @@
 import { useForm, useFieldArray } from 'react-hook-form';
+import vest, { test, enforce } from 'vest';
+import { vestResolver } from '@hookform/resolvers/vest';
+
+import { useFormErrors } from '../../model/Hooks';
+
+const suite = vest.create('graphql_handler', ({ endpoint }) => {
+  test('endpoint', 'Endpoint is required', () => {
+    enforce(endpoint).isNotEmpty();
+  });
+});
 
 export const useGraphQLHandler = () => {
   const { handleSubmit, errors, control } = useForm({
+    resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues: {
       endpoint: '',
@@ -10,13 +21,15 @@ export const useGraphQLHandler = () => {
       useGETForQueries: false,
       method: '',
       useSSEForSubscription: false,
-      customFetch: {},
+      customFetch: '',
       webSocketImpl: '',
       introspection: '',
       cacheIntrospection: '',
       multipart: false,
     },
   });
+
+  useFormErrors(errors);
 
   const {
     fields: schemaFields,
@@ -36,7 +49,7 @@ export const useGraphQLHandler = () => {
     name: 'operationHeaders',
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => console.log('DATA FROM THE HANDLER', data);
 
   return {
     onSubmit: handleSubmit(onSubmit),
