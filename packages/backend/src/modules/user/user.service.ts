@@ -34,7 +34,7 @@ export default class UserService {
   public async login(email: string, password: string, device: string): Promise<ITokens> {
     const user = await this.userModel.findOne({ email });
 
-    if (!(await this.isEmailConfirmed(email))) {
+    if ((await this.isEmailNotConfirmed(email))) {
       await this.sendEmailConfirmationCode(email);
       throw new AuthenticationError('We have sent a confirmation to you. Confirm your email address, please.');
     };
@@ -111,7 +111,14 @@ export default class UserService {
     const isConfirmed = await this.acceptConfirmationCode(email, CodeTypes.RESET_PASSWORD, code);
     if (!isConfirmed) throw new UserInputError('Confirmation code was not found');
 
-    await this.userModel.updateOne({ email }, { password });
+    const user = await this.findByEmail(email);
+
+    if (!user) {
+      throw new UserInputError(`User with email: ${email} was found`);
+    }
+    user.password = password;
+
+    await user.save();
 
     return true;
   }
@@ -137,11 +144,12 @@ export default class UserService {
     );
   }
 
-  public async isEmailConfirmed(email: string): Promise<boolean> {
-    return (!this.codeModel.findOne({
+  public async isEmailNotConfirmed(email: string): Promise<boolean> {
+    const code = await this.codeModel.findOne({
       email,
       type: CodeTypes.EMAIL_CONFIRMATION
-    }));
+    });
+    return Boolean(code);
   }
 
   private async createNewCodeAndDeletePrevious(email: string, type: CodeTypes): Promise<IConfirmationCodeDocument> {

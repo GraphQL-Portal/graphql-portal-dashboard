@@ -1,4 +1,8 @@
 export const LOGIN = '/login';
+export const SIGN_UP = '/sign-up';
+export const RESET_PASSWORD_REQUEST = '/reset-password-request';
+export const RESET_PASSWORD = '/reset-password';
+export const CONFIRM_EMAIL = '/confirm-email';
 
 export const MAIN = "/";
 export const DASHBOARD = '/dashboard';

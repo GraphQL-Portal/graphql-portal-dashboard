@@ -3,7 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
 import { ROUTES, useAuth } from '../../model/providers';
-import { useLogin } from '../../presenter/Login';
+import { useSignUp } from '../../presenter/SignUp';
 import { LogoFull } from '../../icons';
 import {
   Grid,
@@ -19,9 +19,9 @@ import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
 
-export const Login: React.FC = () => {
+export const SignUp: React.FC = () => {
   const { content, logo, formFrame, formField, footerWrapper, links } = useStyles();
-  const { control, onSubmit, errors } = useLogin();
+  const { control, onSubmit, errors } = useSignUp();
   const { accessToken } = useAuth();
 
   if (accessToken) return <Redirect to={ROUTES.MAIN} />
@@ -62,20 +62,28 @@ export const Login: React.FC = () => {
                       autoComplete: 'off',
                     }}
                   />
+                  <Controller
+                    as={Input}
+                    control={control}
+                    className={formField}
+                    fullWidth
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    type="password"
+                    error={!!(errors && errors.confirmPassword)}
+                    InputProps={{
+                      autoComplete: 'off',
+                    }}
+                  />
                 </WidgetBody>
                 <WidgetActions>
                   <div className={footerWrapper}>
                     <PrimaryButton fullWidth size="large" type="submit">
-                      Sign In With Email
+                      Sign Up
                   </PrimaryButton>
-                    <div className={links}>
-                      <Link to={ROUTES.RESET_PASSWORD_REQUEST}>
-                        Reset password
-                    </Link>
-                      <Link to={ROUTES.SIGN_UP}>
-                        Create account
-                    </Link>
-                    </div>
+                    <span className={links}>
+                      Already a member?<Link to={ROUTES.LOGIN}> Log In </Link>
+                    </span>
                   </div>
                 </WidgetActions>
               </Widget>

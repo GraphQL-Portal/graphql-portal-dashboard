@@ -31,7 +31,7 @@ export default class UserController {
     } catch (error) {
       this.logger.error(error, null, `${this.constructor.name}:${this.confirmEmail.name}`);
       return {
-        url: `${config.client.host}/confirm-email?result=failed&error=${escape(error.toString())}`,
+        url: `${config.client.host}/confirm-email?result=failed&error=${escape(error.message)}`,
       };
     }
   }

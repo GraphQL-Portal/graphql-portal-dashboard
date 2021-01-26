@@ -1,9 +1,9 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
 import { ROUTES, useAuth } from '../../model/providers';
-import { useLogin } from '../../presenter/Login';
+import { useResetPasswordRequest } from '../../presenter/ResetPasswordRequest';
 import { LogoFull } from '../../icons';
 import {
   Grid,
@@ -19,9 +19,9 @@ import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
 
-export const Login: React.FC = () => {
-  const { content, logo, formFrame, formField, footerWrapper, links } = useStyles();
-  const { control, onSubmit, errors } = useLogin();
+export const ResetPasswordRequest: React.FC = () => {
+  const { content, logo, formFrame, footerWrapper, links } = useStyles();
+  const { control, onSubmit, errors } = useResetPasswordRequest();
   const { accessToken } = useAuth();
 
   if (accessToken) return <Redirect to={ROUTES.MAIN} />
@@ -40,7 +40,6 @@ export const Login: React.FC = () => {
                   <Controller
                     as={Input}
                     control={control}
-                    className={formField}
                     fullWidth
                     label="Your Email"
                     name="email"
@@ -49,33 +48,15 @@ export const Login: React.FC = () => {
                       autoComplete: 'off',
                     }}
                   />
-                  <Controller
-                    as={Input}
-                    control={control}
-                    className={formField}
-                    fullWidth
-                    label="Your Password"
-                    name="password"
-                    type="password"
-                    error={!!(errors && errors.password)}
-                    InputProps={{
-                      autoComplete: 'off',
-                    }}
-                  />
                 </WidgetBody>
                 <WidgetActions>
                   <div className={footerWrapper}>
                     <PrimaryButton fullWidth size="large" type="submit">
-                      Sign In With Email
-                  </PrimaryButton>
-                    <div className={links}>
-                      <Link to={ROUTES.RESET_PASSWORD_REQUEST}>
-                        Reset password
-                    </Link>
-                      <Link to={ROUTES.SIGN_UP}>
-                        Create account
-                    </Link>
-                    </div>
+                      Send
+                    </PrimaryButton>
+                    <span className={links}>
+                      An email will be sent to you with a link to reset your password.
+                    </span>
                   </div>
                 </WidgetActions>
               </Widget>

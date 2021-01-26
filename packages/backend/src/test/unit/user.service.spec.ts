@@ -69,32 +69,32 @@ describe('UserService', () => {
 
     describe('login', () => {
       it('throws error on invalid credentials', async () => {
-        const spyIsEmailConfirmed = jest.spyOn(userService, 'isEmailConfirmed').mockResolvedValue(true);
+        const spyisEmailNotConfirmed = jest.spyOn(userService, 'isEmailNotConfirmed').mockResolvedValue(false);
         await expect(userService.login('invalid@email.com', 'password123', device)).rejects.toThrow(
           'Wrong email or password'
         );
-        expect(spyIsEmailConfirmed).toBeCalledTimes(1);
+        expect(spyisEmailNotConfirmed).toBeCalledTimes(1);
       });
 
       it('returns token', async () => {
-        const spyIsEmailConfirmed = jest.spyOn(userService, 'isEmailConfirmed').mockResolvedValue(true);
+        const spyisEmailNotConfirmed = jest.spyOn(userService, 'isEmailNotConfirmed').mockResolvedValue(false);
         const spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
         const result = await userService.login(registrationData.email, password, device);
 
         expect(result).toMatchObject(tokens);
-        expect(spyIsEmailConfirmed).toBeCalledTimes(1);
+        expect(spyisEmailNotConfirmed).toBeCalledTimes(1);
         expect(spyRefreshTokens).toBeCalledTimes(1);
       });
       it('throws error on unconfirmed email and sends confirmation again', async () => {
-        const spyIsEmailConfirmed = jest.spyOn(userService, 'isEmailConfirmed').mockResolvedValue(false);
+        const spyisEmailNotConfirmed = jest.spyOn(userService, 'isEmailNotConfirmed').mockResolvedValue(true);
         const spySendCode = jest.spyOn(userService, 'sendEmailConfirmationCode').mockResolvedValue();
         const spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
         await expect(userService.login(registrationData.email, password, device))
           .rejects.toThrow('We have sent a confirmation to you. Confirm your email address, please.');
 
         expect(spyRefreshTokens).toBeCalledTimes(0);
-        expect(spyIsEmailConfirmed).toBeCalledTimes(1);
-        expect(spyIsEmailConfirmed).toBeCalledWith(registrationData.email);
+        expect(spyisEmailNotConfirmed).toBeCalledTimes(1);
+        expect(spyisEmailNotConfirmed).toBeCalledWith(registrationData.email);
         expect(spySendCode).toBeCalledTimes(1);
         expect(spySendCode).toBeCalledWith(registrationData.email);
       });
@@ -187,27 +187,31 @@ describe('UserService', () => {
 
     it('resetPassword: success', async () => {
       const password = 'newpassword';
+      const mockedUser = {
+        save: jest.fn(),
+      };
       const spyIsConfirmed = jest.spyOn(userService, 'acceptConfirmationCode').mockResolvedValue(true);
-      const spyUpdate = jest.spyOn((userService as any).userModel, 'updateOne').mockImplementation(() => { });
+      const spyFindByEmail = jest.spyOn(userService, 'findByEmail').mockResolvedValue(mockedUser as any);
 
       await userService.resetPassword(user.email, codeEntity.code, password);
 
       expect(spyIsConfirmed).toBeCalledTimes(1);
       expect(spyIsConfirmed).toBeCalledWith(user.email, CodeTypes.RESET_PASSWORD, codeEntity.code);
-      expect(spyUpdate).toBeCalledTimes(1);
-      expect(spyUpdate).toBeCalledWith({ email: user.email }, { password });
+      expect(spyFindByEmail).toBeCalledTimes(1);
+      expect(spyFindByEmail).toBeCalledWith(user.email);
+      expect(mockedUser.save).toBeCalledTimes(1);
     });
 
     it('resetPassword: fail', async () => {
       const password = 'newpassword';
       const spyIsConfirmed = jest.spyOn(userService, 'acceptConfirmationCode').mockResolvedValue(false);
-      const spyUpdate = jest.spyOn((userService as any).userModel, 'updateOne').mockImplementation(() => { });
+      const spyFindByEmail = jest.spyOn(userService, 'findByEmail').mockImplementation();
 
       await expect(userService.resetPassword(user.email, codeEntity.code, password)).rejects.toThrow('Confirmation code was not found');
 
       expect(spyIsConfirmed).toBeCalledTimes(1);
       expect(spyIsConfirmed).toBeCalledWith(user.email, CodeTypes.RESET_PASSWORD, codeEntity.code);
-      expect(spyUpdate).toBeCalledTimes(0);
+      expect(spyFindByEmail).toBeCalledTimes(0);
     });
   });
 

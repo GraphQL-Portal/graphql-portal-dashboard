@@ -1,9 +1,9 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
 import { ROUTES, useAuth } from '../../model/providers';
-import { useLogin } from '../../presenter/Login';
+import { useResetPassword } from '../../presenter/ResetPassword';
 import { LogoFull } from '../../icons';
 import {
   Grid,
@@ -19,9 +19,9 @@ import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
 
-export const Login: React.FC = () => {
-  const { content, logo, formFrame, formField, footerWrapper, links } = useStyles();
-  const { control, onSubmit, errors } = useLogin();
+export const ResetPassword: React.FC = () => {
+  const { content, logo, formFrame, formField } = useStyles();
+  const { control, onSubmit, errors } = useResetPassword();
   const { accessToken } = useAuth();
 
   if (accessToken) return <Redirect to={ROUTES.MAIN} />
@@ -42,9 +42,10 @@ export const Login: React.FC = () => {
                     control={control}
                     className={formField}
                     fullWidth
-                    label="Your Email"
-                    name="email"
-                    error={!!(errors && errors.email)}
+                    label="Your Password"
+                    name="password"
+                    type="password"
+                    error={!!(errors && errors.password)}
                     InputProps={{
                       autoComplete: 'off',
                     }}
@@ -54,29 +55,19 @@ export const Login: React.FC = () => {
                     control={control}
                     className={formField}
                     fullWidth
-                    label="Your Password"
-                    name="password"
+                    label="Confirm Password"
+                    name="confirmPassword"
                     type="password"
-                    error={!!(errors && errors.password)}
+                    error={!!(errors && errors.confirmPassword)}
                     InputProps={{
                       autoComplete: 'off',
                     }}
                   />
                 </WidgetBody>
                 <WidgetActions>
-                  <div className={footerWrapper}>
-                    <PrimaryButton fullWidth size="large" type="submit">
-                      Sign In With Email
+                  <PrimaryButton fullWidth size="large" type="submit">
+                    Reset password
                   </PrimaryButton>
-                    <div className={links}>
-                      <Link to={ROUTES.RESET_PASSWORD_REQUEST}>
-                        Reset password
-                    </Link>
-                      <Link to={ROUTES.SIGN_UP}>
-                        Create account
-                    </Link>
-                    </div>
-                  </div>
                 </WidgetActions>
               </Widget>
             </form>

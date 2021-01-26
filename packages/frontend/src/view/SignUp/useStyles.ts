@@ -22,11 +22,10 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     flexDirection: 'column',
   },
   links: {
-    display: 'flex',
     marginTop: spacing(2),
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignSelf: 'center',
     '& a': {
+      fontWeight: 'bold',
       textDecoration: 'none',
       color: palette.common.white,
     },

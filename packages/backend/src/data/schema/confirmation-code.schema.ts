@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import IConfirmationCode from '../../common/interface/confirmation-code.interface';
 import ConfirmationCodeTypes from '../../modules/user/enum/confirmation-code-types.enum';
 
@@ -11,7 +11,7 @@ const confirmationCodeSchema = new mongoose.Schema(
     },
     code: {
       type: String,
-      default: (): string => uuid.v4(),
+      default: (): string => uuidv4(),
     },
     type: {
       type: String,

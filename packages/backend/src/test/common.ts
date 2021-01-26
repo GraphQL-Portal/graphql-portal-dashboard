@@ -81,7 +81,7 @@ export const createUser = async (
       role,
     }
   );
-  jest.spyOn(service, 'isEmailConfirmed').mockResolvedValue(true);
+  jest.spyOn(service, 'isEmailNotConfirmed').mockResolvedValue(false);
   const tokens = await service.login(email, password, randomString());
 
   const user = await service.findByEmail(email);
