@@ -1,3 +1,4 @@
+import { LocationRecord } from '@maxmind/geoip2-node';
 import { Request } from 'express';
 import { IReducedResolver } from '../../modules/metric/interfaces';
 
@@ -11,10 +12,7 @@ export default interface IRequestMetric {
   geo: {
     city?: string;
     country?: string;
-    location?: {
-      latitude: string;
-      longitude: string;
-    };
+    location?: LocationRecord;
   };
   request: Request;
   rawResponseBody: string;
