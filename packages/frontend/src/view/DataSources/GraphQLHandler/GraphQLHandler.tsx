@@ -2,7 +2,6 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { ErrorsAndControl as Props } from '../../../types';
 import { Input, Checkbox, PrimaryButton } from '../../../ui';
 import { useGraphQLHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
@@ -10,7 +9,7 @@ import { HandlerCol, HandlerRow } from '../Layout';
 
 const getError = (errors: any) => (field: string) => !!errors?.[field];
 
-export const GraphQLHandler: React.FC<Props> = () => {
+export const GraphQLHandler: React.FC = () => {
   const {
     control,
     errors,

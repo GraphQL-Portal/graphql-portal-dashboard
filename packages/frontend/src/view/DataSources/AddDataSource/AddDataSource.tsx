@@ -11,15 +11,17 @@ import {
   WidgetHeader,
   WidgetBody,
   Stepper,
+  StepperBody,
 } from '../../../ui';
 import { ADD_SOURCE_STEPS } from '../constants';
 import { SourceName } from '../SourceName';
 import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
+import { GraphQLHandler } from '../GraphQLHandler';
 
 export const AddDataSource: React.FC = () => {
-  const { step, nextStep } = useStepper();
+  const { step, nextStep } = useStepper(ADD_SOURCE_STEPS.length - 1);
   const { source } = useAddDataSource();
   const { visibleOverflow } = useStyles({});
 
@@ -39,7 +41,14 @@ export const AddDataSource: React.FC = () => {
           <WidgetBody>
             <FormCaption title={title} description={description} />
             <Stepper steps={ADD_SOURCE_STEPS} activeStep={step} />
-            <SourceName step={step} nextStep={nextStep} state={{ name: '' }} />
+            <StepperBody step={step}>
+              <SourceName
+                step={step}
+                nextStep={nextStep}
+                state={{ name: '' }}
+              />
+              <GraphQLHandler />
+            </StepperBody>
           </WidgetBody>
         </HugeWidget>
       </WidgetRow>
