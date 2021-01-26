@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Redirect } from 'react-router-dom';
-import { Controller } from 'react-hook-form';
 
+import { useStepper } from '../../../model/Hooks';
 import { ROUTES } from '../../../model/providers';
 import { useAddDataSource } from '../../../presenter/DataSources';
 import {
@@ -10,18 +10,17 @@ import {
   HugeWidget,
   WidgetHeader,
   WidgetBody,
-  Input,
-  PrimaryButton,
+  Stepper,
 } from '../../../ui';
-import { HandlerRow, HandlerCol } from '../Layout';
-import { Editors } from './Editors';
+import { ADD_SOURCE_STEPS } from '../constants';
+import { SourceName } from '../SourceName';
 import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
-import { GraphQLHandler } from '../GraphQLHandler';
 import { useStyles } from './useStyles';
 
 export const AddDataSource: React.FC = () => {
-  const { source, control, onSubmit, errors } = useAddDataSource();
+  const { step, nextStep } = useStepper();
+  const { source } = useAddDataSource();
   const { visibleOverflow } = useStyles({});
 
   if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;
@@ -39,28 +38,8 @@ export const AddDataSource: React.FC = () => {
           <WidgetHeader title="Configure a data-source" />
           <WidgetBody>
             <FormCaption title={title} description={description} />
-            <form noValidate autoComplete="off" onSubmit={onSubmit}>
-              <HandlerRow>
-                <HandlerCol>
-                  <Controller
-                    as={Input}
-                    name="name"
-                    label="Data-source name"
-                    control={control}
-                    fullWidth
-                    error={!!(errors && errors.name)}
-                  />
-                </HandlerCol>
-              </HandlerRow>
-              <Editors
-                control={control}
-                source={source}
-                title={title}
-                errors={errors}
-              />
-              <PrimaryButton type="submit">Save</PrimaryButton>
-            </form>
-            <GraphQLHandler control={control} errors={errors} />
+            <Stepper steps={ADD_SOURCE_STEPS} activeStep={step} />
+            <SourceName step={step} nextStep={nextStep} state={{ name: '' }} />
           </WidgetBody>
         </HugeWidget>
       </WidgetRow>

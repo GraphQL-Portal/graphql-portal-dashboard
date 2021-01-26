@@ -64,8 +64,6 @@ export const useAddDataSource = () => {
     },
   });
 
-  console.log(errors);
-
   useFormErrors(errors);
 
   const onSubmit = (source: any) => {

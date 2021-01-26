@@ -1,7 +1,5 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
-import { EditorWrapper } from '../../../../types';
-
 export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
   code: {
     '& .jsoneditor': {
@@ -18,24 +16,6 @@ export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
         backgroundColor: palette.secondary.main,
       },
     },
-  },
-  editorsWrapper: {
-    display: 'flex',
-    marginBottom: ({ gapBottom }: EditorWrapper) => spacing(gapBottom || 0),
-  },
-  editorCell: {
-    flexGrow: 0,
-    width: '50%',
-
-    '&:first-child': {
-      paddingRight: spacing(1),
-    },
-    '&:last-child': {
-      paddingLeft: spacing(1),
-    },
-  },
-  editorHeader: {
-    marginBottom: spacing(1),
   },
   editorErrorHeader: {
     color: palette.error.main,

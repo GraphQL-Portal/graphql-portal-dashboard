@@ -9,6 +9,7 @@ export { Input } from './Input';
 export { Select } from './Select';
 export { Snackbar } from './Snackbar';
 export { Spinner } from './Spinner';
+export { Stepper } from './Stepper';
 export { SvgIcon } from './SvgIcon';
 export { Switch } from './Switch';
 export { Table, TableHead, TableBody, TableRow, TableCell } from './Table';
