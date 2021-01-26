@@ -23,7 +23,7 @@ const bootstrap = async (): Promise<void> => {
   app.useGlobalFilters(new ValidationExceptionFilter(app.getHttpAdapter()));
 
   await app.listen(config.application.port, () => {
-    logger.log(`Start listen ${config.application.port}, secret: "${config.application.secret}"`, 'bootstrap');
+    logger.log(`Start listen ${config.application.port}`, 'bootstrap');
   });
 };
 

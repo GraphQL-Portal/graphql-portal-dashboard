@@ -12,6 +12,8 @@ import { createUser, Method, requestTo, RequestToResult, sourceExample } from '.
 
 jest.mock('ioredis');
 
+jest.useFakeTimers();
+
 describe('SourceResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;

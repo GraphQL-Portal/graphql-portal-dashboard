@@ -13,6 +13,8 @@ import { createUser, Method, requestTo, RequestToResult } from '../common';
 
 jest.mock('ioredis');
 
+jest.useFakeTimers();
+
 describe('GatewayResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;

@@ -9,6 +9,10 @@ import { IUserDocument } from '../../data/schema/user.schema';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import { createUser, randomObjectId } from '../common';
 
+jest.useFakeTimers();
+
+jest.mock('ioredis');
+
 describe('ApiDefService', () => {
   let app: TestingModule;
   let userService: UserService;

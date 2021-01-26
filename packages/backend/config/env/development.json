@@ -1,6 +1,11 @@
 {
   "application": {
-    "env": "development"
+    "env": "development",
+    "maxmind": {
+      "dbPath": "@@MAXMIND_DB_PATH",
+      "licenseKey": "@@MAXMIND_LICENSE_KEY",
+      "accountId": "@@MAXMIND_ACCOUNT_ID"
+    }
   },
   "db": {
     "redis": {

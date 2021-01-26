@@ -9,6 +9,10 @@ import RedisService from '../../modules/redis/redis.service';
 import SourceService from '../../modules/source/source.service';
 import { apiDefExample, expectApiDef, mongoDocumentSchema, randomObjectId, sourceExample } from '../common';
 
+jest.useFakeTimers();
+
+jest.mock('ioredis');
+
 describe('ApiDefService', () => {
   let app: TestingModule;
   let sourceService: SourceService;

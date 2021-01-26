@@ -19,10 +19,21 @@ declare module "node-config-ts" {
     useSwaggerUi: boolean
     graphQL: GraphQL
     logLevel: string
-    secret: string
     jwtSecret: string
     salt: string
     defaultAdmin: DefaultAdmin
+    metrics: Metrics
+    maxmind: Maxmind
+  }
+  interface Maxmind {
+    dbPath: string
+    accountId: string
+    licenseKey: string
+  }
+  interface Metrics {
+    enabled: boolean
+    chunk: number
+    delay: number
   }
   interface DefaultAdmin {
     email: string

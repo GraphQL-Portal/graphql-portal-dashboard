@@ -15,6 +15,8 @@ import { createUser, expectTokens, Method, requestTo, RequestToResult } from '..
 
 jest.mock('ioredis');
 
+jest.useFakeTimers();
+
 describe('ApiDefResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;

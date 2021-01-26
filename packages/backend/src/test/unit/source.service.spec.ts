@@ -12,6 +12,10 @@ import {
   randomObjectId,
 } from '../common';
 
+jest.useFakeTimers();
+
+jest.mock('ioredis');
+
 describe('SourceService', () => {
   let app: TestingModule;
   let sourceService: SourceService;
