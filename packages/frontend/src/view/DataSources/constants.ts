@@ -30,3 +30,8 @@ export const ADD_SOURCE_STEPS = [
     labelProps: {},
   },
 ];
+
+export const GRAPHQL_METHODS = [
+  { label: 'GET', value: 'GET' },
+  { label: 'POST', value: 'POST' },
+];

@@ -2,14 +2,16 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { Input, Checkbox, PrimaryButton } from '../../../ui';
+import { Input, Checkbox, PrimaryButton, Select } from '../../../ui';
 import { useGraphQLHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
+import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
+import { GRAPHQL_METHODS } from '../constants';
 
 const getError = (errors: any) => (field: string) => !!errors?.[field];
 
-export const GraphQLHandler: React.FC = () => {
+export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
   const {
     control,
     errors,
@@ -20,9 +22,9 @@ export const GraphQLHandler: React.FC = () => {
     operationFields,
     appendOperationField,
     removeOperationField,
-  } = useGraphQLHandler();
+  } = useGraphQLHandler(props);
   const hasErrors = getError(errors);
-  console.log('ERRORS IS: ', errors);
+
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
@@ -55,6 +57,19 @@ export const GraphQLHandler: React.FC = () => {
         onAdd={appendOperationField}
         onRemove={removeOperationField}
       />
+      <HandlerRow>
+        <HandlerCol>
+          <Controller
+            as={Select}
+            control={control}
+            name="method"
+            options={GRAPHQL_METHODS}
+            labelId="method"
+            label="method"
+            fullWidth
+          />
+        </HandlerCol>
+      </HandlerRow>
       <HandlerRow>
         <HandlerCol>
           <FormControl>
@@ -162,7 +177,7 @@ export const GraphQLHandler: React.FC = () => {
           </FormControl>
         </HandlerCol>
       </HandlerRow>
-      <PrimaryButton type="submit">Submit</PrimaryButton>
+      <PrimaryButton type="submit">Save Handler</PrimaryButton>
     </form>
   );
 };

@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Redirect } from 'react-router-dom';
 
-import { useStepper } from '../../../model/Hooks';
 import { ROUTES } from '../../../model/providers';
 import { useAddDataSource } from '../../../presenter/DataSources';
 import {
@@ -15,19 +14,23 @@ import {
 } from '../../../ui';
 import { ADD_SOURCE_STEPS } from '../constants';
 import { SourceName } from '../SourceName';
+import { SourceHandler } from '../SourceHandler';
 import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
-import { GraphQLHandler } from '../GraphQLHandler';
 
 export const AddDataSource: React.FC = () => {
-  const { step, nextStep } = useStepper(ADD_SOURCE_STEPS.length - 1);
-  const { source } = useAddDataSource();
+  const { source, step, updateState, state } = useAddDataSource(
+    ADD_SOURCE_STEPS.length - 1
+  );
   const { visibleOverflow } = useStyles({});
 
   if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;
 
   const { title, description } = source;
+  const { name, handler, transforms } = state;
+
+  console.log(transforms);
 
   return (
     <>
@@ -42,12 +45,12 @@ export const AddDataSource: React.FC = () => {
             <FormCaption title={title} description={description} />
             <Stepper steps={ADD_SOURCE_STEPS} activeStep={step} />
             <StepperBody step={step}>
-              <SourceName
-                step={step}
-                nextStep={nextStep}
-                state={{ name: '' }}
+              <SourceName updateState={updateState} state={{ name }} />
+              <SourceHandler
+                updateState={updateState}
+                state={{ handler }}
+                source={source}
               />
-              <GraphQLHandler />
             </StepperBody>
           </WidgetBody>
         </HugeWidget>

@@ -3,6 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
+import { HandlerStep } from '../../types';
 
 const suite = vest.create('graphql_handler', ({ endpoint }) => {
   test('endpoint', 'Endpoint is required', () => {
@@ -10,23 +11,26 @@ const suite = vest.create('graphql_handler', ({ endpoint }) => {
   });
 });
 
-export const useGraphQLHandler = () => {
+const GRAPHQL_DEFAULT_STATE = {
+  endpoint: '',
+  schemaHeaders: [],
+  operationHeaders: [],
+  useGETForQueries: false,
+  method: '',
+  useSSEForSubscription: false,
+  customFetch: '',
+  webSocketImpl: '',
+  introspection: '',
+  cacheIntrospection: '',
+  multipart: false,
+};
+
+export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
+  const handlerState = Object.assign({}, GRAPHQL_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: {
-      endpoint: '',
-      schemaHeaders: [],
-      operationHeaders: [],
-      useGETForQueries: false,
-      method: '',
-      useSSEForSubscription: false,
-      customFetch: '',
-      webSocketImpl: '',
-      introspection: '',
-      cacheIntrospection: '',
-      multipart: false,
-    },
+    defaultValues: handlerState,
   });
 
   useFormErrors(errors);
@@ -49,7 +53,7 @@ export const useGraphQLHandler = () => {
     name: 'operationHeaders',
   });
 
-  const onSubmit = (data: any) => console.log('DATA FROM THE HANDLER', data);
+  const onSubmit = (data: any) => updateState(data);
 
   return {
     onSubmit: handleSubmit(onSubmit),

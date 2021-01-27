@@ -1,3 +1,4 @@
+import React from 'react';
 import { ErrorsAndControl } from './HookForm';
 
 export type FormCaption = {
@@ -10,15 +11,23 @@ export type Editors = ErrorsAndControl & {
   source: any;
 };
 
-type nextStep<T> = (step: number, data: T) => void;
+type updateState<T> = (data: T) => void;
 type Step<T> = {
-  nextStep: nextStep<T>;
+  updateState: updateState<T>;
   state: T;
-  step: number;
 };
 
 export type NameForm = {
   name: string;
 };
 
+export type HandlerForm = {
+  handler: any;
+};
+
 export type NameStep = Step<NameForm>;
+export type HandlerStep = Step<HandlerForm> & { source?: any };
+
+export type HandlersMapper = {
+  [key: string]: React.JSXElementConstructor<any>;
+};

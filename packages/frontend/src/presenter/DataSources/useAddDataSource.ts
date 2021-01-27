@@ -1,23 +1,20 @@
-import { useForm } from 'react-hook-form';
-import { vestResolver } from '@hookform/resolvers/vest';
-import vest, { test, enforce } from 'vest';
+import { useState } from 'react';
 
-import { useFormErrors } from '../../model/Hooks';
+import { useStepper } from '../../model/Hooks';
 import { useCreateSource } from '../../model/DataSources/commands';
 import { useDataSourceContext } from '../../model/providers';
-import { validateAvj, getHandlerSchema } from './helpers';
-import { AJV_SCHEMA_TEMPLATE, definitions } from './constants';
+import { INITIAL_STATE } from './constants';
 
-const validate = validateAvj(AJV_SCHEMA_TEMPLATE);
-
-type DataSourceFormInput = {
+type State = {
   name: string;
   handler: any;
+  transforms: any[];
 };
 
-export const useAddDataSource = () => {
-  const { source, clearSource } = useDataSourceContext();
-  const { key = '', connector } = source || {};
+export const useAddDataSource = (limit: number) => {
+  const { step, nextStep } = useStepper(limit);
+  const { source = {}, clearSource } = useDataSourceContext();
+  const [state, setState] = useState<State>(INITIAL_STATE);
 
   const onCompleted = () => {
     // @TODO I need to refetch data-source from here
@@ -30,54 +27,34 @@ export const useAddDataSource = () => {
     // @TODO probably I need to show error message
   };
 
+  // Send new source to the server
   const { createSource } = useCreateSource({ onCompleted, onError });
 
-  enforce.extend({
-    isValidSchema(handler: any) {
-      return validate({
-        properties: {
-          [key]: getHandlerSchema(definitions)(key),
-        },
-      })({ [key]: handler });
-    },
-  });
+  // const onSubmit = (source: any) => {
+  //   createSource({
+  //     variables: {
+  //       source,
+  //     },
+  //   });
+  // };
 
-  const validationSuite = vest.create(
-    'login_form',
-    ({ name, handler }: DataSourceFormInput) => {
-      test('name', 'Name is required', () => {
-        enforce(name).isNotEmpty();
-      });
-
-      test('handler', () => {
-        enforce(handler).isValidSchema();
-      });
-    }
-  );
-
-  const { control, handleSubmit, errors } = useForm({
-    reValidateMode: 'onSubmit',
-    resolver: vestResolver(validationSuite),
-    defaultValues: {
-      name: '',
-      handler: {},
-    },
-  });
-
-  useFormErrors(errors);
-
-  const onSubmit = (source: any) => {
-    createSource({
-      variables: {
-        source,
-      },
-    });
+  const updateState = (newState: any) => {
+    setState((s: any) => Object.assign({}, s, newState));
+    nextStep();
   };
 
+  const onAddSource = () => {
+    console.log(createSource);
+    console.log('ON ADD SOURCE CLICKED');
+  };
+
+  console.log('STEP IS: ', step);
+
   return {
-    source: connector,
-    onSubmit: handleSubmit(onSubmit),
-    control,
-    errors,
+    source,
+    onAddSource,
+    step,
+    state,
+    updateState,
   };
 };
