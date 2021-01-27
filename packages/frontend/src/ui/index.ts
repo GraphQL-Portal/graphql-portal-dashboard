@@ -1,4 +1,10 @@
-export { IconButton, PrimaryButton, TextButton } from './Buttons';
+export {
+  IconButton,
+  OutlineButton,
+  PrimaryButton,
+  TextButton,
+} from './Buttons';
+export { Checkbox } from './Checkbox';
 export { Emoji } from './Emoji';
 export { EmptyContainer, EmptyIcon, EmptyText } from './Empty';
 export { Errors } from './Errors';
@@ -8,6 +14,7 @@ export { Input } from './Input';
 export { Select } from './Select';
 export { Snackbar } from './Snackbar';
 export { Spinner } from './Spinner';
+export { Stepper, StepperBody } from './Stepper';
 export { SvgIcon } from './SvgIcon';
 export { Switch } from './Switch';
 export { Table, TableHead, TableBody, TableRow, TableCell } from './Table';
