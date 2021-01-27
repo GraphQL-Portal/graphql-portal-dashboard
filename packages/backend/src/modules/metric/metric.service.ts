@@ -1,14 +1,16 @@
+import { MetricsChannels } from '@graphql-portal/types';
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { Redis } from 'ioredis';
+import moment from 'moment';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import { Redis } from 'ioredis';
 import { Reader, ReaderModel, WebServiceClient, LocationRecord } from '@maxmind/geoip2-node';
 import { MetricsChannels } from '@graphql-portal/types';
 import { LoggerService } from '../../common/logger';
-import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
-import Provider from '../../common/enum/provider.enum';
+import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
 import {
   AnyMetric,
   AnyResolverMetric,
@@ -17,6 +19,8 @@ import {
   ISentResponse,
   IReducedResolver,
 } from './interfaces';
+
+type MetricScale = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month';
 
 @Injectable()
 export default class MetricService {
@@ -66,6 +70,33 @@ export default class MetricService {
     } catch (error) {
       this.logger.error(error, null, `${this.constructor.name}:${this.fetchMetrics.name}`, { channel, chunk });
     }
+  }
+
+  public async aggregateByLatency(startDate: number, endDate: number, scale: MetricScale): Promise<any> {
+    const boundaries = this.getBoundries(moment(startDate), moment(endDate), scale);
+    const [result] = await this.requestMetricModel.aggregate([
+      { $match: { requestDate: { $gte: new Date(startDate), $lte: new Date(endDate) } } },
+      { $facet: {
+        latency: [
+          { $bucket: {
+            groupBy: '$requestDate',
+            boundaries,
+            output: { avg: { $avg: '$latency' }, count: { $sum: 1 },  },
+          } },
+        ],
+      } },
+    ]);
+    const map = result.latency.reduce((p: any, c: any) => { p[c._id.toISOString()] = c; return p; }, {});
+    const latencyData = boundaries.map((b) => {
+      const key = b.toISOString();
+      if (map[key]) return map[key];
+      else return { _id: key, avg:0, count: 0};
+    });
+    console.log(latencyData);
+    return {
+      latency: latencyData.map((obj: any) => ({ argument: obj._id, value: obj.avg})),
+      count: latencyData.map((obj: any) => ({ argument: obj._id, value: obj.count})),
+    };
   }
 
   private async getRecords(channel: MetricsChannels.REQUEST_IDS | MetricsChannels.NETWORK, chunk: number): Promise<string[]> {

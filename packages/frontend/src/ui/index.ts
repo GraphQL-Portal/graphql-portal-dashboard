@@ -13,6 +13,7 @@ export { Switch } from './Switch';
 export { Table, TableHead, TableBody, TableRow, TableCell } from './Table';
 export { Tooltip } from './Tooltip';
 export { H1, H2, H3, H4, H5, H6 } from './Typography';
+export { DatePicker } from './DatePicker';
 export {
   Widget,
   WidgetRow,

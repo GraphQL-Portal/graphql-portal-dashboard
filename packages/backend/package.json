@@ -39,6 +39,7 @@
     "graphql-tools": "6.2.6",
     "ioredis": "4.19.4",
     "jsonwebtoken": "8.5.1",
+    "moment": "^2.29.1",
     "mongodb": "3.6.3",
     "mongoose": "5.11.13",
     "node-config-ts": "3.1.0",
