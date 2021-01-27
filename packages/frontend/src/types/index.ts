@@ -7,6 +7,8 @@ export type {
   HandlerForm,
   HandlerStep,
   HandlersMapper,
+  TransformsForm,
+  TransformsStep,
 } from './DataSource';
 export type { ObjectArray } from './Forms';
 export type { ErrorsAndControl } from './HookForm';

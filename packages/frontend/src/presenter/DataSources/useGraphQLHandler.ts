@@ -53,7 +53,7 @@ export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
     name: 'operationHeaders',
   });
 
-  const onSubmit = (data: any) => updateState(data);
+  const onSubmit = (data: any) => updateState({ handler: data });
 
   return {
     onSubmit: handleSubmit(onSubmit),

@@ -42,7 +42,6 @@ export const useEditorsHandler = ({
 
   const onSubmit = (source: any) => {
     updateState(source);
-    console.log('SOURCE IS: ', source);
   };
 
   return {

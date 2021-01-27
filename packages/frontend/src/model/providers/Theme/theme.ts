@@ -41,6 +41,12 @@ export const theme = createMuiTheme({
         marginLeft: 0,
         marginRight: '16px',
       },
+      contained: {
+        '&.Mui-disabled': {
+          background: RGBA(0.26),
+          color: RGBA(0.8),
+        },
+      },
     },
     MuiTable: {
       root: {

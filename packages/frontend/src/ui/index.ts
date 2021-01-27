@@ -1,4 +1,9 @@
-export { IconButton, PrimaryButton, TextButton } from './Buttons';
+export {
+  IconButton,
+  OutlineButton,
+  PrimaryButton,
+  TextButton,
+} from './Buttons';
 export { Checkbox } from './Checkbox';
 export { Emoji } from './Emoji';
 export { EmptyContainer, EmptyIcon, EmptyText } from './Empty';

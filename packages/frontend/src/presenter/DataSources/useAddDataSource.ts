@@ -39,16 +39,18 @@ export const useAddDataSource = (limit: number) => {
   // };
 
   const updateState = (newState: any) => {
+    console.log(newState);
     setState((s: any) => Object.assign({}, s, newState));
     nextStep();
   };
 
   const onAddSource = () => {
-    console.log(createSource);
-    console.log('ON ADD SOURCE CLICKED');
+    createSource({
+      variables: {
+        source: state,
+      },
+    });
   };
-
-  console.log('STEP IS: ', step);
 
   return {
     source,
@@ -56,5 +58,6 @@ export const useAddDataSource = (limit: number) => {
     step,
     state,
     updateState,
+    isDisabled: step < limit,
   };
 };

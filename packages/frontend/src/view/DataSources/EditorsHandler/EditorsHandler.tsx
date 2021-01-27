@@ -50,7 +50,7 @@ export const EditorsHandler: React.FC<Props> = (props) => {
         <HandlerCol>
           <Editor
             value={source}
-            name="Handler schema"
+            name="Connector schema"
             htmlElementProps={{
               className: schemaClassName,
             }}
