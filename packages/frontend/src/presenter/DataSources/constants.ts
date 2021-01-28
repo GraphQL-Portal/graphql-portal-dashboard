@@ -23,3 +23,15 @@ export const INITIAL_STATE = {
   handler: {},
   transforms: [],
 };
+
+export const ODATA_BATCHES = [
+  { label: '-', value: '' },
+  { label: 'multipart', value: 'multipart' },
+  { label: 'json', value: 'json' },
+]
+
+export const THRIFT_PROTOCOLS = [
+  { label: 'Binary', value: 'binary' },
+  { label: 'Compact', value: 'compact' },
+  { label: 'Json', value: 'json' },
+]
