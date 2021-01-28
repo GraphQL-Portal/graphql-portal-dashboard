@@ -1,7 +1,4 @@
-import { makeStyles, Theme } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
-export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
-  title: {
-    marginBottom: spacing(4),
-  },
+export const useStyles = makeStyles(() => ({
 }));
