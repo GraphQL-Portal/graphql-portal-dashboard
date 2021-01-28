@@ -16,7 +16,7 @@ export const ConfirmEmail: React.FC = () => {
 
   if (accessToken) return <Redirect to={ROUTES.MAIN} />
 
-  const message = result === 'success' ? <H3> You email was successfully confirmed! 🎉 </H3> : <H3>  😢 {error || 'Oops... Something went wrong. Try again later, please'} </H3>
+  const message = result === 'success' ? <H3> Your email was successfully confirmed! 🎉 </H3> : <H3>  😢 {error || 'Oops... Something went wrong. Try again later, please'} </H3>
 
   return (
     <Content className={content}>

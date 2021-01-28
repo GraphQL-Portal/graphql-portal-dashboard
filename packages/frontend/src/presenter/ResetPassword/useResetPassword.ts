@@ -16,8 +16,8 @@ const validationSuite = vest.create('reset_password_request_form', ({ password, 
   test('password', 'Password is required', () => {
     enforce(password).isNotEmpty();
   });
-  test('password', 'Password must be at least 5 chars', () => {
-    enforce(password).longerThanOrEquals(5);
+  test('password', 'Password must be at least 8 chars', () => {
+    enforce(password).longerThanOrEquals(8);
   });
   test('password', 'Password must contain a digit', () => {
     enforce(password).matches(/[0-9]/);

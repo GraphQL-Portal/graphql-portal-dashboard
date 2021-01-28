@@ -36,7 +36,7 @@ export default class UserService {
 
     if ((await this.isEmailNotConfirmed(email))) {
       await this.sendEmailConfirmationCode(email);
-      throw new AuthenticationError('We have sent a confirmation to you. Confirm your email address, please.');
+      throw new AuthenticationError('Please verify your email by using a confirmation code we have sent to your email.');
     };
 
     if (!user || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
@@ -87,7 +87,7 @@ export default class UserService {
   public async resetPasswordRequest(email: string): Promise<boolean> {
     const user = await this.findByEmail(email);
     if (!user) {
-      throw new UserInputError(`User with this email does not exist`);
+      throw new UserInputError('User with such email/password does not exist');
     }
 
     const codeEntity = await this.createNewCodeAndDeletePrevious(email, CodeTypes.RESET_PASSWORD);
@@ -109,7 +109,7 @@ export default class UserService {
 
   public async resetPassword(email: string, code: string, password: string): Promise<boolean> {
     const isConfirmed = await this.acceptConfirmationCode(email, CodeTypes.RESET_PASSWORD, code);
-    if (!isConfirmed) throw new UserInputError('Confirmation code was not found');
+    if (!isConfirmed) throw new UserInputError('Confirmation code has expired or is invalid');
 
     const user = await this.findByEmail(email);
 
@@ -126,7 +126,7 @@ export default class UserService {
   public async sendEmailConfirmationCode(email: string): Promise<void> {
     const user = await this.findByEmail(email);
     if (!user) {
-      throw new UserInputError(`User with this email does not exist`);
+      throw new UserInputError('User with such email/password does not exist');
     }
 
     const codeEntity = await this.createNewCodeAndDeletePrevious(email, CodeTypes.EMAIL_CONFIRMATION);
@@ -178,7 +178,7 @@ export default class UserService {
     });
     if (!confirmationCode) {
       this.logger.debug('Confirmation code was not found', context, { email, code });
-      return false;
+      throw new Error('Confirmation code has expired or is invalid');
     };
     await this.codeModel.deleteMany({
       email,

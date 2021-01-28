@@ -90,7 +90,7 @@ describe('UserService', () => {
         const spySendCode = jest.spyOn(userService, 'sendEmailConfirmationCode').mockResolvedValue();
         const spyRefreshTokens = jest.spyOn(tokenService, 'issueTokens').mockResolvedValue(tokens);
         await expect(userService.login(registrationData.email, password, device))
-          .rejects.toThrow('We have sent a confirmation to you. Confirm your email address, please.');
+          .rejects.toThrow('Please verify your email by using a confirmation code we have sent to your email.');
 
         expect(spyRefreshTokens).toBeCalledTimes(0);
         expect(spyisEmailNotConfirmed).toBeCalledTimes(1);
@@ -207,7 +207,7 @@ describe('UserService', () => {
       const spyIsConfirmed = jest.spyOn(userService, 'acceptConfirmationCode').mockResolvedValue(false);
       const spyFindByEmail = jest.spyOn(userService, 'findByEmail').mockImplementation();
 
-      await expect(userService.resetPassword(user.email, codeEntity.code, password)).rejects.toThrow('Confirmation code was not found');
+      await expect(userService.resetPassword(user.email, codeEntity.code, password)).rejects.toThrow('Confirmation code has expired or is invalid');
 
       expect(spyIsConfirmed).toBeCalledTimes(1);
       expect(spyIsConfirmed).toBeCalledWith(user.email, CodeTypes.RESET_PASSWORD, codeEntity.code);
@@ -216,8 +216,9 @@ describe('UserService', () => {
   });
 
   describe('acceptConfirmationCode', () => {
-    it('returns false if code entity was not found', async () => {
-      await expect(userService.acceptConfirmationCode('email', CodeTypes.RESET_PASSWORD, 'code')).resolves.toBeFalsy();
+    it('throws error if code entity was not found', async () => {
+      await expect(userService.acceptConfirmationCode('email', CodeTypes.RESET_PASSWORD, 'code'))
+        .rejects.toThrow('Confirmation code has expired or is invalid');
     });
 
     it('returns true and delete all codes if code entity was found', async () => {
@@ -248,7 +249,7 @@ describe('UserService', () => {
   describe('Confirm email', () => {
     it('throws error if user does not exist', async () => {
       const spyFindByEmail = jest.spyOn(userService, 'findByEmail').mockResolvedValue(null);
-      await expect(userService.sendEmailConfirmationCode(user.email)).rejects.toThrow('User with this email does not exist');
+      await expect(userService.sendEmailConfirmationCode(user.email)).rejects.toThrow('User with such email/password does not exist');
       expect(spyFindByEmail).toBeCalledTimes(1);
       expect(spyFindByEmail).toBeCalledWith(user.email);
     });

@@ -20,18 +20,16 @@ export default class UserController {
   @Get('/confirm-email')
   @Redirect('', 302)
   public async confirmEmail(@Query('email') email: string, @Query('code') code: string): Promise<{ url: string }> {
+    const redirectUrl = `${config.client.host}/confirm-email`;
     try {
-      const result = await this.service.acceptConfirmationCode(email, ConfirmationCodeTypes.EMAIL_CONFIRMATION, code);
-      if (!result) {
-        throw new Error('Can not confirm email address');
-      }
+      await this.service.acceptConfirmationCode(email, ConfirmationCodeTypes.EMAIL_CONFIRMATION, code);
       return {
-        url: `${config.client.host}/confirm-email?result=success`
+        url: `${redirectUrl}?result=success`
       };
     } catch (error) {
       this.logger.error(error, null, `${this.constructor.name}:${this.confirmEmail.name}`);
       return {
-        url: `${config.client.host}/confirm-email?result=failed&error=${escape(error.message)}`,
+        url: `${redirectUrl}?result=failed&error=${escape(error.message)}`,
       };
     }
   }
