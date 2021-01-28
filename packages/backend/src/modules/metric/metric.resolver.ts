@@ -1,13 +1,11 @@
-import { Args, Query, Resolver, Subscription } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
-import SubscriptionEnum from '../../common/enum/subscription.enum';
-import RedisService from '../redis/redis.service';
 import MetricService from './metric.service';
 
 @Resolver('Metric')
 export default class MetricResolver {
-  public constructor(private readonly metricService: MetricService, private readonly redis: RedisService) {}
+  public constructor(private readonly metricService: MetricService) {}
 
   @Query()
   @Roles([RolesEnum.USER, RolesEnum.ADMIN])

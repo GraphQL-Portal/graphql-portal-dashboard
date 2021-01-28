@@ -72,7 +72,7 @@ export default class MetricService {
   }
 
   public async aggregateByLatency(startDate: number, endDate: number, scale: MetricScale): Promise<any> {
-    const boundaries = this.getBoundries(moment(startDate), moment(endDate), scale);
+    const boundaries = this.getBoundaries(moment(startDate), moment(endDate), scale);
     const aggregationQuery = [
       { $match: { requestDate: { $gte: new Date(startDate), $lte: new Date(endDate) } } },
       { $facet: {
@@ -255,7 +255,7 @@ export default class MetricService {
     }
   }
 
-  private getBoundries(startDate: moment.Moment, endDate: moment.Moment, scale: 'day' | 'hour' | 'week' | 'month'): Date[] {
+  private getBoundaries(startDate: moment.Moment, endDate: moment.Moment, scale: 'day' | 'hour' | 'week' | 'month'): Date[] {
     const boundaries: Date[] = [];
     const next = (): boolean => {
       startDate.add(1, scale);

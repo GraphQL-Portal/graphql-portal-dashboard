@@ -20,6 +20,7 @@ export const useMetrics = () => {
       };
     }
     refetch(data);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate, endDate, scale]);
 
   return {
