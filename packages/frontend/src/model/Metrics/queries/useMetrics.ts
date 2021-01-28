@@ -25,9 +25,14 @@ export const useMetricsQuery = (startDate: Date, endDate: Date, scale: 'day' | '
   });
 
   return {
-    data,
+    data: data?.getMetrics,
     loading,
-    refetch,
     error,
+    refetch: (variables: { startDate: Date, endDate: Date, scale: 'day' | 'hour' | 'week' | 'month' }) =>
+      refetch({
+        startDate: variables.startDate.getTime(),
+        endDate: variables.endDate.getTime(),
+        scale: variables.scale,
+      }),
   };
 };

@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from '@material-ui/core';
 import moment from 'moment';
-import React, { ReactText, useEffect, useState } from 'react';
+import React, { ReactText } from 'react';
 import { Helmet } from 'react-helmet';
 import { useMetrics } from '../../presenter/Metrics';
 import { DatePicker, Header, HugeWidget, Widget, WidgetRow } from '../../ui';
@@ -22,29 +22,12 @@ const formatArgumentLabel = (scale: Scale) => (date: ReactText) => {
 export const MetricsAndLogs:React.FC = () => {
   const { date, buttons } = useStyles();
 
-  const [startDate, setStartDate] = useState(moment().add(-25, 'day'));
-  const [endDate, setEndDate] = useState(moment());
-  const [scale, setScale] = useState('day' as Scale);
-
-  const { data, refetch } = useMetrics(startDate.toDate(), endDate.toDate(), scale);
-  const latencyData = data && data.getMetrics.latency || [];
-  const countData = data && data.getMetrics.count || [];
-  const countriesData = data && data.getMetrics.countries || [];
+  const { data, startDate, endDate, scale, setStartDate, setEndDate, setScale } = useMetrics();
+  const latencyData = data?.latency || [];
+  const countData = data?.count || [];
+  const countriesData = data?.countries || [];
 
   const handleButton = (s: Scale) => () => setScale(s);
-
-  useEffect(() => {
-    const sDate = moment(startDate);
-    let data = { startDate: startDate.toDate().getTime(), endDate: endDate.toDate().getTime(), scale };
-    if (scale === 'hour') {
-      data = {
-        startDate: sDate.toDate().getTime(),
-        endDate: sDate.clone().add(1, 'day').toDate().getTime(),
-        scale,
-      };
-    }
-    refetch(data);
-  }, [startDate, endDate, scale]);
 
   return (
     <>
@@ -67,7 +50,7 @@ export const MetricsAndLogs:React.FC = () => {
             value={startDate}
             disableFuture
             maxDate={endDate}
-            onChange={(e) => setStartDate(moment(e?.toDate()))}
+            onChange={(e) => e && setStartDate(e.toDate())}
           />
         </Widget>
         <Widget className={date}>
@@ -75,7 +58,8 @@ export const MetricsAndLogs:React.FC = () => {
             label="End Date"
             value={endDate}
             disableFuture
-            onChange={(e) => setEndDate(moment(e?.toDate()))}
+            minDate={startDate}
+            onChange={(e) => e && setEndDate(e.toDate())}
           />
         </Widget>
       </WidgetRow>
