@@ -27,7 +27,7 @@ export const MetricsAndLogs:React.FC = () => {
   const countData = data?.count || [];
   const countriesData = data?.countries || [];
 
-  const handleButton = (s: Scale) => () => setScale(s);
+  const createButtonHandler = (s: Scale) => () => setScale(s);
 
   return (
     <>
@@ -38,10 +38,10 @@ export const MetricsAndLogs:React.FC = () => {
       <WidgetRow>
         <Widget className={buttons}>
           <ButtonGroup size="large">
-            <Button onClick={handleButton('hour')}>Hour</Button>
-            <Button onClick={handleButton('day')}>Day</Button>
-            <Button onClick={handleButton('week')}>Week</Button>
-            <Button onClick={handleButton('month')}>Month</Button>
+            <Button onClick={createButtonHandler('hour')}>Hour</Button>
+            <Button onClick={createButtonHandler('day')}>Day</Button>
+            <Button onClick={createButtonHandler('week')}>Week</Button>
+            <Button onClick={createButtonHandler('month')}>Month</Button>
           </ButtonGroup>
         </Widget>
         <Widget className={date}>
