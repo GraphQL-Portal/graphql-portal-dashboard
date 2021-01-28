@@ -1,0 +1,16 @@
+scalar Any
+
+type Chart {
+  latency: [ChartChunk]
+  count: [ChartChunk]
+  countries: [ChartChunk]
+}
+
+type ChartChunk {
+  argument: Any
+  value: Any
+}
+
+type Query {
+  getMetrics(startDate: Timestamp!, endDate: Timestamp!, scale: String): Chart
+}

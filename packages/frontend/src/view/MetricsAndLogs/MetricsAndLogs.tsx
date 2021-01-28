@@ -1,11 +1,11 @@
 import { Button, ButtonGroup } from '@material-ui/core';
-import React, { ReactText, useState } from 'react';
+import moment from 'moment';
+import React, { ReactText, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useMetrics } from '../../presenter/Metrics';
-import { Header, HugeWidget, Widget, WidgetRow, DatePicker } from '../../ui';
+import { DatePicker, Header, HugeWidget, Widget, WidgetRow } from '../../ui';
+import { CountryChart, MetricChart } from './MetricChart';
 import { useStyles } from './useStyles';
-import { MetricChart } from './MetricChart';
-import moment from 'moment';
 
 type Scale = 'hour' | 'day' | 'week' | 'month';
 const formatValueLabel = (ms: ReactText) => `${ms}ms`;
@@ -22,21 +22,29 @@ const formatArgumentLabel = (scale: Scale) => (date: ReactText) => {
 export const MetricsAndLogs:React.FC = () => {
   const { date, buttons } = useStyles();
 
-  const [startDate, handleStartDate] = useState(moment().add(-31, 'day'));
-  const [endDate, handleEndDate] = useState(moment());
+  const [startDate, setStartDate] = useState(moment().add(-25, 'day'));
+  const [endDate, setEndDate] = useState(moment());
   const [scale, setScale] = useState('day' as Scale);
 
-  const { data, refetch } = useMetrics(startDate.toDate(), endDate.toDate(), 'day');
-  const latencyData =
-    (data && data.getMetrics.latency.map((r: any) => ({ ...r, argument: new Date(r.argument).toISOString() }))) || [];
-  const countData =
-    (data && data.getMetrics.count.map((r: any) => ({ ...r, argument: new Date(r.argument).toISOString() }))) || [];
+  const { data, refetch } = useMetrics(startDate.toDate(), endDate.toDate(), scale);
+  const latencyData = data && data.getMetrics.latency || [];
+  const countData = data && data.getMetrics.count || [];
+  const countriesData = data && data.getMetrics.countries || [];
 
-  const handleButton = (s: Scale) => () => {
-    setScale(s);
-    if (s === 'hour') refetch(startDate.toDate(), startDate.clone().add(1, 'day').toDate(), s);
-    else refetch(startDate.toDate(), endDate.toDate(), s as any);
-  };
+  const handleButton = (s: Scale) => () => setScale(s);
+
+  useEffect(() => {
+    const sDate = moment(startDate);
+    let data = { startDate: startDate.toDate().getTime(), endDate: endDate.toDate().getTime(), scale };
+    if (scale === 'hour') {
+      data = {
+        startDate: sDate.toDate().getTime(),
+        endDate: sDate.clone().add(1, 'day').toDate().getTime(),
+        scale,
+      };
+    }
+    refetch(data);
+  }, [startDate, endDate, scale]);
 
   return (
     <>
@@ -56,21 +64,18 @@ export const MetricsAndLogs:React.FC = () => {
         <Widget className={date}>
           <DatePicker
             label="Start Date"
-            defaultValue={startDate.format('Y-MM-DD')}
-            onChange={(e) => handleStartDate(moment(e.target.value))}
-            InputLabelProps={{
-              shrink: true,
-            }}
+            value={startDate}
+            disableFuture
+            maxDate={endDate}
+            onChange={(e) => setStartDate(moment(e?.toDate()))}
           />
         </Widget>
         <Widget className={date}>
           <DatePicker
             label="End Date"
-            defaultValue={endDate.format('Y-MM-DD')}
-            onChange={(e) => handleEndDate(moment(e.target.value))}
-            InputLabelProps={{
-              shrink: true,
-            }}
+            value={endDate}
+            disableFuture
+            onChange={(e) => setEndDate(moment(e?.toDate()))}
           />
         </Widget>
       </WidgetRow>
@@ -91,6 +96,11 @@ export const MetricsAndLogs:React.FC = () => {
             argumentLabelHandler={formatArgumentLabel(scale)}
             title="Average Request Count"
           />
+        </HugeWidget>
+      </WidgetRow>
+      <WidgetRow>
+        <HugeWidget>
+          <CountryChart data={countriesData} title="Countries where requests were made from" />
         </HugeWidget>
       </WidgetRow>
     </>

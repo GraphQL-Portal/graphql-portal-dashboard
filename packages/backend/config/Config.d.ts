@@ -27,8 +27,8 @@ declare module "node-config-ts" {
   }
   interface Maxmind {
     dbPath: string
-    accountId: string
     licenseKey: string
+    accountId: string
   }
   interface Metrics {
     enabled: boolean
