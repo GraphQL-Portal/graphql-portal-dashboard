@@ -4,10 +4,10 @@ import vest, { test, enforce } from 'vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { validateAvj, getHandlerSchema } from './helpers';
+import { validateAjv, getHandlerSchema } from './helpers';
 import { AJV_SCHEMA_TEMPLATE, definitions } from './constants';
 
-const validate = validateAvj(AJV_SCHEMA_TEMPLATE);
+const validate = validateAjv(AJV_SCHEMA_TEMPLATE);
 
 export const useEditorsHandler = ({
   source,
@@ -43,6 +43,8 @@ export const useEditorsHandler = ({
   const onSubmit = (source: any) => {
     updateState(source);
   };
+
+  console.log(connector);
 
   return {
     onSubmit: handleSubmit(onSubmit),
