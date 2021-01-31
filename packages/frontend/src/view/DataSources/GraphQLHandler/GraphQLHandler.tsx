@@ -32,31 +32,14 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="endpoint (required)"
+            label="URL of an existing GraphQL endpoint"
+            required
             name="endpoint"
             error={hasErrors('endpoint')}
             fullWidth
           />
         </HandlerCol>
       </HandlerRow>
-      <ObjectArray
-        title="Schema Headers"
-        name="schemaHeaders"
-        control={control}
-        errors={errors}
-        fields={schemaFields}
-        onAdd={appendSchemaField}
-        onRemove={removeSchemaField}
-      />
-      <ObjectArray
-        title="Operation Headers"
-        name="operationHeaders"
-        control={control}
-        errors={errors}
-        fields={operationFields}
-        onAdd={appendOperationField}
-        onRemove={removeOperationField}
-      />
       <HandlerRow>
         <HandlerCol>
           <Controller
@@ -65,7 +48,7 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
             name="method"
             options={GRAPHQL_METHODS}
             labelId="method"
-            label="method"
+            label="HTTP Method"
             fullWidth
           />
         </HandlerCol>
@@ -108,39 +91,6 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
-            name="customFetch"
-            label="Path to W3 Compatible Fetch Implementation"
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
-            name="webSocketImpl"
-            label="Path to W3 Compatible WebSocket Implementation"
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
-            name="introspection"
-            label="Path to the introspection"
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
           <FormControl>
             <FormGroup>
               <FormControlLabel
@@ -177,6 +127,57 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
           </FormControl>
         </HandlerCol>
       </HandlerRow>
+      <ObjectArray
+        title="Schema Headers"
+        name="schemaHeaders"
+        control={control}
+        errors={errors}
+        fields={schemaFields}
+        onAdd={appendSchemaField}
+        onRemove={removeSchemaField}
+      />
+      <ObjectArray
+        title="Operation Headers"
+        name="operationHeaders"
+        control={control}
+        errors={errors}
+        fields={operationFields}
+        onAdd={appendOperationField}
+        onRemove={removeOperationField}
+      />
+      {/*<HandlerRow>*/}
+      {/*  <HandlerCol>*/}
+      {/*    <Controller*/}
+      {/*      as={Input}*/}
+      {/*      control={control}*/}
+      {/*      name="customFetch"*/}
+      {/*      label="Path to W3 Compatible Fetch Implementation"*/}
+      {/*      fullWidth*/}
+      {/*    />*/}
+      {/*  </HandlerCol>*/}
+      {/*</HandlerRow>*/}
+      {/*<HandlerRow>*/}
+      {/*  <HandlerCol>*/}
+      {/*    <Controller*/}
+      {/*      as={Input}*/}
+      {/*      control={control}*/}
+      {/*      name="webSocketImpl"*/}
+      {/*      label="Path to W3 Compatible WebSocket Implementation"*/}
+      {/*      fullWidth*/}
+      {/*    />*/}
+      {/*  </HandlerCol>*/}
+      {/*</HandlerRow>*/}
+      {/*<HandlerRow>*/}
+      {/*  <HandlerCol>*/}
+      {/*    <Controller*/}
+      {/*      as={Input}*/}
+      {/*      control={control}*/}
+      {/*      name="introspection"*/}
+      {/*      label="Path to the introspection"*/}
+      {/*      fullWidth*/}
+      {/*    />*/}
+      {/*  </HandlerCol>*/}
+      {/*</HandlerRow>*/}
       <PrimaryButton type="submit">Save Handler</PrimaryButton>
     </form>
   );
