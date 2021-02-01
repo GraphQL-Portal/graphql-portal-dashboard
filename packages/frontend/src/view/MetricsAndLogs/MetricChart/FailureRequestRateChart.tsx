@@ -1,10 +1,20 @@
 import React, { ReactText } from 'react';
-import { ArgumentAxis, Chart, LineSeries, Title, ValueAxis } from '@devexpress/dx-react-chart-material-ui';
+import { ArgumentAxis, Chart, Legend, LineSeries, Title, ValueAxis } from '@devexpress/dx-react-chart-material-ui';
 
-const checkHandler = (fn: Function) => (fn ? fn : (text: ReactText) => text);
+const checkHandler = (fn?: Function) => (fn ? fn : (text: ReactText) => text);
 
-type MetricChartProps = { data: any[]; title?: string; argumentLabelHandler?: any; valueLabelHandler?: any };
-export const MetricChart:React.FC<MetricChartProps> = ({ data, title, argumentLabelHandler, valueLabelHandler }) => {
+type FailureRequestRateChartProps = {
+  data: {
+    success: number;
+    failure: number;
+    argument: number
+  }[];
+  title?: string;
+  argumentLabelHandler?: Function;
+  valueLabelHandler?: Function;
+};
+
+export const FailureRequestRateChart:React.FC<FailureRequestRateChartProps> = ({ data, title, argumentLabelHandler, valueLabelHandler }) => {
   const ArgumentLabel = (e: React.PropsWithChildren<ArgumentAxis.LabelProps>) => (
     <ArgumentAxis.Label
       text={checkHandler(argumentLabelHandler)(e.text)}
@@ -30,7 +40,9 @@ export const MetricChart:React.FC<MetricChartProps> = ({ data, title, argumentLa
       <ArgumentAxis labelComponent={ArgumentLabel} />
       <ValueAxis labelComponent={ValueLabel} />
 
-      <LineSeries valueField="value" argumentField="argument" />
+      <LineSeries name="Success" valueField="success" argumentField="argument" />
+      <LineSeries name="Failure" valueField="failure" argumentField="argument" />
+      <Legend />
     </Chart>
   );
 };

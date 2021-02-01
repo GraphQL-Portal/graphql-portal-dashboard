@@ -1,8 +1,8 @@
 import { useQuery, gql } from '@apollo/client';
 
 export const QUERY_METRICS = gql`
-  query getMetrics($startDate: Timestamp!, $endDate: Timestamp!, $scale: String) {
-    getMetrics(startDate: $startDate, endDate: $endDate, scale: $scale) {
+  query metrics($startDate: Timestamp!, $endDate: Timestamp!, $scale: String) {
+    metrics(startDate: $startDate, endDate: $endDate, scale: $scale) {
       latency {
         argument
         value
@@ -15,6 +15,11 @@ export const QUERY_METRICS = gql`
         argument
         value
       }
+      failures {
+        argument
+        failure
+        success
+      }
     }
   }
 `;
@@ -25,7 +30,7 @@ export const useMetricsQuery = (startDate: Date, endDate: Date, scale: 'day' | '
   });
 
   return {
-    data: data?.getMetrics,
+    data: data?.metrics,
     loading,
     error,
     refetch: (variables: { startDate: Date, endDate: Date, scale: 'day' | 'hour' | 'week' | 'month' }) =>

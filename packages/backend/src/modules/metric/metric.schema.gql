@@ -4,13 +4,16 @@ type Chart {
   latency: [ChartChunk]
   count: [ChartChunk]
   countries: [ChartChunk]
+  failures: [ChartChunk]
 }
 
 type ChartChunk {
   argument: Any
   value: Any
+  success: Any
+  failure: Any
 }
 
 type Query {
-  getMetrics(startDate: Timestamp!, endDate: Timestamp!, scale: String): Chart
+  metrics(startDate: Timestamp!, endDate: Timestamp!, scale: String): Chart
 }

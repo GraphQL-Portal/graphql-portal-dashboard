@@ -2,7 +2,6 @@ import { MetricsChannels } from '@graphql-portal/types';
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Redis } from 'ioredis';
-import moment from 'moment';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import { Reader, ReaderModel, WebServiceClient, LocationRecord } from '@maxmind/geoip2-node';
@@ -10,6 +9,7 @@ import { LoggerService } from '../../common/logger';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
 import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
 import Provider from 'src/common/enum/provider.enum';
+import { add, differenceInSeconds } from 'date-fns';
 import {
   AnyMetric,
   AnyResolverMetric,
@@ -71,14 +71,15 @@ export default class MetricService {
     }
   }
 
-  public async aggregateByLatency(startDate: number, endDate: number, scale: MetricScale): Promise<any> {
-    const boundaries = this.getBoundaries(moment(startDate), moment(endDate), scale);
+  public async aggregateMetrics(startDate: number, endDate: number, scale: MetricScale): Promise<{ latency: { argument: string; value: number }[] }> {
+    const boundaries = this.getBoundaries(startDate, endDate, scale);
     const aggregationQuery = [
       { $match: { requestDate: { $gte: new Date(startDate), $lte: new Date(endDate) } } },
       { $facet: {
         latency: [
           { $bucket: {
             groupBy: '$requestDate',
+            default: new Date(endDate),
             boundaries,
             output: { latency: { $avg: '$latency' }, count: { $sum: 1 },  },
           } },
@@ -89,27 +90,55 @@ export default class MetricService {
             count: { $sum: 1 },
           } },
         ],
-        // failures: [
-        //   { $bucket: {
-        //     groupBy: '$resolvers.errorAt',
-        //     boundaries,
-        //     output: { latency: { $avg: '$latency' }, count: { $sum: 1 },  },
-        //   } },
-        // ]
+        failures: [
+          { $match: { 'resolvers.errorAt': { $exists: true } } },
+          { $bucket: {
+            groupBy: '$resolvers.errorAt',
+            default: new Date(endDate),
+            boundaries,
+            output: { count: { $sum: 1 },  },
+          } },
+        ],
+        successes: [
+          { $match: { 'resolvers.errorAt': { $exists: false } } },
+          { $bucket: {
+            groupBy: '$requestDate',
+            default: new Date(endDate),
+            boundaries,
+            output: { count: { $sum: 1 },  },
+          } },
+        ],
       } },
     ];
-    const [result] = await this.requestMetricModel.aggregate(aggregationQuery);
-    const map = result.latency.reduce((p: any, c: any) => { p[c._id.toISOString()] = c; return p; }, {});
-    const latencyData = boundaries.map((b) => {
+    const [aggregationResult] = await this.requestMetricModel.aggregate(aggregationQuery);
+    const makeMapArguments = [(p: any, c: any): Record<string, any> => { p[c._id.toISOString()] = c; return p; }, {}];
+    const requestMap = aggregationResult.latency.reduce(...makeMapArguments);
+    const successMap = aggregationResult.successes.reduce(...makeMapArguments);
+    const failureMap = aggregationResult.failures.reduce(...makeMapArguments);
+    const requestData = boundaries.map((b) => {
       const key = b.toISOString();
-      if (map[key]) return map[key];
-      else return { _id: key, latency:0, count: 0};
+      const data = { _id: key, latency: 0, count: 0 };
+
+      if (requestMap[key]) data.latency = requestMap[key].latency;
+      if (requestMap[key]) data.count = requestMap[key].count;
+
+      return data;
+    });
+    const failureData = boundaries.map((b) => {
+      const key = b.toISOString();
+      const data = { _id: key, failure: 0, success: 0 };
+
+      if (failureMap[key]) data.failure = failureMap[key].count;
+      if (successMap[key]) data.success = successMap[key].count;
+
+      return data;
     });
 
     return {
-      latency: latencyData.map((obj: any) => ({ argument: obj._id, value: obj.latency})),
-      count: latencyData.map((obj: any) => ({ argument: obj._id, value: obj.count})),
-      countries: result.countries.map((obj: any) => ({ argument: obj._id, value: obj.count }))
+      latency: requestData.map((obj) => ({ argument: obj._id, value: obj.latency })),
+      count: requestData.map((obj) => ({ argument: obj._id, value: obj.count })),
+      countries: aggregationResult.countries.map((obj: { _id: string; count: number }) => ({ argument: obj._id || 'Other', value: obj.count })),
+      failures: failureData.map((obj) => ({ argument: obj._id, failure: obj.failure, success: obj.success })),
     };
   }
 
@@ -119,6 +148,9 @@ export default class MetricService {
       .lrange(channel, 0, chunk)
       .ltrim(channel, chunk + 1, -1)
       .exec();
+
+    if (error) throw error;
+
     return records;
   }
 
@@ -255,15 +287,16 @@ export default class MetricService {
     }
   }
 
-  private getBoundaries(startDate: moment.Moment, endDate: moment.Moment, scale: 'day' | 'hour' | 'week' | 'month'): Date[] {
+  private getBoundaries(startDate: Date | number, endDate: Date | number, scale: MetricScale): Date[] {
     const boundaries: Date[] = [];
+    let sdate = new Date(startDate);
     const next = (): boolean => {
-      startDate.add(1, scale);
-      return startDate.diff(endDate) <= 0;
+      sdate = add(sdate, { [`${scale}s`]: 1 });
+      return differenceInSeconds(sdate, endDate) <= 0;
     };
 
     do {
-      boundaries.push(startDate.toDate());
+      boundaries.push(sdate);
     } while (next());
 
     return boundaries;

@@ -4,7 +4,7 @@ import React, { ReactText } from 'react';
 import { Helmet } from 'react-helmet';
 import { useMetrics } from '../../presenter/Metrics';
 import { DatePicker, Header, HugeWidget, Widget, WidgetRow } from '../../ui';
-import { CountryChart, MetricChart } from './MetricChart';
+import { CountryChart, FailureRequestRateChart, RequestChart } from './MetricChart';
 import { useStyles } from './useStyles';
 
 type Scale = 'hour' | 'day' | 'week' | 'month';
@@ -26,6 +26,7 @@ export const MetricsAndLogs:React.FC = () => {
   const latencyData = data?.latency || [];
   const countData = data?.count || [];
   const countriesData = data?.countries || [];
+  const failuresData = data?.failures || [];
 
   const createButtonHandler = (s: Scale) => () => setScale(s);
 
@@ -65,7 +66,7 @@ export const MetricsAndLogs:React.FC = () => {
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <MetricChart
+          <RequestChart
             data={latencyData}
             title="Average Request Latency"
             argumentLabelHandler={formatArgumentLabel(scale)}
@@ -75,7 +76,7 @@ export const MetricsAndLogs:React.FC = () => {
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <MetricChart
+          <RequestChart
             data={countData}
             argumentLabelHandler={formatArgumentLabel(scale)}
             title="Average Request Count"
@@ -85,6 +86,11 @@ export const MetricsAndLogs:React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <CountryChart data={countriesData} title="Countries where requests were made from" />
+        </HugeWidget>
+      </WidgetRow>
+      <WidgetRow>
+        <HugeWidget>
+          <FailureRequestRateChart argumentLabelHandler={formatArgumentLabel(scale)} data={failuresData} title="Failure\Success Chart" />
         </HugeWidget>
       </WidgetRow>
     </>

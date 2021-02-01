@@ -9,11 +9,11 @@ export default class MetricResolver {
 
   @Query()
   @Roles([RolesEnum.USER, RolesEnum.ADMIN])
-  public getMetrics(
+  public metrics(
     @Args('startDate') startDate: number,
     @Args('endDate') endDate: number,
     @Args('scale') scale: 'day' |'week'| 'month' | 'hour',
-  ): any {
-    return this.metricService.aggregateByLatency(startDate, endDate, scale);
+  ): Promise<any> {
+    return this.metricService.aggregateMetrics(startDate, endDate, scale);
   }
 }
