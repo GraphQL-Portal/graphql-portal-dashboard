@@ -1,0 +1,1 @@
+export { ThriftHandler } from './ThriftHandler';

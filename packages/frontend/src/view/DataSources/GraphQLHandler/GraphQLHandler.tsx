@@ -8,8 +8,7 @@ import { ObjectArray } from '../../Form';
 import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
 import { GRAPHQL_METHODS } from '../constants';
-
-const getError = (errors: any) => (field: string) => !!errors?.[field];
+import { getError } from '../helpers';
 
 export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
   const {
