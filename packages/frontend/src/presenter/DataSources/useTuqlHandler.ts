@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { SOURCE_NAMES } from './constants';
 
 const TUQL_DEFAULT_STATE = {
   db: '',
@@ -15,7 +16,7 @@ export const useTuqlHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: data });
+  const onSubmit = (data: any) => updateState({ handler: { [SOURCE_NAMES.TUQL]: data } });
 
   return {
     onSubmit: handleSubmit(onSubmit),

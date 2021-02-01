@@ -35,3 +35,21 @@ export const THRIFT_PROTOCOLS = [
   { label: 'Compact', value: 'compact' },
   { label: 'Json', value: 'json' },
 ]
+
+export enum SOURCE_NAMES {
+  FHIR = 'fhir',
+  GRAPHQL = 'graphql',
+  GRPC = 'grpc',
+  JSON_SCHEMA = 'jsonSchema',
+  MONGOOSE = 'mongoose',
+  MYSQL = 'mysql',
+  NEO4J = 'neo4j',
+  ODATA = 'odata',
+  OPEN_API = 'openapi',
+  POST_GRAPHILE = 'postgraphile',
+  SOAP = 'soap',
+  THRIFT = 'thrift',
+  TUQL = 'tuql',
+  CONTENTFUL_HANDLER = 'ContentfulHandler',
+  SLACK_HANDLER = 'SlackHandler',
+}

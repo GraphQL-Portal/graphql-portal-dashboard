@@ -4,6 +4,8 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { SOURCE_NAMES } from './constants';
+import { arrayObjectToObject } from './helpers';
 
 const suite = vest.create('graphql_handler', ({ endpoint }) => {
   test('endpoint', 'Endpoint is required', () => {
@@ -57,7 +59,20 @@ export const useGraphQLHandler = ({
     name: 'operationHeaders',
   });
 
-  const onSubmit = (data: any) => updateState({ handler: data }, step);
+  const onSubmit = (data: any) => {
+    updateState(
+      {
+        handler: {
+          [SOURCE_NAMES.GRAPHQL]: {
+            ...data,
+            schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+            operationHeaders: arrayObjectToObject(data.operationHeaders),
+          },
+        },
+      },
+      step
+    );
+  };
 
   return {
     onSubmit: handleSubmit(onSubmit),

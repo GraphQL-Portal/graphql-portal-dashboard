@@ -4,6 +4,8 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { SOURCE_NAMES } from './constants';
+import { arrayObjectToObject } from './helpers';
 
 const suite = vest.create('mysql_handler', ({ host, port, database, user, password }) => {
   test('host', 'Host is required', () => {
@@ -55,7 +57,15 @@ export const useMySQLHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: data });
+  const onSubmit = (data: any) => updateState({
+    handler: {
+      [SOURCE_NAMES.MYSQL]: {
+        ...data,
+        port: Number(data.port),
+        pool: arrayObjectToObject(data.pool),
+      }
+    }
+  });
 
   return {
     onSubmit: handleSubmit(onSubmit),

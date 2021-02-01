@@ -34,63 +34,15 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
 
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
+  
       <HandlerRow>
         <HandlerCol>
           <Controller
             as={Input}
             control={control}
-            label="Host (required)"
-            name="host"
-            error={hasErrors('host')}
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
-            label="Port (required)"
-            name="port"
-            error={hasErrors('port')}
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
-            label="Database (required)"
-            name="database"
-            error={hasErrors('database')}
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
-            label="User (required)"
-            name="user"
-            error={hasErrors('user')}
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
-            type='password'
-            label="Password (required)"
-            name="password"
-            error={hasErrors('password')}
+            label="Connection String (required)"
+            name="connectionString"
+            error={hasErrors('connectionString')}
             fullWidth
           />
         </HandlerCol>
