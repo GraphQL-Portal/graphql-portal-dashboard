@@ -13,6 +13,13 @@ export const CONNECTED_HEAD = [
   'Actions',
 ];
 
+export const TRANSFORMS_HEAD = [
+  'Transform',
+  'Description',
+  'Status',
+  'Actions',
+];
+
 export const ADD_SOURCE_STEPS = [
   {
     label: 'Name',

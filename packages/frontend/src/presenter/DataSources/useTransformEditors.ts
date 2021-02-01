@@ -50,7 +50,7 @@ export const useTransformEditors = (
     onSuccess({
       name: type,
       description: source.description || '',
-      data: transform,
+      [type]: transform,
     });
   };
 

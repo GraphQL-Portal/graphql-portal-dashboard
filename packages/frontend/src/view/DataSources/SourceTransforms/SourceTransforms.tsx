@@ -6,6 +6,8 @@ import { TransformsStep, TransformsMapper } from '../../../types';
 import { Select, OutlineButton } from '../../../ui';
 import { HandlerRow, HandlerCol } from '../Layout';
 import { TransformEditors } from '../TransformEditors';
+
+import { List } from './List';
 import { useStyles } from './useStyles';
 
 // Put Transform Form here
@@ -30,6 +32,7 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
 
   return (
     <>
+      <List transforms={state.transforms} />
       <form noValidate autoComplete="off" onSubmit={onAddTransform}>
         <HandlerRow>
           <HandlerCol>
