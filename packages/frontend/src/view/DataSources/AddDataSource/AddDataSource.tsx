@@ -40,7 +40,7 @@ export const AddDataSource: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Add new connector</title>
+        <title>Add new data-source</title>
       </Helmet>
       <AddDataSourceHeader />
       <WidgetRow>

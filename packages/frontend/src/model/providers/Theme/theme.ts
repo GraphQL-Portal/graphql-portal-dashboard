@@ -29,6 +29,9 @@ export const theme = createMuiTheme({
           backgroundColor: RGBA(0.08),
         },
       },
+      outlined: {
+        padding: '0.5rem 1.5rem',
+      },
       text: {
         padding: '0.5rem 1rem',
       },

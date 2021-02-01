@@ -39,7 +39,6 @@ export const useAddDataSource = (limit: number) => {
   // };
 
   const updateState = (newState: any) => {
-    console.log(newState);
     setState((s: any) => Object.assign({}, s, newState));
     nextStep();
   };
