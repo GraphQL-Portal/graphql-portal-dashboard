@@ -12,8 +12,10 @@ export const useMyApi = () => {
 
   const getApiDef = (index: number): ApiDef => data[index];
 
-  const onDelete = (index: number) => deleteApiDef({ variables: { id: getApiDef(index)._id } });
-  const onUpdate = (index: number) => push(generatePath(ROUTES.API_EDIT, { id: getApiDef(index)._id }));
+  const onDelete = (index: number) =>
+    deleteApiDef({ variables: { id: getApiDef(index)._id } });
+  const onUpdate = (index: number) =>
+    push(generatePath(ROUTES.API_EDIT, { id: getApiDef(index)._id }));
   const onCreate = () => push(ROUTES.API_CREATE);
 
   return {
@@ -23,4 +25,4 @@ export const useMyApi = () => {
     onUpdate,
     onCreate,
   };
-}
+};

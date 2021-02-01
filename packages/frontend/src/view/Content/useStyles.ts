@@ -5,7 +5,7 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    padding: spacing(6),
+    padding: spacing(4, 6),
     paddingLeft: spacing(2),
-  }
+  },
 }));

@@ -7,7 +7,7 @@
       "playground": false,
       "debug": false
     },
-    "logLevel": "log"
+    "logLevel": "log",
     "maxmind": {
       "dbPath": "@@MAXMIND_DB_PATH",
       "licenseKey": "@@MAXMIND_LICENSE_KEY",

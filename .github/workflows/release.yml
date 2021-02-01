@@ -39,8 +39,8 @@ jobs:
           tags: |
             gqlportal/dashboard:latest
             gqlportal/dashboard:0.x
-            ghcr.io/code-store-platform/graphql-portal-dashboard:latest
-            ghcr.io/code-store-platform/graphql-portal-dashboard:0.x
+            ghcr.io/graphql-portal/graphql-portal-dashboard:latest
+            ghcr.io/graphql-portal/graphql-portal-dashboard:0.x
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
