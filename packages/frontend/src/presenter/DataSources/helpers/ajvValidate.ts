@@ -1,6 +1,6 @@
 import Ajv, { ErrorObject } from 'ajv';
 
-const getFirstMessage = (errors: ErrorObject[]) => errors[0].message;
+const getFirstMessage = (errors: ErrorObject[]) => errors[0]?.message;
 
 export const validateAjv = (schemaTemplate: any) => (validationObject: any) => (
   data: any
