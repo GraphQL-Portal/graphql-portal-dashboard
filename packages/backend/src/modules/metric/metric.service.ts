@@ -8,7 +8,7 @@ import { Reader, ReaderModel, WebServiceClient, LocationRecord } from '@maxmind/
 import { LoggerService } from '../../common/logger';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
 import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
-import Provider from 'src/common/enum/provider.enum';
+import Provider from '../../common/enum/provider.enum';
 import { add, differenceInSeconds } from 'date-fns';
 import {
   AnyMetric,
