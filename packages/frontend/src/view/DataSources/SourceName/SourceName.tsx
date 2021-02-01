@@ -15,7 +15,8 @@ export const SourceName: React.FC<NameStep> = (stepProps) => {
           <Controller
             as={Input}
             name="name"
-            label="Data-source name"
+            label="Data source name"
+            required
             control={control}
             fullWidth
             error={!!(errors && errors.name)}
