@@ -17,8 +17,7 @@ import { CONNECTED_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 import { ConnectedList as Props } from './types';
 
-export const ConnectedList:React.FC<Props> = ({ sources, onDelete }) => {
-
+export const ConnectedList: React.FC<Props> = ({ sources, onDelete }) => {
   const { actionCell } = useStyles();
   return (
     <>
@@ -27,7 +26,10 @@ export const ConnectedList:React.FC<Props> = ({ sources, onDelete }) => {
         <Table>
           <TableHead>
             {CONNECTED_HEAD.map((cell: string, idx: number) => (
-              <TableCell key={getKeyFromText(cell)} align={idx === CONNECTED_HEAD.length - 1 ? 'right' : 'left'}>
+              <TableCell
+                key={getKeyFromText(cell)}
+                align={idx === CONNECTED_HEAD.length - 1 ? 'right' : 'left'}
+              >
                 {cell}
               </TableCell>
             ))}
@@ -40,9 +42,13 @@ export const ConnectedList:React.FC<Props> = ({ sources, onDelete }) => {
                 <TableCell>{status || ''}</TableCell>
                 <TableCell>{createdAt || ''}</TableCell>
                 <TableCell align="right" className={actionCell}>
-                  <Tooltip title="Delete data-source" placement="left" aria-label="delete data-source">
+                  <Tooltip
+                    title="Delete data-source"
+                    placement="left"
+                    aria-label="delete data-source"
+                  >
                     <span>
-                      <IconButton onClick={onDelete(_id)}>
+                      <IconButton onClick={onDelete(_id, name)}>
                         <Delete />
                       </IconButton>
                     </span>
@@ -55,4 +61,4 @@ export const ConnectedList:React.FC<Props> = ({ sources, onDelete }) => {
       </WidgetBody>
     </>
   );
-}
+};

@@ -1,15 +1,22 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { Header, HugeWidget, WidgetBody, WidgetHeader, WidgetRow } from '../../../ui';
+import {
+  Header,
+  HugeWidget,
+  WidgetBody,
+  WidgetHeader,
+  WidgetRow,
+} from '../../../ui';
 
-import { useDataSources  } from '../../../presenter/DataSources';
+import { useDataSources } from '../../../presenter/DataSources';
 import { Loading } from '../../Loading';
 import { AvailableList } from './AvailableList';
 import { EmptySources } from './Empty';
 import { ConnectedList } from './ConnectedList';
+import { DeleteDataSource } from '../DeleteDataSource';
 
-export const DataSources:React.FC = () => {
+export const DataSources: React.FC = () => {
   const { loading, connected, onDelete } = useDataSources();
 
   if (loading) return <Loading />;
@@ -22,11 +29,11 @@ export const DataSources:React.FC = () => {
       <Header title="My Data Sources" />
       <WidgetRow>
         <HugeWidget>
-          {
-            connected.length === 0
-              ? <EmptySources />
-              : <ConnectedList sources={connected} onDelete={onDelete} />
-          }
+          {connected.length === 0 ? (
+            <EmptySources />
+          ) : (
+            <ConnectedList sources={connected} onDelete={onDelete} />
+          )}
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
@@ -37,6 +44,7 @@ export const DataSources:React.FC = () => {
           </WidgetBody>
         </HugeWidget>
       </WidgetRow>
+      <DeleteDataSource />
     </>
   );
 };

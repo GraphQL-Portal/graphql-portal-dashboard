@@ -2,8 +2,8 @@ import { DialogProps } from '@material-ui/core';
 
 export type DialogContext = {
   dialogId: string;
-  dialogConfig: object;
-  onOpenDialog(dialogId: string, config?: object): void;
+  dialogConfig: any;
+  onOpenDialog(dialogId: string, config?: any): void;
   onCloseDialog(): void;
 };
 

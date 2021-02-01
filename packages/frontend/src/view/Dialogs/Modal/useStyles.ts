@@ -4,7 +4,7 @@ const DIALOG_WIDTH = 480;
 
 export const useStyles = makeStyles(({ spacing }: Theme) => ({
   paper: {
-    padding: spacing(3, 6),
+    padding: spacing(5),
     maxWidth: DIALOG_WIDTH,
   },
 }));

@@ -10,5 +10,5 @@ type DataSource = {
 
 export type ConnectedList = {
   sources: DataSource[];
-  onDelete(id: string): any;
+  onDelete(id: string, name: string): any;
 };
