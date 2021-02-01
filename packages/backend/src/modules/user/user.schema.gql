@@ -23,8 +23,10 @@ type Tokens {
 
 type Mutation {
   login(email: String!, password: String!, device: String!): Tokens!
-  register(data: UserInput!, device: String!): Tokens!
+  register(data: UserInput!): Boolean
   refreshTokens(refreshToken: String!, device: String!): Tokens!
+  resetPasswordRequest(email: String!): Boolean
+  resetPassword(email: String!, code: String!, password: String!): Boolean
 }
 
 type Query {

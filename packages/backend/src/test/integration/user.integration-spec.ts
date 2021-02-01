@@ -2,6 +2,7 @@ import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
+import ConfirmationCodeTypes from '../../modules/user/enum/confirmation-code-types.enum';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
 import Roles from '../../common/enum/roles.enum';
@@ -15,12 +16,18 @@ import { createUser, expectTokens, Method, requestTo, RequestToResult } from '..
 
 jest.mock('ioredis');
 
+jest.mock('@sendgrid/mail', () => ({
+  setApiKey: jest.fn(),
+  send: jest.fn(),
+}));
+
 jest.useFakeTimers();
 
 describe('ApiDefResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
   let tokens: ITokens;
+  let refreshToken: string;
   let userService: UserService;
   let admin: IUser & ITokens;
 
@@ -61,30 +68,57 @@ describe('ApiDefResolver', () => {
     describe('register', () => {
       it('should call register', async () => {
         const { body } = await graphQlRequest(
-          `mutation($data: UserInput!, $device: String!) {
-            register(data: $data, device: $device) {
-              accessToken
-              refreshToken
-            }
+          `mutation($data: UserInput!) {
+            register(data: $data)
           }`,
           { data: authenticationData, device }
         ).expect(HttpStatus.OK);
 
-        tokens = body?.data?.register;
+        const result = body?.data?.register;
 
-        expect(tokens).toBeDefined();
-        expectTokens(tokens);
-
-        graphQlRequest = (
-          query: string,
-          variables = {},
-          headers = { [HeadersEnum.AUTHORIZATION]: tokens.accessToken }
-        ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+        expect(result).toBeTruthy();
       });
 
-      it('should return user profile', async () => {
-        const { body } = await graphQlRequest(
-          `query {
+      describe('login', () => {
+        it('should return token', async () => {
+          const { body } = await graphQlRequest(
+            `mutation($email: String!, $password: String!, $device: String!) {
+              login(email: $email, password: $password, device: $device) {
+                accessToken
+                refreshToken
+              }
+            }`,
+            { ...authenticationData, device }
+          ).expect(HttpStatus.OK);
+
+          tokens = body.data.login;
+          expectTokens(tokens);
+          refreshToken = tokens.refreshToken;
+
+          graphQlRequest = (
+            query: string,
+            variables = {},
+            headers = { [HeadersEnum.AUTHORIZATION]: tokens.accessToken }
+          ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+        });
+
+        it('should throw error on invalid credentials', async () => {
+          const { body } = await graphQlRequest(
+            `mutation($email: String!, $password: String!, $device: String!) {
+              login(email: $email, password: $password, device: $device) {
+                accessToken
+                refreshToken
+              }
+            }`,
+            { ...authenticationData, password: 'wrong123', device }
+          ).expect(HttpStatus.OK);
+
+          expect(body.errors[0].message).toMatch('Wrong email or password');
+        });
+
+        it('should return user profile', async () => {
+          const { body } = await graphQlRequest(
+            `query {
             getProfile {
               firstName
               lastName
@@ -94,50 +128,17 @@ describe('ApiDefResolver', () => {
               updatedAt
             }
           }`,
-          {},
-          {
-            [HeadersEnum.AUTHORIZATION]: tokens.accessToken,
-          }
-        ).expect(HttpStatus.OK);
+            {},
+            {
+              [HeadersEnum.AUTHORIZATION]: tokens.accessToken,
+            }
+          ).expect(HttpStatus.OK);
 
-        expect(body.data.getProfile).toMatchObject({
-          email: authenticationData.email,
-          role: authenticationData.role,
+          expect(body.data.getProfile).toMatchObject({
+            email: authenticationData.email,
+            role: authenticationData.role,
+          });
         });
-      });
-    });
-
-    describe('login', () => {
-      let refreshToken: string;
-
-      it('should return token', async () => {
-        const { body } = await graphQlRequest(
-          `mutation($email: String!, $password: String!, $device: String!) {
-            login(email: $email, password: $password, device: $device) {
-              accessToken
-              refreshToken
-            }
-          }`,
-          { ...authenticationData, device }
-        ).expect(HttpStatus.OK);
-
-        const tokens = body.data.login;
-        expectTokens(tokens);
-        refreshToken = tokens.refreshToken;
-      });
-
-      it('should throw error on invalid credentials', async () => {
-        const { body } = await graphQlRequest(
-          `mutation($email: String!, $password: String!, $device: String!) {
-            login(email: $email, password: $password, device: $device) {
-              accessToken
-              refreshToken
-            }
-          }`,
-          { ...authenticationData, password: 'wrong123', device }
-        ).expect(HttpStatus.OK);
-
-        expect(body.errors[0].message).toMatch('Wrong email or password');
       });
 
       describe('refreshTokens', () => {
@@ -201,6 +202,39 @@ describe('ApiDefResolver', () => {
           expect(body.data.getUsers).toHaveLength(1);
           expect(body.data.getUsers[0].email).toBe(authenticationData.email);
         });
+      });
+    });
+    describe('Reset password request and confirmation', () => {
+      it('shoud call resetPasswordRequest', async () => {
+        const spy = jest.spyOn(userService, 'resetPasswordRequest').mockResolvedValueOnce(true);
+        const email = 'email';
+
+        const { body } = await graphQlRequest(
+          `mutation($email: String!) {
+            resetPasswordRequest(email: $email)
+          }`,
+          { email }
+        ).expect(HttpStatus.OK);
+        expect(body.data.resetPasswordRequest).toBeTruthy();
+        expect(spy).toBeCalledTimes(1);
+        expect(spy).toBeCalledWith(email);
+      });
+
+      it('resetPassword', async () => {
+        const spy = jest.spyOn(userService, 'resetPassword').mockResolvedValueOnce(true);
+        const email = 'email';
+        const password = 'password';
+        const code = 'code';
+
+        const { body } = await graphQlRequest(
+          `mutation($email: String!, $code: String!, $password: String!) {
+            resetPassword(email: $email, code: $code, password: $password)
+          }`,
+          { email, password, code }
+        ).expect(HttpStatus.OK);
+        expect(body.data.resetPassword).toBeTruthy();
+        expect(spy).toBeCalledTimes(1);
+        expect(spy).toBeCalledWith(email, code, password);
       });
     });
   });

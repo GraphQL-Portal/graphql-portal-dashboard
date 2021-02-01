@@ -4,6 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { SOURCE_NAMES } from './constants';
 
 const suite = vest.create('fhir_handler', ({ endpoint }) => {
   test('endpoint', 'Endpoint is required', () => {
@@ -25,7 +26,7 @@ export const useFhirHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: data });
+  const onSubmit = (data: any) => updateState({ handler: { [SOURCE_NAMES.FHIR]: data } });
 
   return {
     onSubmit: handleSubmit(onSubmit),
