@@ -23,3 +23,13 @@ export type TransformsStep = Step<TransformsForm> & Partial<Source>;
 export type HandlersMapper = ElementsTable;
 
 export type TransformsMapper = ElementsTable;
+
+export type TransformEditors = {
+  type: string;
+  onCancel(): void;
+  onSuccess(data: any): void;
+};
+
+export type TransformsList = {
+  transforms: any[];
+};

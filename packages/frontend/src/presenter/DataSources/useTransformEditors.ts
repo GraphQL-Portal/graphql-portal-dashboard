@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { enforce, test } from 'vest';
 
+import { TransformEditors } from '../../types';
 import { useFormErrors } from '../../model/Hooks';
 import { validateAjv, getTransformSchema } from './helpers';
 import {
@@ -12,11 +13,11 @@ import {
 
 const validate = validateAjv(AJV_SCHEMA_TEMPLATE);
 
-export const useTransformEditors = (
-  type: string,
-  onCancel: () => void,
-  onSuccess: (data: any) => void
-) => {
+export const useTransformEditors = ({
+  type,
+  onCancel,
+  onSuccess,
+}: TransformEditors) => {
   const source = AVAILABLE_TRANSFORMS[type];
 
   enforce.extend({

@@ -10,7 +10,7 @@ import { TransformEditors } from '../TransformEditors';
 import { List } from './List';
 import { useStyles } from './useStyles';
 
-// Put Transform Form here
+// Put Transform Custom Forms here
 const TRANSFORM_TABLE: TransformsMapper = {};
 
 const getTransform = (transform: string) =>
@@ -27,8 +27,6 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
     onRemoveTransform,
   } = useTransforms(props);
   const { transformBlock, transformBlockTitle, addButton } = useStyles();
-
-  console.log('IT WILL BE A TABLE FROM: ', state);
 
   return (
     <>

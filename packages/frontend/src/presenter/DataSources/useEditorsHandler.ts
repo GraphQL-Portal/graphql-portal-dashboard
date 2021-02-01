@@ -44,8 +44,6 @@ export const useEditorsHandler = ({
     updateState(source);
   };
 
-  console.log(connector);
-
   return {
     onSubmit: handleSubmit(onSubmit),
     control,

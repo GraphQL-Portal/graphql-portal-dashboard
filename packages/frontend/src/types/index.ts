@@ -9,6 +9,8 @@ export type {
   TransformsForm,
   TransformsStep,
   TransformsMapper,
+  TransformEditors,
+  TransformsList,
 } from './DataSource';
 export type { Editors } from './Editors';
 export type { ObjectArray } from './Forms';
