@@ -5,12 +5,10 @@ import { Widget } from './Widget';
 
 import { Widget as Props } from './types';
 
-export const HugeWidget:React.FC<Props> = ({ children, className }) => {
+export const HugeWidget: React.FC<Props> = ({ children, className }) => {
   return (
     <Col xs={12}>
-      <Widget className={className}>
-        {children}
-      </Widget>
+      <Widget className={className}>{children}</Widget>
     </Col>
   );
-}
+};

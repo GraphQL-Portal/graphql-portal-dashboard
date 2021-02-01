@@ -1,10 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, Redirect } from 'react-router-dom';
-import { Controller } from 'react-hook-form'
-import clsx from 'clsx';
-import { JsonEditor as Editor } from 'jsoneditor-react';
-import 'jsoneditor-react/es/editor.min.css';
+import { Redirect } from 'react-router-dom';
 
 import { ROUTES } from '../../../model/providers';
 import { useAddDataSource } from '../../../presenter/DataSources';
@@ -13,113 +9,65 @@ import {
   HugeWidget,
   WidgetHeader,
   WidgetBody,
-  H6,
-  Input,
+  Stepper,
+  StepperBody,
   PrimaryButton,
-  Header,
 } from '../../../ui';
-import { EditorWrapper } from './EditorWrapper';
-import { EditorCell } from './EditorCell';
+import { ADD_SOURCE_STEPS } from '../constants';
+import { SourceName } from '../SourceName';
+import { SourceHandler } from '../SourceHandler';
+import { SourceTransforms } from '../SourceTransforms';
 import { FormCaption } from './FormCaption';
+import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
-import { ArrowBack } from '@material-ui/icons';
 
-
-export const AddDataSource:React.FC = () => {
-  const { source, control, onSubmit, errors } = useAddDataSource();
+export const AddDataSource: React.FC = () => {
   const {
-    visibleOverflow,
-    editor,
-    code,
-    schema,
-    editorHeader,
-    editorErrorHeader,
-    backArrow,
-  } = useStyles({});
+    source,
+    step,
+    updateState,
+    state,
+    isDisabled,
+    onAddSource,
+  } = useAddDataSource(ADD_SOURCE_STEPS.length - 1);
+  const { visibleOverflow } = useStyles({});
 
-  const editorClassName = clsx(editor, code);
-  const schemaClassName = clsx(editor, schema);
-  const editorConnectorHeader = clsx(editor, !!(errors && errors.handler) && editorErrorHeader );
-
-  if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />
+  if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;
 
   const { title, description } = source;
+  const { name, handler, transforms } = state;
 
   return (
     <>
       <Helmet>
-        <title>Add new connector</title>
+        <title>Add new data-source</title>
       </Helmet>
-      <Header
-        startChildren={
-          <Link to={ROUTES.DATA_SOURCES} className={backArrow}>
-            <ArrowBack />
-          </Link>
-        }
-        title="Back to data-sources"
-      />
+      <AddDataSourceHeader />
       <WidgetRow>
         <HugeWidget className={visibleOverflow}>
-          <WidgetHeader title="Configure a data source" />
+          <WidgetHeader title="Configure a data-source">
+            <PrimaryButton disabled={isDisabled} onClick={onAddSource}>
+              Add data-source
+            </PrimaryButton>
+          </WidgetHeader>
           <WidgetBody>
             <FormCaption title={title} description={description} />
-            <form onSubmit={onSubmit}>
-              <EditorWrapper gapBottom={4}>
-                <EditorCell>
-                  <Controller
-                    as={Input}
-                    name="name"
-                    label="Data-source name"
-                    control={control}
-                    fullWidth
-                    error={!!(errors && errors.name)}
-                  />
-                </EditorCell>
-                <EditorCell></EditorCell>
-              </EditorWrapper>
-              <EditorWrapper>
-                <EditorCell>
-                  <H6 className={editorConnectorHeader}>Connector config:</H6>
-                </EditorCell>
-                <EditorCell>
-                  <H6 className={editorHeader}>Connector schema:</H6>
-                </EditorCell>
-              </EditorWrapper>
-              <EditorWrapper gapBottom={4}>
-                <EditorCell>
-                  <Controller
-                    control={control}
-                    name="handler"
-                    render={(props) => (
-                      <Editor
-                        htmlElementProps={{
-                          className: editorClassName,
-                        }}
-                        schema={source}
-                        navigationBar={false}
-                        mode="code"
-                        {...props}
-                      />
-                    )}
-                  />
-                </EditorCell>
-                <EditorCell>
-                  <Editor
-                    value={source}
-                    name={`${title} schema`}
-                    htmlElementProps={{
-                      className: schemaClassName,
-                    }}
-                    mode="view"
-                    navigationBar={false}
-                  />
-                </EditorCell>
-              </EditorWrapper>
-              <PrimaryButton type="submit">Save</PrimaryButton>
-            </form>
+            <Stepper steps={ADD_SOURCE_STEPS} activeStep={step} />
+            <StepperBody step={step}>
+              <SourceName updateState={updateState} state={{ name }} />
+              <SourceHandler
+                updateState={updateState}
+                state={{ handler }}
+                source={source}
+              />
+              <SourceTransforms
+                updateState={updateState}
+                state={{ transforms }}
+              />
+            </StepperBody>
           </WidgetBody>
         </HugeWidget>
       </WidgetRow>
     </>
   );
-}
+};

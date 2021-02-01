@@ -3,10 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 
 import {
   AuthProvider,
-  ThemeProvider,
+  DialogsProvider,
   Router,
   ROUTES,
   StateProvider,
+  ThemeProvider,
   ToastProvider,
 } from './model/providers';
 import {
@@ -24,28 +25,30 @@ function App() {
       <StateProvider>
         <Router>
           <ThemeProvider>
-            <ToastProvider>
-              <Switch>
-                <Route path={ROUTES.CONFIRM_EMAIL}>
-                  <ConfirmEmail />
-                </Route>
-                <Route path={ROUTES.RESET_PASSWORD_REQUEST}>
-                  <ResetPasswordRequest />
-                </Route>
-                <Route path={ROUTES.RESET_PASSWORD}>
-                  <ResetPassword />
-                </Route>
-                <Route path={ROUTES.LOGIN}>
-                  <Login />
-                </Route>
-                <Route path={ROUTES.SIGN_UP}>
-                  <SignUp />
-                </Route>
-                <Route path={ROUTES.MAIN}>
-                  <ProtectedRoutes />
-                </Route>
-              </Switch>
-            </ToastProvider>
+            <DialogsProvider>
+              <ToastProvider>
+                <Switch>
+                  <Route path={ROUTES.CONFIRM_EMAIL}>
+                    <ConfirmEmail />
+                  </Route>
+                  <Route path={ROUTES.RESET_PASSWORD_REQUEST}>
+                    <ResetPasswordRequest />
+                  </Route>
+                  <Route path={ROUTES.RESET_PASSWORD}>
+                    <ResetPassword />
+                  </Route>
+                  <Route path={ROUTES.LOGIN}>
+                    <Login />
+                  </Route>
+                  <Route path={ROUTES.SIGN_UP}>
+                    <SignUp />
+                  </Route>
+                  <Route path={ROUTES.MAIN}>
+                    <ProtectedRoutes />
+                  </Route>
+                </Switch>
+              </ToastProvider>
+            </DialogsProvider>
           </ThemeProvider>
         </Router>
       </StateProvider>

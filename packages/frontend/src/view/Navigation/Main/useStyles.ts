@@ -26,9 +26,11 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   activeItem: {
     '& > button': {
       background: palette.action.hover,
-    }
+      border: `1px solid ${palette.action.hover}`,
+    },
   },
   button: {
     justifyContent: 'flex-start',
+    border: `1px solid transparent`,
   },
 }));

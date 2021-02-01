@@ -11,10 +11,13 @@ export const DATA_SOURCES = gql`
   }
 `;
 
-export const useSources = () => {
-  const { data, loading, error, refetch } = useQuery(DATA_SOURCES);
+export const useSources = (options?: any) => {
+  const { data, loading, error, refetch } = useQuery(
+    DATA_SOURCES,
+    options || {}
+  );
 
   const { getSources = [] } = data || {};
 
   return { data: getSources, loading, error, refetch };
-}
+};

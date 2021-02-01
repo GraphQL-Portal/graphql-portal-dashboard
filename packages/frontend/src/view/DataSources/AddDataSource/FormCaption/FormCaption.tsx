@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { FormCaption as Props } from './types';
+import { FormCaption as Props } from '../../../../types';
 import { useStyles } from './useStyles';
 
-export const FormCaption:React.FC<Props> = ({ title, description }) => {
-  const { formCaption, formCaptionItem } = useStyles({});
+export const FormCaption: React.FC<Props> = ({ title, description }) => {
+  const { formCaption, formCaptionItem } = useStyles();
   return (
     <section className={formCaption}>
       {title && (
@@ -21,4 +21,4 @@ export const FormCaption:React.FC<Props> = ({ title, description }) => {
       )}
     </section>
   );
-}
+};
