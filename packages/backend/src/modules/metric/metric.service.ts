@@ -139,7 +139,7 @@ export default class MetricService {
     }, {});
 
     return Object.values(resolvers);
-  };
+  }
 
   private transformResolverData(data: AnyResolverMetric): Partial<IReducedResolver> {
     switch (data.event) {

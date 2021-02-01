@@ -28,7 +28,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     justifyContent: 'space-between',
     '& a': {
       textDecoration: 'none',
-      color: palette.common.white,
+      color: palette.primary,
     },
     '& a:hover': {
       textDecoration: 'underline',

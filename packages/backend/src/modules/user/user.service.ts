@@ -37,7 +37,7 @@ export default class UserService {
     if ((await this.isEmailNotConfirmed(email))) {
       await this.sendEmailConfirmationCode(email);
       throw new AuthenticationError('Please verify your email by using a confirmation code we have sent to your email.');
-    };
+    }
 
     if (!user || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
 
@@ -179,7 +179,7 @@ export default class UserService {
     if (!confirmationCode) {
       this.logger.debug('Confirmation code was not found', context, { email, code });
       throw new Error('Confirmation code has expired or is invalid');
-    };
+    }
     await this.codeModel.deleteMany({
       email,
       type,

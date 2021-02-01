@@ -9,7 +9,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
       display: 'flex',
       justifyContent: 'center',
       textDecoration: 'none',
-      color: palette.common.white,
+      color: palette.primary,
     },
     '& a:hover': {
       textDecoration: 'underline',

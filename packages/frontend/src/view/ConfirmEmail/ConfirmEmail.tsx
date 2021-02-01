@@ -16,18 +16,18 @@ export const ConfirmEmail: React.FC = () => {
 
   if (accessToken) return <Redirect to={ROUTES.MAIN} />
 
-  const message = result === 'success' ? <H3> Your email was successfully confirmed! 🎉 </H3> : <H3>  😢 {error || 'Oops... Something went wrong. Try again later, please'} </H3>
+  const message = result === 'success' ? 'Your email was successfully confirmed! 🎉 ':` 😢 ${ error || 'Oops... Something went wrong. Try again later, please' }`;
 
-  return (
-    <Content className={content}>
-      <div className={logo}>
-        <LogoFull />
-      </div>
-      <div>
-        {message}
-        <br />
-        <Link to={ROUTES.LOGIN}> Log In </Link>
-      </div>
-    </Content >
-  );
+return (
+  <Content className={content}>
+    <div className={logo}>
+      <LogoFull />
+    </div>
+    <div>
+      <H3>{message}</H3>
+      <br />
+      <Link to={ROUTES.LOGIN}> Log In </Link>
+    </div>
+  </Content >
+);
 }
