@@ -12,6 +12,7 @@ export type {
   TransformEditors,
   TransformsList,
 } from './DataSource';
+export type { Dialog, DialogContext, ModalDialog } from './Dialogs';
 export type { Editors } from './Editors';
 export type { ObjectArray } from './Forms';
 export type { ErrorsAndControl } from './HookForm';
