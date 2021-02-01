@@ -1,14 +1,10 @@
-import React from 'react';
-import { ErrorsAndControl } from './HookForm';
+import { Title, ElementsTable } from './General';
 
 type Source = { source: any };
-type Title = { title: string };
 
 export type FormCaption = Partial<Title> & {
   description?: string;
 };
-
-export type Editors = ErrorsAndControl & Title & Source;
 
 type updateState<T> = (data: T) => void;
 type Step<T> = {
@@ -24,6 +20,16 @@ export type NameStep = Step<NameForm>;
 export type HandlerStep = Step<HandlerForm> & Partial<Source>;
 export type TransformsStep = Step<TransformsForm> & Partial<Source>;
 
-export type HandlersMapper = {
-  [key: string]: React.JSXElementConstructor<any>;
+export type HandlersMapper = ElementsTable;
+
+export type TransformsMapper = ElementsTable;
+
+export type TransformEditors = {
+  type: string;
+  onCancel(): void;
+  onSuccess(data: any): void;
+};
+
+export type TransformsList = {
+  transforms: any[];
 };
