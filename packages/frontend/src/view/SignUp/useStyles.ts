@@ -27,7 +27,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     '& a': {
       fontWeight: 'bold',
       textDecoration: 'none',
-      color: palette.primary,
+      color: palette.text.primary,
     },
     '& a:hover': {
       textDecoration: 'underline',
