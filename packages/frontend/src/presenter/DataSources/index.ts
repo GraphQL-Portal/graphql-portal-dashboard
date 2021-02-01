@@ -13,6 +13,7 @@ export { useMySQLHandler } from './useMySQLHandler';
 export { useNeo4jHandler } from './useNeo4jHandler';
 export { usePostGraphileHandler } from './usePostGraphileHandler';
 export { useThriftHandler } from './useThriftHandler';
+export { useSoapHandler } from './useSoapHandler';
 export { useEditorsHandler } from './useEditorsHandler';
 export { useTransforms } from './useTransforms';
 export { useTransformEditors } from './useTransformEditors';

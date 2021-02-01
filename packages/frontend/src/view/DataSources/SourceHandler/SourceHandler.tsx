@@ -11,6 +11,7 @@ import { Neo4jHandler } from '../Neo4jHandler';
 import { MySQLHandler } from '../MySQLHandler';
 import { PostGraphileHandler } from '../PostGraphileHandler';
 import { ThriftHandler } from '../ThriftHandler';
+import { SoapHandler } from '../SoapHandler';
 import { EditorsHandler } from '../EditorsHandler';
 
 // The list of custom handler forms
@@ -26,6 +27,7 @@ const HANDLERS_MAPPER: HandlersMapper = {
   mysql: MySQLHandler,
   postgraphile: PostGraphileHandler,
   thrift: ThriftHandler,
+  soap: SoapHandler,
 };
 
 const getHandler = (key: string) => HANDLERS_MAPPER[key] || EditorsHandler;
