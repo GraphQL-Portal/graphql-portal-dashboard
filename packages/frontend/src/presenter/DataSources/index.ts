@@ -10,6 +10,7 @@ export { useTuqlHandler } from './useTuqlHandler';
 export { useOdataHandler } from './useOdataHandler';
 export { useContentfulHandler } from './useContentfulHandler';
 export { useMySQLHandler } from './useMySQLHandler';
+export { useGRPCHandler } from './useGRPCHandler';
 export { useNeo4jHandler } from './useNeo4jHandler';
 export { usePostGraphileHandler } from './usePostGraphileHandler';
 export { useThriftHandler } from './useThriftHandler';
