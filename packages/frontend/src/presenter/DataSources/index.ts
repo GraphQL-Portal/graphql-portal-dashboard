@@ -15,3 +15,4 @@ export { usePostGraphileHandler } from './usePostGraphileHandler';
 export { useThriftHandler } from './useThriftHandler';
 export { useEditorsHandler } from './useEditorsHandler';
 export { useTransforms } from './useTransforms';
+export { useTransformEditors } from './useTransformEditors';

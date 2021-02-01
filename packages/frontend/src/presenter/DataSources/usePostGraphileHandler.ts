@@ -4,25 +4,12 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { SOURCE_NAMES } from './constants';
+import { arrayObjectToObject, arrayStringFromObjectArray } from './helpers';
 
-const suite = vest.create('post_graphile_handler', ({ host, port, database, user, password }) => {
-  test('host', 'Host is required', () => {
-    enforce(host).isNotEmpty();
-  });
-  test('user', 'User is required', () => {
-    enforce(user).isNotEmpty();
-  });
-  test('password', 'Password is required', () => {
-    enforce(password).isNotEmpty();
-  });
-  test('port', 'Port is required', () => {
-    enforce(port).isNotEmpty();
-  });
-  test('port', 'Port has to be numeric', () => {
-    enforce(port).isNumeric();
-  });
-  test('database', 'Database is required', () => {
-    enforce(database).isNotEmpty();
+const suite = vest.create('post_graphile_handler', ({ connectionString, port, database, user, password }) => {
+  test('connectionString', 'Connection string is required', () => {
+    enforce(connectionString).isNotEmpty();
   });
 });
 
@@ -92,7 +79,18 @@ export const usePostGraphileHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: data });
+  const onSubmit = (data: any) => updateState({
+    handler: {
+      [SOURCE_NAMES.POST_GRAPHILE]: {
+        ...data,
+        schemaName: arrayStringFromObjectArray(data.schemaName),
+        appendPlugins: arrayStringFromObjectArray(data.appendPlugins),
+        skipPlugins: arrayStringFromObjectArray(data.skipPlugins),
+        pool: arrayObjectToObject(data.pool),
+        options: arrayObjectToObject(data.options),
+      }
+    }
+  });
 
   return {
     onSubmit: handleSubmit(onSubmit),

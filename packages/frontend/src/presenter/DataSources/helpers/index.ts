@@ -8,3 +8,5 @@ export { getFilteredSources } from './getFilteredSources';
 export { getHandlerSchema, getTransformSchema } from './getEntitySchema';
 export { resolveRefs } from './resolveRef';
 export { validateAjv } from './ajvValidate';
+export { arrayObjectToObject } from './arrayObjectToObject';
+export { arrayStringFromObjectArray } from './arrayStringFromObjectArray';

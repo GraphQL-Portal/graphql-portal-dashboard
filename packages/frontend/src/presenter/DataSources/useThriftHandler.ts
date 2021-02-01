@@ -4,6 +4,8 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { SOURCE_NAMES } from './constants';
+import { arrayObjectToObject } from './helpers';
 
 const suite = vest.create('thrift_handler', ({ hostName, port, serviceName, idl }) => {
   test('hostName', 'hostName is required', () => {
@@ -45,7 +47,16 @@ export const useThriftHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: data });
+  const onSubmit = (data: any) => updateState({
+    handler: {
+      [SOURCE_NAMES.THRIFT]: {
+        ...data,
+        port: Number(data.port),
+        schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+        operationHeaders: arrayObjectToObject(data.operationHeaders),
+      }
+    }
+  });
 
   const {
     fields: schemaFields,

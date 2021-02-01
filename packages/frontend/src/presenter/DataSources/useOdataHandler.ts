@@ -4,6 +4,8 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { SOURCE_NAMES } from './constants';
+import { arrayObjectToObject } from './helpers';
 
 const suite = vest.create('odata_handler', ({ baseUrl }) => {
   test('baseUrl', 'baseUrl is required', () => {
@@ -30,7 +32,15 @@ export const useOdataHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: data });
+  const onSubmit = (data: any) => updateState({
+    handler: {
+      [SOURCE_NAMES.ODATA]: {
+        ...data,
+        schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+        operationHeaders: arrayObjectToObject(data.operationHeaders),
+      }
+    }
+  });
 
   const {
     fields: schemaFields,
