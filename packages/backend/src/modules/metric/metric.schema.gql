@@ -1,5 +1,3 @@
-scalar Any
-
 type Chart {
   latency: [ChartChunk]
   count: [ChartChunk]
@@ -8,10 +6,10 @@ type Chart {
 }
 
 type ChartChunk {
-  argument: Any
-  value: Any
-  success: Any
-  failure: Any
+  argument: String
+  value: Int
+  success: Int
+  failure: Int
 }
 
 type Query {
