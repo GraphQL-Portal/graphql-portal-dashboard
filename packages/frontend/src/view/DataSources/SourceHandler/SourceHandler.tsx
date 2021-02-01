@@ -12,6 +12,7 @@ import { MySQLHandler } from '../MySQLHandler';
 import { PostGraphileHandler } from '../PostGraphileHandler';
 import { ThriftHandler } from '../ThriftHandler';
 import { SoapHandler } from '../SoapHandler';
+import { GRPCHandler } from '../GRPCHandler';
 import { EditorsHandler } from '../EditorsHandler';
 
 // The list of custom handler forms
@@ -28,6 +29,7 @@ const HANDLERS_MAPPER: HandlersMapper = {
   postgraphile: PostGraphileHandler,
   thrift: ThriftHandler,
   soap: SoapHandler,
+  grpc: GRPCHandler,
 };
 
 const getHandler = (key: string) => HANDLERS_MAPPER[key] || EditorsHandler;
