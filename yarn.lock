@@ -1333,10 +1333,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@graphql-portal/types@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.9.0.tgz#a15d9b84c77e992ce10c63961827f8110c3f67c7"
-  integrity sha512-N9Tzm6yC/vO65TstcMzeL1oM1me7JPiknCh4G3b1+GslIG5+lYk7DugoUlq5ll9bpIxmRYVSpXc3+nhJ67JXCQ==
+"@graphql-portal/types@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.10.0.tgz#69f062f635090060ea22c7309385c23bc6d725fd"
+  integrity sha512-AcYUXL7jx4oo2lacBr1muHfCUcgQi2p4tuRUu/IXrD5z1xpO+/iyfPjju11hR0vgzs0elaX6dJYuDL09IGwAtw==
   dependencies:
     ajv "^6.12.6"
 
@@ -1670,10 +1670,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hookform/resolvers@1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.3.2.tgz#9d747784c6d647da22bcf43d0be17f470d412182"
-  integrity sha512-OumtsPsGqBcsMXGUkM7IGDO55+ZmruF3u3D7eDYDK4HpYQcp4Q5QeqQtQr/BLD1wgTiB4YLvcboRXrITuJOwdA==
+"@hookform/resolvers@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.3.3.tgz#db61c3e7155c52a09c62ec62078fba2d65e0ee99"
+  integrity sha512-L4UYT8HRr9GzIHVMMgi1NOwCOZqFIcCAfGHrsP13j2dp3BcfrH9bhU+XWQTHg9/M/Qt2t7PZBXTW4UZilJCJrA==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
