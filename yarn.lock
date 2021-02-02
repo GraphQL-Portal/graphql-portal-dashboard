@@ -1284,17 +1284,22 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@date-io/core@1.x", "@date-io/core@^1.3.13":
+"@date-io/core@1.x":
   version "1.3.13"
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
   integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
 
-"@date-io/moment@1.3":
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-1.3.13.tgz#56c2772bc4f6675fc6970257e6033e7a7c2960f0"
-  integrity sha512-3kJYusJtQuOIxq6byZlzAHoW/18iExJer9qfRF5DyyzdAk074seTuJfdofjz4RFfTd/Idk8WylOQpWtERqvFuQ==
+"@date-io/core@^2.10.7":
+  version "2.10.7"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.10.7.tgz#0fe1fa0ef02c827919e23c2802a4b25589ac522d"
+  integrity sha512-EG/1qDiQvd12RoNJ6H+sZcHVswC/3uMx/ySvfaJ24vB30rLjkgHggEXbgMbfgki7wMuiQ/zXI8QlmF1k3kWRGQ==
+
+"@date-io/date-fns@^2.10.8":
+  version "2.10.8"
+  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-2.10.8.tgz#08ab5ed26c6c88095474f9ddd948d65d8a023eb4"
+  integrity sha512-T5RXKOt8CnjsKg0Orgbe/ekoafC02nsopS+wve5+6gF11hPfN2QUqXclxYQv1LIZSaAHJJ2gL8y0msOew74QHQ==
   dependencies:
-    "@date-io/core" "^1.3.13"
+    "@date-io/core" "^2.10.7"
 
 "@devexpress/dx-chart-core@2.7.4":
   version "2.7.4"

@@ -1,28 +1,34 @@
 import { Button, ButtonGroup } from '@material-ui/core';
-import moment from 'moment';
 import React, { ReactText } from 'react';
 import { Helmet } from 'react-helmet';
 import { useMetrics } from '../../presenter/Metrics';
 import { DatePicker, Header, HugeWidget, Widget, WidgetRow } from '../../ui';
-import { CountryChart, FailureRequestRateChart, RequestChart } from './MetricChart';
+import {
+  CountryChart,
+  FailureRequestRateChart,
+  RequestChart,
+} from './MetricChart';
+import format from 'date-fns/format';
 import { useStyles } from './useStyles';
 
 type Scale = 'hour' | 'day' | 'week' | 'month';
 const formatValueLabel = (ms: ReactText) => `${ms}ms`;
 
-const formatArgumentLabel = (scale: Scale) => (date: ReactText) => {
-  const d = moment(date);
-  if (scale === 'hour') {
-    return d.format('HH:mm');
-  } else {
-    return d.format('MMM D');
-  }
-};
+const formatArgumentLabel = (scale: Scale) => (date: ReactText) =>
+  format(new Date(date), scale === 'hour' ? 'HH:mm' : 'MMM d');
 
 export const MetricsAndLogs:React.FC = () => {
   const { date, buttons } = useStyles();
 
-  const { data, startDate, endDate, scale, setStartDate, setEndDate, setScale } = useMetrics();
+  const {
+    data,
+    startDate,
+    endDate,
+    scale,
+    setStartDate,
+    setEndDate,
+    setScale,
+  } = useMetrics();
   const latencyData = data?.latency || [];
   const countData = data?.count || [];
   const countriesData = data?.countries || [];
@@ -85,12 +91,19 @@ export const MetricsAndLogs:React.FC = () => {
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <CountryChart data={countriesData} title="Countries where requests were made from" />
+          <CountryChart
+            data={countriesData}
+            title="Countries where requests were made from"
+          />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <FailureRequestRateChart argumentLabelHandler={formatArgumentLabel(scale)} data={failuresData} title="Failure\Success Chart" />
+          <FailureRequestRateChart
+            argumentLabelHandler={formatArgumentLabel(scale)}
+            data={failuresData}
+            title="Failure\Success Chart"
+          />
         </HugeWidget>
       </WidgetRow>
     </>

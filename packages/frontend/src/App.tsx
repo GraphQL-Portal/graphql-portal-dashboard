@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
+import DateFnsUtils from '@date-io/date-fns';
 
 import {
   AuthProvider,
@@ -17,7 +17,7 @@ import { ProtectedRoutes, Login } from './view';
 function App() {
   return (
     <AuthProvider>
-      <MuiPickersUtilsProvider utils={MomentUtils}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <StateProvider>
           <Router>
             <ThemeProvider>
