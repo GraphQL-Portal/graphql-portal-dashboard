@@ -1,3 +1,3 @@
-export * from './useUsers';
-export * from './useDeleteUser';
-export * from './useUpdateUser';
+export { useUsers } from './useUsers';
+export { useDeleteUser } from './useDeleteUser';
+export { useUpdateUser } from './useUpdateUser';

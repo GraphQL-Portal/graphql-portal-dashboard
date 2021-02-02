@@ -1,7 +1,4 @@
-import { useBlockUser, useUnblockUser, useDeleteUser } from '../commands';
 import { gql, useQuery } from '@apollo/client';
-import { useDialogs } from '../../providers';
-import { DELETE_USER, UPDATE_USER } from '../../../view/Dialogs';
 
 export const QUERY_USERS = gql`
   {
@@ -18,41 +15,37 @@ export const QUERY_USERS = gql`
   }
 `;
 
-export const useUsersQuery = () => {
+export const useUsersQuery = (options: any = {}) => {
   const { data, loading, error, refetch } = useQuery(QUERY_USERS);
-  const [onBlockUser] = useBlockUser({ onCompleted: refetch });
-  const [onUnblockUser] = useUnblockUser({ onCompleted: refetch });
-  const [onDeleteUser] = useDeleteUser({ onCompleted: refetch });
-  const { onOpenDialog: onOpenDeleteDialog, onCloseDialog: onCloseDeleteDialog } = useDialogs()!;
-  const { onOpenDialog: onOpenEditDialog, onCloseDialog: onCloseEditDialog } = useDialogs()!;
 
   return {
     data: data?.getUsers || [],
     loading,
     error,
-    onBlock: (id: string) => onBlockUser({ variables: { id } }),
-    onUnblock: (id: string) => onUnblockUser({ variables: { id } }),
-    onEdit: (data: any) => {
-      console.log('onEditData', data);
-      onOpenEditDialog(UPDATE_USER, {
-        onSuccess: (updatedData: any) => {
-          console.log('updatedData', updatedData);
-          onCloseEditDialog();
-        },
-        onCancel: onCloseEditDialog,
-        data,
-      })
-    },
-    onDelete: (id: string, email: string) => {
-      onOpenDeleteDialog(DELETE_USER, {
-        onSuccess: () => {
-          onDeleteUser({ variables: { id } });
-          onCloseDeleteDialog();
-        },
-        onCancel: onCloseDeleteDialog,
-        id,
-        email,
-      });
-    },
+    refetch,
+    // onBlock: (id: string) => onBlockUser({ variables: { id } }),
+    // onUnblock: (id: string) => onUnblockUser({ variables: { id } }),
+    // onEdit: (data: any) => {
+    //   console.log('onEditData', data);
+    //   onOpenDialog(UPDATE_USER, {
+    //     onSuccess: (updatedData: any) => {
+    //       console.log('updatedData', updatedData);
+    //       onCloseDialog();
+    //     },
+    //     onCancel: onCloseDialog,
+    //     data,
+    //   });
+    // },
+    // onDelete: (id: string, email: string) => {
+    //   onOpenDialog(DELETE_USER, {
+    //     onSuccess: () => {
+    //       onDeleteUser({ variables: { id } });
+    //       onCloseDialog();
+    //     },
+    //     onCancel: onCloseDialog,
+    //     id,
+    //     email,
+    //   });
+    // },
   };
-}
+};

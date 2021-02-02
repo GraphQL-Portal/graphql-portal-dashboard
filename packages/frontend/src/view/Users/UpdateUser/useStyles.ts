@@ -4,4 +4,7 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
   primaryButton: {
     marginBottom: spacing(2),
   },
+  formField: {
+    marginBottom: spacing(2),
+  },
 }));
