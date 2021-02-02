@@ -39,7 +39,7 @@ export default class UserService {
       throw new AuthenticationError('Please verify your email by using a confirmation code we have sent to your email.');
     }
 
-    if (!user || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
+    if (!user || user.deletedAt || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
 
     const tokens = await this.tokenService.issueTokens(user._id!, device);
 
@@ -55,6 +55,23 @@ export default class UserService {
 
     this.logger.log(`Successfully created user with email: ${data.email}`, this.constructor.name);
 
+    return true;
+  }
+
+  public async unblockUser(id: string): Promise<IUserDocument | null> {
+    return this.userModel.findByIdAndUpdate(id, {
+      deletedAt: null,
+    });
+  }
+
+  public async blockUser(id: string): Promise<IUserDocument | null> {
+    return this.userModel.findByIdAndUpdate(id, {
+      deletedAt: new Date(),
+    });
+  }
+
+  public async deleteUser(id: string): Promise<boolean> {
+    await this.userModel.deleteOne({ _id: id });
     return true;
   }
 
@@ -86,7 +103,7 @@ export default class UserService {
 
   public async resetPasswordRequest(email: string): Promise<boolean> {
     const user = await this.findByEmail(email);
-    if (!user) {
+    if (!user || user.deletedAt) {
       throw new UserInputError('User with such email/password does not exist');
     }
 

@@ -12,6 +12,7 @@ type User {
   lastName: String
   role: String!
   email: String!
+  deletedAt: String
   createdAt: String!
   updatedAt: String!
 }
@@ -24,6 +25,9 @@ type Tokens {
 type Mutation {
   login(email: String!, password: String!, device: String!): Tokens!
   register(data: UserInput!): Boolean
+  blockUser(id: ID!): User
+  unblockUser(id: ID!): User
+  deleteUser(id: ID!): Boolean
   refreshTokens(refreshToken: String!, device: String!): Tokens!
   resetPasswordRequest(email: String!): Boolean
   resetPassword(email: String!, code: String!, password: String!): Boolean
