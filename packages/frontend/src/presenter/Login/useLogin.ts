@@ -29,8 +29,8 @@ const validationSuite = vest.create('login_form', ({ email, password }: LoginFor
     enforce(password).isNotEmpty();
   });
 
-  test('password', 'Password must be at least 5 chars', () => {
-    enforce(password).longerThanOrEquals(5);
+  test('password', 'Password must be at least 8 chars', () => {
+    enforce(password).longerThanOrEquals(8);
   });
 
   test('password', 'Password must contain a digit', () => {

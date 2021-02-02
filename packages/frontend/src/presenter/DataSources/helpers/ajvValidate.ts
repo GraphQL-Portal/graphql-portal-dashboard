@@ -1,6 +1,6 @@
 import Ajv, { ErrorObject } from 'ajv';
 
-const getFirstMessage = (errors: ErrorObject[]) => errors[0].message;
+const getFirstMessage = (errors: ErrorObject[]) => errors[0]?.message;
 
 export const validateAjv = (schemaTemplate: any) => (validationObject: any) => (
   data: any
@@ -9,10 +9,8 @@ export const validateAjv = (schemaTemplate: any) => (validationObject: any) => (
   const validate = new Ajv().compile(schema);
 
   if (validate(data)) {
-    console.log('DATA', data);
     return { pass: true, message: '' };
   } else {
-    console.log('VALIDATE ERRORS: ', validate.errors);
     return {
       pass: false,
       message: () => getFirstMessage(validate.errors!) || '',

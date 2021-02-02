@@ -1,6 +1,7 @@
 {
   "application": {
     "env": "production",
+    "host": "@@HOST",
     "useSwaggerUi": false,
     "port": "@@DASHBOARD_PORT",
     "graphQL": {
@@ -12,7 +13,16 @@
       "dbPath": "@@MAXMIND_DB_PATH",
       "licenseKey": "@@MAXMIND_LICENSE_KEY",
       "accountId": "@@MAXMIND_ACCOUNT_ID"
+    },
+    "sendgrid": {
+      "senderEmail": "@@SENDGRID_SENDER_EMAIL",
+      "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",
+      "resetPasswordTemplateId": "@@SENDGRID_RESET_PASSWORD_TEMPLATE",
+      "apiKey": "@@SENDGRID_API_KEY"
     }
+  },
+  "client": {
+    "host": "@@CLIENT_HOST"
   },
   "db": {
     "redis": {

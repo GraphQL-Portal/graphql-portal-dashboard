@@ -1,0 +1,1 @@
+export { useResetPassword } from './useResetPassword';

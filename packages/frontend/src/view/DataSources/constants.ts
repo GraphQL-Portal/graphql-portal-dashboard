@@ -23,18 +23,12 @@ export const TRANSFORMS_HEAD = [
 export const ADD_SOURCE_STEPS = [
   {
     label: 'Name',
-    stepProps: {},
-    labelProps: {},
   },
   {
     label: 'Handler',
-    stepProps: {},
-    labelProps: {},
   },
   {
     label: 'Transforms',
-    stepProps: {},
-    labelProps: {},
   },
 ];
 

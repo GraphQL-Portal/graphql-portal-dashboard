@@ -12,7 +12,7 @@ export default class UserResolver {
   public constructor(
     private readonly service: UserService,
     private readonly tokenService: TokenService,
-    ) { }
+  ) { }
 
   @Mutation()
   public login(
@@ -26,9 +26,8 @@ export default class UserResolver {
   @Mutation()
   public register(
     @Args('data') data: IUser,
-    @Args('device') device: string,
-  ): Promise<ITokens> {
-    return this.service.register(data, device);
+  ): Promise<boolean> {
+    return this.service.register(data);
   }
 
   @Mutation()
@@ -49,5 +48,15 @@ export default class UserResolver {
   @Query()
   public getUsers(@AuthorizationParam('_id') userId: string): Promise<IUserDocument[]> {
     return this.service.getUsers(userId);
+  }
+
+  @Mutation()
+  public resetPasswordRequest(@Args('email') email: string): Promise<boolean> {
+    return this.service.resetPasswordRequest(email);
+  }
+
+  @Mutation()
+  public resetPassword(@Args('email') email: string, @Args('code') code: string, @Args('password') password: string): Promise<boolean> {
+    return this.service.resetPassword(email, code, password);
   }
 }

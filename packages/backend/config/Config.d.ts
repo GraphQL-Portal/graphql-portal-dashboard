@@ -4,6 +4,7 @@ declare module "node-config-ts" {
   interface IConfig {
     name: string
     application: Application
+    client: Client
     db: Db
   }
   interface Db {
@@ -13,8 +14,12 @@ declare module "node-config-ts" {
   interface Redis {
     connectionString: string
   }
+  interface Client {
+    host: string
+  }
   interface Application {
     env: string
+    host: string
     port: number
     useSwaggerUi: boolean
     graphQL: GraphQL
@@ -23,12 +28,19 @@ declare module "node-config-ts" {
     salt: string
     defaultAdmin: DefaultAdmin
     metrics: Metrics
+    sendgrid: Sendgrid
     maxmind: Maxmind
   }
   interface Maxmind {
     dbPath: string
     licenseKey: string
     accountId: string
+  }
+  interface Sendgrid {
+    senderEmail: string
+    apiKey: string
+    confirmationTemplateId: string
+    resetPasswordTemplateId: string
   }
   interface Metrics {
     enabled: boolean
