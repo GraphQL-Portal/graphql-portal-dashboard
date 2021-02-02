@@ -25,7 +25,11 @@ const GRAPHQL_DEFAULT_STATE = {
   multipart: false,
 };
 
-export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
+export const useGraphQLHandler = ({
+  state,
+  updateState,
+  step,
+}: HandlerStep) => {
   const handlerState = Object.assign({}, GRAPHQL_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
@@ -53,7 +57,7 @@ export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
     name: 'operationHeaders',
   });
 
-  const onSubmit = (data: any) => updateState({ handler: data });
+  const onSubmit = (data: any) => updateState({ handler: data }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),

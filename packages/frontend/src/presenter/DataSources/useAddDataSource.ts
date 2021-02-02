@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useStepper } from '../../model/Hooks';
+import { useNotLinearStepper } from '../../model/Hooks';
 import { useCreateSource } from '../../model/DataSources/commands';
 import { useDataSourceContext } from '../../model/providers';
 import { INITIAL_STATE } from './constants';
@@ -12,7 +12,13 @@ type State = {
 };
 
 export const useAddDataSource = (limit: number) => {
-  const { step, nextStep } = useStepper(limit);
+  const {
+    step,
+    nextStep,
+    completed,
+    completeStep,
+    setStep,
+  } = useNotLinearStepper(limit);
   const { source = {}, clearSource } = useDataSourceContext();
   const [state, setState] = useState<State>(INITIAL_STATE);
 
@@ -30,16 +36,9 @@ export const useAddDataSource = (limit: number) => {
   // Send new source to the server
   const { createSource } = useCreateSource({ onCompleted, onError });
 
-  // const onSubmit = (source: any) => {
-  //   createSource({
-  //     variables: {
-  //       source,
-  //     },
-  //   });
-  // };
-
-  const updateState = (newState: any) => {
+  const updateState = (newState: any, step: number) => {
     setState((s: any) => Object.assign({}, s, newState));
+    completeStep(step);
     nextStep();
   };
 
@@ -57,6 +56,9 @@ export const useAddDataSource = (limit: number) => {
     step,
     state,
     updateState,
-    isDisabled: step < limit,
+    isDisabled: !completed[0] || !completed[1],
+    completed,
+    completeStep,
+    setStep,
   };
 };

@@ -6,10 +6,11 @@ export type FormCaption = Partial<Title> & {
   description?: string;
 };
 
-type updateState<T> = (data: T) => void;
+type updateState<T> = (data: T, step: number) => void;
 type Step<T> = {
   updateState: updateState<T>;
   state: T;
+  step: number;
 };
 
 export type NameForm = { name: string };

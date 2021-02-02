@@ -14,5 +14,6 @@ export const useStepper = (limit: number) => {
     step,
     nextStep,
     previousStep,
+    setStep,
   };
 };

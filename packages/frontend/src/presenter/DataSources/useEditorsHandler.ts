@@ -13,6 +13,7 @@ export const useEditorsHandler = ({
   source,
   updateState,
   state,
+  step,
 }: HandlerStep) => {
   const { key = '', connector } = source;
 
@@ -41,7 +42,7 @@ export const useEditorsHandler = ({
   useFormErrors(errors);
 
   const onSubmit = (source: any) => {
-    updateState(source);
+    updateState(source, step);
   };
 
   return {
