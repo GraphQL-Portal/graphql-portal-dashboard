@@ -57,7 +57,7 @@ export const MetricsAndLogs:React.FC = () => {
             value={startDate}
             disableFuture
             maxDate={endDate}
-            onChange={(e) => e && setStartDate(e.toDate())}
+            onChange={(e) => e && setStartDate(e)}
           />
         </Widget>
         <Widget className={date}>
@@ -66,7 +66,7 @@ export const MetricsAndLogs:React.FC = () => {
             value={endDate}
             disableFuture
             minDate={startDate}
-            onChange={(e) => e && setEndDate(e.toDate())}
+            onChange={(e) => e && setEndDate(e)}
           />
         </Widget>
       </WidgetRow>
