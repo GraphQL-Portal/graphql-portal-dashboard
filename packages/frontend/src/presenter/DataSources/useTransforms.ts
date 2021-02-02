@@ -7,7 +7,7 @@ import { AVAILABLE_TRANSFORMS } from './constants';
 const createOption = (option: string) => ({ label: option, value: option });
 const options = Object.keys(AVAILABLE_TRANSFORMS).map(createOption);
 
-export const useTransforms = ({ state, updateState }: TransformsStep) => {
+export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
   const [fields, setFields] = useState<string[]>([]);
   const { handleSubmit, control, reset } = useForm({
     mode: 'onSubmit',
@@ -30,7 +30,7 @@ export const useTransforms = ({ state, updateState }: TransformsStep) => {
 
   const addTransform = (data: object) => {
     const { transforms } = state;
-    updateState({ transforms: transforms.concat(data) });
+    updateState({ transforms: transforms.concat(data) }, step);
   };
 
   return {
