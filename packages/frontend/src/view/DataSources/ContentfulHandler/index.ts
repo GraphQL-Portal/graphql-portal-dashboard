@@ -1,0 +1,1 @@
+export { ContentfulHandler } from './ContentfulHandler';

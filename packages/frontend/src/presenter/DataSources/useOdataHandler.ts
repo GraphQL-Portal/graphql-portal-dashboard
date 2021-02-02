@@ -7,28 +7,23 @@ import { HandlerStep } from '../../types';
 import { SOURCE_NAMES } from './constants';
 import { arrayObjectToObject } from './helpers';
 
-const suite = vest.create('graphql_handler', ({ endpoint }) => {
-  test('endpoint', 'Endpoint is required', () => {
-    enforce(endpoint).isNotEmpty();
+const suite = vest.create('odata_handler', ({ baseUrl }) => {
+  test('baseUrl', 'baseUrl is required', () => {
+    enforce(baseUrl).isNotEmpty();
   });
 });
 
-const GRAPHQL_DEFAULT_STATE = {
-  endpoint: '',
-  schemaHeaders: [],
+const ODATA_DEFAULT_STATE = {
+  baseUrl: '',
+  batch: '',
+  expandNavProps: false,
+  metadata: '',
   operationHeaders: [],
-  useGETForQueries: false,
-  method: '',
-  useSSEForSubscription: false,
-  customFetch: '',
-  webSocketImpl: '',
-  introspection: '',
-  cacheIntrospection: '',
-  multipart: false,
+  schemaHeaders: [],
 };
 
-export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
-  const handlerState = Object.assign({}, GRAPHQL_DEFAULT_STATE, state);
+export const useOdataHandler = ({ state, updateState }: HandlerStep) => {
+  const handlerState = Object.assign({}, ODATA_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
@@ -36,6 +31,16 @@ export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
   });
 
   useFormErrors(errors);
+
+  const onSubmit = (data: any) => updateState({
+    handler: {
+      [SOURCE_NAMES.ODATA]: {
+        ...data,
+        schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+        operationHeaders: arrayObjectToObject(data.operationHeaders),
+      }
+    }
+  });
 
   const {
     fields: schemaFields,
@@ -54,18 +59,6 @@ export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
     control,
     name: 'operationHeaders',
   });
-
-  const onSubmit = (data: any) => {
-    updateState({
-      handler: {
-        [SOURCE_NAMES.GRAPHQL]: {
-          ...data,
-          schemaHeaders: arrayObjectToObject(data.schemaHeaders),
-          operationHeaders: arrayObjectToObject(data.operationHeaders),
-        }
-      }
-    })
-  };
 
   return {
     onSubmit: handleSubmit(onSubmit),

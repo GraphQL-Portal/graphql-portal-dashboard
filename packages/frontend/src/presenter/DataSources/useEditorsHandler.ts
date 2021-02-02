@@ -41,7 +41,7 @@ export const useEditorsHandler = ({
   useFormErrors(errors);
 
   const onSubmit = (source: any) => {
-    updateState(source);
+    updateState({ handler: { [key]: { ...source.handler } } });
   };
 
   return {

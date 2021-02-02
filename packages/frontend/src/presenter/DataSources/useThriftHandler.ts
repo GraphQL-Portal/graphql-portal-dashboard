@@ -7,28 +7,38 @@ import { HandlerStep } from '../../types';
 import { SOURCE_NAMES } from './constants';
 import { arrayObjectToObject } from './helpers';
 
-const suite = vest.create('graphql_handler', ({ endpoint }) => {
-  test('endpoint', 'Endpoint is required', () => {
-    enforce(endpoint).isNotEmpty();
+const suite = vest.create('thrift_handler', ({ hostName, port, serviceName, idl }) => {
+  test('hostName', 'hostName is required', () => {
+    enforce(hostName).isNotEmpty();
+  });
+  test('idl', 'idl is required', () => {
+    enforce(idl).isNotEmpty();
+  });
+  test('serviceName', 'Service name is required', () => {
+    enforce(serviceName).isNotEmpty();
+  });
+  test('port', 'Port is required', () => {
+    enforce(port).isNotEmpty();
+  });
+  test('port', 'Port has to be numeric', () => {
+    enforce(port).isNumeric();
   });
 });
 
-const GRAPHQL_DEFAULT_STATE = {
-  endpoint: '',
-  schemaHeaders: [],
+const THRIFT_DEFAULT_STATE = {
+  hostName: '',
+  https: false,
+  idl: '',
+  path: '',
+  port: '',
+  serviceName: '',
+  protocol: 'binary',
   operationHeaders: [],
-  useGETForQueries: false,
-  method: '',
-  useSSEForSubscription: false,
-  customFetch: '',
-  webSocketImpl: '',
-  introspection: '',
-  cacheIntrospection: '',
-  multipart: false,
+  schemaHeaders: [],
 };
 
-export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
-  const handlerState = Object.assign({}, GRAPHQL_DEFAULT_STATE, state);
+export const useThriftHandler = ({ state, updateState }: HandlerStep) => {
+  const handlerState = Object.assign({}, THRIFT_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
@@ -36,6 +46,17 @@ export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
   });
 
   useFormErrors(errors);
+
+  const onSubmit = (data: any) => updateState({
+    handler: {
+      [SOURCE_NAMES.THRIFT]: {
+        ...data,
+        port: Number(data.port),
+        schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+        operationHeaders: arrayObjectToObject(data.operationHeaders),
+      }
+    }
+  });
 
   const {
     fields: schemaFields,
@@ -54,18 +75,6 @@ export const useGraphQLHandler = ({ state, updateState }: HandlerStep) => {
     control,
     name: 'operationHeaders',
   });
-
-  const onSubmit = (data: any) => {
-    updateState({
-      handler: {
-        [SOURCE_NAMES.GRAPHQL]: {
-          ...data,
-          schemaHeaders: arrayObjectToObject(data.schemaHeaders),
-          operationHeaders: arrayObjectToObject(data.operationHeaders),
-        }
-      }
-    })
-  };
 
   return {
     onSubmit: handleSubmit(onSubmit),
