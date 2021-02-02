@@ -7,16 +7,14 @@ import {
   PrimaryButton,
 } from '../../../ui';
 import { HandlerRow, HandlerCol } from '../../DataSources/Layout';
+import { getError } from '../../DataSources/helpers';
 import { ModalDialog, UPDATE_USER } from '../../Dialogs';
-
-const getError = (errors: any) => (field: string) => !!errors?.[field];
 
 export const UpdateUser: React.FC = () => {
   const {
     control,
     errors,
     onSubmit,
-    email,
   } = useUpdateUser();
 
   const hasErrors = getError(errors);
@@ -30,7 +28,6 @@ export const UpdateUser: React.FC = () => {
               as={Input}
               control={control}
               label="Email"
-              value={email}
               name="email"
               error={hasErrors('email')}
               fullWidth

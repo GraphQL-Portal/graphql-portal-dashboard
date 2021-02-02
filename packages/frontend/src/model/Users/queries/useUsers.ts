@@ -1,7 +1,7 @@
-import { useBlockUser, useUnblockUser, useDeleteUser } from '../commands';
+import { useBlockUser, useUnblockUser, useDeleteUser, useCreateUser } from '../commands';
 import { gql, useQuery } from '@apollo/client';
-import { useDialogs } from '../../providers';
-import { DELETE_USER, UPDATE_USER } from '../../../view/Dialogs';
+import { useDialogs, useToast } from '../../providers';
+import { DELETE_USER, UPDATE_USER, CREATE_USER } from '../../../view/Dialogs';
 
 export const QUERY_USERS = gql`
   {
@@ -20,11 +20,15 @@ export const QUERY_USERS = gql`
 
 export const useUsersQuery = () => {
   const { data, loading, error, refetch } = useQuery(QUERY_USERS);
-  const [onBlockUser] = useBlockUser({ onCompleted: refetch });
-  const [onUnblockUser] = useUnblockUser({ onCompleted: refetch });
-  const [onDeleteUser] = useDeleteUser({ onCompleted: refetch });
+  const { showErrorToast, showSuccessToast } = useToast();
+  const options = { onCompleted: refetch, onError: (error: Error) => showErrorToast(error.message) };
+  const [onBlockUser] = useBlockUser(options);
+  const [onUnblockUser] = useUnblockUser(options);
+  const [onDeleteUser] = useDeleteUser(options);
+  const [onCreateUser] = useCreateUser(options);
   const { onOpenDialog: onOpenDeleteDialog, onCloseDialog: onCloseDeleteDialog } = useDialogs()!;
   const { onOpenDialog: onOpenEditDialog, onCloseDialog: onCloseEditDialog } = useDialogs()!;
+  const { onOpenDialog: onOpenCreateDialog, onCloseDialog: onCloseCreateDialog } = useDialogs()!;
 
   return {
     data: data?.getUsers || [],
@@ -32,15 +36,23 @@ export const useUsersQuery = () => {
     error,
     onBlock: (id: string) => onBlockUser({ variables: { id } }),
     onUnblock: (id: string) => onUnblockUser({ variables: { id } }),
-    onEdit: (data: any) => {
-      console.log('onEditData', data);
+    onCreate: () => {
+      onOpenCreateDialog(CREATE_USER, {
+        onSuccess: (createData: any) => {
+          onCreateUser({ variables: { data: createData } });
+          onCloseCreateDialog();
+          showSuccessToast('Successfully created. User has to confirm email address.')
+        },
+        onCancel: onCloseCreateDialog,
+      })
+    },
+    onEdit: (editData: any) => {
       onOpenEditDialog(UPDATE_USER, {
         onSuccess: (updatedData: any) => {
-          console.log('updatedData', updatedData);
           onCloseEditDialog();
         },
         onCancel: onCloseEditDialog,
-        data,
+        data: editData,
       })
     },
     onDelete: (id: string, email: string) => {

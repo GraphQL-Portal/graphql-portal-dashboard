@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Header,
   HugeWidget,
+  PrimaryButton,
   WidgetRow,
 } from '../../ui';
 import { EmptyUsers } from './Empty';
@@ -10,15 +11,18 @@ import { Loading } from '../Loading';
 import { useUsers } from '../../presenter/Users';
 import { DeleteUser } from './DeleteUser';
 import { UpdateUser } from './UpdateUser';
+import { CreateUser } from './CreateUser';
 
 export const Users: React.FC = () => {
-  const { list, data, loading, onBlock, onUnblock, onDelete, onEdit } = useUsers();
+  const { list, data, loading, onBlock, onUnblock, onDelete, onEdit, onCreate } = useUsers();
 
   if (loading) return <Loading />
 
   return (
     <>
-      <Header title="Active Users" />
+      <Header title="Active Users">
+        <PrimaryButton onClick={onCreate}>Create user</PrimaryButton>
+      </Header>
       <WidgetRow>
         <HugeWidget>
           {data.length ? <UsersList
@@ -32,6 +36,7 @@ export const Users: React.FC = () => {
         </HugeWidget>
         <DeleteUser />
         <UpdateUser />
+        <CreateUser />
       </WidgetRow>
     </>
   );

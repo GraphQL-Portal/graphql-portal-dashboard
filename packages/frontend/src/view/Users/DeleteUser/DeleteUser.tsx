@@ -8,17 +8,15 @@ import {
   TextButton,
 } from '../../../ui';
 import { ModalDialog, DELETE_USER } from '../../Dialogs';
-import { useStyles } from './useStyles';
 
 export const DeleteUser: React.FC = () => {
   const { email, onSuccess, onCancel } = useDeleteUser();
-  const { primaryButton } = useStyles();
 
   return (
     <ModalDialog id={DELETE_USER}>
       <DialogTitle>Delete user</DialogTitle>
       <DialogText>Do you really want to delete user with email: {email}?</DialogText>
-      <PrimaryButton fullWidth onClick={onSuccess} className={primaryButton}>
+      <PrimaryButton fullWidth onClick={onSuccess}>
         Delete user
       </PrimaryButton>
       <TextButton onClick={onCancel}>Cancel</TextButton>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
@@ -15,14 +14,12 @@ const suite = vest.create('update_user', ({ email }) => {
 export const useUpdateUser = () => {
   const { dialogConfig } = useDialogs()!;
 
-  console.log('email', dialogConfig?.data?.email);
-
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues: {
-      email: dialogConfig?.data?.email || ''
-    },
+      email: dialogConfig?.data?.email || 'lol'
+    }
   });
 
   useFormErrors(errors);
