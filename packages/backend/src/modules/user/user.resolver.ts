@@ -50,6 +50,24 @@ export default class UserResolver {
     return this.service.getUsers(userId);
   }
 
+  @Roles([RolesEnum.ADMIN])
+  @Mutation()
+  public unblockUser(@Args('id') id: string): Promise<IUserDocument | null> {
+    return this.service.unblockUser(id);
+  }
+
+  @Roles([RolesEnum.ADMIN])
+  @Mutation()
+  public blockUser(@Args('id') id: string): Promise<IUserDocument | null> {
+    return this.service.blockUser(id);
+  }
+
+  @Roles([RolesEnum.ADMIN])
+  @Mutation()
+  public deleteUser(@Args('id') id: string): Promise<boolean> {
+    return this.service.deleteUser(id);
+  }
+
   @Mutation()
   public resetPasswordRequest(@Args('email') email: string): Promise<boolean> {
     return this.service.resetPasswordRequest(email);

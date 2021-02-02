@@ -10,8 +10,7 @@ export interface IUserDocument extends IUser, mongoose.Document {
   isValidPassword(password: string): boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const UserSchema = new mongoose.Schema<IUserDocument>(
+const userSchema = new mongoose.Schema<IUserDocument>(
   {
     firstName: String,
     lastName: String,
@@ -26,6 +25,7 @@ const UserSchema = new mongoose.Schema<IUserDocument>(
       minlength: 8,
       required: true,
     },
+    deletedAt: Date,
     email: {
       type: String,
       lowercase: true,
@@ -38,17 +38,17 @@ const UserSchema = new mongoose.Schema<IUserDocument>(
   { versionKey: false, timestamps: true }
 );
 
-UserSchema.methods.setPassword = function (password: string): void {
+userSchema.methods.setPassword = function (password: string): void {
   this.password = crypto.pbkdf2Sync(password, config.application.salt, 10000, 512, 'sha512').toString('hex');
 };
 
-UserSchema.methods.isValidPassword = function (password: string): boolean {
+userSchema.methods.isValidPassword = function (password: string): boolean {
   // TODO: replace with bcrypt
   const hash = crypto.pbkdf2Sync(password, config.application.salt, 10000, 512, 'sha512').toString('hex');
   return this.password === hash;
 };
 
-UserSchema.pre<IUserDocument>('save', function (next) {
+userSchema.pre<IUserDocument>('save', function (next) {
   try {
     this.setPassword(this.password);
     next();
@@ -57,4 +57,4 @@ UserSchema.pre<IUserDocument>('save', function (next) {
   }
 });
 
-export default UserSchema;
+export default userSchema;

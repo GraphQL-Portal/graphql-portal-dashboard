@@ -7,6 +7,7 @@ export default interface IUser {
   role: Roles;
   email: string;
   password: string;
+  deletedAt?: Date | null;
   createdAt?: Date;
   updatedAt?: Date;
 }

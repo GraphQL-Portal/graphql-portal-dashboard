@@ -1,5 +1,5 @@
 
-import { Block } from '@material-ui/icons';
+import { LockOpen, Lock, DeleteForever, Edit } from '@material-ui/icons';
 import React from 'react';
 import {
   WidgetBody,
@@ -18,7 +18,7 @@ import { useStyles } from './useStyles';
 
 const getCellAlign = (idx: number) => idx === 0 ? 'left' : 'right';
 
-export const UsersList: React.FC<UsersListFC> = ({ list }) => {
+export const UsersList: React.FC<UsersListFC> = ({ list, data, onUnblock, onBlock, onDelete, onEdit }) => {
   const { actionCell } = useStyles();
   return (
     <>
@@ -40,13 +40,30 @@ export const UsersList: React.FC<UsersListFC> = ({ list }) => {
                   </TableCell>
                 ))}
                 <TableCell align="right" className={actionCell}>
-                  <Tooltip title="Block user" placement="left" aria-label="block user">
-                    <span>
+                  {
+                    data[idx].deletedAt ? (
                       <IconButton>
-                        <Block/>
-                      </IconButton>
-                    </span>
-                  </Tooltip>
+                        <Tooltip title="Unblock user" placement="left" aria-label="unblock user">
+                          <Lock onClick={() => onUnblock(idx)} />
+                        </Tooltip>
+                      </IconButton>)
+                      :
+                      (<IconButton>
+                        <Tooltip title="Block user" placement="left" aria-label="block user">
+                          <LockOpen onClick={() => onBlock(idx)} />
+                        </Tooltip>
+                      </IconButton>)
+                  }
+                  <IconButton>
+                    <Tooltip title="Edit user" placement="left" aria-label="edit user">
+                      <Edit onClick={() => onEdit(idx)} />
+                    </Tooltip>
+                  </IconButton>
+                  <IconButton>
+                    <Tooltip title="Delete user" placement="left" aria-label="delete user">
+                      <DeleteForever onClick={() => onDelete(idx)} />
+                    </Tooltip>
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}
