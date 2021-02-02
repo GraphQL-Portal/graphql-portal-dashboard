@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
 import { ROUTES, useAuth } from '../../model/providers';
@@ -19,8 +19,8 @@ import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
 
-export const Login:React.FC = () => {
-  const { content, logo, formFrame, formField } = useStyles();
+export const Login: React.FC = () => {
+  const { content, logo, formFrame, formField, footerWrapper, links } = useStyles();
   const { control, onSubmit, errors } = useLogin();
   const { accessToken } = useAuth();
 
@@ -64,9 +64,19 @@ export const Login:React.FC = () => {
                   />
                 </WidgetBody>
                 <WidgetActions>
-                  <PrimaryButton fullWidth size="large" type="submit">
-                    Sign In With Email
+                  <div className={footerWrapper}>
+                    <PrimaryButton fullWidth size="large" type="submit">
+                      Sign In With Email
                   </PrimaryButton>
+                    <div className={links}>
+                      <Link to={ROUTES.RESET_PASSWORD_REQUEST}>
+                        Reset password
+                    </Link>
+                      <Link to={ROUTES.SIGN_UP}>
+                        Create account
+                    </Link>
+                    </div>
+                  </div>
                 </WidgetActions>
               </Widget>
             </form>
