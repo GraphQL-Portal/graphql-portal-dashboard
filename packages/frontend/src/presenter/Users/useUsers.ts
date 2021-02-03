@@ -8,4 +8,4 @@ export const useUsers = () => {
     data: createUsersList(data),
     loading,
   };
-}
+};

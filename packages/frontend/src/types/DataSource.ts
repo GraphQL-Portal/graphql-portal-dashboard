@@ -34,3 +34,5 @@ export type TransformEditors = {
 export type TransformsList = {
   transforms: any[];
 };
+
+export type DataSource = NameForm & HandlerForm & TransformsForm;
