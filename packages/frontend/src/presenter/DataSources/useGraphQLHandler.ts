@@ -23,7 +23,7 @@ const GRAPHQL_DEFAULT_STATE = {
   customFetch: '',
   webSocketImpl: '',
   introspection: '',
-  cacheIntrospection: '',
+  cacheIntrospection: false,
   multipart: false,
 };
 
