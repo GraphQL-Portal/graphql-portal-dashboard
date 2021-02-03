@@ -10,3 +10,4 @@ export { isObject, isPOJO } from './isObject';
 export { NOOP } from './noop';
 export { toLowerCase } from './toLowerCase';
 export { trace } from './trace';
+export { getRoleFromToken } from './getRoleFromToken';

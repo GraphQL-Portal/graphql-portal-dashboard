@@ -15,9 +15,12 @@ import { Sidebar } from '../Sidebar';
 import { SupportForum } from '../SupportForum';
 import { Users } from '../Users';
 import { Webhooks } from '../Webhooks';
+import { RoleProtectedComponent } from '..';
+import { Roles } from '../../model/providers/Auth/constants';
 
-export const ProtectedRoutes:React.FC = () => {
+export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
+  const ProtectedUsers = RoleProtectedComponent([Roles.ADMIN], Users, ROUTES.MAIN);
 
   if (!accessToken) return <Redirect to={ROUTES.LOGIN} />
 
@@ -42,7 +45,7 @@ export const ProtectedRoutes:React.FC = () => {
             <MetricsAndLogs />
           </Route>
           <Route path={ROUTES.USERS}>
-            <Users />
+            <ProtectedUsers />
           </Route>
           <Route path={ROUTES.GLOBAL}>
             <GlobalSettings />

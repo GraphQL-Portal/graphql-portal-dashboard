@@ -4,6 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { useDialogs } from '../../model/providers';
+import { Roles } from '../../model/providers/Auth/constants';
 
 const suite = vest.create('create_user', ({ email, password, confirmPassword }) => {
   test('email', 'Email is required', () => {
@@ -35,8 +36,8 @@ const suite = vest.create('create_user', ({ email, password, confirmPassword }) 
 });
 
 export const USER_ROLES = [
-  { label: 'User', value: 'user' },
-  { label: 'Admin', value: 'admin' },
+  { label: 'User', value: Roles.USER },
+  { label: 'Admin', value: Roles.ADMIN },
 ];
 
 const DEFAUL_CREATE_USER_STATE = {

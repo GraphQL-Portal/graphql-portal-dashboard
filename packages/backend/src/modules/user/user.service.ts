@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import Sendgrid from '@sendgrid/mail';
 import { Model } from 'mongoose';
@@ -22,7 +22,7 @@ export default class UserService {
     @InjectModel('User') private userModel: Model<IUserDocument>,
     @InjectModel('ConfirmationCode') private codeModel: Model<IConfirmationCodeDocument>,
     private readonly logger: LoggerService,
-    private readonly tokenService: TokenService,
+    @Inject(forwardRef(() => TokenService)) private readonly tokenService: TokenService
   ) {
 
     this.sendgrid.setApiKey(config.application.sendgrid.apiKey);

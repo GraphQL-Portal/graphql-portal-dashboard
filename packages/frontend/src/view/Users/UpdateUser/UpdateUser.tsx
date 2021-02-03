@@ -10,10 +10,8 @@ import {
   Select
 } from '../../../ui';
 import { ModalDialog, UPDATE_USER } from '../../Dialogs';
-
 import { useStyles } from './useStyles';
-
-const getError = (errors: any) => (field: string) => !!errors?.[field];
+import { getError } from '../../DataSources/helpers';
 
 export const UpdateUser: React.FC = () => {
   const { control, errors, onSubmit, onCancel } = useUpdateUser();
@@ -54,14 +52,14 @@ export const UpdateUser: React.FC = () => {
           fullWidth
         />
         <Controller
-            as={Select}
-            control={control}
-            name="role"
-            options={USER_ROLES}
-            labelId="role"
-            label="Role"
-            fullWidth
-          />
+          as={Select}
+          control={control}
+          name="role"
+          options={USER_ROLES}
+          labelId="role"
+          label="Role"
+          fullWidth
+        />
         <PrimaryButton type="submit" fullWidth className={primaryButton}>
           Save
         </PrimaryButton>

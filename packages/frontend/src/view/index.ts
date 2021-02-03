@@ -16,3 +16,4 @@ export { Sidebar } from './Sidebar';
 export { SupportForum } from './SupportForum';
 export { Users } from './Users';
 export { Webhooks } from './Webhooks';
+export { RoleProtectedComponent } from './RoleProtectedComponent';
