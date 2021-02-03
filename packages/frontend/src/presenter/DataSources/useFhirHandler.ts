@@ -16,7 +16,7 @@ const FHIR_DEFAULT_STATE = {
   endpoint: '',
 };
 
-export const useFhirHandler = ({ state, updateState }: HandlerStep) => {
+export const useFhirHandler = ({ state, updateState, step }: HandlerStep) => {
   const handlerState = Object.assign({}, FHIR_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
@@ -26,7 +26,8 @@ export const useFhirHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: { [SOURCE_NAMES.FHIR]: data } });
+  const onSubmit = (data: any) =>
+    updateState({ handler: { [SOURCE_NAMES.FHIR]: data } }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),

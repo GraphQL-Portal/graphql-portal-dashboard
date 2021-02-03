@@ -28,7 +28,7 @@ const NEO4J_DEFAULT_STATE = {
   alwaysIncludeRelationships: false,
 };
 
-export const useNeo4jHandler = ({ state, updateState }: HandlerStep) => {
+export const useNeo4jHandler = ({ state, updateState, step }: HandlerStep) => {
   const handlerState = Object.assign({}, NEO4J_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
@@ -38,7 +38,8 @@ export const useNeo4jHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: { [SOURCE_NAMES.NEO4J]: data } });
+  const onSubmit = (data: any) =>
+    updateState({ handler: { [SOURCE_NAMES.NEO4J]: data } }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),

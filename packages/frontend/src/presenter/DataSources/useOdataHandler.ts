@@ -22,7 +22,7 @@ const ODATA_DEFAULT_STATE = {
   schemaHeaders: [],
 };
 
-export const useOdataHandler = ({ state, updateState }: HandlerStep) => {
+export const useOdataHandler = ({ state, updateState, step }: HandlerStep) => {
   const handlerState = Object.assign({}, ODATA_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
@@ -32,15 +32,19 @@ export const useOdataHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({
-    handler: {
-      [SOURCE_NAMES.ODATA]: {
-        ...data,
-        schemaHeaders: arrayObjectToObject(data.schemaHeaders),
-        operationHeaders: arrayObjectToObject(data.operationHeaders),
-      }
-    }
-  });
+  const onSubmit = (data: any) =>
+    updateState(
+      {
+        handler: {
+          [SOURCE_NAMES.ODATA]: {
+            ...data,
+            schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+            operationHeaders: arrayObjectToObject(data.operationHeaders),
+          },
+        },
+      },
+      step
+    );
 
   const {
     fields: schemaFields,

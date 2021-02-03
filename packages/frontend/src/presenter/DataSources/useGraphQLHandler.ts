@@ -59,7 +59,20 @@ export const useGraphQLHandler = ({
     name: 'operationHeaders',
   });
 
-  const onSubmit = (data: any) => updateState({ handler: data }, step);
+  const onSubmit = (data: any) => {
+    updateState(
+      {
+        handler: {
+          [SOURCE_NAMES.GRAPHQL]: {
+            ...data,
+            schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+            operationHeaders: arrayObjectToObject(data.operationHeaders),
+          },
+        },
+      },
+      step
+    );
+  };
 
   return {
     onSubmit: handleSubmit(onSubmit),

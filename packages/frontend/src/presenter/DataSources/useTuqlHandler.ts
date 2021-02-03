@@ -8,7 +8,7 @@ const TUQL_DEFAULT_STATE = {
   infile: '',
 };
 
-export const useTuqlHandler = ({ state, updateState }: HandlerStep) => {
+export const useTuqlHandler = ({ state, updateState, step }: HandlerStep) => {
   const handlerState = Object.assign({}, TUQL_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     defaultValues: handlerState,
@@ -16,7 +16,8 @@ export const useTuqlHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: { [SOURCE_NAMES.TUQL]: data } });
+  const onSubmit = (data: any) =>
+    updateState({ handler: { [SOURCE_NAMES.TUQL]: data } }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
