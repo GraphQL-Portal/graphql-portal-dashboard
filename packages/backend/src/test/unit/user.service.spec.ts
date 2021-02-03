@@ -272,4 +272,32 @@ describe('UserService', () => {
       });
     });
   });
+
+  describe('Block and unblock', () => {
+    it('Block should set deletedAt', async () => {
+      const blocked = await userService.blockUser(user._id!);
+      expect(blocked?.deletedAt).toBeDefined();
+      expect(blocked?.deletedAt).toBeInstanceOf(Date);
+    });
+
+    it('Unblock should unset deletedAt', async () => {
+      const unblocked = await userService.unblockUser(user._id!);
+      expect(unblocked?.deletedAt).toBeNull();
+    });
+  });
+
+  describe('Update', () => {
+    it('should update user data', async () => {
+      const firstName = randomString();
+      const updated = await userService.updateUser(user._id!, { firstName });
+      expect(updated?.firstName).toBe(firstName);
+    });
+  });
+
+  describe('Delete', () => {
+    it('should delete user', async () => {
+      await expect(userService.deleteUser(user._id!)).resolves.toBeTruthy();
+      await expect(userService.findById(user._id!)).resolves.toBeNull();
+    });
+  });
 });

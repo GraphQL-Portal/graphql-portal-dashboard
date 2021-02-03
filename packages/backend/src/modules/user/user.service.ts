@@ -4,6 +4,7 @@ import Sendgrid from '@sendgrid/mail';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import { AuthenticationError, UserInputError } from 'apollo-server-express';
+import { CodeTypes, CodeExpirationTime } from './enum';
 import { LoggerService } from '../../common/logger';
 import { IUserDocument } from '../../data/schema/user.schema';
 import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
@@ -11,7 +12,7 @@ import IUser from '../../common/interface/user.interface';
 import ITokens from './interfaces/tokens.interface';
 import TokenService from '../user/token.service';
 import Roles from '../../common/enum/roles.enum';
-import { CodeTypes, CodeExpirationTime } from './enum';
+import IUpdateUser from '../../common/interface/update-user.interface';
 
 @Injectable()
 export default class UserService {
@@ -48,8 +49,8 @@ export default class UserService {
     return tokens;
   }
 
-  public async updateUser(id: string, data: IUser): Promise<IUserDocument | null> {
-    return this.userModel.findByIdAndUpdate(id, data);
+  public async updateUser(id: string, data: Partial<IUpdateUser>): Promise<IUserDocument | null> {
+    return this.userModel.findByIdAndUpdate(id, data, { new: true });
   }
 
   public async register(data: IUser): Promise<boolean> {
@@ -65,13 +66,13 @@ export default class UserService {
   public async unblockUser(id: string): Promise<IUserDocument | null> {
     return this.userModel.findByIdAndUpdate(id, {
       deletedAt: null,
-    });
+    }, { new: true });
   }
 
   public async blockUser(id: string): Promise<IUserDocument | null> {
     return this.userModel.findByIdAndUpdate(id, {
       deletedAt: new Date(),
-    });
+    }, { new: true });
   }
 
   public async deleteUser(id: string): Promise<boolean> {

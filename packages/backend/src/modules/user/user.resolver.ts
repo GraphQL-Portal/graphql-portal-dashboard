@@ -6,6 +6,7 @@ import { AuthorizationEntity, AuthorizationParam, Roles } from '../../common/dec
 import RolesEnum from '../../common/enum/roles.enum';
 import { IUserDocument } from '../../data/schema/user.schema';
 import ITokens from './interfaces/tokens.interface';
+import IUpdateUser from '../../common/interface/update-user.interface';
 
 @Resolver('User')
 export default class UserResolver {
@@ -27,7 +28,7 @@ export default class UserResolver {
   public register(
     @Args('data') data: IUser,
   ): Promise<boolean> {
-    return this.service.register(data);
+    return this.service.register({ ...data, role: RolesEnum.USER });
   }
 
   @Mutation()
@@ -52,7 +53,13 @@ export default class UserResolver {
 
   @Roles([RolesEnum.ADMIN])
   @Mutation()
-  public updateUser(@Args('id') id: string, @Args('data') data: IUser): Promise<IUserDocument | null> {
+  public createUser(@Args('data') data: IUser): Promise<boolean> {
+    return this.service.register(data);
+  }
+
+  @Roles([RolesEnum.ADMIN])
+  @Mutation()
+  public updateUser(@Args('id') id: string, @Args('data') data: IUpdateUser): Promise<IUserDocument | null> {
     return this.service.updateUser(id, data);
   }
 

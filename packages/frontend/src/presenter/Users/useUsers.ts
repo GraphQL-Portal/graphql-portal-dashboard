@@ -15,15 +15,24 @@ export const useUsers = () => {
   const { showErrorToast, showSuccessToast } = useToast();
   const { data, refetch, loading } = useUsersQuery();
 
-  const options = {
-    onCompleted: refetch,
-    onError: (error: Error) => showErrorToast(error.message),
-  };
-  const [onBlockUser] = useBlockUser(options);
-  const [onUnblockUser] = useUnblockUser(options);
-  const [onDeleteUser] = useDeleteUser(options);
-  const [onCreateUser] = useCreateUser(options);
-  const [onUpdateUser] = useUpdateUser(options);
+  const getOptions = (success: string) => {
+    return {
+      onCompleted: async () => {
+        showSuccessToast(success);
+        await refetch();
+      },
+      onError: async (error: Error) => {
+        showErrorToast(error.message);
+        await refetch();
+      }
+    }
+  }
+  const [onBlockUser] = useBlockUser(getOptions('Successfully blocked.'));
+  const [onUnblockUser] = useUnblockUser(getOptions('Successfully unblocked.'));
+  const [onDeleteUser] = useDeleteUser(getOptions('Successfully deleted.'));
+  const [onUpdateUser] = useUpdateUser(getOptions('Successfully updated.'));
+  const [onCreateUser] = useCreateUser(getOptions('Successfully created. User has to confirm email address.'));
+
   const { onOpenDialog: onOpenDeleteDialog, onCloseDialog: onCloseDeleteDialog } = useDialogs()!;
   const { onOpenDialog: onOpenEditDialog, onCloseDialog: onCloseEditDialog } = useDialogs()!;
   const { onOpenDialog: onOpenCreateDialog, onCloseDialog: onCloseCreateDialog } = useDialogs()!;
@@ -48,7 +57,6 @@ export const useUsers = () => {
       onSuccess: (createData: any) => {
         onCreateUser({ variables: { data: createData } });
         onCloseCreateDialog();
-        showSuccessToast('Successfully created. User has to confirm email address.')
       },
       onCancel: onCloseCreateDialog,
     })
@@ -67,7 +75,6 @@ export const useUsers = () => {
           }
         });
         onCloseEditDialog();
-        showSuccessToast('Successfully updated');
       },
       onCancel: onCloseEditDialog,
       user: data[index],

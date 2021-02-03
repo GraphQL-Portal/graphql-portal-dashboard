@@ -31,6 +31,7 @@ type Tokens {
 type Mutation {
   login(email: String!, password: String!, device: String!): Tokens!
   register(data: UserInput!): Boolean
+  createUser(data: UserInput!): Boolean
   updateUser(id: ID!, data: UpdateUserInput!): User
   blockUser(id: ID!): User
   unblockUser(id: ID!): User
