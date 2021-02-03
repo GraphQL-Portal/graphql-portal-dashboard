@@ -16,7 +16,7 @@ const SLACK_DEFAULT_STATE = {
   token: '',
 };
 
-export const useSlackHandler = ({ state, updateState }: HandlerStep) => {
+export const useSlackHandler = ({ state, updateState, step }: HandlerStep) => {
   const handlerState = Object.assign({}, SLACK_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
@@ -26,7 +26,8 @@ export const useSlackHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: { [SOURCE_NAMES.SLACK_HANDLER]: data } });
+  const onSubmit = (data: any) =>
+    updateState({ handler: { [SOURCE_NAMES.SLACK_HANDLER]: data } }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),

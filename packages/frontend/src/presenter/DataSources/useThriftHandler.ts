@@ -7,23 +7,26 @@ import { HandlerStep } from '../../types';
 import { SOURCE_NAMES } from './constants';
 import { arrayObjectToObject } from './helpers';
 
-const suite = vest.create('thrift_handler', ({ hostName, port, serviceName, idl }) => {
-  test('hostName', 'hostName is required', () => {
-    enforce(hostName).isNotEmpty();
-  });
-  test('idl', 'idl is required', () => {
-    enforce(idl).isNotEmpty();
-  });
-  test('serviceName', 'Service name is required', () => {
-    enforce(serviceName).isNotEmpty();
-  });
-  test('port', 'Port is required', () => {
-    enforce(port).isNotEmpty();
-  });
-  test('port', 'Port has to be numeric', () => {
-    enforce(port).isNumeric();
-  });
-});
+const suite = vest.create(
+  'thrift_handler',
+  ({ hostName, port, serviceName, idl }) => {
+    test('hostName', 'hostName is required', () => {
+      enforce(hostName).isNotEmpty();
+    });
+    test('idl', 'idl is required', () => {
+      enforce(idl).isNotEmpty();
+    });
+    test('serviceName', 'Service name is required', () => {
+      enforce(serviceName).isNotEmpty();
+    });
+    test('port', 'Port is required', () => {
+      enforce(port).isNotEmpty();
+    });
+    test('port', 'Port has to be numeric', () => {
+      enforce(port).isNumeric();
+    });
+  }
+);
 
 const THRIFT_DEFAULT_STATE = {
   hostName: '',
@@ -37,7 +40,7 @@ const THRIFT_DEFAULT_STATE = {
   schemaHeaders: [],
 };
 
-export const useThriftHandler = ({ state, updateState }: HandlerStep) => {
+export const useThriftHandler = ({ state, updateState, step }: HandlerStep) => {
   const handlerState = Object.assign({}, THRIFT_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
@@ -47,16 +50,20 @@ export const useThriftHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({
-    handler: {
-      [SOURCE_NAMES.THRIFT]: {
-        ...data,
-        port: Number(data.port),
-        schemaHeaders: arrayObjectToObject(data.schemaHeaders),
-        operationHeaders: arrayObjectToObject(data.operationHeaders),
-      }
-    }
-  });
+  const onSubmit = (data: any) =>
+    updateState(
+      {
+        handler: {
+          [SOURCE_NAMES.THRIFT]: {
+            ...data,
+            port: Number(data.port),
+            schemaHeaders: arrayObjectToObject(data.schemaHeaders),
+            operationHeaders: arrayObjectToObject(data.operationHeaders),
+          },
+        },
+      },
+      step
+    );
 
   const {
     fields: schemaFields,

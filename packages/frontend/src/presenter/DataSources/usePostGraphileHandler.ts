@@ -7,11 +7,14 @@ import { HandlerStep } from '../../types';
 import { SOURCE_NAMES } from './constants';
 import { arrayObjectToObject, arrayStringFromObjectArray } from './helpers';
 
-const suite = vest.create('post_graphile_handler', ({ connectionString, port, database, user, password }) => {
-  test('connectionString', 'Connection string is required', () => {
-    enforce(connectionString).isNotEmpty();
-  });
-});
+const suite = vest.create(
+  'post_graphile_handler',
+  ({ connectionString, port, database, user, password }) => {
+    test('connectionString', 'Connection string is required', () => {
+      enforce(connectionString).isNotEmpty();
+    });
+  }
+);
 
 const POST_GRAPHILE_DEFAULT_STATE = {
   connectionString: '',
@@ -23,14 +26,17 @@ const POST_GRAPHILE_DEFAULT_STATE = {
   pool: [],
 };
 
-export const usePostGraphileHandler = ({ state, updateState }: HandlerStep) => {
+export const usePostGraphileHandler = ({
+  state,
+  updateState,
+  step,
+}: HandlerStep) => {
   const handlerState = Object.assign({}, POST_GRAPHILE_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues: handlerState,
   });
-
 
   const {
     fields: optionsFields,
@@ -79,18 +85,22 @@ export const usePostGraphileHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({
-    handler: {
-      [SOURCE_NAMES.POST_GRAPHILE]: {
-        ...data,
-        schemaName: arrayStringFromObjectArray(data.schemaName),
-        appendPlugins: arrayStringFromObjectArray(data.appendPlugins),
-        skipPlugins: arrayStringFromObjectArray(data.skipPlugins),
-        pool: arrayObjectToObject(data.pool),
-        options: arrayObjectToObject(data.options),
-      }
-    }
-  });
+  const onSubmit = (data: any) =>
+    updateState(
+      {
+        handler: {
+          [SOURCE_NAMES.POST_GRAPHILE]: {
+            ...data,
+            schemaName: arrayStringFromObjectArray(data.schemaName),
+            appendPlugins: arrayStringFromObjectArray(data.appendPlugins),
+            skipPlugins: arrayStringFromObjectArray(data.skipPlugins),
+            pool: arrayObjectToObject(data.pool),
+            options: arrayObjectToObject(data.options),
+          },
+        },
+      },
+      step
+    );
 
   return {
     onSubmit: handleSubmit(onSubmit),

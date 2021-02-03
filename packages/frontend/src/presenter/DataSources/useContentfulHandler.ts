@@ -20,7 +20,11 @@ const CONTENTFUL_DEFAULT_STATE = {
   endpoint: '',
 };
 
-export const useContentfulHandler = ({ state, updateState }: HandlerStep) => {
+export const useContentfulHandler = ({
+  state,
+  updateState,
+  step,
+}: HandlerStep) => {
   const handlerState = Object.assign({}, CONTENTFUL_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
@@ -30,7 +34,8 @@ export const useContentfulHandler = ({ state, updateState }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) => updateState({ handler: { [SOURCE_NAMES.CONTENTFUL_HANDLER]: data } });
+  const onSubmit = (data: any) =>
+    updateState({ handler: { [SOURCE_NAMES.CONTENTFUL_HANDLER]: data } }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
