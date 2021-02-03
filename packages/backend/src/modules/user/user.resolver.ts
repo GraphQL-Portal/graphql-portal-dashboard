@@ -52,6 +52,12 @@ export default class UserResolver {
 
   @Roles([RolesEnum.ADMIN])
   @Mutation()
+  public updateUser(@Args('id') id: string, @Args('data') data: IUser): Promise<IUserDocument | null> {
+    return this.service.updateUser(id, data);
+  }
+
+  @Roles([RolesEnum.ADMIN])
+  @Mutation()
   public unblockUser(@Args('id') id: string): Promise<IUserDocument | null> {
     return this.service.unblockUser(id);
   }

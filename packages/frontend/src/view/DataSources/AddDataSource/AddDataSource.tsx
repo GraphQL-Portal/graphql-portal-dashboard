@@ -9,8 +9,8 @@ import {
   HugeWidget,
   WidgetHeader,
   WidgetBody,
-  Stepper,
   StepperBody,
+  NotLinearStepper,
   PrimaryButton,
 } from '../../../ui';
 import { ADD_SOURCE_STEPS } from '../constants';
@@ -29,6 +29,8 @@ export const AddDataSource: React.FC = () => {
     state,
     isDisabled,
     onAddSource,
+    setStep,
+    completed,
   } = useAddDataSource(ADD_SOURCE_STEPS.length - 1);
   const { visibleOverflow } = useStyles({});
 
@@ -52,17 +54,25 @@ export const AddDataSource: React.FC = () => {
           </WidgetHeader>
           <WidgetBody>
             <FormCaption title={title} description={description} />
-            <Stepper steps={ADD_SOURCE_STEPS} activeStep={step} />
+            <NotLinearStepper
+              steps={ADD_SOURCE_STEPS}
+              nonLinear
+              activeStep={step}
+              setStep={setStep}
+              completed={completed}
+            />
             <StepperBody step={step}>
-              <SourceName updateState={updateState} state={{ name }} />
+              <SourceName updateState={updateState} state={{ name }} step={0} />
               <SourceHandler
                 updateState={updateState}
                 state={{ handler }}
                 source={source}
+                step={1}
               />
               <SourceTransforms
                 updateState={updateState}
                 state={{ transforms }}
+                step={2}
               />
             </StepperBody>
           </WidgetBody>

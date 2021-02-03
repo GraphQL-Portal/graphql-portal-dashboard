@@ -4,7 +4,9 @@ import { Controller } from 'react-hook-form';
 import { useCreateUser, USER_ROLES } from '../../../presenter/Users';
 import {
   Input,
-  PrimaryButton, Select,
+  DialogTitle,
+  PrimaryButton,
+  Select,
   TextButton,
 } from '../../../ui';
 import { getError } from '../../DataSources/helpers';
@@ -13,13 +15,14 @@ import { useStyles } from './useStyles';
 
 export const CreateUser: React.FC = () => {
   const { control, onSubmit, errors, onCancel } = useCreateUser();
-  const { controller, form, buttons } = useStyles();
+  const { controller } = useStyles();
   const hasErrors = getError(errors);
 
   return (
     <>
       <ModalDialog id={CREATE_USER}>
-        <form className={form} noValidate autoComplete="off" onSubmit={onSubmit}>
+        <DialogTitle>Create user</DialogTitle>
+        <form noValidate autoComplete="off" onSubmit={onSubmit}>
           <Controller
             as={Input}
             control={control}
@@ -78,11 +81,9 @@ export const CreateUser: React.FC = () => {
             label="Role"
             fullWidth
           />
-          <div className={buttons}>
-            <PrimaryButton type="submit">Create</PrimaryButton>
-            <TextButton onClick={onCancel} type="reset">Cancel</TextButton>
-          </div>
+          <PrimaryButton fullWidth type="submit">Create</PrimaryButton>
         </form >
+        <TextButton onClick={onCancel} type="reset">Cancel</TextButton>
       </ModalDialog >
     </>
   );

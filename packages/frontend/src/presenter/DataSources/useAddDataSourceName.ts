@@ -11,7 +11,11 @@ const suite = vest.create('data_source_name', ({ name }) => {
   });
 });
 
-export const useAddDataSourceName = ({ state, updateState }: NameStep) => {
+export const useAddDataSourceName = ({
+  state,
+  updateState,
+  step,
+}: NameStep) => {
   const { control, errors, handleSubmit } = useForm<NameForm>({
     defaultValues: state,
     reValidateMode: 'onSubmit',
@@ -21,7 +25,7 @@ export const useAddDataSourceName = ({ state, updateState }: NameStep) => {
   useFormErrors(errors);
 
   const onSubmit = (data: NameForm) => {
-    updateState(data);
+    updateState(data, step);
   };
 
   return {

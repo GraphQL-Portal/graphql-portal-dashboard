@@ -48,6 +48,10 @@ export default class UserService {
     return tokens;
   }
 
+  public async updateUser(id: string, data: IUser): Promise<IUserDocument | null> {
+    return this.userModel.findByIdAndUpdate(id, data);
+  }
+
   public async register(data: IUser): Promise<boolean> {
     const user = await this.userModel.create(data);
 

@@ -17,4 +17,5 @@ export type { Editors } from './Editors';
 export type { ObjectArray } from './Forms';
 export type { ErrorsAndControl } from './HookForm';
 export type { ClassName } from './React';
-export type { Step, Stepper } from './Stepper';
+export type { Step, Stepper, NotLinearStepper } from './Stepper';
+export type { User, UsersList } from './User';
