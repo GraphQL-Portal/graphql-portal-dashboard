@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete } from '@material-ui/icons';
+import { Delete, Edit } from '@material-ui/icons';
 
 import {
   WidgetHeader,
@@ -17,7 +17,11 @@ import { CONNECTED_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 import { ConnectedList as Props } from './types';
 
-export const ConnectedList: React.FC<Props> = ({ sources, onDelete }) => {
+export const ConnectedList: React.FC<Props> = ({
+  sources,
+  onDelete,
+  onUpdate,
+}) => {
   const { actionCell } = useStyles();
   return (
     <>
@@ -35,27 +39,41 @@ export const ConnectedList: React.FC<Props> = ({ sources, onDelete }) => {
             ))}
           </TableHead>
           <TableBody>
-            {sources.map(({ name, type, status, createdAt, _id }) => (
-              <TableRow key={getKeyFromText(name)}>
-                <TableCell>{name}</TableCell>
-                <TableCell>{type || ''}</TableCell>
-                <TableCell>{status || ''}</TableCell>
-                <TableCell>{createdAt || ''}</TableCell>
-                <TableCell align="right" className={actionCell}>
-                  <Tooltip
-                    title="Delete data-source"
-                    placement="left"
-                    aria-label="delete data-source"
-                  >
-                    <span>
-                      <IconButton onClick={onDelete(_id, name)}>
-                        <Delete />
-                      </IconButton>
-                    </span>
-                  </Tooltip>
-                </TableCell>
-              </TableRow>
-            ))}
+            {sources.map((source) => {
+              const { name, type, status, createdAt, _id } = source;
+              return (
+                <TableRow key={getKeyFromText(name)}>
+                  <TableCell>{name}</TableCell>
+                  <TableCell>{type || ''}</TableCell>
+                  <TableCell>{status || ''}</TableCell>
+                  <TableCell>{createdAt || ''}</TableCell>
+                  <TableCell align="right" className={actionCell}>
+                    <Tooltip
+                      title="Edit data-source"
+                      placement="left"
+                      aria-label="edit data-source"
+                    >
+                      <span>
+                        <IconButton onClick={onUpdate(source)}>
+                          <Edit />
+                        </IconButton>
+                      </span>
+                    </Tooltip>
+                    <Tooltip
+                      title="Delete data-source"
+                      placement="left"
+                      aria-label="delete data-source"
+                    >
+                      <span>
+                        <IconButton onClick={onDelete(_id, name)}>
+                          <Delete />
+                        </IconButton>
+                      </span>
+                    </Tooltip>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </WidgetBody>
