@@ -15,7 +15,7 @@ export default class AccessControlGuard implements CanActivate {
     private reflector: Reflector,
     private apiDefService: ApiDefService,
     private sourceService: SourceService
-  ) {}
+  ) { }
 
   public getService(modelName: AccessControlModels): IAccessControlService {
     const modelToService = {
@@ -35,6 +35,9 @@ export default class AccessControlGuard implements CanActivate {
 
     const user = PermissionTool.getUserFromRequest(context);
     if (!user) throw new AuthenticationError('You do not have access to do this');
+
+    if (user.deletedAt) throw new AuthenticationError('User is permanently blocked');
+
     if (user.role === Roles.ADMIN) return true;
 
     const service = this.getService(access.model);

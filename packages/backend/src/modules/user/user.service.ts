@@ -4,6 +4,7 @@ import Sendgrid from '@sendgrid/mail';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import { AuthenticationError, UserInputError } from 'apollo-server-express';
+import { CodeTypes, CodeExpirationTime } from './enum';
 import { LoggerService } from '../../common/logger';
 import { IUserDocument } from '../../data/schema/user.schema';
 import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
@@ -11,7 +12,7 @@ import IUser from '../../common/interface/user.interface';
 import ITokens from './interfaces/tokens.interface';
 import TokenService from '../user/token.service';
 import Roles from '../../common/enum/roles.enum';
-import { CodeTypes, CodeExpirationTime } from './enum';
+import IUpdateUser from '../../common/interface/update-user.interface';
 
 @Injectable()
 export default class UserService {
@@ -39,13 +40,17 @@ export default class UserService {
       throw new AuthenticationError('Please verify your email by using a confirmation code we have sent to your email.');
     }
 
-    if (!user || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
+    if (!user || user.deletedAt || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
 
     const tokens = await this.tokenService.issueTokens(user._id!, device);
 
     this.logger.log(`User with email: ${user.email} successfully logged in`, this.constructor.name);
 
     return tokens;
+  }
+
+  public async updateUser(id: string, data: Partial<IUpdateUser>): Promise<IUserDocument | null> {
+    return this.userModel.findByIdAndUpdate(id, data, { new: true });
   }
 
   public async register(data: IUser): Promise<boolean> {
@@ -55,6 +60,23 @@ export default class UserService {
 
     this.logger.log(`Successfully created user with email: ${data.email}`, this.constructor.name);
 
+    return true;
+  }
+
+  public async unblockUser(id: string): Promise<IUserDocument | null> {
+    return this.userModel.findByIdAndUpdate(id, {
+      deletedAt: null,
+    }, { new: true });
+  }
+
+  public async blockUser(id: string): Promise<IUserDocument | null> {
+    return this.userModel.findByIdAndUpdate(id, {
+      deletedAt: new Date(),
+    }, { new: true });
+  }
+
+  public async deleteUser(id: string): Promise<boolean> {
+    await this.userModel.deleteOne({ _id: id });
     return true;
   }
 
@@ -86,7 +108,7 @@ export default class UserService {
 
   public async resetPasswordRequest(email: string): Promise<boolean> {
     const user = await this.findByEmail(email);
-    if (!user) {
+    if (!user || user.deletedAt) {
       throw new UserInputError('User with such email/password does not exist');
     }
 
