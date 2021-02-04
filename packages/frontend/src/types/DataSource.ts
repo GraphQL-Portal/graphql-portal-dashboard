@@ -33,6 +33,7 @@ export type TransformEditors = {
 
 export type TransformsList = {
   transforms: any[];
+  onRemove(idx: number): () => void;
 };
 
 export type DataSource = NameForm & HandlerForm & TransformsForm;

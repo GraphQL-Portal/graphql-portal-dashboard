@@ -7,6 +7,9 @@ import { AVAILABLE_TRANSFORMS } from './constants';
 const createOption = (option: string) => ({ label: option, value: option });
 const options = Object.keys(AVAILABLE_TRANSFORMS).map(createOption);
 
+const removeFromArray = (arr: any[], idx: number) =>
+  arr.slice(0, idx).concat(arr.slice(idx + 1));
+
 export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
   const [fields, setFields] = useState<string[]>([]);
   const { handleSubmit, control, reset } = useForm({
@@ -17,7 +20,6 @@ export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
   });
 
   const onAddTransform = ({ transform }: { transform: string }) => {
-    console.log(transform);
     if (!!transform) {
       setFields((s) => s.concat(transform));
       reset({ transform: '' });
@@ -25,12 +27,17 @@ export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
   };
 
   const onRemoveTransform = (idx: number) => () => {
-    setFields((s) => s.slice(0, idx).concat(s.slice(idx + 1)));
+    setFields((s) => removeFromArray(s, idx));
   };
 
   const addTransform = (data: object) => {
     const { transforms } = state;
     updateState({ transforms: transforms.concat(data) }, step);
+  };
+
+  const onRemove = (idx: number) => () => {
+    const newState = removeFromArray(state.transforms, idx);
+    updateState({ transforms: newState }, step);
   };
 
   return {
@@ -41,5 +48,6 @@ export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
     control,
     fields,
     addTransform,
+    onRemove,
   };
 };

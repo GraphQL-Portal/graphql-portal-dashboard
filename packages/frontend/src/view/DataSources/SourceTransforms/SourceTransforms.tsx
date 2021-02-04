@@ -25,12 +25,13 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
     fields,
     onAddTransform,
     onRemoveTransform,
+    onRemove,
   } = useTransforms(props);
   const { transformBlock, transformBlockTitle, addButton } = useStyles();
 
   return (
     <>
-      <List transforms={state.transforms} />
+      <List transforms={state.transforms} onRemove={onRemove} />
       <form noValidate autoComplete="off" onSubmit={onAddTransform}>
         <HandlerRow>
           <HandlerCol>

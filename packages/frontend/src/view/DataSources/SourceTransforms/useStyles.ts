@@ -18,4 +18,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     padding: spacing(0, 2),
     color: palette.text.secondary,
   },
+  actionCell: {
+    padding: spacing(0, 1, 0, 2),
+  },
 }));
