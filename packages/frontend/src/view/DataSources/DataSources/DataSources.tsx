@@ -17,7 +17,7 @@ import { ConnectedList } from './ConnectedList';
 import { DeleteDataSource } from '../DeleteDataSource';
 
 export const DataSources: React.FC = () => {
-  const { loading, connected, onDelete } = useDataSources();
+  const { loading, connected, onDelete, onUpdate } = useDataSources();
 
   if (loading) return <Loading />;
 
@@ -32,7 +32,11 @@ export const DataSources: React.FC = () => {
           {connected.length === 0 ? (
             <EmptySources />
           ) : (
-            <ConnectedList sources={connected} onDelete={onDelete} />
+            <ConnectedList
+              sources={connected}
+              onDelete={onDelete}
+              onUpdate={onUpdate}
+            />
           )}
         </HugeWidget>
       </WidgetRow>

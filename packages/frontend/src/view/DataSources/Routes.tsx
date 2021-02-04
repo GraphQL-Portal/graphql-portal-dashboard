@@ -5,7 +5,7 @@ import { ROUTES, DataSourceProvider } from '../../model/providers';
 import { DataSources } from './DataSources';
 import { AddDataSource } from './AddDataSource';
 
-export const Routes:React.FC = () => {
+export const Routes: React.FC = () => {
   return (
     <DataSourceProvider>
       <Switch>
@@ -13,9 +13,12 @@ export const Routes:React.FC = () => {
           <DataSources />
         </Route>
         <Route path={ROUTES.DATA_SOURCE_ADD} exact>
-          <AddDataSource />
+          <AddDataSource mode="add" />
+        </Route>
+        <Route path={ROUTES.DATA_SOURCE_EDIT} exact>
+          <AddDataSource mode="update" />
         </Route>
       </Switch>
     </DataSourceProvider>
   );
-}
+};

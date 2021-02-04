@@ -4,8 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
-import { arrayObjectToObject } from './helpers';
+import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const suite = vest.create(
   'grpc_handler',
@@ -26,44 +25,27 @@ const GRPC_DEFAULT_STATE = {
   serviceName: '',
   requestTimeout: '',
   useHTTPS: false,
-  certChain: '',
-  privateKey: '',
-  rootCA: '',
-  metadata: [],
+  metaData: [],
+  credentialsSsl: {
+    certChain: '',
+    privateKey: '',
+    rootCA: '',
+  },
 };
 
 export const useGRPCHandler = ({ state, updateState, step }: HandlerStep) => {
-  const handlerState = Object.assign({}, GRPC_DEFAULT_STATE, state);
+  const { metaData, ...handler } = state.handler;
+  const defaultValues = Object.assign({}, GRPC_DEFAULT_STATE, handler, {
+    metaData: objectToFieldArray(metaData),
+  });
+
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   useFormErrors(errors);
-
-  const onSubmit = (data: any) =>
-    updateState(
-      {
-        handler: {
-          [SOURCE_NAMES.GRPC]: {
-            endpoint: data.endpoint,
-            protoFilePath: data.protoFilePath,
-            packageName: data.packageName,
-            serviceName: data.serviceName,
-            requestTimeout: Number.parseInt(data.requestTimeout) || undefined,
-            useHTTPS: data.useHTTPS,
-            credentialsSsl: {
-              certChain: data.certChain,
-              privateKey: data.privateKey,
-              rootCA: data.rootCA,
-            },
-            metaData: arrayObjectToObject(data.metadata),
-          },
-        },
-      },
-      step
-    );
 
   const {
     fields: metadataFields,
@@ -71,8 +53,23 @@ export const useGRPCHandler = ({ state, updateState, step }: HandlerStep) => {
     remove: removeMetadataField,
   } = useFieldArray({
     control,
-    name: 'metadata',
+    name: 'metaData',
   });
+
+  const onSubmit = ({ requestTimeout, metaData, ...handler }: any) => {
+    console.log('HANDLER onSubmit: ', handler);
+
+    updateState(
+      {
+        handler: {
+          ...handler,
+          requestTimeout: Number.parseInt(requestTimeout) || undefined,
+          metaData: arrayObjectToObject(metaData),
+        },
+      },
+      step
+    );
+  };
 
   return {
     onSubmit: handleSubmit(onSubmit),

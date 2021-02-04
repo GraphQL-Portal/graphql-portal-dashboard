@@ -1,5 +1,6 @@
 export type { Checkbox } from './Checkbox';
 export type {
+  DataSource,
   FormCaption,
   NameForm,
   NameStep,

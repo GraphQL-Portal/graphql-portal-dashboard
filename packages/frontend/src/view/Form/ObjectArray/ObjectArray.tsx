@@ -46,7 +46,7 @@ export const ObjectArray: React.FC<Props> = ({
                 label="key"
                 name={`${name}[${idx}].key`}
                 fullWidth
-                defaultValue=""
+                defaultValue={field.key}
               />
             </Col>
             <Col xs={5} className={objectField}>
@@ -56,7 +56,7 @@ export const ObjectArray: React.FC<Props> = ({
                 label="value"
                 name={`${name}[${idx}].value`}
                 fullWidth
-                defaultValue=""
+                defaultValue={field.value}
               />
             </Col>
             <Col xs={2} className={lastObjectField}>

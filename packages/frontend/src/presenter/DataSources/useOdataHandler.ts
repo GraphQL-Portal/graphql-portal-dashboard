@@ -4,8 +4,8 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
-import { arrayObjectToObject } from './helpers';
+
+import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const suite = vest.create('odata_handler', ({ baseUrl }) => {
   test('baseUrl', 'baseUrl is required', () => {
@@ -23,28 +23,17 @@ const ODATA_DEFAULT_STATE = {
 };
 
 export const useOdataHandler = ({ state, updateState, step }: HandlerStep) => {
-  const handlerState = Object.assign({}, ODATA_DEFAULT_STATE, state);
+  const { schemaHeaders, operationHeaders, ...handler } = state.handler;
+  const defaultValues = Object.assign({}, ODATA_DEFAULT_STATE, handler, {
+    schemaHeaders: objectToFieldArray(schemaHeaders),
+    operationHeaders: objectToFieldArray(operationHeaders),
+  });
+
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
-
-  useFormErrors(errors);
-
-  const onSubmit = (data: any) =>
-    updateState(
-      {
-        handler: {
-          [SOURCE_NAMES.ODATA]: {
-            ...data,
-            schemaHeaders: arrayObjectToObject(data.schemaHeaders),
-            operationHeaders: arrayObjectToObject(data.operationHeaders),
-          },
-        },
-      },
-      step
-    );
 
   const {
     fields: schemaFields,
@@ -63,6 +52,26 @@ export const useOdataHandler = ({ state, updateState, step }: HandlerStep) => {
     control,
     name: 'operationHeaders',
   });
+
+  useFormErrors(errors);
+
+  const onSubmit = ({
+    schemaHeaders,
+    operationHeaders,
+    batch,
+    ...handler
+  }: any) =>
+    updateState(
+      {
+        handler: {
+          ...handler,
+          schemaHeaders: arrayObjectToObject(schemaHeaders),
+          operationHeaders: arrayObjectToObject(operationHeaders),
+          ...(batch !== '' ? { batch } : {}),
+        },
+      },
+      step
+    );
 
   return {
     onSubmit: handleSubmit(onSubmit),

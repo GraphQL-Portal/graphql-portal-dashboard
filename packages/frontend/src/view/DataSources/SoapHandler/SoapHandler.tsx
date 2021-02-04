@@ -30,8 +30,8 @@ export const SoapHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Username (required)"
-            name="username"
+            label="Username"
+            name="basicAuth.username"
             error={hasErrors('username')}
             fullWidth
           />
@@ -42,8 +42,8 @@ export const SoapHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Password (required)"
-            name="password"
+            label="Password"
+            name="basicAuth.password"
             type="password"
             error={hasErrors('password')}
             fullWidth
@@ -57,8 +57,7 @@ export const SoapHandler: React.FC<HandlerStep> = (props) => {
             control={control}
             type="password"
             label="Security Certificate Password"
-            name="securityCertPassword"
-            error={hasErrors('securityCertPassword')}
+            name="securityCert.password"
             fullWidth
           />
         </HandlerCol>
@@ -69,8 +68,7 @@ export const SoapHandler: React.FC<HandlerStep> = (props) => {
             as={Input}
             control={control}
             label="Security Certificate Public Key"
-            name="securityCertPublicKey"
-            error={hasErrors('securityCertPublicKey')}
+            name="securityCert.publicKey"
             fullWidth
           />
         </HandlerCol>
@@ -81,8 +79,7 @@ export const SoapHandler: React.FC<HandlerStep> = (props) => {
             as={Input}
             control={control}
             label="Security Certificate Private Key"
-            name="securityCertPrivateKey"
-            error={hasErrors('securityCertPrivateKey')}
+            name="securityCert.privateKey"
             fullWidth
           />
         </HandlerCol>

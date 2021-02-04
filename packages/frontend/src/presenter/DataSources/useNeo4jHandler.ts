@@ -4,7 +4,6 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
 
 const suite = vest.create('neo4j_handler', ({ url, password, username }) => {
   test('url', 'Url is required', () => {
@@ -29,17 +28,16 @@ const NEO4J_DEFAULT_STATE = {
 };
 
 export const useNeo4jHandler = ({ state, updateState, step }: HandlerStep) => {
-  const handlerState = Object.assign({}, NEO4J_DEFAULT_STATE, state);
+  const defaultValues = Object.assign({}, NEO4J_DEFAULT_STATE, state);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) =>
-    updateState({ handler: { [SOURCE_NAMES.NEO4J]: data } }, step);
+  const onSubmit = (handler: any) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
