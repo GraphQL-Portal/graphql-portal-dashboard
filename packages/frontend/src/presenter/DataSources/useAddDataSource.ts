@@ -1,17 +1,18 @@
 import { useCreateSource } from '../../model/DataSources/commands';
+import { useDataSourceContext } from '../../model/providers';
 import { useEditDataSource } from './useEditDataSource';
 import { INITIAL_STATE } from './constants';
+import { packHandler } from './helpers';
 
 export const useAddDataSource = (limit: number) => {
+  const { source = {}, clearSource } = useDataSourceContext();
   const {
-    source,
     state,
     step,
     completed,
     updateState,
     completeStep,
     setStep,
-    clearSource,
   } = useEditDataSource(limit, INITIAL_STATE);
 
   const onCompleted = () => clearSource();
@@ -25,7 +26,7 @@ export const useAddDataSource = (limit: number) => {
   const onAddSource = () => {
     createSource({
       variables: {
-        source: state,
+        source: packHandler(state, source.key),
       },
     });
   };

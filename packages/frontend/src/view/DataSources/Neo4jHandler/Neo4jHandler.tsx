@@ -35,6 +35,9 @@ export const Neo4jHandler: React.FC<HandlerStep> = (props) => {
             name="username"
             error={hasErrors('username')}
             fullWidth
+            InputProps={{
+              autoComplete: 'off',
+            }}
           />
         </HandlerCol>
       </HandlerRow>
@@ -48,6 +51,9 @@ export const Neo4jHandler: React.FC<HandlerStep> = (props) => {
             type="password"
             error={hasErrors('password')}
             fullWidth
+            InputProps={{
+              autoComplete: 'off',
+            }}
           />
         </HandlerCol>
       </HandlerRow>

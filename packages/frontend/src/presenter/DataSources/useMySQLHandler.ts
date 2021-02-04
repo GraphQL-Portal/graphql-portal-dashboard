@@ -4,8 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
-import { arrayObjectToObject } from './helpers';
+import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const suite = vest.create(
   'mysql_handler',
@@ -41,11 +40,14 @@ const MYSQL_DEFAULT_STATE = {
 };
 
 export const useMySQLHandler = ({ state, updateState, step }: HandlerStep) => {
-  const handlerState = Object.assign({}, MYSQL_DEFAULT_STATE, state);
+  const { pool, ...handler } = state.handler;
+  const defaultValues = Object.assign({}, MYSQL_DEFAULT_STATE, handler, {
+    pool: objectToFieldArray(pool),
+  });
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   const {
@@ -59,15 +61,13 @@ export const useMySQLHandler = ({ state, updateState, step }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) =>
+  const onSubmit = ({ port, pool, ...handler }: any) =>
     updateState(
       {
         handler: {
-          [SOURCE_NAMES.MYSQL]: {
-            ...data,
-            port: Number(data.port),
-            pool: arrayObjectToObject(data.pool),
-          },
+          ...handler,
+          port: Number(port),
+          pool: arrayObjectToObject(pool),
         },
       },
       step

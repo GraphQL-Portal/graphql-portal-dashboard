@@ -3,7 +3,10 @@ import { Helmet } from 'react-helmet';
 import { Redirect } from 'react-router-dom';
 
 import { ROUTES } from '../../../model/providers';
-import { useAddDataSource } from '../../../presenter/DataSources';
+import {
+  useAddDataSource,
+  useUpdateDataSource,
+} from '../../../presenter/DataSources';
 import {
   WidgetRow,
   HugeWidget,
@@ -21,7 +24,10 @@ import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
 
-export const AddDataSource: React.FC = () => {
+export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
+  mode,
+}) => {
+  const hook = mode === 'add' ? useAddDataSource : useUpdateDataSource;
   const {
     source,
     step,
@@ -31,7 +37,7 @@ export const AddDataSource: React.FC = () => {
     onAddSource,
     setStep,
     completed,
-  } = useAddDataSource(ADD_SOURCE_STEPS.length - 1);
+  } = hook(ADD_SOURCE_STEPS.length - 1);
   const { visibleOverflow } = useStyles({});
 
   if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;

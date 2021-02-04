@@ -16,7 +16,7 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
     onSubmit,
     appendMetadataField,
     removeMetadataField,
-    metadataFields
+    metadataFields,
   } = useGRPCHandler(props);
   const hasErrors = getError(errors);
 
@@ -108,8 +108,7 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
             as={Input}
             control={control}
             label="Certicicate Chain"
-            name="certChain"
-            error={hasErrors('certChain')}
+            name="credentialsSsl.certChain"
             fullWidth
           />
         </HandlerCol>
@@ -120,8 +119,7 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
             as={Input}
             control={control}
             label="Private Key"
-            name="privateKey"
-            error={hasErrors('privateKey')}
+            name="credentialsSsl.privateKey"
             fullWidth
           />
         </HandlerCol>
@@ -132,15 +130,14 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
             as={Input}
             control={control}
             label="Root CA"
-            name="rootCA"
-            error={hasErrors('rootCA')}
+            name="credentialsSsl.rootCA"
             fullWidth
           />
         </HandlerCol>
       </HandlerRow>
       <ObjectArray
         title="Metadata"
-        name="metadata"
+        name="metaData"
         control={control}
         errors={errors}
         fields={metadataFields}

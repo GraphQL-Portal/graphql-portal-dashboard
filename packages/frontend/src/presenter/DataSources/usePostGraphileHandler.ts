@@ -4,8 +4,12 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
-import { arrayObjectToObject, arrayStringFromObjectArray } from './helpers';
+import {
+  arrayObjectToObject,
+  arrayStringFromObjectArray,
+  objectToFieldArray,
+  arrayToFieldArray,
+} from './helpers';
 
 const suite = vest.create(
   'post_graphile_handler',
@@ -31,11 +35,30 @@ export const usePostGraphileHandler = ({
   updateState,
   step,
 }: HandlerStep) => {
-  const handlerState = Object.assign({}, POST_GRAPHILE_DEFAULT_STATE, state);
+  const {
+    appendPlugins,
+    skipPlugins,
+    schemaName,
+    options,
+    pool,
+    ...handler
+  } = state.handler;
+  const defaultValues = Object.assign(
+    {},
+    POST_GRAPHILE_DEFAULT_STATE,
+    handler,
+    {
+      appendPlugins: arrayToFieldArray(appendPlugins),
+      skipPlugins: arrayToFieldArray(skipPlugins),
+      schemaName: arrayToFieldArray(schemaName),
+      pool: objectToFieldArray(pool),
+      options: objectToFieldArray(options),
+    }
+  );
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   const {
@@ -89,14 +112,12 @@ export const usePostGraphileHandler = ({
     updateState(
       {
         handler: {
-          [SOURCE_NAMES.POST_GRAPHILE]: {
-            ...data,
-            schemaName: arrayStringFromObjectArray(data.schemaName),
-            appendPlugins: arrayStringFromObjectArray(data.appendPlugins),
-            skipPlugins: arrayStringFromObjectArray(data.skipPlugins),
-            pool: arrayObjectToObject(data.pool),
-            options: arrayObjectToObject(data.options),
-          },
+          ...data,
+          schemaName: arrayStringFromObjectArray(data.schemaName),
+          appendPlugins: arrayStringFromObjectArray(data.appendPlugins),
+          skipPlugins: arrayStringFromObjectArray(data.skipPlugins),
+          pool: arrayObjectToObject(data.pool),
+          options: arrayObjectToObject(data.options),
         },
       },
       step

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { useNotLinearStepper } from '../../model/Hooks';
-import { useDataSourceContext } from '../../model/providers';
 import { DataSource } from '../../types';
 
 export const useEditDataSource = (limit: number, initialState: DataSource) => {
@@ -12,7 +11,6 @@ export const useEditDataSource = (limit: number, initialState: DataSource) => {
     completeStep,
     setStep,
   } = useNotLinearStepper(limit);
-  const { source = {}, clearSource } = useDataSourceContext();
   const [state, setState] = useState<DataSource>(initialState);
 
   const updateState = (newState: any, step: number) => {
@@ -22,13 +20,11 @@ export const useEditDataSource = (limit: number, initialState: DataSource) => {
   };
 
   return {
-    source,
     step,
     state,
     updateState,
     completed,
     completeStep,
     setStep,
-    clearSource,
   };
 };

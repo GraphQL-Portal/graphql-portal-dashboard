@@ -4,8 +4,8 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
-import { arrayObjectToObject } from './helpers';
+
+import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const suite = vest.create(
   'thrift_handler',
@@ -41,25 +41,32 @@ const THRIFT_DEFAULT_STATE = {
 };
 
 export const useThriftHandler = ({ state, updateState, step }: HandlerStep) => {
-  const handlerState = Object.assign({}, THRIFT_DEFAULT_STATE, state);
+  const { operationHeaders, schemaHeaders, ...handler } = state.handler;
+  const defaultValues = Object.assign({}, THRIFT_DEFAULT_STATE, handler, {
+    schemaHeaders: objectToFieldArray(schemaHeaders),
+    operationHeaders: objectToFieldArray(operationHeaders),
+  });
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) =>
+  const onSubmit = ({
+    port,
+    schemaHeaders,
+    operationHeaders,
+    ...handler
+  }: any) =>
     updateState(
       {
         handler: {
-          [SOURCE_NAMES.THRIFT]: {
-            ...data,
-            port: Number(data.port),
-            schemaHeaders: arrayObjectToObject(data.schemaHeaders),
-            operationHeaders: arrayObjectToObject(data.operationHeaders),
-          },
+          ...handler,
+          port: Number(port),
+          schemaHeaders: arrayObjectToObject(schemaHeaders),
+          operationHeaders: arrayObjectToObject(operationHeaders),
         },
       },
       step
