@@ -12,6 +12,10 @@
       "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",
       "resetPasswordTemplateId": "@@SENDGRID_RESET_PASSWORD_TEMPLATE",
       "apiKey": "@@SENDGRID_API_KEY"
+    },
+    "defaultAdmin": {
+      "email": "@@DEFAULT_ADMIN_EMAIL",
+      "password": "@@DEFAULT_ADMIN_PASSWORD"
     }
   },
   "client": {

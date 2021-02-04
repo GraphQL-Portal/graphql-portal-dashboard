@@ -13,8 +13,8 @@
     "jwtSecret": "jwtSecret",
     "salt": "salt",
     "defaultAdmin": {
-      "email": "admin@example.com",
-      "password": "Secret123!"
+      "email": "",
+      "password": ""
     },
     "metrics": {
       "enabled": true,
