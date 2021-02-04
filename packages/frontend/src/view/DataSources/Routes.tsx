@@ -13,10 +13,10 @@ export const Routes: React.FC = () => {
           <DataSources />
         </Route>
         <Route path={ROUTES.DATA_SOURCE_ADD} exact>
-          <AddDataSource />
+          <AddDataSource mode="add" />
         </Route>
         <Route path={ROUTES.DATA_SOURCE_EDIT} exact>
-          <AddDataSource />
+          <AddDataSource mode="update" />
         </Route>
       </Switch>
     </DataSourceProvider>

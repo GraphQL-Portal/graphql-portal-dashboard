@@ -144,39 +144,6 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
         onAdd={appendOperationField}
         onRemove={removeOperationField}
       />
-      {/*<HandlerRow>*/}
-      {/*  <HandlerCol>*/}
-      {/*    <Controller*/}
-      {/*      as={Input}*/}
-      {/*      control={control}*/}
-      {/*      name="customFetch"*/}
-      {/*      label="Path to W3 Compatible Fetch Implementation"*/}
-      {/*      fullWidth*/}
-      {/*    />*/}
-      {/*  </HandlerCol>*/}
-      {/*</HandlerRow>*/}
-      {/*<HandlerRow>*/}
-      {/*  <HandlerCol>*/}
-      {/*    <Controller*/}
-      {/*      as={Input}*/}
-      {/*      control={control}*/}
-      {/*      name="webSocketImpl"*/}
-      {/*      label="Path to W3 Compatible WebSocket Implementation"*/}
-      {/*      fullWidth*/}
-      {/*    />*/}
-      {/*  </HandlerCol>*/}
-      {/*</HandlerRow>*/}
-      {/*<HandlerRow>*/}
-      {/*  <HandlerCol>*/}
-      {/*    <Controller*/}
-      {/*      as={Input}*/}
-      {/*      control={control}*/}
-      {/*      name="introspection"*/}
-      {/*      label="Path to the introspection"*/}
-      {/*      fullWidth*/}
-      {/*    />*/}
-      {/*  </HandlerCol>*/}
-      {/*</HandlerRow>*/}
       <PrimaryButton type="submit">Save Handler</PrimaryButton>
     </form>
   );

@@ -4,7 +4,6 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
 
 const suite = vest.create('slack_handler', ({ token }) => {
   test('token', 'Token is required', () => {
@@ -17,17 +16,16 @@ const SLACK_DEFAULT_STATE = {
 };
 
 export const useSlackHandler = ({ state, updateState, step }: HandlerStep) => {
-  const handlerState = Object.assign({}, SLACK_DEFAULT_STATE, state);
+  const defaultValues = Object.assign({}, SLACK_DEFAULT_STATE, state.handler);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) =>
-    updateState({ handler: { [SOURCE_NAMES.SLACK_HANDLER]: data } }, step);
+  const onSubmit = (handler: any) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
