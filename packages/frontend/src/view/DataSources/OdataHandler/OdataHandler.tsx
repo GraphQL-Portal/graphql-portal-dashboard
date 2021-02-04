@@ -3,9 +3,10 @@ import { Controller } from 'react-hook-form';
 import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
 import { Input, Checkbox, PrimaryButton, Select } from '../../../ui';
-import { useOdataHandler, constants } from '../../../presenter/DataSources';
+import { useOdataHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
 import { HandlerStep } from '../../../types';
+import { ODATA_BATCHES } from '../constants';
 import { HandlerCol, HandlerRow } from '../Layout';
 import { getError } from '../helpers';
 
@@ -43,7 +44,7 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
             as={Select}
             control={control}
             name="batch"
-            options={constants.ODATA_BATCHES}
+            options={ODATA_BATCHES}
             labelId="batch"
             label="Batch"
             fullWidth

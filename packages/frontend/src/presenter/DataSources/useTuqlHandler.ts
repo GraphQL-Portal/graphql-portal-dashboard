@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
 
 const TUQL_DEFAULT_STATE = {
   db: '',

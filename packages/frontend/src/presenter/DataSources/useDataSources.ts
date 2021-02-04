@@ -29,15 +29,12 @@ export const useDataSources = () => {
     });
 
   const onUpdate = (dataSource: any) => () => {
-    const { handler, name, transforms } = dataSource;
+    const { handler, name, transforms, _id } = dataSource;
     const key = Object.keys(handler)[0];
-    // get key from data source
-    // form state { name, handler, transforms }
-    // set state to context
     setSource({
       key,
       connector: AVAILABLE_DATA_SOURCES[key],
-      state: { handler, name, transforms },
+      state: { handler, name, transforms, id: _id },
     });
     push(ROUTES.DATA_SOURCE_EDIT);
   };

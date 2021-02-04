@@ -3,10 +3,11 @@ import { Controller } from 'react-hook-form';
 import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
 import { Input, Checkbox, PrimaryButton, Select } from '../../../ui';
-import { useThriftHandler, constants } from '../../../presenter/DataSources';
+import { useThriftHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
 import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
+import { THRIFT_PROTOCOLS } from '../constants';
 import { getError } from '../helpers';
 
 export const ThriftHandler: React.FC<HandlerStep> = (props) => {
@@ -110,7 +111,7 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
             as={Select}
             control={control}
             name="protocol"
-            options={constants.THRIFT_PROTOCOLS}
+            options={THRIFT_PROTOCOLS}
             labelId="protocol"
             label="Protocol"
             fullWidth

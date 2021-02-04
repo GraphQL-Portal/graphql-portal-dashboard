@@ -23,7 +23,7 @@ export const useAddDataSource = (limit: number) => {
   // Send new source to the server
   const { createSource } = useCreateSource({ onCompleted, onError });
 
-  const onAddSource = () => {
+  const onSubmit = () => {
     createSource({
       variables: {
         source: packHandler(state, source.key),
@@ -33,7 +33,7 @@ export const useAddDataSource = (limit: number) => {
 
   return {
     source,
-    onAddSource,
+    onSubmit,
     step,
     state,
     updateState,
@@ -41,5 +41,9 @@ export const useAddDataSource = (limit: number) => {
     completed,
     completeStep,
     setStep,
+    text: {
+      title: 'Configure a data-source',
+      button: 'Add data-source',
+    },
   };
 };

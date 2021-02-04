@@ -34,15 +34,16 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
     updateState,
     state,
     isDisabled,
-    onAddSource,
+    onSubmit,
     setStep,
     completed,
+    text,
   } = hook(ADD_SOURCE_STEPS.length - 1);
   const { visibleOverflow } = useStyles({});
 
   if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;
 
-  const { title, description } = source;
+  const { title, description } = source.connector;
   const { name, handler, transforms } = state;
 
   return (
@@ -53,9 +54,9 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
       <AddDataSourceHeader />
       <WidgetRow>
         <HugeWidget className={visibleOverflow}>
-          <WidgetHeader title="Configure a data-source">
-            <PrimaryButton disabled={isDisabled} onClick={onAddSource}>
-              Add data-source
+          <WidgetHeader title={text.title}>
+            <PrimaryButton disabled={isDisabled} onClick={onSubmit}>
+              {text.button}
             </PrimaryButton>
           </WidgetHeader>
           <WidgetBody>
