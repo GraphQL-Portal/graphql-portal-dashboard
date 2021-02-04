@@ -19,7 +19,8 @@ export default class ApiDefService {
     @InjectModel('ApiDef') private apiDefModel: Model<any>,
     private readonly logger: LoggerService,
     private readonly redisService: RedisService,
-    @Inject(forwardRef(() => SourceService)) private readonly sourceService: SourceService
+    @Inject(forwardRef(() => SourceService))
+    private readonly sourceService: SourceService
   ) {
     this.setLastUpdateTime();
   }
@@ -42,14 +43,21 @@ export default class ApiDefService {
   }
 
   public async findAllByUser(user: string): Promise<ApiDefsWithTimestamp> {
-    const apiDefs = await this.apiDefModel.find({ user }).populate('sources').exec();
+    const apiDefs = await this.apiDefModel
+      .find({ user })
+      .populate('sources')
+      .exec();
     return {
       apiDefs,
       timestamp: this.lastUpdateTime,
     };
   }
 
-  public async create(data: IApiDef, sourcesIds: string[], user: string): Promise<IApiDefDocument> {
+  public async create(
+    data: IApiDef,
+    sourcesIds: string[],
+    user: string
+  ): Promise<IApiDefDocument> {
     data.sources = await this.validateSourceIds(sourcesIds);
     const apiDef = await this.apiDefModel.create({ ...data, user });
     this.logger.log(`Created apiDef ${data.name}`, this.constructor.name, data);
@@ -61,16 +69,29 @@ export default class ApiDefService {
     return apiDef;
   }
 
-  public async update(id: string, apiDef: IApiDef, sourcesIds: string[]): Promise<IApiDefDocument> {
+  public async update(
+    id: string,
+    apiDef: IApiDef,
+    sourcesIds: string[]
+  ): Promise<IApiDefDocument> {
     apiDef.sources = await this.validateSourceIds(sourcesIds);
 
     const toUpdate = await this.apiDefModel.findById(id);
 
-    if (!toUpdate) throw new ValidationError(`ApiDef with id ${id} does not exist`);
+    if (!toUpdate)
+      throw new ValidationError(`ApiDef with id ${id} does not exist`);
 
-    const updated = (await this.apiDefModel.findByIdAndUpdate(toUpdate._id, apiDef, { new: true }))!;
+    const updated = (await this.apiDefModel.findByIdAndUpdate(
+      toUpdate._id,
+      apiDef,
+      { new: true }
+    ))!;
 
-    this.logger.log(`Updated API ${updated._id}`, this.constructor.name, apiDef);
+    this.logger.log(
+      `Updated API ${updated._id}`,
+      this.constructor.name,
+      apiDef
+    );
 
     this.setLastUpdateTime();
     this.publishApiDefsUpdated();
@@ -97,7 +118,9 @@ export default class ApiDefService {
   private async validateSourceIds(ids: string[]): Promise<ISourceDocument[]> {
     const sources = await this.sourceService.findByIds(ids);
     if (sources.length < ids.length) {
-      throw new ValidationError(`${ids.length - sources.length} sources were not found`);
+      throw new ValidationError(
+        `${ids.length - sources.length} sources were not found`
+      );
     }
     return sources;
   }

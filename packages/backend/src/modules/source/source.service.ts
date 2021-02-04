@@ -12,8 +12,9 @@ export default class SourceService {
   public constructor(
     @InjectModel('Source') private sourceModel: Model<ISourceDocument>,
     private readonly logger: LoggerService,
-    @Inject(forwardRef(() => ApiDefService)) private readonly apiDefService: ApiDefService
-  ) { }
+    @Inject(forwardRef(() => ApiDefService))
+    private readonly apiDefService: ApiDefService
+  ) {}
 
   public findAllByUser(user: string): Promise<ISourceDocument[]> {
     return this.sourceModel.find({ user }).exec();
@@ -23,7 +24,10 @@ export default class SourceService {
     return this.sourceModel.find().where('_id').in(ids).exec();
   }
 
-  public async create(data: SourceConfig, user: string): Promise<ISourceDocument> {
+  public async create(
+    data: SourceConfig,
+    user: string
+  ): Promise<ISourceDocument> {
     const source = await this.sourceModel.create({ ...data, user });
 
     this.logger.log(`Created source ${data.name}`, this.constructor.name, data);
@@ -31,12 +35,18 @@ export default class SourceService {
     return source;
   }
 
-  public async update(id: string, data: SourceConfig): Promise<ISourceDocument> {
+  public async update(
+    id: string,
+    data: SourceConfig
+  ): Promise<ISourceDocument> {
     const toUpdate = await this.sourceModel.findById(id);
 
-    if (!toUpdate) throw new ValidationError(`Source with id ${id} does not exist`);
+    if (!toUpdate)
+      throw new ValidationError(`Source with id ${id} does not exist`);
 
-    const source = (await this.sourceModel.findByIdAndUpdate(id, data, { new: true }))!;
+    const source = (await this.sourceModel.findByIdAndUpdate(id, data, {
+      new: true,
+    }))!;
 
     if (await this.apiDefService.isSourceUsed(source._id)) {
       this.apiDefService.setLastUpdateTime();
@@ -52,7 +62,9 @@ export default class SourceService {
     if (toDelete) {
       const usedInApiDef = await this.apiDefService.isSourceUsed(toDelete._id);
       if (usedInApiDef) {
-        throw new ValidationError(`Source "${id}" is used in API "${usedInApiDef.name}"`);
+        throw new ValidationError(
+          `Source "${id}" is used in API "${usedInApiDef.name}"`
+        );
       }
       await toDelete?.delete();
     }

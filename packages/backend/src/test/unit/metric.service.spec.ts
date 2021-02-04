@@ -27,16 +27,17 @@ describe('MetricService', () => {
       country: {
         names: {
           en: geo.country,
-        }
-      }
+        },
+      },
     })),
     city: jest.fn(() => ({
       city: {
         names: {
-          en: geo.city
-        }
-      }, location: geo.location,
-    }))
+          en: geo.city,
+        },
+      },
+      location: geo.location,
+    })),
   };
 
   beforeAll(async () => {
@@ -61,29 +62,48 @@ describe('MetricService', () => {
 
   describe('init', () => {
     it('should call fetchMetrics after delay time', async () => {
-      const spyFetchMetrics = jest.spyOn(metricService as any, 'fetchMetrics').mockImplementation(() => { });
+      const spyFetchMetrics = jest
+        .spyOn(metricService as any, 'fetchMetrics')
+        .mockImplementation(() => {});
 
       metricService.init();
       jest.advanceTimersByTime(config.application.metrics.delay);
 
       expect(spyFetchMetrics).toBeCalledTimes(2);
-      expect(spyFetchMetrics).nthCalledWith(1, MetricsChannels.REQUEST_IDS, config.application.metrics.chunk);
-      expect(spyFetchMetrics).nthCalledWith(2, MetricsChannels.NETWORK, config.application.metrics.chunk);
+      expect(spyFetchMetrics).nthCalledWith(
+        1,
+        MetricsChannels.REQUEST_IDS,
+        config.application.metrics.chunk
+      );
+      expect(spyFetchMetrics).nthCalledWith(
+        2,
+        MetricsChannels.NETWORK,
+        config.application.metrics.chunk
+      );
     });
 
     describe('fetchMetrics', () => {
       const chunk = 100;
       const records = [1, 2, 3];
 
-
       it('fetchMetrics should call aggregateRequestMetric', async () => {
-        const spyGetRecords = jest.spyOn((metricService as any), 'getRecords').mockResolvedValue(records);
-        const spyAggregateRequestMetric = jest.spyOn((metricService as any), 'aggregateRequestMetric').mockImplementation();
+        const spyGetRecords = jest
+          .spyOn(metricService as any, 'getRecords')
+          .mockResolvedValue(records);
+        const spyAggregateRequestMetric = jest
+          .spyOn(metricService as any, 'aggregateRequestMetric')
+          .mockImplementation();
 
-        await (metricService as any).fetchMetrics(MetricsChannels.REQUEST_IDS, chunk);
+        await (metricService as any).fetchMetrics(
+          MetricsChannels.REQUEST_IDS,
+          chunk
+        );
 
         expect(spyGetRecords).toBeCalledTimes(1);
-        expect(spyGetRecords).toBeCalledWith(MetricsChannels.REQUEST_IDS, chunk);
+        expect(spyGetRecords).toBeCalledWith(
+          MetricsChannels.REQUEST_IDS,
+          chunk
+        );
         expect(spyAggregateRequestMetric).toBeCalledTimes(records.length);
         expect(spyAggregateRequestMetric).nthCalledWith(1, records[0]);
         expect(spyAggregateRequestMetric).nthCalledWith(2, records[1]);
@@ -91,10 +111,17 @@ describe('MetricService', () => {
       });
 
       it('fetchMetrics should call aggregateNetworkMetric', async () => {
-        const spyGetRecords = jest.spyOn((metricService as any), 'getRecords').mockResolvedValue(records);
-        const spyAggregateNetworkMetric = jest.spyOn((metricService as any), 'aggregateNetworkMetric').mockImplementation();
+        const spyGetRecords = jest
+          .spyOn(metricService as any, 'getRecords')
+          .mockResolvedValue(records);
+        const spyAggregateNetworkMetric = jest
+          .spyOn(metricService as any, 'aggregateNetworkMetric')
+          .mockImplementation();
 
-        await (metricService as any).fetchMetrics(MetricsChannels.NETWORK, chunk);
+        await (metricService as any).fetchMetrics(
+          MetricsChannels.NETWORK,
+          chunk
+        );
 
         expect(spyGetRecords).toBeCalledTimes(1);
         expect(spyGetRecords).toBeCalledWith(MetricsChannels.NETWORK, chunk);
@@ -115,12 +142,18 @@ describe('MetricService', () => {
         date: 4,
         nodeId: 'nodeId',
       };
-      const spyCreate = jest.spyOn((metricService as any).networkMetricModel, 'create').mockImplementation();
+      const spyCreate = jest
+        .spyOn((metricService as any).networkMetricModel, 'create')
+        .mockImplementation();
 
       await (metricService as any).aggregateNetworkMetric(JSON.stringify(data));
 
       expect(spyCreate).toBeCalledTimes(1);
-      expect(spyCreate).toBeCalledWith({ nodeId: data.nodeId, date: data.date, ...data.network });
+      expect(spyCreate).toBeCalledWith({
+        nodeId: data.nodeId,
+        date: data.date,
+        ...data.network,
+      });
     });
 
     it('aggregateRequestMetric should create request-metric entity', async () => {
@@ -153,10 +186,18 @@ describe('MetricService', () => {
       ];
       const resolvers = [{ path: 'path', latency: 100500 }];
 
-      const spyCreate = jest.spyOn((metricService as any).requestMetricModel, 'create').mockImplementation();
-      const spyLrange = jest.spyOn((metricService as any).redis, 'lrange').mockResolvedValue(records.map(r => JSON.stringify(r)));
-      const spyLtrim = jest.spyOn((metricService as any).redis, 'ltrim').mockImplementation(() => { });
-      const spyReduceResolvers = jest.spyOn((metricService as any), 'reduceResolvers').mockReturnValue(resolvers);
+      const spyCreate = jest
+        .spyOn((metricService as any).requestMetricModel, 'create')
+        .mockImplementation();
+      const spyLrange = jest
+        .spyOn((metricService as any).redis, 'lrange')
+        .mockResolvedValue(records.map((r) => JSON.stringify(r)));
+      const spyLtrim = jest
+        .spyOn((metricService as any).redis, 'ltrim')
+        .mockImplementation(() => {});
+      const spyReduceResolvers = jest
+        .spyOn(metricService as any, 'reduceResolvers')
+        .mockReturnValue(resolvers);
 
       const requestId = '1';
       await (metricService as any).aggregateRequestMetric(requestId);
@@ -221,7 +262,8 @@ describe('MetricService', () => {
           path,
           date: resolverErrorDate,
           error,
-        }];
+        },
+      ];
 
       const data = (metricService as any).reduceResolvers(resolvers);
       expect(data).toMatchObject([
@@ -236,7 +278,7 @@ describe('MetricService', () => {
           calledAt: resolverCalledDate,
           errorAt: resolverErrorDate,
           error,
-        }
+        },
       ]);
     });
   });

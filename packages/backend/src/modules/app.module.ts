@@ -24,7 +24,8 @@ import MetricModule from './metric/metric.module';
     }),
     MongooseModule.forRoot(
       process.env.NODE_ENV === 'test'
-        ? config.db.mongodb.connectionString.split('/').slice(0, -1).join('/') + `/${randomString()}`
+        ? config.db.mongodb.connectionString.split('/').slice(0, -1).join('/') +
+            `/${randomString()}`
         : config.db.mongodb.connectionString,
       {
         useNewUrlParser: true,
@@ -60,6 +61,8 @@ import MetricModule from './metric/metric.module';
 })
 export default class AppModule {
   public configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(AuthenticationMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL });
+    consumer
+      .apply(AuthenticationMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
   }
 }

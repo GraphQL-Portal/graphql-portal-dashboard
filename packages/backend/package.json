@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "node-config-ts",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && prettier --write ./src",
     "build": "nest build -p tsconfig.json",
     "start": "nest start",
     "start:dev": "node --inspect=0.0xr.0.0 dist/main",

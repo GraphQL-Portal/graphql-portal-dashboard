@@ -12,7 +12,9 @@ export default class ValidationExceptionFilter extends BaseExceptionFilter {
     if (exception instanceof MongoError) {
       let message = exception.message;
       if (exception.code === 11000) {
-        message = `Duplicate key ${JSON.stringify((exception as any).keyValue)}`;
+        message = `Duplicate key ${JSON.stringify(
+          (exception as any).keyValue
+        )}`;
       }
       return new ValidationError(message);
     }

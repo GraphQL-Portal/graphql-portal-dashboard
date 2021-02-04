@@ -10,7 +10,13 @@ import ApiDefService from '../../modules/api-def/api-def.service';
 import AppModule from '../../modules/app.module';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import UserService from '../../modules/user/user.service';
-import { apiDefExample, createUser, Method, requestTo, RequestToResult } from '../common';
+import {
+  apiDefExample,
+  createUser,
+  Method,
+  requestTo,
+  RequestToResult,
+} from '../common';
 
 jest.mock('ioredis');
 
@@ -24,7 +30,9 @@ describe('ApiDefResolver', () => {
   let user: IUser & ITokens;
 
   beforeAll(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    })
       .overrideProvider(ApiDefService)
       .useValue({
         publishApiDefsUpdated: jest.fn().mockResolvedValue(1),
@@ -56,7 +64,11 @@ describe('ApiDefResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
+    let graphQlRequest: (
+      query: string,
+      variables?: any,
+      headers?: any
+    ) => supertest.Test;
     const createApiDef = { ...apiDefExample, sources: undefined };
 
     beforeAll(() => {
@@ -64,7 +76,10 @@ describe('ApiDefResolver', () => {
         query: string,
         variables = {},
         headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }
-      ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+      ): supertest.Test =>
+        request(Method.post, '/graphql')
+          .set(headers)
+          .send({ query, variables });
     });
 
     describe('getApiDefs', () => {
@@ -133,7 +148,11 @@ describe('ApiDefResolver', () => {
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.create).toHaveBeenCalledTimes(1);
-        expect(apiDefService.create).toHaveBeenCalledWith(createApiDef, [], user._id);
+        expect(apiDefService.create).toHaveBeenCalledWith(
+          createApiDef,
+          [],
+          user._id
+        );
       });
     });
 
@@ -156,7 +175,11 @@ describe('ApiDefResolver', () => {
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.update).toHaveBeenCalledTimes(1);
-        expect(apiDefService.update).toHaveBeenCalledWith(createApiDef._id, createApiDef, []);
+        expect(apiDefService.update).toHaveBeenCalledWith(
+          createApiDef._id,
+          createApiDef,
+          []
+        );
       });
       it('another user cant update service', async () => {
         jest.spyOn(apiDefService, 'isOwner').mockResolvedValueOnce(false);
@@ -180,7 +203,9 @@ describe('ApiDefResolver', () => {
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.update).toHaveBeenCalledTimes(0);
-        expect(body.errors[0].message).toMatch('You do not have access to do this');
+        expect(body.errors[0].message).toMatch(
+          'You do not have access to do this'
+        );
       });
     });
 

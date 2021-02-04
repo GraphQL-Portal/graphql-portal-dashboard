@@ -43,7 +43,10 @@ export default class LoggerService implements ILoggerService {
 
     return new Proxy(this, {
       get(target, key: LogLevels): any {
-        if (!target.levels.includes(key) || target.enabledLevels.includes(key)) {
+        if (
+          !target.levels.includes(key) ||
+          target.enabledLevels.includes(key)
+        ) {
           return target[key];
         }
         return (): void => undefined;
@@ -51,14 +54,27 @@ export default class LoggerService implements ILoggerService {
     });
   }
 
-  public error(error: string | Error, trace: string | undefined | null, context: string, data?: any): void {
+  public error(
+    error: string | Error,
+    trace: string | undefined | null,
+    context: string,
+    data?: any
+  ): void {
     const { stack } = new Error();
     const stackArray = stack!.split('\n');
-    const currentMethodIndex = stackArray.findIndex((str) => str.includes('Proxy.error'));
+    const currentMethodIndex = stackArray.findIndex((str) =>
+      str.includes('Proxy.error')
+    );
     const trimedStack = stackArray.slice(currentMethodIndex + 1).join('\n');
     const message = (error as Error).message || (error as string);
 
-    this.printMessage(message, data, cliColor.red, context, trace || trimedStack);
+    this.printMessage(
+      message,
+      data,
+      cliColor.red,
+      context,
+      trace || trimedStack
+    );
   }
 
   public warn(message: any, context: string, data?: any): void {
@@ -77,7 +93,12 @@ export default class LoggerService implements ILoggerService {
     this.printMessage(message, data, cliColor.magentaBright, context);
   }
 
-  private printMessageAsJson(message: string | Object, data = {}, color: (s: string) => string, context = ''): void {
+  private printMessageAsJson(
+    message: string | Object,
+    data = {},
+    color: (s: string) => string,
+    context = ''
+  ): void {
     // NestJS can pass "data: true" argument through .log, .verbose .debug .warn methods.
     if (typeof data !== 'object') {
       // eslint-disable-next-line no-param-reassign
@@ -102,7 +123,9 @@ export default class LoggerService implements ILoggerService {
     trace = ''
   ): void {
     const output =
-      message && typeof message === 'object' ? `Object:\n${JSON.stringify(message, null, 2)}\n` : (message as string);
+      message && typeof message === 'object'
+        ? `Object:\n${JSON.stringify(message, null, 2)}\n`
+        : (message as string);
     const colorOutput = color(output);
     const timestamp = new Date().toISOString();
     const pidMessage = color(`[Nest] ${process.pid} - `);

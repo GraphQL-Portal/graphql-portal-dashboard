@@ -27,7 +27,9 @@ describe('LoggerService', () => {
     process.env.NODE_ENV = 'test';
 
     loggerService = app.get<LoggerService>(LoggerService);
-    spiedPrintMessage = jest.spyOn<any, any>(loggerService, 'printMessage').mockImplementation(() => {});
+    spiedPrintMessage = jest
+      .spyOn<any, any>(loggerService, 'printMessage')
+      .mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -47,7 +49,9 @@ describe('LoggerService', () => {
       }).compile();
 
       const testEnvLogger = app.get<LoggerService>(LoggerService);
-      const spiedTestPrintMessage = jest.spyOn<any, any>(testEnvLogger, 'printMessage').mockImplementation(() => null);
+      const spiedTestPrintMessage = jest
+        .spyOn<any, any>(testEnvLogger, 'printMessage')
+        .mockImplementation(() => null);
 
       logMethods.forEach((logMethod) => {
         testEnvLogger[logMethod](logMethod, '', context);

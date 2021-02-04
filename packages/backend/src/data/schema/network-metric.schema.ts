@@ -12,6 +12,8 @@ const networkMetricSchema = new mongoose.Schema(
   { versionKey: false, timestamps: true }
 );
 
-export interface INetworkMetricDocument extends INetworkMetric, mongoose.Document { }
+export interface INetworkMetricDocument
+  extends INetworkMetric,
+    mongoose.Document {}
 
 export default networkMetricSchema;

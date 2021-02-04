@@ -11,7 +11,13 @@ import { randomString } from '../../common/tool';
 import AppModule from '../../modules/app.module';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import UserService from '../../modules/user/user.service';
-import { createUser, expectTokens, Method, requestTo, RequestToResult } from '../common';
+import {
+  createUser,
+  expectTokens,
+  Method,
+  requestTo,
+  RequestToResult,
+} from '../common';
 
 jest.mock('ioredis');
 
@@ -39,7 +45,9 @@ describe('ApiDefResolver', () => {
   };
 
   beforeAll(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] }).compile();
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    }).compile();
 
     app = moduleFixture.createNestApplication();
     app.useLogger(new LoggerService(config));
@@ -58,11 +66,21 @@ describe('ApiDefResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
+    let graphQlRequest: (
+      query: string,
+      variables?: any,
+      headers?: any
+    ) => supertest.Test;
 
     beforeAll(() => {
-      graphQlRequest = (query: string, variables = {}, headers = {}): supertest.Test =>
-        request(Method.post, '/graphql').set(headers).send({ query, variables });
+      graphQlRequest = (
+        query: string,
+        variables = {},
+        headers = {}
+      ): supertest.Test =>
+        request(Method.post, '/graphql')
+          .set(headers)
+          .send({ query, variables });
     });
 
     describe('register', () => {
@@ -99,7 +117,10 @@ describe('ApiDefResolver', () => {
             query: string,
             variables = {},
             headers = { [HeadersEnum.AUTHORIZATION]: tokens.accessToken }
-          ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+          ): supertest.Test =>
+            request(Method.post, '/graphql')
+              .set(headers)
+              .send({ query, variables });
         });
 
         it('should throw error on invalid credentials', async () => {
@@ -177,7 +198,10 @@ describe('ApiDefResolver', () => {
             query: string,
             variables = {},
             headers = { [HeadersEnum.AUTHORIZATION]: admin.accessToken }
-          ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+          ): supertest.Test =>
+            request(Method.post, '/graphql')
+              .set(headers)
+              .send({ query, variables });
         });
 
         it('should throw error', async () => {
@@ -187,7 +211,9 @@ describe('ApiDefResolver', () => {
             { [HeadersEnum.AUTHORIZATION]: tokens.accessToken }
           ).expect(HttpStatus.OK);
 
-          expect(body.errors[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+          expect(body.errors[0].message).toBe(
+            `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+          );
         });
 
         it('should return users', async () => {
@@ -208,7 +234,9 @@ describe('ApiDefResolver', () => {
     });
     describe('Reset password request and confirmation', () => {
       it('shoud call resetPasswordRequest', async () => {
-        const spy = jest.spyOn(userService, 'resetPasswordRequest').mockResolvedValueOnce(true);
+        const spy = jest
+          .spyOn(userService, 'resetPasswordRequest')
+          .mockResolvedValueOnce(true);
         const email = 'email';
 
         const { body } = await graphQlRequest(
@@ -223,7 +251,9 @@ describe('ApiDefResolver', () => {
       });
 
       it('resetPassword', async () => {
-        const spy = jest.spyOn(userService, 'resetPassword').mockResolvedValueOnce(true);
+        const spy = jest
+          .spyOn(userService, 'resetPassword')
+          .mockResolvedValueOnce(true);
         const email = 'email';
         const password = 'password';
         const code = 'code';
@@ -252,7 +282,9 @@ describe('ApiDefResolver', () => {
           }
         ).expect(HttpStatus.OK);
 
-        expect(body.errors?.[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+        expect(body.errors?.[0].message).toBe(
+          `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+        );
       });
 
       it('should block user', async () => {
@@ -317,15 +349,17 @@ describe('ApiDefResolver', () => {
           {
             id: user._id,
             data: {
-              firstName
-            }
+              firstName,
+            },
           },
           {
             [HeadersEnum.AUTHORIZATION]: tokens.accessToken,
           }
         ).expect(HttpStatus.OK);
 
-        expect(body.errors?.[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+        expect(body.errors?.[0].message).toBe(
+          `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+        );
       });
 
       it('admin can update user data', async () => {
@@ -339,8 +373,8 @@ describe('ApiDefResolver', () => {
           {
             id: user._id,
             data: {
-              firstName
-            }
+              firstName,
+            },
           }
         ).expect(HttpStatus.OK);
 
@@ -359,7 +393,9 @@ describe('ApiDefResolver', () => {
           }
         ).expect(HttpStatus.OK);
 
-        expect(body.errors?.[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+        expect(body.errors?.[0].message).toBe(
+          `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+        );
       });
 
       it('admin can delete user', async () => {

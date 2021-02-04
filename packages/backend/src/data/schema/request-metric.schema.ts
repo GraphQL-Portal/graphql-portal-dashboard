@@ -21,7 +21,8 @@ const requestMetricSchema = new mongoose.Schema(
   { versionKey: false, timestamps: true }
 );
 
-export interface IRequestMetricDocument extends IRequestMetric, mongoose.Document { }
-
+export interface IRequestMetricDocument
+  extends IRequestMetric,
+    mongoose.Document {}
 
 export default requestMetricSchema;

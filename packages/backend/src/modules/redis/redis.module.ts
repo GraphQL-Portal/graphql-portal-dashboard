@@ -25,7 +25,10 @@ export default class RedisModule {
   public static forRoot(connectionString: string): DynamicModule {
     const redisProvider: FactoryProvider<[Redis, Redis]> = {
       provide: ProviderEnum.REDIS,
-      useFactory: (): [Redis, Redis] => [new RedisClient(connectionString), new RedisClient(connectionString)],
+      useFactory: (): [Redis, Redis] => [
+        new RedisClient(connectionString),
+        new RedisClient(connectionString),
+      ],
     };
     return {
       module: RedisModule,
