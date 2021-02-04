@@ -11,6 +11,7 @@ type Props = {
 
 export const List: React.FC<Props> = ({ transforms }) => {
   const { list } = useStyles();
+  if (transforms.length === 0) return null;
   return (
     <Table className={list}>
       <TableHead>
