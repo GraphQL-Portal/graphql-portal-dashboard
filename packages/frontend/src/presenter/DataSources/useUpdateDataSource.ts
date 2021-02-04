@@ -1,12 +1,13 @@
 import { useUpdateSource } from '../../model/DataSources/commands';
 import { useDataSourceContext } from '../../model/providers';
-import { unpackHandler } from './helpers';
+import { INITIAL_STATE } from './constants';
+import { unpackHandler, packHandler } from './helpers';
 import { useEditDataSource } from './useEditDataSource';
 
 export const useUpdateDataSource = (limit: number) => {
   const { source = {}, clearSource } = useDataSourceContext();
-  const { state: initialState, key } = source;
-  const { _id } = initialState;
+  const { state: initialState, key } = source || {};
+  const { id } = initialState || {};
 
   const {
     state,
@@ -15,7 +16,10 @@ export const useUpdateDataSource = (limit: number) => {
     updateState,
     completeStep,
     setStep,
-  } = useEditDataSource(limit, unpackHandler(initialState, key));
+  } = useEditDataSource(
+    limit,
+    unpackHandler(initialState || INITIAL_STATE, key || '')
+  );
   const onCompleted = () => clearSource();
 
   // @TODO probably I need to show error message
@@ -24,18 +28,18 @@ export const useUpdateDataSource = (limit: number) => {
   // Send new source to the server
   const { updateSource } = useUpdateSource({ onCompleted, onError });
 
-  const onAddSource = () => {
+  const onSubmit = () => {
     updateSource({
       variables: {
-        source: state,
-        id: _id,
+        id,
+        source: packHandler(state, source.key),
       },
     });
   };
 
   return {
     source,
-    onAddSource,
+    onSubmit,
     step,
     state,
     updateState,
@@ -43,5 +47,9 @@ export const useUpdateDataSource = (limit: number) => {
     completed,
     completeStep,
     setStep,
+    text: {
+      title: 'Edit a data-source',
+      button: 'Update data-source',
+    },
   };
 };
