@@ -7,6 +7,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  TableActionCell,
   Tooltip,
   IconButton,
 } from '../../../ui';
@@ -16,7 +17,7 @@ import { TRANSFORMS_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 
 export const List: React.FC<Props> = ({ transforms, onRemove }) => {
-  const { list, actionCell } = useStyles();
+  const { list } = useStyles();
   if (transforms.length === 0) return null;
   return (
     <Table className={list}>
@@ -36,7 +37,7 @@ export const List: React.FC<Props> = ({ transforms, onRemove }) => {
             <TableCell>{transform.name}</TableCell>
             <TableCell>{transform.description}</TableCell>
             <TableCell />
-            <TableCell align="right" className={actionCell}>
+            <TableActionCell>
               <Tooltip
                 title="Delete transform"
                 placement="left"
@@ -48,7 +49,7 @@ export const List: React.FC<Props> = ({ transforms, onRemove }) => {
                   </IconButton>
                 </span>
               </Tooltip>
-            </TableCell>
+            </TableActionCell>
           </TableRow>
         ))}
       </TableBody>

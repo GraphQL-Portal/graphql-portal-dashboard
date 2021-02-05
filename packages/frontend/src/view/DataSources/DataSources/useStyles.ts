@@ -9,9 +9,6 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
   searchIcon: {
     marginRight: spacing(1.75),
   },
-  actionCell: {
-    padding: spacing(0, 1, 0, 2),
-  },
   addButton: {
     display: 'inline-block',
   },
