@@ -1,11 +1,11 @@
 import React from 'react';
 import { LockOpen, Lock, Delete, Edit } from '@material-ui/icons';
-
 import {
   WidgetBody,
   Table,
   TableHead,
   TableCell,
+  TableActionCell,
   TableBody,
   TableRow,
   Tooltip,
@@ -14,7 +14,6 @@ import {
 import { getKeyFromText } from '../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
 import { UsersList as Props } from '../../types';
-import { useStyles } from './useStyles';
 
 const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
 
@@ -25,7 +24,6 @@ export const UsersList: React.FC<Props> = ({
   onDelete,
   onEdit,
 }) => {
-  const { actionCell } = useStyles();
   return (
     <>
       <WidgetBody>
@@ -49,7 +47,7 @@ export const UsersList: React.FC<Props> = ({
                   <TableCell align="right">{firstName}</TableCell>
                   <TableCell align="right">{lastName}</TableCell>
                   <TableCell align="right">{createdAt}</TableCell>
-                  <TableCell align="right" className={actionCell}>
+                  <TableActionCell>
                     {!!deletedAt ? (
                       <Tooltip
                         title="Unblock user"
@@ -97,7 +95,7 @@ export const UsersList: React.FC<Props> = ({
                         </IconButton>
                       </span>
                     </Tooltip>
-                  </TableCell>
+                  </TableActionCell>
                 </TableRow>
               )
             )}

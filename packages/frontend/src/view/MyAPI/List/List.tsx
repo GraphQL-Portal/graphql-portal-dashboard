@@ -5,19 +5,22 @@ import {
   Table,
   TableHead,
   TableCell,
+  TableActionCell,
   TableBody,
   TableRow,
-  IconButton
+  IconButton,
 } from '../../../ui';
 import { getKeyFromText } from '../../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
-import { useStyles } from './useStyles';
 import { ApiDefsListFC } from './types';
 
-const getCellAlign = (idx: number) => idx === 0 ? 'left' : 'right';
+const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
 
-export const ApiDefsList:React.FC<ApiDefsListFC> = ({ list, onDelete, onUpdate }) => {
-  const { actionCell } = useStyles();
+export const ApiDefsList: React.FC<ApiDefsListFC> = ({
+  list,
+  onDelete,
+  onUpdate,
+}) => {
   return (
     <>
       <WidgetBody>
@@ -33,18 +36,21 @@ export const ApiDefsList:React.FC<ApiDefsListFC> = ({ list, onDelete, onUpdate }
             {list.map((node, idx) => (
               <TableRow key={`node-${idx}`}>
                 {node.map((item: any, indx: any) => (
-                  <TableCell key={`node-${idx}-item-${indx}`} align={getCellAlign(indx)}>
+                  <TableCell
+                    key={`node-${idx}-item-${indx}`}
+                    align={getCellAlign(indx)}
+                  >
                     {item}
                   </TableCell>
                 ))}
-                <TableCell align="right" className={actionCell}>
+                <TableActionCell>
                   <IconButton>
-                    <Edit onClick={onUpdate.bind(this, idx)} />
+                    <Edit onClick={onUpdate(idx)} />
                   </IconButton>
                   <IconButton>
-                    <Delete onClick={onDelete.bind(this, idx)} />
+                    <Delete onClick={onDelete(idx)} />
                   </IconButton>
-                </TableCell>
+                </TableActionCell>
               </TableRow>
             ))}
           </TableBody>
@@ -52,4 +58,4 @@ export const ApiDefsList:React.FC<ApiDefsListFC> = ({ list, onDelete, onUpdate }
       </WidgetBody>
     </>
   );
-}
+};

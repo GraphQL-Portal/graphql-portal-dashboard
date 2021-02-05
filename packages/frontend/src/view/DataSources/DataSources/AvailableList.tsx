@@ -6,6 +6,7 @@ import {
   Table,
   TableHead,
   TableCell,
+  TableActionCell,
   TableBody,
   TableRow,
   Input,
@@ -32,7 +33,7 @@ export const AvailableList: React.FC = () => {
     onAddClick,
   } = useAvailableSources();
 
-  const { form, searchIcon, actionCell } = useStyles();
+  const { form, searchIcon } = useStyles();
 
   return (
     <>
@@ -75,7 +76,7 @@ export const AvailableList: React.FC = () => {
                 <TableCell>{title}</TableCell>
                 <TableCell>{type}</TableCell>
                 <TableCell>{description}</TableCell>
-                <TableCell align="right" className={actionCell}>
+                <TableActionCell>
                   <Tooltip
                     title="Add connector"
                     placement="left"
@@ -87,7 +88,7 @@ export const AvailableList: React.FC = () => {
                       </IconButton>
                     </span>
                   </Tooltip>
-                </TableCell>
+                </TableActionCell>
               </TableRow>
             );
           })}
