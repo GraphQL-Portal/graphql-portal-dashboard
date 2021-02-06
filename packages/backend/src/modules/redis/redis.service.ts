@@ -12,10 +12,16 @@ export default class RedisService implements OnModuleDestroy {
   private subscriber: Redis;
   public readonly pubSub: RedisPubSub;
 
-  public constructor(@Inject(Provider.REDIS) redisClients: [Redis, Redis], private readonly logger: LoggerService) {
+  public constructor(
+    @Inject(Provider.REDIS) redisClients: [Redis, Redis],
+    private readonly logger: LoggerService
+  ) {
     this.publisher = redisClients[0];
     this.subscriber = redisClients[1];
-    this.pubSub = new RedisPubSub({ publisher: this.publisher, subscriber: this.subscriber });
+    this.pubSub = new RedisPubSub({
+      publisher: this.publisher,
+      subscriber: this.subscriber,
+    });
   }
 
   public async onModuleDestroy(): Promise<void> {
@@ -23,11 +29,17 @@ export default class RedisService implements OnModuleDestroy {
   }
 
   public async publishApiDefsUpdated(timestamp: number): Promise<number> {
-    this.logger.log(`Publish event "${Channel.apiDefsUpdated}"`, this.constructor.name);
+    this.logger.log(
+      `Publish event "${Channel.apiDefsUpdated}"`,
+      this.constructor.name
+    );
     return this.publisher.publish(Channel.apiDefsUpdated, `${timestamp}`);
   }
 
-  public async on(channel: Channel, handler: (message: string) => any): Promise<number> {
+  public async on(
+    channel: Channel,
+    handler: (message: string) => any
+  ): Promise<number> {
     this.logger.log(`Subscribe to channel "${channel}"`, this.constructor.name);
     this.subscriber.on('message', (messageChannel, message) => {
       if (channel === messageChannel) {

@@ -27,14 +27,19 @@ export default class AccessControlGuard implements CanActivate {
   }
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
-    const access: { model: AccessControlModels; pathToId?: string } = this.reflector.get(
-      Metadata.ACCESS,
-      context.getHandler()
-    );
+    const access: {
+      model: AccessControlModels;
+      pathToId?: string;
+    } = this.reflector.get(Metadata.ACCESS, context.getHandler());
     if (!access) return true;
 
     const user = PermissionTool.getUserFromRequest(context);
-    if (!user) throw new AuthenticationError('You do not have access to do this');
+    if (!user)
+      throw new AuthenticationError('You do not have access to do this');
+
+    if (user.deletedAt)
+      throw new AuthenticationError('User is permanently blocked');
+
     if (user.role === Roles.ADMIN) return true;
 
     const service = this.getService(access.model);
@@ -44,7 +49,8 @@ export default class AccessControlGuard implements CanActivate {
     if (!id) throw new Error('Id is not defined');
 
     const isOwner = await service.isOwner(user._id!, id);
-    if (!isOwner) throw new AuthenticationError('You do not have access to do this');
+    if (!isOwner)
+      throw new AuthenticationError('You do not have access to do this');
 
     return true;
   }

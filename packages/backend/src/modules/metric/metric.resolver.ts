@@ -12,7 +12,7 @@ export default class MetricResolver {
   public metrics(
     @Args('startDate') startDate: number,
     @Args('endDate') endDate: number,
-    @Args('scale') scale: 'day' |'week'| 'month' | 'hour',
+    @Args('scale') scale: 'day' | 'week' | 'month' | 'hour'
   ): Promise<any> {
     return this.metricService.aggregateMetrics(startDate, endDate, scale);
   }

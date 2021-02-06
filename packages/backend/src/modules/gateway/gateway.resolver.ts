@@ -8,7 +8,10 @@ import GatewayService from './gateway.service';
 
 @Resolver('Gateway')
 export default class GatewayResolver {
-  public constructor(private readonly gatewayService: GatewayService, private readonly redis: RedisService) {}
+  public constructor(
+    private readonly gatewayService: GatewayService,
+    private readonly redis: RedisService
+  ) {}
 
   @Query()
   @Roles([RolesEnum.USER, RolesEnum.ADMIN])

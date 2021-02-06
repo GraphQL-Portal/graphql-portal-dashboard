@@ -8,7 +8,13 @@ import AppModule from '../../modules/app.module';
 import SourceService from '../../modules/source/source.service';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import UserService from '../../modules/user/user.service';
-import { createUser, Method, requestTo, RequestToResult, sourceExample } from '../common';
+import {
+  createUser,
+  Method,
+  requestTo,
+  RequestToResult,
+  sourceExample,
+} from '../common';
 
 jest.mock('ioredis');
 
@@ -22,7 +28,9 @@ describe('SourceResolver', () => {
   let user: IUser & ITokens;
 
   beforeAll(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    })
       .overrideProvider(SourceService)
       .useValue({
         findAllByUser: jest.fn().mockResolvedValue([sourceExample]),
@@ -51,14 +59,21 @@ describe('SourceResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
+    let graphQlRequest: (
+      query: string,
+      variables?: any,
+      headers?: any
+    ) => supertest.Test;
 
     beforeAll(() => {
       graphQlRequest = (
         query: string,
         variables = {},
         headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }
-      ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+      ): supertest.Test =>
+        request(Method.post, '/graphql')
+          .set(headers)
+          .send({ query, variables });
     });
 
     describe('getSources', () => {
@@ -93,7 +108,10 @@ describe('SourceResolver', () => {
         ).expect(HttpStatus.OK);
 
         expect(sourceService.create).toHaveBeenCalledTimes(1);
-        expect(sourceService.create).toHaveBeenCalledWith(sourceExample, user._id);
+        expect(sourceService.create).toHaveBeenCalledWith(
+          sourceExample,
+          user._id
+        );
       });
     });
 
@@ -110,7 +128,10 @@ describe('SourceResolver', () => {
         ).expect(HttpStatus.OK);
 
         expect(sourceService.update).toHaveBeenCalledTimes(1);
-        expect(sourceService.update).toHaveBeenCalledWith(sourceExample._id, sourceExample);
+        expect(sourceService.update).toHaveBeenCalledWith(
+          sourceExample._id,
+          sourceExample
+        );
       });
     });
 
