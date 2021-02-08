@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete } from '@material-ui/icons';
+import { Delete, Edit } from '@material-ui/icons';
 
 import {
   Table,
@@ -16,7 +16,7 @@ import { TransformsList as Props } from '../../../types';
 import { TRANSFORMS_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 
-export const List: React.FC<Props> = ({ transforms, onRemove }) => {
+export const List: React.FC<Props> = ({ transforms, onRemove, onEdit }) => {
   const { list } = useStyles();
   if (transforms.length === 0) return null;
   return (
@@ -38,6 +38,17 @@ export const List: React.FC<Props> = ({ transforms, onRemove }) => {
             <TableCell>{transform.description}</TableCell>
             <TableCell />
             <TableActionCell>
+              <Tooltip
+                title="Edit transform"
+                placement="left"
+                aria-label="delete transform"
+              >
+                <span>
+                  <IconButton onClick={onEdit(idx, transform)}>
+                    <Edit />
+                  </IconButton>
+                </span>
+              </Tooltip>
               <Tooltip
                 title="Delete transform"
                 placement="left"
