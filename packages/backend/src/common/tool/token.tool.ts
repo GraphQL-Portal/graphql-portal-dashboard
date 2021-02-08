@@ -19,6 +19,12 @@ export const verify = (token: string): { userId: string } => {
   }
 };
 
-export const sign = (role: Roles, userId: string, expiresIn: TokenExpirationTime): string => {
-  return jwt.sign({ userId, role }, config.application.jwtSecret, { expiresIn });
+export const sign = (
+  role: Roles,
+  userId: string,
+  expiresIn: TokenExpirationTime
+): string => {
+  return jwt.sign({ userId, role }, config.application.jwtSecret, {
+    expiresIn,
+  });
 };

@@ -282,7 +282,9 @@ describe('ApiDefResolver', () => {
           }
         ).expect(HttpStatus.OK);
 
-        expect(body.errors?.[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+        expect(body.errors?.[0].message).toBe(
+          `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+        );
       });
 
       it('should block user', async () => {
@@ -347,15 +349,17 @@ describe('ApiDefResolver', () => {
           {
             id: user._id,
             data: {
-              firstName
-            }
+              firstName,
+            },
           },
           {
             [HeadersEnum.AUTHORIZATION]: tokens.accessToken,
           }
         ).expect(HttpStatus.OK);
 
-        expect(body.errors?.[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+        expect(body.errors?.[0].message).toBe(
+          `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+        );
       });
 
       it('admin can update user data', async () => {
@@ -369,8 +373,8 @@ describe('ApiDefResolver', () => {
           {
             id: user._id,
             data: {
-              firstName
-            }
+              firstName,
+            },
           }
         ).expect(HttpStatus.OK);
 
@@ -389,7 +393,9 @@ describe('ApiDefResolver', () => {
           }
         ).expect(HttpStatus.OK);
 
-        expect(body.errors?.[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+        expect(body.errors?.[0].message).toBe(
+          `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+        );
       });
 
       it('admin can delete user', async () => {

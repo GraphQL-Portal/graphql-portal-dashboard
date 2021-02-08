@@ -16,8 +16,9 @@ export default class TokenService {
   public constructor(
     @InjectModel('Token') private tokenModel: Model<ITokenDocument>,
     private readonly logger: LoggerService,
-    @Inject(forwardRef(() => UserService)) private readonly userService: UserService
-  ) { }
+    @Inject(forwardRef(() => UserService))
+    private readonly userService: UserService
+  ) {}
 
   public async refreshTokens(token: string, device: string): Promise<ITokens> {
     const context = `${this.constructor.name}:${this.refreshTokens.name}`;
@@ -39,16 +40,24 @@ export default class TokenService {
     const user = await this.userService.findById(userId);
 
     if (!user) {
-      throw new AuthenticationError('User with such email/password does not exist');
+      throw new AuthenticationError(
+        'User with such email/password does not exist'
+      );
     }
 
     const refreshToken = jwt.sign(user.role, userId, TokenExpirationTime.MONTH);
     const accessToken = jwt.sign(user.role, userId, TokenExpirationTime.DAY);
 
-    this.logger.log('Deleting previous user tokens with device', context, { userId, device });
+    this.logger.log('Deleting previous user tokens with device', context, {
+      userId,
+      device,
+    });
     await this.tokenModel.deleteMany({ user: userId, device });
 
-    this.logger.log('Creating new refresh token for device', context, { userId, device });
+    this.logger.log('Creating new refresh token for device', context, {
+      userId,
+      device,
+    });
     await this.tokenModel.create({ user: userId, token: refreshToken, device });
 
     return { refreshToken, accessToken };

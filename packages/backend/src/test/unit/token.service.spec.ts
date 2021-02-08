@@ -43,10 +43,12 @@ describe('TokenService', () => {
 
   describe('issueTokens', () => {
     it('returns tokens', async () => {
-      const spyFindById = jest.spyOn(userService, 'findById').mockResolvedValue({
-        _id: userId,
-        role,
-      } as any);
+      const spyFindById = jest
+        .spyOn(userService, 'findById')
+        .mockResolvedValue({
+          _id: userId,
+          role,
+        } as any);
       const result = await tokenService.issueTokens(userId, device);
 
       expectTokens(result);

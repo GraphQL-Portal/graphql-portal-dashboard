@@ -15,7 +15,7 @@ export default class AccessControlGuard implements CanActivate {
     private reflector: Reflector,
     private apiDefService: ApiDefService,
     private sourceService: SourceService
-  ) { }
+  ) {}
 
   public getService(modelName: AccessControlModels): IAccessControlService {
     const modelToService = {

@@ -39,7 +39,9 @@ const userSchema = new mongoose.Schema<IUserDocument>(
 );
 
 userSchema.methods.setPassword = function (password: string): void {
-  this.password = crypto.pbkdf2Sync(password, config.application.salt, 10000, 512, 'sha512').toString('hex');
+  this.password = crypto
+    .pbkdf2Sync(password, config.application.salt, 10000, 512, 'sha512')
+    .toString('hex');
 };
 
 userSchema.methods.isValidPassword = function (password: string): boolean {

@@ -23,7 +23,8 @@ export default class UserService {
     @InjectModel('ConfirmationCode')
     private codeModel: Model<IConfirmationCodeDocument>,
     private readonly logger: LoggerService,
-    @Inject(forwardRef(() => TokenService)) private readonly tokenService: TokenService
+    @Inject(forwardRef(() => TokenService))
+    private readonly tokenService: TokenService
   ) {
     this.sendgrid.setApiKey(config.application.sendgrid.apiKey);
   }
@@ -46,7 +47,8 @@ export default class UserService {
       );
     }
 
-    if (!user || user.deletedAt || !user.isValidPassword(password)) throw new AuthenticationError('Wrong email or password');
+    if (!user || user.deletedAt || !user.isValidPassword(password))
+      throw new AuthenticationError('Wrong email or password');
 
     const tokens = await this.tokenService.issueTokens(user._id!, device);
 
@@ -58,7 +60,10 @@ export default class UserService {
     return tokens;
   }
 
-  public async updateUser(id: string, data: Partial<IUpdateUser>): Promise<IUserDocument | null> {
+  public async updateUser(
+    id: string,
+    data: Partial<IUpdateUser>
+  ): Promise<IUserDocument | null> {
     return this.userModel.findByIdAndUpdate(id, data, { new: true });
   }
 
@@ -76,15 +81,23 @@ export default class UserService {
   }
 
   public async unblockUser(id: string): Promise<IUserDocument | null> {
-    return this.userModel.findByIdAndUpdate(id, {
-      deletedAt: null,
-    }, { new: true });
+    return this.userModel.findByIdAndUpdate(
+      id,
+      {
+        deletedAt: null,
+      },
+      { new: true }
+    );
   }
 
   public async blockUser(id: string): Promise<IUserDocument | null> {
-    return this.userModel.findByIdAndUpdate(id, {
-      deletedAt: new Date(),
-    }, { new: true });
+    return this.userModel.findByIdAndUpdate(
+      id,
+      {
+        deletedAt: new Date(),
+      },
+      { new: true }
+    );
   }
 
   public async deleteUser(id: string): Promise<boolean> {

@@ -29,9 +29,7 @@ export default class UserResolver {
   }
 
   @Mutation()
-  public register(
-    @Args('data') data: IUser,
-  ): Promise<boolean> {
+  public register(@Args('data') data: IUser): Promise<boolean> {
     return this.service.register({ ...data, role: RolesEnum.USER });
   }
 
@@ -65,7 +63,10 @@ export default class UserResolver {
 
   @Roles([RolesEnum.ADMIN])
   @Mutation()
-  public updateUser(@Args('id') id: string, @Args('data') data: IUpdateUser): Promise<IUserDocument | null> {
+  public updateUser(
+    @Args('id') id: string,
+    @Args('data') data: IUpdateUser
+  ): Promise<IUserDocument | null> {
     return this.service.updateUser(id, data);
   }
 
