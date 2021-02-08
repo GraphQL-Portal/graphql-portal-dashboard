@@ -19,7 +19,7 @@
     "start": "concurrently --kill-others-on-fail 'yarn backend' 'yarn frontend'",
     "clear": "rm -rf node_modules && yarn frontend:clear && yarn backend:clear",
     "lint": "eslint '{packages,src,apps,libs,test}/**/*.ts' --fix",
-    "test": "yarn backend:test && yarn workspace graphql-portal-dashboard-frontend start & npx wait-on --timeout=120000 http://localhost:8080"
+    "test": "yarn backend:test && yarn workspace graphql-portal-dashboard-frontend start & npx wait-on --timeout=240000 http://localhost:8080"
   },
   "repository": {
     "type": "git",
