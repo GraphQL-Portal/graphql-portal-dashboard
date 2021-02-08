@@ -8,16 +8,16 @@ import GatewayService from './gateway.service';
 
 @Resolver('Gateway')
 export default class GatewayResolver {
-  public constructor(private readonly gatewayService: GatewayService, private readonly redis: RedisService) {}
+  public constructor(private readonly gatewayService: GatewayService, private readonly redis: RedisService) { }
 
   @Query()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public getGateways(): IGateway[] {
     return this.gatewayService.findAll();
   }
 
   @Subscription()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public gatewaysUpdated(): AsyncIterator<IGateway[]> {
     return this.redis.pubSub.asyncIterator(SubscriptionEnum.gatewaysUpdated);
   }

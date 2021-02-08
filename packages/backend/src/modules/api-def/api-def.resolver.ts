@@ -9,10 +9,10 @@ import ApiDefUpdateDto from './dto/api-def-update.dto';
 
 @Resolver('ApiDef')
 export default class ApiDefResolver {
-  public constructor(private readonly service: ApiDefService) {}
+  public constructor(private readonly service: ApiDefService) { }
 
   @Query()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public publishApiDefsUpdated(): Promise<number> {
     return this.service.publishApiDefsUpdated();
   }
@@ -24,26 +24,26 @@ export default class ApiDefResolver {
   }
 
   @Query()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public getApiDefs(@AuthorizationParam('_id') userId: string): Promise<ApiDefsWithTimestamp> {
     return this.service.findAllByUser(userId);
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public createApiDef(@Args() data: ApiDefCreateDto, @AuthorizationParam('_id') userId: string): Promise<IApiDef> {
     return this.service.create(data.apiDef, data.sources, userId);
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.ApiDef)
   public updateApiDef(@Args() data: ApiDefUpdateDto): Promise<IApiDef | null> {
     return this.service.update(data.id, data.apiDef, data.sources);
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.ApiDef)
   public deleteApiDef(@Args('id') id: string): Promise<boolean> {
     return this.service.delete(id);

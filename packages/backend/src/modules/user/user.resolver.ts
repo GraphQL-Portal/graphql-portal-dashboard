@@ -38,7 +38,7 @@ export default class UserResolver {
     return this.tokenService.refreshTokens(refreshToken, device);
   }
 
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   @Query()
   public getProfile(@AuthorizationEntity() user: IUserDocument): IUserDocument {
     return user;

@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import { MetricsChannels } from '@graphql-portal/types';
 
 export default interface IGotRequest {

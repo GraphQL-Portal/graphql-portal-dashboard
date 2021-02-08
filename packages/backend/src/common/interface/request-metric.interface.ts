@@ -8,6 +8,8 @@ export default interface IRequestMetric {
   query: string;
   userAgent: string;
   ip?: string;
+  user?: string;
+  apiDef?: string;
   resolvers: IReducedResolver[];
   geo: {
     city?: string;

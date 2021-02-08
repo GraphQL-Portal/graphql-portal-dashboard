@@ -2,7 +2,6 @@ import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
-import ConfirmationCodeTypes from '../../modules/user/enum/confirmation-code-types.enum';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
 import Roles from '../../common/enum/roles.enum';

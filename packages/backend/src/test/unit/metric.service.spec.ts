@@ -222,8 +222,15 @@ describe('MetricService', () => {
           date: resolverErrorDate,
           error,
         }];
+      const sourceId = 1;
+      const api = {
+        sources: [{
+          name: source,
+          _id: sourceId,
+        }]
+      };
 
-      const data = (metricService as any).reduceResolvers(resolvers);
+      const data = (metricService as any).reduceResolvers(api, resolvers);
       expect(data).toMatchObject([
         {
           path,
@@ -231,11 +238,33 @@ describe('MetricService', () => {
           info,
           args,
           source,
+          sourceId,
           result,
           doneAt: resolverDoneDate,
           calledAt: resolverCalledDate,
           errorAt: resolverErrorDate,
           error,
+        }
+      ]);
+    });
+    it('getApiActivity', async () => {
+      const spyAggregate = jest.spyOn((metricService as any).requestMetricModel, 'aggregate').mockResolvedValue([{
+        count: [{ _id: 'api', value: 10 }],
+        latency: [{ _id: 'api', value: 5 }],
+        failed: [{ _id: 'api', value: 4 }],
+        success: [{ _id: 'api', value: 6 }],
+      }]);
+
+      const data = await metricService.getApiActivity({ startDate: new Date(), endDate: new Date(), user: 'user', apiDef: 'apiDef', });
+
+      expect(spyAggregate).toBeCalledTimes(1);
+      expect(data).toMatchObject([
+        {
+          apiDef: 'api',
+          count: 10,
+          latency: 5,
+          failed: 4,
+          success: 6
         }
       ]);
     });

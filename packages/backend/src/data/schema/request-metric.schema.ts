@@ -17,6 +17,16 @@ const requestMetricSchema = new mongoose.Schema(
     latency: Number,
     contentLength: Number,
     error: Object,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    apiDef: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ApiDef',
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true }
 );

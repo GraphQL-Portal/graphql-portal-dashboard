@@ -11,7 +11,7 @@ export default class SourceResolver {
   public constructor(private readonly service: SourceService) { }
 
   @Query()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public getSources(
     @AuthorizationParam('_id') user: string,
   ): Promise<SourceConfig[]> {
@@ -19,7 +19,7 @@ export default class SourceResolver {
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public createSource(
     @Args() data: SourceCreateDto,
     @AuthorizationParam('_id') user: string,
@@ -28,7 +28,7 @@ export default class SourceResolver {
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.Source)
   public updateSource(
     @Args('id') id: string,
@@ -38,7 +38,7 @@ export default class SourceResolver {
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.Source)
   public deleteSource(
     @Args('id') id: string

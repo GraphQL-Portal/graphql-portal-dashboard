@@ -5,6 +5,10 @@ import IResolverError from './resolver-error.interface';
 import IGotError from './got-error.interface';
 import ISentResponse from './sent-response.interface';
 import IReducedResolver from './reduced-resolver.interface';
+import IMatch from './match.interface';
+import IAggregateFilters from './aggregate-filters.interface';
+import IApiActivity from './api-activity.interface';
+import IMetric from './metric.interface';
 
 
 export type AnyMetric = IGotRequest | IGotError | ISentResponse | IResolverCalled | IResolverDone | IResolverError;
@@ -19,4 +23,8 @@ export {
   IGotError,
   ISentResponse,
   IReducedResolver,
+  IMatch,
+  IAggregateFilters,
+  IApiActivity,
+  IMetric,
 };
