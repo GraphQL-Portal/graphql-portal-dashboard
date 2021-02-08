@@ -114,15 +114,17 @@ export default class UserService {
   }
 
   public async createDefaultUser(): Promise<void> {
-    const toCreate = await this.userModel.findOne({
-      email: config.application.defaultAdmin.email,
-    });
+    const { email, password } = config.application.defaultAdmin;
+
+    if (email === 'admin@example.com' || password === 'Secret123!') {
+      this.logger.warn('You are running application with default admin credentials', `${this.constructor.name}:${this.createDefaultUser.name}`);
+    }
+
+    const toCreate = await this.userModel.findOne({ email });
 
     if (!toCreate) {
       await this.userModel.create({
-        email: config.application.defaultAdmin.email,
-        password: config.application.defaultAdmin.password,
-        role: Roles.ADMIN,
+        email, password, role: Roles.ADMIN,
       });
     }
   }
