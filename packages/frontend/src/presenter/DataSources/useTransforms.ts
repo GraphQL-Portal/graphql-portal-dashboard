@@ -10,7 +10,13 @@ const options = Object.keys(AVAILABLE_TRANSFORMS).map(createOption);
 const removeFromArray = (arr: any[], idx: number) =>
   arr.slice(0, idx).concat(arr.slice(idx + 1));
 
+const insertToArray = (arr: any[], idx: number, member: any) =>
+  arr.slice(0, idx).concat(member).concat(arr.slice(idx));
+
 export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
+  const [edited, setEdited] = useState<{
+    [key: string]: { [key: string]: any };
+  }>({});
   const [fields, setFields] = useState<string[]>([]);
   const { handleSubmit, control, reset } = useForm({
     mode: 'onSubmit',
@@ -40,6 +46,29 @@ export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
     updateState({ transforms: newState }, step);
   };
 
+  const onEdit = (idx: number, transform: any) => () =>
+    setEdited((s) => {
+      return Object.assign({}, s, { [idx]: transform });
+    });
+
+  const onCancelEdit = (idx: string) => () =>
+    setEdited((s) => {
+      const newState = Object.assign({}, s);
+      delete newState[idx];
+      return newState;
+    });
+
+  const onUpdateTransform = (idx: number) => (transform: any) => {
+    const { transforms } = state;
+    const newState = removeFromArray(transforms, idx);
+    updateState(
+      {
+        transforms: insertToArray(newState, idx, transform),
+      },
+      step
+    );
+  };
+
   return {
     state,
     transforms: options,
@@ -49,5 +78,9 @@ export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
     fields,
     addTransform,
     onRemove,
+    onEdit,
+    edited,
+    onCancelEdit,
+    onUpdateTransform,
   };
 };

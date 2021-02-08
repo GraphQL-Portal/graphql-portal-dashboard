@@ -30,6 +30,7 @@ export const useDataSources = () => {
 
   const onUpdate = (dataSource: any) => () => {
     const { handler, name, transforms, _id } = dataSource;
+
     const key = Object.keys(handler)[0];
     setSource({
       key,
