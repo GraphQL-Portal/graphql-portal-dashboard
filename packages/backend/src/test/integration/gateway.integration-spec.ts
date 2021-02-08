@@ -31,7 +31,9 @@ describe('GatewayResolver', () => {
   };
 
   beforeAll(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    })
       .overrideProvider(GatewayService)
       .useValue({
         findAll: jest.fn().mockResolvedValue([gatewayExample]),
@@ -57,14 +59,21 @@ describe('GatewayResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
+    let graphQlRequest: (
+      query: string,
+      variables?: any,
+      headers?: any
+    ) => supertest.Test;
 
     beforeAll(() => {
       graphQlRequest = (
         query: string,
         variables = {},
         headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }
-      ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+      ): supertest.Test =>
+        request(Method.post, '/graphql')
+          .set(headers)
+          .send({ query, variables });
     });
 
     describe('getGateways', () => {

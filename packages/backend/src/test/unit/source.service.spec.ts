@@ -69,19 +69,30 @@ describe('SourceService', () => {
     it('should throw for wrong name', async () => {
       expect.assertions(1);
       const id = randomObjectId();
-      await expect(() => sourceService.update(id, {} as SourceConfig)).rejects.toThrow(`Source with id ${id} does not exist`);
+      await expect(() =>
+        sourceService.update(id, {} as SourceConfig)
+      ).rejects.toThrow(`Source with id ${id} does not exist`);
     });
 
     it('should update document and call publishApiDefsUpdated', async () => {
-      const isSourceUsedMock = jest.spyOn(apiDefService, 'isSourceUsed').mockResolvedValueOnce(1 as any);
-      const setLastUpdateTimeMock = jest.spyOn(apiDefService, 'setLastUpdateTime').mockResolvedValueOnce(1 as never);
-      const publishApiDefsUpdatedMock = jest.spyOn(apiDefService, 'publishApiDefsUpdated').mockResolvedValueOnce(1);
+      const isSourceUsedMock = jest
+        .spyOn(apiDefService, 'isSourceUsed')
+        .mockResolvedValueOnce(1 as any);
+      const setLastUpdateTimeMock = jest
+        .spyOn(apiDefService, 'setLastUpdateTime')
+        .mockResolvedValueOnce(1 as never);
+      const publishApiDefsUpdatedMock = jest
+        .spyOn(apiDefService, 'publishApiDefsUpdated')
+        .mockResolvedValueOnce(1);
 
       const newData = { ...source.toJSON(), transforms: [{}] } as SourceConfig;
       const result = await sourceService.update(source._id, newData);
 
       expect(result).toBeDefined();
-      expect(result.toJSON()).toMatchObject({ ...newData, ...mongoDocumentSchema });
+      expect(result.toJSON()).toMatchObject({
+        ...newData,
+        ...mongoDocumentSchema,
+      });
       expect(isSourceUsedMock).toHaveBeenCalledTimes(1);
       expect(setLastUpdateTimeMock).toHaveBeenCalledTimes(1);
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
@@ -91,13 +102,19 @@ describe('SourceService', () => {
   describe('delete', () => {
     it('should throw for wrong name', async () => {
       expect.assertions(2);
-      const isSourceUsedMock = jest.spyOn(apiDefService, 'isSourceUsed').mockResolvedValueOnce(1 as any);
-      await expect(() => sourceService.delete(source._id)).rejects.toThrow('is used');
+      const isSourceUsedMock = jest
+        .spyOn(apiDefService, 'isSourceUsed')
+        .mockResolvedValueOnce(1 as any);
+      await expect(() => sourceService.delete(source._id)).rejects.toThrow(
+        'is used'
+      );
       expect(isSourceUsedMock).toHaveBeenCalledTimes(1);
     });
 
     it('should delete document and call publishApiDefsUpdated', async () => {
-      const isSourceUsedMock = jest.spyOn(apiDefService, 'isSourceUsed').mockResolvedValueOnce(0 as any);
+      const isSourceUsedMock = jest
+        .spyOn(apiDefService, 'isSourceUsed')
+        .mockResolvedValueOnce(0 as any);
 
       const result = await sourceService.delete(source._id);
 

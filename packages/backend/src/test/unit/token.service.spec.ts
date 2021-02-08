@@ -47,19 +47,26 @@ describe('ApiDefService', () => {
 
     describe('refreshToken', () => {
       it('throws error on invalid device', async () => {
-        await expect(tokenService.refreshTokens(tokens.refreshToken, 'device')).rejects.toThrow('Refresh token is invalid');
+        await expect(
+          tokenService.refreshTokens(tokens.refreshToken, 'device')
+        ).rejects.toThrow('Refresh token is invalid');
         expect(spySign).toBeCalledTimes(0);
       });
 
       it('returns a new pair of tokens', async () => {
-        const result = await tokenService.refreshTokens(tokens.refreshToken, device);
+        const result = await tokenService.refreshTokens(
+          tokens.refreshToken,
+          device
+        );
 
         expect(spySign).toBeCalledTimes(2);
         expectTokens(result);
       });
 
-      it('can\'t refresh token using previous one', async () => {
-        await expect(tokenService.refreshTokens(tokens.refreshToken, device)).rejects.toThrow('Refresh token is invalid');
+      it("can't refresh token using previous one", async () => {
+        await expect(
+          tokenService.refreshTokens(tokens.refreshToken, device)
+        ).rejects.toThrow('Refresh token is invalid');
         expect(spySign).toBeCalledTimes(0);
       });
     });

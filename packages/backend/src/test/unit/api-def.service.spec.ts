@@ -7,7 +7,13 @@ import ApiDefService from '../../modules/api-def/api-def.service';
 import AppModule from '../../modules/app.module';
 import RedisService from '../../modules/redis/redis.service';
 import SourceService from '../../modules/source/source.service';
-import { apiDefExample, expectApiDef, mongoDocumentSchema, randomObjectId, sourceExample } from '../common';
+import {
+  apiDefExample,
+  expectApiDef,
+  mongoDocumentSchema,
+  randomObjectId,
+  sourceExample,
+} from '../common';
 
 jest.useFakeTimers();
 
@@ -49,10 +55,14 @@ describe('ApiDefService', () => {
 
   describe('publishApiDefsUpdated', () => {
     it("should call redis service's method", async () => {
-      publishApiDefsUpdatedMock = jest.spyOn(redisService, 'publishApiDefsUpdated').mockResolvedValue(1);
+      publishApiDefsUpdatedMock = jest
+        .spyOn(redisService, 'publishApiDefsUpdated')
+        .mockResolvedValue(1);
       await apiDefService.publishApiDefsUpdated();
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
-      expect(publishApiDefsUpdatedMock).toHaveBeenCalledWith(apiDefService.lastUpdateTime);
+      expect(publishApiDefsUpdatedMock).toHaveBeenCalledWith(
+        apiDefService.lastUpdateTime
+      );
     });
   });
 
@@ -65,7 +75,10 @@ describe('ApiDefService', () => {
 
     it('should create an apiDef', async () => {
       const userId = randomObjectId();
-      source = await sourceService.create({ ...sourceExample, name: 'api-source' }, userId);
+      source = await sourceService.create(
+        { ...sourceExample, name: 'api-source' },
+        userId
+      );
       apiDef = await apiDefService.create(apiDefExample, [source._id], userId);
       expect(apiDef).toBeDefined();
       expectApiDef(apiDef);
@@ -88,17 +101,23 @@ describe('ApiDefService', () => {
     it('should throw for wrong id', async () => {
       expect.assertions(1);
       const id = randomObjectId();
-      await expect(() => apiDefService.update(id, {} as IApiDef, [])).rejects.toThrow(
-        `ApiDef with id ${id} does not exist`
-      );
+      await expect(() =>
+        apiDefService.update(id, {} as IApiDef, [])
+      ).rejects.toThrow(`ApiDef with id ${id} does not exist`);
     });
 
     it('should update document and call publishApiDefsUpdated', async () => {
-      const newData = ({ ...apiDef.toJSON(), endpoint: 'new-endpoint' } as any) as IApiDef;
+      const newData = ({
+        ...apiDef.toJSON(),
+        endpoint: 'new-endpoint',
+      } as any) as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 
       expect(result).toBeDefined();
-      expect(result.toJSON()).toMatchObject({ ...newData, ...mongoDocumentSchema });
+      expect(result.toJSON()).toMatchObject({
+        ...newData,
+        ...mongoDocumentSchema,
+      });
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
     });
 

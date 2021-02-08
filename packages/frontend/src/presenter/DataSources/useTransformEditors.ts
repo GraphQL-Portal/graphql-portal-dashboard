@@ -17,6 +17,7 @@ export const useTransformEditors = ({
   type,
   onCancel,
   onSuccess,
+  value,
 }: TransformEditors) => {
   const source = AVAILABLE_TRANSFORMS[type];
 
@@ -40,7 +41,7 @@ export const useTransformEditors = ({
     mode: 'onSubmit',
     resolver: vestResolver(suite),
     defaultValues: {
-      transform: {},
+      transform: value || {},
     },
   });
 

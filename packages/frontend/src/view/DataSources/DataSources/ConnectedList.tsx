@@ -9,12 +9,12 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  TableActionCell,
   IconButton,
   Tooltip,
 } from '../../../ui';
 import { getKeyFromText } from '../../../utils';
 import { CONNECTED_HEAD } from '../constants';
-import { useStyles } from './useStyles';
 import { ConnectedList as Props } from './types';
 
 export const ConnectedList: React.FC<Props> = ({
@@ -22,7 +22,6 @@ export const ConnectedList: React.FC<Props> = ({
   onDelete,
   onUpdate,
 }) => {
-  const { actionCell } = useStyles();
   return (
     <>
       <WidgetHeader title="My connected data-sources" />
@@ -47,7 +46,7 @@ export const ConnectedList: React.FC<Props> = ({
                   <TableCell>{type || ''}</TableCell>
                   <TableCell>{status || ''}</TableCell>
                   <TableCell>{createdAt || ''}</TableCell>
-                  <TableCell align="right" className={actionCell}>
+                  <TableActionCell>
                     <Tooltip
                       title="Edit data-source"
                       placement="left"
@@ -70,7 +69,7 @@ export const ConnectedList: React.FC<Props> = ({
                         </IconButton>
                       </span>
                     </Tooltip>
-                  </TableCell>
+                  </TableActionCell>
                 </TableRow>
               );
             })}

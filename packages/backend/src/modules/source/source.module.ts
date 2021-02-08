@@ -6,7 +6,10 @@ import SourceResolver from './source.resolver';
 import SourceService from './source.service';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'Source', schema: sourceSchema }]), forwardRef(() => ApiDefModule)],
+  imports: [
+    MongooseModule.forFeature([{ name: 'Source', schema: sourceSchema }]),
+    forwardRef(() => ApiDefModule),
+  ],
   providers: [SourceService, SourceResolver],
   exports: [SourceService],
 })

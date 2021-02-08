@@ -29,10 +29,13 @@ export type TransformEditors = {
   type: string;
   onCancel(): void;
   onSuccess(data: any): void;
+  value?: any;
 };
 
 export type TransformsList = {
   transforms: any[];
+  onRemove(idx: number): () => void;
+  onEdit(idx: number, transform: any): () => void;
 };
 
 export type DataSource = NameForm & HandlerForm & TransformsForm;

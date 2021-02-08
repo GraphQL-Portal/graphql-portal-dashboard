@@ -14,9 +14,6 @@ import ApiDefModule from '../api-def/api-def.module';
       { name: 'NetworkMetric', schema: NetworkMetricSchema },
     ]),
   ],
-  providers: [
-    MetricService,
-    MetricResolver,
-  ],
+  providers: [MetricService, MetricResolver],
 })
-export default class MetricModule { }
+export default class MetricModule {}

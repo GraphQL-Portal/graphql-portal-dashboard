@@ -14,8 +14,8 @@ export default class TokenService {
 
   public constructor(
     @InjectModel('Token') private tokenModel: Model<ITokenDocument>,
-    private readonly logger: LoggerService,
-  ) { }
+    private readonly logger: LoggerService
+  ) {}
 
   public async refreshTokens(token: string, device: string): Promise<ITokens> {
     const context = `${this.constructor.name}:${this.refreshTokens.name}`;
@@ -36,10 +36,16 @@ export default class TokenService {
     const refreshToken = jwt.sign(user, TokenExpirationTime.MONTH);
     const accessToken = jwt.sign(user, TokenExpirationTime.DAY);
 
-    this.logger.log('Deleting previous user tokens with device', context, { user, device });
+    this.logger.log('Deleting previous user tokens with device', context, {
+      user,
+      device,
+    });
     await this.tokenModel.deleteMany({ user, device });
 
-    this.logger.log('Creating new refresh token for device', context, { user, device });
+    this.logger.log('Creating new refresh token for device', context, {
+      user,
+      device,
+    });
     await this.tokenModel.create({ user, token: refreshToken, device });
 
     return { refreshToken, accessToken };

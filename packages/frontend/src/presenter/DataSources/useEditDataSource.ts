@@ -12,10 +12,12 @@ export const useEditDataSource = (limit: number, initialState: DataSource) => {
     setStep,
   } = useNotLinearStepper(limit);
   const [state, setState] = useState<DataSource>(initialState);
+  const [isTouched, setIsTouched] = useState<boolean>(false);
 
   const updateState = (newState: any, step: number) => {
     setState((s: any) => Object.assign({}, s, newState));
     completeStep(step);
+    setIsTouched(true);
     nextStep();
   };
 
@@ -26,5 +28,6 @@ export const useEditDataSource = (limit: number, initialState: DataSource) => {
     completed,
     completeStep,
     setStep,
+    isTouched,
   };
 };

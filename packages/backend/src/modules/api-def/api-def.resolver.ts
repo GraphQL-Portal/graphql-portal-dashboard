@@ -1,5 +1,9 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { AccessControl, AuthorizationParam, Roles } from '../../common/decorators';
+import {
+  AccessControl,
+  AuthorizationParam,
+  Roles,
+} from '../../common/decorators';
 import AccessControlModels from '../../common/enum/access-control-models.enum';
 import RolesEnum from '../../common/enum/roles.enum';
 import IApiDef from '../../common/interface/api-def.interface';
@@ -24,14 +28,19 @@ export default class ApiDefResolver {
   }
 
   @Query()
-  @Roles([RolesEnum.USER])
-  public getApiDefs(@AuthorizationParam('_id') userId: string): Promise<ApiDefsWithTimestamp> {
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  public getApiDefs(
+    @AuthorizationParam('_id') userId: string
+  ): Promise<ApiDefsWithTimestamp> {
     return this.service.findAllByUser(userId);
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER])
-  public createApiDef(@Args() data: ApiDefCreateDto, @AuthorizationParam('_id') userId: string): Promise<IApiDef> {
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  public createApiDef(
+    @Args() data: ApiDefCreateDto,
+    @AuthorizationParam('_id') userId: string
+  ): Promise<IApiDef> {
     return this.service.create(data.apiDef, data.sources, userId);
   }
 

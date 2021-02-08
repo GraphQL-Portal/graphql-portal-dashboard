@@ -23,6 +23,8 @@ const confirmationCodeSchema = new mongoose.Schema(
   { versionKey: false, timestamps: true }
 );
 
-export interface IConfirmationCodeDocument extends IConfirmationCode, mongoose.Document { }
+export interface IConfirmationCodeDocument
+  extends IConfirmationCode,
+    mongoose.Document {}
 
 export default confirmationCodeSchema;

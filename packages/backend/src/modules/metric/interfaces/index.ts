@@ -10,10 +10,18 @@ import IAggregateFilters from './aggregate-filters.interface';
 import IApiActivity from './api-activity.interface';
 import IMetric from './metric.interface';
 
+export type AnyMetric =
+  | IGotRequest
+  | IGotError
+  | ISentResponse
+  | IResolverCalled
+  | IResolverDone
+  | IResolverError;
 
-export type AnyMetric = IGotRequest | IGotError | ISentResponse | IResolverCalled | IResolverDone | IResolverError;
-
-export type AnyResolverMetric = IResolverCalled | IResolverDone | IResolverError;
+export type AnyResolverMetric =
+  | IResolverCalled
+  | IResolverDone
+  | IResolverError;
 
 export {
   IGotRequest,

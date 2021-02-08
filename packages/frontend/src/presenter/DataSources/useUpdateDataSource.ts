@@ -16,6 +16,7 @@ export const useUpdateDataSource = (limit: number) => {
     updateState,
     completeStep,
     setStep,
+    isTouched,
   } = useEditDataSource(
     limit,
     unpackHandler(initialState || INITIAL_STATE, key || '')
@@ -43,7 +44,7 @@ export const useUpdateDataSource = (limit: number) => {
     step,
     state,
     updateState,
-    isDisabled: false,
+    isDisabled: !isTouched,
     completed,
     completeStep,
     setStep,

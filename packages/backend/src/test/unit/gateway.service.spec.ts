@@ -47,8 +47,12 @@ describe('GatewayService', () => {
     });
 
     it('onPing should save a gateway node in memory', async () => {
-      const setTimerMock = jest.spyOn(gatewayService as any, 'setTimer').mockReturnValue(1);
-      const gatewaysUpdatedMock = jest.spyOn(gatewayService as any, 'gatewaysUpdated').mockReturnValue(1);
+      const setTimerMock = jest
+        .spyOn(gatewayService as any, 'setTimer')
+        .mockReturnValue(1);
+      const gatewaysUpdatedMock = jest
+        .spyOn(gatewayService as any, 'gatewaysUpdated')
+        .mockReturnValue(1);
       const data = { nodeId: 'nodeId', configTimestamp: Date.now() };
 
       (gatewayService as any).onPing(JSON.stringify(data));
@@ -65,7 +69,9 @@ describe('GatewayService', () => {
 
   describe('setTimer', () => {
     it('onPing should save a timer in memory and remove a node then', async () => {
-      const gatewaysUpdatedMock = jest.spyOn(gatewayService as any, 'gatewaysUpdated').mockReturnValue(1);
+      const gatewaysUpdatedMock = jest
+        .spyOn(gatewayService as any, 'gatewaysUpdated')
+        .mockReturnValue(1);
       const nodeId = '1';
       (gatewayService as any).nodes = {
         '1': {
@@ -77,7 +83,9 @@ describe('GatewayService', () => {
       };
       // need this for time comparison condition in setTimer
       const fakeDate = Date.now() + GatewayStatusTimers.REMOVE_TIMEOUT * 2;
-      const dateNowMock = jest.spyOn(global.Date, 'now').mockReturnValue(fakeDate);
+      const dateNowMock = jest
+        .spyOn(global.Date, 'now')
+        .mockReturnValue(fakeDate);
 
       (gatewayService as any).setTimer(nodeId);
       expect(setTimeout).toHaveBeenCalledTimes(1);
@@ -106,12 +114,17 @@ describe('GatewayService', () => {
 
   describe('gatewaysUpdated', () => {
     it('should publish to the channel', async () => {
-      const publishGraphqlMock = jest.spyOn(redisService, 'publishGraphql').mockResolvedValueOnce();
+      const publishGraphqlMock = jest
+        .spyOn(redisService, 'publishGraphql')
+        .mockResolvedValueOnce();
 
       (gatewayService as any).gatewaysUpdated();
 
       expect(publishGraphqlMock).toHaveBeenCalledTimes(1);
-      expect(publishGraphqlMock).toHaveBeenCalledWith(Subscription.gatewaysUpdated, gatewayService.findAll());
+      expect(publishGraphqlMock).toHaveBeenCalledWith(
+        Subscription.gatewaysUpdated,
+        gatewayService.findAll()
+      );
     });
   });
 });

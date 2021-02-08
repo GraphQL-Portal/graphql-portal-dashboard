@@ -25,12 +25,34 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
     fields,
     onAddTransform,
     onRemoveTransform,
+    onRemove,
+    onEdit,
+    edited,
+    onCancelEdit,
+    onUpdateTransform,
   } = useTransforms(props);
   const { transformBlock, transformBlockTitle, addButton } = useStyles();
 
   return (
     <>
-      <List transforms={state.transforms} />
+      <List transforms={state.transforms} onRemove={onRemove} onEdit={onEdit} />
+      {Object.keys(edited).map((key) => {
+        const transform = edited[key];
+        const { name } = transform;
+        const Handler = getTransform(name);
+        return (
+          <fieldset className={transformBlock}>
+            <legend className={transformBlockTitle}>{name}</legend>
+            <Handler
+              key={`${name}-${key}`}
+              type={name}
+              onCancel={onCancelEdit(key)}
+              onSuccess={onUpdateTransform(Number(key))}
+              value={transform[name]}
+            />
+          </fieldset>
+        );
+      })}
       <form noValidate autoComplete="off" onSubmit={onAddTransform}>
         <HandlerRow>
           <HandlerCol>

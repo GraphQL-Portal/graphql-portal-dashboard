@@ -1,5 +1,5 @@
 enum TokenExpirationTime {
-  MONTH = 2.628e+6,
+  MONTH = 2.628e6,
   DAY = 86400,
 }
 

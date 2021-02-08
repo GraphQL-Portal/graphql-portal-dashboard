@@ -7,9 +7,16 @@ import * as TokenTool from '../tool/token.tool';
 
 @Injectable()
 export default class AuthenticationMiddleware implements NestMiddleware {
-  public constructor(private service: UserService, private logger: LoggerService) {}
+  public constructor(
+    private service: UserService,
+    private logger: LoggerService
+  ) {}
 
-  public async use(req: Request, res: Response, next: NextFunction): Promise<void> {
+  public async use(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> {
     const context = `${this.constructor.name}:${this.use.name}`;
     try {
       if (!req.headers) return next();
@@ -23,7 +30,9 @@ export default class AuthenticationMiddleware implements NestMiddleware {
       this.logger.debug('Looking for user', context, { userId });
       const user = await this.service.findById(userId);
 
-      this.logger.debug('Setting user to request', context, { email: user?.email });
+      this.logger.debug('Setting user to request', context, {
+        email: user?.email,
+      });
       (req as any)[Metadata.USER] = user;
       next();
     } catch (error) {

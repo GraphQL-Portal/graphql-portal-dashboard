@@ -14,9 +14,13 @@ const bootstrap = async (): Promise<void> => {
   const expressApp: Express = express();
   expressApp.disable(Header.X_POWERED_BY);
 
-  const app: INestApplication = await NestFactory.create(AppModule, new ExpressAdapter(expressApp), {
-    logger,
-  });
+  const app: INestApplication = await NestFactory.create(
+    AppModule,
+    new ExpressAdapter(expressApp),
+    {
+      logger,
+    }
+  );
 
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
