@@ -19,8 +19,8 @@
       "accountId": "@@MAXMIND_ACCOUNT_ID"
     },
     "defaultAdmin": {
-      "email": "@DEFAULT_ADMIN_EMAIL",
-      "password": "@DEFAULT_ADMIN_PASSWORD"
+      "email": "@@DEFAULT_ADMIN_EMAIL",
+      "password": "@@DEFAULT_ADMIN_PASSWORD"
     }
   },
   "client": {
