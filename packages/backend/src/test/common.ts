@@ -21,8 +21,10 @@ export enum Method {
 export type RequestResult = supertest.Test;
 export type RequestToResult = (method: Method, route: string) => supertest.Test;
 
-export const requestTo = (app: INestApplication) => (method: Method, route: string): RequestResult =>
-  supertest(app.getHttpServer())[method](route);
+export const requestTo = (app: INestApplication) => (
+  method: Method,
+  route: string
+): RequestResult => supertest(app.getHttpServer())[method](route);
 
 export const randomObjectId = (): string => new ObjectId().toHexString();
 
@@ -74,13 +76,11 @@ export const createUser = async (
   password = 'Secret123'
 ): Promise<IUser & ITokens> => {
   jest.spyOn(service, 'sendEmailConfirmationCode').mockResolvedValue();
-  await service.register(
-    {
-      email,
-      password,
-      role,
-    }
-  );
+  await service.register({
+    email,
+    password,
+    role,
+  });
   jest.spyOn(service, 'isEmailNotConfirmed').mockResolvedValue(false);
   const tokens = await service.login(email, password, randomString());
 
@@ -93,7 +93,10 @@ export const createUser = async (
 };
 
 export const expectSource = (source: ISourceDocument): void =>
-  expect(source.toJSON()).toMatchObject({ ...sourceSchema, ...mongoDocumentSchema });
+  expect(source.toJSON()).toMatchObject({
+    ...sourceSchema,
+    ...mongoDocumentSchema,
+  });
 
 export const expectTokens = (result: ITokens): void =>
   expect(result).toMatchObject({

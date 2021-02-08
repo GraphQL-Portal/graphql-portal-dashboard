@@ -2,7 +2,11 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import IUser from '../../common/interface/user.interface';
 import UserService from './user.service';
 import TokenService from './token.service';
-import { AuthorizationEntity, AuthorizationParam, Roles } from '../../common/decorators';
+import {
+  AuthorizationEntity,
+  AuthorizationParam,
+  Roles,
+} from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
 import { IUserDocument } from '../../data/schema/user.schema';
 import ITokens from './interfaces/tokens.interface';
@@ -12,14 +16,14 @@ import IUpdateUser from '../../common/interface/update-user.interface';
 export default class UserResolver {
   public constructor(
     private readonly service: UserService,
-    private readonly tokenService: TokenService,
-  ) { }
+    private readonly tokenService: TokenService
+  ) {}
 
   @Mutation()
   public login(
     @Args('email') email: string,
     @Args('password') password: string,
-    @Args('device') device: string,
+    @Args('device') device: string
   ): Promise<ITokens> {
     return this.service.login(email, password, device);
   }
@@ -34,7 +38,7 @@ export default class UserResolver {
   @Mutation()
   public refreshTokens(
     @Args('refreshToken') refreshToken: string,
-    @Args('device') device: string,
+    @Args('device') device: string
   ): Promise<ITokens> {
     return this.tokenService.refreshTokens(refreshToken, device);
   }
@@ -47,7 +51,9 @@ export default class UserResolver {
 
   @Roles([RolesEnum.ADMIN])
   @Query()
-  public getUsers(@AuthorizationParam('_id') userId: string): Promise<IUserDocument[]> {
+  public getUsers(
+    @AuthorizationParam('_id') userId: string
+  ): Promise<IUserDocument[]> {
     return this.service.getUsers(userId);
   }
 
@@ -87,7 +93,11 @@ export default class UserResolver {
   }
 
   @Mutation()
-  public resetPassword(@Args('email') email: string, @Args('code') code: string, @Args('password') password: string): Promise<boolean> {
+  public resetPassword(
+    @Args('email') email: string,
+    @Args('code') code: string,
+    @Args('password') password: string
+  ): Promise<boolean> {
     return this.service.resetPassword(email, code, password);
   }
 }

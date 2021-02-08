@@ -4,8 +4,19 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
-import { arrayObjectToObject } from './helpers';
+
+import { arrayObjectToObject, objectToFieldArray } from './helpers';
+
+const GRAPHQL_DEFAULT_STATE = {
+  endpoint: '',
+  method: '',
+  schemaHeaders: [],
+  operationHeaders: [],
+  useGETForQueries: false,
+  useSSEForSubscription: false,
+  cacheIntrospection: false,
+  multipart: false,
+};
 
 const suite = vest.create('graphql_handler', ({ endpoint }) => {
   test('endpoint', 'Endpoint is required', () => {
@@ -13,30 +24,22 @@ const suite = vest.create('graphql_handler', ({ endpoint }) => {
   });
 });
 
-const GRAPHQL_DEFAULT_STATE = {
-  endpoint: '',
-  schemaHeaders: [],
-  operationHeaders: [],
-  useGETForQueries: false,
-  method: '',
-  useSSEForSubscription: false,
-  customFetch: '',
-  webSocketImpl: '',
-  introspection: '',
-  cacheIntrospection: false,
-  multipart: false,
-};
-
 export const useGraphQLHandler = ({
   state,
   updateState,
   step,
 }: HandlerStep) => {
-  const handlerState = Object.assign({}, GRAPHQL_DEFAULT_STATE, state);
+  const { schemaHeaders, operationHeaders, ...handler } = state.handler;
+
+  const defaultValues = Object.assign({}, GRAPHQL_DEFAULT_STATE, handler, {
+    schemaHeaders: objectToFieldArray(schemaHeaders),
+    operationHeaders: objectToFieldArray(operationHeaders),
+  });
+
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   useFormErrors(errors);
@@ -59,15 +62,19 @@ export const useGraphQLHandler = ({
     name: 'operationHeaders',
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = ({
+    schemaHeaders,
+    operationHeaders,
+    method,
+    ...handler
+  }: any) => {
     updateState(
       {
         handler: {
-          [SOURCE_NAMES.GRAPHQL]: {
-            ...data,
-            schemaHeaders: arrayObjectToObject(data.schemaHeaders),
-            operationHeaders: arrayObjectToObject(data.operationHeaders),
-          },
+          ...handler,
+          schemaHeaders: arrayObjectToObject(schemaHeaders),
+          operationHeaders: arrayObjectToObject(operationHeaders),
+          ...(method !== '' ? { method } : {}),
         },
       },
       step

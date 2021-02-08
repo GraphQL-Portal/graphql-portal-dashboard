@@ -3,7 +3,10 @@ import { Helmet } from 'react-helmet';
 import { Redirect } from 'react-router-dom';
 
 import { ROUTES } from '../../../model/providers';
-import { useAddDataSource } from '../../../presenter/DataSources';
+import {
+  useAddDataSource,
+  useUpdateDataSource,
+} from '../../../presenter/DataSources';
 import {
   WidgetRow,
   HugeWidget,
@@ -21,22 +24,26 @@ import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
 
-export const AddDataSource: React.FC = () => {
+export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
+  mode,
+}) => {
+  const hook = mode === 'add' ? useAddDataSource : useUpdateDataSource;
   const {
     source,
     step,
     updateState,
     state,
     isDisabled,
-    onAddSource,
+    onSubmit,
     setStep,
     completed,
-  } = useAddDataSource(ADD_SOURCE_STEPS.length - 1);
+    text,
+  } = hook(ADD_SOURCE_STEPS.length - 1);
   const { visibleOverflow } = useStyles({});
 
   if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;
 
-  const { title, description } = source;
+  const { title, description } = source.connector;
   const { name, handler, transforms } = state;
 
   return (
@@ -47,9 +54,9 @@ export const AddDataSource: React.FC = () => {
       <AddDataSourceHeader />
       <WidgetRow>
         <HugeWidget className={visibleOverflow}>
-          <WidgetHeader title="Configure a data-source">
-            <PrimaryButton disabled={isDisabled} onClick={onAddSource}>
-              Add data-source
+          <WidgetHeader title={text.title}>
+            <PrimaryButton disabled={isDisabled} onClick={onSubmit}>
+              {text.button}
             </PrimaryButton>
           </WidgetHeader>
           <WidgetBody>

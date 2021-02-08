@@ -1,58 +1,39 @@
-import { useState } from 'react';
-
-import { useNotLinearStepper } from '../../model/Hooks';
 import { useCreateSource } from '../../model/DataSources/commands';
 import { useDataSourceContext } from '../../model/providers';
+import { useEditDataSource } from './useEditDataSource';
 import { INITIAL_STATE } from './constants';
-
-type State = {
-  name: string;
-  handler: any;
-  transforms: any[];
-};
+import { packHandler } from './helpers';
 
 export const useAddDataSource = (limit: number) => {
+  const { source = {}, clearSource } = useDataSourceContext();
   const {
+    state,
     step,
-    nextStep,
     completed,
+    updateState,
     completeStep,
     setStep,
-  } = useNotLinearStepper(limit);
-  const { source = {}, clearSource } = useDataSourceContext();
-  const [state, setState] = useState<State>(INITIAL_STATE);
+  } = useEditDataSource(limit, INITIAL_STATE);
 
-  const onCompleted = () => {
-    // @TODO I need to refetch data-source from here
-    // or I need to tell useDataSource to refetch :)
-    clearSource();
-  };
+  const onCompleted = () => clearSource();
 
-  const onError = (err: any) => {
-    console.error('CREATE ERROR: ', err);
-    // @TODO probably I need to show error message
-  };
+  // @TODO probably I need to show error message
+  const onError = console.error;
 
   // Send new source to the server
   const { createSource } = useCreateSource({ onCompleted, onError });
 
-  const updateState = (newState: any, step: number) => {
-    setState((s: any) => Object.assign({}, s, newState));
-    completeStep(step);
-    nextStep();
-  };
-
-  const onAddSource = () => {
+  const onSubmit = () => {
     createSource({
       variables: {
-        source: state,
+        source: packHandler(state, source.key),
       },
     });
   };
 
   return {
     source,
-    onAddSource,
+    onSubmit,
     step,
     state,
     updateState,
@@ -60,5 +41,9 @@ export const useAddDataSource = (limit: number) => {
     completed,
     completeStep,
     setStep,
+    text: {
+      title: 'Configure a data-source',
+      button: 'Add data-source',
+    },
   };
 };

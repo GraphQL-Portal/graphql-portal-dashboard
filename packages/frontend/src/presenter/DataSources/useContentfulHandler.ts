@@ -4,7 +4,11 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { SOURCE_NAMES } from './constants';
+
+const CONTENTFUL_DEFAULT_STATE = {
+  token: '',
+  endpoint: '',
+};
 
 const suite = vest.create('contentful_handler', ({ token, endpoint }) => {
   test('token', 'Token is required', () => {
@@ -15,17 +19,16 @@ const suite = vest.create('contentful_handler', ({ token, endpoint }) => {
   });
 });
 
-const CONTENTFUL_DEFAULT_STATE = {
-  token: '',
-  endpoint: '',
-};
-
 export const useContentfulHandler = ({
   state,
   updateState,
   step,
 }: HandlerStep) => {
-  const handlerState = Object.assign({}, CONTENTFUL_DEFAULT_STATE, state);
+  const handlerState = Object.assign(
+    {},
+    CONTENTFUL_DEFAULT_STATE,
+    state.handler
+  );
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
@@ -34,8 +37,7 @@ export const useContentfulHandler = ({
 
   useFormErrors(errors);
 
-  const onSubmit = (data: any) =>
-    updateState({ handler: { [SOURCE_NAMES.CONTENTFUL_HANDLER]: data } }, step);
+  const onSubmit = (handler: any) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),

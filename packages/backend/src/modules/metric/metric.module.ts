@@ -3,6 +3,7 @@ import MetricService from './metric.service';
 import RequestMetricSchema from '../../data/schema/request-metric.schema';
 import NetworkMetricSchema from '../../data/schema/network-metric.schema';
 import { MongooseModule } from '@nestjs/mongoose';
+import MetricResolver from './metric.resolver';
 
 @Module({
   imports: [
@@ -11,8 +12,6 @@ import { MongooseModule } from '@nestjs/mongoose';
       { name: 'NetworkMetric', schema: NetworkMetricSchema },
     ]),
   ],
-  providers: [
-    MetricService
-  ],
+  providers: [MetricService, MetricResolver],
 })
-export default class MetricModule { }
+export default class MetricModule {}

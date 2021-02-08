@@ -12,10 +12,12 @@ import UserController from './user.controller';
   controllers: [UserController],
   imports: [
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
-    MongooseModule.forFeature([{ name: 'ConfirmationCode', schema: ConfirmationCodeSchema }]),
-    MongooseModule.forFeature([{ name: 'Token', schema: TokenSchema }])]
-  ,
+    MongooseModule.forFeature([
+      { name: 'ConfirmationCode', schema: ConfirmationCodeSchema },
+    ]),
+    MongooseModule.forFeature([{ name: 'Token', schema: TokenSchema }]),
+  ],
   providers: [UserService, UserResolver, TokenService],
   exports: [UserService, TokenService],
 })
-export default class UserModule { }
+export default class UserModule {}

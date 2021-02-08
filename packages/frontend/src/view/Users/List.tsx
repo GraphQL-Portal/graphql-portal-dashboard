@@ -6,6 +6,7 @@ import {
   Table,
   TableHead,
   TableCell,
+  TableActionCell,
   TableBody,
   TableRow,
   Tooltip,

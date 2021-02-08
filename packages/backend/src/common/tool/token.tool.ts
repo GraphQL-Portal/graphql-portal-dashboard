@@ -11,7 +11,9 @@ export const getTokenFromHeaders = (headers: Headers): string | undefined => {
 
 export const verify = (token: string): { userId: string } => {
   try {
-    return jwt.verify(token, config.application.jwtSecret) as { userId: string };
+    return jwt.verify(token, config.application.jwtSecret) as {
+      userId: string;
+    };
   } catch (error) {
     throw new AuthenticationError('Bad JWT token.');
   }

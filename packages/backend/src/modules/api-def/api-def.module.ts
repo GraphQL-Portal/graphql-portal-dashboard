@@ -6,7 +6,10 @@ import ApiDefResolver from './api-def.resolver';
 import ApiDefService from './api-def.service';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: 'ApiDef', schema: apiDefSchema }]), forwardRef(() => SourceModule)],
+  imports: [
+    MongooseModule.forFeature([{ name: 'ApiDef', schema: apiDefSchema }]),
+    forwardRef(() => SourceModule),
+  ],
   providers: [ApiDefService, ApiDefResolver],
   exports: [ApiDefService],
 })

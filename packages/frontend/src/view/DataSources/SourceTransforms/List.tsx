@@ -1,16 +1,24 @@
 import React from 'react';
+import { Delete, Edit } from '@material-ui/icons';
 
-import { Table, TableHead, TableBody, TableRow, TableCell } from '../../../ui';
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableActionCell,
+  Tooltip,
+  IconButton,
+} from '../../../ui';
 import { getKeyFromText } from '../../../utils';
+import { TransformsList as Props } from '../../../types';
 import { TRANSFORMS_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 
-type Props = {
-  transforms: any[];
-};
-
-export const List: React.FC<Props> = ({ transforms }) => {
+export const List: React.FC<Props> = ({ transforms, onRemove, onEdit }) => {
   const { list } = useStyles();
+  if (transforms.length === 0) return null;
   return (
     <Table className={list}>
       <TableHead>
@@ -24,12 +32,35 @@ export const List: React.FC<Props> = ({ transforms }) => {
         ))}
       </TableHead>
       <TableBody>
-        {transforms.map((transform) => (
+        {transforms.map((transform, idx) => (
           <TableRow key={transform.name}>
             <TableCell>{transform.name}</TableCell>
             <TableCell>{transform.description}</TableCell>
             <TableCell />
-            <TableCell align="right" />
+            <TableActionCell>
+              <Tooltip
+                title="Edit transform"
+                placement="left"
+                aria-label="delete transform"
+              >
+                <span>
+                  <IconButton onClick={onEdit(idx, transform)}>
+                    <Edit />
+                  </IconButton>
+                </span>
+              </Tooltip>
+              <Tooltip
+                title="Delete transform"
+                placement="left"
+                aria-label="delete transform"
+              >
+                <span>
+                  <IconButton onClick={onRemove(idx)}>
+                    <Delete />
+                  </IconButton>
+                </span>
+              </Tooltip>
+            </TableActionCell>
           </TableRow>
         ))}
       </TableBody>

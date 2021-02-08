@@ -6,10 +6,18 @@ import IGotError from './got-error.interface';
 import ISentResponse from './sent-response.interface';
 import IReducedResolver from './reduced-resolver.interface';
 
+export type AnyMetric =
+  | IGotRequest
+  | IGotError
+  | ISentResponse
+  | IResolverCalled
+  | IResolverDone
+  | IResolverError;
 
-export type AnyMetric = IGotRequest | IGotError | ISentResponse | IResolverCalled | IResolverDone | IResolverError;
-
-export type AnyResolverMetric = IResolverCalled | IResolverDone | IResolverError;
+export type AnyResolverMetric =
+  | IResolverCalled
+  | IResolverDone
+  | IResolverError;
 
 export {
   IGotRequest,
