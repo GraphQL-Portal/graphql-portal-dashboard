@@ -9,11 +9,13 @@ export const formatDateDistance = (date: string | undefined): string => {
     : formatDistanceToNow(new Date(date), { addSuffix: true });
 };
 
+export const formatHandlerTitle = (title: string): string =>
+  title.replace('Handler', '');
+
 export const formatHandlerType = (handler: any): string => {
   return (
-    AVAILABLE_DATA_SOURCES[Object.keys(handler)[0]]?.title?.replace(
-      'Handler',
-      ''
+    formatHandlerTitle(
+      AVAILABLE_DATA_SOURCES[Object.keys(handler)[0]]?.title
     ) ?? ''
   );
 };

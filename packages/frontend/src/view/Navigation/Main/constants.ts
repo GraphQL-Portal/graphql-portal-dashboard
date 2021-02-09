@@ -6,11 +6,11 @@ import {
   Build,
   DashboardRounded,
   FormatListBulleted,
-  Forum,
   ImportContacts,
   PeopleAlt,
   Settings,
   VerticalSplit,
+  GitHub,
 } from '@material-ui/icons';
 
 export const GROUPS = [
@@ -77,9 +77,9 @@ export const GROUPS = [
         Icon: ImportContacts,
       },
       {
-        text: 'Support forum',
+        text: 'GitHub',
         link: ROUTES.SUPPORT,
-        Icon: Forum,
+        Icon: GitHub,
       },
       {
         text: 'Professional services',

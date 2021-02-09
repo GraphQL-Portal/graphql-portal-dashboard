@@ -18,7 +18,8 @@ export const SoapHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="WSDL (required)"
+            label="WSDL"
+            required
             name="wsdl"
             error={hasErrors('wsdl')}
             fullWidth

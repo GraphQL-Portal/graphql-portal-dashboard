@@ -18,9 +18,10 @@ export const SlackHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Token (required)"
+            label="Token"
             name="token"
             error={hasErrors('token')}
+            required
             fullWidth
           />
         </HandlerCol>

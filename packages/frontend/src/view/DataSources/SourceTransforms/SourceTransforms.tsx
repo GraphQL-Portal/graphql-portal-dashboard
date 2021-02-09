@@ -62,7 +62,7 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
               name="transform"
               options={transforms}
               labelId="transform"
-              label="Choose transform to add"
+              label="Select a transform"
               fullWidth
             />
           </HandlerCol>

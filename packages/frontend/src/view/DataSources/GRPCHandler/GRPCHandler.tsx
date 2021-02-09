@@ -27,7 +27,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Endpoint (required)"
+            label="Endpoint"
+            required
             name="endpoint"
             error={hasErrors('endpoint')}
             fullWidth
@@ -39,7 +40,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="gRPC Proto file path (required)"
+            label="gRPC Proto file path"
+            required
             name="protoFilePath"
             error={hasErrors('protoFilePath')}
             fullWidth
