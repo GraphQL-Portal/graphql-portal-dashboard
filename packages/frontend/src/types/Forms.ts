@@ -10,3 +10,7 @@ export type ObjectArray = {
   fields: any[];
   name: string;
 } & ErrorsAndControl;
+
+export type FormGroup = {
+  title: string;
+};

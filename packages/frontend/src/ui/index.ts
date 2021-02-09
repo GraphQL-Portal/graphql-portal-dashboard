@@ -9,6 +9,7 @@ export { Dialog, DialogText, DialogTitle } from './Dialogs';
 export { Emoji } from './Emoji';
 export { EmptyContainer, EmptyIcon, EmptyText } from './Empty';
 export { Errors } from './Errors';
+export * from './Form';
 export { Grid, Row, Col } from './Grid';
 export { Header, HeaderBackButton } from './Header';
 export { Input } from './Input';
