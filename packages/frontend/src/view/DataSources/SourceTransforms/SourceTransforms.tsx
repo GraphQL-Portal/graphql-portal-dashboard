@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 
 import { useTransforms } from '../../../presenter/DataSources';
 import { TransformsStep, TransformsMapper } from '../../../types';
-import { Select, OutlineButton } from '../../../ui';
+import { Select, OutlineButton, FormGroup } from '../../../ui';
 import { HandlerRow, HandlerCol } from '../Layout';
 import { TransformEditors } from '../TransformEditors';
 
@@ -31,7 +31,7 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
     onCancelEdit,
     onUpdateTransform,
   } = useTransforms(props);
-  const { transformBlock, transformBlockTitle, addButton } = useStyles();
+  const { addButton } = useStyles();
 
   return (
     <>
@@ -41,8 +41,7 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
         const { name } = transform;
         const Handler = getTransform(name);
         return (
-          <fieldset className={transformBlock}>
-            <legend className={transformBlockTitle}>{name}</legend>
+          <FormGroup title={name}>
             <Handler
               key={`${name}-${key}`}
               type={name}
@@ -50,7 +49,7 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
               onSuccess={onUpdateTransform(Number(key))}
               value={transform[name]}
             />
-          </fieldset>
+          </FormGroup>
         );
       })}
       <form noValidate autoComplete="off" onSubmit={onAddTransform}>
@@ -76,15 +75,14 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
       {fields.map((field, idx) => {
         const Handler = getTransform(field);
         return (
-          <fieldset className={transformBlock}>
-            <legend className={transformBlockTitle}>{field}</legend>
+          <FormGroup title={field}>
             <Handler
               key={`${field}-${idx}`}
               type={field}
               onCancel={onRemoveTransform(idx)}
               onSuccess={addTransform}
             />
-          </fieldset>
+          </FormGroup>
         );
       })}
     </>
