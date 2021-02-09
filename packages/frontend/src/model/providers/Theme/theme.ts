@@ -82,6 +82,23 @@ export const theme = createMuiTheme({
         fontWeight: BOLD_FONT,
       },
     },
+    MuiTab: {
+      root: {
+        textTransform: 'none',
+      },
+      textColorPrimary: {
+        color: 'rgba(255, 255, 255, 0.7)',
+
+        '&.Mui-selected': {
+          color: 'white',
+        },
+      },
+    },
+    MuiTabs: {
+      flexContainer: {
+        borderBottom: `1px solid ${RGBA(0.24)}`,
+      },
+    },
   },
   typography: {
     htmlFontSize: 16,
