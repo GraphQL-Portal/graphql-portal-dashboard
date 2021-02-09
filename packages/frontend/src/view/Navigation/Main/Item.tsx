@@ -5,7 +5,7 @@ import { TextButton } from '../../../ui';
 import { GroupItem } from './types';
 import { useStyles } from './useStyles';
 
-export const Item:React.FC<GroupItem> = ({ link, text, Icon }) => {
+export const Item: React.FC<GroupItem> = ({ link, text, Icon }) => {
   const { item, activeItem, button } = useStyles();
 
   return (
@@ -15,4 +15,4 @@ export const Item:React.FC<GroupItem> = ({ link, text, Icon }) => {
       </TextButton>
     </NavLink>
   );
-}
+};

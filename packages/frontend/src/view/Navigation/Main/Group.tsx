@@ -13,9 +13,12 @@ export const Group: React.FC<Props> = ({ name, items }) => {
     <section className={group}>
       {!!name && <H6 className={groupName}>{name}</H6>}
       {items.map((item) => {
-        const ProtectedItem = RoleProtectedComponent<GroupItem>(item.roles, Item);
-        return <ProtectedItem {...item} key={getKeyFromText(item.text)} />
+        const ProtectedItem = RoleProtectedComponent<GroupItem>(
+          item.roles,
+          Item
+        );
+        return <ProtectedItem {...item} key={getKeyFromText(item.text)} />;
       })}
     </section>
   );
-}
+};

@@ -81,10 +81,14 @@ export const CreateUser: React.FC = () => {
             label="Role"
             fullWidth
           />
-          <PrimaryButton fullWidth type="submit">Create</PrimaryButton>
-        </form >
-        <TextButton onClick={onCancel} type="reset">Cancel</TextButton>
-      </ModalDialog >
+          <PrimaryButton fullWidth type="submit">
+            Create
+          </PrimaryButton>
+        </form>
+        <TextButton onClick={onCancel} type="reset">
+          Cancel
+        </TextButton>
+      </ModalDialog>
     </>
   );
 };

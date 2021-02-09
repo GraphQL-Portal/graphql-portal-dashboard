@@ -6,6 +6,6 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
 
     '& > span': {
       color: palette.text.secondary,
-    }
-  }
+    },
+  },
 }));

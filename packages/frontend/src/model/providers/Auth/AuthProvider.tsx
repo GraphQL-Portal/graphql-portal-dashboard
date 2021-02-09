@@ -45,7 +45,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     setAccessToken('');
     setRefreshToken('');
     setRole(Roles.GUEST);
-  }
+  };
 
-  return (<Provider value={{ accessToken, role, refreshToken, setAuth, signOut }}>{children}</Provider>);
+  return (
+    <Provider value={{ accessToken, role, refreshToken, setAuth, signOut }}>
+      {children}
+    </Provider>
+  );
 };

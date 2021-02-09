@@ -19,7 +19,7 @@ const INITIAL_STATE: ToastMessage = {
   isVisible: false,
 };
 
-export const ToastProvider:React.FC = ({ children }) => {
+export const ToastProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
@@ -28,4 +28,4 @@ export const ToastProvider:React.FC = ({ children }) => {
       <Toast state={state} dispatch={dispatch} />
     </Provider>
   );
-}
+};

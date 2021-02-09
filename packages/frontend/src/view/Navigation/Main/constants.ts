@@ -73,7 +73,7 @@ export const GROUPS = [
         text: 'Gateway nodes',
         link: ROUTES.NODES,
         Icon: Ballot,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [Roles.ADMIN],
       },
     ],
   },

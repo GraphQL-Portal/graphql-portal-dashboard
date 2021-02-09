@@ -6,7 +6,7 @@ import { Tooltip } from '../../Tooltip';
 import { WidgetHeader as Props } from '../types';
 import { useStyles } from './useStyles';
 
-export const WidgetHeader:React.FC<Props> = ({ title, children, tooltip }) => {
+export const WidgetHeader: React.FC<Props> = ({ title, children, tooltip }) => {
   const { widgetHeader, widgetHeaderTitle, titleText, iconRoot } = useStyles();
 
   return (
@@ -22,4 +22,4 @@ export const WidgetHeader:React.FC<Props> = ({ title, children, tooltip }) => {
       <div>{children}</div>
     </header>
   );
-}
+};

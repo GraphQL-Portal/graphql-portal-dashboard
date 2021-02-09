@@ -1,4 +1,7 @@
-import { useGateways, useSyncConfiguration } from '../../model/GatewayNodes/queries';
+import {
+  useGateways,
+  useSyncConfiguration,
+} from '../../model/GatewayNodes/queries';
 
 export const useGatewayNodes = () => {
   const { onSyncConfiguration, syncData } = useSyncConfiguration();
@@ -12,4 +15,4 @@ export const useGatewayNodes = () => {
   } = syncData || { getApiDefs: {} };
 
   return { loading, data, onSyncClick, timestamp };
-}
+};

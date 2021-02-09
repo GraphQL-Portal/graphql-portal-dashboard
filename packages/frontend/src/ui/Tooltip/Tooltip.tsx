@@ -3,9 +3,7 @@ import { Tooltip as MuiTooltip, TooltipProps } from '@material-ui/core';
 
 import { useStyles } from './useStyles';
 
-export const Tooltip:React.FC<TooltipProps> = (props) => {
+export const Tooltip: React.FC<TooltipProps> = (props) => {
   const { tooltip, arrow } = useStyles();
-  return (
-    <MuiTooltip {...props} classes={{ tooltip, arrow }} arrow />
-  );
-}
+  return <MuiTooltip {...props} classes={{ tooltip, arrow }} arrow />;
+};

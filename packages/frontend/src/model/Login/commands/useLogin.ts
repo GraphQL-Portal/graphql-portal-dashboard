@@ -13,4 +13,4 @@ export const useLogin = (options: any) => {
   const [onLogin] = useMutation(LOGIN, options);
 
   return { onLogin };
-}
+};

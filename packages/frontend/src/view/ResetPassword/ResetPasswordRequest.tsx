@@ -18,13 +18,12 @@ import {
 import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
-
 export const ResetPasswordRequest: React.FC = () => {
   const { content, logo, formFrame, footerWrapper, links } = useStyles();
   const { control, onSubmit, errors } = useResetPasswordRequest();
   const { accessToken } = useAuth();
 
-  if (accessToken) return <Redirect to={ROUTES.MAIN} />
+  if (accessToken) return <Redirect to={ROUTES.MAIN} />;
 
   return (
     <Content className={content}>
@@ -55,7 +54,8 @@ export const ResetPasswordRequest: React.FC = () => {
                       Send
                     </PrimaryButton>
                     <span className={links}>
-                      An email will be sent to you with a link to reset your password.
+                      An email will be sent to you with a link to reset your
+                      password.
                     </span>
                   </div>
                 </WidgetActions>
@@ -66,4 +66,4 @@ export const ResetPasswordRequest: React.FC = () => {
       </Grid>
     </Content>
   );
-}
+};

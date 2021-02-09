@@ -8,7 +8,11 @@ export const useMetrics = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [scale, setScale] = useState('day' as Scale);
 
-  const { data, loading, error, refetch } = useMetricsQuery(startDate, endDate, scale);
+  const { data, loading, error, refetch } = useMetricsQuery(
+    startDate,
+    endDate,
+    scale
+  );
 
   useEffect(() => {
     let data = { startDate: startDate, endDate: endDate, scale };
@@ -20,7 +24,7 @@ export const useMetrics = () => {
       };
     }
     refetch(data);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate, endDate, scale]);
 
   return {

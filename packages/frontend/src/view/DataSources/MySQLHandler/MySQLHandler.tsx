@@ -9,7 +9,14 @@ import { ObjectArray } from '../../Form';
 import { getError } from '../helpers';
 
 export const MySQLHandler: React.FC<HandlerStep> = (props) => {
-  const { control, errors, onSubmit, poolFields, appendPoolField, removePoolField } = useMySQLHandler(props);
+  const {
+    control,
+    errors,
+    onSubmit,
+    poolFields,
+    appendPoolField,
+    removePoolField,
+  } = useMySQLHandler(props);
   const hasErrors = getError(errors);
 
   return (
@@ -67,7 +74,7 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            type='password'
+            type="password"
             label="Password (required)"
             name="password"
             error={hasErrors('password')}

@@ -18,13 +18,12 @@ import {
 import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
-
 export const ResetPassword: React.FC = () => {
   const { content, logo, formFrame, formField } = useStyles();
   const { control, onSubmit, errors } = useResetPassword();
   const { accessToken } = useAuth();
 
-  if (accessToken) return <Redirect to={ROUTES.MAIN} />
+  if (accessToken) return <Redirect to={ROUTES.MAIN} />;
 
   return (
     <Content className={content}>
@@ -76,4 +75,4 @@ export const ResetPassword: React.FC = () => {
       </Grid>
     </Content>
   );
-}
+};

@@ -1,10 +1,10 @@
 export { Content } from './Content';
 export { Dashboard } from './Dashboard';
-export { DataSources } from './DataSources'
-export { Documentation } from './Documentation'
-export { GatewayNodes } from './GatewayNodes'
-export { GlobalSettings } from './GlobalSettings'
-export { MetricsAndLogs } from './MetricsAndLogs'
+export { DataSources } from './DataSources';
+export { Documentation } from './Documentation';
+export { GatewayNodes } from './GatewayNodes';
+export { GlobalSettings } from './GlobalSettings';
+export { MetricsAndLogs } from './MetricsAndLogs';
 export { Login } from './Login';
 export { SignUp } from './SignUp';
 export { ConfirmEmail } from './ConfirmEmail';

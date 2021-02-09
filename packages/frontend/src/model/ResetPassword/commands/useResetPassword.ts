@@ -10,4 +10,4 @@ export const useResetPassword = (options: any) => {
   const [onResetPassword] = useMutation(RERSET_PASSWORD, options);
 
   return { onResetPassword };
-}
+};

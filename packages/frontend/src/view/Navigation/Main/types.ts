@@ -7,7 +7,7 @@ export type GroupItem = {
   link: string;
   roles: Roles[];
   Icon: React.JSXElementConstructor<{}>;
-}
+};
 
 export type Group = {
   name?: string;

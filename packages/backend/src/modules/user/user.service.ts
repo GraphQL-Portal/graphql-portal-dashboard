@@ -117,14 +117,19 @@ export default class UserService {
     const { email, password } = config.application.defaultAdmin;
 
     if (email === 'admin@example.com' || password === 'Secret123!') {
-      this.logger.warn('You are running application with default admin credentials', `${this.constructor.name}:${this.createDefaultUser.name}`);
+      this.logger.warn(
+        'You are running application with default admin credentials',
+        `${this.constructor.name}:${this.createDefaultUser.name}`
+      );
     }
 
     const toCreate = await this.userModel.findOne({ email });
 
     if (!toCreate) {
       await this.userModel.create({
-        email, password, role: Roles.ADMIN,
+        email,
+        password,
+        role: Roles.ADMIN,
       });
     }
   }

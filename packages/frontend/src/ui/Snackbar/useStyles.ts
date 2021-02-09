@@ -7,5 +7,5 @@ export const useStyles = makeStyles(() => ({
   },
   icon: {
     display: 'none',
-  }
+  },
 }));

@@ -20,9 +20,13 @@ import { Roles } from '../../model/providers/Auth/constants';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
-  const ProtectedUsers = RoleProtectedComponent([Roles.ADMIN], Users, ROUTES.MAIN);
+  const ProtectedUsers = RoleProtectedComponent(
+    [Roles.ADMIN],
+    Users,
+    ROUTES.MAIN
+  );
 
-  if (!accessToken) return <Redirect to={ROUTES.LOGIN} />
+  if (!accessToken) return <Redirect to={ROUTES.LOGIN} />;
 
   return (
     <>
@@ -69,4 +73,4 @@ export const ProtectedRoutes: React.FC = () => {
       </Content>
     </>
   );
-}
+};

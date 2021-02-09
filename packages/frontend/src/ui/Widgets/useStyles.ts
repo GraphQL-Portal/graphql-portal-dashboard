@@ -11,7 +11,7 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     overflow: 'hidden',
     padding: spacing(2),
     background: `linear-gradient(${deg}deg, ${rgba(0.04)} 10%, ${rgba(0.08)})`,
-    border: `1px solid ${rgba(0.06)}`
+    border: `1px solid ${rgba(0.06)}`,
   },
   widgetContent: {
     padding: spacing(2),

@@ -16,7 +16,8 @@ export const storeAccessToken = (token: string) =>
     sameSite: 'Lax',
   });
 
-export const removeAccessToken = () => Cookies.remove(ACCESS_TOKEN_KEY, { domain: TOKENS_DOMAIN });
+export const removeAccessToken = () =>
+  Cookies.remove(ACCESS_TOKEN_KEY, { domain: TOKENS_DOMAIN });
 
 export const getRefreshToken = () => Cookies.get(REFRESH_TOKEN_KEY);
 
@@ -27,4 +28,5 @@ export const storeRefreshToken = (token: string) =>
     sameSite: 'Lax',
   });
 
-export const removeRefreshToken = () => Cookies.remove(REFRESH_TOKEN_KEY, { domain: TOKENS_DOMAIN });
+export const removeRefreshToken = () =>
+  Cookies.remove(REFRESH_TOKEN_KEY, { domain: TOKENS_DOMAIN });

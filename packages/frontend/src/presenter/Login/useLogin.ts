@@ -16,31 +16,34 @@ type LoginFormInput = {
 
 enforce.extend({ isEmail: validator.isEmail });
 
-const validationSuite = vest.create('login_form', ({ email, password }: LoginFormInput) => {
-  test('email', 'Email is required', () => {
-    enforce(email).isNotEmpty();
-  });
+const validationSuite = vest.create(
+  'login_form',
+  ({ email, password }: LoginFormInput) => {
+    test('email', 'Email is required', () => {
+      enforce(email).isNotEmpty();
+    });
 
-  test('email', 'Please enter correct Email', () => {
-    enforce(email).isEmail();
-  });
+    test('email', 'Please enter correct Email', () => {
+      enforce(email).isEmail();
+    });
 
-  test('password', 'Password is required', () => {
-    enforce(password).isNotEmpty();
-  });
+    test('password', 'Password is required', () => {
+      enforce(password).isNotEmpty();
+    });
 
-  test('password', 'Password must be at least 8 chars', () => {
-    enforce(password).longerThanOrEquals(8);
-  });
+    test('password', 'Password must be at least 8 chars', () => {
+      enforce(password).longerThanOrEquals(8);
+    });
 
-  test('password', 'Password must contain a digit', () => {
-    enforce(password).matches(/[0-9]/);
-  });
+    test('password', 'Password must contain a digit', () => {
+      enforce(password).matches(/[0-9]/);
+    });
 
-  test('password', 'Password must contain a symbol', () => {
-    enforce(password).matches(/[^A-Za-z0-9]/);
-  });
-});
+    test('password', 'Password must contain a symbol', () => {
+      enforce(password).matches(/[^A-Za-z0-9]/);
+    });
+  }
+);
 
 export const useLogin = () => {
   // const { showErrorToast } = useToast();

@@ -10,6 +10,6 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     textAlign: 'center',
   },
   title: {
-    marginBottom: spacing(2)
-  }
+    marginBottom: spacing(2),
+  },
 }));

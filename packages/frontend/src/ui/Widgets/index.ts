@@ -5,8 +5,8 @@ export { MediumWidget } from './Medium';
 export { SmallWidget } from './Small';
 
 // Widget Parts
-export { WidgetHeader } from './WidgetHeader/index'
-export { WidgetBody } from './WidgetBody/index'
-export { WidgetActions } from './WidgetActions/index'
+export { WidgetHeader } from './WidgetHeader/index';
+export { WidgetBody } from './WidgetBody/index';
+export { WidgetActions } from './WidgetActions/index';
 
-export { Widget } from './Widget'
+export { Widget } from './Widget';

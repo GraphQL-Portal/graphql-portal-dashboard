@@ -7,7 +7,7 @@ import {
   Input,
   PrimaryButton,
   TextButton,
-  Select
+  Select,
 } from '../../../ui';
 import { ModalDialog, UPDATE_USER } from '../../Dialogs';
 import { useStyles } from './useStyles';
