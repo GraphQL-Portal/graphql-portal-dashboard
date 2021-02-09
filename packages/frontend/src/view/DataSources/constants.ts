@@ -5,13 +5,7 @@ export const AVAILABLE_HEAD = [
   'Actions',
 ];
 
-export const CONNECTED_HEAD = [
-  'Name',
-  'Connector Type',
-  'Status',
-  'Created',
-  'Actions',
-];
+export const CONNECTED_HEAD = ['Name', 'Connector Type', 'Updated', 'Actions'];
 
 export const TRANSFORMS_HEAD = [
   'Transform',
