@@ -46,10 +46,13 @@ export const sourceExample: SourceConfig = {
 export const apiDefExample: IApiDef = {
   _id: randomObjectId(),
   name: 'api',
-  endpoint: 'http://endpoint/graphql',
+  endpoint: '/api',
   sources: [sourceExample],
   authentication: {
     auth_tokens: ['key'],
+  },
+  user: {
+    _id: 'id',
   },
 };
 
