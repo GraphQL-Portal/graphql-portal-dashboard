@@ -23,6 +23,11 @@
     "defaultAdmin": {
       "email": "@@DEFAULT_ADMIN_EMAIL",
       "password": "@@DEFAULT_ADMIN_PASSWORD"
+    },
+    "metrics": {
+      "enabled": "@@METRICS_ENABLED",
+      "chunk": "@@METRICS_CHUNK",
+      "delay": "@@METRICS_DELAY"
     }
   },
   "client": {
