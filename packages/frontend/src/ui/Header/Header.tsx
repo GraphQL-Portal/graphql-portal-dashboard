@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar } from '@material-ui/core';
 
 import { H3 } from '../Typography';
-import { Header as Props } from './types';
+import { Header as Props } from '../../types';
 import { useStyles } from './useStyles';
 
 export const Header: React.FC<Props> = ({ title, children, startChildren }) => {
