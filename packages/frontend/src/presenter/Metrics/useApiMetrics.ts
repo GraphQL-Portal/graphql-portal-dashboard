@@ -39,6 +39,6 @@ export const useApiMetrics = () => {
     setStartDate,
     setEndDate,
     setScale,
-    goBack: () => push(ROUTES.APIS_ACTIVITY),
+    goBack: () => push(ROUTES.METRICS_AND_LOGS),
   };
 };

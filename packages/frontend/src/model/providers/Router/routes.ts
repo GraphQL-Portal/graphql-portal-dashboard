@@ -11,8 +11,6 @@ export const DASHBOARD = '/dashboard';
 export const APIS = '/my-apis';
 export const API_CREATE = `${APIS}/new`;
 export const API_EDIT = `${APIS}/:id`;
-export const APIS_ACTIVITY = `${APIS}/activity`;
-export const API_METRICS = `${APIS_ACTIVITY}/:id`;
 
 // Data Source
 export const DATA_SOURCES = '/data-sources';
@@ -20,6 +18,7 @@ export const DATA_SOURCE_ADD = `${DATA_SOURCES}/add`;
 export const DATA_SOURCE_EDIT = `${DATA_SOURCES}/edit`;
 
 export const METRICS_AND_LOGS = '/metrics-and-logs';
+export const API_METRICS = `${METRICS_AND_LOGS}/:id`;
 
 // Settings
 export const USERS = '/users-and-permissions';

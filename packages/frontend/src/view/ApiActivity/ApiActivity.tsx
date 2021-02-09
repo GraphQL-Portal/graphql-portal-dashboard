@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, HugeWidget, Widget, WidgetRow } from '../../ui';
+import { HugeWidget } from '../../ui';
 import { EmptyApiActivity } from './Empty';
 import { ApiActivityList } from './List';
 import { Loading } from '../Loading';
@@ -11,25 +11,20 @@ export const ApiActivity: React.FC = () => {
 
   return (
     <>
-      <Header title="My APIs Activity" />
-      <Widget>
+      <HugeWidget>
         <ButtonGroup size="large">
           <Button onClick={() => setDateRange('day')}>Last day</Button>
           <Button onClick={() => setDateRange('week')}>Last week</Button>
           <Button onClick={() => setDateRange('month')}>Last month</Button>
           <Button onClick={() => setDateRange('year')}>Last year</Button>
         </ButtonGroup>
-      </Widget>
-      <WidgetRow>
-        <HugeWidget>
-          {
-            loading ? <Loading /> : data?.length > 0 ? (<ApiActivityList
-              data={data}
-              onApiClick={onApiClick}
-            />) : (<EmptyApiActivity />)
-          }
-        </HugeWidget>
-      </WidgetRow>
+        {
+          loading ? <Loading /> : data?.length > 0 ? (<ApiActivityList
+            data={data}
+            onApiClick={onApiClick}
+          />) : (<EmptyApiActivity />)
+        }
+      </HugeWidget>
     </>
   );
 };

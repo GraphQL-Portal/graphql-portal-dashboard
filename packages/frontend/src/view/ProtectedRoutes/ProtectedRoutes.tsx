@@ -16,7 +16,6 @@ import {
   SupportForum,
   Users,
   Webhooks,
-  ApiActivity,
   ApiMetrics,
 } from '..';
 
@@ -38,9 +37,6 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
           <Route path={ROUTES.API_METRICS}>
             <ApiMetrics />
-          </Route>
-          <Route path={ROUTES.APIS_ACTIVITY}>
-            <ApiActivity />
           </Route>
           <Route path={ROUTES.APIS}>
             <MyAPI />
