@@ -26,6 +26,7 @@ export {
   TableHead,
   TableRow,
 } from './Table';
+export { TabsBody, TabsHead } from './Tabs';
 export { Tooltip } from './Tooltip';
 export { DatePicker } from './DatePicker';
 export { H1, H2, H3, H4, H5, H6, Body1 } from './Typography';
