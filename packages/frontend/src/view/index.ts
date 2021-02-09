@@ -10,6 +10,8 @@ export { SignUp } from './SignUp';
 export { ConfirmEmail } from './ConfirmEmail';
 export { ResetPasswordRequest, ResetPassword } from './ResetPassword';
 export { MyAPI } from './MyAPI';
+export { ApiActivity } from './ApiActivity';
+export { ApiMetrics } from './ApiMetrics';
 export { ProtectedRoutes } from './ProtectedRoutes';
 export { Services } from './Services';
 export { Sidebar } from './Sidebar';

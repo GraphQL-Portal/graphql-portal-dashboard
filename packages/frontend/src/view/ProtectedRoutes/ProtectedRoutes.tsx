@@ -2,21 +2,25 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { ROUTES, useAuth } from '../../model/providers';
-import { Content } from '../Content';
-import { DataSources } from '../DataSources';
-import { Dashboard } from '../Dashboard';
-import { Documentation } from '../Documentation';
-import { GatewayNodes } from '../GatewayNodes';
-import { GlobalSettings } from '../GlobalSettings';
-import { MetricsAndLogs } from '../MetricsAndLogs';
-import { MyAPI } from '../MyAPI';
-import { Services } from '../Services';
-import { Sidebar } from '../Sidebar';
-import { SupportForum } from '../SupportForum';
-import { Users } from '../Users';
-import { Webhooks } from '../Webhooks';
+import {
+  Content,
+  DataSources,
+  Dashboard,
+  Documentation,
+  GatewayNodes,
+  GlobalSettings,
+  MetricsAndLogs,
+  MyAPI,
+  Services,
+  Sidebar,
+  SupportForum,
+  Users,
+  Webhooks,
+  ApiActivity,
+  ApiMetrics,
+} from '..';
 
-export const ProtectedRoutes:React.FC = () => {
+export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
 
   if (!accessToken) return <Redirect to={ROUTES.LOGIN} />
@@ -31,6 +35,12 @@ export const ProtectedRoutes:React.FC = () => {
           </Route>
           <Route path={ROUTES.DASHBOARD}>
             <Dashboard />
+          </Route>
+          <Route path={ROUTES.API_METRICS}>
+            <ApiMetrics />
+          </Route>
+          <Route path={ROUTES.APIS_ACTIVITY}>
+            <ApiActivity />
           </Route>
           <Route path={ROUTES.APIS}>
             <MyAPI />

@@ -41,6 +41,11 @@ export const GROUPS = [
         link: ROUTES.METRICS_AND_LOGS,
         Icon: Assessment,
       },
+      {
+        text: 'APIs Activity',
+        link: ROUTES.APIS_ACTIVITY,
+        Icon: Assessment,
+      },
     ],
   },
   {

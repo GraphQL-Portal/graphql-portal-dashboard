@@ -2,6 +2,7 @@ import { MetricsChannels } from '@graphql-portal/types';
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Redis } from 'ioredis';
+import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import {
@@ -105,9 +106,17 @@ export default class MetricService {
     }
   }
 
-  public async getApiActivity(filters: any): Promise<IApiActivity[]> {
+  public async getApiActivity(filters: IAggregateFilters): Promise<IApiActivity[]> {
     const aggregationQuery = [
       { $match: this.makeMatchFromFilters(filters) },
+      {
+        $lookup: {
+          from: 'apidefs',
+          localField: 'apiDef',
+          foreignField: '_id',
+          as: 'apiNames'
+        }
+      },
       { $unwind: "$apiDef" },
       {
         $facet: {
@@ -115,6 +124,8 @@ export default class MetricService {
           count: [{ $group: { _id: '$apiDef', value: { $sum: 1 } } }],
           failed: [{ $match: { 'resolvers.errorAt': { $exists: true } } }, { $group: { _id: '$apiDef', value: { $sum: 1 } } }],
           success: [{ $match: { 'resolvers.errorAt': { $exists: false } } }, { $group: { _id: '$apiDef', value: { $sum: 1 } } }],
+          lastAccess: [{ $group: { _id: '$apiDef', value: { $last: "$requestDate" } } }],
+          apiName: [{ $group: { _id: '$apiDef', value: { $first: { "$arrayElemAt": ["$apiNames.name", 0] } } } }],
         },
       }
     ];
@@ -133,6 +144,8 @@ export default class MetricService {
       success: 0,
       latency: 0,
       count: 0,
+      lastAccess: '',
+      apiName: '',
       apiDef,
       ...values
     }));
@@ -306,22 +319,22 @@ export default class MetricService {
     const resolvers = rawData.reduce((acc: any, resolverData: AnyResolverMetric) => {
       const { path } = resolverData;
 
-        if (!acc[path]) {
-          acc[path] = {};
-        }
+      if (!acc[path]) {
+        acc[path] = {};
+      }
 
-        acc[path] = {
-          ...acc[path],
-          ...this.transformResolverData(resolverData),
-        };
+      acc[path] = {
+        ...acc[path],
+        ...this.transformResolverData(resolverData),
+      };
 
-        const resolver = acc[path];
+      const resolver = acc[path];
 
-        const doneAt = resolver.doneAt || resolver.errorAt;
-        const calledAt = resolver.calledAt;
-        if (calledAt && doneAt && !resolver.latency) {
-          resolver.latency = doneAt - calledAt;
-        }
+      const doneAt = resolver.doneAt || resolver.errorAt;
+      const calledAt = resolver.calledAt;
+      if (calledAt && doneAt && !resolver.latency) {
+        resolver.latency = doneAt - calledAt;
+      }
 
       if (apiDef && !resolver.sourceId && resolver.source) {
         resolver.sourceId = (apiDef.sources.find(({ name }) => name === resolver.source))?._id;
@@ -394,10 +407,10 @@ export default class MetricService {
     ip: string | undefined
   ): Promise<
     | {
-        city: string | undefined;
-        location: LocationRecord | undefined;
-        country: string | undefined;
-      }
+      city: string | undefined;
+      location: LocationRecord | undefined;
+      country: string | undefined;
+    }
     | Record<string, never>
   > {
     if (!ip || !this.maxmind) return {};
@@ -449,13 +462,13 @@ export default class MetricService {
         match.requestDate.$lte = new Date(value);
       },
       sourceId: (value: string): void => {
-        match['resolvers.sourceId'] = value;
+        match['resolvers.sourceId'] = new ObjectId(value);
       },
       apiDef: (value: string): void => {
-        match.apiDef = value;
+        match.apiDef = new ObjectId(value);
       },
       user: (value: string): void => {
-        match.user = value;
+        match.user = new ObjectId(value);
       },
     };
     Object.entries(filters).forEach(([key, value]: [keyof IAggregateFilters, any]) => {
