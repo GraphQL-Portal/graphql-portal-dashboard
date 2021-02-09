@@ -76,7 +76,11 @@ describe('ApiDefResolver', () => {
       variables?: any,
       headers?: any
     ) => supertest.Test;
-    const createApiDef = { ...apiDefExample, sources: undefined };
+    const createApiDef = {
+      ...apiDefExample,
+      sources: undefined,
+      user: undefined,
+    };
 
     beforeAll(() => {
       graphQlRequest = (
