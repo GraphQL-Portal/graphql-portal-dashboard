@@ -4,6 +4,7 @@ type DataSource = {
   type?: string;
   status?: string;
   createdAt?: string;
+  updatedAt?: string;
   handler: any;
   transforms: any;
 };

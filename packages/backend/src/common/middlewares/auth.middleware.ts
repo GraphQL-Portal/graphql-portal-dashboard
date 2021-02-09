@@ -24,16 +24,8 @@ export default class AuthenticationMiddleware implements NestMiddleware {
       const token = TokenTool.getTokenFromHeaders(req.headers);
       if (!token) return next();
 
-      this.logger.debug('Verifying token', context, { token });
       const { userId } = await TokenTool.verify(token);
-
-      this.logger.debug('Looking for user', context, { userId });
-      const user = await this.service.findById(userId);
-
-      this.logger.debug('Setting user to request', context, {
-        email: user?.email,
-      });
-      (req as any)[Metadata.USER] = user;
+      (req as any)[Metadata.USER] = await this.service.findById(userId);
       next();
     } catch (error) {
       this.logger.error(error, null, context);

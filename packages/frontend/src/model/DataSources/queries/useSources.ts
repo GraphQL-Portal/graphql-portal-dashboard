@@ -7,6 +7,7 @@ export const DATA_SOURCES = gql`
       name
       handler
       transforms
+      updatedAt
     }
   }
 `;

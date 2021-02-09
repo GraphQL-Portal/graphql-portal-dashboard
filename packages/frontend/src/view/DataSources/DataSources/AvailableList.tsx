@@ -70,11 +70,11 @@ export const AvailableList: React.FC = () => {
         <TableBody>
           {Object.keys(available).map((key: string) => {
             const source = available[key];
-            const { title, type, description } = source;
+            const { title, description } = source;
             return (
               <TableRow key={key}>
                 <TableCell>{title}</TableCell>
-                <TableCell>{type}</TableCell>
+                <TableCell>Free</TableCell>
                 <TableCell>{description}</TableCell>
                 <TableActionCell>
                   <Tooltip
