@@ -17,6 +17,9 @@ const TABS_ITEMS = [
   {
     label: 'Data Sources',
   },
+  {
+    label: 'Playground',
+  },
 ];
 
 export const CreateApi: React.FC = () => {
@@ -27,15 +30,11 @@ export const CreateApi: React.FC = () => {
       <HugeWidget>
         <WidgetHeader title="Create new API" />
         <WidgetBody>
-          <TabsHead
-            value={tab}
-            onChange={onChange}
-            variant="fullWidth"
-            tabsList={TABS_ITEMS}
-          />
+          <TabsHead value={tab} onChange={onChange} tabsList={TABS_ITEMS} />
           <TabsBody value={tab}>
             <div>1 child</div>
             <div>2 child</div>
+            <div>3 child</div>
           </TabsBody>
         </WidgetBody>
       </HugeWidget>
