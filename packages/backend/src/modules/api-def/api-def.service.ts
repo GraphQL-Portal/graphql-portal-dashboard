@@ -43,6 +43,16 @@ export default class ApiDefService implements IAccessControlService {
     };
   }
 
+  public async findAllForGateway(): Promise<ApiDefsWithTimestamp> {
+    let apiDefs = await this.apiDefModel.find().populate('sources').exec();
+    apiDefs = apiDefs.filter((apiDef) => apiDef.enabled);
+
+    return {
+      apiDefs,
+      timestamp: this.lastUpdateTime,
+    };
+  }
+
   public async findAllByUser(user: string): Promise<ApiDefsWithTimestamp> {
     const apiDefs = await this.apiDefModel
       .find({ user })

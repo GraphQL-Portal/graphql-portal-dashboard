@@ -8,6 +8,7 @@ type ApiDefAuthentication {
 type ApiDef {
   _id: ID!
   name: String!
+  enabled: Boolean!
   endpoint: String!
   sources: [Source]!
   createdAt: String!
@@ -40,6 +41,11 @@ type Query {
 
 type Mutation {
   createApiDef(apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
-  updateApiDef(id: ID!, apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
+  updateApiDef(
+    id: ID!
+    apiDef: CreateApiDef!
+    sources: [ID!]!
+    enabled: Boolean
+  ): ApiDef
   deleteApiDef(id: ID!): Boolean
 }

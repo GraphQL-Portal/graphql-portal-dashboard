@@ -2,6 +2,7 @@ import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
+import Roles from '../../common/enum/roles.enum';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
 import IUser from '../../common/interface/user.interface';
@@ -31,6 +32,7 @@ describe('ApiDefResolver', () => {
   let tokenService: TokenService;
 
   let user: IUser & ITokens;
+  let admin: IUser & ITokens;
   let gatewayToken: string;
 
   beforeAll(async () => {
@@ -41,6 +43,7 @@ describe('ApiDefResolver', () => {
       .useValue({
         publishApiDefsUpdated: jest.fn().mockResolvedValue(1),
         findAll: jest.fn().mockResolvedValue([apiDefExample]),
+        findAllForGateway: jest.fn().mockResolvedValue([apiDefExample]),
         findAllByUser: jest.fn().mockResolvedValue([apiDefExample]),
         create: jest.fn().mockResolvedValue(apiDefExample),
         update: jest.fn().mockResolvedValue(apiDefExample),
@@ -60,6 +63,7 @@ describe('ApiDefResolver', () => {
     tokenService = app.get<TokenService>(TokenService);
 
     user = await createUser(userService);
+    admin = await createUser(userService, Roles.ADMIN);
     await tokenService.generateGatewaySecret();
     gatewayToken = config.gateway.secret;
   });
@@ -94,7 +98,7 @@ describe('ApiDefResolver', () => {
     });
 
     describe('getAllApiDefs', () => {
-      it('should call findAll for gateway', async () => {
+      it('should call findAllForGateway', async () => {
         await graphQlRequest(
           `query {
             getAllApiDefs {
@@ -112,6 +116,29 @@ describe('ApiDefResolver', () => {
           }`,
           null,
           { [HeadersEnum.AUTHORIZATION]: gatewayToken }
+        ).expect(HttpStatus.OK);
+
+        expect(apiDefService.findAllForGateway).toHaveBeenCalledTimes(1);
+      });
+
+      it('should call findAll for admin', async () => {
+        await graphQlRequest(
+          `query {
+            getAllApiDefs {
+              timestamp
+              apiDefs {
+                name
+                endpoint
+                sources {
+                  name
+                  handler
+                  transforms
+                }
+              }
+            }
+          }`,
+          null,
+          { [HeadersEnum.AUTHORIZATION]: admin.accessToken }
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.findAll).toHaveBeenCalledTimes(1);
