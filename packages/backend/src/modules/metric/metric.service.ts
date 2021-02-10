@@ -43,9 +43,11 @@ export default class MetricService {
   public constructor(
     @Inject(Provider.REDIS) private readonly redisClients: [Redis, Redis],
     private readonly apiDefService: ApiDefService,
-    @InjectModel('RequestMetric') private requestMetricModel: Model<IRequestMetricDocument>,
-    @InjectModel('NetworkMetric') private networkMetricModel: Model<INetworkMetricDocument>,
-    private readonly logger: LoggerService,
+    @InjectModel('RequestMetric')
+    private requestMetricModel: Model<IRequestMetricDocument>,
+    @InjectModel('NetworkMetric')
+    private networkMetricModel: Model<INetworkMetricDocument>,
+    private readonly logger: LoggerService
   ) {
     [this.redis] = this.redisClients;
   }
@@ -107,7 +109,9 @@ export default class MetricService {
     }
   }
 
-  public async getApiActivity(filters: IAggregateFilters): Promise<IApiActivity[]> {
+  public async getApiActivity(
+    filters: IAggregateFilters
+  ): Promise<IApiActivity[]> {
     const aggregationQuery = [
       { $match: this.makeMatchFromFilters(filters) },
       {
@@ -115,45 +119,76 @@ export default class MetricService {
           from: 'apidefs',
           localField: 'apiDef',
           foreignField: '_id',
-          as: 'apiNames'
-        }
+          as: 'apiNames',
+        },
       },
-      { $unwind: "$apiDef" },
+      { $unwind: '$apiDef' },
       {
         $facet: {
-          latency: [{ $group: { _id: '$apiDef', value: { $avg: '$latency' } } }],
+          latency: [
+            { $group: { _id: '$apiDef', value: { $avg: '$latency' } } },
+          ],
           count: [{ $group: { _id: '$apiDef', value: { $sum: 1 } } }],
-          failed: [{ $match: { 'resolvers.errorAt': { $exists: true } } }, { $group: { _id: '$apiDef', value: { $sum: 1 } } }],
-          success: [{ $match: { 'resolvers.errorAt': { $exists: false } } }, { $group: { _id: '$apiDef', value: { $sum: 1 } } }],
-          lastAccess: [{ $group: { _id: '$apiDef', value: { $last: "$requestDate" } } }],
-          apiName: [{ $group: { _id: '$apiDef', value: { $first: { "$arrayElemAt": ["$apiNames.name", 0] } } } }],
+          failed: [
+            { $match: { 'resolvers.errorAt': { $exists: true } } },
+            { $group: { _id: '$apiDef', value: { $sum: 1 } } },
+          ],
+          success: [
+            { $match: { 'resolvers.errorAt': { $exists: false } } },
+            { $group: { _id: '$apiDef', value: { $sum: 1 } } },
+          ],
+          lastAccess: [
+            { $group: { _id: '$apiDef', value: { $last: '$requestDate' } } },
+          ],
+          apiName: [
+            {
+              $group: {
+                _id: '$apiDef',
+                value: { $first: { $arrayElemAt: ['$apiNames.name', 0] } },
+              },
+            },
+          ],
         },
-      }
+      },
     ];
 
-    const [aggregationResult] = await this.requestMetricModel.aggregate(aggregationQuery);
-    const result = Object.entries(aggregationResult).reduce((acc, [key, apiDefs]: [string, { _id: string; value: number }[]]) => {
-      apiDefs.forEach(({ _id, value }: any) => {
-        const api = acc[_id] || (acc[_id] = {});
-        api[key] = value;
-      });
-      return acc;
-    }, {} as any);
+    const [aggregationResult] = await this.requestMetricModel.aggregate(
+      aggregationQuery
+    );
+    const result = Object.entries(aggregationResult).reduce(
+      (acc, [key, apiDefs]: [string, { _id: string; value: number }[]]) => {
+        apiDefs.forEach(({ _id, value }: any) => {
+          const api = acc[_id] || (acc[_id] = {});
+          api[key] = value;
+        });
+        return acc;
+      },
+      {} as any
+    );
 
-    return Object.entries(result).map(([apiDef, values]: [string, Record<string, unknown>]) => ({
-      failed: 0,
-      success: 0,
-      latency: 0,
-      count: 0,
-      lastAccess: '',
-      apiName: '',
-      apiDef,
-      ...values
-    }));
+    return Object.entries(result).map(
+      ([apiDef, values]: [string, Record<string, unknown>]) => ({
+        failed: 0,
+        success: 0,
+        latency: 0,
+        count: 0,
+        lastAccess: '',
+        apiName: '',
+        apiDef,
+        ...values,
+      })
+    );
   }
 
-  public async aggregateMetrics(scale: MetricScale, filters: IAggregateFilters): Promise<IMetric> {
-    const boundaries = this.getBoundaries(filters.startDate, filters.endDate, scale);
+  public async aggregateMetrics(
+    scale: MetricScale,
+    filters: IAggregateFilters
+  ): Promise<IMetric> {
+    const boundaries = this.getBoundaries(
+      filters.startDate,
+      filters.endDate,
+      scale
+    );
     const aggregationQuery = [
       { $match: this.makeMatchFromFilters(filters) },
       {
@@ -164,8 +199,8 @@ export default class MetricService {
                 groupBy: '$requestDate',
                 default: new Date(filters.endDate),
                 boundaries,
-                output: { latency: { $avg: '$latency' }, count: { $sum: 1 }, },
-              }
+                output: { latency: { $avg: '$latency' }, count: { $sum: 1 } },
+              },
             },
           ],
           countries: [
@@ -173,7 +208,7 @@ export default class MetricService {
               $group: {
                 _id: '$geo.country',
                 count: { $sum: 1 },
-              }
+              },
             },
           ],
           failures: [
@@ -183,8 +218,8 @@ export default class MetricService {
                 groupBy: '$resolvers.errorAt',
                 default: new Date(filters.endDate),
                 boundaries,
-                output: { count: { $sum: 1 }, },
-              }
+                output: { count: { $sum: 1 } },
+              },
             },
           ],
           successes: [
@@ -194,15 +229,20 @@ export default class MetricService {
                 groupBy: '$requestDate',
                 default: new Date(filters.endDate),
                 boundaries,
-                output: { count: { $sum: 1 }, },
-              }
+                output: { count: { $sum: 1 } },
+              },
             },
           ],
-        }
+        },
       },
     ];
-    const [aggregationResult] = await this.requestMetricModel.aggregate(aggregationQuery);
-    const makeMapFn = (p: any, c: any): Record<string, any> => { p[c._id.toISOString()] = c; return p; };
+    const [aggregationResult] = await this.requestMetricModel.aggregate(
+      aggregationQuery
+    );
+    const makeMapFn = (p: any, c: any): Record<string, any> => {
+      p[c._id.toISOString()] = c;
+      return p;
+    };
     const requestMap = aggregationResult.latency.reduce(makeMapFn, {});
     const successMap = aggregationResult.successes.reduce(makeMapFn, {});
     const failureMap = aggregationResult.failures.reduce(makeMapFn, {});
@@ -269,22 +309,39 @@ export default class MetricService {
     ).map((s) => JSON.parse(s));
     await this.redis.ltrim(requestId, rawData.length, -1);
 
-    const gotRequest: IGotRequest | undefined = (rawData.find(({ event }) => event === MetricsChannels.GOT_REQUEST) as any);
+    const gotRequest: IGotRequest | undefined = rawData.find(
+      ({ event }) => event === MetricsChannels.GOT_REQUEST
+    ) as any;
     if (/IntrospectionQuery/.test(gotRequest?.query?.query as string)) return;
 
-    const gotError: IGotError | undefined = (rawData.find(({ event }) => event === MetricsChannels.GOT_ERROR) as any);
-    const sentResponse: ISentResponse | undefined = (rawData.find(({ event }) => event === MetricsChannels.SENT_RESPONSE) as any);
+    const gotError: IGotError | undefined = rawData.find(
+      ({ event }) => event === MetricsChannels.GOT_ERROR
+    ) as any;
+    const sentResponse: ISentResponse | undefined = rawData.find(
+      ({ event }) => event === MetricsChannels.SENT_RESPONSE
+    ) as any;
 
     // todo get endpoint from gotRequest.context
-    const api = await this.apiDefService.findByEndpoint(gotRequest?.request.baseUrl);
+    const api = await this.apiDefService.findByEndpoint(
+      gotRequest?.request.baseUrl
+    );
 
-    if (!api) this.logger.warn('Api with such endpoint was not found',
-      `${this.constructor.name}:${this.aggregateRequestMetric.name}`,
-      { requestId, endpoint: gotRequest?.request.baseUrl });
+    if (!api)
+      this.logger.warn(
+        'Api with such endpoint was not found',
+        `${this.constructor.name}:${this.aggregateRequestMetric.name}`,
+        { requestId, endpoint: gotRequest?.request.baseUrl }
+      );
 
-    const resolvers = this.reduceResolvers(api, rawData.filter(this.isResolverMetric) as AnyResolverMetric[]);
+    const resolvers = this.reduceResolvers(
+      api,
+      rawData.filter(this.isResolverMetric) as AnyResolverMetric[]
+    );
 
-    const latency = (sentResponse && gotRequest) ? sentResponse.date - gotRequest.date : undefined;
+    const latency =
+      sentResponse && gotRequest
+        ? sentResponse.date - gotRequest.date
+        : undefined;
 
     await this.requestMetricModel.create({
       apiDef: api?._id,
@@ -315,34 +372,41 @@ export default class MetricService {
     await this.networkMetricModel.create({ date, ...network, nodeId });
   }
 
+  private reduceResolvers(
+    apiDef: IApiDefDocument | null,
+    rawData: AnyResolverMetric[]
+  ): IReducedResolver[] {
+    const resolvers = rawData.reduce(
+      (acc: any, resolverData: AnyResolverMetric) => {
+        const { path } = resolverData;
 
-  private reduceResolvers(apiDef: IApiDefDocument | null, rawData: AnyResolverMetric[]): IReducedResolver[] {
-    const resolvers = rawData.reduce((acc: any, resolverData: AnyResolverMetric) => {
-      const { path } = resolverData;
+        if (!acc[path]) {
+          acc[path] = {};
+        }
 
-      if (!acc[path]) {
-        acc[path] = {};
-      }
+        acc[path] = {
+          ...acc[path],
+          ...this.transformResolverData(resolverData),
+        };
 
-      acc[path] = {
-        ...acc[path],
-        ...this.transformResolverData(resolverData),
-      };
+        const resolver = acc[path];
 
-      const resolver = acc[path];
+        const doneAt = resolver.doneAt || resolver.errorAt;
+        const calledAt = resolver.calledAt;
+        if (calledAt && doneAt && !resolver.latency) {
+          resolver.latency = doneAt - calledAt;
+        }
 
-      const doneAt = resolver.doneAt || resolver.errorAt;
-      const calledAt = resolver.calledAt;
-      if (calledAt && doneAt && !resolver.latency) {
-        resolver.latency = doneAt - calledAt;
-      }
+        if (apiDef && !resolver.sourceId && resolver.source) {
+          resolver.sourceId = apiDef.sources.find(
+            ({ name }) => name === resolver.source
+          )?._id;
+        }
 
-      if (apiDef && !resolver.sourceId && resolver.source) {
-        resolver.sourceId = (apiDef.sources.find(({ name }) => name === resolver.source))?._id;
-      }
-
-      return acc;
-    }, {});
+        return acc;
+      },
+      {}
+    );
 
     return Object.values(resolvers);
   }
@@ -408,10 +472,10 @@ export default class MetricService {
     ip: string | undefined
   ): Promise<
     | {
-      city: string | undefined;
-      location: LocationRecord | undefined;
-      country: string | undefined;
-    }
+        city: string | undefined;
+        location: LocationRecord | undefined;
+        country: string | undefined;
+      }
     | Record<string, never>
   > {
     if (!ip || !this.maxmind) return {};
@@ -472,11 +536,13 @@ export default class MetricService {
         match.user = new ObjectId(value);
       },
     };
-    Object.entries(filters).forEach(([key, value]: [keyof IAggregateFilters, any]) => {
-      if (filterToFunction[key] && value) {
-        filterToFunction[key](value);
+    Object.entries(filters).forEach(
+      ([key, value]: [keyof IAggregateFilters, any]) => {
+        if (filterToFunction[key] && value) {
+          filterToFunction[key](value);
+        }
       }
-    });
+    );
     return match;
   }
 }

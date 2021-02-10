@@ -263,13 +263,16 @@ describe('MetricService', () => {
           path,
           date: resolverErrorDate,
           error,
-        }];
+        },
+      ];
       const sourceId = 1;
       const api = {
-        sources: [{
-          name: source,
-          _id: sourceId,
-        }]
+        sources: [
+          {
+            name: source,
+            _id: sourceId,
+          },
+        ],
       };
 
       const data = (metricService as any).reduceResolvers(api, resolvers);
@@ -291,15 +294,24 @@ describe('MetricService', () => {
     });
     it('getApiActivity', async () => {
       const apiDef = randomObjectId();
-      const spyAggregate = jest.spyOn((metricService as any).requestMetricModel, 'aggregate').mockResolvedValue([{
-        count: [{ _id: apiDef, value: 1 }],
-        latency: [{ _id: apiDef, value: 2 }],
-        failed: [{ _id: apiDef, value: 3 }],
-        success: [{ _id: apiDef, value: 4 }],
-        lastAccess: [{ _id: apiDef, value: 5 }],
-        apiName: [{ _id: apiDef, value: 'apiName' }],
-      }]);
-      const data = await metricService.getApiActivity({ startDate: new Date(), endDate: new Date(), user: randomObjectId(), apiDef, });
+      const spyAggregate = jest
+        .spyOn((metricService as any).requestMetricModel, 'aggregate')
+        .mockResolvedValue([
+          {
+            count: [{ _id: apiDef, value: 1 }],
+            latency: [{ _id: apiDef, value: 2 }],
+            failed: [{ _id: apiDef, value: 3 }],
+            success: [{ _id: apiDef, value: 4 }],
+            lastAccess: [{ _id: apiDef, value: 5 }],
+            apiName: [{ _id: apiDef, value: 'apiName' }],
+          },
+        ]);
+      const data = await metricService.getApiActivity({
+        startDate: new Date(),
+        endDate: new Date(),
+        user: randomObjectId(),
+        apiDef,
+      });
 
       expect(spyAggregate).toBeCalledTimes(1);
       expect(data).toMatchObject([
@@ -311,7 +323,7 @@ describe('MetricService', () => {
           failed: 3,
           success: 4,
           lastAccess: 5,
-        }
+        },
       ]);
     });
   });

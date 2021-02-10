@@ -13,7 +13,7 @@ import ApiDefUpdateDto from './dto/api-def-update.dto';
 
 @Resolver('ApiDef')
 export default class ApiDefResolver {
-  public constructor(private readonly service: ApiDefService) { }
+  public constructor(private readonly service: ApiDefService) {}
 
   @Query()
   @Roles([RolesEnum.USER])

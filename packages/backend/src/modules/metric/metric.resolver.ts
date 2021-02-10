@@ -6,13 +6,13 @@ import MetricService from './metric.service';
 
 @Resolver('Metric')
 export default class MetricResolver {
-  public constructor(private readonly metricService: MetricService) { }
+  public constructor(private readonly metricService: MetricService) {}
 
   @Query()
   @Roles([RolesEnum.ADMIN])
   public metrics(
     @Args('filters') filters: IAggregateFilters,
-    @Args('scale') scale: 'day' | 'week' | 'month' | 'hour',
+    @Args('scale') scale: 'day' | 'week' | 'month' | 'hour'
   ): Promise<IMetric> {
     return this.metricService.aggregateMetrics(scale, filters);
   }
@@ -22,7 +22,7 @@ export default class MetricResolver {
   public getUserMetrics(
     @Args('filters') filters: IAggregateFilters,
     @AuthorizationParam('_id') user: string,
-    @Args('scale') scale: 'day' | 'week' | 'month' | 'hour',
+    @Args('scale') scale: 'day' | 'week' | 'month' | 'hour'
   ): Promise<IMetric> {
     return this.metricService.aggregateMetrics(scale, { ...filters, user });
   }
@@ -31,7 +31,7 @@ export default class MetricResolver {
   @Roles([RolesEnum.USER])
   public getApiActivity(
     @AuthorizationParam('_id') user: string,
-    @Args('filters') filters: IAggregateFilters,
+    @Args('filters') filters: IAggregateFilters
   ): Promise<IApiActivity[]> {
     return this.metricService.getApiActivity({ ...filters, user });
   }

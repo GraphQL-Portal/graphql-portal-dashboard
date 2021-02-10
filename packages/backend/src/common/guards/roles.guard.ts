@@ -7,7 +7,7 @@ import Roles from '../enum/roles.enum';
 
 @Injectable()
 export default class RolesGuard implements CanActivate {
-  public constructor(private reflector: Reflector) { }
+  public constructor(private reflector: Reflector) {}
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
     const roles: string[] = this.reflector.get<string[]>(

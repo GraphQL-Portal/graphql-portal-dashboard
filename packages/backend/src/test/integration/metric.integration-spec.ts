@@ -24,11 +24,13 @@ describe('MetricResolver', () => {
   let admin: IUser & ITokens;
 
   beforeAll(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({ imports: [AppModule] })
+    const moduleFixture: TestingModule = await Test.createTestingModule({
+      imports: [AppModule],
+    })
       .overrideProvider(MetricService)
       .useValue({
-        getApiActivity: jest.fn().mockImplementation(() => { }),
-        aggregateMetrics: jest.fn().mockImplementation(() => { }),
+        getApiActivity: jest.fn().mockImplementation(() => {}),
+        aggregateMetrics: jest.fn().mockImplementation(() => {}),
       })
       .compile();
 
@@ -51,14 +53,21 @@ describe('MetricResolver', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('GraphQL', () => {
-    let graphQlRequest: (query: string, variables?: any, headers?: any) => supertest.Test;
+    let graphQlRequest: (
+      query: string,
+      variables?: any,
+      headers?: any
+    ) => supertest.Test;
 
     beforeAll(() => {
       graphQlRequest = (
         query: string,
         variables = {},
         headers = { [HeadersEnum.AUTHORIZATION]: user.accessToken }
-      ): supertest.Test => request(Method.post, '/graphql').set(headers).send({ query, variables });
+      ): supertest.Test =>
+        request(Method.post, '/graphql')
+          .set(headers)
+          .send({ query, variables });
     });
 
     describe('getApiActivity', () => {
@@ -80,7 +89,7 @@ describe('MetricResolver', () => {
             filters: {
               startDate: date,
               endDate: date,
-            }
+            },
           }
         ).expect(HttpStatus.OK);
 
@@ -88,7 +97,7 @@ describe('MetricResolver', () => {
         expect(metricService.getApiActivity).toHaveBeenCalledWith({
           startDate: date,
           endDate: date,
-          user: user._id
+          user: user._id,
         });
       });
     });
@@ -113,7 +122,7 @@ describe('MetricResolver', () => {
               endDate: date,
               apiDef,
               sourceId,
-            }
+            },
           }
         ).expect(HttpStatus.OK);
 
@@ -147,11 +156,13 @@ describe('MetricResolver', () => {
                 endDate: date,
                 apiDef,
                 sourceId,
-              }
+              },
             }
           ).expect(HttpStatus.OK);
 
-          expect(body.errors[0].message).toBe(`User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`);
+          expect(body.errors[0].message).toBe(
+            `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
+          );
 
           expect(metricService.aggregateMetrics).toHaveBeenCalledTimes(0);
         });
@@ -171,10 +182,10 @@ describe('MetricResolver', () => {
                 apiDef,
                 sourceId,
                 user: user._id,
-              }
+              },
             },
             {
-              [HeadersEnum.AUTHORIZATION]: admin.accessToken
+              [HeadersEnum.AUTHORIZATION]: admin.accessToken,
             }
           ).expect(HttpStatus.OK);
 

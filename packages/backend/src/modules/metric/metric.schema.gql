@@ -25,9 +25,9 @@ type ApiActivity {
 input MetricFilters {
   startDate: Timestamp!
   endDate: Timestamp!
-  sourceId: String
+  sourceId: ID
   apiDef: ID
-  user: String
+  user: ID
 }
 
 type Query {
