@@ -3,12 +3,13 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ValidationError } from 'apollo-server-express';
 import { Model } from 'mongoose';
+import IAccessControlService from '../../common/interface/access-control.interface';
 import { LoggerService } from '../../common/logger';
 import { ISourceDocument } from '../../data/schema/source.schema';
 import ApiDefService from '../api-def/api-def.service';
 
 @Injectable()
-export default class SourceService {
+export default class SourceService implements IAccessControlService {
   public constructor(
     @InjectModel('Source') private sourceModel: Model<ISourceDocument>,
     private readonly logger: LoggerService,
