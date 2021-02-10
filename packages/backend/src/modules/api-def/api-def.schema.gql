@@ -6,12 +6,12 @@ type ApiDefAuthentication {
 }
 
 type ApiDef {
-  _id: ID
-  name: String
-  endpoint: String
-  sources: [Source]
-  createdAt: String
-  updatedAt: String
+  _id: ID!
+  name: String!
+  endpoint: String!
+  sources: [Source]!
+  createdAt: String!
+  updatedAt: String!
   authentication: ApiDefAuthentication
 }
 
