@@ -9,6 +9,7 @@ import { LoggerService } from '../../common/logger';
 import ApiDefService from '../../modules/api-def/api-def.service';
 import AppModule from '../../modules/app.module';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
+import TokenService from '../../modules/user/token.service';
 import UserService from '../../modules/user/user.service';
 import {
   apiDefExample,
@@ -27,7 +28,10 @@ describe('ApiDefResolver', () => {
   let app: INestApplication;
   let apiDefService: ApiDefService;
   let userService: UserService;
+  let tokenService: TokenService;
+
   let user: IUser & ITokens;
+  let gatewayToken: string;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -53,8 +57,11 @@ describe('ApiDefResolver', () => {
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     apiDefService = app.get<ApiDefService>(ApiDefService);
     userService = app.get<UserService>(UserService);
+    tokenService = app.get<TokenService>(TokenService);
 
     user = await createUser(userService);
+    await tokenService.generateGatewaySecret();
+    gatewayToken = config.gateway.secret;
   });
 
   afterAll(async () => {
@@ -82,8 +89,57 @@ describe('ApiDefResolver', () => {
           .send({ query, variables });
     });
 
+    describe('getAllApiDefs', () => {
+      it('should call findAll for gateway', async () => {
+        await graphQlRequest(
+          `query {
+            getAllApiDefs {
+              timestamp
+              apiDefs {
+                name
+                endpoint
+                sources {
+                  name
+                  handler
+                  transforms
+                }
+              }
+            }
+          }`,
+          null,
+          { [HeadersEnum.AUTHORIZATION]: gatewayToken }
+        ).expect(HttpStatus.OK);
+
+        expect(apiDefService.findAll).toHaveBeenCalledTimes(1);
+      });
+
+      it('return unauthorized without token', async () => {
+        const { body } = await graphQlRequest(
+          `query {
+            getApiDefs {
+              timestamp
+              apiDefs {
+                name
+                endpoint
+                sources {
+                  name
+                  handler
+                  transforms
+                }
+              }
+            }
+          }`,
+          {},
+          {}
+        ).expect(HttpStatus.OK);
+
+        expect(body.errors[0].extensions.code).toBe('UNAUTHENTICATED');
+        expect(apiDefService.findAllByUser).toHaveBeenCalledTimes(0);
+      });
+    });
+
     describe('getApiDefs', () => {
-      it('should call findAll', async () => {
+      it('should call findAllByUser', async () => {
         await graphQlRequest(
           `query {
             getApiDefs {

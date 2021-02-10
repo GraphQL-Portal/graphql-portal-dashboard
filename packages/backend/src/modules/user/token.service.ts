@@ -69,7 +69,7 @@ export default class TokenService implements OnModuleInit {
     return { refreshToken, accessToken };
   }
 
-  private async generateGatewaySecret(): Promise<void> {
+  public async generateGatewaySecret(): Promise<void> {
     if (config.gateway.secret) {
       try {
         if (jwt.verify(config.gateway.secret).userId === Roles.GATEWAY) {
