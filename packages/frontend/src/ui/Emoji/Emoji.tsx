@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Emoji as Props } from './types';
 
-export const Emoji:React.FC<Props> = ({ className, label = '', children }) => {
+export const Emoji: React.FC<Props> = ({ className, label = '', children }) => {
   return (
     <span
       className={className}
@@ -13,4 +13,4 @@ export const Emoji:React.FC<Props> = ({ className, label = '', children }) => {
       {children}
     </span>
   );
-}
+};

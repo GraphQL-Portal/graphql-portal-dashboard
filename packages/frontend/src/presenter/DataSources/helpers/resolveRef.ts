@@ -1,4 +1,11 @@
-import { getProp, getPath, compose, isPOJO, isObject, isArray } from '../../../utils';
+import {
+  getProp,
+  getPath,
+  compose,
+  isPOJO,
+  isObject,
+  isArray,
+} from '../../../utils';
 import { deconstructRef } from './deconstructRef';
 
 const isRef = (key: string) => key === '$ref';
@@ -9,7 +16,9 @@ const resolveItem = (schema: any) => (item: string) => {
 
 const resolveObject = (schema: any, obj: any) => {
   if (isArray(obj)) {
-    return obj.map((item: any) => (isPOJO(item) ? resolveRefs(schema)(item) : item));
+    return obj.map((item: any) =>
+      isPOJO(item) ? resolveRefs(schema)(item) : item
+    );
   }
 
   return resolveRefs(schema)(obj);

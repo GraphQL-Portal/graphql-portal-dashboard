@@ -8,5 +8,5 @@ export const useFormErrors = (errors: any) => {
     if (messages.length) {
       showErrorToast(messages);
     }
-  }, [errors, showErrorToast])
-}
+  }, [errors, showErrorToast]);
+};

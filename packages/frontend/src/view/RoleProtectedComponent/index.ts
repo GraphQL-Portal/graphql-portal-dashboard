@@ -1,0 +1,1 @@
+export { RoleProtectedComponent } from './RoleProtectedComponent';

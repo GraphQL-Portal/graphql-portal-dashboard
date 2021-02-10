@@ -6,7 +6,7 @@ const CREATE_SOURCE = gql`
       name
     }
   }
-`
+`;
 
 export const useCreateSource = (options?: any) => {
   const [createSource] = useMutation(CREATE_SOURCE, options || {});

@@ -13,7 +13,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     },
     '& a:hover': {
       textDecoration: 'underline',
-    }
+    },
   },
   logo: {
     height: 80,
@@ -22,4 +22,4 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   text: {
     marginBottom: spacing(6),
   },
-}))
+}));

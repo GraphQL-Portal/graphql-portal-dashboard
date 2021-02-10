@@ -21,5 +21,5 @@ export const useToast = () => {
     showInfoToast: setMessage('info'),
     showSuccessToast: setMessage('success'),
     showWarningToast: setMessage('warning'),
-  }
+  };
 };

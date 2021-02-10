@@ -18,13 +18,19 @@ import {
 import { Content } from '../Content';
 import { useStyles } from './useStyles';
 
-
 export const Login: React.FC = () => {
-  const { content, logo, formFrame, formField, footerWrapper, links } = useStyles();
+  const {
+    content,
+    logo,
+    formFrame,
+    formField,
+    footerWrapper,
+    links,
+  } = useStyles();
   const { control, onSubmit, errors } = useLogin();
   const { accessToken } = useAuth();
 
-  if (accessToken) return <Redirect to={ROUTES.MAIN} />
+  if (accessToken) return <Redirect to={ROUTES.MAIN} />;
 
   return (
     <Content className={content}>
@@ -67,14 +73,12 @@ export const Login: React.FC = () => {
                   <div className={footerWrapper}>
                     <PrimaryButton fullWidth size="large" type="submit">
                       Sign In With Email
-                  </PrimaryButton>
+                    </PrimaryButton>
                     <div className={links}>
                       <Link to={ROUTES.RESET_PASSWORD_REQUEST}>
                         Reset password
-                    </Link>
-                      <Link to={ROUTES.SIGN_UP}>
-                        Create account
-                    </Link>
+                      </Link>
+                      <Link to={ROUTES.SIGN_UP}>Create account</Link>
                     </div>
                   </div>
                 </WidgetActions>
@@ -85,4 +89,4 @@ export const Login: React.FC = () => {
       </Grid>
     </Content>
   );
-}
+};

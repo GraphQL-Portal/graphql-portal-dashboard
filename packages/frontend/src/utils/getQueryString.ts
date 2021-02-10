@@ -4,7 +4,6 @@ import { substringToEnd } from './substringToEnd';
 import { decodeURIAndTrim } from './decodeURIAndTrim';
 import { safeQueryToJSON } from './safeQueryToJSON';
 
-
 export const getQueryData = compose(
   safeQueryToJSON,
   replaceNewlines,

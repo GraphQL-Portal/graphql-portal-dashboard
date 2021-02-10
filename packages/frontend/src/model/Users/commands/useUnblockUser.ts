@@ -8,4 +8,5 @@ export const UNBLOCK_USER = gql`
   }
 `;
 
-export const useUnblockUser = (options: any = {}) => useMutation(UNBLOCK_USER, options);
+export const useUnblockUser = (options: any = {}) =>
+  useMutation(UNBLOCK_USER, options);

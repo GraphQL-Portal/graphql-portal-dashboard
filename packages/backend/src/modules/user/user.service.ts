@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import Sendgrid from '@sendgrid/mail';
 import { Model } from 'mongoose';
@@ -23,6 +23,7 @@ export default class UserService {
     @InjectModel('ConfirmationCode')
     private codeModel: Model<IConfirmationCodeDocument>,
     private readonly logger: LoggerService,
+    @Inject(forwardRef(() => TokenService))
     private readonly tokenService: TokenService
   ) {
     this.sendgrid.setApiKey(config.application.sendgrid.apiKey);
@@ -113,14 +114,21 @@ export default class UserService {
   }
 
   public async createDefaultUser(): Promise<void> {
-    const toCreate = await this.userModel.findOne({
-      email: config.application.defaultAdmin.email,
-    });
+    const { email, password } = config.application.defaultAdmin;
+
+    if (email === 'admin@example.com' || password === 'Secret123!') {
+      this.logger.warn(
+        'You are running application with default admin credentials',
+        `${this.constructor.name}:${this.createDefaultUser.name}`
+      );
+    }
+
+    const toCreate = await this.userModel.findOne({ email });
 
     if (!toCreate) {
       await this.userModel.create({
-        email: config.application.defaultAdmin.email,
-        password: config.application.defaultAdmin.password,
+        email,
+        password,
         role: Roles.ADMIN,
       });
     }

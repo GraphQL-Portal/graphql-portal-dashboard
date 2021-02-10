@@ -12,5 +12,5 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   side: {
     display: 'flex',
     alignItems: 'center',
-  }
+  },
 }));

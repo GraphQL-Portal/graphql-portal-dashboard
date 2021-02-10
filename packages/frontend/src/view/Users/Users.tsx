@@ -9,7 +9,15 @@ import { UpdateUser } from './UpdateUser';
 import { CreateUser } from './CreateUser';
 
 export const Users: React.FC = () => {
-  const { list, loading, onBlock, onUnblock, onDelete, onEdit, onCreate } = useUsers();
+  const {
+    list,
+    loading,
+    onBlock,
+    onUnblock,
+    onDelete,
+    onEdit,
+    onCreate,
+  } = useUsers();
 
   if (loading) return <Loading />;
 
@@ -29,8 +37,8 @@ export const Users: React.FC = () => {
               onEdit={onEdit}
             />
           ) : (
-              <EmptyUsers />
-            )}
+            <EmptyUsers />
+          )}
         </HugeWidget>
         <DeleteUser />
         <UpdateUser />

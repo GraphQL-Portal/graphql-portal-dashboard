@@ -24,16 +24,28 @@ export const QUERY_METRICS = gql`
   }
 `;
 
-export const useMetricsQuery = (startDate: Date, endDate: Date, scale: 'day' | 'hour' | 'week' | 'month' = 'day') => {
+export const useMetricsQuery = (
+  startDate: Date,
+  endDate: Date,
+  scale: 'day' | 'hour' | 'week' | 'month' = 'day'
+) => {
   const { data, loading, error, refetch } = useQuery(QUERY_METRICS, {
-    variables: { scale, startDate: startDate.getTime(), endDate: endDate.getTime() },
+    variables: {
+      scale,
+      startDate: startDate.getTime(),
+      endDate: endDate.getTime(),
+    },
   });
 
   return {
     data: data?.metrics,
     loading,
     error,
-    refetch: (variables: { startDate: Date, endDate: Date, scale: 'day' | 'hour' | 'week' | 'month' }) =>
+    refetch: (variables: {
+      startDate: Date;
+      endDate: Date;
+      scale: 'day' | 'hour' | 'week' | 'month';
+    }) =>
       refetch({
         startDate: variables.startDate.getTime(),
         endDate: variables.endDate.getTime(),

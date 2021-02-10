@@ -17,7 +17,7 @@ const formatValueLabel = (ms: ReactText) => `${ms}ms`;
 const formatArgumentLabel = (scale: Scale) => (date: ReactText) =>
   format(new Date(date), scale === 'hour' ? 'HH:mm' : 'MMM d');
 
-export const MetricsAndLogs:React.FC = () => {
+export const MetricsAndLogs: React.FC = () => {
   const { date, buttons } = useStyles();
 
   const {
