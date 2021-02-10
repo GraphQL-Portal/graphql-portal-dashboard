@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "prettier --write ./src && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clear": "rm -rf node_modules"
@@ -62,7 +62,7 @@
     ]
   },
   "lint-staged": {
-    "*.ts?(x)": "eslint --fix"
+    "*.ts?(x)": ["eslint --fix", "prettier --write ./src"]
   },
   "husky": {
     "hooks": {

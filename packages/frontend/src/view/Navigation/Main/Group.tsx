@@ -3,7 +3,7 @@ import React from 'react';
 import { getKeyFromText } from '../../../utils/getKeyFromText';
 import { H6 } from '../../../ui';
 import { Item } from './Item';
-import { Group as Props, GroupItem } from './types';
+import { Group as Props } from './types';
 import { useStyles } from './useStyles';
 import { RoleProtectedComponent } from '../../';
 
@@ -13,11 +13,13 @@ export const Group: React.FC<Props> = ({ name, items }) => {
     <section className={group}>
       {!!name && <H6 className={groupName}>{name}</H6>}
       {items.map((item) => {
-        const ProtectedItem = RoleProtectedComponent<GroupItem>(
-          item.roles,
-          Item
+        return (
+          <RoleProtectedComponent
+            Component={Item}
+            key={getKeyFromText(item.text)}
+            {...item}
+          />
         );
-        return <ProtectedItem {...item} key={getKeyFromText(item.text)} />;
       })}
     </section>
   );
