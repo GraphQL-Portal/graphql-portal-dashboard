@@ -5,6 +5,8 @@ type Source {
   name: String
   handler: JSONObject
   transforms: [JSONObject]
+  updatedAt: Timestamp
+  createdAt: Timestamp
 }
 
 input CreateSource {

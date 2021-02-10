@@ -44,7 +44,8 @@ export const CreateUser: React.FC = () => {
           <Controller
             as={Input}
             control={control}
-            label="Email (required)"
+            label="Email"
+            required
             name="email"
             error={hasErrors('email')}
             className={controller}
@@ -55,7 +56,8 @@ export const CreateUser: React.FC = () => {
             control={control}
             type="password"
             name="password"
-            label="Password (required)"
+            label="Password"
+            required
             error={hasErrors('password')}
             className={controller}
             fullWidth
@@ -63,7 +65,8 @@ export const CreateUser: React.FC = () => {
           <Controller
             as={Input}
             control={control}
-            label="Confirm Password (required)"
+            label="Confirm Password"
+            required
             name="confirmPassword"
             type="password"
             error={hasErrors('confirmPassword')}
@@ -81,10 +84,14 @@ export const CreateUser: React.FC = () => {
             label="Role"
             fullWidth
           />
-          <PrimaryButton fullWidth type="submit">Create</PrimaryButton>
-        </form >
-        <TextButton onClick={onCancel} type="reset">Cancel</TextButton>
-      </ModalDialog >
+          <PrimaryButton fullWidth type="submit">
+            Create
+          </PrimaryButton>
+        </form>
+        <TextButton onClick={onCancel} type="reset">
+          Cancel
+        </TextButton>
+      </ModalDialog>
     </>
   );
 };

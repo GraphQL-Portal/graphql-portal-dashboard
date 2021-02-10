@@ -6,4 +6,5 @@ export const CREATE_USER = gql`
   }
 `;
 
-export const useCreateUser = (options: any = {}) => useMutation(CREATE_USER, options);
+export const useCreateUser = (options: any = {}) =>
+  useMutation(CREATE_USER, options);

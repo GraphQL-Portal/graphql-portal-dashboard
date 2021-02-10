@@ -28,19 +28,19 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
     removeSkipPluginsField,
     schemaNameFields,
     appendSchemaNameField,
-    removeSchemaNameField
+    removeSchemaNameField,
   } = usePostGraphileHandler(props);
   const hasErrors = getError(errors);
 
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
-  
       <HandlerRow>
         <HandlerCol>
           <Controller
             as={Input}
             control={control}
-            label="Connection String (required)"
+            label="Connection String"
+            required
             name="connectionString"
             error={hasErrors('connectionString')}
             fullWidth

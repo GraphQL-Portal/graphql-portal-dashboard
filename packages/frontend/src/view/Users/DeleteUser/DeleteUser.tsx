@@ -15,7 +15,9 @@ export const DeleteUser: React.FC = () => {
   return (
     <ModalDialog id={DELETE_USER}>
       <DialogTitle>Delete user</DialogTitle>
-      <DialogText>Do you really want to delete user with email: {email}?</DialogText>
+      <DialogText>
+        Do you really want to delete user with email: {email}?
+      </DialogText>
       <PrimaryButton fullWidth onClick={onSuccess}>
         Delete user
       </PrimaryButton>

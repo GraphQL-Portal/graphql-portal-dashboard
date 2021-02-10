@@ -12,23 +12,26 @@ type ResetPasswordFormInput = {
   confirmPassword: string;
 };
 
-const validationSuite = vest.create('reset_password_request_form', ({ password, confirmPassword }: ResetPasswordFormInput) => {
-  test('password', 'Password is required', () => {
-    enforce(password).isNotEmpty();
-  });
-  test('password', 'Password must be at least 8 chars', () => {
-    enforce(password).longerThanOrEquals(8);
-  });
-  test('password', 'Password must contain a digit', () => {
-    enforce(password).matches(/[0-9]/);
-  });
-  test('password', 'Password must contain a symbol', () => {
-    enforce(password).matches(/[^A-Za-z0-9]/);
-  });
-  test('confirmPassword', 'Passwords do not match', () => {
-    enforce(confirmPassword).equals(password);
-  });
-});
+const validationSuite = vest.create(
+  'reset_password_request_form',
+  ({ password, confirmPassword }: ResetPasswordFormInput) => {
+    test('password', 'Password is required', () => {
+      enforce(password).isNotEmpty();
+    });
+    test('password', 'Password must be at least 8 chars', () => {
+      enforce(password).longerThanOrEquals(8);
+    });
+    test('password', 'Password must contain a digit', () => {
+      enforce(password).matches(/[0-9]/);
+    });
+    test('password', 'Password must contain a symbol', () => {
+      enforce(password).matches(/[^A-Za-z0-9]/);
+    });
+    test('confirmPassword', 'Passwords do not match', () => {
+      enforce(confirmPassword).equals(password);
+    });
+  }
+);
 
 export const useResetPassword = () => {
   const { showSuccessToast, showErrorToast } = useToast();
@@ -40,7 +43,6 @@ export const useResetPassword = () => {
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
   });
-
 
   const { onResetPassword } = resetPassword({
     onCompleted: ({ resetPassword }: { resetPassword: boolean }) => {
@@ -61,7 +63,7 @@ export const useResetPassword = () => {
       variables: {
         password,
         code,
-        email
+        email,
       },
     });
   };

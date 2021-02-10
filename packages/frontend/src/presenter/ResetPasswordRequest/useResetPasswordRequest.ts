@@ -13,28 +13,40 @@ type ResetPasswordRequestFormInput = {
 
 enforce.extend({ isEmail: validator.isEmail });
 
-const validationSuite = vest.create('reset_password_request_form', ({ email }: ResetPasswordRequestFormInput) => {
-  test('email', 'Email is required', () => {
-    enforce(email).isNotEmpty();
-  });
-  test('email', 'Please enter correct Email', () => {
-    enforce(email).isEmail();
-  });
-});
+const validationSuite = vest.create(
+  'reset_password_request_form',
+  ({ email }: ResetPasswordRequestFormInput) => {
+    test('email', 'Email is required', () => {
+      enforce(email).isNotEmpty();
+    });
+    test('email', 'Please enter correct Email', () => {
+      enforce(email).isEmail();
+    });
+  }
+);
 
 export const useResetPasswordRequest = () => {
   const { showSuccessToast, showErrorToast } = useToast();
   const { push } = useHistory();
-  const { handleSubmit, control, errors } = useForm<ResetPasswordRequestFormInput>({
+  const {
+    handleSubmit,
+    control,
+    errors,
+  } = useForm<ResetPasswordRequestFormInput>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
   });
 
-
   const { onResetPasswordRequest } = resetPasswordRequest({
-    onCompleted: ({ resetPasswordRequest }: { resetPasswordRequest: boolean }) => {
+    onCompleted: ({
+      resetPasswordRequest,
+    }: {
+      resetPasswordRequest: boolean;
+    }) => {
       if (resetPasswordRequest) {
-        showSuccessToast('Please, check your mailbox and follow confirmation instructions.');
+        showSuccessToast(
+          'Please, check your mailbox and follow confirmation instructions.'
+        );
         push(ROUTES.LOGIN);
       } else {
         showSuccessToast('Something went wrong. Try again later, please.');

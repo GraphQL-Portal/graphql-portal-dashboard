@@ -5,7 +5,7 @@ import { H3 } from '../Typography';
 import { Header as Props } from './types';
 import { useStyles } from './useStyles';
 
-export const Header:React.FC<Props> = ({ title, children, startChildren }) => {
+export const Header: React.FC<Props> = ({ title, children, startChildren }) => {
   const { root, toolbarRoot, side } = useStyles();
   return (
     <AppBar position="static" elevation={0} classes={{ root }}>
@@ -18,4 +18,4 @@ export const Header:React.FC<Props> = ({ title, children, startChildren }) => {
       </Toolbar>
     </AppBar>
   );
-}
+};

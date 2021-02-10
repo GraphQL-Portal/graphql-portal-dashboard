@@ -5,7 +5,12 @@ import Alert from '@material-ui/lab/Alert';
 import { Snackbar as Props } from './types';
 import { useStyles } from './useStyles';
 
-export const Snackbar:React.FC<Props> = ({ children, severity, isVisible, onClose }) => {
+export const Snackbar: React.FC<Props> = ({
+  children,
+  severity,
+  isVisible,
+  onClose,
+}) => {
   const { root, icon } = useStyles();
 
   return (
@@ -18,9 +23,14 @@ export const Snackbar:React.FC<Props> = ({ children, severity, isVisible, onClos
         horizontal: 'left',
       }}
     >
-      <Alert severity={severity} onClick={onClose} classes={{ root, icon }} variant="filled">
+      <Alert
+        severity={severity}
+        onClick={onClose}
+        classes={{ root, icon }}
+        variant="filled"
+      >
         {children}
       </Alert>
     </MuiSnackbar>
   );
-}
+};

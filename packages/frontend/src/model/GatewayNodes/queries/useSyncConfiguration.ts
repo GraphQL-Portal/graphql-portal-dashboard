@@ -1,4 +1,4 @@
-import { useLazyQuery, useQuery,  gql } from '@apollo/client';
+import { useLazyQuery, useQuery, gql } from '@apollo/client';
 
 const GET_API_DEFS = gql`
   {

@@ -8,4 +8,5 @@ export const UPDATE_USER = gql`
   }
 `;
 
-export const useUpdateUser = (options: any = {}) => useMutation(UPDATE_USER, options);
+export const useUpdateUser = (options: any = {}) =>
+  useMutation(UPDATE_USER, options);

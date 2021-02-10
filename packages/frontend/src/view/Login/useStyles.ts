@@ -11,14 +11,14 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     marginBottom: spacing(6),
   },
   formFrame: {
-    padding: spacing(3, 2)
+    padding: spacing(3, 2),
   },
   formField: {
     marginBottom: spacing(2),
   },
   footerWrapper: {
     display: 'flex',
-    width: "100%",
+    width: '100%',
     flexDirection: 'column',
   },
   links: {
@@ -32,6 +32,6 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     },
     '& a:hover': {
       textDecoration: 'underline',
-    }
+    },
   },
-}))
+}));

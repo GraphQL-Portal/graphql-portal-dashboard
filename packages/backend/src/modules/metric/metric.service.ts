@@ -6,17 +6,18 @@ import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import {
+  LocationRecord,
   Reader,
   ReaderModel,
   WebServiceClient,
-  LocationRecord,
 } from '@maxmind/geoip2-node';
+import { add, differenceInSeconds } from 'date-fns';
+import Provider from '../../common/enum/provider.enum';
 import { LoggerService } from '../../common/logger';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
 import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
-import Provider from '../../common/enum/provider.enum';
 import ApiDefService from '../api-def/api-def.service';
-import { add, differenceInSeconds } from 'date-fns';
+
 import {
   AnyMetric,
   AnyResolverMetric,

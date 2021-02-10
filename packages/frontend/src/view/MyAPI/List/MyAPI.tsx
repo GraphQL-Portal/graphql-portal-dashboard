@@ -1,20 +1,15 @@
 import React from 'react';
-import {
-  Header,
-  HugeWidget,
-  PrimaryButton,
-  WidgetRow,
-} from '../../../ui';
+import { Header, HugeWidget, PrimaryButton, WidgetRow } from '../../../ui';
 import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
 import { Loading } from '../../Loading';
 import { useMyApi } from '../../../presenter/ApiDefs/useMyApi';
 import { Helmet } from 'react-helmet';
 
-export const MyAPI:React.FC = () => {
+export const MyAPI: React.FC = () => {
   const { data, loading, onDelete, onUpdate, onCreate } = useMyApi();
 
-  if (loading) return <Loading />
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -26,9 +21,13 @@ export const MyAPI:React.FC = () => {
       </Header>
       <WidgetRow>
         <HugeWidget>
-          {data.length ? <ApiDefsList list={data} onDelete={onDelete} onUpdate={onUpdate} /> : <EmptyApiDefs />}
+          {data.length ? (
+            <ApiDefsList list={data} onDelete={onDelete} onUpdate={onUpdate} />
+          ) : (
+            <EmptyApiDefs />
+          )}
         </HugeWidget>
       </WidgetRow>
     </>
   );
-}
+};

@@ -1,4 +1,4 @@
-import { compose, hasIndex, toLowerCase} from '../../../utils';
+import { compose, hasIndex, toLowerCase } from '../../../utils';
 
 export const stringHas = (query: string) =>
-  compose(hasIndex(toLowerCase(query)), toLowerCase)
+  compose(hasIndex(toLowerCase(query)), toLowerCase);

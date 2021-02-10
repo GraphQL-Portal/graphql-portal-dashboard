@@ -10,4 +10,4 @@ export const useSignUp = (options: any) => {
   const [onSignUp] = useMutation(SIGN_UP, options);
 
   return { onSignUp };
-}
+};

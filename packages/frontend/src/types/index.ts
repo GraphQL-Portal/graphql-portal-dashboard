@@ -19,4 +19,6 @@ export type { ObjectArray } from './Forms';
 export type { ErrorsAndControl } from './HookForm';
 export type { ClassName } from './React';
 export type { Step, Stepper, NotLinearStepper } from './Stepper';
+export type { TabsHead, TabsBody } from './Tabs';
 export type { User, UsersList } from './User';
+export type { Gateway, GatewayNodesList, GatewayNode } from './Gateway';

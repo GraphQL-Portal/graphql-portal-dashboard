@@ -7,7 +7,10 @@ export const RERSET_PASSWORD_REQUEST = gql`
 `;
 
 export const useResetPasswordRequest = (options: any) => {
-  const [onResetPasswordRequest] = useMutation(RERSET_PASSWORD_REQUEST, options);
+  const [onResetPasswordRequest] = useMutation(
+    RERSET_PASSWORD_REQUEST,
+    options
+  );
 
   return { onResetPasswordRequest };
-}
+};

@@ -5,6 +5,7 @@ import { config } from 'node-config-ts';
 import { AnyMetric, AnyResolverMetric } from '../../modules/metric/interfaces';
 import AppModule from '../../modules/app.module';
 import MetricService from '../../modules/metric/metric.service';
+import { randomObjectId } from '../common';
 
 jest.useFakeTimers();
 
@@ -289,23 +290,27 @@ describe('MetricService', () => {
       ]);
     });
     it('getApiActivity', async () => {
+      const apiDef = randomObjectId();
       const spyAggregate = jest.spyOn((metricService as any).requestMetricModel, 'aggregate').mockResolvedValue([{
-        count: [{ _id: 'api', value: 10 }],
-        latency: [{ _id: 'api', value: 5 }],
-        failed: [{ _id: 'api', value: 4 }],
-        success: [{ _id: 'api', value: 6 }],
+        count: [{ _id: apiDef, value: 1 }],
+        latency: [{ _id: apiDef, value: 2 }],
+        failed: [{ _id: apiDef, value: 3 }],
+        success: [{ _id: apiDef, value: 4 }],
+        lastAccess: [{ _id: apiDef, value: 5 }],
+        apiName: [{ _id: apiDef, value: 'apiName' }],
       }]);
-
-      const data = await metricService.getApiActivity({ startDate: new Date(), endDate: new Date(), user: 'user', apiDef: 'apiDef', });
+      const data = await metricService.getApiActivity({ startDate: new Date(), endDate: new Date(), user: randomObjectId(), apiDef, });
 
       expect(spyAggregate).toBeCalledTimes(1);
       expect(data).toMatchObject([
         {
-          apiDef: 'api',
-          count: 10,
-          latency: 5,
-          failed: 4,
-          success: 6
+          apiName: 'apiName',
+          apiDef,
+          count: 1,
+          latency: 2,
+          failed: 3,
+          success: 4,
+          lastAccess: 5,
         }
       ]);
     });

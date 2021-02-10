@@ -1,18 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import Sendgrid from '@sendgrid/mail';
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
-import { AuthenticationError, UserInputError } from 'apollo-server-express';
-import { CodeTypes, CodeExpirationTime } from './enum';
-import { LoggerService } from '../../common/logger';
-import { IUserDocument } from '../../data/schema/user.schema';
-import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
-import IUser from '../../common/interface/user.interface';
-import ITokens from './interfaces/tokens.interface';
-import TokenService from '../user/token.service';
 import Roles from '../../common/enum/roles.enum';
 import IUpdateUser from '../../common/interface/update-user.interface';
+import IUser from '../../common/interface/user.interface';
+import { LoggerService } from '../../common/logger';
+import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
+import { IUserDocument } from '../../data/schema/user.schema';
+import { CodeExpirationTime, CodeTypes } from './enum';
+import ITokens from './interfaces/tokens.interface';
+import TokenService from './token.service';
 
 @Injectable()
 export default class UserService {
@@ -23,6 +23,7 @@ export default class UserService {
     @InjectModel('ConfirmationCode')
     private codeModel: Model<IConfirmationCodeDocument>,
     private readonly logger: LoggerService,
+    @Inject(forwardRef(() => TokenService))
     private readonly tokenService: TokenService
   ) {
     this.sendgrid.setApiKey(config.application.sendgrid.apiKey);
@@ -113,14 +114,21 @@ export default class UserService {
   }
 
   public async createDefaultUser(): Promise<void> {
-    const toCreate = await this.userModel.findOne({
-      email: config.application.defaultAdmin.email,
-    });
+    const { email, password } = config.application.defaultAdmin;
+
+    if (email === 'admin@example.com' || password === 'Secret123!') {
+      this.logger.warn(
+        'You are running application with default admin credentials',
+        `${this.constructor.name}:${this.createDefaultUser.name}`
+      );
+    }
+
+    const toCreate = await this.userModel.findOne({ email });
 
     if (!toCreate) {
       await this.userModel.create({
-        email: config.application.defaultAdmin.email,
-        password: config.application.defaultAdmin.password,
+        email,
+        password,
         role: Roles.ADMIN,
       });
     }

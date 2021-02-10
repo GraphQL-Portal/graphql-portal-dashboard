@@ -8,14 +8,18 @@ import { LogoFull } from '../../icons';
 import { MainNavigation } from '../Navigation';
 import { useStyles } from './useStyles';
 
-export const Sidebar:React.FC = () => {
+export const Sidebar: React.FC = () => {
   const { drawer, paper, logo } = useStyles();
   return (
-    <Drawer className={drawer} variant="permanent" classes={{ paper: clsx(drawer, paper) }}>
-      <Link to={ROUTES.NODES} className={logo}>
+    <Drawer
+      className={drawer}
+      variant="permanent"
+      classes={{ paper: clsx(drawer, paper) }}
+    >
+      <Link to={ROUTES.DASHBOARD} className={logo}>
         <LogoFull />
       </Link>
       <MainNavigation />
     </Drawer>
   );
-}
+};

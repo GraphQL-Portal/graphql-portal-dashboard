@@ -67,11 +67,13 @@ describe('MetricResolver', () => {
         await graphQlRequest(
           `query getApiActivity($filters: MetricFilters!) {
             getApiActivity(filters: $filters) {
+              apiName
               apiDef
               count
               success
               failed
               latency
+              lastAccess
             }
           }`,
           {

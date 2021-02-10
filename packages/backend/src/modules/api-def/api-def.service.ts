@@ -2,6 +2,7 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ValidationError } from 'apollo-server-express';
 import { Model } from 'mongoose';
+import IAccessControlService from '../../common/interface/access-control.interface';
 import IApiDef from '../../common/interface/api-def.interface';
 import { LoggerService } from '../../common/logger';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
@@ -12,7 +13,7 @@ import SourceService from '../source/source.service';
 export type ApiDefsWithTimestamp = { apiDefs: IApiDef[]; timestamp: number };
 
 @Injectable()
-export default class ApiDefService {
+export default class ApiDefService implements IAccessControlService {
   public lastUpdateTime: number;
 
   public constructor(

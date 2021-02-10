@@ -1,4 +1,5 @@
 import React, { useContext, useState, createContext } from 'react';
+import { Roles } from './constants';
 
 import {
   getAccessToken,
@@ -9,6 +10,7 @@ import {
   removeRefreshToken,
 } from './helpers';
 import { AuthContextShape, Tokens } from './types';
+import { getRoleFromToken } from '../../../utils';
 
 const AuthContext = createContext<null | AuthContextShape>(null);
 export const useAuth = () => useContext(AuthContext)!;
@@ -16,8 +18,10 @@ const { Provider } = AuthContext;
 
 const ACCESS_TOKEN = getAccessToken() || '';
 const REFRESH_TOKEN = getRefreshToken() || '';
+const ROLE: Roles = getRoleFromToken(ACCESS_TOKEN);
 
-export const AuthProvider:React.FC = ({ children }) => {
+export const AuthProvider: React.FC = ({ children }) => {
+  const [role, setRole] = useState<Roles>(ROLE);
   const [accessToken, setAccessToken] = useState<string>(ACCESS_TOKEN);
   const [refreshToken, setRefreshToken] = useState<string>(REFRESH_TOKEN);
 
@@ -29,6 +33,7 @@ export const AuthProvider:React.FC = ({ children }) => {
     // set refresh token to state and cookie
     setRefreshToken(refreshToken);
     storeRefreshToken(refreshToken);
+    setRole(getRoleFromToken(accessToken));
   };
 
   const signOut = () => {
@@ -39,7 +44,12 @@ export const AuthProvider:React.FC = ({ children }) => {
     // remove tokens from state
     setAccessToken('');
     setRefreshToken('');
-  }
+    setRole(Roles.GUEST);
+  };
 
-  return (<Provider value={{ accessToken, refreshToken, setAuth, signOut }}>{children}</Provider>);
+  return (
+    <Provider value={{ accessToken, role, refreshToken, setAuth, signOut }}>
+      {children}
+    </Provider>
+  );
 };

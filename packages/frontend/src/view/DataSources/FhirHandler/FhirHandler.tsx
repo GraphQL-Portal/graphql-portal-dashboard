@@ -17,7 +17,8 @@ export const FhirHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Endpoint (required)"
+            label="Endpoint"
+            required
             name="endpoint"
             error={hasErrors('endpoint')}
             fullWidth

@@ -6,7 +6,7 @@ import { MyAPI } from './List/MyAPI';
 import { CreateApi } from './Create';
 import { EditApi } from './Edit';
 
-export const Routes:React.FC = () => {
+export const Routes: React.FC = () => {
   return (
     <Switch>
       <Route path={ROUTES.API_CREATE} exact>
@@ -20,4 +20,4 @@ export const Routes:React.FC = () => {
       </Route>
     </Switch>
   );
-}
+};
