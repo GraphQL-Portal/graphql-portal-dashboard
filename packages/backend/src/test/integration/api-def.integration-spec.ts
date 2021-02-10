@@ -45,6 +45,7 @@ describe('ApiDefResolver', () => {
         findAll: jest.fn().mockResolvedValue([apiDefExample]),
         findAllForGateway: jest.fn().mockResolvedValue([apiDefExample]),
         findAllByUser: jest.fn().mockResolvedValue([apiDefExample]),
+        findById: jest.fn().mockResolvedValue(apiDefExample),
         create: jest.fn().mockResolvedValue(apiDefExample),
         update: jest.fn().mockResolvedValue(apiDefExample),
         delete: jest.fn().mockResolvedValue(true),
@@ -213,6 +214,21 @@ describe('ApiDefResolver', () => {
 
         expect(body.errors[0].extensions.code).toBe('UNAUTHENTICATED');
         expect(apiDefService.findAllByUser).toHaveBeenCalledTimes(0);
+      });
+    });
+
+    describe('getApiDefById', () => {
+      it('should call findById', async () => {
+        await graphQlRequest(
+          `query($id: String!) {
+            getApiDefById(id: $id) {
+              name
+            }
+          }`,
+          { id: 'id' }
+        ).expect(HttpStatus.OK);
+
+        expect(apiDefService.findById).toHaveBeenCalledTimes(1);
       });
     });
 

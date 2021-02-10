@@ -16,7 +16,7 @@ import {
   sourceExample,
 } from '../common';
 
-// jest.useFakeTimers();
+jest.useFakeTimers();
 
 jest.mock('ioredis');
 
@@ -111,8 +111,19 @@ describe('ApiDefService', () => {
       expect(disabled).toBeDefined();
       expect(disabled.enabled).toBe(false);
 
-      const apiDefsForGateway = await apiDefService.findAllForGateway();
-      expect(apiDefsForGateway.apiDefs).toHaveLength(1);
+      const { apiDefs } = await apiDefService.findAllForGateway();
+      expect(apiDefs).toHaveLength(1);
+    });
+
+    it('findById should return an apiDefs', async () => {
+      const { apiDefs } = await apiDefService.findAll();
+      expect(apiDefs).toHaveLength(2);
+
+      const id = apiDefs[0]._id!;
+      const apiDef = await apiDefService.findById(id);
+      expect(apiDef).toBeDefined();
+      expect(apiDef._id).toBeDefined();
+      expect(apiDef._id!.toString()).toBe(id!.toString());
     });
   });
 

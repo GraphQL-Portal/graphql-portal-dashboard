@@ -36,6 +36,7 @@ type ApiDefsWithTimestamp {
 type Query {
   getApiDefs: ApiDefsWithTimestamp
   getAllApiDefs: ApiDefsWithTimestamp
+  getApiDefById(id: String!): ApiDef
   publishApiDefsUpdated: Int
 }
 

@@ -64,6 +64,10 @@ export default class ApiDefService implements IAccessControlService {
     };
   }
 
+  public async findById(_id: string): Promise<IApiDef> {
+    return this.apiDefModel.findOne({ _id }).populate('sources').exec();
+  }
+
   public async create(
     data: IApiDef,
     sourcesIds: string[],

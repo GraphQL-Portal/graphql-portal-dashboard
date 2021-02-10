@@ -41,6 +41,13 @@ export default class ApiDefResolver {
     return this.service.findAllByUser(userId);
   }
 
+  @Query()
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @AccessControl(AccessControlModels.ApiDef)
+  public getApiDefById(@Args('id') id: string): Promise<IApiDef> {
+    return this.service.findById(id);
+  }
+
   @Mutation()
   @Roles([RolesEnum.USER, RolesEnum.ADMIN])
   public createApiDef(
