@@ -16,6 +16,7 @@ export const AJV_SCHEMA_TEMPLATE = {
 };
 
 export const INITIAL_STATE = {
+  _id: '',
   name: '',
   handler: {},
   transforms: [],

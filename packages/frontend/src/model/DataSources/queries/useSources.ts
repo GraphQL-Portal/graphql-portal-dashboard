@@ -1,4 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
+import { DataSource } from '../../../types';
 
 export const DATA_SOURCES = gql`
   {
@@ -12,15 +13,7 @@ export const DATA_SOURCES = gql`
   }
 `;
 
-type Source = {
-  _id: string;
-  name: string;
-  updatedAt?: string;
-  handler: any;
-  transforms: any;
-};
-
-const preprocessSources = (data: Source[]) => {
+const sortSourcesByName = (data: DataSource[]): DataSource[] => {
   if (!data) return [];
 
   return data.slice().sort((one, two) => (one.name > two.name ? -1 : 1));
@@ -34,5 +27,5 @@ export const useSources = (options?: any) => {
 
   const { getSources = [] } = data || {};
 
-  return { data: preprocessSources(getSources), loading, error, refetch };
+  return { data: sortSourcesByName(getSources), loading, error, refetch };
 };
