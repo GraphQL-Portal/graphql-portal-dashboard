@@ -13,4 +13,19 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
+  backButton: {
+    display: 'flex',
+    alignItems: 'center',
+    textDecoration: 'none',
+    color: palette.text.primary,
+
+    '& > svg': {
+      display: 'block',
+      marginRight: spacing(1.5),
+    },
+
+    '& > h3': {
+      lineHeight: 0.8,
+    },
+  },
 }));
