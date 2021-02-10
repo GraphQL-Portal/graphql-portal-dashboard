@@ -10,23 +10,30 @@ import {
   WidgetBody,
   FormGroup,
   Input,
+  Select,
   PrimaryButton,
+  OutlineButton,
   Row,
   Col,
 } from '../../../ui';
 import { StringArray } from '../../Form';
+import { ConnectedList } from '../../DataSources/DataSources/ConnectedList';
 import { AddNewAPIHeader } from './Header';
 import { useStyles } from './useStyles';
 
 export const CreateApi: React.FC = () => {
-  const { formRow } = useStyles();
+  const { formRow, addButton } = useStyles();
   const {
+    connected,
     control,
     errors,
     onSubmit,
+    options,
     tokenFields,
     addToken,
     removeToken,
+    onAddSource,
+    onRemoveSource,
   } = useCreateApi();
 
   return (
@@ -49,6 +56,7 @@ export const CreateApi: React.FC = () => {
                       control={control}
                       label="Api name (required)"
                       fullWidth
+                      error={!!errors?.name}
                     />
                   </Col>
                   <Col xs={6}>
@@ -58,6 +66,7 @@ export const CreateApi: React.FC = () => {
                       control={control}
                       label="Api listen path (required)"
                       fullWidth
+                      error={!!errors?.endpoint}
                     />
                   </Col>
                 </Row>
@@ -70,6 +79,7 @@ export const CreateApi: React.FC = () => {
                       name="authentication.auth_header_name"
                       control={control}
                       label="Auth key header name"
+                      error={!!errors?.authentication?.auth_header_name}
                       fullWidth
                     />
                   </Col>
@@ -78,11 +88,36 @@ export const CreateApi: React.FC = () => {
                   onAdd={addToken}
                   onRemove={removeToken}
                   title="Auth tokens"
-                  name="authentication.auth_header_tokens"
+                  name="authentication.auth_tokens"
                   fields={tokenFields}
                   control={control}
                   errors={errors}
                 />
+              </FormGroup>
+              <FormGroup title="Data Sources">
+                <Row spacing={2}>
+                  <Col xs={6}>
+                    <Controller
+                      as={Select}
+                      name="source"
+                      control={control}
+                      options={options}
+                      label="Select data-source to add"
+                      fullWidth
+                    />
+                  </Col>
+                  <Col xs={6}>
+                    <OutlineButton onClick={onAddSource} className={addButton}>
+                      Add Data Source
+                    </OutlineButton>
+                  </Col>
+                </Row>
+                {connected.length > 0 && (
+                  <ConnectedList
+                    onDelete={onRemoveSource}
+                    sources={connected}
+                  />
+                )}
               </FormGroup>
               <PrimaryButton type="submit">Create new API</PrimaryButton>
             </form>

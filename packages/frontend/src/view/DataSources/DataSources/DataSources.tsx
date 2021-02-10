@@ -32,11 +32,16 @@ export const DataSources: React.FC = () => {
           {connected.length === 0 ? (
             <EmptySources />
           ) : (
-            <ConnectedList
-              sources={connected}
-              onDelete={onDelete}
-              onUpdate={onUpdate}
-            />
+            <>
+              <WidgetHeader title="My connected data-sources" />
+              <WidgetBody>
+                <ConnectedList
+                  sources={connected}
+                  onDelete={onDelete}
+                  onUpdate={onUpdate}
+                />
+              </WidgetBody>
+            </>
           )}
         </HugeWidget>
       </WidgetRow>
