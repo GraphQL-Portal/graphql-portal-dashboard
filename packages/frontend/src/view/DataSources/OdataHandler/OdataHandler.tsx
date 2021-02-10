@@ -31,7 +31,8 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Base url (required)"
+            label="Base url"
+            required
             name="baseUrl"
             error={hasErrors('baseUrl')}
             fullWidth

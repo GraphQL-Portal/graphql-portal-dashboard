@@ -19,7 +19,7 @@ export const ADD_SOURCE_STEPS = [
     label: 'Name',
   },
   {
-    label: 'Handler',
+    label: 'Data Connector Configuration',
   },
   {
     label: 'Transforms',

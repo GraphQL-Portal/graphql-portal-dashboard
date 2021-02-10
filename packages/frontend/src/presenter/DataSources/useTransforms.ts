@@ -3,8 +3,12 @@ import { useForm } from 'react-hook-form';
 
 import { TransformsStep } from '../../types';
 import { AVAILABLE_TRANSFORMS } from './constants';
+import { formatTransformLabel } from './helpers/formatTransformLabel';
 
-const createOption = (option: string) => ({ label: option, value: option });
+const createOption = (option: string) => ({
+  label: formatTransformLabel(option),
+  value: option,
+});
 const options = Object.keys(AVAILABLE_TRANSFORMS).map(createOption);
 
 const removeFromArray = (arr: any[], idx: number) =>

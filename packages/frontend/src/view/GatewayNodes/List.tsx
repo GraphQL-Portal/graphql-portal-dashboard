@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   WidgetHeader,
@@ -9,13 +8,13 @@ import {
   TableBody,
   TableRow,
 } from '../../ui';
-import { getKeyFromText } from '../../utils/getKeyFromText';
+import { getKeyFromText } from '../../utils';
 import { TABLE_HEAD } from './constants';
-import { GatewayNodesList as Props } from './types';
+import { GatewayNodesList as Props } from '../../types/Gateway';
 
-const getCellAlign = (idx: number) => idx === 0 ? 'left' : 'right';
+const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
 
-export const GatewayNodesList:React.FC<Props> = ({ list }) => {
+export const GatewayNodesList: React.FC<Props> = ({ list }) => {
   return (
     <>
       <WidgetHeader title="List of Active Nodes" />
@@ -32,7 +31,10 @@ export const GatewayNodesList:React.FC<Props> = ({ list }) => {
             {list.map((node, idx) => (
               <TableRow key={`node-${idx}`}>
                 {node.map((item: any, indx: any) => (
-                  <TableCell key={`node-${idx}-item-${indx}`} align={getCellAlign(indx)}>
+                  <TableCell
+                    key={`node-${idx}-item-${indx}`}
+                    align={getCellAlign(indx)}
+                  >
                     {item}
                   </TableCell>
                 ))}
@@ -43,4 +45,4 @@ export const GatewayNodesList:React.FC<Props> = ({ list }) => {
       </WidgetBody>
     </>
   );
-}
+};

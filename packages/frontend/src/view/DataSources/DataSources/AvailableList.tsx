@@ -13,10 +13,11 @@ import {
   IconButton,
   Tooltip,
 } from '../../../ui';
-import { getKeyFromText } from '../../../utils/getKeyFromText';
+import { getKeyFromText } from '../../../utils';
 import { useAvailableSources } from '../../../presenter/DataSources';
 import { AVAILABLE_HEAD } from '../constants';
 import { useStyles } from './useStyles';
+import { formatHandlerTitle } from '../helpers';
 
 const getCellAlign = (idx: number, length: number) =>
   idx + 1 === length ? 'right' : 'left';
@@ -73,7 +74,7 @@ export const AvailableList: React.FC = () => {
             const { title, description } = source;
             return (
               <TableRow key={key}>
-                <TableCell>{title}</TableCell>
+                <TableCell>{formatHandlerTitle(title)}</TableCell>
                 <TableCell>Free</TableCell>
                 <TableCell>{description}</TableCell>
                 <TableActionCell>
