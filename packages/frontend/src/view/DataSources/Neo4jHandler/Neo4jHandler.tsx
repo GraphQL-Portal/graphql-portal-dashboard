@@ -19,7 +19,8 @@ export const Neo4jHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Url (required)"
+            label="Url"
+            required
             name="url"
             error={hasErrors('url')}
             fullWidth
@@ -31,7 +32,8 @@ export const Neo4jHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Username (required)"
+            label="Username"
+            required
             name="username"
             error={hasErrors('username')}
             fullWidth
@@ -46,7 +48,8 @@ export const Neo4jHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Password (required)"
+            label="Password"
+            required
             name="password"
             type="password"
             error={hasErrors('password')}

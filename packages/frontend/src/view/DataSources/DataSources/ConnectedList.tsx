@@ -16,6 +16,7 @@ import {
 import { getKeyFromText } from '../../../utils';
 import { CONNECTED_HEAD } from '../constants';
 import { ConnectedList as Props } from './types';
+import { formatDateDistance, formatHandlerType } from '../helpers';
 
 export const ConnectedList: React.FC<Props> = ({
   sources,
@@ -39,13 +40,13 @@ export const ConnectedList: React.FC<Props> = ({
           </TableHead>
           <TableBody>
             {sources.map((source) => {
-              const { name, type, status, createdAt, _id } = source;
+              const { name, updatedAt, _id, handler } = source;
+              console.log(handler);
               return (
                 <TableRow key={getKeyFromText(name)}>
                   <TableCell>{name}</TableCell>
-                  <TableCell>{type || ''}</TableCell>
-                  <TableCell>{status || ''}</TableCell>
-                  <TableCell>{createdAt || ''}</TableCell>
+                  <TableCell>{formatHandlerType(handler)}</TableCell>
+                  <TableCell>{formatDateDistance(updatedAt)}</TableCell>
                   <TableActionCell>
                     <Tooltip
                       title="Edit data-source"

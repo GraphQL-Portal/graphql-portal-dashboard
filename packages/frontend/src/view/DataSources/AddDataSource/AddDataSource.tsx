@@ -23,6 +23,7 @@ import { SourceTransforms } from '../SourceTransforms';
 import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
+import { formatHandlerTitle } from '../helpers';
 
 export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
   mode,
@@ -60,7 +61,10 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
             </PrimaryButton>
           </WidgetHeader>
           <WidgetBody>
-            <FormCaption title={title} description={description} />
+            <FormCaption
+              title={formatHandlerTitle(title)}
+              description={description}
+            />
             <NotLinearStepper
               steps={ADD_SOURCE_STEPS}
               nonLinear

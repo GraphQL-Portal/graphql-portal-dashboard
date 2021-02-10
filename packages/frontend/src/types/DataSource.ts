@@ -38,4 +38,9 @@ export type TransformsList = {
   onEdit(idx: number, transform: any): () => void;
 };
 
-export type DataSource = NameForm & HandlerForm & TransformsForm;
+export type DataSource = NameForm &
+  HandlerForm &
+  TransformsForm & {
+    _id: string;
+    updatedAt?: string;
+  };

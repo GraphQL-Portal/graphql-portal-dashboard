@@ -16,7 +16,7 @@ export const Sidebar: React.FC = () => {
       variant="permanent"
       classes={{ paper: clsx(drawer, paper) }}
     >
-      <Link to={ROUTES.NODES} className={logo}>
+      <Link to={ROUTES.DASHBOARD} className={logo}>
         <LogoFull />
       </Link>
       <MainNavigation />

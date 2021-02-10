@@ -1,5 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { Gateway, GatewayNode } from '../../../types';
 
 export const QUERY_GATEWAYS = gql`
   {
@@ -13,15 +14,7 @@ export const QUERY_GATEWAYS = gql`
   }
 `;
 
-type Gateway = {
-  nodeId: string;
-  configTimestamp: number;
-  lastPingAt: number;
-  hostname: string;
-  status: string;
-};
-
-const createNodeList = (data: Gateway[]) => {
+const createNodeList = (data: Gateway[]): GatewayNode[] => {
   if (!data) return [];
 
   return data

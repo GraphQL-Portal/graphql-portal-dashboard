@@ -5,13 +5,7 @@ export const AVAILABLE_HEAD = [
   'Actions',
 ];
 
-export const CONNECTED_HEAD = [
-  'Name',
-  'Connector Type',
-  'Status',
-  'Created',
-  'Actions',
-];
+export const CONNECTED_HEAD = ['Name', 'Connector Type', 'Updated', 'Actions'];
 
 export const TRANSFORMS_HEAD = [
   'Transform',
@@ -25,7 +19,7 @@ export const ADD_SOURCE_STEPS = [
     label: 'Name',
   },
   {
-    label: 'Handler',
+    label: 'Data Connector Configuration',
   },
   {
     label: 'Transforms',

@@ -8,9 +8,9 @@ import {
   TableBody,
   TableRow,
 } from '../../ui';
-import { getKeyFromText } from '../../utils/getKeyFromText';
+import { getKeyFromText } from '../../utils';
 import { TABLE_HEAD } from './constants';
-import { GatewayNodesList as Props } from './types';
+import { GatewayNodesList as Props } from '../../types/Gateway';
 
 const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
 

@@ -39,7 +39,8 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Connection String (required)"
+            label="Connection String"
+            required
             name="connectionString"
             error={hasErrors('connectionString')}
             fullWidth

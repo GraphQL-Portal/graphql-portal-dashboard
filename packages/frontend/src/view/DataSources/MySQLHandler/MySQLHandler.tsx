@@ -26,7 +26,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Host (required)"
+            label="Host"
+            required
             name="host"
             error={hasErrors('host')}
             fullWidth
@@ -38,7 +39,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Port (required)"
+            label="Port"
+            required
             name="port"
             error={hasErrors('port')}
             fullWidth
@@ -50,7 +52,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Database (required)"
+            label="Database"
+            required
             name="database"
             error={hasErrors('database')}
             fullWidth
@@ -62,7 +65,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="User (required)"
+            label="User"
+            required
             name="user"
             error={hasErrors('user')}
             fullWidth
@@ -75,7 +79,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
             as={Input}
             control={control}
             type="password"
-            label="Password (required)"
+            label="Password"
+            required
             name="password"
             error={hasErrors('password')}
             fullWidth

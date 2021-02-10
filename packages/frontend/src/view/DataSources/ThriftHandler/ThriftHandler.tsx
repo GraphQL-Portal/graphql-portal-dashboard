@@ -31,7 +31,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Host Name (required)"
+            label="Host Name"
+            required
             name="hostName"
             error={hasErrors('hostName')}
             fullWidth
@@ -43,7 +44,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Port (required)"
+            label="Port"
+            required
             name="port"
             error={hasErrors('port')}
             fullWidth
@@ -55,7 +57,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Service Name (required)"
+            label="Service Name"
+            required
             name="serviceName"
             error={hasErrors('serviceName')}
             fullWidth
@@ -67,7 +70,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="IDL (required)"
+            label="IDL"
+            required
             name="idl"
             error={hasErrors('idl')}
             fullWidth

@@ -6,11 +6,11 @@ import {
   Build,
   DashboardRounded,
   FormatListBulleted,
-  Forum,
   ImportContacts,
   PeopleAlt,
   Settings,
   VerticalSplit,
+  GitHub,
 } from '@material-ui/icons';
 import { Roles } from '../../../model/providers/Auth/constants';
 
@@ -87,9 +87,9 @@ export const GROUPS = [
         roles: [Roles.ADMIN, Roles.USER],
       },
       {
-        text: 'Support forum',
+        text: 'GitHub',
         link: ROUTES.SUPPORT,
-        Icon: Forum,
+        Icon: GitHub,
         roles: [Roles.ADMIN, Roles.USER],
       },
       {

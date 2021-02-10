@@ -1,15 +1,12 @@
 import { DataSource } from '../../../types';
 
-export const packHandler = (
-  { name, handler, transforms }: DataSource,
-  key: string
-) => {
-  return { name, transforms, handler: { [key]: handler } };
+export const packHandler = ({ handler, ...args }: DataSource, key: string) => {
+  return { ...args, handler: { [key]: handler } };
 };
 
 export const unpackHandler = (
-  { handler, name, transforms }: DataSource,
+  { handler, ...args }: DataSource,
   key: string
 ) => {
-  return { name, transforms, handler: handler[key] };
+  return { ...args, handler: handler[key] };
 };
