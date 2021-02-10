@@ -62,11 +62,11 @@
     ]
   },
   "lint-staged": {
-    "*.ts?(x)": ["eslint --fix", "prettier --write ./src"]
+    "*.ts?(x)": "eslint --fix"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && prettier --config ../../.prettierrc.json --write ./src && git add ."
     }
   },
   "devDependencies": {

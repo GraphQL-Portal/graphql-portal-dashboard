@@ -11,7 +11,7 @@ export const RoleProtectedComponent: React.FC<{
   console.log(roles, role);
   return roles.includes(role) ? (
     <Component {...componentProps} />
-  ) : !!redirectTo ?
-(<Redirect to={redirectTo} />
-      ) : null;
+  ) : !!redirectTo ? (
+    <Redirect to={redirectTo} />
+  ) : null;
 };
