@@ -12,6 +12,7 @@ import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.s
 import { IUserDocument } from '../../data/schema/user.schema';
 import { CodeExpirationTime, CodeTypes } from './enum';
 import ITokens from './interfaces/tokens.interface';
+import TokenService from './token.service';
 
 @Injectable()
 export default class UserService {

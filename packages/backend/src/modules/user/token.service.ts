@@ -78,7 +78,7 @@ export default class TokenService implements OnModuleInit {
       } catch (error) {}
     }
 
-    const secret = jwt.sign(Roles.GATEWAY, 0); // gateway secret should not expire
+    const secret = jwt.sign(Roles.GATEWAY, Roles.GATEWAY, 0); // gateway secret should not expire
     config.gateway.secret = secret;
     this.logger.log(
       `config.gateway.secret is not set, generated secret: ${secret}`,

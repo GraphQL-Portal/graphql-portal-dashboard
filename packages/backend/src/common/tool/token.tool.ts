@@ -28,5 +28,5 @@ export const sign = (
   if (expiresIn) {
     options.expiresIn = expiresIn;
   }
-  return jwt.sign({ userId }, config.application.jwtSecret, options);
+  return jwt.sign({ userId, role }, config.application.jwtSecret, options);
 };
