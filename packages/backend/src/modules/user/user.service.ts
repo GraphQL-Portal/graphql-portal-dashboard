@@ -1,18 +1,17 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import Sendgrid from '@sendgrid/mail';
+import { AuthenticationError, UserInputError } from 'apollo-server-express';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
-import { AuthenticationError, UserInputError } from 'apollo-server-express';
-import { CodeTypes, CodeExpirationTime } from './enum';
-import { LoggerService } from '../../common/logger';
-import { IUserDocument } from '../../data/schema/user.schema';
-import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
-import IUser from '../../common/interface/user.interface';
-import ITokens from './interfaces/tokens.interface';
-import TokenService from '../user/token.service';
 import Roles from '../../common/enum/roles.enum';
 import IUpdateUser from '../../common/interface/update-user.interface';
+import IUser from '../../common/interface/user.interface';
+import { LoggerService } from '../../common/logger';
+import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
+import { IUserDocument } from '../../data/schema/user.schema';
+import { CodeExpirationTime, CodeTypes } from './enum';
+import ITokens from './interfaces/tokens.interface';
 
 @Injectable()
 export default class UserService {

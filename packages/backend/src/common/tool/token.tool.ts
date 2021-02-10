@@ -1,5 +1,5 @@
 import HeadersEnum from '../enum/headers.enum';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { config } from 'node-config-ts';
 import TokenExpirationTime from '../enum/token-expiration-time.enum';
 import { AuthenticationError } from 'apollo-server-express';
@@ -24,7 +24,9 @@ export const sign = (
   userId: string,
   expiresIn: TokenExpirationTime
 ): string => {
-  return jwt.sign({ userId, role }, config.application.jwtSecret, {
-    expiresIn,
-  });
+  const options = {} as SignOptions;
+  if (expiresIn) {
+    options.expiresIn = expiresIn;
+  }
+  return jwt.sign({ userId }, config.application.jwtSecret, options);
 };

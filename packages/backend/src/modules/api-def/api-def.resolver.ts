@@ -22,7 +22,7 @@ export default class ApiDefResolver {
   }
 
   @Query()
-  @Roles([RolesEnum.ADMIN])
+  @Roles([RolesEnum.ADMIN, RolesEnum.GATEWAY])
   public getAllApiDefs(): Promise<ApiDefsWithTimestamp> {
     return this.service.findAll();
   }

@@ -2,10 +2,11 @@
 /* eslint-disable */
 declare module "node-config-ts" {
   interface IConfig {
-    name: string
-    application: Application
-    client: Client
-    db: Db
+    name: string;
+    application: Application;
+    gateway: Gateway;
+    client: Client;
+    db: Db;
   }
   interface Db {
     redis: Redis
@@ -16,6 +17,9 @@ declare module "node-config-ts" {
   }
   interface Client {
     host: string
+  }
+  interface Gateway {
+    secret: string;
   }
   interface Application {
     env: string
