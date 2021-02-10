@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import IApiDef from '../../common/interface/api-def.interface';
+import { randomString } from '../../common/tool';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import { ISourceDocument } from '../../data/schema/source.schema';
 import ApiDefService from '../../modules/api-def/api-def.service';
@@ -94,6 +95,35 @@ describe('ApiDefService', () => {
     it('isSourceUsed should return an apiDef with the source', async () => {
       const result = await apiDefService.isSourceUsed(source._id);
       expect(result).toBeDefined();
+    });
+
+    it('findAllForGateway should return only enabled apiDefs', async () => {
+      const disabled = await apiDefService.create(
+        {
+          ...apiDefExample,
+          _id: randomObjectId(),
+          name: randomString(),
+          enabled: false,
+        },
+        [],
+        randomObjectId()
+      );
+      expect(disabled).toBeDefined();
+      expect(disabled.enabled).toBe(false);
+
+      const { apiDefs } = await apiDefService.findAllForGateway();
+      expect(apiDefs).toHaveLength(1);
+    });
+
+    it('findById should return an apiDefs', async () => {
+      const { apiDefs } = await apiDefService.findAll();
+      expect(apiDefs).toHaveLength(2);
+
+      const id = apiDefs[0]._id!;
+      const apiDef = await apiDefService.findById(id);
+      expect(apiDef).toBeDefined();
+      expect(apiDef._id).toBeDefined();
+      expect(apiDef._id!.toString()).toBe(id!.toString());
     });
   });
 

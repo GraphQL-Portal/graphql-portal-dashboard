@@ -8,6 +8,8 @@ type ApiDefAuthentication {
 type ApiDef {
   _id: ID!
   name: String!
+  enabled: Boolean!
+  playground: Boolean!
   endpoint: String!
   sources: [Source]!
   createdAt: String!
@@ -25,6 +27,7 @@ input CreateApiDef {
   name: String
   endpoint: String
   authentication: CreateApiDefAuthentication
+  playground: Boolean
 }
 
 type ApiDefsWithTimestamp {
@@ -35,11 +38,17 @@ type ApiDefsWithTimestamp {
 type Query {
   getApiDefs: ApiDefsWithTimestamp
   getAllApiDefs: ApiDefsWithTimestamp
+  getApiDefById(id: String!): ApiDef
   publishApiDefsUpdated: Int
 }
 
 type Mutation {
   createApiDef(apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
-  updateApiDef(id: ID!, apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
+  updateApiDef(
+    id: ID!
+    apiDef: CreateApiDef!
+    sources: [ID!]!
+    enabled: Boolean
+  ): ApiDef
   deleteApiDef(id: ID!): Boolean
 }
