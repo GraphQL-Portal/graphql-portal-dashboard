@@ -9,6 +9,7 @@ type ApiDef {
   _id: ID!
   name: String!
   enabled: Boolean!
+  playground: Boolean!
   endpoint: String!
   sources: [Source]!
   createdAt: String!
@@ -26,6 +27,7 @@ input CreateApiDef {
   name: String
   endpoint: String
   authentication: CreateApiDefAuthentication
+  playground: Boolean
 }
 
 type ApiDefsWithTimestamp {
