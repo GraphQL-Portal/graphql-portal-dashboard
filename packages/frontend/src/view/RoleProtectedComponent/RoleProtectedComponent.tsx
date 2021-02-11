@@ -8,6 +8,7 @@ export const RoleProtectedComponent: React.FC<{
   redirectTo?: string;
 }> = ({ roles, Component, redirectTo, ...componentProps }) => {
   const { role } = useAuth();
+
   return roles.includes(role) ? (
     <Component {...componentProps} />
   ) : !!redirectTo ? (

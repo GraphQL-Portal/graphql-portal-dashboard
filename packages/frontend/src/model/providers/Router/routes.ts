@@ -26,6 +26,6 @@ export const WEBHOOKS = '/webhooks';
 export const NODES = '/gateway-nodes';
 
 // Help
-export const DOCUMENTATION = '/documentation';
-export const SUPPORT = '/support';
-export const SERVICES = '/services';
+export const DOCUMENTATION = 'https://docs.graphql-portal.com';
+export const GITHUB = 'https://github.com/graphql-portal/graphql-portal';
+export const CONTACT_US = 'mailto:contact@code.store?subject=GraphQL';

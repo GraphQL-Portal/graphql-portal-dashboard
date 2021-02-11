@@ -5,14 +5,11 @@ import { ROUTES, useAuth } from '../../model/providers';
 import { Content } from '../Content';
 import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
-import { Documentation } from '../Documentation';
 import { GatewayNodes } from '../GatewayNodes';
 import { GlobalSettings } from '../GlobalSettings';
 import { MetricsAndLogs } from '../MetricsAndLogs';
 import { MyAPI } from '../MyAPI';
-import { Services } from '../Services';
 import { Sidebar } from '../Sidebar';
-import { SupportForum } from '../SupportForum';
 import { Users } from '../Users';
 import { Webhooks } from '../Webhooks';
 import { RoleProtectedComponent } from '..';
@@ -58,15 +55,6 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
           <Route path={ROUTES.NODES}>
             <GatewayNodes />
-          </Route>
-          <Route path={ROUTES.DOCUMENTATION}>
-            <Documentation />
-          </Route>
-          <Route path={ROUTES.SUPPORT}>
-            <SupportForum />
-          </Route>
-          <Route path={ROUTES.SERVICES}>
-            <Services />
           </Route>
         </Switch>
       </Content>
