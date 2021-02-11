@@ -3,7 +3,7 @@ import { Header, HugeWidget, PrimaryButton, WidgetRow } from '../../../ui';
 import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
 import { Loading } from '../../Loading';
-import { useMyApi } from '../../../presenter/ApiDefs/useMyApi';
+import { useMyApi } from '../../../presenter/ApiDefs';
 import { Helmet } from 'react-helmet';
 
 export const MyAPI: React.FC = () => {

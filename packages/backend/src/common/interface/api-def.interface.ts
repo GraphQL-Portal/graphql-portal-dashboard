@@ -4,4 +4,5 @@ export default interface IApiDef extends ApiDef {
   _id?: string;
   createdAt?: Date;
   updatedAt?: Date;
+  enabled?: boolean;
 }

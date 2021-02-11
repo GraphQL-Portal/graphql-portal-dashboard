@@ -54,6 +54,7 @@ export const apiDefExample: IApiDef = {
   user: {
     _id: 'id',
   },
+  playground: false,
 };
 
 export const sourceSchema = {
@@ -70,6 +71,7 @@ export const apiDefSchema = {
   authentication: expect.objectContaining({
     auth_tokens: expect.arrayContaining([expect.any(String)]),
   }),
+  playground: expect.any(Boolean),
 };
 
 export const createUser = async (

@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { getKeyFromText } from '../../../utils/getKeyFromText';
+import { Group as Props } from '../../../types';
 import { H6 } from '../../../ui';
+import { RoleProtectedComponent } from '../../RoleProtectedComponent';
 import { Item } from './Item';
-import { Group as Props } from './types';
 import { useStyles } from './useStyles';
-import { RoleProtectedComponent } from '../../';
 
 export const Group: React.FC<Props> = ({ name, items }) => {
   const { group, groupName } = useStyles();

@@ -51,7 +51,7 @@ export const StringArray: React.FC<Props> = ({
             <Col xs={2} className={lastObjectField}>
               <Tooltip title="Remove field" placement="left">
                 <div>
-                  <IconButton onClick={() => onRemove(field.id)}>
+                  <IconButton onClick={() => onRemove(idx)}>
                     <Remove />
                   </IconButton>
                 </div>

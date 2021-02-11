@@ -7,6 +7,14 @@ const apiDefSchema = new mongoose.Schema(
   {
     name: String,
     endpoint: String,
+    enabled: {
+      type: Boolean,
+      default: true,
+    },
+    playground: {
+      type: Boolean,
+      default: true,
+    },
     authentication: {
       type: {
         auth_header_name: String,

@@ -1,6 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   AccessControl,
+  AuthorizationEntity,
   AuthorizationParam,
   Roles,
 } from '../../common/decorators';
@@ -23,7 +24,12 @@ export default class ApiDefResolver {
 
   @Query()
   @Roles([RolesEnum.ADMIN, RolesEnum.GATEWAY])
-  public getAllApiDefs(): Promise<ApiDefsWithTimestamp> {
+  public getAllApiDefs(
+    @AuthorizationEntity() user: { role: RolesEnum }
+  ): Promise<ApiDefsWithTimestamp> {
+    if (user.role === RolesEnum.GATEWAY) {
+      return this.service.findAllForGateway();
+    }
     return this.service.findAll();
   }
 
@@ -33,6 +39,13 @@ export default class ApiDefResolver {
     @AuthorizationParam('_id') userId: string
   ): Promise<ApiDefsWithTimestamp> {
     return this.service.findAllByUser(userId);
+  }
+
+  @Query()
+  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @AccessControl(AccessControlModels.ApiDef)
+  public getApiDefById(@Args('id') id: string): Promise<IApiDef> {
+    return this.service.findById(id);
   }
 
   @Mutation()
@@ -48,7 +61,11 @@ export default class ApiDefResolver {
   @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.ApiDef)
   public updateApiDef(@Args() data: ApiDefUpdateDto): Promise<IApiDef | null> {
-    return this.service.update(data.id, data.apiDef, data.sources);
+    return this.service.update(
+      data.id,
+      { ...data.apiDef, enabled: data.enabled },
+      data.sources
+    );
   }
 
   @Mutation()

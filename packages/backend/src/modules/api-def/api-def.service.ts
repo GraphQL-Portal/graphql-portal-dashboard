@@ -43,6 +43,16 @@ export default class ApiDefService implements IAccessControlService {
     };
   }
 
+  public async findAllForGateway(): Promise<ApiDefsWithTimestamp> {
+    let apiDefs = await this.apiDefModel.find().populate('sources').exec();
+    apiDefs = apiDefs.filter((apiDef) => apiDef.enabled);
+
+    return {
+      apiDefs,
+      timestamp: this.lastUpdateTime,
+    };
+  }
+
   public async findByEndpoint(
     endpoint: string | undefined
   ): Promise<IApiDefDocument | null> {
@@ -62,6 +72,10 @@ export default class ApiDefService implements IAccessControlService {
       apiDefs,
       timestamp: this.lastUpdateTime,
     };
+  }
+
+  public async findById(_id: string): Promise<IApiDef> {
+    return this.apiDefModel.findOne({ _id }).populate('sources').exec();
   }
 
   public async create(

@@ -18,7 +18,8 @@ export const useDataSources = () => {
   const { onOpenDialog, onCloseDialog } = useDialogs()!;
   const { deleteSource } = useDeleteSource({ onCompleted: refetch });
 
-  const onDelete = (id: string, name: string) => () =>
+  const onDelete = (idx: number) => () => {
+    const { _id: id, name } = data[idx];
     onOpenDialog(DELETE_DATA_SOURCE, {
       onSuccess: () => {
         deleteSource({ variables: { id } });
@@ -27,15 +28,16 @@ export const useDataSources = () => {
       onCancel: onCloseDialog,
       name,
     });
+  };
 
-  const onUpdate = (dataSource: any) => () => {
-    const { handler, name, transforms, _id } = dataSource;
+  const onUpdate = (idx: number) => () => {
+    const { handler, name, transforms, _id: id } = data[idx];
 
     const key = Object.keys(handler)[0];
     setSource({
       key,
       connector: AVAILABLE_DATA_SOURCES[key],
-      state: { handler, name, transforms, id: _id },
+      state: { handler, name, transforms, id },
     });
     push(ROUTES.DATA_SOURCE_EDIT);
   };

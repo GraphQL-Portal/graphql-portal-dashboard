@@ -44,3 +44,9 @@ export type DataSource = NameForm &
     _id: string;
     updatedAt?: string;
   };
+
+export type ConnectedList = {
+  sources: DataSource[];
+  onDelete(idx: number): () => void;
+  onUpdate?(idx: number): () => void;
+};
