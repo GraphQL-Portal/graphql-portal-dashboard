@@ -24,14 +24,20 @@ export const QUERY_METRICS = gql`
   }
 `;
 
-export const useApiMetricsQuery = (apiDef: string, startDate: Date, endDate: Date, scale: 'day' | 'hour' | 'week' | 'month' = 'day') => {
+export const useApiMetricsQuery = (
+  apiDef: string,
+  startDate: Date,
+  endDate: Date,
+  scale: 'day' | 'hour' | 'week' | 'month' = 'day'
+) => {
   const { data, loading, error, refetch } = useQuery(QUERY_METRICS, {
     variables: {
-      scale, filters: {
+      scale,
+      filters: {
         apiDef,
         startDate: startDate.getTime(),
-        endDate: endDate.getTime()
-      }
+        endDate: endDate.getTime(),
+      },
     },
   });
 
@@ -39,7 +45,12 @@ export const useApiMetricsQuery = (apiDef: string, startDate: Date, endDate: Dat
     data: data?.metrics,
     loading,
     error,
-    refetch: (variables: { apiDef: string, startDate: Date, endDate: Date, scale: 'day' | 'hour' | 'week' | 'month' }) =>
+    refetch: (variables: {
+      apiDef: string;
+      startDate: Date;
+      endDate: Date;
+      scale: 'day' | 'hour' | 'week' | 'month';
+    }) =>
       refetch({
         filters: {
           apiDef: variables.apiDef,

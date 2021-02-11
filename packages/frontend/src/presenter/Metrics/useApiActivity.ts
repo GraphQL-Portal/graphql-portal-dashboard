@@ -13,12 +13,13 @@ export const useApiActivity = () => {
     return {
       startDate: moment().add(-1, dateRange).toDate(),
       endDate: moment().toDate(),
-    }
+    };
   }, [dateRange]);
 
   const { data, loading } = useApiActivityQuery(startDate, endDate);
 
-  const onApiClick = (id: string) => push(generatePath(`${ROUTES.API_METRICS}`, { id }));
+  const onApiClick = (id: string) =>
+    push(generatePath(`${ROUTES.API_METRICS}`, { id }));
 
   return {
     data,

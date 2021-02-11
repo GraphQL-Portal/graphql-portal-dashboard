@@ -19,7 +19,7 @@ export const useApiActivityQuery = (startDate: Date, endDate: Date) => {
       filters: {
         startDate: startDate.getTime(),
         endDate: endDate.getTime(),
-      }
+      },
     },
   });
 
@@ -27,5 +27,5 @@ export const useApiActivityQuery = (startDate: Date, endDate: Date) => {
     data: data?.getApiActivity,
     loading,
     error,
-  }
-}
+  };
+};

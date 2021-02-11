@@ -12,7 +12,12 @@ export const useApiMetrics = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [scale, setScale] = useState('day' as Scale);
 
-  const { data, loading, error, refetch } = useApiMetricsQuery(apiDef, startDate, endDate, scale);
+  const { data, loading, error, refetch } = useApiMetricsQuery(
+    apiDef,
+    startDate,
+    endDate,
+    scale
+  );
 
   useEffect(() => {
     let data = { startDate: startDate, endDate: endDate, scale, apiDef };

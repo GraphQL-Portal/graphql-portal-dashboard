@@ -12,14 +12,26 @@ export const useMetrics = () => {
   const { data: myApis } = useApiDefs();
 
   const apis = useMemo(() => {
-    const options = [{
-      value: undefined,
-      label: 'All APIs'
-    }];
-    return myApis.map(({ name, _id }: { name: string, _id: string }) => ({ value: _id, label: name })).concat(options);
+    const options = [
+      {
+        value: undefined,
+        label: 'All APIs',
+      },
+    ];
+    return myApis
+      .map(({ name, _id }: { name: string; _id: string }) => ({
+        value: _id,
+        label: name,
+      }))
+      .concat(options);
   }, [myApis]);
 
-  const { data, loading, error, refetch } = useMetricsQuery(apiDef, startDate, endDate, scale);
+  const { data, loading, error, refetch } = useMetricsQuery(
+    apiDef,
+    startDate,
+    endDate,
+    scale
+  );
 
   useEffect(() => {
     let data = { startDate: startDate, endDate: endDate, scale, apiDef };

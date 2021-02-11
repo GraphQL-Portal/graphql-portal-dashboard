@@ -18,7 +18,11 @@ export const MetricsAndLogs: React.FC = () => {
       <Header title="Metrics and Logs" />
       <WidgetRow>
         <AppBar className={appBar}>
-          <Tabs value={tab} indicatorColor='primary' onChange={(e, tab) => setTab(tab)}>
+          <Tabs
+            value={tab}
+            indicatorColor="primary"
+            onChange={(e, tab) => setTab(tab)}
+          >
             <Tab label="APIs Activity" />
           </Tabs>
         </AppBar>

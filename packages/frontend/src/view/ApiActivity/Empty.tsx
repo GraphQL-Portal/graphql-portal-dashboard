@@ -10,4 +10,4 @@ export const EmptyApiActivity: React.FC = () => {
       </EmptyText>
     </EmptyContainer>
   );
-}
+};

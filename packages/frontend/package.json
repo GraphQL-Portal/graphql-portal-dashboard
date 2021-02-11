@@ -64,11 +64,6 @@
   "lint-staged": {
     "*.ts?(x)": "eslint --fix"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && prettier --config ../../.prettierrc.json --write ./src && git add ."
-    }
-  },
   "devDependencies": {
     "@testing-library/dom": "7.29.4",
     "@testing-library/jest-dom": "5.11.9",

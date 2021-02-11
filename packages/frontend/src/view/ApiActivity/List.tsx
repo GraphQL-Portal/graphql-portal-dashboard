@@ -15,7 +15,10 @@ import { TABLE_HEAD } from './constants';
 
 const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
 
-export const ApiActivityList: React.FC<{ data: any[], onApiClick: (apiDef: string) => void }> = ({ data, onApiClick }) => {
+export const ApiActivityList: React.FC<{
+  data: any[];
+  onApiClick: (apiDef: string) => void;
+}> = ({ data, onApiClick }) => {
   return (
     <>
       <WidgetHeader title="Traffic Activity per API" />
@@ -35,12 +38,17 @@ export const ApiActivityList: React.FC<{ data: any[], onApiClick: (apiDef: strin
                 idx
               ) => (
                 <>
-                  <TableRow onClick={() => onApiClick(apiDef)} key={`node-${idx}`}>
+                  <TableRow
+                    onClick={() => onApiClick(apiDef)}
+                    key={`node-${idx}`}
+                  >
                     <TableCell align="left">{apiName}</TableCell>
                     <TableCell align="right">{count}</TableCell>
                     <TableCell align="right">{success}</TableCell>
                     <TableCell align="right">{failed}</TableCell>
-                    <TableCell align="right">{moment(Number(lastAccess)).fromNow()}</TableCell>
+                    <TableCell align="right">
+                      {moment(Number(lastAccess)).fromNow()}
+                    </TableCell>
                   </TableRow>
                 </>
               )

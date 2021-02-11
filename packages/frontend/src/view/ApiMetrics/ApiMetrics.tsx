@@ -8,7 +8,7 @@ import {
   HugeWidget,
   PrimaryButton,
   Widget,
-  WidgetRow
+  WidgetRow,
 } from '../../ui';
 import {
   CountryChart,

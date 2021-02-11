@@ -10,10 +10,10 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     padding: spacing(1.5),
   },
   tabPanel: {
-    width: '100%'
+    width: '100%',
   },
   appBar: {
     position: 'static',
-    backgroundColor: palette.primary.dark
-  }
+    backgroundColor: palette.primary.dark,
+  },
 }));

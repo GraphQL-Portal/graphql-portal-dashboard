@@ -3,7 +3,14 @@ import React, { ReactText } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useMetrics } from '../../presenter/Metrics';
-import { DatePicker, Header, HugeWidget, Widget, WidgetRow, Select } from '../../ui';
+import {
+  DatePicker,
+  Header,
+  HugeWidget,
+  Widget,
+  WidgetRow,
+  Select,
+} from '../../ui';
 import {
   CountryChart,
   FailureRequestRateChart,

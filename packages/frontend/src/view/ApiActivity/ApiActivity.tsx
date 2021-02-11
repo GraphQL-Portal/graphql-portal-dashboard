@@ -18,12 +18,13 @@ export const ApiActivity: React.FC = () => {
           <Button onClick={() => setDateRange('month')}>Last month</Button>
           <Button onClick={() => setDateRange('year')}>Last year</Button>
         </ButtonGroup>
-        {
-          loading ? <Loading /> : data?.length > 0 ? (<ApiActivityList
-            data={data}
-            onApiClick={onApiClick}
-          />) : (<EmptyApiActivity />)
-        }
+        {loading ? (
+          <Loading />
+        ) : data?.length > 0 ? (
+          <ApiActivityList data={data} onApiClick={onApiClick} />
+        ) : (
+          <EmptyApiActivity />
+        )}
       </HugeWidget>
     </>
   );
