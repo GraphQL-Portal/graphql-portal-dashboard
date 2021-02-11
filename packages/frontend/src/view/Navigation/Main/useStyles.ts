@@ -17,11 +17,6 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   item: {
     textDecoration: 'none',
     display: 'block',
-    marginBottom: spacing(1),
-
-    '&:last-child': {
-      marginBottom: 0,
-    },
   },
   activeItem: {
     '& > button': {
