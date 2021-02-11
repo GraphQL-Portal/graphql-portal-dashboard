@@ -29,7 +29,6 @@ export {
 export { TabsBody, TabsHead } from './Tabs';
 export { Tooltip } from './Tooltip';
 export { DatePicker } from './DatePicker';
-export { TabPanel } from './TabPanel';
 export { H1, H2, H3, H4, H5, H6, Body1 } from './Typography';
 export {
   Widget,
@@ -42,3 +41,4 @@ export {
   WidgetBody,
   WidgetActions,
 } from './Widgets';
+export { ButtonGroup } from './ButtonGroup';

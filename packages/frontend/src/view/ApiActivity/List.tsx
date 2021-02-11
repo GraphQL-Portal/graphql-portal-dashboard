@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import { formatDistanceToNow } from 'date-fns';
 
 import {
   WidgetBody,
@@ -12,13 +12,13 @@ import {
 } from '../../ui';
 import { getKeyFromText } from '../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
+import { ApiActivityListProps } from '../../types';
+import { getCellAlign } from '../../utils';
 
-const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
-
-export const ApiActivityList: React.FC<{
-  data: any[];
-  onApiClick: (apiDef: string) => void;
-}> = ({ data, onApiClick }) => {
+export const ApiActivityList: React.FC<ApiActivityListProps> = ({
+  data,
+  onApiClick,
+}) => {
   return (
     <>
       <WidgetHeader title="Traffic Activity per API" />
@@ -47,7 +47,7 @@ export const ApiActivityList: React.FC<{
                     <TableCell align="right">{success}</TableCell>
                     <TableCell align="right">{failed}</TableCell>
                     <TableCell align="right">
-                      {moment(Number(lastAccess)).fromNow()}
+                      {formatDistanceToNow(Number(lastAccess))} ago{' '}
                     </TableCell>
                   </TableRow>
                 </>

@@ -10,11 +10,9 @@ import {
   TableRow,
   IconButton,
 } from '../../../ui';
-import { getKeyFromText } from '../../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
 import { ApiDefsListFC } from './types';
-
-const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
+import { getCellAlign, getKeyFromText } from '../../../utils';
 
 export const ApiDefsList: React.FC<ApiDefsListFC> = ({
   list,

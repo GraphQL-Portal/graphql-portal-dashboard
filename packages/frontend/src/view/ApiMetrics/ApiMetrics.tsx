@@ -1,6 +1,7 @@
 import { Button, ButtonGroup } from '@material-ui/core';
-import React, { ReactText } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
+
 import { useApiMetrics } from '../../presenter/Metrics';
 import {
   DatePicker,
@@ -14,21 +15,15 @@ import {
   CountryChart,
   FailureRequestRateChart,
   RequestChart,
-} from './MetricChart';
-import format from 'date-fns/format';
+} from '../MetricChart';
+import { formatArgumentLabel, formatValueLabel } from '../../utils';
 import { useStyles } from './useStyles';
-
-type Scale = 'hour' | 'day' | 'week' | 'month';
-const formatValueLabel = (ms: ReactText) => `${ms}ms`;
-
-const formatArgumentLabel = (scale: Scale) => (date: ReactText) =>
-  format(new Date(date), scale === 'hour' ? 'HH:mm' : 'MMM d');
 
 export const ApiMetrics: React.FC = () => {
   const { date, buttons } = useStyles();
 
   const {
-    data,
+    data = {},
     startDate,
     endDate,
     scale,
@@ -37,10 +32,7 @@ export const ApiMetrics: React.FC = () => {
     setScale,
     goBack,
   } = useApiMetrics();
-  const latencyData = data?.latency || [];
-  const countData = data?.count || [];
-  const countriesData = data?.countries || [];
-  const failuresData = data?.failures || [];
+  const { latency = [], count = [], countries = [], failures = [] } = data;
 
   return (
     <>
@@ -82,7 +74,7 @@ export const ApiMetrics: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <RequestChart
-            data={latencyData}
+            data={latency}
             title="Average Request Latency"
             argumentLabelHandler={formatArgumentLabel(scale)}
             valueLabelHandler={formatValueLabel}
@@ -92,7 +84,7 @@ export const ApiMetrics: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <RequestChart
-            data={countData}
+            data={count}
             argumentLabelHandler={formatArgumentLabel(scale)}
             title="Average Request Count"
           />
@@ -101,7 +93,7 @@ export const ApiMetrics: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <CountryChart
-            data={countriesData}
+            data={countries}
             title="Countries where requests were made from"
           />
         </HugeWidget>
@@ -110,7 +102,7 @@ export const ApiMetrics: React.FC = () => {
         <HugeWidget>
           <FailureRequestRateChart
             argumentLabelHandler={formatArgumentLabel(scale)}
-            data={failuresData}
+            data={failures}
             title="Failure\Success Chart"
           />
         </HugeWidget>

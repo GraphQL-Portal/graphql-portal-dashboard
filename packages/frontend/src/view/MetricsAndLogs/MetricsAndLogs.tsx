@@ -1,14 +1,14 @@
 import React from 'react';
-import { AppBar, Tabs, Tab } from '@material-ui/core';
 import { Helmet } from 'react-helmet';
 
 import { ApiActivity } from '..';
-import { Header, WidgetRow, TabPanel } from '../../ui';
-import { useStyles } from './useStyles';
+import { Header, WidgetRow, TabsBody, TabsHead } from '../../ui';
+import { useTabs } from '../../model/Hooks';
+
+const TABS = [{ label: ' APIs Activity' }];
 
 export const MetricsAndLogs: React.FC = () => {
-  const [tab, setTab] = React.useState(0);
-  const { tabPanel, appBar } = useStyles();
+  const { tab, onChange } = useTabs();
 
   return (
     <>
@@ -17,18 +17,15 @@ export const MetricsAndLogs: React.FC = () => {
       </Helmet>
       <Header title="Metrics and Logs" />
       <WidgetRow>
-        <AppBar className={appBar}>
-          <Tabs
-            value={tab}
-            indicatorColor="primary"
-            onChange={(e, tab) => setTab(tab)}
-          >
-            <Tab label="APIs Activity" />
-          </Tabs>
-        </AppBar>
-        <TabPanel className={tabPanel} value={tab} index={0}>
+        <TabsHead
+          tabsList={TABS}
+          indicatorColor="primary"
+          onChange={onChange}
+          value={tab}
+        />
+        <TabsBody value={tab}>
           <ApiActivity />
-        </TabPanel>
+        </TabsBody>
       </WidgetRow>
     </>
   );

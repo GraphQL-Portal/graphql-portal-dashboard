@@ -3,23 +3,21 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { ROUTES, useAuth } from '../../model/providers';
 import { Roles } from '../../model/providers/Auth/constants';
-import {
-  Content,
-  DataSources,
-  Dashboard,
-  Documentation,
-  GatewayNodes,
-  GlobalSettings,
-  MetricsAndLogs,
-  MyAPI,
-  Services,
-  Sidebar,
-  SupportForum,
-  Users,
-  Webhooks,
-  ApiMetrics,
-  RoleProtectedComponent,
-} from '..';
+import { Content } from '../Content';
+import { DataSources } from '../DataSources';
+import { Dashboard } from '../Dashboard';
+import { Documentation } from '../Documentation';
+import { GatewayNodes } from '../GatewayNodes';
+import { GlobalSettings } from '../GlobalSettings';
+import { MetricsAndLogs } from '../MetricsAndLogs';
+import { MyAPI } from '../MyAPI';
+import { Services } from '../Services';
+import { Sidebar } from '../Sidebar';
+import { SupportForum } from '../SupportForum';
+import { Users } from '../Users';
+import { Webhooks } from '../Webhooks';
+import { ApiMetrics } from '../ApiMetrics';
+import { RoleProtectedComponent } from '../RoleProtectedComponent';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();

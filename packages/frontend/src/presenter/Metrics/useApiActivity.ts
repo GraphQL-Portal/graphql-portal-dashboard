@@ -1,18 +1,18 @@
-import moment from 'moment';
+import { add } from 'date-fns';
 import { useState, useMemo } from 'react';
 import { useHistory, generatePath } from 'react-router-dom';
 import { useApiActivityQuery } from '../../model/Metrics/queries';
 import { ROUTES } from '../../model/providers';
+import { DateRange } from '../../types';
 
 export const useApiActivity = () => {
-  type DateRange = 'day' | 'week' | 'month' | 'year';
   const { push } = useHistory();
   const [dateRange, setDateRange] = useState('year' as DateRange);
 
   const { startDate, endDate } = useMemo(() => {
     return {
-      startDate: moment().add(-1, dateRange).toDate(),
-      endDate: moment().toDate(),
+      startDate: add(new Date(), { [`${dateRange}s`]: -1 }),
+      endDate: new Date(),
     };
   }, [dateRange]);
 

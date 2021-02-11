@@ -1,5 +1,5 @@
 import { Button, ButtonGroup } from '@material-ui/core';
-import React, { ReactText } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useMetrics } from '../../presenter/Metrics';
@@ -15,16 +15,10 @@ import {
   CountryChart,
   FailureRequestRateChart,
   RequestChart,
-} from './MetricChart';
-import format from 'date-fns/format';
+} from '../MetricChart';
 import { useStyles } from './useStyles';
-
-type Scale = 'hour' | 'day' | 'week' | 'month';
-
-const formatValueLabel = (ms: ReactText) => `${ms}ms`;
-
-const formatArgumentLabel = (scale: Scale) => (date: ReactText) =>
-  format(new Date(date), scale === 'hour' ? 'HH:mm' : 'MMM d');
+import { formatArgumentLabel, formatValueLabel } from '../../utils';
+import { Scale } from '../../types';
 
 export const Dashboard: React.FC = () => {
   const { widget, apiSelect } = useStyles();

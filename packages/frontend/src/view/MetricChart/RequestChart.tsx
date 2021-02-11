@@ -1,27 +1,16 @@
-import React, { ReactText } from 'react';
+import React from 'react';
 import {
   ArgumentAxis,
   Chart,
-  Legend,
   LineSeries,
   Title,
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
-const checkHandler = (fn?: Function) => (fn ? fn : (text: ReactText) => text);
+import { RequestChartProps } from '../../types';
+import { checkHandler } from '../../utils';
 
-type FailureRequestRateChartProps = {
-  data: {
-    success: number;
-    failure: number;
-    argument: number;
-  }[];
-  title?: string;
-  argumentLabelHandler?: Function;
-  valueLabelHandler?: Function;
-};
-
-export const FailureRequestRateChart: React.FC<FailureRequestRateChartProps> = ({
+export const RequestChart: React.FC<RequestChartProps> = ({
   data,
   title,
   argumentLabelHandler,
@@ -54,17 +43,7 @@ export const FailureRequestRateChart: React.FC<FailureRequestRateChartProps> = (
       <ArgumentAxis labelComponent={ArgumentLabel} />
       <ValueAxis labelComponent={ValueLabel} />
 
-      <LineSeries
-        name="Success"
-        valueField="success"
-        argumentField="argument"
-      />
-      <LineSeries
-        name="Failure"
-        valueField="failure"
-        argumentField="argument"
-      />
-      <Legend />
+      <LineSeries valueField="value" argumentField="argument" />
     </Chart>
   );
 };
