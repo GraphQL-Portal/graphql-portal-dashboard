@@ -5,7 +5,7 @@ export * from './Dialogs';
 export * from './Editors';
 export * from './Forms';
 export * from './Gateway';
-export type { DeepObject, TriggersTable, AnyTable } from './General';
+export * from './General';
 export * from './HookForm';
 export * from './Navigation';
 export * from './Header';

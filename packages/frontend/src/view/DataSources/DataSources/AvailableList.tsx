@@ -20,24 +20,7 @@ import { useAvailableSources } from '../../../presenter/DataSources';
 import { AVAILABLE_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 import { formatHandlerTitle } from '../helpers';
-import { ReactComponent as JsonSchema } from '../../../icons/JsonSchema.svg';
-import { ReactComponent as GraphQL } from '../../../icons/GraphQL.svg';
-import { ReactComponent as Grpc } from '../../../icons/Grpc.svg';
-import { ReactComponent as MySQL } from '../../../icons/MySQL.svg';
-import { ReactComponent as Mesh } from '../../../icons/Mesh.svg';
-import { ReactComponent as Neo4j } from '../../../icons/Neo4j.svg';
-import { ReactComponent as OData } from '../../../icons/OData.svg';
-
-const ICON_MAPPER: { [key: string]: any } = {
-  GraphQL: GraphQL,
-  Grpc: Grpc,
-  JsonSchema: JsonSchema,
-  MySQL: MySQL,
-  Neo4j: Neo4j,
-  OData: OData,
-};
-
-const getIcon = (key: string) => ICON_MAPPER[key] || null;
+import { handlerMapper, typeMapper } from './helpers';
 
 const getCellAlign = (idx: number, length: number) =>
   idx + 1 === length ? 'right' : 'left';
@@ -54,7 +37,7 @@ export const AvailableList: React.FC = () => {
     onAddClick,
   } = useAvailableSources();
 
-  const { form, searchIcon, svg } = useStyles();
+  const { form, searchIcon } = useStyles();
 
   return (
     <>
@@ -93,19 +76,16 @@ export const AvailableList: React.FC = () => {
             const source = available[key];
             const { title, description } = source;
             const fTitle = formatHandlerTitle(title);
-            const HandlerIcon = getIcon(fTitle);
+            const HandlerIcon = handlerMapper(fTitle);
+            const TypeIcon = typeMapper(fTitle);
             return (
               <TableRow key={key}>
                 <TableIconCell>
-                  <TableIcon>
-                    {HandlerIcon && <HandlerIcon className={svg} />}
-                  </TableIcon>
+                  <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
                   {fTitle}
                 </TableIconCell>
                 <TableIconCell>
-                  <TableIcon>
-                    <Mesh className={svg} />
-                  </TableIcon>
+                  <TableIcon>{TypeIcon && <TypeIcon />}</TableIcon>
                   Free
                 </TableIconCell>
                 <TableCell>{description}</TableCell>

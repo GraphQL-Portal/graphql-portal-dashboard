@@ -12,9 +12,4 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
   addButton: {
     display: 'inline-block',
   },
-  svg: {
-    display: 'block',
-    width: '100%',
-    height: '100%',
-  },
 }));
