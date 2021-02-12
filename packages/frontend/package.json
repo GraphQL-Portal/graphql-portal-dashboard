@@ -61,9 +61,6 @@
       "last 1 safari version"
     ]
   },
-  "lint-staged": {
-    "*.ts?(x)": "eslint --fix"
-  },
   "devDependencies": {
     "@testing-library/dom": "7.29.4",
     "@testing-library/jest-dom": "5.11.9",
