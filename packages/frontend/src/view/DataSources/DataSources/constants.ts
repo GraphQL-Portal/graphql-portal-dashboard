@@ -1,5 +1,7 @@
 import { ElementsTable } from '../../../types';
 
+import { ReactComponent as Fhir } from '../../../icons/Fhir.svg';
+import { ReactComponent as Mongoose } from '../../../icons/Mongoose.svg';
 import { ReactComponent as JsonSchema } from '../../../icons/JsonSchema.svg';
 import { ReactComponent as GraphQL } from '../../../icons/GraphQL.svg';
 import { ReactComponent as Grpc } from '../../../icons/Grpc.svg';
@@ -9,11 +11,14 @@ import { ReactComponent as Neo4j } from '../../../icons/Neo4j.svg';
 import { ReactComponent as OData } from '../../../icons/OData.svg';
 import { ReactComponent as Openapi } from '../../../icons/Openapi.svg';
 import { ReactComponent as PostGraphile } from '../../../icons/PostGraphile.svg';
+import { ReactComponent as Thrift } from '../../../icons/Thrift.svg';
+import { ReactComponent as Soap } from '../../../icons/Soap.svg';
 import { ReactComponent as Contentful } from '../../../icons/Contentful.svg';
 import { ReactComponent as Slack } from '../../../icons/Slack.svg';
 import { ReactComponent as Portal } from '../../../icons/Portal.svg';
 
 export const ICON_MAPPER: ElementsTable = {
+  Fhir: Fhir,
   GraphQL: GraphQL,
   Grpc: Grpc,
   JsonSchema: JsonSchema,
@@ -22,6 +27,9 @@ export const ICON_MAPPER: ElementsTable = {
   OData: OData,
   Openapi: Openapi,
   PostGraphile: PostGraphile,
+  Soap: Soap,
+  Thrift: Thrift,
+  Mongoose: Mongoose,
   Contentful: Contentful,
   Slack: Slack,
 };
