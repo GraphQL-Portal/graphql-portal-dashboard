@@ -1,4 +1,7 @@
 {
+  "gateway": {
+    "secret": "@@GATEWAY_SECRET"
+  },
   "application": {
     "env": "staging",
     "host": "@@HOST",
