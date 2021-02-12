@@ -1,6 +1,6 @@
 {
   "gateway": {
-    "secret": "@@GATEWAY_SECRET"
+    "secret": "@@DASHBOARD_SECRET"
   },
   "application": {
     "env": "development",
