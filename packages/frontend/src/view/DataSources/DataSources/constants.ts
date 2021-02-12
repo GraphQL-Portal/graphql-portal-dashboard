@@ -16,6 +16,12 @@ import { ReactComponent as Soap } from '../../../icons/Soap.svg';
 import { ReactComponent as Contentful } from '../../../icons/Contentful.svg';
 import { ReactComponent as Slack } from '../../../icons/Slack.svg';
 import { ReactComponent as Portal } from '../../../icons/Portal.svg';
+import { ReactComponent as Fedex } from '../../../icons/Fedex.svg';
+import { ReactComponent as Crunchbase } from '../../../icons/Crunchbase.svg';
+import { ReactComponent as Twitter } from '../../../icons/Twitter.svg';
+import { ReactComponent as Weatherbit } from '../../../icons/Weatherbit.svg';
+import { ReactComponent as Stripe } from '../../../icons/Stripe.svg';
+import { ReactComponent as Salesforce } from '../../../icons/Salesforce.svg';
 
 export const ICON_MAPPER: ElementsTable = {
   Fhir: Fhir,
@@ -32,6 +38,12 @@ export const ICON_MAPPER: ElementsTable = {
   Mongoose: Mongoose,
   Contentful: Contentful,
   Slack: Slack,
+  Fedex: Fedex,
+  Crunchbase: Crunchbase,
+  Twitter: Twitter,
+  Weatherbit: Weatherbit,
+  Stripe: Stripe,
+  Salesforce: Salesforce,
 };
 
 export const TYPE_MAPPER: ElementsTable = {
