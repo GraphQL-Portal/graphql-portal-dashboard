@@ -62,4 +62,10 @@ export const TYPE_MAPPER: ElementsTable = {
   Tuql: Mesh,
   Contentful: Portal,
   Slack: Portal,
+  Crunchbase: Portal,
+  Fedex: Portal,
+  Salesforce: Portal,
+  Stripe: Portal,
+  Twitter: Portal,
+  Weatherbit: Portal,
 };
