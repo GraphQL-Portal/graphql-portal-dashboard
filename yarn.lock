@@ -2080,10 +2080,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@graphql-portal/types@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.11.0.tgz#60879adf0715a8f1afb4e90478c3716e07696d72"
-  integrity sha512-GWkFsOzxIAjSA2NTCLGGXRugU3FRSykOZEV/SNcGt5UwU4GLz0/IXcRg1wxC6Xms21n0Ki1gcZfjWggaDipulA==
+"@graphql-portal/types@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.12.0.tgz#9ab80105d0ff1585245573aae2b9103842666f70"
+  integrity sha512-kloSMVv5M7KgW6GREpbcLWflU7g9efu60lJkQVU39j55nB+bmdS1Or6+9IF6iZxZHwgpiqt/6VQRDTOz0aUwuA==
   dependencies:
     ajv "^6.12.6"
 
