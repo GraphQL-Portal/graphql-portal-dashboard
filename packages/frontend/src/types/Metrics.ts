@@ -1,12 +1,19 @@
-export type DateRange = 'day' | 'week' | 'month' | 'year';
-
 export type Scale = 'hour' | 'day' | 'week' | 'month';
+
+export type DateRange = Omit<Scale, 'hour'> | 'year';
 
 export type RequestChartProps = {
   data: any[];
   title?: string;
   argumentLabelHandler?: any;
   valueLabelHandler?: any;
+};
+
+export type MetricsRefetch = {
+  apiDef: string | undefined;
+  startDate: Date;
+  endDate: Date;
+  scale: Scale;
 };
 
 export type CountryChartProps = RequestChartProps;

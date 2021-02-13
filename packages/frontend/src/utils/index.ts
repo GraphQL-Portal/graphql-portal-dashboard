@@ -11,7 +11,7 @@ export { NOOP } from './noop';
 export { toLowerCase } from './toLowerCase';
 export { trace } from './trace';
 export { getRoleFromToken } from './getRoleFromToken';
-export { getCellAlign } from './getCellAlign';
+export { alignFirstCellLeft } from './alignFirstCellLeft';
 export { formatArgumentLabel } from './formatArgumentLabel';
 export { formatValueLabel } from './formatValueLabel';
 export { checkHandler } from './checkHandler';

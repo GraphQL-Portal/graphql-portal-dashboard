@@ -8,7 +8,7 @@ import {
   TableBody,
   TableRow,
 } from '../../ui';
-import { getKeyFromText, getCellAlign } from '../../utils';
+import { getKeyFromText, alignFirstCellLeft } from '../../utils';
 import { TABLE_HEAD } from './constants';
 import { GatewayNodesList as Props } from '../../types/Gateway';
 
@@ -20,7 +20,10 @@ export const GatewayNodesList: React.FC<Props> = ({ list }) => {
         <Table>
           <TableHead>
             {TABLE_HEAD.map((cell, idx) => (
-              <TableCell key={getKeyFromText(cell)} align={getCellAlign(idx)}>
+              <TableCell
+                key={getKeyFromText(cell)}
+                align={alignFirstCellLeft(idx)}
+              >
                 {cell}
               </TableCell>
             ))}
@@ -31,7 +34,7 @@ export const GatewayNodesList: React.FC<Props> = ({ list }) => {
                 {node.map((item: any, indx: any) => (
                   <TableCell
                     key={`node-${idx}-item-${indx}`}
-                    align={getCellAlign(indx)}
+                    align={alignFirstCellLeft(indx)}
                   >
                     {item}
                   </TableCell>

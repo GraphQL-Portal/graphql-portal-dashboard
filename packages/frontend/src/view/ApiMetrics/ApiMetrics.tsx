@@ -1,4 +1,3 @@
-import { Button, ButtonGroup } from '@material-ui/core';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -10,11 +9,13 @@ import {
   PrimaryButton,
   Widget,
   WidgetRow,
+  ButtonGroup,
 } from '../../ui';
 import {
   CountryChart,
   FailureRequestRateChart,
   RequestChart,
+  chartButtons,
 } from '../MetricChart';
 import { formatArgumentLabel, formatValueLabel } from '../../utils';
 import { useStyles } from './useStyles';
@@ -45,12 +46,7 @@ export const ApiMetrics: React.FC = () => {
       </Header>
       <WidgetRow>
         <Widget className={buttons}>
-          <ButtonGroup size="large">
-            <Button onClick={() => setScale('hour')}>Hour</Button>
-            <Button onClick={() => setScale('day')}>Day</Button>
-            <Button onClick={() => setScale('week')}>Week</Button>
-            <Button onClick={() => setScale('month')}>Month</Button>
-          </ButtonGroup>
+          <ButtonGroup onClick={setScale} buttons={chartButtons} />
         </Widget>
         <Widget className={date}>
           <DatePicker

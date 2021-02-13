@@ -13,7 +13,7 @@ import {
 import { getKeyFromText } from '../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
 import { ApiActivityListProps } from '../../types';
-import { getCellAlign } from '../../utils';
+import { alignFirstCellLeft } from '../../utils';
 
 export const ApiActivityList: React.FC<ApiActivityListProps> = ({
   data,
@@ -26,7 +26,10 @@ export const ApiActivityList: React.FC<ApiActivityListProps> = ({
         <Table>
           <TableHead>
             {TABLE_HEAD.map((cell, idx) => (
-              <TableCell key={getKeyFromText(cell)} align={getCellAlign(idx)}>
+              <TableCell
+                key={getKeyFromText(cell)}
+                align={alignFirstCellLeft(idx)}
+              >
                 {cell}
               </TableCell>
             ))}
@@ -37,20 +40,18 @@ export const ApiActivityList: React.FC<ApiActivityListProps> = ({
                 { apiName, apiDef, success, failed, count, lastAccess },
                 idx
               ) => (
-                <>
-                  <TableRow
-                    onClick={() => onApiClick(apiDef)}
-                    key={`node-${idx}`}
-                  >
-                    <TableCell align="left">{apiName}</TableCell>
-                    <TableCell align="right">{count}</TableCell>
-                    <TableCell align="right">{success}</TableCell>
-                    <TableCell align="right">{failed}</TableCell>
-                    <TableCell align="right">
-                      {formatDistanceToNow(Number(lastAccess))} ago{' '}
-                    </TableCell>
-                  </TableRow>
-                </>
+                <TableRow
+                  onClick={() => onApiClick(apiDef)}
+                  key={`node-${idx}`}
+                >
+                  <TableCell align="left">{apiName}</TableCell>
+                  <TableCell align="right">{count}</TableCell>
+                  <TableCell align="right">{success}</TableCell>
+                  <TableCell align="right">{failed}</TableCell>
+                  <TableCell align="right">
+                    {formatDistanceToNow(Number(lastAccess))} ago{' '}
+                  </TableCell>
+                </TableRow>
               )
             )}
           </TableBody>

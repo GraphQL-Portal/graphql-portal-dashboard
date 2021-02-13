@@ -1,4 +1,3 @@
-import { Button, ButtonGroup } from '@material-ui/core';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -10,21 +9,21 @@ import {
   Widget,
   WidgetRow,
   Select,
+  ButtonGroup,
 } from '../../ui';
 import {
   CountryChart,
   FailureRequestRateChart,
   RequestChart,
+  chartButtons,
 } from '../MetricChart';
 import { useStyles } from './useStyles';
 import { formatArgumentLabel, formatValueLabel } from '../../utils';
-import { Scale } from '../../types';
 
 export const Dashboard: React.FC = () => {
   const { widget, apiSelect } = useStyles();
-
   const {
-    data,
+    data = {},
     startDate,
     endDate,
     scale,
@@ -34,12 +33,7 @@ export const Dashboard: React.FC = () => {
     selectApiDef,
     apis,
   } = useMetrics();
-  const latencyData = data?.latency || [];
-  const countData = data?.count || [];
-  const countriesData = data?.countries || [];
-  const failuresData = data?.failures || [];
-
-  const createButtonHandler = (s: Scale) => () => setScale(s);
+  const { latency = [], count = [], countries = [], failures = [] } = data;
 
   return (
     <>
@@ -49,12 +43,7 @@ export const Dashboard: React.FC = () => {
       <Header title="Dashboard" />
       <WidgetRow>
         <Widget className={widget}>
-          <ButtonGroup size="large">
-            <Button onClick={createButtonHandler('hour')}>Hour</Button>
-            <Button onClick={createButtonHandler('day')}>Day</Button>
-            <Button onClick={createButtonHandler('week')}>Week</Button>
-            <Button onClick={createButtonHandler('month')}>Month</Button>
-          </ButtonGroup>
+          <ButtonGroup onClick={setScale} buttons={chartButtons} />
         </Widget>
         <Widget className={widget}>
           <DatePicker
@@ -86,7 +75,7 @@ export const Dashboard: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <RequestChart
-            data={latencyData}
+            data={latency}
             title="Average Request Latency"
             argumentLabelHandler={formatArgumentLabel(scale)}
             valueLabelHandler={formatValueLabel}
@@ -96,7 +85,7 @@ export const Dashboard: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <RequestChart
-            data={countData}
+            data={count}
             argumentLabelHandler={formatArgumentLabel(scale)}
             title="Average Request Count"
           />
@@ -105,7 +94,7 @@ export const Dashboard: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <CountryChart
-            data={countriesData}
+            data={countries}
             title="Countries where requests were made from"
           />
         </HugeWidget>
@@ -114,7 +103,7 @@ export const Dashboard: React.FC = () => {
         <HugeWidget>
           <FailureRequestRateChart
             argumentLabelHandler={formatArgumentLabel(scale)}
-            data={failuresData}
+            data={failures}
             title="Failure\Success Chart"
           />
         </HugeWidget>

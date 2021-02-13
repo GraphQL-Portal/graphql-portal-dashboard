@@ -7,6 +7,6 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     padding: spacing(1.5),
   },
   apiSelect: {
-    minWidth: '170',
+    minWidth: '170px',
   },
 }));

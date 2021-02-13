@@ -12,7 +12,7 @@ import {
   Tooltip,
   IconButton,
 } from '../../ui';
-import { getKeyFromText, getCellAlign } from '../../utils';
+import { getKeyFromText, alignFirstCellLeft } from '../../utils';
 import { TABLE_HEAD } from './constants';
 import { UsersList as Props } from '../../types';
 
@@ -29,7 +29,10 @@ export const UsersList: React.FC<Props> = ({
         <Table>
           <TableHead>
             {TABLE_HEAD.map((cell, idx) => (
-              <TableCell key={getKeyFromText(cell)} align={getCellAlign(idx)}>
+              <TableCell
+                key={getKeyFromText(cell)}
+                align={alignFirstCellLeft(idx)}
+              >
                 {cell}
               </TableCell>
             ))}

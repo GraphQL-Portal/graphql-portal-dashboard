@@ -1,4 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
+import { MetricsRefetch, Scale } from '../../../types';
 
 export const QUERY_METRICS = gql`
   query getUserMetrics($scale: String, $filters: MetricFilters!) {
@@ -28,7 +29,7 @@ export const useMetricsQuery = (
   apiDef: string | undefined,
   startDate: Date,
   endDate: Date,
-  scale: 'day' | 'hour' | 'week' | 'month' = 'day'
+  scale: Scale
 ) => {
   const { data, loading, error, refetch } = useQuery(QUERY_METRICS, {
     variables: {
@@ -45,12 +46,7 @@ export const useMetricsQuery = (
     data: data?.getUserMetrics,
     loading,
     error,
-    refetch: (variables: {
-      apiDef: string | undefined;
-      startDate: Date;
-      endDate: Date;
-      scale: 'day' | 'hour' | 'week' | 'month';
-    }) =>
+    refetch: (variables: MetricsRefetch) =>
       refetch({
         filters: {
           apiDef,
