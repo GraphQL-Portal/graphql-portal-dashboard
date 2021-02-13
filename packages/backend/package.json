@@ -18,7 +18,7 @@
     "clear": "rm -rf node_modules"
   },
   "dependencies": {
-    "@graphql-portal/types": "^0.11.0",
+    "@graphql-portal/types": "0.11.0",
     "@maxmind/geoip2-node": "2.1.1",
     "@nestjs/common": "7.6.11",
     "@nestjs/core": "7.6.11",
