@@ -2694,10 +2694,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@maxmind/geoip2-node@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-2.1.1.tgz#03bc08633d63a08789e0d891e5effb8ad8413634"
-  integrity sha512-vG+GeNMVb9Z27Y9V1tte2ExgcYZ+FCLtOOynbypyP5Pe7JGL0QI7NCRKAu9zgaQ7KxSKbJG8etb+r/CSEfElFw==
+"@maxmind/geoip2-node@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-2.2.0.tgz#693a97152797f220afb4f4db620e93e87715e321"
+  integrity sha512-dq9mfUb3+w3xw9+R1Wm4qvpsp4aDIw6ZftMXwNsAtjkxk7AxYNGbOuai/XWjjBxlAjiISiPJAv7QYVDIJhi2Wg==
   dependencies:
     camelcase-keys "^6.0.1"
     ip6addr "^0.2.3"
