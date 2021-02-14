@@ -9586,10 +9586,10 @@ jsoneditor-react@3.1.0:
   dependencies:
     prop-types "^15.7.2"
 
-jsoneditor@9.1.9:
-  version "9.1.9"
-  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.1.9.tgz#1a2143eb1365df69d584d2098e9280b33270f5c2"
-  integrity sha512-Vu33B2lAuj93yP32CJE8Cm62nFdluyj95kbakiGUHqwHSzObFil9muNG547q3Qy7d4q9ahckUDovEbDiN17a/A==
+jsoneditor@9.1.10:
+  version "9.1.10"
+  resolved "https://registry.yarnpkg.com/jsoneditor/-/jsoneditor-9.1.10.tgz#9c78299f7e328e01d8556b702361f69ecb61b714"
+  integrity sha512-L3RcRtHKDc8gaXcJKND2O0gA8rn0qywjJZYbjjzObT8PYR/t4NtCDkwuRiFsP89bRcuMp5StTAV+MIwctm4bhg==
   dependencies:
     ace-builds "^1.4.12"
     ajv "^6.12.6"
@@ -9599,7 +9599,7 @@ jsoneditor@9.1.9:
     jsonrepair "^2.0.0"
     mobius1-selectr "^2.4.13"
     picomodal "^3.0.0"
-    vanilla-picker "^2.11.0"
+    vanilla-picker "^2.11.2"
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -15148,7 +15148,7 @@ value-equal@^1.0.1:
   resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-1.0.1.tgz#1e0b794c734c5c0cade179c437d356d931a34d6c"
   integrity sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==
 
-vanilla-picker@^2.11.0:
+vanilla-picker@^2.11.2:
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/vanilla-picker/-/vanilla-picker-2.11.2.tgz#eaa24efa68c27e7ee9e0776df55d6913b855f133"
   integrity sha512-2cP7LlUnxHxwOf06ReUVtd2RFJMnJGaxN2s0p8wzBH3In5b00Le7fFZ9VrIoBE0svZkSq/BC/Pwq/k/9n+AA2g==
