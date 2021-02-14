@@ -19,14 +19,7 @@ export { Spinner } from './Spinner';
 export { Stepper, StepperBody, NotLinearStepper } from './Stepper';
 export { SvgIcon } from './SvgIcon';
 export { Switch } from './Switch';
-export {
-  Table,
-  TableBody,
-  TableCell,
-  TableActionCell,
-  TableHead,
-  TableRow,
-} from './Table';
+export * from './Table';
 export { TabsBody, TabsHead } from './Tabs';
 export { Tooltip } from './Tooltip';
 export { DatePicker } from './DatePicker';

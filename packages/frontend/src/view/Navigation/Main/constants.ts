@@ -3,7 +3,6 @@ import {
   Assessment,
   AllInclusive,
   Ballot,
-  Build,
   DashboardRounded,
   FormatListBulleted,
   ImportContacts,
@@ -11,6 +10,7 @@ import {
   Settings,
   VerticalSplit,
   GitHub,
+  MailOutline,
 } from '@material-ui/icons';
 import { Roles } from '../../../model/providers/Auth/constants';
 
@@ -97,7 +97,7 @@ export const GROUPS = [
       {
         text: 'Contact Us',
         link: ROUTES.CONTACT_US,
-        Icon: Build,
+        Icon: MailOutline,
         roles: [Roles.ADMIN, Roles.USER],
         external: true,
       },
