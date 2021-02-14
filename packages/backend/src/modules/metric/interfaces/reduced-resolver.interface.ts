@@ -1,6 +1,7 @@
 export default interface IReducedResolver {
   path: string;
   source: string;
+  sourceId: string;
   info: any;
   args: any;
   result: any;

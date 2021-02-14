@@ -8,12 +8,8 @@ import {
   Legend,
 } from '@devexpress/dx-react-chart-material-ui';
 
-type CountryChartProps = {
-  data: any[];
-  title?: string;
-  argumentLabelHandler?: any;
-  valueLabelHandler?: any;
-};
+import { CountryChartProps } from '../../types';
+
 export const CountryChart: React.FC<CountryChartProps> = ({ data, title }) => {
   return (
     <Chart data={data}>

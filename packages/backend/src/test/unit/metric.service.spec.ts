@@ -5,6 +5,7 @@ import { config } from 'node-config-ts';
 import { AnyMetric, AnyResolverMetric } from '../../modules/metric/interfaces';
 import AppModule from '../../modules/app.module';
 import MetricService from '../../modules/metric/metric.service';
+import { randomObjectId } from '../common';
 
 jest.useFakeTimers();
 
@@ -264,8 +265,17 @@ describe('MetricService', () => {
           error,
         },
       ];
+      const sourceId = 1;
+      const api = {
+        sources: [
+          {
+            name: source,
+            _id: sourceId,
+          },
+        ],
+      };
 
-      const data = (metricService as any).reduceResolvers(resolvers);
+      const data = (metricService as any).reduceResolvers(api, resolvers);
       expect(data).toMatchObject([
         {
           path,
@@ -273,11 +283,46 @@ describe('MetricService', () => {
           info,
           args,
           source,
+          sourceId,
           result,
           doneAt: resolverDoneDate,
           calledAt: resolverCalledDate,
           errorAt: resolverErrorDate,
           error,
+        },
+      ]);
+    });
+    it('getApiActivity', async () => {
+      const apiDef = randomObjectId();
+      const spyAggregate = jest
+        .spyOn((metricService as any).requestMetricModel, 'aggregate')
+        .mockResolvedValue([
+          {
+            count: [{ _id: apiDef, value: 1 }],
+            latency: [{ _id: apiDef, value: 2 }],
+            failed: [{ _id: apiDef, value: 3 }],
+            success: [{ _id: apiDef, value: 4 }],
+            lastAccess: [{ _id: apiDef, value: 5 }],
+            apiName: [{ _id: apiDef, value: 'apiName' }],
+          },
+        ]);
+      const data = await metricService.getApiActivity({
+        startDate: new Date(),
+        endDate: new Date(),
+        user: randomObjectId(),
+        apiDef,
+      });
+
+      expect(spyAggregate).toBeCalledTimes(1);
+      expect(data).toMatchObject([
+        {
+          apiName: 'apiName',
+          apiDef,
+          count: 1,
+          latency: 2,
+          failed: 3,
+          success: 4,
+          lastAccess: 5,
         },
       ]);
     });

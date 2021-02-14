@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { ROUTES, useAuth } from '../../model/providers';
+import { Roles } from '../../model/providers/Auth/constants';
 import { Content } from '../Content';
 import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
@@ -12,8 +13,8 @@ import { MyAPI } from '../MyAPI';
 import { Sidebar } from '../Sidebar';
 import { Users } from '../Users';
 import { Webhooks } from '../Webhooks';
-import { RoleProtectedComponent } from '..';
-import { Roles } from '../../model/providers/Auth/constants';
+import { ApiMetrics } from '../ApiMetrics';
+import { RoleProtectedComponent } from '../RoleProtectedComponent';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
@@ -30,6 +31,9 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
           <Route path={ROUTES.DASHBOARD}>
             <Dashboard />
+          </Route>
+          <Route path={ROUTES.API_METRICS}>
+            <ApiMetrics />
           </Route>
           <Route path={ROUTES.APIS}>
             <MyAPI />

@@ -1,4 +1,4 @@
-import React, { ReactText } from 'react';
+import React from 'react';
 import {
   ArgumentAxis,
   Chart,
@@ -8,18 +8,8 @@ import {
   ValueAxis,
 } from '@devexpress/dx-react-chart-material-ui';
 
-const checkHandler = (fn?: Function) => (fn ? fn : (text: ReactText) => text);
-
-type FailureRequestRateChartProps = {
-  data: {
-    success: number;
-    failure: number;
-    argument: number;
-  }[];
-  title?: string;
-  argumentLabelHandler?: Function;
-  valueLabelHandler?: Function;
-};
+import { FailureRequestRateChartProps } from '../../types';
+import { checkHandler } from '../../utils';
 
 export const FailureRequestRateChart: React.FC<FailureRequestRateChartProps> = ({
   data,

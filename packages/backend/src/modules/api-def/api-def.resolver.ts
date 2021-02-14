@@ -17,7 +17,7 @@ export default class ApiDefResolver {
   public constructor(private readonly service: ApiDefService) {}
 
   @Query()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public publishApiDefsUpdated(): Promise<number> {
     return this.service.publishApiDefsUpdated();
   }
@@ -58,7 +58,7 @@ export default class ApiDefResolver {
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.ApiDef)
   public updateApiDef(@Args() data: ApiDefUpdateDto): Promise<IApiDef | null> {
     return this.service.update(
@@ -69,7 +69,7 @@ export default class ApiDefResolver {
   }
 
   @Mutation()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.ApiDef)
   public deleteApiDef(@Args('id') id: string): Promise<boolean> {
     return this.service.delete(id);

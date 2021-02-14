@@ -7,11 +7,31 @@ type Chart {
 
 type ChartChunk {
   argument: String
-  value: Int
+  value: Float
+  success: Float
+  failure: Float
+}
+
+type ApiActivity {
+  apiDef: String
+  apiName: String
+  lastAccess: String
+  failed: Int
   success: Int
-  failure: Int
+  latency: Float
+  count: Int
+}
+
+input MetricFilters {
+  startDate: Timestamp!
+  endDate: Timestamp!
+  sourceId: ID
+  apiDef: ID
+  user: ID
 }
 
 type Query {
-  metrics(startDate: Timestamp!, endDate: Timestamp!, scale: String): Chart
+  metrics(scale: String, filters: MetricFilters!): Chart
+  getUserMetrics(scale: String, filters: MetricFilters!): Chart
+  getApiActivity(filters: MetricFilters!): [ApiActivity]
 }

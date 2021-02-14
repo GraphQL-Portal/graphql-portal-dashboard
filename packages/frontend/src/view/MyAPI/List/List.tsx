@@ -10,11 +10,9 @@ import {
   TableRow,
   IconButton,
 } from '../../../ui';
-import { getKeyFromText } from '../../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
 import { ApiDefsListFC } from './types';
-
-const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
+import { alignFirstCellLeft, getKeyFromText } from '../../../utils';
 
 export const ApiDefsList: React.FC<ApiDefsListFC> = ({
   list,
@@ -27,7 +25,10 @@ export const ApiDefsList: React.FC<ApiDefsListFC> = ({
         <Table>
           <TableHead>
             {TABLE_HEAD.map((cell, idx) => (
-              <TableCell key={getKeyFromText(cell)} align={getCellAlign(idx)}>
+              <TableCell
+                key={getKeyFromText(cell)}
+                align={alignFirstCellLeft(idx)}
+              >
                 {cell}
               </TableCell>
             ))}
@@ -38,7 +39,7 @@ export const ApiDefsList: React.FC<ApiDefsListFC> = ({
                 {node.map((item: any, indx: any) => (
                   <TableCell
                     key={`node-${idx}-item-${indx}`}
-                    align={getCellAlign(indx)}
+                    align={alignFirstCellLeft(indx)}
                   >
                     {item}
                   </TableCell>

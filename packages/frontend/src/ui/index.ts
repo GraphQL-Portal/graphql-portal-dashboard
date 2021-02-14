@@ -35,3 +35,4 @@ export {
   WidgetBody,
   WidgetActions,
 } from './Widgets';
+export { ButtonGroup } from './ButtonGroup';

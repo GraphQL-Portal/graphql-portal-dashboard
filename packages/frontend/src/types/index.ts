@@ -13,3 +13,5 @@ export * from './React';
 export * from './Stepper';
 export * from './Tabs';
 export * from './User';
+export * from './ButtonGroup';
+export * from './Metrics';

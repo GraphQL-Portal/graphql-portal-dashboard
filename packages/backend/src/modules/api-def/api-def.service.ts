@@ -53,6 +53,16 @@ export default class ApiDefService implements IAccessControlService {
     };
   }
 
+  public async findByEndpoint(
+    endpoint: string | undefined
+  ): Promise<IApiDefDocument | null> {
+    return this.apiDefModel
+      .findOne({ endpoint })
+      .populate('sources')
+      .populate('user')
+      .exec();
+  }
+
   public async findAllByUser(user: string): Promise<ApiDefsWithTimestamp> {
     const apiDefs = await this.apiDefModel
       .find({ user })

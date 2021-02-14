@@ -1,4 +1,7 @@
 {
+  "gateway": {
+    "secret": "@@DASHBOARD_SECRET"
+  },
   "application": {
     "env": "production",
     "host": "@@HOST",

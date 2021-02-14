@@ -1,28 +1,36 @@
 import { MetricsChannels } from '@graphql-portal/types';
+import { Inject, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Redis } from 'ioredis';
+import { ObjectId } from 'mongodb';
+import { Model } from 'mongoose';
+import { config } from 'node-config-ts';
 import {
   LocationRecord,
   Reader,
   ReaderModel,
   WebServiceClient,
 } from '@maxmind/geoip2-node';
-import { Inject, Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
 import { add, differenceInSeconds } from 'date-fns';
-import { Redis } from 'ioredis';
-import { Model } from 'mongoose';
-import { config } from 'node-config-ts';
 import Provider from '../../common/enum/provider.enum';
 import { LoggerService } from '../../common/logger';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
 import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
+import ApiDefService from '../api-def/api-def.service';
+
 import {
   AnyMetric,
   AnyResolverMetric,
   IGotError,
   IGotRequest,
-  IReducedResolver,
   ISentResponse,
+  IReducedResolver,
+  IMatch,
+  IAggregateFilters,
+  IApiActivity,
+  IMetric,
 } from './interfaces';
+import { IApiDefDocument } from 'src/data/schema/api-def.schema';
 
 type MetricScale = 'hour' | 'day' | 'week' | 'month';
 
@@ -34,6 +42,7 @@ export default class MetricService {
 
   public constructor(
     @Inject(Provider.REDIS) private readonly redisClients: [Redis, Redis],
+    private readonly apiDefService: ApiDefService,
     @InjectModel('RequestMetric')
     private requestMetricModel: Model<IRequestMetricDocument>,
     @InjectModel('NetworkMetric')
@@ -100,25 +109,95 @@ export default class MetricService {
     }
   }
 
-  public async aggregateMetrics(
-    startDate: number,
-    endDate: number,
-    scale: MetricScale
-  ): Promise<{ latency: { argument: string; value: number }[] }> {
-    const boundaries = this.getBoundaries(startDate, endDate, scale);
+  public async getApiActivity(
+    filters: IAggregateFilters
+  ): Promise<IApiActivity[]> {
     const aggregationQuery = [
+      { $match: this.makeMatchFromFilters(filters) },
       {
-        $match: {
-          requestDate: { $gte: new Date(startDate), $lte: new Date(endDate) },
+        $lookup: {
+          from: 'apidefs',
+          localField: 'apiDef',
+          foreignField: '_id',
+          as: 'apiNames',
         },
       },
+      { $unwind: '$apiDef' },
+      {
+        $facet: {
+          latency: [
+            { $group: { _id: '$apiDef', value: { $avg: '$latency' } } },
+          ],
+          count: [{ $group: { _id: '$apiDef', value: { $sum: 1 } } }],
+          failed: [
+            { $match: { 'resolvers.errorAt': { $exists: true } } },
+            { $group: { _id: '$apiDef', value: { $sum: 1 } } },
+          ],
+          success: [
+            { $match: { 'resolvers.errorAt': { $exists: false } } },
+            { $group: { _id: '$apiDef', value: { $sum: 1 } } },
+          ],
+          lastAccess: [
+            { $group: { _id: '$apiDef', value: { $last: '$requestDate' } } },
+          ],
+          apiName: [
+            {
+              $group: {
+                _id: '$apiDef',
+                value: { $first: { $arrayElemAt: ['$apiNames.name', 0] } },
+              },
+            },
+          ],
+        },
+      },
+    ];
+
+    const [aggregationResult] = await this.requestMetricModel.aggregate(
+      aggregationQuery
+    );
+    const result = Object.entries(aggregationResult).reduce(
+      (acc, [key, apiDefs]: [string, { _id: string; value: number }[]]) => {
+        apiDefs.forEach(({ _id, value }: any) => {
+          const api = acc[_id] || (acc[_id] = {});
+          api[key] = value;
+        });
+        return acc;
+      },
+      {} as any
+    );
+
+    return Object.entries(result).map(
+      ([apiDef, values]: [string, Record<string, unknown>]) => ({
+        failed: 0,
+        success: 0,
+        latency: 0,
+        count: 0,
+        lastAccess: '',
+        apiName: '',
+        apiDef,
+        ...values,
+      })
+    );
+  }
+
+  public async aggregateMetrics(
+    scale: MetricScale,
+    filters: IAggregateFilters
+  ): Promise<IMetric> {
+    const boundaries = this.getBoundaries(
+      filters.startDate,
+      filters.endDate,
+      scale
+    );
+    const aggregationQuery = [
+      { $match: this.makeMatchFromFilters(filters) },
       {
         $facet: {
           latency: [
             {
               $bucket: {
                 groupBy: '$requestDate',
-                default: new Date(endDate),
+                default: new Date(filters.endDate),
                 boundaries,
                 output: { latency: { $avg: '$latency' }, count: { $sum: 1 } },
               },
@@ -137,7 +216,7 @@ export default class MetricService {
             {
               $bucket: {
                 groupBy: '$resolvers.errorAt',
-                default: new Date(endDate),
+                default: new Date(filters.endDate),
                 boundaries,
                 output: { count: { $sum: 1 } },
               },
@@ -148,7 +227,7 @@ export default class MetricService {
             {
               $bucket: {
                 groupBy: '$requestDate',
-                default: new Date(endDate),
+                default: new Date(filters.endDate),
                 boundaries,
                 output: { count: { $sum: 1 } },
               },
@@ -160,16 +239,13 @@ export default class MetricService {
     const [aggregationResult] = await this.requestMetricModel.aggregate(
       aggregationQuery
     );
-    const makeMapArguments = [
-      (p: any, c: any): Record<string, any> => {
-        p[c._id.toISOString()] = c;
-        return p;
-      },
-      {},
-    ];
-    const requestMap = aggregationResult.latency.reduce(...makeMapArguments);
-    const successMap = aggregationResult.successes.reduce(...makeMapArguments);
-    const failureMap = aggregationResult.failures.reduce(...makeMapArguments);
+    const makeMapFn = (p: any, c: any): Record<string, any> => {
+      p[c._id.toISOString()] = c;
+      return p;
+    };
+    const requestMap = aggregationResult.latency.reduce(makeMapFn, {});
+    const successMap = aggregationResult.successes.reduce(makeMapFn, {});
+    const failureMap = aggregationResult.failures.reduce(makeMapFn, {});
     const requestData = boundaries.map((b) => {
       const key = b.toISOString();
       const data = { _id: key, latency: 0, count: 0 };
@@ -233,19 +309,34 @@ export default class MetricService {
     ).map((s) => JSON.parse(s));
     await this.redis.ltrim(requestId, rawData.length, -1);
 
-    const resolvers = this.reduceResolvers(
-      rawData.filter(this.isResolverMetric) as AnyResolverMetric[]
-    );
-
-    const sentResponse: ISentResponse | undefined = rawData.find(
-      ({ event }) => event === MetricsChannels.SENT_RESPONSE
-    ) as any;
     const gotRequest: IGotRequest | undefined = rawData.find(
       ({ event }) => event === MetricsChannels.GOT_REQUEST
     ) as any;
+    if (/IntrospectionQuery/.test(gotRequest?.query?.query as string)) return;
+
     const gotError: IGotError | undefined = rawData.find(
       ({ event }) => event === MetricsChannels.GOT_ERROR
     ) as any;
+    const sentResponse: ISentResponse | undefined = rawData.find(
+      ({ event }) => event === MetricsChannels.SENT_RESPONSE
+    ) as any;
+
+    // todo get endpoint from gotRequest.context
+    const api = await this.apiDefService.findByEndpoint(
+      gotRequest?.request.baseUrl
+    );
+
+    if (!api)
+      this.logger.warn(
+        'Api with such endpoint was not found',
+        `${this.constructor.name}:${this.aggregateRequestMetric.name}`,
+        { requestId, endpoint: gotRequest?.request.baseUrl }
+      );
+
+    const resolvers = this.reduceResolvers(
+      api,
+      rawData.filter(this.isResolverMetric) as AnyResolverMetric[]
+    );
 
     const latency =
       sentResponse && gotRequest
@@ -253,6 +344,8 @@ export default class MetricService {
         : undefined;
 
     await this.requestMetricModel.create({
+      apiDef: api?._id,
+      user: api?.user._id,
       requestId,
       resolvers,
       latency,
@@ -279,7 +372,10 @@ export default class MetricService {
     await this.networkMetricModel.create({ date, ...network, nodeId });
   }
 
-  private reduceResolvers(rawData: AnyResolverMetric[]): IReducedResolver[] {
+  private reduceResolvers(
+    apiDef: IApiDefDocument | null,
+    rawData: AnyResolverMetric[]
+  ): IReducedResolver[] {
     const resolvers = rawData.reduce(
       (acc: any, resolverData: AnyResolverMetric) => {
         const { path } = resolverData;
@@ -299,6 +395,12 @@ export default class MetricService {
         const calledAt = resolver.calledAt;
         if (calledAt && doneAt && !resolver.latency) {
           resolver.latency = doneAt - calledAt;
+        }
+
+        if (apiDef && !resolver.sourceId && resolver.source) {
+          resolver.sourceId = apiDef.sources.find(
+            ({ name }) => name === resolver.source
+          )?._id;
         }
 
         return acc;
@@ -411,5 +513,36 @@ export default class MetricService {
     } while (next());
 
     return boundaries;
+  }
+
+  private makeMatchFromFilters(filters: IAggregateFilters): IMatch {
+    const match: IMatch = {
+      requestDate: {},
+    };
+    const filterToFunction = {
+      startDate: (value: Date | number): void => {
+        match.requestDate.$gte = new Date(value);
+      },
+      endDate: (value: Date | number): void => {
+        match.requestDate.$lte = new Date(value);
+      },
+      sourceId: (value: string): void => {
+        match['resolvers.sourceId'] = new ObjectId(value);
+      },
+      apiDef: (value: string): void => {
+        match.apiDef = new ObjectId(value);
+      },
+      user: (value: string): void => {
+        match.user = new ObjectId(value);
+      },
+    };
+    Object.entries(filters).forEach(
+      ([key, value]: [keyof IAggregateFilters, any]) => {
+        if (filterToFunction[key] && value) {
+          filterToFunction[key](value);
+        }
+      }
+    );
+    return match;
   }
 }

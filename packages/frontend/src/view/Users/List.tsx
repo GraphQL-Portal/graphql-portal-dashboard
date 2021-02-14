@@ -12,11 +12,9 @@ import {
   Tooltip,
   IconButton,
 } from '../../ui';
-import { getKeyFromText } from '../../utils/getKeyFromText';
+import { getKeyFromText, alignFirstCellLeft } from '../../utils';
 import { TABLE_HEAD } from './constants';
 import { UsersList as Props } from '../../types';
-
-const getCellAlign = (idx: number) => (idx === 0 ? 'left' : 'right');
 
 export const UsersList: React.FC<Props> = ({
   list,
@@ -31,7 +29,10 @@ export const UsersList: React.FC<Props> = ({
         <Table>
           <TableHead>
             {TABLE_HEAD.map((cell, idx) => (
-              <TableCell key={getKeyFromText(cell)} align={getCellAlign(idx)}>
+              <TableCell
+                key={getKeyFromText(cell)}
+                align={alignFirstCellLeft(idx)}
+              >
                 {cell}
               </TableCell>
             ))}

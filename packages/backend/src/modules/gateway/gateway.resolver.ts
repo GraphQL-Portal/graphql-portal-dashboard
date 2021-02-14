@@ -14,13 +14,13 @@ export default class GatewayResolver {
   ) {}
 
   @Query()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public getGateways(): IGateway[] {
     return this.gatewayService.findAll();
   }
 
   @Subscription()
-  @Roles([RolesEnum.USER, RolesEnum.ADMIN])
+  @Roles([RolesEnum.USER])
   public gatewaysUpdated(): AsyncIterator<IGateway[]> {
     return this.redis.pubSub.asyncIterator(SubscriptionEnum.gatewaysUpdated);
   }
