@@ -9,6 +9,8 @@ import {
   TableActionCell,
   TableBody,
   TableRow,
+  TableIcon,
+  TableIconCell,
   Input,
   IconButton,
   Tooltip,
@@ -18,6 +20,7 @@ import { useAvailableSources } from '../../../presenter/DataSources';
 import { AVAILABLE_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 import { formatHandlerTitle } from '../helpers';
+import { handlerMapper, typeMapper } from './helpers';
 
 const getCellAlign = (idx: number, length: number) =>
   idx + 1 === length ? 'right' : 'left';
@@ -72,10 +75,19 @@ export const AvailableList: React.FC = () => {
           {Object.keys(available).map((key: string) => {
             const source = available[key];
             const { title, description } = source;
+            const fTitle = formatHandlerTitle(title);
+            const HandlerIcon = handlerMapper(fTitle);
+            const TypeIcon = typeMapper(fTitle);
             return (
               <TableRow key={key}>
-                <TableCell>{formatHandlerTitle(title)}</TableCell>
-                <TableCell>Free</TableCell>
+                <TableIconCell>
+                  <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
+                  {fTitle}
+                </TableIconCell>
+                <TableIconCell>
+                  <TableIcon>{TypeIcon && <TypeIcon />}</TableIcon>
+                  Free
+                </TableIconCell>
                 <TableCell>{description}</TableCell>
                 <TableActionCell>
                   <Tooltip

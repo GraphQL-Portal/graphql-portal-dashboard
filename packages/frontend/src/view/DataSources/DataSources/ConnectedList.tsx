@@ -8,6 +8,8 @@ import {
   TableRow,
   TableCell,
   TableActionCell,
+  TableIconCell,
+  TableIcon,
   IconButton,
   Tooltip,
 } from '../../../ui';
@@ -15,6 +17,7 @@ import { getKeyFromText } from '../../../utils';
 import { ConnectedList as Props } from '../../../types';
 import { CONNECTED_HEAD } from '../constants';
 import { formatDateDistance, formatHandlerType } from '../helpers';
+import { handlerMapper } from './helpers';
 
 export const ConnectedList: React.FC<Props> = ({
   sources,
@@ -36,10 +39,15 @@ export const ConnectedList: React.FC<Props> = ({
       <TableBody>
         {sources.map((source, idx: number) => {
           const { name, updatedAt, handler } = source;
+          const fHandler = formatHandlerType(handler);
+          const HandlerIcon = handlerMapper(fHandler);
           return (
             <TableRow key={getKeyFromText(name)}>
               <TableCell>{name}</TableCell>
-              <TableCell>{formatHandlerType(handler)}</TableCell>
+              <TableIconCell>
+                <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
+                {fHandler}
+              </TableIconCell>
               <TableCell>{formatDateDistance(updatedAt)}</TableCell>
               <TableActionCell>
                 {typeof onUpdate === 'function' && (
