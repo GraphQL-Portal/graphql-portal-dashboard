@@ -14,6 +14,12 @@ export const QUERY_GATEWAYS = gql`
   }
 `;
 
+/*
+ * @TODO
+ * 1. move this function to presenter/GatewayNodes
+ * 2. GatewayNode [] -> {}
+ * 3. Modify GatewayNode view for new data
+ */
 const createNodeList = (data: Gateway[]): GatewayNode[] => {
   if (!data) return [];
 

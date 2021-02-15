@@ -1,5 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 
+import { MutationOptions } from '../../../types';
+
 export const UNBLOCK_USER = gql`
   mutation unblockUser($id: ID!) {
     unblockUser(id: $id) {
@@ -8,5 +10,5 @@ export const UNBLOCK_USER = gql`
   }
 `;
 
-export const useUnblockUser = (options: any = {}) =>
+export const useUnblockUser = (options: MutationOptions = {}) =>
   useMutation(UNBLOCK_USER, options);

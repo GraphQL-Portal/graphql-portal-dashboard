@@ -8,6 +8,7 @@ import { useSources } from '../../model/DataSources/queries';
 import { useDeleteSource } from '../../model/DataSources/commands';
 import { DELETE_DATA_SOURCE } from '../../view/Dialogs';
 import { AVAILABLE_DATA_SOURCES } from './constants';
+import { sortSourcesByName } from './helpers';
 
 export const useDataSources = () => {
   const { data, loading, refetch } = useSources({
@@ -43,7 +44,7 @@ export const useDataSources = () => {
   };
 
   return {
-    connected: data,
+    connected: sortSourcesByName(data),
     loading,
     onDelete,
     onUpdate,

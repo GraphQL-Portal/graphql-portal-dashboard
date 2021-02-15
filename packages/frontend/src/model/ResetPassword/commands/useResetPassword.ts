@@ -1,12 +1,14 @@
 import { gql, useMutation } from '@apollo/client';
 
+import { MutationOptions } from '../../../types';
+
 export const RERSET_PASSWORD = gql`
   mutation resetPassword($email: String!, $code: String!, $password: String!) {
     resetPassword(email: $email, code: $code, password: $password)
   }
 `;
 
-export const useResetPassword = (options: any) => {
+export const useResetPassword = (options: MutationOptions = {}) => {
   const [onResetPassword] = useMutation(RERSET_PASSWORD, options);
 
   return { onResetPassword };

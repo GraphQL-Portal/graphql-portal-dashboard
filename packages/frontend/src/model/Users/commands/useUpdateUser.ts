@@ -1,5 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 
+import { MutationOptions } from '../../../types';
+
 export const UPDATE_USER = gql`
   mutation updateUser($id: ID!, $data: UpdateUserInput!) {
     updateUser(id: $id, data: $data) {
@@ -8,5 +10,5 @@ export const UPDATE_USER = gql`
   }
 `;
 
-export const useUpdateUser = (options: any = {}) =>
+export const useUpdateUser = (options: MutationOptions = {}) =>
   useMutation(UPDATE_USER, options);

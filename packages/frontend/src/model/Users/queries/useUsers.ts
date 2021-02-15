@@ -1,5 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 
+import { QueryOptions } from '../../../types';
+
 export const QUERY_USERS = gql`
   {
     getUsers {
@@ -15,7 +17,7 @@ export const QUERY_USERS = gql`
   }
 `;
 
-export const useUsersQuery = (options: any = {}) => {
+export const useUsersQuery = (options: QueryOptions = {}) => {
   const { data, loading, error, refetch } = useQuery(QUERY_USERS, options);
 
   return {
