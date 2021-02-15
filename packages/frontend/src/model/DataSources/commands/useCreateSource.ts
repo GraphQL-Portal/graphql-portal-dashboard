@@ -1,5 +1,7 @@
 import { useMutation, gql } from '@apollo/client';
 
+import { MutationOptions } from '../../../types';
+
 const CREATE_SOURCE = gql`
   mutation CreateSource($source: CreateSource!) {
     createSource(source: $source) {
@@ -8,8 +10,8 @@ const CREATE_SOURCE = gql`
   }
 `;
 
-export const useCreateSource = (options?: any) => {
-  const [createSource] = useMutation(CREATE_SOURCE, options || {});
+export const useCreateSource = (options: MutationOptions = {}) => {
+  const [createSource] = useMutation(CREATE_SOURCE, options);
 
   return { createSource };
 };

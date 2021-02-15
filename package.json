@@ -23,7 +23,8 @@
     "prettier": "prettier --write \"./packages/**/*.{ts,tsx}\"",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "postpublish": "pinst --enable",
+    "reinstall": "yarn clear; yarn"
   },
   "repository": {
     "type": "git",
