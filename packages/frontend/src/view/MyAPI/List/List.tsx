@@ -1,5 +1,6 @@
 import React from 'react';
-import { Delete, Edit } from '@material-ui/icons';
+
+import { Delete, Edit } from '../../../icons';
 import {
   WidgetBody,
   Table,
@@ -10,9 +11,9 @@ import {
   TableRow,
   IconButton,
 } from '../../../ui';
+import { alignFirstCellLeft, getKeyFromText } from '../../../utils';
 import { TABLE_HEAD } from './constants';
 import { ApiDefsListFC } from './types';
-import { alignFirstCellLeft, getKeyFromText } from '../../../utils';
 
 export const ApiDefsList: React.FC<ApiDefsListFC> = ({
   list,

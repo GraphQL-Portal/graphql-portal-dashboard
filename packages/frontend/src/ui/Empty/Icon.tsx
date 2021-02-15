@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorOutline } from '@material-ui/icons';
+import { ErrorOutline } from '../../icons';
 
 import { useStyles } from './useStyles';
 

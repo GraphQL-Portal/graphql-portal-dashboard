@@ -1,6 +1,6 @@
 import React from 'react';
-import { LockOpen, Lock, Delete, Edit } from '@material-ui/icons';
 
+import { LockOpen, Lock, Delete, Edit } from '../../icons';
 import {
   WidgetBody,
   Table,

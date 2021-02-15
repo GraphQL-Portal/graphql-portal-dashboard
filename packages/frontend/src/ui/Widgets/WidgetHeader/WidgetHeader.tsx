@@ -1,6 +1,6 @@
 import React from 'react';
-import { Help } from '@material-ui/icons';
 
+import { Help } from '../../../icons';
 import { H5 } from '../../Typography';
 import { Tooltip } from '../../Tooltip';
 import { WidgetHeader as Props } from '../types';

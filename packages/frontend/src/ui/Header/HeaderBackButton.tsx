@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowBack } from '@material-ui/icons';
 
+import { ArrowBack } from '../../icons';
 import { HeaderBackButton as Props } from '../../types';
 import { H3 } from '../Typography';
 import { useStyles } from './useStyles';
