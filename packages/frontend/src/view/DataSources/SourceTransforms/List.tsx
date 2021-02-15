@@ -1,6 +1,6 @@
 import React from 'react';
-import { Delete, Edit } from '@material-ui/icons';
 
+import { Delete, Edit } from '../../../icons';
 import {
   Table,
   TableHead,

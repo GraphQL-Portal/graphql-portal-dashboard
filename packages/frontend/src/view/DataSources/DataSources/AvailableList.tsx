@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Search, Close, Add } from '@material-ui/icons';
 
+import { Search, Close, Add } from '../../../icons';
 import {
   Table,
   TableHead,

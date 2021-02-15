@@ -1,4 +1,3 @@
-import { ROUTES } from '../../../model/providers';
 import {
   Assessment,
   AllInclusive,
@@ -11,7 +10,8 @@ import {
   VerticalSplit,
   GitHub,
   MailOutline,
-} from '@material-ui/icons';
+} from '../../../icons';
+import { ROUTES } from '../../../model/providers';
 import { Roles } from '../../../model/providers/Auth/constants';
 
 export const GROUPS = [
