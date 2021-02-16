@@ -1,5 +1,5 @@
-import { formatTimestamp } from '../../utils';
-import { ApiDef, ApiListItem } from '../../types';
+import { formatTimestamp } from '../../../utils';
+import { ApiDef, ApiListItem } from '../../../types';
 
 export const createApiDefList = (data: ApiDef[]): ApiListItem[] => {
   if (!data) return [];

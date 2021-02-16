@@ -10,14 +10,18 @@ import {
 import { SelectOption } from './Forms';
 import { NOOP } from './General';
 
+export type ApiAuth<T> = {
+  auth_header_name: string;
+  auth_tokens: T;
+};
+
+export type ApiAuthFields = ApiAuth<{ value: string }[]>;
+
 export type ApiDef = {
   _id: string;
   name: string;
   endpoint: string;
-  authentication: {
-    auth_header_name: string;
-    auth_tokens: string[];
-  };
+  authentication: ApiAuth<string[]>;
   enabled: boolean;
   playground: boolean;
   createdAt: string;
