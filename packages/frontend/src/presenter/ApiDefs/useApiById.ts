@@ -5,7 +5,7 @@ import { useTabs } from '../../model/Hooks';
 export const useApiById = () => {
   const { id } = useParams<{ id: string }>();
   const { tab, onChange } = useTabs();
-  const { loading, data: api } = useApiDefById({ variables: { id } });
+  const { loading, data: api, refetch } = useApiDefById({ variables: { id } });
 
-  return { loading, api, tab, onTabChange: onChange };
+  return { loading, api, tab, onTabChange: onChange, refetch };
 };

@@ -13,6 +13,7 @@ export const formatHandlerTitle = (title: string): string =>
   title.replace('Handler', '');
 
 export const formatHandlerType = (handler: any): string => {
+  if (!handler) return '';
   return (
     formatHandlerTitle(
       AVAILABLE_DATA_SOURCES[Object.keys(handler)[0]]?.title

@@ -10,7 +10,7 @@ import { DataSourcesTab } from './DataSourcesTab';
 const TABS = [{ label: 'General' }, { label: 'Data Sources' }];
 
 export const EditApi: React.FC = () => {
-  const { loading, api, tab, onTabChange } = useApiById();
+  const { loading, api, tab, onTabChange, refetch } = useApiById();
 
   if (loading) return <Loading />;
   const { name } = api;
@@ -24,8 +24,8 @@ export const EditApi: React.FC = () => {
         <HugeWidget>
           <TabsHead value={tab} onChange={onTabChange} tabsList={TABS} />
           <TabsBody value={tab}>
-            <GeneralTab api={api} />
-            <DataSourcesTab api={api} />
+            <GeneralTab api={api} refetch={refetch} />
+            <DataSourcesTab api={api} refetch={refetch} />
           </TabsBody>
         </HugeWidget>
       </WidgetRow>

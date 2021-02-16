@@ -1,4 +1,5 @@
 import { DataSource } from './DataSource';
+import { Refetch } from './Apollo';
 import {
   ControlType,
   ErrorsAndControl,
@@ -34,6 +35,7 @@ export type ApiList = {
 
 export type EditApiTab = {
   api: ApiDef;
+  refetch: Refetch;
 };
 
 export type StringArray = { value: string }[];

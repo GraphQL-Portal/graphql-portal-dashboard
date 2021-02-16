@@ -25,11 +25,15 @@ const GET_API_DEF_BY_ID = gql`
 `;
 
 export const useApiDefById = (options: QueryOptions = {}) => {
-  const { data, loading, error } = useQuery(GET_API_DEF_BY_ID, options);
+  const { data, loading, error, refetch } = useQuery(
+    GET_API_DEF_BY_ID,
+    options
+  );
 
   return {
     data: data?.getApiDefById || {},
     loading,
     error,
+    refetch,
   };
 };
