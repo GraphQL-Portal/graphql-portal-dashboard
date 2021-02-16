@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { EditApiTab as Props } from '../../../types';
-import { WidgetBody, PrimaryButton } from '../../../ui';
+import { PrimaryButton } from '../../../ui';
 import { useUpdateGeneral } from '../../../presenter/ApiDefs';
 import { GeneralForm } from '../Form';
+import { useStyles } from './useStyles';
 
 export const GeneralTab: React.FC<Props> = (props) => {
   const {
@@ -14,19 +15,18 @@ export const GeneralTab: React.FC<Props> = (props) => {
     addToken,
     removeToken,
   } = useUpdateGeneral(props);
+  const { form } = useStyles();
 
   return (
-    <WidgetBody>
-      <form onSubmit={onSubmit} noValidate autoComplete="off">
-        <GeneralForm
-          control={control}
-          errors={errors}
-          tokenFields={tokenFields}
-          addToken={addToken}
-          removeToken={removeToken}
-        />
-        <PrimaryButton type="submit">Update general info</PrimaryButton>
-      </form>
-    </WidgetBody>
+    <form onSubmit={onSubmit} noValidate autoComplete="off" className={form}>
+      <GeneralForm
+        control={control}
+        errors={errors}
+        tokenFields={tokenFields}
+        addToken={addToken}
+        removeToken={removeToken}
+      />
+      <PrimaryButton type="submit">Update general info</PrimaryButton>
+    </form>
   );
 };
