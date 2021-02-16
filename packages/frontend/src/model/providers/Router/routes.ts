@@ -10,7 +10,7 @@ export const DASHBOARD = '/dashboard';
 // API Management
 export const APIS = '/my-apis';
 export const API_CREATE = `${APIS}/new`;
-export const API_EDIT = `${APIS}/:id`;
+export const API_EDIT = `${APIS}/edit/:id`;
 
 // Data Source
 export const DATA_SOURCES = '/data-sources';
