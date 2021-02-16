@@ -2,9 +2,10 @@ import React from 'react';
 
 import { EditApiTab as Props } from '../../../types';
 import { useUpdateDataSources } from '../../../presenter/ApiDefs';
-import { WidgetBody, PrimaryButton } from '../../../ui';
+import { PrimaryButton } from '../../../ui';
 import { DataSourcesForm } from '../Form';
 import { Loading } from '../../Loading';
+import { useStyles } from './useStyles';
 
 export const DataSourcesTab: React.FC<Props> = (props) => {
   const {
@@ -16,20 +17,19 @@ export const DataSourcesTab: React.FC<Props> = (props) => {
     onRemoveSource,
     loading,
   } = useUpdateDataSources(props);
+  const { form } = useStyles();
 
   if (loading) return <Loading />;
   return (
-    <WidgetBody>
-      <form onSubmit={onSubmit} noValidate autoComplete="off">
-        <DataSourcesForm
-          control={control}
-          options={options}
-          connected={connected}
-          onAddSource={onAddSource}
-          onRemoveSource={onRemoveSource}
-        />
-        <PrimaryButton type="submit">Update Data Sources</PrimaryButton>
-      </form>
-    </WidgetBody>
+    <form onSubmit={onSubmit} noValidate autoComplete="off" className={form}>
+      <DataSourcesForm
+        control={control}
+        options={options}
+        connected={connected}
+        onAddSource={onAddSource}
+        onRemoveSource={onRemoveSource}
+      />
+      <PrimaryButton type="submit">Update Data Sources</PrimaryButton>
+    </form>
   );
 };

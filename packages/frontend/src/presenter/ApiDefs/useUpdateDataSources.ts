@@ -7,11 +7,15 @@ import {
   AnyTable,
   SelectOption,
   DataSource,
+  AError,
 } from '../../types';
 import { useSources } from '../../model/DataSources/queries';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
+import { useToast } from '../../model/providers';
 
 export const useUpdateDataSources = ({ api, refetch }: EditApiTab) => {
+  const { showSuccessToast, showErrorToast } = useToast();
+
   const ref = useRef<TriggersTable>({});
   const ref2 = useRef<AnyTable>({});
   const {
@@ -25,7 +29,15 @@ export const useUpdateDataSources = ({ api, refetch }: EditApiTab) => {
   } = api;
 
   const { data, loading } = useSources();
-  const { updateApiDef } = useUpdateApiDef({ onCompleted: refetch });
+  const { updateApiDef } = useUpdateApiDef({
+    onCompleted() {
+      refetch();
+      showSuccessToast(`Api ${name} successfully  updated`);
+    },
+    onError({ message }: AError) {
+      showErrorToast(message);
+    },
+  });
 
   const { handleSubmit, control, watch, setValue, reset } = useForm({
     reValidateMode: 'onSubmit',

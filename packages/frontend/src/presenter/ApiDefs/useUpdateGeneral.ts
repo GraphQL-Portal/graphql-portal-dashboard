@@ -2,9 +2,10 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
-import { EditApiTab, DataSource } from '../../types';
+import { EditApiTab, DataSource, AError } from '../../types';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
+import { useToast } from '../../model/providers';
 import {
   arrayToFieldArray,
   arrayStringFromObjectArray,
@@ -50,6 +51,7 @@ const suite = vest.create(
 );
 
 export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
+  const { showSuccessToast, showErrorToast } = useToast();
   const {
     _id: id,
     name,
@@ -61,7 +63,13 @@ export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
   } = api;
 
   const { updateApiDef } = useUpdateApiDef({
-    onCompleted: refetch,
+    onCompleted() {
+      refetch();
+      showSuccessToast(`Api ${name} successfully  updated`);
+    },
+    onError({ message }: AError) {
+      showErrorToast(message);
+    },
   });
 
   const { handleSubmit, control, errors } = useForm({
