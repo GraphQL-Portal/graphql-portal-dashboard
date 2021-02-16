@@ -1,14 +1,14 @@
 import { useRef, useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import vest, { enforce, test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
-import { useHistory } from 'react-router-dom';
 
 import { useCreateApiDef } from '../../model/ApiDefs/commands';
 import { useSources } from '../../model/DataSources/queries';
 import { useFormErrors } from '../../model/Hooks';
 import { arrayStringFromObjectArray } from '../DataSources/helpers';
-import { TriggersTable, AnyTable } from '../../types';
+import { TriggersTable, AnyTable, SelectOption } from '../../types';
 import { ROUTES } from '../../model/providers';
 
 const suite = vest.create(
@@ -122,7 +122,7 @@ export const useCreateApi = () => {
   };
 
   const options = data.reduce(
-    (acc: { label: string; value: string }[], { name }: any) => {
+    (acc: SelectOption[], { name }: any) => {
       return ref.current[name] ? acc : acc.concat({ label: name, value: name });
     },
     [{ label: '-', value: '' }]

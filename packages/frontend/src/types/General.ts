@@ -14,3 +14,5 @@ export type DeepObject = {
 
 export type TriggersTable = Table<boolean>;
 export type AnyTable = Table<any>;
+
+export type NOOP = () => void;

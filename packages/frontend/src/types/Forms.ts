@@ -1,16 +1,23 @@
-import { ErrorsAndControl } from './HookForm';
-
-type onAdd = (value: any) => void;
-type onRemove = (value: any) => void;
+import {
+  ErrorsAndControl,
+  FieldArray,
+  FieldArrayAppend,
+  FieldArrayRemove,
+} from './HookForm';
 
 export type ObjectArray = {
-  onAdd: onAdd;
-  onRemove: onRemove;
+  onAdd: FieldArrayAppend;
+  onRemove: FieldArrayRemove;
   title: string;
-  fields: any[];
+  fields: FieldArray;
   name: string;
 } & ErrorsAndControl;
 
 export type FormGroup = {
   title: string;
+};
+
+export type SelectOption = {
+  label: string;
+  value: string;
 };
