@@ -17,7 +17,7 @@ export type ApiDef = {
     auth_header_name: string;
     auth_tokens: string[];
   };
-  enable: boolean;
+  enabled: boolean;
   playground: boolean;
   createdAt: string;
   updatedAt: string;
