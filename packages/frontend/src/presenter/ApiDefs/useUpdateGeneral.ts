@@ -2,8 +2,9 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
-import { ApiDef, DataSource } from '../../types';
+import { EditApiTab, DataSource } from '../../types';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
+import { useFormErrors } from '../../model/Hooks';
 import {
   arrayToFieldArray,
   arrayStringFromObjectArray,
@@ -48,7 +49,7 @@ const suite = vest.create(
   }
 );
 
-export const useUpdateGeneral = (api: ApiDef) => {
+export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
   const {
     _id: id,
     name,
@@ -59,7 +60,9 @@ export const useUpdateGeneral = (api: ApiDef) => {
     enabled,
   } = api;
 
-  const { updateApiDef } = useUpdateApiDef();
+  const { updateApiDef } = useUpdateApiDef({
+    onCompleted: refetch,
+  });
 
   const { handleSubmit, control, errors } = useForm({
     reValidateMode: 'onSubmit',
@@ -73,6 +76,8 @@ export const useUpdateGeneral = (api: ApiDef) => {
       },
     },
   });
+
+  useFormErrors(errors);
 
   const {
     fields: tokenFields,

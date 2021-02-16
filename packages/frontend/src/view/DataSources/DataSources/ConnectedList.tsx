@@ -42,7 +42,7 @@ export const ConnectedList: React.FC<Props> = ({
           const fHandler = formatHandlerType(handler);
           const HandlerIcon = handlerMapper(fHandler);
           return (
-            <TableRow key={getKeyFromText(name)}>
+            <TableRow key={`{getKeyFromText(name)}-${idx}`}>
               <TableCell>{name}</TableCell>
               <TableIconCell>
                 <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
