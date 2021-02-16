@@ -56,11 +56,13 @@ export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
     _id: id,
     name,
     endpoint,
-    authentication: { auth_header_name, auth_tokens },
+    authentication,
     playground,
     sources,
     enabled,
   } = api;
+
+  const { auth_header_name = '', auth_tokens = [] } = authentication || {};
 
   const { updateApiDef } = useUpdateApiDef({
     onCompleted() {

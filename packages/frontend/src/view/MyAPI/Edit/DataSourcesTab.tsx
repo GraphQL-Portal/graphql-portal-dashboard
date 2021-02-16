@@ -20,6 +20,7 @@ export const DataSourcesTab: React.FC<Props> = (props) => {
   const { form } = useStyles();
 
   if (loading) return <Loading />;
+
   return (
     <form onSubmit={onSubmit} noValidate autoComplete="off" className={form}>
       <DataSourcesForm

@@ -57,8 +57,6 @@ export const useGRPCHandler = ({ state, updateState, step }: HandlerStep) => {
   });
 
   const onSubmit = ({ requestTimeout, metaData, ...handler }: any) => {
-    console.log('HANDLER onSubmit: ', handler);
-
     updateState(
       {
         handler: {
