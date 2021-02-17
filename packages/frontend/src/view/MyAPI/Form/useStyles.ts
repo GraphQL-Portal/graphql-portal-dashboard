@@ -10,4 +10,10 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
   form: {
     paddingTop: spacing(3),
   },
+  labelPlacementStart: {
+    margin: 0,
+  },
+  label: {
+    marginRight: spacing(1),
+  },
 }));

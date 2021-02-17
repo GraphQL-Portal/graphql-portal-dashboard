@@ -39,6 +39,7 @@ export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
     defaultValues: {
       name,
       endpoint,
+      playground,
       authentication: {
         auth_header_name,
         auth_tokens: arrayToFieldArray(auth_tokens),
@@ -54,7 +55,7 @@ export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
     remove: removeToken,
   } = useFieldArray({ control, name: 'authentication.auth_tokens' });
 
-  const onSubmit = ({ authentication, name, endpoint }: any) => {
+  const onSubmit = ({ authentication, name, endpoint, playground }: any) => {
     updateApiDef({
       variables: {
         id,
