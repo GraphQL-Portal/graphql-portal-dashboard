@@ -41,9 +41,9 @@ const createNodeList = (data: Gateway[]): GatewayNode[] => {
 
 export const useGateways = () => {
   // random interval between 5 and 20 secs
-  const randomPollInterval = (Math.floor(Math.random() * 16) + 5) * 1000;
+  // const randomPollInterval = (Math.floor(Math.random() * 16) + 5) * 1000;
   const { data, loading, error } = useQuery(QUERY_GATEWAYS, {
-    pollInterval: randomPollInterval,
+    pollInterval: 10000,
   });
 
   const { getGateways = [] } = data || {};
