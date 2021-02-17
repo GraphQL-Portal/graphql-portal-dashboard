@@ -1,10 +1,12 @@
 import { useCreateSource } from '../../model/DataSources/commands';
-import { useDataSourceContext } from '../../model/providers';
+import { useDataSourceContext, useToast } from '../../model/providers';
 import { useEditDataSource } from './useEditDataSource';
 import { INITIAL_STATE } from './constants';
 import { packHandler } from './helpers';
+import { AError } from '../../types';
 
 export const useAddDataSource = (limit: number) => {
+  const { showErrorToast, showSuccessToast } = useToast();
   const { source = {}, clearSource } = useDataSourceContext();
   const {
     state,
@@ -15,13 +17,15 @@ export const useAddDataSource = (limit: number) => {
     setStep,
   } = useEditDataSource(limit, INITIAL_STATE);
 
-  const onCompleted = () => clearSource();
-
-  // @TODO probably I need to show error message
-  const onError = console.error;
-
-  // Send new source to the server
-  const { createSource } = useCreateSource({ onCompleted, onError });
+  const { createSource } = useCreateSource({
+    onCompleted() {
+      clearSource();
+      showSuccessToast('Successfully create new data-source');
+    },
+    onError({ message }: AError) {
+      showErrorToast(message);
+    },
+  });
 
   const onSubmit = () => {
     createSource({
