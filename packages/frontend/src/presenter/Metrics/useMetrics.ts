@@ -12,18 +12,15 @@ export const useMetrics = () => {
   const { data: myApis } = useApiDefs();
 
   const apis = useMemo(() => {
-    const options = [
-      {
-        value: undefined,
-        label: 'All APIs',
-      },
-    ];
     return myApis
       .map(({ name, _id }: { name: string; _id: string }) => ({
         value: _id,
         label: name,
       }))
-      .concat(options);
+      .concat({
+        value: '',
+        label: 'All APIs',
+      });
   }, [myApis]);
 
   const { data, loading, error, refetch } = useMetricsQuery(

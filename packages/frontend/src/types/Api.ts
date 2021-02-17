@@ -1,14 +1,16 @@
 import { DataSource } from './DataSource';
-import { Refetch } from './Apollo';
+import { QueryHook, Refetch } from './Apollo';
 import {
   ControlType,
   ErrorsAndControl,
   FieldArray,
   FieldArrayAppend,
   FieldArrayRemove,
+  OnSubmit,
 } from './HookForm';
 import { SelectOption } from './Forms';
 import { NOOP } from './General';
+import { UseTabsHook } from './Tabs';
 
 export type ApiAuth<T> = {
   auth_header_name: string;
@@ -56,3 +58,27 @@ export type DataSourcesForm = ControlType & {
   connected: DataSource[];
   onRemoveSource(idx: number): NOOP;
 };
+
+export type GetApiDefsData = {
+  getApiDefs: {
+    apiDefs: ApiDef[];
+  };
+};
+
+export type GetApiDefById = {
+  getApiDefById: ApiDef;
+};
+
+export type UseApiByIdHook = () => ReturnType<QueryHook<ApiDef>> &
+  ReturnType<UseTabsHook>;
+
+export type UseUpdateDataSourcesHook = (
+  props: EditApiTab
+) => {
+  onSubmit: OnSubmit;
+  options: SelectOption[];
+  connected: any[];
+  onAddSource: NOOP;
+  onRemoveSource(idx: number): NOOP;
+  loading: boolean;
+} & ControlType;
