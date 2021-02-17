@@ -32,6 +32,7 @@ export const useCreateApi = () => {
       endpoint: '',
       source: '',
       sources: [],
+      playground: true,
       authentication: {
         auth_header_name: '',
         auth_tokens: [],
@@ -57,12 +58,13 @@ export const useCreateApi = () => {
     remove: removeToken,
   } = useFieldArray({ control, name: 'authentication.auth_tokens' });
 
-  const onSubmit = ({ authentication, name, endpoint }: any) => {
+  const onSubmit = ({ authentication, name, endpoint, playground }: any) => {
     createApiDef({
       variables: {
         apiDef: {
           name,
           endpoint,
+          playground,
           ...createAuth(authentication),
         },
         sources: sourceFields.map(

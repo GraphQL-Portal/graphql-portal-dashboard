@@ -12,6 +12,8 @@ import {
 import { GeneralForm, DataSourcesForm } from '../Form';
 import { AddNewAPIHeader } from './Header';
 
+const PAGE_TITLE = 'Create a new API';
+
 export const CreateApi: React.FC = () => {
   const {
     connected,
@@ -29,12 +31,12 @@ export const CreateApi: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Create a new API</title>
+        <title>{PAGE_TITLE}</title>
       </Helmet>
       <AddNewAPIHeader />
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title="Create a new API" />
+          <WidgetHeader title={PAGE_TITLE} />
           <WidgetBody>
             <form onSubmit={onSubmit} noValidate autoComplete="off">
               <GeneralForm
