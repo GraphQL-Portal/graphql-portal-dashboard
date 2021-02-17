@@ -44,22 +44,18 @@ export const List: React.FC<Props> = ({ transforms, onRemove, onEdit }) => {
                 placement="left"
                 aria-label="delete transform"
               >
-                <span>
-                  <IconButton onClick={onEdit(idx, transform)}>
-                    <Edit />
-                  </IconButton>
-                </span>
+                <IconButton onClick={onEdit(idx, transform)}>
+                  <Edit />
+                </IconButton>
               </Tooltip>
               <Tooltip
                 title="Delete transform"
                 placement="left"
                 aria-label="delete transform"
               >
-                <span>
-                  <IconButton onClick={onRemove(idx)}>
-                    <Delete />
-                  </IconButton>
-                </span>
+                <IconButton onClick={onRemove(idx)}>
+                  <Delete />
+                </IconButton>
               </Tooltip>
             </TableActionCell>
           </TableRow>

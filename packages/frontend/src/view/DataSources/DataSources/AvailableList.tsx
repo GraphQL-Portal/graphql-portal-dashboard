@@ -95,11 +95,9 @@ export const AvailableList: React.FC = () => {
                     placement="left"
                     aria-label="add connector"
                   >
-                    <span>
-                      <IconButton onClick={onAddClick(source, key)}>
-                        <Add />
-                      </IconButton>
-                    </span>
+                    <IconButton onClick={onAddClick(source, key)}>
+                      <Add />
+                    </IconButton>
                   </Tooltip>
                 </TableActionCell>
               </TableRow>

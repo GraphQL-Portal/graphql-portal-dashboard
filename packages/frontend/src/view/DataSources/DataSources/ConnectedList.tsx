@@ -56,11 +56,9 @@ export const ConnectedList: React.FC<Props> = ({
                     placement="left"
                     aria-label="edit data-source"
                   >
-                    <span>
-                      <IconButton onClick={onUpdate(idx)}>
-                        <Edit />
-                      </IconButton>
-                    </span>
+                    <IconButton onClick={onUpdate(idx)}>
+                      <Edit />
+                    </IconButton>
                   </Tooltip>
                 )}
                 <Tooltip
@@ -68,11 +66,9 @@ export const ConnectedList: React.FC<Props> = ({
                   placement="left"
                   aria-label="delete data-source"
                 >
-                  <span>
-                    <IconButton onClick={onDelete(idx)}>
-                      <Delete />
-                    </IconButton>
-                  </span>
+                  <IconButton onClick={onDelete(idx)}>
+                    <Delete />
+                  </IconButton>
                 </Tooltip>
               </TableActionCell>
             </TableRow>
