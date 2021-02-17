@@ -27,7 +27,7 @@ export const useUpdateDataSource = (limit: number) => {
   const { updateSource } = useUpdateSource({
     onCompleted() {
       clearSource();
-      showSuccessToast('Successfully created new data-source');
+      showSuccessToast(`Successfully updated ${state.name} data-source`);
     },
     onError({ message }: AError) {
       showErrorToast(message);
