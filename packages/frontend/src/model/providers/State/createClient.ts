@@ -7,7 +7,7 @@ import {
   Observable,
 } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
-import { WebSocketLink } from '@apollo/client/link/ws';
+// import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 
 import {
@@ -16,11 +16,11 @@ import {
   removeAccessToken,
   removeRefreshToken,
 } from '../Auth/helpers';
-import { URI, wsURI } from './config';
+import { URI } from './config';
 import { promise2Observable } from './promise2Observable';
 import { refreshTokens } from './refreshToken';
 import { STATUS_401 } from './constants';
-import { setContext } from '@apollo/client/link/context';
+// import { setContext } from '@apollo/client/link/context';
 
 type ErrorCallback = Observable<any> | undefined;
 
@@ -30,30 +30,30 @@ export const createClient = (token: string) => {
   const headers = Object.assign({}, token ? { authorization: token } : {});
   const httpLink = new HttpLink({ uri: URI, headers });
 
-  const wsAuthLink = setContext((request, previousContext) => ({
-    headers: {
-      authorization: token,
-    },
-  }));
-  const wsLink = new WebSocketLink({
-    uri: wsURI,
-    options: {
-      reconnect: true,
-      connectionParams: { headers: { authorization: token } },
-    },
-  });
+  // const wsAuthLink = setContext((request, previousContext) => ({
+  //   headers: {
+  //     authorization: token,
+  //   },
+  // }));
+  // const wsLink = new WebSocketLink({
+  //   uri: wsURI,
+  //   options: {
+  //     reconnect: true,
+  //     connectionParams: { headers: { authorization: token } },
+  //   },
+  // });
 
-  const splitLink = split(
-    ({ query }) => {
-      const definition = getMainDefinition(query);
-      return (
-        definition.kind === 'OperationDefinition' &&
-        definition.operation === 'subscription'
-      );
-    },
-    wsLink,
-    httpLink
-  );
+  // const splitLink = split(
+  //   ({ query }) => {
+  //     const definition = getMainDefinition(query);
+  //     return (
+  //       definition.kind === 'OperationDefinition' &&
+  //       definition.operation === 'subscription'
+  //     );
+  //   },
+  //   wsLink,
+  //   httpLink
+  // );
 
   const errorLink = onError(
     ({ operation, forward, graphQLErrors }): ErrorCallback => {
@@ -88,7 +88,7 @@ export const createClient = (token: string) => {
 
   client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: from([errorLink, wsAuthLink, splitLink]),
+    link: from([errorLink, httpLink]),
   });
 
   return client;
