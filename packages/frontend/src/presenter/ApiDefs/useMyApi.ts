@@ -1,22 +1,30 @@
 import { generatePath, useHistory } from 'react-router-dom';
+
+import { ApiDef } from '../../types';
 import { useApiDefs } from '../../model/ApiDefs/queries';
 import { useDeleteApiDef } from '../../model/ApiDefs/commands';
-import { ApiDef } from '../../types';
+import { ROUTES, useDialogs } from '../../model/providers';
+import { DELETE_API } from '../../view/Dialogs';
 import { createApiDefList } from './helpers';
-import { ROUTES } from '../../model/providers';
 
 export const useMyApi = () => {
   const { push } = useHistory();
   const { data, loading } = useApiDefs();
   const [deleteApiDef] = useDeleteApiDef();
+  const { onOpenDialog, onCloseDialog } = useDialogs()!;
 
-  const getApiDef = (index: number): ApiDef => data[index];
+  const onDelete = ({ _id: id, name }: ApiDef) => () =>
+    onOpenDialog(DELETE_API, {
+      onSuccess: () => {
+        deleteApiDef({ variables: { id } });
+        onCloseDialog();
+      },
+      onCancel: onCloseDialog,
+      name,
+    });
 
-  const onDelete = (index: number) => () =>
-    deleteApiDef({ variables: { id: getApiDef(index)._id } });
-
-  const onUpdate = (index: number) => () =>
-    push(generatePath(ROUTES.API_EDIT, { id: getApiDef(index)._id }));
+  const onUpdate = ({ _id: id }: ApiDef) => () =>
+    push(generatePath(ROUTES.API_EDIT, { id }));
 
   const onCreate = () => push(ROUTES.API_CREATE);
 
