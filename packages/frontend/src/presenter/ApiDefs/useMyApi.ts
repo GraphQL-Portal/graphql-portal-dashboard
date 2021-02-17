@@ -13,8 +13,7 @@ export const useMyApi = () => {
   const [deleteApiDef] = useDeleteApiDef();
   const { onOpenDialog, onCloseDialog } = useDialogs()!;
 
-  const onDelete = ({ _id: id, name }: ApiDef) => () => {
-    console.log('ON DELETE', id);
+  const onDelete = ({ _id: id, name }: ApiDef) => () =>
     onOpenDialog(DELETE_API, {
       onSuccess: () => {
         deleteApiDef({ variables: { id } });
@@ -23,7 +22,6 @@ export const useMyApi = () => {
       onCancel: onCloseDialog,
       name,
     });
-  };
 
   const onUpdate = ({ _id: id }: ApiDef) => () =>
     push(generatePath(ROUTES.API_EDIT, { id }));
