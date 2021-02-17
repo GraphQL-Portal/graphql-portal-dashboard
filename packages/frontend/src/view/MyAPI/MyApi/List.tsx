@@ -38,12 +38,12 @@ export const ApiDefsList: React.FC<Props> = ({ list, onDelete, onUpdate }) => {
               <TableCell align="right">{api.createdAt}</TableCell>
               <TableActionCell>
                 <Tooltip title="Edit API" placement="left">
-                  <IconButton onClick={onUpdate(idx)}>
+                  <IconButton onClick={onUpdate(api)}>
                     <Edit />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Delete API" placement="left">
-                  <IconButton onClick={onDelete(idx)}>
+                  <IconButton onClick={onDelete(api)}>
                     <Delete />
                   </IconButton>
                 </Tooltip>

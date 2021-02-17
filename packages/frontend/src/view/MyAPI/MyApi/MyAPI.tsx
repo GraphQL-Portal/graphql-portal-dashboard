@@ -1,10 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
 import { Header, HugeWidget, PrimaryButton, WidgetRow } from '../../../ui';
+import { useMyApi } from '../../../presenter/ApiDefs';
+import { Loading } from '../../Loading';
+import { DeleteAPI } from '../DeleteAPI';
 import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
-import { Loading } from '../../Loading';
-import { useMyApi } from '../../../presenter/ApiDefs';
-import { Helmet } from 'react-helmet';
 
 export const MyAPI: React.FC = () => {
   const { data, loading, onDelete, onUpdate, onCreate } = useMyApi();
@@ -28,6 +30,7 @@ export const MyAPI: React.FC = () => {
           )}
         </HugeWidget>
       </WidgetRow>
+      <DeleteAPI />
     </>
   );
 };
