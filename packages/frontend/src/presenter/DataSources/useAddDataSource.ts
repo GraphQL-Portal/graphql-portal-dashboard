@@ -20,7 +20,7 @@ export const useAddDataSource = (limit: number) => {
   const { createSource } = useCreateSource({
     onCompleted() {
       clearSource();
-      showSuccessToast(`Successfully updated ${state.name} data-source`);
+      showSuccessToast('Successfully created new data-source');
     },
     onError({ message }: AError) {
       showErrorToast(message);
