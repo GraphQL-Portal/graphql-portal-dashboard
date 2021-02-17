@@ -9,7 +9,7 @@ import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
 
 export const MyAPI: React.FC = () => {
-  const { data, loading, onDelete, onUpdate, onCreate } = useMyApi();
+  const { data, loading, onDelete, onUpdate, onCreate, onView } = useMyApi();
 
   if (loading) return <Loading />;
 
@@ -24,7 +24,12 @@ export const MyAPI: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           {data.length ? (
-            <ApiDefsList list={data} onDelete={onDelete} onUpdate={onUpdate} />
+            <ApiDefsList
+              list={data}
+              onDelete={onDelete}
+              onUpdate={onUpdate}
+              onView={onView}
+            />
           ) : (
             <EmptyApiDefs />
           )}

@@ -31,12 +31,11 @@ export type ApiDef = {
   sources: DataSource[];
 };
 
-export type ApiListItem = ApiDef & { status: string };
-
 export type ApiList = {
-  list: ApiListItem[];
+  list: ApiDef[];
   onDelete: (api: ApiDef) => NOOP;
   onUpdate: (api: ApiDef) => NOOP;
+  onView: (api: ApiDef) => NOOP;
 };
 
 export type EditApiTab = {
@@ -82,3 +81,12 @@ export type UseUpdateDataSourcesHook = (
   onRemoveSource(idx: number): NOOP;
   loading: boolean;
 } & ControlType;
+
+export type UseViewAPIHook = () => ReturnType<UseTabsHook>;
+
+export type UseMyAPIHook = () => ReturnType<QueryHook<ApiDef[]>> & {
+  onDelete(api: ApiDef): NOOP;
+  onUpdate(api: ApiDef): NOOP;
+  onCreate: NOOP;
+  onView(api: ApiDef): NOOP;
+};
