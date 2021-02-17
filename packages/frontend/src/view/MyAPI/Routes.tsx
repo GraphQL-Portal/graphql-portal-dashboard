@@ -5,6 +5,7 @@ import { ROUTES } from '../../model/providers';
 import { MyAPI } from './MyApi';
 import { CreateApi } from './Create';
 import { EditApi } from './Edit';
+import { ViewAPI } from './View';
 
 export const Routes: React.FC = () => {
   return (
@@ -12,8 +13,11 @@ export const Routes: React.FC = () => {
       <Route path={ROUTES.API_CREATE} exact>
         <CreateApi />
       </Route>
-      <Route path={ROUTES.API_EDIT}>
+      <Route path={ROUTES.API_EDIT} exact>
         <EditApi />
+      </Route>
+      <Route path={ROUTES.API_VIEW} exact>
+        <ViewAPI />
       </Route>
       <Route path={ROUTES.APIS} exact>
         <MyAPI />

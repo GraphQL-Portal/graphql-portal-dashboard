@@ -21,5 +21,6 @@ export {
   Search,
   Settings,
   VerticalSplit,
+  Visibility,
 } from '@material-ui/icons';
 export { LogoFull } from './LogoFull';

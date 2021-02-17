@@ -10,6 +10,7 @@ export const QUERY_API_DEFS = gql`
         name
         createdAt
         updatedAt
+        enabled
       }
       timestamp
     }

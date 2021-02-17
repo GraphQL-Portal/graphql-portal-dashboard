@@ -1,12 +1,11 @@
 import { formatTimestamp } from '../../../utils';
-import { ApiDef, ApiListItem } from '../../../types';
+import { ApiDef } from '../../../types';
 
-export const createApiDefList = (data: ApiDef[]): ApiListItem[] => {
+export const createApiDefList = (data: ApiDef[]): ApiDef[] => {
   if (!data) return [];
 
   return data.map((api: ApiDef) =>
     Object.assign({}, api, {
-      status: 'active',
       createdAt: formatTimestamp(api.createdAt),
     })
   );

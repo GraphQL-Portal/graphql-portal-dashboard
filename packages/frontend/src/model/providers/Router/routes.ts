@@ -11,6 +11,7 @@ export const DASHBOARD = '/dashboard';
 export const APIS = '/my-apis';
 export const API_CREATE = `${APIS}/new`;
 export const API_EDIT = `${APIS}/edit/:id`;
+export const API_VIEW = `${APIS}/:id`;
 
 // Data Source
 export const DATA_SOURCES = '/data-sources';

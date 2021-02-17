@@ -4,3 +4,4 @@ export { useDeleteAPI } from './useDeleteAPI';
 export { useMyApi } from './useMyApi';
 export { useUpdateDataSources } from './useUpdateDataSources';
 export { useUpdateGeneral } from './useUpdateGeneral';
+export { useViewAPI } from './useViewAPI';
