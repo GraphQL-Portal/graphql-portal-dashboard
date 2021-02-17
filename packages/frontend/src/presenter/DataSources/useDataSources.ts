@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+
 import {
   useDialogs,
   ROUTES,
@@ -7,6 +8,7 @@ import {
 import { useSources } from '../../model/DataSources/queries';
 import { useDeleteSource } from '../../model/DataSources/commands';
 import { DELETE_DATA_SOURCE } from '../../view/Dialogs';
+import { DataSource } from '../../types';
 import { AVAILABLE_DATA_SOURCES } from './constants';
 import { sortSourcesByName } from './helpers';
 
@@ -31,14 +33,12 @@ export const useDataSources = () => {
     });
   };
 
-  const onUpdate = (idx: number) => () => {
-    const { handler, name, transforms, _id: id } = data[idx];
-
+  const onUpdate = ({ handler, name, transforms, _id }: DataSource) => () => {
     const key = Object.keys(handler)[0];
     setSource({
       key,
       connector: AVAILABLE_DATA_SOURCES[key],
-      state: { handler, name, transforms, id },
+      state: { handler, name, transforms, _id },
     });
     push(ROUTES.DATA_SOURCE_EDIT);
   };

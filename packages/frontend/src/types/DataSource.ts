@@ -41,12 +41,12 @@ export type TransformsList = {
 export type DataSource = NameForm &
   HandlerForm &
   TransformsForm & {
-    _id: string;
+    _id?: string;
     updatedAt?: string;
   };
 
 export type ConnectedList = {
   sources: DataSource[];
   onDelete(idx: number): () => void;
-  onUpdate?(idx: number): () => void;
+  onUpdate?(source: DataSource): () => void;
 };

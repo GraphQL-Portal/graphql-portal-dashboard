@@ -56,7 +56,7 @@ export const ConnectedList: React.FC<Props> = ({
                     placement="left"
                     aria-label="edit data-source"
                   >
-                    <IconButton onClick={onUpdate(idx)}>
+                    <IconButton onClick={onUpdate(source)}>
                       <Edit />
                     </IconButton>
                   </Tooltip>

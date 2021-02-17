@@ -1,13 +1,15 @@
 import { useUpdateSource } from '../../model/DataSources/commands';
-import { useDataSourceContext } from '../../model/providers';
+import { useDataSourceContext, useToast } from '../../model/providers';
+import { AError } from '../../types';
 import { INITIAL_STATE } from './constants';
 import { unpackHandler, packHandler } from './helpers';
 import { useEditDataSource } from './useEditDataSource';
 
 export const useUpdateDataSource = (limit: number) => {
+  const { showSuccessToast, showErrorToast } = useToast();
   const { source = {}, clearSource } = useDataSourceContext();
   const { state: initialState, key } = source || {};
-  const { id } = initialState || {};
+  const { _id } = initialState || {};
 
   const {
     state,
@@ -21,18 +23,21 @@ export const useUpdateDataSource = (limit: number) => {
     limit,
     unpackHandler(initialState || INITIAL_STATE, key || '')
   );
-  const onCompleted = () => clearSource();
 
-  // @TODO probably I need to show error message
-  const onError = console.error;
-
-  // Send new source to the server
-  const { updateSource } = useUpdateSource({ onCompleted, onError });
+  const { updateSource } = useUpdateSource({
+    onCompleted() {
+      clearSource();
+      showSuccessToast('Successfully created new data-source');
+    },
+    onError({ message }: AError) {
+      showErrorToast(message);
+    },
+  });
 
   const onSubmit = () => {
     updateSource({
       variables: {
-        id,
+        id: _id,
         source: packHandler(state, source.key),
       },
     });
