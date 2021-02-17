@@ -1,5 +1,10 @@
 import { BaseSyntheticEvent } from 'react';
-import { Control, FieldErrors, ArrayField } from 'react-hook-form';
+import {
+  Control,
+  FieldErrors,
+  ArrayField,
+  UseFormMethods,
+} from 'react-hook-form';
 
 export type ControlType = {
   control: Control;
@@ -29,3 +34,5 @@ export type Watch = (name: string, defaultValue?: any) => any;
 export type OnSubmit = (
   e?: BaseSyntheticEvent<object, any, any> | undefined
 ) => Promise<void>;
+
+export type FormMethods<T> = UseFormMethods<T>;
