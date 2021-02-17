@@ -4,6 +4,7 @@ import {
   FieldArrayAppend,
   FieldArrayRemove,
 } from './HookForm';
+import { SwitchProps } from '@material-ui/core';
 
 export type ObjectArray = {
   onAdd: FieldArrayAppend;
@@ -20,4 +21,9 @@ export type FormGroup = {
 export type SelectOption = {
   label: string;
   value: string;
+};
+
+export type Switch = SwitchProps & {
+  value: boolean;
+  onChange(value: boolean): void;
 };
