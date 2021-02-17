@@ -2,11 +2,11 @@ import {
   ApolloClient,
   HttpLink,
   InMemoryCache,
-  split,
+  // split,
   from,
   Observable,
 } from '@apollo/client';
-import { getMainDefinition } from '@apollo/client/utilities';
+// import { getMainDefinition } from '@apollo/client/utilities';
 // import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 
@@ -16,7 +16,10 @@ import {
   removeAccessToken,
   removeRefreshToken,
 } from '../Auth/helpers';
-import { URI } from './config';
+import {
+  URI,
+  // wsURI,
+} from './config';
 import { promise2Observable } from './promise2Observable';
 import { refreshTokens } from './refreshToken';
 import { STATUS_401 } from './constants';
