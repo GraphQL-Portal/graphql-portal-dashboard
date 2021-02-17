@@ -10,6 +10,7 @@ import {
   TableBody,
   TableRow,
   IconButton,
+  Tooltip,
 } from '../../../ui';
 import { ApiList as Props } from '../../../types';
 import { TABLE_HEAD } from './constants';
@@ -36,12 +37,16 @@ export const ApiDefsList: React.FC<Props> = ({ list, onDelete, onUpdate }) => {
               <TableCell align="right">{api.status}</TableCell>
               <TableCell align="right">{api.createdAt}</TableCell>
               <TableActionCell>
-                <IconButton onClick={onUpdate(idx)}>
-                  <Edit />
-                </IconButton>
-                <IconButton onClick={onDelete(idx)}>
-                  <Delete />
-                </IconButton>
+                <Tooltip title="Edit API" placement="left">
+                  <IconButton onClick={onUpdate(idx)}>
+                    <Edit />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete API" placement="left">
+                  <IconButton onClick={onDelete(idx)}>
+                    <Delete />
+                  </IconButton>
+                </Tooltip>
               </TableActionCell>
             </TableRow>
           ))}

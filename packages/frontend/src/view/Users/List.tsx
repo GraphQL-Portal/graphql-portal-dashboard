@@ -56,11 +56,9 @@ export const UsersList: React.FC<Props> = ({
                         placement="left"
                         aria-label="unblock user"
                       >
-                        <span>
-                          <IconButton onClick={() => onUnblock(idx)}>
-                            <Lock />
-                          </IconButton>
-                        </span>
+                        <IconButton onClick={() => onUnblock(idx)}>
+                          <Lock />
+                        </IconButton>
                       </Tooltip>
                     ) : (
                       <Tooltip
@@ -68,11 +66,9 @@ export const UsersList: React.FC<Props> = ({
                         placement="left"
                         aria-label="block user"
                       >
-                        <span>
-                          <IconButton onClick={() => onBlock(idx)}>
-                            <LockOpen />
-                          </IconButton>
-                        </span>
+                        <IconButton onClick={() => onBlock(idx)}>
+                          <LockOpen />
+                        </IconButton>
                       </Tooltip>
                     )}
                     <Tooltip
@@ -80,22 +76,18 @@ export const UsersList: React.FC<Props> = ({
                       placement="left"
                       aria-label="edit user"
                     >
-                      <span>
-                        <IconButton onClick={() => onEdit(idx)}>
-                          <Edit />
-                        </IconButton>
-                      </span>
+                      <IconButton onClick={() => onEdit(idx)}>
+                        <Edit />
+                      </IconButton>
                     </Tooltip>
                     <Tooltip
                       title="Delete user"
                       placement="left"
                       aria-label="delete user"
                     >
-                      <span>
-                        <IconButton onClick={() => onDelete(idx)}>
-                          <Delete />
-                        </IconButton>
-                      </span>
+                      <IconButton onClick={() => onDelete(idx)}>
+                        <Delete />
+                      </IconButton>
                     </Tooltip>
                   </TableActionCell>
                 </TableRow>

@@ -28,11 +28,9 @@ export const ObjectArray: React.FC<Props> = ({
         </Col>
         <Col xs={6} className={lastObjectField}>
           <Tooltip title={`Add ${title}`} placement="left">
-            <div>
-              <IconButton onClick={onAdd}>
-                <Add />
-              </IconButton>
-            </div>
+            <IconButton onClick={onAdd}>
+              <Add />
+            </IconButton>
           </Tooltip>
         </Col>
       </Row>
@@ -61,11 +59,9 @@ export const ObjectArray: React.FC<Props> = ({
             </Col>
             <Col xs={2} className={lastObjectField}>
               <Tooltip title="Remove field" placement="left">
-                <div>
-                  <IconButton onClick={() => onRemove(idx)}>
-                    <Remove />
-                  </IconButton>
-                </div>
+                <IconButton onClick={() => onRemove(idx)}>
+                  <Remove />
+                </IconButton>
               </Tooltip>
             </Col>
           </Row>
