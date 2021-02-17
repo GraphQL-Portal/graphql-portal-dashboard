@@ -20,10 +20,10 @@ import { DataSourcesTab } from './DataSourcesTab';
 const TABS = [{ label: 'General' }, { label: 'Data Sources' }];
 
 export const EditApi: React.FC = () => {
-  const { loading, api, tab, onTabChange, refetch } = useApiById();
+  const { loading, data, tab, onChange, refetch } = useApiById();
 
   if (loading) return <Loading />;
-  const { name } = api;
+  const { name } = data;
   return (
     <>
       <Helmet>
@@ -39,10 +39,10 @@ export const EditApi: React.FC = () => {
         <HugeWidget>
           <WidgetHeader title={`Edit ${name} API`} />
           <WidgetBody>
-            <TabsHead value={tab} onChange={onTabChange} tabsList={TABS} />
+            <TabsHead value={tab} onChange={onChange} tabsList={TABS} />
             <TabsBody value={tab}>
-              <GeneralTab api={api} refetch={refetch} />
-              <DataSourcesTab api={api} refetch={refetch} />
+              <GeneralTab api={data} refetch={refetch!} />
+              <DataSourcesTab api={data} refetch={refetch!} />
             </TabsBody>
           </WidgetBody>
         </HugeWidget>

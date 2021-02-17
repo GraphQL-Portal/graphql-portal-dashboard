@@ -1,12 +1,15 @@
 import { useForm } from 'react-hook-form';
 
-import { EditApiTab, DataSource, AError } from '../../types';
+import { UseUpdateDataSourcesHook, DataSource, AError } from '../../types';
 import { useSources } from '../../model/DataSources/queries';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useToast } from '../../model/providers';
 import { useDSPart } from './useDSPart';
 
-export const useUpdateDataSources = ({ api, refetch }: EditApiTab) => {
+export const useUpdateDataSources: UseUpdateDataSourcesHook = ({
+  api,
+  refetch,
+}) => {
   const { showSuccessToast, showErrorToast } = useToast();
   const {
     name,
@@ -23,7 +26,7 @@ export const useUpdateDataSources = ({ api, refetch }: EditApiTab) => {
   const { updateApiDef } = useUpdateApiDef({
     onCompleted() {
       refetch();
-      showSuccessToast(`Api ${name} successfully  updated`);
+      showSuccessToast(`API ${name} successfully  updated`);
     },
     onError({ message }: AError) {
       showErrorToast(message);

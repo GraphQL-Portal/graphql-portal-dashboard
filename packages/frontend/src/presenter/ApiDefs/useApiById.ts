@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useApiDefById } from '../../model/ApiDefs/queries';
 import { useTabs } from '../../model/Hooks';
+import { UseApiByIdHook } from '../../types';
 
-export const useApiById = () => {
+export const useApiById: UseApiByIdHook = () => {
   const { id } = useParams<{ id: string }>();
   const { tab, onChange } = useTabs();
-  const { loading, data: api, refetch } = useApiDefById({ variables: { id } });
+  const { loading, data, refetch } = useApiDefById({ variables: { id } });
 
-  return { loading, api, tab, onTabChange: onChange, refetch };
+  return { loading, data, tab, onChange, refetch };
 };

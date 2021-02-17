@@ -1,5 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 
+import { QueryHook, ApiDef, GetApiDefsData } from '../../../types';
+
 export const QUERY_API_DEFS = gql`
   {
     getApiDefs {
@@ -14,8 +16,11 @@ export const QUERY_API_DEFS = gql`
   }
 `;
 
-export const useApiDefs = () => {
-  const { data, loading, error } = useQuery(QUERY_API_DEFS);
+export const useApiDefs: QueryHook<ApiDef[]> = (options = {}) => {
+  const { data, loading, error } = useQuery<GetApiDefsData>(
+    QUERY_API_DEFS,
+    options
+  );
 
   return {
     data: data?.getApiDefs?.apiDefs || [],

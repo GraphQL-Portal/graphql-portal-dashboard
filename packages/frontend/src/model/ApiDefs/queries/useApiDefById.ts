@@ -1,5 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
-import { QueryOptions } from '../../../types';
+import { QueryHook, ApiDef } from '../../../types';
 
 const GET_API_DEF_BY_ID = gql`
   query getApiDefById($id: String!) {
@@ -24,7 +24,7 @@ const GET_API_DEF_BY_ID = gql`
   }
 `;
 
-export const useApiDefById = (options: QueryOptions = {}) => {
+export const useApiDefById: QueryHook<ApiDef> = (options = {}) => {
   const { data, loading, error, refetch } = useQuery(
     GET_API_DEF_BY_ID,
     options

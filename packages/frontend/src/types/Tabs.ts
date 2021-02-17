@@ -5,9 +5,18 @@ export type TabListItem = {
   disabled?: boolean;
 };
 
+export type TabOnChange = (event: React.ChangeEvent<{}>, value: any) => void;
+
+export type UseTabsHook = (
+  value?: number
+) => {
+  tab: number;
+  onChange: TabOnChange;
+};
+
 export type TabsHead = {
   tabsList: TabListItem[];
-  onChange(event: React.ChangeEvent<{}>, value: any): void;
+  onChange: TabOnChange;
 } & Omit<TabsProps, 'onChange'>;
 
 export type TabsBody = {
