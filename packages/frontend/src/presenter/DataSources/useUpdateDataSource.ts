@@ -7,7 +7,7 @@ import { useEditDataSource } from './useEditDataSource';
 export const useUpdateDataSource = (limit: number) => {
   const { source = {}, clearSource } = useDataSourceContext();
   const { state: initialState, key } = source || {};
-  const { id } = initialState || {};
+  const { _id } = initialState || {};
 
   const {
     state,
@@ -32,7 +32,7 @@ export const useUpdateDataSource = (limit: number) => {
   const onSubmit = () => {
     updateSource({
       variables: {
-        id,
+        id: _id,
         source: packHandler(state, source.key),
       },
     });
