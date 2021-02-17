@@ -1,5 +1,6 @@
 export * from './Api';
 export * from './Apollo';
+export * from './Auth';
 export * from './Checkbox';
 export * from './DataSource';
 export * from './Dialogs';

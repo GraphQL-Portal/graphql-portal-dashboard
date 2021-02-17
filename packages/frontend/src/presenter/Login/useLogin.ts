@@ -8,53 +8,48 @@ import { useFormErrors } from '../../model/Hooks';
 // import { useToast } from '../../model/providers';
 import { useLogin as login } from '../../model/Login/commands';
 import { UA } from '../../model/providers/Auth/constants';
-
-type LoginFormInput = {
-  email: string;
-  password: string;
-};
+import { LoginForm, UseLoginHook } from '../../types';
 
 enforce.extend({ isEmail: validator.isEmail });
 
-const validationSuite = vest.create(
-  'login_form',
-  ({ email, password }: LoginFormInput) => {
-    test('email', 'Email is required', () => {
-      enforce(email).isNotEmpty();
-    });
+const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
+  test('email', 'Email is required', () => {
+    enforce(email).isNotEmpty();
+  });
 
-    test('email', 'Please enter correct Email', () => {
-      enforce(email).isEmail();
-    });
+  test('email', 'Please enter correct Email', () => {
+    enforce(email).isEmail();
+  });
 
-    test('password', 'Password is required', () => {
-      enforce(password).isNotEmpty();
-    });
+  test('password', 'Password is required', () => {
+    enforce(password).isNotEmpty();
+  });
 
-    test('password', 'Password must be at least 8 chars', () => {
-      enforce(password).longerThanOrEquals(8);
-    });
+  test('password', 'Password must be at least 8 chars', () => {
+    enforce(password).longerThanOrEquals(8);
+  });
 
-    test('password', 'Password must contain a digit', () => {
-      enforce(password).matches(/[0-9]/);
-    });
+  test('password', 'Password must contain a digit', () => {
+    enforce(password).matches(/[0-9]/);
+  });
 
-    test('password', 'Password must contain a symbol', () => {
-      enforce(password).matches(/[^A-Za-z0-9]/);
-    });
-  }
-);
+  test('password', 'Password must contain a symbol', () => {
+    enforce(password).matches(/[^A-Za-z0-9]/);
+  });
+});
 
-export const useLogin = () => {
+const INITIAL_VALUES = {
+  email: 'admin@example.com',
+  password: 'Secret123!',
+};
+
+export const useLogin: UseLoginHook = () => {
   // const { showErrorToast } = useToast();
   const { setAuth } = useAuth();
-  const { handleSubmit, control, errors } = useForm<LoginFormInput>({
+  const { handleSubmit, register, errors } = useForm<LoginForm>({
     reValidateMode: 'onSubmit',
-    resolver: vestResolver(validationSuite),
-    defaultValues: {
-      email: 'admin@example.com',
-      password: 'Secret123!',
-    },
+    resolver: vestResolver(suite),
+    defaultValues: INITIAL_VALUES,
   });
 
   const handleLogin = (data: any) => {
@@ -68,7 +63,7 @@ export const useLogin = () => {
 
   useFormErrors(errors);
 
-  const onSubmit = ({ email, password }: LoginFormInput) => {
+  const onSubmit = ({ email, password }: LoginForm) => {
     onLogin({
       variables: {
         email,
@@ -79,7 +74,7 @@ export const useLogin = () => {
   };
 
   return {
-    control,
+    register,
     onSubmit: handleSubmit(onSubmit),
     errors,
   };

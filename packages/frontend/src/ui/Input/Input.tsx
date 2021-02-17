@@ -11,7 +11,3 @@ export const Input = forwardRef((props: TextFieldProps, ref) => {
     />
   );
 });
-
-// export const Input: React.FC<TextFieldProps> = (props) => {
-//   return <TextField variant="outlined" {...props} />;
-// };

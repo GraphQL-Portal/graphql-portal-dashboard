@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { Controller } from 'react-hook-form';
 
 import { ROUTES, useAuth } from '../../model/providers';
 import { useLogin } from '../../presenter/Login';
@@ -27,7 +26,7 @@ export const Login: React.FC = () => {
     footerWrapper,
     links,
   } = useStyles();
-  const { control, onSubmit, errors } = useLogin();
+  const { register, onSubmit, errors } = useLogin();
   const { accessToken } = useAuth();
 
   if (accessToken) return <Redirect to={ROUTES.MAIN} />;
@@ -43,30 +42,22 @@ export const Login: React.FC = () => {
             <form noValidate autoComplete="off" onSubmit={onSubmit}>
               <Widget className={formFrame}>
                 <WidgetBody>
-                  <Controller
-                    as={Input}
-                    control={control}
+                  <Input
+                    ref={register()}
                     className={formField}
                     fullWidth
                     label="Your Email"
                     name="email"
-                    error={!!(errors && errors.email)}
-                    InputProps={{
-                      autoComplete: 'off',
-                    }}
+                    error={!!errors?.email}
                   />
-                  <Controller
-                    as={Input}
-                    control={control}
+                  <Input
+                    ref={register()}
                     className={formField}
                     fullWidth
                     label="Your Password"
                     name="password"
                     type="password"
-                    error={!!(errors && errors.password)}
-                    InputProps={{
-                      autoComplete: 'off',
-                    }}
+                    error={!!errors?.password}
                   />
                 </WidgetBody>
                 <WidgetActions>
