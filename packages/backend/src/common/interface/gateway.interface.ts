@@ -6,4 +6,5 @@ export default interface IGateway {
   status: 'active' | 'idle';
   listenHostname: string;
   listenPort: number;
+  servername?: string;
 }

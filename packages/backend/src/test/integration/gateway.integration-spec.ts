@@ -28,6 +28,8 @@ describe('GatewayResolver', () => {
     hostname: 'test.local',
     status: 'active',
     lastPingAt: Date.now(),
+    listenHostname: 'localhost',
+    listenPort: 8080,
   };
 
   beforeAll(async () => {
