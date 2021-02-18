@@ -13,6 +13,8 @@ import {
   WidgetRow,
 } from '../../../ui';
 import { useViewAPI } from '../../../presenter/ApiDefs';
+import { Playground } from './Playground';
+import { Schema } from './Schema';
 
 const TABS = [{ label: 'Playground' }, { label: 'Schema' }];
 
@@ -35,8 +37,8 @@ export const ViewAPI: React.FC = () => {
           <WidgetBody>
             <TabsHead value={tab} onChange={onChange} tabsList={TABS} />
             <TabsBody value={tab}>
-              <div>Playground</div>
-              <div>Schema</div>
+              <Playground />
+              <Schema />
             </TabsBody>
           </WidgetBody>
         </HugeWidget>
