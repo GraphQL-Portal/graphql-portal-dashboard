@@ -1,4 +1,5 @@
 export { useApiById } from './useApiById';
+export { useAPIViewSchema } from './useAPIViewSchema';
 export { useCreateApi } from './useCreateApi';
 export { useDeleteAPI } from './useDeleteAPI';
 export { useMyApi } from './useMyApi';

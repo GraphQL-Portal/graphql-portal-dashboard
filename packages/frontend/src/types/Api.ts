@@ -82,7 +82,11 @@ export type UseUpdateDataSourcesHook = (
   loading: boolean;
 } & ControlType;
 
-export type UseViewAPIHook = () => ReturnType<UseTabsHook>;
+type Fetcher = (body: any) => Promise<any>;
+
+export type UseViewAPIHook = () => ReturnType<UseApiByIdHook> & {
+  fetcher: Fetcher;
+};
 
 export type UseMyAPIHook = () => ReturnType<QueryHook<ApiDef[]>> & {
   onDelete(api: ApiDef): NOOP;
@@ -90,3 +94,9 @@ export type UseMyAPIHook = () => ReturnType<QueryHook<ApiDef[]>> & {
   onCreate: NOOP;
   onView(api: ApiDef): NOOP;
 };
+
+export type ViewAPITab = {
+  fetcher: Fetcher;
+};
+
+export type UseAPIViewSchemaHook = (fetcher: Fetcher) => { value: string };
