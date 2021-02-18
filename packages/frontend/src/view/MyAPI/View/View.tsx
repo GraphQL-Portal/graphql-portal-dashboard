@@ -13,17 +13,25 @@ import {
   WidgetRow,
 } from '../../../ui';
 import { useViewAPI } from '../../../presenter/ApiDefs';
+import { Loading } from '../../Loading';
+import { VIEW_TABS } from '../constants';
 import { Playground } from './Playground';
 import { Schema } from './Schema';
 
-const TABS = [{ label: 'Playground' }, { label: 'Schema' }];
-
 export const ViewAPI: React.FC = () => {
-  const { tab, onChange } = useViewAPI();
+  const {
+    tab,
+    onChange,
+    fetcher,
+    data: { name },
+    loading,
+  } = useViewAPI();
+
+  if (loading) return <Loading />;
   return (
     <>
       <Helmet>
-        <title>Edit API</title>
+        <title>{`View ${name} API`}</title>
       </Helmet>
       <Header
         startChildren={
@@ -33,12 +41,12 @@ export const ViewAPI: React.FC = () => {
       />
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title={`Edit API`} />
+          <WidgetHeader title={`View ${name} API`} />
           <WidgetBody>
-            <TabsHead value={tab} onChange={onChange} tabsList={TABS} />
+            <TabsHead value={tab} onChange={onChange} tabsList={VIEW_TABS} />
             <TabsBody value={tab}>
-              <Playground />
-              <Schema />
+              <Playground fetcher={fetcher} />
+              <Schema fetcher={fetcher} />
             </TabsBody>
           </WidgetBody>
         </HugeWidget>
