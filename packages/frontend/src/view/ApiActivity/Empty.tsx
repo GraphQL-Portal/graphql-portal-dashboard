@@ -6,7 +6,8 @@ export const EmptyApiActivity: React.FC = () => {
     <EmptyContainer>
       <EmptyIcon />
       <EmptyText>
-        There are no activity <Emoji label="loudly crying face">😭</Emoji>
+        You don't have any metrics available yet...{' '}
+        <Emoji label="loudly crying face">😭</Emoji>
       </EmptyText>
     </EmptyContainer>
   );

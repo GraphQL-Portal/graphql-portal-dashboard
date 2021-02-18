@@ -99,7 +99,7 @@ export const ApiMetrics: React.FC = () => {
           <FailureRequestRateChart
             argumentLabelHandler={formatArgumentLabel(scale)}
             data={failures}
-            title="Failure\Success Chart"
+            title="Failure/Success Chart"
           />
         </HugeWidget>
       </WidgetRow>
