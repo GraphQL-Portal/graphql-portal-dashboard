@@ -284,5 +284,40 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     height: 48,
     minWidth: 48,
   },
-  editor: {},
+
+  editor: {
+    '& .CodeMirror': {
+      borderRadius: 4,
+      color: palette.text.primary,
+      border: `1px solid ${palette.action.disabled}`,
+      fontSize: '0.875rem',
+    },
+
+    '& .CodeMirror-gutters': {
+      background: palette.action.disabled,
+      color: palette.text.primary,
+      border: 0,
+      left: '0 !important',
+    },
+
+    '& .cm-ws, & .cm-punctuation': {
+      color: palette.text.secondary,
+    },
+
+    '& .cm-keyword': {
+      color: palette.primary.main,
+    },
+
+    '& .cm-atom': {
+      color: palette.warning.main,
+    },
+
+    '& .cm-property': {
+      color: palette.secondary.main,
+    },
+
+    '& .cm-attribute': {
+      color: palette.success.main,
+    },
+  },
 }));
