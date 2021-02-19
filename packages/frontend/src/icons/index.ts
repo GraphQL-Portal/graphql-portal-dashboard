@@ -17,6 +17,7 @@ export {
   LockOpen,
   MailOutline,
   PeopleAlt,
+  PlayArrow,
   Remove,
   Search,
   Settings,

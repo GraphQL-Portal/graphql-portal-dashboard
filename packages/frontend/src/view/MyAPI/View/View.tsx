@@ -45,7 +45,7 @@ export const ViewAPI: React.FC = () => {
           <WidgetBody>
             <TabsHead value={tab} onChange={onChange} tabsList={VIEW_TABS} />
             <TabsBody value={tab}>
-              <Playground fetcher={fetcher} />
+              <Playground fetcher={fetcher} name={name} />
               <Schema fetcher={fetcher} />
             </TabsBody>
           </WidgetBody>
