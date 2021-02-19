@@ -1,3 +1,4 @@
+import React from 'react';
 import { DataSource } from './DataSource';
 import { QueryHook, Refetch } from './Apollo';
 import {
@@ -11,6 +12,7 @@ import {
 import { SelectOption } from './Forms';
 import { NOOP } from './General';
 import { UseTabsHook } from './Tabs';
+import GraphiQL from 'graphiql';
 
 export type ApiAuth<T> = {
   auth_header_name: string;
@@ -97,6 +99,11 @@ export type UseMyAPIHook = () => ReturnType<QueryHook<ApiDef[]>> & {
 
 export type ViewAPITab = {
   fetcher: Fetcher;
+  name?: string;
 };
 
 export type UseAPIViewSchemaHook = (fetcher: Fetcher) => { value: string };
+export type UseAPIPlaygroundHook = () => {
+  onRun(evt: React.MouseEvent<HTMLButtonElement>): void;
+  editor: React.MutableRefObject<GraphiQL | null | undefined>;
+};
