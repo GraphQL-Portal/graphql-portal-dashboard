@@ -24,13 +24,21 @@ export default class GatewayService {
   }
 
   private onPing(data: string): void {
-    const { nodeId, configTimestamp, hostname } = JSON.parse(data);
+    const {
+      nodeId,
+      configTimestamp,
+      hostname,
+      listenHostname,
+      listenPort,
+    } = JSON.parse(data);
     this.nodes[nodeId] = {
       nodeId,
       lastPingAt: Date.now(),
       configTimestamp,
       hostname,
       status: 'active',
+      listenHostname,
+      listenPort,
     };
     this.setTimer(nodeId);
     this.gatewaysUpdated();

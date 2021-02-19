@@ -4,4 +4,7 @@ export default interface IGateway {
   configTimestamp: number;
   hostname: string;
   status: 'active' | 'idle';
+  listenHostname: string;
+  listenPort: number;
+  servername?: string;
 }

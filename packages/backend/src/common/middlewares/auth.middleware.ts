@@ -29,7 +29,6 @@ export default class AuthenticationMiddleware implements NestMiddleware {
 
       const { userId } = await TokenTool.verify(token);
 
-      this.logger.debug('Looking for user', context, { userId });
       let user = {} as IUserDocument | null;
       if (userId === Roles.GATEWAY) {
         if (token === config.gateway.secret) {
@@ -39,10 +38,6 @@ export default class AuthenticationMiddleware implements NestMiddleware {
         user = await this.service.findById(userId);
       }
 
-      this.logger.debug(
-        `Setting user to request: ${user?.email || user?.role}`,
-        context
-      );
       (req as any)[Metadata.USER] = user;
       next();
     } catch (error) {

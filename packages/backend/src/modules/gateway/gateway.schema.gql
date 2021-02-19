@@ -6,6 +6,9 @@ type Gateway {
   configTimestamp: Timestamp
   hostname: String
   status: String
+  listenHostname: String
+  listenPort: Int
+  servername: String
 }
 
 type Query {

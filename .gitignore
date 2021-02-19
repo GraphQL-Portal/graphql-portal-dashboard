@@ -1,6 +1,9 @@
 # front-end build directory
 packages/frontend/build
 
+# node-config-ts user directory
+packages/backend/config/user/*
+
 # IDEs and editors
 /.idea
 .project
