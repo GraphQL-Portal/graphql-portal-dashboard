@@ -9,7 +9,7 @@ import { MainNavigation } from '../Navigation';
 import { useStyles } from './useStyles';
 
 export const Sidebar: React.FC = () => {
-  const { drawer, paper, logo } = useStyles();
+  const { drawer, paper, logo, logoBadge } = useStyles();
   return (
     <Drawer
       className={drawer}
@@ -17,6 +17,7 @@ export const Sidebar: React.FC = () => {
       classes={{ paper: clsx(drawer, paper) }}
     >
       <Link to={ROUTES.DASHBOARD} className={logo}>
+        <span className={logoBadge}>beta</span>
         <LogoFull />
       </Link>
       <MainNavigation />

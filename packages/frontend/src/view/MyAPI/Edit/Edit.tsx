@@ -14,10 +14,9 @@ import {
   WidgetHeader,
 } from '../../../ui';
 import { Loading } from '../../Loading';
+import { EDIT_TABS } from '../constants';
 import { GeneralTab } from './GeneralTab';
 import { DataSourcesTab } from './DataSourcesTab';
-
-const TABS = [{ label: 'General' }, { label: 'Data Sources' }];
 
 export const EditApi: React.FC = () => {
   const { loading, data, tab, onChange, refetch } = useApiById();
@@ -39,7 +38,7 @@ export const EditApi: React.FC = () => {
         <HugeWidget>
           <WidgetHeader title={`Edit ${name} API`} />
           <WidgetBody>
-            <TabsHead value={tab} onChange={onChange} tabsList={TABS} />
+            <TabsHead value={tab} onChange={onChange} tabsList={EDIT_TABS} />
             <TabsBody value={tab}>
               <GeneralTab api={data} refetch={refetch!} />
               <DataSourcesTab api={data} refetch={refetch!} />
