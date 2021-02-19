@@ -4,7 +4,7 @@ const DRAWER_WIDTH = '20rem';
 const LOGO_HEIGHT = 60;
 const LOGO_WIDTH = 154;
 
-export const useStyles = makeStyles(({ spacing }: Theme) => ({
+export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   drawer: {
     width: DRAWER_WIDTH,
     flexShrink: 0,
@@ -16,8 +16,21 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     backgroundColor: 'transparent',
   },
   logo: {
+    position: 'relative',
     height: LOGO_HEIGHT,
     width: LOGO_WIDTH,
     margin: spacing(0, 2, 2.5),
+  },
+  logoBadge: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    transform: 'translate(100%, -25%)',
+    padding: '0 5px',
+    backgroundColor: palette.primary.light,
+    fontSize: '10px',
+    color: palette.background.default,
+    letterSpacing: '0.5px',
+    borderRadius: 2,
   },
 }));
