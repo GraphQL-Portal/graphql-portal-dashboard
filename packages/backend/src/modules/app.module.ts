@@ -31,6 +31,7 @@ import MetricModule from './metric/metric.module';
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
+        useFindAndModify: false,
       }
     ),
     RedisModule.forRoot(config.db.redis.connectionString),
