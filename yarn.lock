@@ -2812,7 +2812,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/isomorphic-fetch@^0.0.35":
+"@types/isomorphic-fetch@0.0.35":
   version "0.0.35"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.35.tgz#c1c0d402daac324582b6186b91f8905340ea3361"
   integrity sha512-DaZNUvLDCAnCTjgwxgiL1eQdxIKEpNLOlTNtAgnZc50bG2copGhRrFN9/PxPBuJe+tZVLCbQ7ls0xveXVRPkvw==
@@ -3318,7 +3318,7 @@
     "@typescript-eslint/types" "4.15.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/react-codemirror@^3.0.5":
+"@uiw/react-codemirror@3.0.5":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.0.5.tgz#cda1ad64cb5a82b085575e316ed462db2bf320b4"
   integrity sha512-Fwn55BYknCScDuN6MIzlFxSU3BsHHQDADcr6q46O6NBGRRFyD1UEIdN0cgitHqBCX2v1+b4CajadPChat6WVrQ==
@@ -5244,7 +5244,7 @@ codemirror@5.59.0:
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.59.0.tgz#6d8132055459aabf21d04cae5cf5c430e5c57bb9"
   integrity sha512-UGzSkCacY9z0rSpQ3wnTWRN2nvRE6foDXnJltWW8pazInR/R+3gXHrao4IFQMv/bSBvFBxt8/HPpkpKAS54x5Q==
 
-codemirror@^5.54.0, codemirror@^5.59.2:
+codemirror@5.59.2, codemirror@^5.54.0:
   version "5.59.2"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.59.2.tgz#ee674d3a4a8d241af38d52afc482625ba7393922"
   integrity sha512-/D5PcsKyzthtSy2NNKCyJi3b+htRkoKv3idswR/tR6UAvMNKA7SrmyZy6fOONJxSRs1JlUWEDAbxqfdArbK8iA==
@@ -7802,7 +7802,7 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==
 
-graphiql@^1.4.0:
+graphiql@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-1.4.0.tgz#8b17c988720a9da5ea3ebf7ff9d86939b462655e"
   integrity sha512-E/Xzfu3YnifdINrK6dKHD1G0qnWkYYK2gHQ//vApUadMb4I4lZQ399ZKt5nqM5kzrATf5FDUTuSpnkaeSoARkQ==
@@ -9018,7 +9018,7 @@ isobject@^4.0.0:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-4.0.0.tgz#3f1c9155e73b192022a80819bacd0343711697b0"
   integrity sha512-S/2fF5wH8SJA/kmwr6HYhK/RI/OkhD84k8ntalo0iJjZikgq1XFvR5M8NPT1x5F7fBwCG3qHfnzeP/Vh/ZxCUA==
 
-isomorphic-fetch@^3.0.0:
+isomorphic-fetch@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-3.0.0.tgz#0267b005049046d2421207215d45d6a262b8b8b4"
   integrity sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
