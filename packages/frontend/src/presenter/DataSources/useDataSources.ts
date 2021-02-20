@@ -9,7 +9,7 @@ import { useSources } from '../../model/DataSources/queries';
 import { useDeleteSource } from '../../model/DataSources/commands';
 import { DELETE_DATA_SOURCE } from '../../view/Dialogs';
 import { DataSource } from '../../types';
-import { AVAILABLE_DATA_SOURCES } from './constants';
+import { AVAILABLE_HANDLERS } from './constants';
 import { sortSourcesByName } from './helpers';
 
 export const useDataSources = () => {
@@ -37,7 +37,7 @@ export const useDataSources = () => {
     const key = Object.keys(handler)[0];
     setSource({
       key,
-      connector: AVAILABLE_DATA_SOURCES[key],
+      connector: AVAILABLE_HANDLERS[key],
       state: { handler, name, transforms, _id },
     });
     push(ROUTES.DATA_SOURCE_EDIT);

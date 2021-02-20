@@ -1,5 +1,5 @@
 import { formatDistanceToNow } from 'date-fns';
-import { AVAILABLE_DATA_SOURCES } from '../../presenter/DataSources/constants';
+import { AVAILABLE_HANDLERS } from '../../presenter/DataSources/constants';
 
 export const getError = (errors: any) => (field: string) => !!errors?.[field];
 
@@ -9,14 +9,12 @@ export const formatDateDistance = (date: string | undefined): string => {
     : formatDistanceToNow(new Date(date), { addSuffix: true });
 };
 
-export const formatHandlerTitle = (title: string): string =>
+export const formatHandlerTitle = (title: string = ''): string =>
   title.replace('Handler', '');
 
 export const formatHandlerType = (handler: any): string => {
   if (!handler) return '';
   return (
-    formatHandlerTitle(
-      AVAILABLE_DATA_SOURCES[Object.keys(handler)[0]]?.title
-    ) ?? ''
+    formatHandlerTitle(AVAILABLE_HANDLERS[Object.keys(handler)[0]]?.title) ?? ''
   );
 };

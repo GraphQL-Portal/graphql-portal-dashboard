@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { ROUTES, useDataSourceContext } from '../../model/providers';
 import { NOOP } from '../../utils';
-import { AVAILABLE_DATA_SOURCES } from './constants';
+import { AVAILABLE_HANDLERS } from './constants';
 import { getFilteredSources } from './helpers';
 import { SearchInput } from './types';
 
@@ -34,7 +34,7 @@ export const useAvailableSources = () => {
   };
 
   return {
-    available: getFilteredSources(search, AVAILABLE_DATA_SOURCES),
+    available: getFilteredSources(search, AVAILABLE_HANDLERS),
     showClearButton: !!search,
     control,
     onSubmit: handleSubmit(onSubmit),
