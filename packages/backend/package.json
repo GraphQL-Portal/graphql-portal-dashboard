@@ -51,7 +51,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@nestjs/cli": "7.5.4",
+    "@nestjs/cli": "7.5.5",
     "@nestjs/schematics": "7.2.7",
     "@nestjs/testing": "7.6.12",
     "@shelf/jest-mongodb": "1.2.3",
