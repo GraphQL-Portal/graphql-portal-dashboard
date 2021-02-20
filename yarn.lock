@@ -1438,12 +1438,12 @@
     meros "^1.1.2"
     subscriptions-transport-ws "^0.9.18"
 
-"@graphql-portal/types@0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.12.0.tgz#9ab80105d0ff1585245573aae2b9103842666f70"
-  integrity sha512-kloSMVv5M7KgW6GREpbcLWflU7g9efu60lJkQVU39j55nB+bmdS1Or6+9IF6iZxZHwgpiqt/6VQRDTOz0aUwuA==
+"@graphql-portal/types@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.16.0.tgz#6aed992c7f6a4e03434eff89f5a1a03997e50604"
+  integrity sha512-rTTWfLt6oDdj3/OKnK2PQGArRwyOw2dNH2WlJJCBdKxBoo8M5muuySAYLDK0EY1vOiQTvwxQzvq2wgI4//TL7g==
   dependencies:
-    ajv "^6.12.6"
+    ajv "7.1.1"
 
 "@graphql-tools/batch-delegate@^6.2.4", "@graphql-tools/batch-delegate@^6.2.6":
   version "6.2.6"
@@ -3620,6 +3620,16 @@ ajv@6.12.6, ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.0, ajv@^6.12.2, ajv@
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.1.1.tgz#1e6b37a454021fa9941713f38b952fc1c8d32a84"
+  integrity sha512-ga/aqDYnUy/o7vbsRTFhhTsNeXiYb5JWDIcRIeZfwRNCefwjNTVYCGdGSUrEmiu3yDK3vFvNbgJxvrQW4JXrYQ==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
 ajv@^7.0.2:
