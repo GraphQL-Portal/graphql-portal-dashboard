@@ -9,12 +9,26 @@ type ApiDef {
   _id: ID!
   name: String!
   enabled: Boolean!
-  playground: Boolean!
   endpoint: String!
   sources: [Source]!
   createdAt: String!
   updatedAt: String!
   authentication: ApiDefAuthentication
+  schema_polling_interval: Int
+  schema_updates_through_control_api: Boolean
+  enable_ip_filtering: Boolean
+  allow_ips: [String!]
+  deny_ips: [String!]
+  request_size_limit: String
+  depth_limit: Int
+  request_complexity_limit: Int
+  rate_limit: ApiDefRateLimit
+  playground: Boolean!
+}
+
+type ApiDefRateLimit {
+  complexity: Int
+  per: Int
 }
 
 input CreateApiDefAuthentication {
