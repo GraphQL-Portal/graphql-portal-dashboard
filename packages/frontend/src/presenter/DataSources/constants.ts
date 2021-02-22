@@ -12,8 +12,19 @@ export const { definitions } = sourceSchema;
 
 // @TODO move this list to config
 const HANDLERS_LIST = [
+  'fhir',
   'graphql',
+  'grpc',
+  'jsonSchema',
+  'mongoose',
+  'mysql',
+  'neo4j',
+  'odata',
   'openapi',
+  'postgraphile',
+  'soap',
+  'thrift',
+  'tuql',
   'ContentfulHandler',
   'CrunchbaseHandler',
   'FedexHandler',
@@ -22,18 +33,19 @@ const HANDLERS_LIST = [
   'StripeHandler',
   'TwitterHandler',
   'WeatherbitHandler',
+  'IPAPIHandler',
 ];
 const TRANSFORMS_LIST = ['prefix', 'rename'];
 
 export const RESOLVED_SCHEMA = resolveSchema(RAW_SCHEMA);
 
-// @TODO filter out handlers using transducers or form filters to @graphql-portal/types
+// @TODO filter out handlers using transducers
 export const AVAILABLE_HANDLERS = compose(
   filterObjectByList(HANDLERS_LIST),
   getHandler
 )(RESOLVED_SCHEMA);
 
-// @TODO filter out transforms using transducers or form filters to @graphql-portal/types
+// @TODO filter out transforms using transducers
 export const AVAILABLE_TRANSFORMS = compose(
   filterObjectByList(TRANSFORMS_LIST),
   getTransforms
