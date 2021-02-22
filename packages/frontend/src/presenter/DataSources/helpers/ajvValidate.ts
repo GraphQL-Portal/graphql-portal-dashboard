@@ -6,7 +6,7 @@ export const validateAjv = (schemaTemplate: any) => (validationObject: any) => (
   data: any
 ) => {
   const schema = Object.assign({}, schemaTemplate, validationObject);
-  const validate = new Ajv().compile(schema);
+  const validate = new Ajv({ strict: false }).compile(schema);
 
   if (validate(data)) {
     return { pass: true, message: '' };
