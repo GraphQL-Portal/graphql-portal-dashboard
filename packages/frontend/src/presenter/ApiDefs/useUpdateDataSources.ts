@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 
 import { UseUpdateDataSourcesHook, DataSource, AError } from '../../types';
-import { useSources } from '../../model/DataSources/queries';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useToast } from '../../model/providers';
 import { useDSPart } from './useDSPart';
@@ -22,7 +21,6 @@ export const useUpdateDataSources: UseUpdateDataSourcesHook = ({
   } = api;
   const { auth_header_name = '', auth_tokens = [] } = authentication || {};
 
-  const { data, loading } = useSources();
   const { updateApiDef } = useUpdateApiDef({
     onCompleted() {
       refetch();
@@ -48,7 +46,8 @@ export const useUpdateDataSources: UseUpdateDataSourcesHook = ({
     onAddSource,
     onRemoveSource,
     sourceTable,
-  } = useDSPart(control, watch, setValue, data, reset);
+    loading,
+  } = useDSPart(control, watch, setValue, reset);
 
   const onSubmit = () => {
     updateApiDef({

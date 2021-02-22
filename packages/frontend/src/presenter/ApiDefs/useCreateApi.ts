@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useCreateApiDef } from '../../model/ApiDefs/commands';
-import { useSources } from '../../model/DataSources/queries';
 import { useFormErrors } from '../../model/Hooks';
 import { AError, ApiDefForm } from '../../types';
 import { ROUTES, useToast } from '../../model/providers';
@@ -24,7 +23,6 @@ export const useCreateApi = () => {
     },
   });
 
-  const { data, loading } = useSources();
   const {
     control,
     errors,
@@ -55,7 +53,8 @@ export const useCreateApi = () => {
     onAddSource,
     onRemoveSource,
     sourceTable,
-  } = useDSPart(control, watch, setValue, data);
+    loading,
+  } = useDSPart(control, watch, setValue);
 
   useFormErrors(errors);
 

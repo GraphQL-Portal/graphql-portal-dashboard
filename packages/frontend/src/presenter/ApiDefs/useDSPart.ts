@@ -1,23 +1,24 @@
 import { useRef, useEffect } from 'react';
 import { useFieldArray, Control } from 'react-hook-form';
+
 import {
   TriggersTable,
   AnyTable,
   SelectOption,
-  DataSource,
   SetValue,
   Watch,
 } from '../../types';
+import { useSources } from '../../model/DataSources/queries';
 
 export const useDSPart = (
   control: Control,
   watch: Watch,
   setValue: SetValue,
-  data: DataSource[],
   reset?: () => void
 ) => {
   const triggers = useRef<TriggersTable>({});
   const sourceTable = useRef<AnyTable>({});
+  const { data, loading } = useSources();
 
   const {
     fields: sourceFields,
@@ -82,5 +83,6 @@ export const useDSPart = (
     onRemoveSource,
     onAddSource,
     sourceTable,
+    loading,
   };
 };
