@@ -14,12 +14,14 @@ export const GeneralTab: React.FC<Props> = (props) => {
     tokenFields,
     addToken,
     removeToken,
+    register,
   } = useUpdateGeneral(props);
   const { form } = useStyles();
 
   return (
     <form onSubmit={onSubmit} noValidate autoComplete="off" className={form}>
       <GeneralForm
+        register={register}
         control={control}
         errors={errors}
         tokenFields={tokenFields}

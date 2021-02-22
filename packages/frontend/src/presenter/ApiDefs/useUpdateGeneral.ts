@@ -1,7 +1,12 @@
 import { useForm, useFieldArray } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 
-import { EditApiTab, DataSource, AError } from '../../types';
+import {
+  DataSource,
+  AError,
+  UseUpdateGeneralHook,
+  ApiDefForm,
+} from '../../types';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
 import { useToast } from '../../model/providers';
@@ -9,7 +14,7 @@ import { arrayToFieldArray } from '../DataSources/helpers';
 import { createAuth } from './helpers';
 import { suite } from './validation';
 
-export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
+export const useUpdateGeneral: UseUpdateGeneralHook = ({ api, refetch }) => {
   const { showSuccessToast, showErrorToast } = useToast();
   const {
     _id: id,
@@ -33,7 +38,7 @@ export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
     },
   });
 
-  const { handleSubmit, control, errors } = useForm({
+  const { handleSubmit, control, errors, register } = useForm<ApiDefForm>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(suite),
     defaultValues: {
@@ -73,6 +78,7 @@ export const useUpdateGeneral = ({ api, refetch }: EditApiTab) => {
 
   return {
     onSubmit: handleSubmit(onSubmit),
+    register,
     control,
     errors,
     tokenFields,

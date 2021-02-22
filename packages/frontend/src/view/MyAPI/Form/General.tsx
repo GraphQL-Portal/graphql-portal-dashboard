@@ -10,9 +10,9 @@ import { useStyles } from './useStyles';
 export const GeneralForm: React.FC<Props> = ({
   control,
   errors,
+  tokenFields,
   addToken,
   removeToken,
-  tokenFields,
 }) => {
   const { formRow, label, labelPlacementStart } = useStyles();
   return (

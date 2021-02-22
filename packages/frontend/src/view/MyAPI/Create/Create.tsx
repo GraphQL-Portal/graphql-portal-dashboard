@@ -3,14 +3,16 @@ import { Helmet } from 'react-helmet';
 
 import { useCreateApi } from '../../../presenter/ApiDefs';
 import {
+  Header,
+  HeaderBackButton,
   WidgetRow,
   HugeWidget,
   WidgetHeader,
   WidgetBody,
   PrimaryButton,
 } from '../../../ui';
+import { ROUTES } from '../../../model/providers';
 import { GeneralForm, DataSourcesForm } from '../Form';
-import { AddNewAPIHeader } from './Header';
 
 const PAGE_TITLE = 'Create a new API';
 
@@ -26,6 +28,7 @@ export const CreateApi: React.FC = () => {
     removeToken,
     onAddSource,
     onRemoveSource,
+    register,
   } = useCreateApi();
 
   return (
@@ -33,13 +36,19 @@ export const CreateApi: React.FC = () => {
       <Helmet>
         <title>{PAGE_TITLE}</title>
       </Helmet>
-      <AddNewAPIHeader />
+      <Header
+        startChildren={
+          <HeaderBackButton to={ROUTES.APIS} title="Back to My API" />
+        }
+        title=""
+      />
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title={PAGE_TITLE} />
           <WidgetBody>
             <form onSubmit={onSubmit} noValidate autoComplete="off">
               <GeneralForm
+                register={register}
                 control={control}
                 errors={errors}
                 tokenFields={tokenFields}

@@ -1,10 +1,10 @@
-import { ApiAuth } from '../../../types';
+import { ApiAuth, StringArray } from '../../../types';
 import { arrayStringFromObjectArray } from '../../DataSources/helpers';
 
 export const createAuth = ({
   auth_header_name,
   auth_tokens,
-}: ApiAuth<{ value: string }[]>) =>
+}: ApiAuth<StringArray>) =>
   !!auth_header_name
     ? {
         authentication: {
