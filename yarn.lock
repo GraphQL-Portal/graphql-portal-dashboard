@@ -1438,10 +1438,10 @@
     meros "^1.1.2"
     subscriptions-transport-ws "^0.9.18"
 
-"@graphql-portal/types@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.16.0.tgz#6aed992c7f6a4e03434eff89f5a1a03997e50604"
-  integrity sha512-rTTWfLt6oDdj3/OKnK2PQGArRwyOw2dNH2WlJJCBdKxBoo8M5muuySAYLDK0EY1vOiQTvwxQzvq2wgI4//TL7g==
+"@graphql-portal/types@0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.16.1.tgz#9678c3f924d107401ccd3e9c42a599830fe3ec23"
+  integrity sha512-wxjQvB/nNC8X/U2tgn2HRHsDwj8GSHO11OihKSK9SFcjpdFDpKInNFg8OCu6qPirZByM25msq3Kgdk/CuaFioQ==
   dependencies:
     ajv "7.1.1"
 
