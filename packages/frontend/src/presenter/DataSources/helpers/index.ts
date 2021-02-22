@@ -14,3 +14,4 @@ export { packHandler, unpackHandler } from './transformHandler';
 export { objectToFieldArray } from './objectToFieldArray';
 export { arrayToFieldArray } from './arrayToFieldArray';
 export { sortSourcesByName } from './sortSourcesByName';
+export { filterObjectByList } from './filterObjectByList';

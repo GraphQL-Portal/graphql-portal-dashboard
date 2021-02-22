@@ -1,13 +1,55 @@
 import { sourceSchema } from '@graphql-portal/types';
-import { getHandler, getTransforms, resolveSchema } from './helpers';
+import { compose } from '../../utils';
+import {
+  getHandler,
+  getTransforms,
+  resolveSchema,
+  filterObjectByList,
+} from './helpers';
 
 export const RAW_SCHEMA = sourceSchema;
 export const { definitions } = sourceSchema;
 
+// @TODO move this list to config
+const HANDLERS_LIST = [
+  'fhir',
+  'graphql',
+  'grpc',
+  'jsonSchema',
+  'mongoose',
+  'mysql',
+  'neo4j',
+  'odata',
+  'openapi',
+  'postgraphile',
+  'soap',
+  'thrift',
+  'tuql',
+  'ContentfulHandler',
+  'CrunchbaseHandler',
+  'FedexHandler',
+  'SalesforceHandler',
+  'SlackHandler',
+  'StripeHandler',
+  'TwitterHandler',
+  'WeatherbitHandler',
+  'IPAPIHandler',
+];
+const TRANSFORMS_LIST = ['prefix', 'rename'];
+
 export const RESOLVED_SCHEMA = resolveSchema(RAW_SCHEMA);
 
-export const AVAILABLE_DATA_SOURCES = getHandler(RESOLVED_SCHEMA);
-export const AVAILABLE_TRANSFORMS = getTransforms(RESOLVED_SCHEMA);
+// @TODO filter out handlers using transducers
+export const AVAILABLE_HANDLERS = compose(
+  filterObjectByList(HANDLERS_LIST),
+  getHandler
+)(RESOLVED_SCHEMA);
+
+// @TODO filter out transforms using transducers
+export const AVAILABLE_TRANSFORMS = compose(
+  filterObjectByList(TRANSFORMS_LIST),
+  getTransforms
+)(RESOLVED_SCHEMA);
 
 export const AJV_SCHEMA_TEMPLATE = {
   definitions,
