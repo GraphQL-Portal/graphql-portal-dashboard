@@ -4,13 +4,13 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useCreateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
-import { AError, ApiDefForm } from '../../types';
+import { AError, ApiDefForm, UseCreateApiDefHook } from '../../types';
 import { ROUTES, useToast } from '../../model/providers';
 import { createAuth } from './helpers';
 import { suite } from './validation';
 import { useDSPart } from './useDSPart';
 
-export const useCreateApi = () => {
+export const useCreateApi: UseCreateApiDefHook = () => {
   const { push } = useHistory();
   const { showSuccessToast, showErrorToast } = useToast();
   const { createApiDef } = useCreateApiDef({
@@ -42,6 +42,16 @@ export const useCreateApi = () => {
         auth_header_name: '',
         auth_tokens: [],
       },
+      // schema_polling_interval: 0,
+      // schema_updates_through_control_api: false,
+      // enable_ip_filtering: false,
+      // request_size_limit: '',
+      // depth_limit: 0,
+      // request_complexity_limit: 0,
+      // rate_limit: {
+      //   complexity: 0,
+      //   per: 0,
+      // },
     },
     resolver: vestResolver(suite),
   });
@@ -54,7 +64,7 @@ export const useCreateApi = () => {
     onRemoveSource,
     sourceTable,
     loading,
-  } = useDSPart(control, watch, setValue);
+  } = useDSPart({ control, watch, setValue });
 
   useFormErrors(errors);
 
@@ -85,6 +95,7 @@ export const useCreateApi = () => {
     onSubmit: handleSubmit(onSubmit),
     control,
     errors,
+    register,
     options,
     tokenFields,
     addToken,
@@ -92,6 +103,5 @@ export const useCreateApi = () => {
     connected,
     onAddSource,
     onRemoveSource,
-    register,
   };
 };

@@ -1,22 +1,16 @@
 import { Refetch } from '../Apollo';
-import {
-  ControlType,
-  ErrorsAndControl,
-  FieldArray,
-  FieldArrayAppend,
-  FieldArrayRemove,
-} from '../HookForm';
+import { ControlType } from '../HookForm';
 import { SelectOption } from '../Forms';
 import { NOOP } from '../General';
 import { DataSource } from '../DataSource';
 import { ApiDef } from './data';
 import { Fetcher } from './methods';
+import { UseCreateApiDefHook } from './hooks';
 
-export type GeneralForm = ErrorsAndControl & {
-  addToken: FieldArrayAppend;
-  removeToken: FieldArrayRemove;
-  tokenFields: FieldArray;
-};
+export type GeneralForm = Pick<
+  ReturnType<UseCreateApiDefHook>,
+  'register' | 'control' | 'errors' | 'addToken' | 'removeToken' | 'tokenFields'
+>;
 
 export type ApiList = {
   list: ApiDef[];

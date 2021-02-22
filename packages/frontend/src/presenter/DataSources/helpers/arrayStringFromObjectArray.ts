@@ -1,5 +1,7 @@
+import { StringArray } from '../../../types';
+
 export const arrayStringFromObjectArray = (
-  objects: { value: string }[] = []
+  objects: StringArray = []
 ): string[] => {
   return objects.reduce((acc, { value }) => {
     acc.push(value);

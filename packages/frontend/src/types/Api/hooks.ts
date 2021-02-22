@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 import { QueryHook } from '../Apollo';
-import { ControlType, OnSubmit } from '../HookForm';
+import {
+  ControlType,
+  FieldArray,
+  FieldArrayAppend,
+  FieldArrayRemove,
+  OnSubmit,
+} from '../HookForm';
 import { SelectOption } from '../Forms';
-import { NOOP } from '../General';
+import { AnyTable, NOOP } from '../General';
 import { UseTabsHook } from '../Tabs';
+import { DataSource } from '../DataSource';
 import GraphiQL from 'graphiql';
 import { ApiDef } from './data';
 import { EditApiTab } from './components';
 import { Fetcher } from './methods';
+import { ApiDefFormMethods } from './forms';
 
 export type UseApiByIdHook = () => ReturnType<QueryHook<ApiDef>> &
   ReturnType<UseTabsHook>;
@@ -39,3 +47,40 @@ export type UseAPIPlaygroundHook = () => {
   onRun(evt: React.MouseEvent<HTMLButtonElement>): void;
   editor: React.MutableRefObject<GraphiQL | null | undefined>;
 };
+
+export type UseDSPartHook = (
+  params: Pick<ApiDefFormMethods, 'control' | 'watch' | 'setValue'> &
+    Partial<Pick<ApiDefFormMethods, 'reset'>>
+) => {
+  options: SelectOption[];
+  connected: DataSource[];
+  sourceFields: FieldArray;
+  onRemoveSource(idx: number): NOOP;
+  onAddSource: NOOP;
+  sourceTable: MutableRefObject<AnyTable>;
+  loading: boolean;
+};
+
+export type UseCreateApiDefHook = () => Pick<
+  ApiDefFormMethods,
+  'register' | 'control' | 'errors'
+> &
+  Omit<ReturnType<UseDSPartHook>, 'sourceTable' | 'sourceFields'> & {
+    onSubmit: OnSubmit;
+    tokenFields: FieldArray;
+    addToken: FieldArrayAppend;
+    removeToken: FieldArrayRemove;
+  };
+
+export type UseUpdateGeneralHook = (
+  props: EditApiTab
+) => Omit<
+  ReturnType<UseCreateApiDefHook>,
+  | 'options'
+  | 'connected'
+  | 'sourceFields'
+  | 'sourceTable'
+  | 'onAddSource'
+  | 'onRemoveSource'
+  | 'loading'
+>;

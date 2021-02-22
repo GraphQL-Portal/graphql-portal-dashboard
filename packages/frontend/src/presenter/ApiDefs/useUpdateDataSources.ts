@@ -1,6 +1,11 @@
 import { useForm } from 'react-hook-form';
 
-import { UseUpdateDataSourcesHook, DataSource, AError } from '../../types';
+import {
+  UseUpdateDataSourcesHook,
+  DataSource,
+  AError,
+  ApiDefForm,
+} from '../../types';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useToast } from '../../model/providers';
 import { useDSPart } from './useDSPart';
@@ -31,13 +36,15 @@ export const useUpdateDataSources: UseUpdateDataSourcesHook = ({
     },
   });
 
-  const { handleSubmit, control, watch, setValue, reset } = useForm({
-    reValidateMode: 'onSubmit',
-    defaultValues: {
-      source: '',
-      sources: sources.map(({ name }: DataSource) => ({ value: name })),
-    },
-  });
+  const { handleSubmit, control, watch, setValue, reset } = useForm<ApiDefForm>(
+    {
+      reValidateMode: 'onSubmit',
+      defaultValues: {
+        source: '',
+        sources: sources.map(({ name }: DataSource) => ({ value: name })),
+      },
+    }
+  );
 
   const {
     options,
@@ -47,7 +54,7 @@ export const useUpdateDataSources: UseUpdateDataSourcesHook = ({
     onRemoveSource,
     sourceTable,
     loading,
-  } = useDSPart(control, watch, setValue, reset);
+  } = useDSPart({ control, watch, setValue, reset });
 
   const onSubmit = () => {
     updateApiDef({
