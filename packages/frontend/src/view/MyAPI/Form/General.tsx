@@ -1,11 +1,11 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
+import { FormControlLabel } from '@material-ui/core';
 
 import { FormGroup, Row, Col, Input, Switch } from '../../../ui';
 import { GeneralForm as Props } from '../../../types';
 import { StringArray } from '../../Form';
 import { useStyles } from './useStyles';
-import { FormControlLabel, FormControl } from '@material-ui/core';
 
 export const GeneralForm: React.FC<Props> = ({
   control,

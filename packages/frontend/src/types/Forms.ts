@@ -27,3 +27,5 @@ export type Switch = SwitchProps & {
   value: boolean;
   onChange(value: boolean): void;
 };
+
+export type StringArray = { value: string }[];

@@ -5,7 +5,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import { useCreateApiDef } from '../../model/ApiDefs/commands';
 import { useSources } from '../../model/DataSources/queries';
 import { useFormErrors } from '../../model/Hooks';
-import { AError } from '../../types';
+import { AError, ApiDefForm } from '../../types';
 import { ROUTES, useToast } from '../../model/providers';
 import { createAuth } from './helpers';
 import { suite } from './validation';
@@ -25,7 +25,14 @@ export const useCreateApi = () => {
   });
 
   const { data, loading } = useSources();
-  const { control, errors, handleSubmit, watch, setValue } = useForm({
+  const {
+    control,
+    errors,
+    handleSubmit,
+    watch,
+    setValue,
+    register,
+  } = useForm<ApiDefForm>({
     mode: 'onSubmit',
     defaultValues: {
       name: '',
@@ -86,5 +93,6 @@ export const useCreateApi = () => {
     connected,
     onAddSource,
     onRemoveSource,
+    register,
   };
 };
