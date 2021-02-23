@@ -91,14 +91,16 @@ export const Dashboard: React.FC = () => {
           />
         </HugeWidget>
       </WidgetRow>
-      <WidgetRow>
-        <HugeWidget>
-          <CountryChart
-            data={countries}
-            title="Countries where requests were made from"
-          />
-        </HugeWidget>
-      </WidgetRow>
+      {countries.length > 0 && (
+        <WidgetRow>
+          <HugeWidget>
+            <CountryChart
+              data={countries}
+              title="Countries where requests were made from"
+            />
+          </HugeWidget>
+        </WidgetRow>
+      )}
       <WidgetRow>
         <HugeWidget>
           <FailureRequestRateChart
