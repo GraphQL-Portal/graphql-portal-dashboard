@@ -49,10 +49,10 @@ export const GeneralForm: React.FC<Props> = ({
                 <Controller
                   control={control}
                   name="playground"
-                  render={props => <Switch {...props} />}
+                  render={(props) => <Switch {...props} />}
                 />
               }
-              label="Enable GraphQl playground"
+              label="Enable GraphQL playground"
               labelPlacement="start"
             />
           </Col>

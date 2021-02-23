@@ -61,6 +61,18 @@ export type UseDSPartHook = (
   loading: boolean;
 };
 
+export type UseIPFilteringHook = (
+  params: Pick<ApiDefFormMethods, 'control'>
+) => {
+  allowedIP: FieldArray;
+  addAllowedIP: FieldArrayAppend;
+  removeAllowedIP: FieldArrayRemove;
+  deniedIP: FieldArray;
+  addDeniedIP: FieldArrayAppend;
+  removeDeniedIP: FieldArrayRemove;
+  enableIPFiltering: boolean;
+};
+
 export type UseCreateApiDefHook = () => Pick<
   ApiDefFormMethods,
   'register' | 'control' | 'errors'
@@ -70,17 +82,17 @@ export type UseCreateApiDefHook = () => Pick<
     tokenFields: FieldArray;
     addToken: FieldArrayAppend;
     removeToken: FieldArrayRemove;
-  };
+  } & ReturnType<UseIPFilteringHook>;
 
 export type UseUpdateGeneralHook = (
   props: EditApiTab
-) => Omit<
+) => Pick<
   ReturnType<UseCreateApiDefHook>,
-  | 'options'
-  | 'connected'
-  | 'sourceFields'
-  | 'sourceTable'
-  | 'onAddSource'
-  | 'onRemoveSource'
-  | 'loading'
+  | 'onSubmit'
+  | 'register'
+  | 'control'
+  | 'errors'
+  | 'tokenFields'
+  | 'addToken'
+  | 'removeToken'
 >;

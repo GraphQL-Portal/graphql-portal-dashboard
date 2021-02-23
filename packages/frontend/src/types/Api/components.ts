@@ -5,7 +5,7 @@ import { NOOP } from '../General';
 import { DataSource } from '../DataSource';
 import { ApiDef } from './data';
 import { Fetcher } from './methods';
-import { UseCreateApiDefHook } from './hooks';
+import { UseCreateApiDefHook, UseIPFilteringHook } from './hooks';
 
 export type ApiGeneralForm = Pick<
   ReturnType<UseCreateApiDefHook>,
@@ -40,3 +40,9 @@ export type ApiSchemaForm = Pick<
   ReturnType<UseCreateApiDefHook>,
   'register' | 'control' | 'errors'
 >;
+
+export type APIIPForm = Pick<
+  ReturnType<UseCreateApiDefHook>,
+  'control' | 'errors'
+> &
+  ReturnType<UseIPFilteringHook>;
