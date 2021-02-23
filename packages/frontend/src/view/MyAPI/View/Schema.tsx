@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import CodeMirror from '@uiw/react-codemirror';
+import 'codemirror-graphql/mode';
 
 import { ViewAPITab as Props } from '../../../types';
 import { useStyles } from './useStyles';
