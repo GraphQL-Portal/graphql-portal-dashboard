@@ -31,6 +31,11 @@ type ApiDefRateLimit {
   per: Int
 }
 
+input CreateApiDefRateLimit {
+  complexity: Int
+  per: Int
+}
+
 input CreateApiDefAuthentication {
   auth_header_name: String
   auth_tokens: [String!]!
@@ -41,6 +46,15 @@ input CreateApiDef {
   name: String
   endpoint: String
   authentication: CreateApiDefAuthentication
+  schema_polling_interval: Int
+  schema_updates_through_control_api: Boolean
+  enable_ip_filtering: Boolean
+  allow_ips: [String!]
+  deny_ips: [String!]
+  request_size_limit: String
+  depth_limit: Int
+  request_complexity_limit: Int
+  rate_limit: CreateApiDefRateLimit
   playground: Boolean
 }
 
