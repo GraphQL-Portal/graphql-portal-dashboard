@@ -43,7 +43,7 @@ export const Login: React.FC = () => {
               <Widget className={formFrame}>
                 <WidgetBody>
                   <Input
-                    ref={register()}
+                    ref={register}
                     className={formField}
                     fullWidth
                     label="Your Email"
@@ -51,7 +51,7 @@ export const Login: React.FC = () => {
                     error={!!errors?.email}
                   />
                   <Input
-                    ref={register()}
+                    ref={register}
                     className={formField}
                     fullWidth
                     label="Your Password"

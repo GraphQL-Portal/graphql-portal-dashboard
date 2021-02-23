@@ -12,7 +12,7 @@ import {
   PrimaryButton,
 } from '../../../ui';
 import { ROUTES } from '../../../model/providers';
-import { GeneralForm, DataSourcesForm } from '../Form';
+import { GeneralForm, DataSourcesForm, SchemaForm } from '../Form';
 
 const PAGE_TITLE = 'Create a new API';
 
@@ -61,6 +61,11 @@ export const CreateApi: React.FC = () => {
                 connected={connected}
                 onAddSource={onAddSource}
                 onRemoveSource={onRemoveSource}
+              />
+              <SchemaForm
+                control={control}
+                errors={errors}
+                register={register}
               />
               <PrimaryButton type="submit">Create new API</PrimaryButton>
             </form>

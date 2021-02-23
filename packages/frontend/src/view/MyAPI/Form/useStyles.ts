@@ -7,13 +7,14 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
   addButton: {
     padding: spacing(1.75, 3),
   },
-  form: {
-    paddingTop: spacing(3),
-  },
   labelPlacementStart: {
     margin: 0,
   },
   label: {
     marginRight: spacing(1),
+  },
+  collAlignCenter: {
+    display: 'flex',
+    alignItems: 'center',
   },
 }));

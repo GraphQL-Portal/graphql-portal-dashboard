@@ -19,18 +19,13 @@ export const useCreateApi: UseCreateApiDefHook = () => {
       showSuccessToast('Successfully created new API');
     },
     onError({ message }: AError) {
-      showErrorToast({ message });
+      showErrorToast(message);
     },
   });
 
-  const {
-    control,
-    errors,
-    handleSubmit,
-    watch,
-    setValue,
-    register,
-  } = useForm<ApiDefForm>({
+  const { control, errors, handleSubmit, watch, setValue, register } = useForm<
+    ApiDefForm
+  >({
     mode: 'onSubmit',
     defaultValues: {
       name: '',
@@ -42,8 +37,8 @@ export const useCreateApi: UseCreateApiDefHook = () => {
         auth_header_name: '',
         auth_tokens: [],
       },
-      // schema_polling_interval: 0,
-      // schema_updates_through_control_api: false,
+      schema_polling_interval: 0,
+      schema_updates_through_control_api: false,
       // enable_ip_filtering: false,
       // request_size_limit: '',
       // depth_limit: 0,
@@ -74,7 +69,15 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     remove: removeToken,
   } = useFieldArray({ control, name: 'authentication.auth_tokens' });
 
-  const onSubmit = ({ authentication, name, endpoint, playground }: any) => {
+  const onSubmit = (data: ApiDefForm) => {
+    const {
+      authentication,
+      name,
+      endpoint,
+      playground,
+      source,
+      ...rest
+    } = data;
     createApiDef({
       variables: {
         apiDef: {
@@ -82,6 +85,7 @@ export const useCreateApi: UseCreateApiDefHook = () => {
           endpoint,
           playground,
           ...createAuth(authentication),
+          ...rest,
         },
         sources: sourceFields.map(
           ({ value }: Record<string, string>) => sourceTable.current[value]._id

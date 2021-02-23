@@ -3,11 +3,12 @@ import { Controller } from 'react-hook-form';
 import { FormControlLabel } from '@material-ui/core';
 
 import { FormGroup, Row, Col, Input, Switch } from '../../../ui';
-import { GeneralForm as Props } from '../../../types';
+import { ApiGeneralForm as Props } from '../../../types';
 import { StringArray } from '../../Form';
 import { useStyles } from './useStyles';
 
 export const GeneralForm: React.FC<Props> = ({
+  register,
   control,
   errors,
   tokenFields,
@@ -20,25 +21,23 @@ export const GeneralForm: React.FC<Props> = ({
       <FormGroup title="General settings">
         <Row spacing={2} className={formRow}>
           <Col xs={6}>
-            <Controller
-              as={Input}
+            <Input
               name="name"
-              control={control}
               label="API name"
               required
               fullWidth
               error={!!errors?.name}
+              ref={register}
             />
           </Col>
           <Col xs={6}>
-            <Controller
-              as={Input}
+            <Input
               name="endpoint"
-              control={control}
               label="API listen path"
               required
               fullWidth
               error={!!errors?.endpoint}
+              ref={register}
             />
           </Col>
         </Row>
@@ -50,7 +49,7 @@ export const GeneralForm: React.FC<Props> = ({
                 <Controller
                   control={control}
                   name="playground"
-                  render={(props) => <Switch {...props} />}
+                  render={props => <Switch {...props} />}
                 />
               }
               label="Enable GraphQl playground"
@@ -62,13 +61,13 @@ export const GeneralForm: React.FC<Props> = ({
       <FormGroup title="Authentication">
         <Row spacing={2} className={formRow}>
           <Col xs={6}>
-            <Controller
-              as={Input}
+            <Input
+              ref={register}
               name="authentication.auth_header_name"
-              control={control}
+              required
+              fullWidth
               label="Auth key header name"
               error={!!errors?.authentication?.auth_header_name}
-              fullWidth
             />
           </Col>
         </Row>
