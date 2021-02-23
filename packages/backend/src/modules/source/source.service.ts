@@ -64,7 +64,7 @@ export default class SourceService implements IAccessControlService {
       const usedInApiDef = await this.apiDefService.isSourceUsed(toDelete._id);
       if (usedInApiDef) {
         throw new ValidationError(
-          `Source "${id}" is used in API "${usedInApiDef.name}"`
+          `Source "${toDelete.name}" is used in API "${usedInApiDef.name}"`
         );
       }
       await toDelete?.delete();
