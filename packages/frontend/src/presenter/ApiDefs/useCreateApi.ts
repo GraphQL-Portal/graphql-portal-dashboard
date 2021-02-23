@@ -6,9 +6,10 @@ import { useCreateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
 import { AError, ApiDefForm, UseCreateApiDefHook } from '../../types';
 import { ROUTES, useToast } from '../../model/providers';
-import { createAuth } from './helpers';
+import { createAuth, createIPsPayload } from './helpers';
 import { suite } from './validation';
 import { useDSPart } from './useDSPart';
+import { useIPFiltering } from './useIPFiltering';
 
 export const useCreateApi: UseCreateApiDefHook = () => {
   const { push } = useHistory();
@@ -23,9 +24,14 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     },
   });
 
-  const { control, errors, handleSubmit, watch, setValue, register } = useForm<
-    ApiDefForm
-  >({
+  const {
+    control,
+    errors,
+    handleSubmit,
+    watch,
+    setValue,
+    register,
+  } = useForm<ApiDefForm>({
     mode: 'onSubmit',
     defaultValues: {
       name: '',
@@ -39,7 +45,9 @@ export const useCreateApi: UseCreateApiDefHook = () => {
       },
       schema_polling_interval: 0,
       schema_updates_through_control_api: false,
-      // enable_ip_filtering: false,
+      enable_ip_filtering: false,
+      allow_ips: [],
+      deny_ips: [],
       // request_size_limit: '',
       // depth_limit: 0,
       // request_complexity_limit: 0,
@@ -61,6 +69,8 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     loading,
   } = useDSPart({ control, watch, setValue });
 
+  const ipMethods = useIPFiltering({ control });
+
   useFormErrors(errors);
 
   const {
@@ -76,6 +86,9 @@ export const useCreateApi: UseCreateApiDefHook = () => {
       endpoint,
       playground,
       source,
+      enable_ip_filtering,
+      allow_ips,
+      deny_ips,
       ...rest
     } = data;
     createApiDef({
@@ -85,6 +98,7 @@ export const useCreateApi: UseCreateApiDefHook = () => {
           endpoint,
           playground,
           ...createAuth(authentication),
+          ...createIPsPayload(enable_ip_filtering, allow_ips, deny_ips),
           ...rest,
         },
         sources: sourceFields.map(
@@ -107,5 +121,6 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     connected,
     onAddSource,
     onRemoveSource,
+    ...ipMethods,
   };
 };
