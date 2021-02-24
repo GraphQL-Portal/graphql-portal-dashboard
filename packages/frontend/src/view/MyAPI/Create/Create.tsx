@@ -12,7 +12,13 @@ import {
   PrimaryButton,
 } from '../../../ui';
 import { ROUTES } from '../../../model/providers';
-import { GeneralForm, DataSourcesForm, SchemaForm, IPForm } from '../Form';
+import {
+  GeneralForm,
+  DataSourcesForm,
+  SchemaForm,
+  IPForm,
+  LimitsForm,
+} from '../Form';
 
 const PAGE_TITLE = 'Create a new API';
 
@@ -85,6 +91,7 @@ export const CreateApi: React.FC = () => {
                 addDeniedIP={addDeniedIP}
                 removeDeniedIP={removeDeniedIP}
               />
+              <LimitsForm register={register} errors={errors} />
               <PrimaryButton type="submit">Create new API</PrimaryButton>
             </form>
           </WidgetBody>

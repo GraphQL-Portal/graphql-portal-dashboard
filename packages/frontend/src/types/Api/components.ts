@@ -7,11 +7,6 @@ import { ApiDef } from './data';
 import { Fetcher } from './methods';
 import { UseCreateApiDefHook, UseIPFilteringHook } from './hooks';
 
-export type ApiGeneralForm = Pick<
-  ReturnType<UseCreateApiDefHook>,
-  'register' | 'control' | 'errors' | 'addToken' | 'removeToken' | 'tokenFields'
->;
-
 export type ApiList = {
   list: ApiDef[];
   onDelete: (api: ApiDef) => NOOP;
@@ -24,16 +19,21 @@ export type EditApiTab = {
   refetch: Refetch;
 };
 
+export type ViewAPITab = {
+  fetcher: Fetcher;
+  name?: string;
+};
+
+export type ApiGeneralForm = Pick<
+  ReturnType<UseCreateApiDefHook>,
+  'register' | 'control' | 'errors' | 'addToken' | 'removeToken' | 'tokenFields'
+>;
+
 export type ApiDataSourcesForm = ControlType & {
   options: SelectOption[];
   onAddSource(): void;
   connected: DataSource[];
   onRemoveSource(idx: number): NOOP;
-};
-
-export type ViewAPITab = {
-  fetcher: Fetcher;
-  name?: string;
 };
 
 export type ApiSchemaForm = Pick<
@@ -46,3 +46,8 @@ export type APIIPForm = Pick<
   'control' | 'errors'
 > &
   ReturnType<UseIPFilteringHook>;
+
+export type APILimitsForm = Pick<
+  ReturnType<UseCreateApiDefHook>,
+  'register' | 'errors'
+>;

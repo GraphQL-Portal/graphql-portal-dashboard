@@ -48,13 +48,13 @@ export const useCreateApi: UseCreateApiDefHook = () => {
       enable_ip_filtering: false,
       allow_ips: [],
       deny_ips: [],
-      // request_size_limit: '',
-      // depth_limit: 0,
-      // request_complexity_limit: 0,
-      // rate_limit: {
-      //   complexity: 0,
-      //   per: 0,
-      // },
+      request_size_limit: '',
+      request_complexity_limit: 0,
+      depth_limit: 0,
+      rate_limit: {
+        complexity: 0,
+        per: 0,
+      },
     },
     resolver: vestResolver(suite),
   });
