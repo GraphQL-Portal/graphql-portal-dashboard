@@ -7,7 +7,7 @@ import { useStyles } from './useStyles';
 export const LimitsForm: React.FC<Props> = ({ register, errors }) => {
   const { formRow } = useStyles();
   return (
-    <FormGroup title="Limits">
+    <FormGroup title="Rate and complexity limiting">
       <Row spacing={2} className={formRow}>
         <Col xs={6}>
           <Input

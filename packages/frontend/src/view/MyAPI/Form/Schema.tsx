@@ -9,7 +9,7 @@ import { useStyles } from './useStyles';
 export const SchemaForm: React.FC<Props> = ({ register, errors, control }) => {
   const { collAlignCenter } = useStyles();
   return (
-    <FormGroup title="Schema options">
+    <FormGroup title="Schema rebuilding options">
       <Row spacing={2}>
         <Col xs={6}>
           <Input
@@ -30,7 +30,7 @@ export const SchemaForm: React.FC<Props> = ({ register, errors, control }) => {
               <Controller
                 name="schema_updates_through_control_api"
                 control={control}
-                render={props => <Checkbox {...props} color="primary" />}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
             }
           />

@@ -6,7 +6,6 @@ export const createIPsPayload = (
   allow_ips: StringArray,
   deny_ips: StringArray
 ) => {
-  console.log();
   return {
     enable_ip_filtering,
     allow_ips: !enable_ip_filtering
