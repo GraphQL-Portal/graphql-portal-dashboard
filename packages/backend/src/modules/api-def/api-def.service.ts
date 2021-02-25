@@ -1,6 +1,8 @@
+import { getMeshForApiDef } from '@graphql-portal/gateway/dist/src/server/router';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ValidationError } from 'apollo-server-express';
+import { printSchema } from 'graphql/utilities';
 import { Model } from 'mongoose';
 import IAccessControlService from '../../common/interface/access-control.interface';
 import IApiDef from '../../common/interface/api-def.interface';
@@ -78,12 +80,28 @@ export default class ApiDefService implements IAccessControlService {
     return this.apiDefModel.findOne({ _id }).populate('sources').exec();
   }
 
+  public async getMeshSchema(apiDef: IApiDef): Promise<string> {
+    const context = `${this.constructor.name}.getMeshSchema`;
+    let error: Error | undefined;
+    const mesh = await getMeshForApiDef(apiDef, undefined, 0, (err) => {
+      error = err;
+    });
+    if (error) {
+      this.logger.error(error.message, null, context, error);
+      const validationError = new ValidationError(error.message);
+      validationError.originalError = error;
+      throw validationError;
+    }
+    return mesh?.schema ? printSchema(mesh.schema) : '';
+  }
+
   public async create(
     data: IApiDef,
     sourcesIds: string[],
     user: string
-  ): Promise<IApiDefDocument> {
+  ): Promise<{ apiDef: IApiDefDocument; schema: string }> {
     data.sources = await this.validateSourceIds(sourcesIds);
+    const schema = await this.getMeshSchema(data);
     const apiDef = await this.apiDefModel.create({ ...data, user });
     this.logger.log(`Created apiDef ${data.name}`, this.constructor.name, data);
 
@@ -91,37 +109,35 @@ export default class ApiDefService implements IAccessControlService {
     this.publishApiDefsUpdated();
 
     await apiDef.populate('sources').execPopulate();
-    return apiDef;
+    return { apiDef, schema };
   }
 
   public async update(
     id: string,
-    apiDef: IApiDef,
+    data: IApiDef,
     sourcesIds: string[]
-  ): Promise<IApiDefDocument> {
-    apiDef.sources = await this.validateSourceIds(sourcesIds);
+  ): Promise<{ apiDef: IApiDefDocument; schema: string }> {
+    data.sources = await this.validateSourceIds(sourcesIds);
 
     const toUpdate = await this.apiDefModel.findById(id);
 
     if (!toUpdate)
       throw new ValidationError(`ApiDef with id ${id} does not exist`);
 
-    const updated = (await this.apiDefModel.findByIdAndUpdate(
+    const schema = await this.getMeshSchema(data);
+
+    const apiDef = (await this.apiDefModel.findByIdAndUpdate(
       toUpdate._id,
-      apiDef,
+      data,
       { new: true }
     ))!;
 
-    this.logger.log(
-      `Updated API ${updated._id}`,
-      this.constructor.name,
-      apiDef
-    );
+    this.logger.log(`Updated API ${apiDef._id}`, this.constructor.name, data);
 
     this.setLastUpdateTime();
     this.publishApiDefsUpdated();
 
-    return updated;
+    return { apiDef, schema };
   }
 
   public async delete(id: string): Promise<boolean> {

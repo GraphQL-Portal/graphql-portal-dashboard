@@ -247,14 +247,17 @@ describe('ApiDefResolver', () => {
         await graphQlRequest(
           `mutation($apiDef: CreateApiDef!, $sources:[ID!]!) {
             createApiDef(apiDef: $apiDef, sources: $sources) {
-              name
-              endpoint
-              sources {
-                _id
+              apiDef {
                 name
-                handler
-                transforms
+                endpoint
+                sources {
+                  _id
+                  name
+                  handler
+                  transforms
+                }
               }
+              schema
             }
           }`,
           { apiDef: createApiDef, sources: [] }
@@ -274,14 +277,17 @@ describe('ApiDefResolver', () => {
         await graphQlRequest(
           `mutation($id:ID!, $apiDef: CreateApiDef!, $sources:[ID!]!) {
             updateApiDef(id:$id, apiDef: $apiDef, sources: $sources) {
-              name
-              endpoint
-              sources {
-                _id
+              apiDef {
                 name
-                handler
-                transforms
+                endpoint
+                sources {
+                  _id
+                  name
+                  handler
+                  transforms
+                }
               }
+              schema
             }
           }`,
           { id: createApiDef._id, apiDef: createApiDef, sources: [] }
@@ -301,14 +307,17 @@ describe('ApiDefResolver', () => {
         const { body } = await graphQlRequest(
           `mutation($id:ID!, $apiDef: CreateApiDef!, $sources:[ID!]!) {
             updateApiDef(id:$id, apiDef: $apiDef, sources: $sources) {
-              name
-              endpoint
-              sources {
-                _id
+              apiDef {
                 name
-                handler
-                transforms
+                endpoint
+                sources {
+                  _id
+                  name
+                  handler
+                  transforms
+                }
               }
+              schema
             }
           }`,
           { id: createApiDef._id, apiDef: createApiDef, sources: [] },
