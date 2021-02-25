@@ -1,6 +1,3 @@
-scalar Timestamp
-scalar JSON
-
 type ApiDefAuthentication {
   auth_header_name: String
   auth_tokens: [String!]!
@@ -25,7 +22,7 @@ type ApiDef {
   request_complexity_limit: Int
   rate_limit: ApiDefRateLimit
   playground: Boolean!
-  mesh: JSON
+  mesh: JSONObject
 }
 
 type ApiDefRateLimit {
