@@ -7,12 +7,12 @@ import { Content } from '../Content';
 import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
 import { GatewayNodes } from '../GatewayNodes';
-import { GlobalSettings } from '../GlobalSettings';
+// import { GlobalSettings } from '../GlobalSettings';
 import { MetricsAndLogs } from '../MetricsAndLogs';
 import { MyAPI } from '../MyAPI';
 import { Sidebar } from '../Sidebar';
 import { Users } from '../Users';
-import { Webhooks } from '../Webhooks';
+// import { Webhooks } from '../Webhooks';
 import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
 
@@ -50,12 +50,6 @@ export const ProtectedRoutes: React.FC = () => {
               roles={[Roles.ADMIN]}
               redirectTo={ROUTES.MAIN}
             />
-          </Route>
-          <Route path={ROUTES.GLOBAL}>
-            <GlobalSettings />
-          </Route>
-          <Route path={ROUTES.WEBHOOKS}>
-            <Webhooks />
           </Route>
           <Route path={ROUTES.NODES}>
             <GatewayNodes />
