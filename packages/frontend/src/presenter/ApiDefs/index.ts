@@ -8,3 +8,4 @@ export { useUpdateSchemaAndLimits } from './useUpdateSchemaAndLimits';
 export { useUpdateDataSources } from './useUpdateDataSources';
 export { useUpdateGeneral } from './useUpdateGeneral';
 export { useViewAPI } from './useViewAPI';
+export { useUpdateIPFiltering } from './useUpdateIPFiltering';

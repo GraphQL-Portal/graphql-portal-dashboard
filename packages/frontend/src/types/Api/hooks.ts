@@ -103,3 +103,8 @@ export type UseUpdateSchemaAndLimitsHook = (
   ReturnType<UseCreateApiDefHook>,
   'register' | 'control' | 'errors'
 > & { onSubmit: OnSubmit };
+
+export type UseUpdateIPFilteringHook = (
+  props: EditApiTab
+) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors'> &
+  ReturnType<UseIPFilteringHook> & { onSubmit: OnSubmit };
