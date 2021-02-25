@@ -55,6 +55,15 @@ export const apiDefExample: IApiDef = {
     _id: 'id',
   },
   playground: false,
+  schema_polling_interval: 1,
+  schema_updates_through_control_api: true,
+  enable_ip_filtering: true,
+  allow_ips: ['String'],
+  deny_ips: ['String'],
+  request_size_limit: 'String',
+  depth_limit: 1,
+  request_complexity_limit: 1,
+  rate_limit: { complexity: 1, per: 1 },
 };
 
 export const sourceSchema = {
@@ -72,6 +81,15 @@ export const apiDefSchema = {
     auth_tokens: expect.arrayContaining([expect.any(String)]),
   }),
   playground: expect.any(Boolean),
+  schema_polling_interval: expect.any(Number),
+  schema_updates_through_control_api: expect.any(Boolean),
+  enable_ip_filtering: expect.any(Boolean),
+  allow_ips: expect.arrayContaining([expect.any(String)]),
+  deny_ips: expect.arrayContaining([expect.any(String)]),
+  request_size_limit: expect.any(String),
+  depth_limit: expect.any(Number),
+  request_complexity_limit: expect.any(Number),
+  rate_limit: expect.any(Object),
 };
 
 export const createUser = async (

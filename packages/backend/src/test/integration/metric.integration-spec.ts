@@ -1,10 +1,12 @@
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
-import Roles from '../../common/enum/roles.enum';
+import { config } from 'node-config-ts';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
+import Roles from '../../common/enum/roles.enum';
 import IUser from '../../common/interface/user.interface';
+import LoggerService from '../../common/logger/logger.service';
 import AppModule from '../../modules/app.module';
 import MetricService from '../../modules/metric/metric.service';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
@@ -12,8 +14,6 @@ import UserService from '../../modules/user/user.service';
 import { createUser, Method, requestTo, RequestToResult } from '../common';
 
 jest.mock('ioredis');
-
-jest.useFakeTimers();
 
 describe('MetricResolver', () => {
   let request: RequestToResult;
@@ -35,6 +35,7 @@ describe('MetricResolver', () => {
       .compile();
 
     app = moduleFixture.createNestApplication();
+    app.useLogger(new LoggerService(config));
     await app.init();
 
     request = requestTo(app);

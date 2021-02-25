@@ -1,5 +1,3 @@
-scalar Timestamp
-
 type ApiDefAuthentication {
   auth_header_name: String
   auth_tokens: [String!]!

@@ -22,8 +22,6 @@ import {
 
 jest.mock('ioredis');
 
-jest.useFakeTimers();
-
 describe('ApiDefResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
@@ -111,6 +109,18 @@ describe('ApiDefResolver', () => {
                   name
                   handler
                   transforms
+                }
+                schema_polling_interval
+                schema_updates_through_control_api
+                enable_ip_filtering
+                allow_ips
+                deny_ips
+                request_size_limit
+                depth_limit
+                request_complexity_limit
+                rate_limit {
+                  complexity
+                  per
                 }
               }
             }

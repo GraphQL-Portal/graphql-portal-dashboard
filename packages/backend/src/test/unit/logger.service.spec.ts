@@ -2,8 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { LoggerModule, LoggerService } from '../../common/logger';
 import LogLevel from '../../common/logger/enum/log.level.enum';
 
-jest.useFakeTimers();
-
 jest.mock('ioredis');
 
 describe('LoggerService', () => {
