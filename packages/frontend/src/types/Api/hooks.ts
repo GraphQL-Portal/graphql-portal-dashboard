@@ -96,3 +96,10 @@ export type UseUpdateGeneralHook = (
   | 'addToken'
   | 'removeToken'
 >;
+
+export type UseUpdateSchemaAndLimitsHook = (
+  props: EditApiTab
+) => Pick<
+  ReturnType<UseCreateApiDefHook>,
+  'register' | 'control' | 'errors'
+> & { onSubmit: OnSubmit };
