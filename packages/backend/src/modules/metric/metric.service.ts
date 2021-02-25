@@ -1,5 +1,10 @@
 import { MetricsChannels } from '@graphql-portal/types';
-import { Inject, Injectable } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  OnModuleInit,
+  OnModuleDestroy,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Redis } from 'ioredis';
 import { ObjectId } from 'mongodb';
@@ -35,7 +40,7 @@ import { IApiDefDocument } from 'src/data/schema/api-def.schema';
 type MetricScale = 'hour' | 'day' | 'week' | 'month';
 
 @Injectable()
-export default class MetricService {
+export default class MetricService implements OnModuleInit, OnModuleDestroy {
   private redis: Redis;
   private maxmind: ReaderModel | WebServiceClient | void;
   private intervals: NodeJS.Timer[] = [];
@@ -52,9 +57,13 @@ export default class MetricService {
     [this.redis] = this.redisClients;
   }
 
-  private async onModuleInit(): Promise<void> {
+  public async onModuleInit(): Promise<void> {
     await this.setMaxmindClient();
     this.init();
+  }
+
+  public async onModuleDestroy(): Promise<void> {
+    this.intervals.forEach((interval) => clearInterval(interval));
   }
 
   public init(): void {

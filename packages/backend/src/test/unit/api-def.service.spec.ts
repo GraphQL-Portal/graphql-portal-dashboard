@@ -16,8 +16,6 @@ import {
   sourceExample,
 } from '../common';
 
-jest.useFakeTimers();
-
 jest.mock('ioredis');
 
 describe('ApiDefService', () => {
@@ -115,7 +113,7 @@ describe('ApiDefService', () => {
       expect(apiDefs).toHaveLength(1);
     });
 
-    it('findById should return an apiDefs', async () => {
+    it('findById should return an apiDef', async () => {
       const { apiDefs } = await apiDefService.findAll();
       expect(apiDefs).toHaveLength(2);
 
@@ -149,6 +147,29 @@ describe('ApiDefService', () => {
         ...mongoDocumentSchema,
       });
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('should save all fields', async () => {
+      const newData = ({
+        ...apiDef.toJSON(),
+        schema_polling_interval: 1,
+        schema_updates_through_control_api: true,
+        enable_ip_filtering: true,
+        allow_ips: ['String'],
+        deny_ips: ['String'],
+        request_size_limit: 'String',
+        depth_limit: 1,
+        request_complexity_limit: 1,
+        rate_limit: { field: 'value' },
+        mesh: { field: 'value' },
+      } as any) as IApiDef;
+      const result = await apiDefService.update(apiDef._id, newData, []);
+
+      expect(result).toBeDefined();
+      expect(result.toJSON()).toMatchObject({
+        ...newData,
+        ...mongoDocumentSchema,
+      });
     });
 
     it('isSourceUsed should return falsy value', async () => {

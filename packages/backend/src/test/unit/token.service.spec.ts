@@ -11,8 +11,6 @@ import Roles from '../../common/enum/roles.enum';
 
 jest.spyOn(jwt as any, 'verify').mockResolvedValue(true);
 
-jest.useFakeTimers();
-
 jest.mock('ioredis');
 
 describe('TokenService', () => {

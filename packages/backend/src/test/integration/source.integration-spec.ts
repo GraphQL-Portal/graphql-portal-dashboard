@@ -18,8 +18,6 @@ import {
 
 jest.mock('ioredis');
 
-jest.useFakeTimers();
-
 describe('SourceResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;

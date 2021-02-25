@@ -11,8 +11,6 @@ import ITokens from '../../modules/user/interfaces/tokens.interface';
 import { createUser, randomObjectId } from '../common';
 import { CodeTypes } from '../../modules/user/enum';
 
-jest.useFakeTimers();
-
 jest.mock('ioredis');
 
 jest.mock('@sendgrid/mail', () => ({

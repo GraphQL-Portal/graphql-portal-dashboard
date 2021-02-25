@@ -32,6 +32,16 @@ const apiDefSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    schema_polling_interval: Number,
+    schema_updates_through_control_api: Boolean,
+    enable_ip_filtering: Boolean,
+    allow_ips: [String],
+    deny_ips: [String],
+    request_size_limit: String,
+    depth_limit: Number,
+    request_complexity_limit: Number,
+    rate_limit: Object,
+    mesh: Object,
   },
   { versionKey: false, timestamps: true }
 );

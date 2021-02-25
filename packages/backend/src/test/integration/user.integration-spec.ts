@@ -26,8 +26,6 @@ jest.mock('@sendgrid/mail', () => ({
   send: jest.fn(),
 }));
 
-jest.useFakeTimers();
-
 describe('ApiDefResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
