@@ -20,6 +20,19 @@ const GET_API_DEF_BY_ID = gql`
         auth_header_name
         auth_tokens
       }
+      schema_polling_interval
+      schema_updates_through_control_api
+      enable_ip_filtering
+      request_size_limit
+      depth_limit
+      request_complexity_limit
+      rate_limit {
+        complexity
+        per
+      }
+      enable_ip_filtering
+      allow_ips
+      deny_ips
     }
   }
 `;

@@ -6,16 +6,16 @@ export type ApiAuth<T> = {
 };
 
 export type ApiDefRateLimit = {
-  complexity: number;
-  per: number;
+  complexity?: number;
+  per?: number;
 };
 
 export type AllowIps<T> = {
-  allow_ips: T;
+  allow_ips?: T;
 };
 
 export type DenyIps<T> = {
-  deny_ips: T;
+  deny_ips?: T;
 };
 
 export type ApiDef = {
@@ -24,15 +24,15 @@ export type ApiDef = {
   endpoint: string;
   playground: boolean;
   enabled: boolean;
-  authentication: ApiAuth<string[]>;
+  authentication?: ApiAuth<string[]>;
   sources: DataSource[];
-  schema_polling_interval: number;
-  schema_updates_through_control_api: boolean;
-  enable_ip_filtering: boolean;
-  request_size_limit: string;
-  depth_limit: number;
-  request_complexity_limit: number;
-  rate_limit: ApiDefRateLimit;
+  schema_polling_interval?: number;
+  schema_updates_through_control_api?: boolean;
+  enable_ip_filtering?: boolean;
+  request_size_limit?: string;
+  depth_limit?: number;
+  request_complexity_limit?: number;
+  rate_limit?: ApiDefRateLimit;
   createdAt: string;
   updatedAt: string;
 } & AllowIps<string[]> &

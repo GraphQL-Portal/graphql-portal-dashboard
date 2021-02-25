@@ -2,9 +2,9 @@ import { StringArray } from '../../../types';
 import { arrayStringFromObjectArray } from '../../DataSources/helpers';
 
 export const createIPsPayload = (
-  enable_ip_filtering: boolean,
-  allow_ips: StringArray,
-  deny_ips: StringArray
+  enable_ip_filtering: boolean = false,
+  allow_ips: StringArray = [],
+  deny_ips: StringArray = []
 ) => {
   return {
     enable_ip_filtering,
