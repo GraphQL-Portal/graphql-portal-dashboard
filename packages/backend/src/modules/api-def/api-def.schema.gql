@@ -22,7 +22,6 @@ type ApiDef {
   request_complexity_limit: Int
   rate_limit: ApiDefRateLimit
   playground: Boolean!
-  mesh: JSONObject
 }
 
 type ApiDefRateLimit {
@@ -55,7 +54,6 @@ input CreateApiDef {
   request_complexity_limit: Int
   rate_limit: CreateApiDefRateLimit
   playground: Boolean
-  mesh: JSON
 }
 
 type ApiDefsWithTimestamp {

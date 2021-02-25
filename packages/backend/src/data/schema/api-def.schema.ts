@@ -41,7 +41,6 @@ const apiDefSchema = new mongoose.Schema(
     depth_limit: Number,
     request_complexity_limit: Number,
     rate_limit: Object,
-    mesh: Object,
   },
   { versionKey: false, timestamps: true }
 );

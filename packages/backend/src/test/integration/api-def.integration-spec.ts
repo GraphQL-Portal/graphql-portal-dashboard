@@ -122,7 +122,6 @@ describe('ApiDefResolver', () => {
                   complexity
                   per
                 }
-                mesh
               }
             }
           }`,

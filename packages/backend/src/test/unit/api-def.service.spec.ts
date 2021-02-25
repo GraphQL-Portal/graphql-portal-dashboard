@@ -161,7 +161,6 @@ describe('ApiDefService', () => {
         depth_limit: 1,
         request_complexity_limit: 1,
         rate_limit: { field: 'value' },
-        mesh: { field: 'value' },
       } as any) as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 

@@ -64,7 +64,6 @@ export const apiDefExample: IApiDef = {
   depth_limit: 1,
   request_complexity_limit: 1,
   rate_limit: { complexity: 1, per: 1 },
-  mesh: { additionalResolvers: ['String'] },
 };
 
 export const sourceSchema = {
@@ -91,7 +90,6 @@ export const apiDefSchema = {
   depth_limit: expect.any(Number),
   request_complexity_limit: expect.any(Number),
   rate_limit: expect.any(Object),
-  mesh: expect.any(Object),
 };
 
 export const createUser = async (
