@@ -31,7 +31,7 @@ export const useUpdateGeneral: UseUpdateGeneralHook = ({ api, refetch }) => {
   const { updateApiDef } = useUpdateApiDef({
     onCompleted() {
       refetch();
-      showSuccessToast(`API ${name} successfully  updated`);
+      showSuccessToast(`API ${name} successfully updated`);
     },
     onError({ message }: AError) {
       showErrorToast(message);
