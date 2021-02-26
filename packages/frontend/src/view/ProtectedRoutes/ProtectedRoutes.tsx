@@ -27,7 +27,7 @@ export const ProtectedRoutes: React.FC = () => {
       <Content>
         <Switch>
           <Route path="/" exact>
-            <Redirect to={ROUTES.NODES} />
+            <Redirect to={ROUTES.DASHBOARD} />
           </Route>
           <Route path={ROUTES.DASHBOARD}>
             <Dashboard />
