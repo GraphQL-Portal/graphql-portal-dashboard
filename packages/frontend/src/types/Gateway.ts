@@ -4,10 +4,11 @@ export type Gateway = {
   lastPingAt: number;
   hostname: string;
   status: string;
+  listenHostname: string | null;
+  listenPort: number | null;
+  servername: string | null;
 };
 
-export type GatewayNode = (string | number)[];
-
 export type GatewayNodesList = {
-  list: GatewayNode[];
+  list: Gateway[];
 };

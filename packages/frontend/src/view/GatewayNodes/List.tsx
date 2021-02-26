@@ -29,18 +29,17 @@ export const GatewayNodesList: React.FC<Props> = ({ list }) => {
             ))}
           </TableHead>
           <TableBody>
-            {list.map((node, idx) => (
-              <TableRow key={`node-${idx}`}>
-                {node.map((item: any, indx: any) => (
-                  <TableCell
-                    key={`node-${idx}-item-${indx}`}
-                    align={alignFirstCellLeft(indx)}
-                  >
-                    {item}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
+            {list.map(
+              ({ nodeId, lastPingAt, hostname, status, configTimestamp }) => (
+                <TableRow key={nodeId}>
+                  <TableCell>{nodeId}</TableCell>
+                  <TableCell align="right">{hostname}</TableCell>
+                  <TableCell align="right">{status}</TableCell>
+                  <TableCell align="right">{lastPingAt}</TableCell>
+                  <TableCell align="right">{configTimestamp}</TableCell>
+                </TableRow>
+              )
+            )}
           </TableBody>
         </Table>
       </WidgetBody>
