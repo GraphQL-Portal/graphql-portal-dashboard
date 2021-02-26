@@ -53,14 +53,16 @@ export default class ApiDefResolver {
   public createApiDef(
     @Args() data: ApiDefCreateDto,
     @AuthorizationParam('_id') userId: string
-  ): Promise<IApiDef> {
+  ): Promise<{ apiDef: IApiDef; schema: string }> {
     return this.service.create(data.apiDef, data.sources, userId);
   }
 
   @Mutation()
   @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.ApiDef)
-  public updateApiDef(@Args() data: ApiDefUpdateDto): Promise<IApiDef | null> {
+  public updateApiDef(
+    @Args() data: ApiDefUpdateDto
+  ): Promise<{ apiDef: IApiDef; schema: string }> {
     return this.service.update(
       data.id,
       { ...data.apiDef, enabled: data.enabled },

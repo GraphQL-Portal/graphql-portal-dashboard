@@ -24,6 +24,11 @@ type ApiDef {
   playground: Boolean!
 }
 
+type ApiDefWithSchema {
+  apiDef: ApiDef
+  schema: String
+}
+
 type ApiDefRateLimit {
   complexity: Int
   per: Int
@@ -69,12 +74,12 @@ type Query {
 }
 
 type Mutation {
-  createApiDef(apiDef: CreateApiDef!, sources: [ID!]!): ApiDef
+  createApiDef(apiDef: CreateApiDef!, sources: [ID!]!): ApiDefWithSchema
   updateApiDef(
     id: ID!
     apiDef: CreateApiDef!
     sources: [ID!]!
     enabled: Boolean
-  ): ApiDef
+  ): ApiDefWithSchema
   deleteApiDef(id: ID!): Boolean
 }

@@ -27,6 +27,7 @@ describe('ApiDefService', () => {
   let source: ISourceDocument;
 
   let publishApiDefsUpdatedMock: jest.SpyInstance;
+  let getMeshSchemaMock: jest.SpyInstance;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
@@ -35,6 +36,10 @@ describe('ApiDefService', () => {
     sourceService = app.get<SourceService>(SourceService);
     apiDefService = app.get<ApiDefService>(ApiDefService);
     redisService = app.get<RedisService>(RedisService);
+
+    getMeshSchemaMock = jest
+      .spyOn(apiDefService, 'getMeshSchema')
+      .mockResolvedValue(randomString());
   });
 
   afterAll(async () => {
@@ -78,10 +83,16 @@ describe('ApiDefService', () => {
         { ...sourceExample, name: 'api-source' },
         userId
       );
-      apiDef = await apiDefService.create(apiDefExample, [source._id], userId);
+      const result = await apiDefService.create(
+        apiDefExample,
+        [source._id],
+        userId
+      );
+      apiDef = result.apiDef;
       expect(apiDef).toBeDefined();
       expectApiDef(apiDef);
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
+      expect(getMeshSchemaMock).toHaveBeenCalledTimes(1);
     });
 
     it('findAll returns an apiDef', async () => {
@@ -106,8 +117,8 @@ describe('ApiDefService', () => {
         [],
         randomObjectId()
       );
-      expect(disabled).toBeDefined();
-      expect(disabled.enabled).toBe(false);
+      expect(disabled.apiDef).toBeDefined();
+      expect(disabled.apiDef.enabled).toBe(false);
 
       const { apiDefs } = await apiDefService.findAllForGateway();
       expect(apiDefs).toHaveLength(1);
@@ -141,12 +152,14 @@ describe('ApiDefService', () => {
       } as any) as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 
-      expect(result).toBeDefined();
-      expect(result.toJSON()).toMatchObject({
+      expect(result.apiDef).toBeDefined();
+      expect(result.apiDef.toJSON()).toMatchObject({
         ...newData,
         ...mongoDocumentSchema,
       });
+      expect(typeof result.schema).toBe('string');
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
+      expect(getMeshSchemaMock).toHaveBeenCalledTimes(1);
     });
 
     it('should save all fields', async () => {
@@ -164,8 +177,8 @@ describe('ApiDefService', () => {
       } as any) as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 
-      expect(result).toBeDefined();
-      expect(result.toJSON()).toMatchObject({
+      expect(result.apiDef).toBeDefined();
+      expect(result.apiDef.toJSON()).toMatchObject({
         ...newData,
         ...mongoDocumentSchema,
       });
