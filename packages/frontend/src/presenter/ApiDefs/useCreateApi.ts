@@ -6,7 +6,11 @@ import { useCreateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
 import { AError, ApiDefForm, UseCreateApiDefHook } from '../../types';
 import { ROUTES, useToast } from '../../model/providers';
-import { createAuth, createIPsPayload } from './helpers';
+import {
+  createAuth,
+  createIPsPayload,
+  createRateLimitPayload,
+} from './helpers';
 import { suite } from './validation';
 import { useDSPart } from './useDSPart';
 import { useIPFiltering } from './useIPFiltering';
@@ -89,6 +93,11 @@ export const useCreateApi: UseCreateApiDefHook = () => {
       enable_ip_filtering,
       allow_ips,
       deny_ips,
+      schema_polling_interval,
+      request_size_limit,
+      request_complexity_limit,
+      depth_limit,
+      rate_limit,
       ...rest
     } = data;
     createApiDef({
@@ -99,6 +108,13 @@ export const useCreateApi: UseCreateApiDefHook = () => {
           playground,
           ...createAuth(authentication),
           ...createIPsPayload(enable_ip_filtering, allow_ips, deny_ips),
+          ...(schema_polling_interval! > 0 ? { schema_polling_interval } : {}),
+          ...(request_size_limit! !== '' ? { request_size_limit } : {}),
+          ...(request_complexity_limit! > 0
+            ? { request_complexity_limit }
+            : {}),
+          ...(depth_limit! > 0 ? { depth_limit } : {}),
+          ...createRateLimitPayload(rate_limit),
           ...rest,
         },
         sources: sourceFields.map(

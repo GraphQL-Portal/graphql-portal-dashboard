@@ -28,6 +28,7 @@ export const ViewAPI: React.FC = () => {
   } = useViewAPI();
 
   if (loading) return <Loading />;
+
   return (
     <>
       <Helmet>

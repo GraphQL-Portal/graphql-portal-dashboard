@@ -6,7 +6,9 @@ import { MutationOptions } from '../../../types';
 const CREATE_API_DEF = gql`
   mutation createApiDef($apiDef: CreateApiDef!, $sources: [ID!]!) {
     createApiDef(apiDef: $apiDef, sources: $sources) {
-      _id
+      apiDef {
+        _id
+      }
     }
   }
 `;
