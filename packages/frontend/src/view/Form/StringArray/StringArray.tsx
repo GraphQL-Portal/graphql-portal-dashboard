@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 import clsx from 'clsx';
 
 import { Add, Remove } from '../../../icons';
-import { ObjectArray as Props } from '../../../types';
+import { StringArrayForm as Props } from '../../../types';
 import { Col, IconButton, Row, Input, Tooltip, H6 } from '../../../ui';
 import { useStyles } from './useStyles';
 

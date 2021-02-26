@@ -16,3 +16,5 @@ export type TriggersTable = Table<boolean>;
 export type AnyTable = Table<any>;
 
 export type NOOP = () => void;
+
+export type RecordStringAny = Record<string, any>;
