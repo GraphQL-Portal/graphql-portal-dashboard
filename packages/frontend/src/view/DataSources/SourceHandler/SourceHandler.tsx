@@ -14,9 +14,10 @@ import { ThriftHandler } from '../ThriftHandler';
 import { SoapHandler } from '../SoapHandler';
 import { GRPCHandler } from '../GRPCHandler';
 import { EditorsHandler } from '../EditorsHandler';
+import { OpenapiHandler } from '../OpenapiHandler';
 
 // The list of custom handler forms
-// Each handler should have React.FC<HandlerStep> signature
+// Each handler should have React.FC<HandlerStep> type signature
 const HANDLERS_MAPPER: HandlersMapper = {
   SlackHandler,
   ContentfulHandler,
@@ -30,6 +31,7 @@ const HANDLERS_MAPPER: HandlersMapper = {
   thrift: ThriftHandler,
   soap: SoapHandler,
   grpc: GRPCHandler,
+  openapi: OpenapiHandler,
 };
 
 const getHandler = (key: string) => HANDLERS_MAPPER[key] || EditorsHandler;

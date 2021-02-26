@@ -1,5 +1,7 @@
+import { FieldArray } from '../../../types';
+
 export const arrayObjectToObject = (
-  objects: { key: string; value: string }[] = []
+  objects: FieldArray = []
 ): Record<string, unknown> => {
   return objects.reduce((acc, { key, value }) => {
     acc[key] = value;
