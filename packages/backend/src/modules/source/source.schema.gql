@@ -18,6 +18,7 @@ input CreateSource {
 
 type Query {
   getSources: [Source]
+  getSourceSchema(id: ID!): String
 }
 
 type Mutation {

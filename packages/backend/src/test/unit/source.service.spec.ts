@@ -63,6 +63,23 @@ describe('SourceService', () => {
     });
   });
 
+  describe('getSchema', () => {
+    it('should call apiDefService.getMeshSchema', async () => {
+      const spiedGetMeshSchema = jest
+        .spyOn(apiDefService, 'getMeshSchema')
+        .mockResolvedValue('schema');
+      await sourceService.getSchema(source._id);
+      expect(spiedGetMeshSchema).toBeCalledTimes(1);
+      expect(spiedGetMeshSchema).toBeCalledWith(
+        expect.objectContaining({
+          sources: expect.arrayContaining([
+            expect.objectContaining({ _id: source._id }),
+          ]),
+        })
+      );
+    });
+  });
+
   describe('update', () => {
     it('should throw for wrong name', async () => {
       expect.assertions(1);

@@ -77,4 +77,13 @@ export default class SourceService implements IAccessControlService {
   public async isOwner(user: string, _id: string): Promise<boolean> {
     return Boolean(await this.sourceModel.findOne({ _id, user }));
   }
+
+  public async getSchema(_id: string): Promise<string> {
+    const source = (await this.sourceModel.findOne({ _id }))!;
+    return this.apiDefService.getMeshSchema({
+      name: '',
+      endpoint: '',
+      sources: [source],
+    });
+  }
 }
