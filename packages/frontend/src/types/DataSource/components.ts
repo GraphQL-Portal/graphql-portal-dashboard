@@ -1,4 +1,5 @@
 import { NOOP } from '../General';
+import { Errors } from '../HookForm';
 import {
   DataSourceStep,
   NameForm,
@@ -7,6 +8,7 @@ import {
   SourceProp,
   DataSource,
 } from './data';
+import { UseOpenapiDataSourceHook } from './hooks';
 
 export type NameStep = DataSourceStep<NameForm>;
 export type HandlerStep = DataSourceStep<HandlerForm> & Partial<SourceProp>;
@@ -31,3 +33,14 @@ export type ConnectedList = {
   onDelete(idx: number): () => void;
   onUpdate?(source: DataSource): () => void;
 };
+
+export type SelectQueryOrMutationFieldConfig = Pick<
+  ReturnType<UseOpenapiDataSourceHook>,
+  | 'register'
+  | 'control'
+  | 'queryOrMutationFields'
+  | 'removeQueryOrMutationField'
+  | 'addQueryOrMutationField'
+> & {
+  name: string;
+} & Errors;

@@ -20,3 +20,4 @@ export { useEditorsHandler } from './useEditorsHandler';
 export { useTransforms } from './useTransforms';
 export { useTransformEditors } from './useTransformEditors';
 export { useUpdateDataSource } from './useUpdateDataSource';
+export { useOpenapiHandler } from './useOpenapiHandler';

@@ -7,38 +7,42 @@ import { UseOpenapiDataSourceHook, OpenapiForm } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
-const GRAPHQL_DEFAULT_STATE = {
-  endpoint: '',
-  method: '',
+const OPENAPI_DEFAULT_STATE = {
+  source: '',
+  sourceFormat: 'json',
   schemaHeaders: [],
   operationHeaders: [],
-  useGETForQueries: false,
-  useSSEForSubscription: false,
-  cacheIntrospection: false,
-  multipart: false,
+  baseUrl: '',
+  qs: [],
+  includeHttpDetails: false,
+  addLimitArgument: false,
+  genericPayloadArgName: false,
+  selectQueryOrMutationField: [],
 };
 
-const suite = vest.create('graphql_handler', ({ endpoint }) => {
-  test('endpoint', 'Endpoint is required', () => {
-    enforce(endpoint).isNotEmpty();
+const suite = vest.create('graphql_handler', ({ source }) => {
+  test('source', 'Source is required', () => {
+    enforce(source).isNotEmpty();
   });
 });
 
-export const useGraphQLHandler: UseOpenapiDataSourceHook = ({
+export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
   state,
   updateState,
   step,
 }) => {
-  // const { schemaHeaders, operationHeaders, ...handler } = state.handler;
+  const { schemaHeaders, operationHeaders, qs, ...handler } = state.handler;
 
-  // const defaultValues = Object.assign({}, GRAPHQL_DEFAULT_STATE, handler, {
-  //   schemaHeaders: objectToFieldArray(schemaHeaders),
-  //   operationHeaders: objectToFieldArray(operationHeaders),
-  // });
+  const defaultValues = Object.assign({}, OPENAPI_DEFAULT_STATE, handler, {
+    schemaHeaders: objectToFieldArray(schemaHeaders),
+    operationHeaders: objectToFieldArray(operationHeaders),
+    qs: objectToFieldArray(qs),
+  });
 
-  const { handleSubmit, errors, control } = useForm<OpenapiForm>({
+  const { handleSubmit, errors, control, register } = useForm<OpenapiForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
+    defaultValues,
   });
 
   useFormErrors(errors);
@@ -61,19 +65,37 @@ export const useGraphQLHandler: UseOpenapiDataSourceHook = ({
     name: 'operationHeaders',
   });
 
+  const {
+    fields: qsFields,
+    append: appendQSField,
+    remove: removeQSField,
+  } = useFieldArray({
+    control,
+    name: 'qs',
+  });
+
+  const {
+    fields: queryOrMutationFields,
+    append: addQueryOrMutationField,
+    remove: removeQueryOrMutationField,
+  } = useFieldArray({
+    control,
+    name: 'selectQueryOrMutationField',
+  });
+
   const onSubmit = ({
     schemaHeaders,
     operationHeaders,
-    method,
+    qs,
     ...handler
-  }: any) => {
+  }: OpenapiForm) => {
     updateState(
       {
         handler: {
           ...handler,
           schemaHeaders: arrayObjectToObject(schemaHeaders),
           operationHeaders: arrayObjectToObject(operationHeaders),
-          ...(method !== '' ? { method } : {}),
+          qs: arrayObjectToObject(qs),
         },
       },
       step
@@ -84,11 +106,18 @@ export const useGraphQLHandler: UseOpenapiDataSourceHook = ({
     onSubmit: handleSubmit(onSubmit),
     errors,
     control,
+    register,
     schemaFields,
     appendSchemaField,
     removeSchemaField,
     operationFields,
     appendOperationField,
     removeOperationField,
+    qsFields,
+    appendQSField,
+    removeQSField,
+    queryOrMutationFields,
+    addQueryOrMutationField,
+    removeQueryOrMutationField,
   };
 };
