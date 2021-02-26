@@ -38,7 +38,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
             ref={register}
             name="source"
             error={!!errors?.source}
-            label="Source"
+            label="URL of the source OpenAPI json or yaml (Swagger) file."
             fullWidth
             required
           />
@@ -52,8 +52,20 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
             name="sourceFormat"
             options={OPENAPI_SOURCE_FORMAT}
             labelId="sourceFormat"
-            label="Source Format"
+            label="Format of the source file"
             fullWidth
+          />
+        </HandlerCol>
+      </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <Input
+            ref={register}
+            name="baseUrl"
+            error={!!errors?.baseUrl}
+            label="Base URL"
+            fullWidth
+            helperText="Used to manually specify the base URL which all paths will be built on. Overrides server object of the OAS."
           />
         </HandlerCol>
       </HandlerRow>
@@ -75,17 +87,6 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
         onAdd={appendOperationField}
         onRemove={removeOperationField}
       />
-      <HandlerRow>
-        <HandlerCol>
-          <Input
-            ref={register}
-            name="baseUrl"
-            error={!!errors?.baseUrl}
-            label="Base URL"
-            fullWidth
-          />
-        </HandlerCol>
-      </HandlerRow>
       <ObjectArray
         title="Query Search Parameters"
         name="qs"
@@ -94,6 +95,15 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
         fields={qsFields}
         onAdd={appendQSField}
         onRemove={removeQSField}
+      />
+      <SelectQueryOrMutationFieldConfig
+        name="selectQueryOrMutationField"
+        register={register}
+        control={control}
+        errors={errors}
+        queryOrMutationFields={queryOrMutationFields}
+        addQueryOrMutationField={addQueryOrMutationField}
+        removeQueryOrMutationField={removeQueryOrMutationField}
       />
       <HandlerRow>
         <HandlerCol>
@@ -140,15 +150,6 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
           />
         </HandlerColBig>
       </HandlerRow>
-      <SelectQueryOrMutationFieldConfig
-        name="selectQueryOrMutationField"
-        register={register}
-        control={control}
-        errors={errors}
-        queryOrMutationFields={queryOrMutationFields}
-        addQueryOrMutationField={addQueryOrMutationField}
-        removeQueryOrMutationField={removeQueryOrMutationField}
-      />
       <PrimaryButton type="submit">Save Openapi Handler</PrimaryButton>
     </form>
   );

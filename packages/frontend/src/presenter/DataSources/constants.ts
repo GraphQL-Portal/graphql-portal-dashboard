@@ -75,6 +75,10 @@ export const INITIAL_STATE = {
   transforms: [],
 };
 
+export const HANDLERS_LABELS: { [key: string]: string } = {
+  OpenapiHandler: 'OpenAPI',
+};
+
 export const TRANSFORMS_LABELS: { [key: string]: string } = {
   filterSchema: 'Filter Schema',
   namingConvention: 'Naming Convention',
