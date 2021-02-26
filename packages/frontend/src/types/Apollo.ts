@@ -7,8 +7,7 @@ import {
   ApolloQueryResult,
   ApolloError,
 } from '@apollo/client';
-
-type RecordStringAny = Record<string, any>;
+import { RecordStringAny } from './General';
 
 export type QueryOptions = QueryHookOptions<any, OperationVariables>;
 export type MutationOptions = MutationHookOptions<any, OperationVariables>;

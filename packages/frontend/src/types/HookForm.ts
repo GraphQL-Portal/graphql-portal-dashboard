@@ -5,6 +5,7 @@ import {
   ArrayField,
   UseFormMethods,
 } from 'react-hook-form';
+import { RecordStringAny } from './General';
 
 export type ControlType = {
   control: Control;
@@ -16,8 +17,8 @@ export type Errors = {
 
 export type ErrorsAndControl = ControlType & Errors;
 
-export type FieldArray = Partial<ArrayField<Record<string, any>, 'id'>>[];
-export type FieldArrayAppend = (value: Partial<Record<string, any>>) => void;
+export type FieldArray<T = RecordStringAny> = Partial<ArrayField<T, 'id'>>[];
+export type FieldArrayAppend = (value: RecordStringAny) => void;
 export type FieldArrayRemove = (index?: number | number[] | undefined) => void;
 export type SetValue = (
   name: string,

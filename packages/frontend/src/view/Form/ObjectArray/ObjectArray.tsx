@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 import clsx from 'clsx';
 
 import { Add, Remove } from '../../../icons';
-import { ObjectArray as Props } from '../../../types';
+import { ObjectArrayForm as Props } from '../../../types';
 import { Col, IconButton, Row, Input, Tooltip, H6 } from '../../../ui';
 import { useStyles } from './useStyles';
 
@@ -45,6 +45,7 @@ export const ObjectArray: React.FC<Props> = ({
                 name={`${name}[${idx}].key`}
                 fullWidth
                 defaultValue={field.key}
+                error={!!errors?.[name]?.[idx]?.key}
               />
             </Col>
             <Col xs={5} className={objectField}>
@@ -55,6 +56,7 @@ export const ObjectArray: React.FC<Props> = ({
                 name={`${name}[${idx}].value`}
                 fullWidth
                 defaultValue={field.value}
+                error={!!errors?.[name]?.[idx]?.value}
               />
             </Col>
             <Col xs={2} className={lastObjectField}>

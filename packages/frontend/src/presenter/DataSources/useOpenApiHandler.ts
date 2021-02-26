@@ -3,7 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep } from '../../types';
+import { UseOpenapiDataSourceHook, OpenapiForm } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
@@ -24,22 +24,21 @@ const suite = vest.create('graphql_handler', ({ endpoint }) => {
   });
 });
 
-export const useGraphQLHandler = ({
+export const useGraphQLHandler: UseOpenapiDataSourceHook = ({
   state,
   updateState,
   step,
-}: HandlerStep) => {
-  const { schemaHeaders, operationHeaders, ...handler } = state.handler;
+}) => {
+  // const { schemaHeaders, operationHeaders, ...handler } = state.handler;
 
-  const defaultValues = Object.assign({}, GRAPHQL_DEFAULT_STATE, handler, {
-    schemaHeaders: objectToFieldArray(schemaHeaders),
-    operationHeaders: objectToFieldArray(operationHeaders),
-  });
+  // const defaultValues = Object.assign({}, GRAPHQL_DEFAULT_STATE, handler, {
+  //   schemaHeaders: objectToFieldArray(schemaHeaders),
+  //   operationHeaders: objectToFieldArray(operationHeaders),
+  // });
 
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control } = useForm<OpenapiForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues,
   });
 
   useFormErrors(errors);
