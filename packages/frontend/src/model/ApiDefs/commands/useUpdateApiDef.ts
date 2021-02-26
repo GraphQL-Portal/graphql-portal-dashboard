@@ -16,7 +16,9 @@ const UPDATE_API_DEF = gql`
       sources: $sources
       enabled: $enabled
     ) {
-      _id
+      apiDef {
+        _id
+      }
     }
   }
 `;

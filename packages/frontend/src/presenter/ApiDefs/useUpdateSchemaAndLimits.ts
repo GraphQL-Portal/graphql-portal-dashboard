@@ -8,6 +8,7 @@ import {
   UseUpdateSchemaAndLimitsHook,
   DataSource,
 } from '../../types';
+import { createRateLimitPayload } from './helpers';
 
 export const useUpdateSchemaAndLimits: UseUpdateSchemaAndLimitsHook = ({
   api,
@@ -60,13 +61,6 @@ export const useUpdateSchemaAndLimits: UseUpdateSchemaAndLimitsHook = ({
     depth_limit,
     rate_limit,
   }: ApiDefForm) => {
-    const { complexity, per } = rate_limit || {};
-    const rateLimit =
-      complexity || per
-        ? {
-            rate_limit: { complexity, per },
-          }
-        : {};
     updateApiDef({
       variables: {
         id,
@@ -81,7 +75,7 @@ export const useUpdateSchemaAndLimits: UseUpdateSchemaAndLimitsHook = ({
           ...(request_size_limit ? { request_size_limit } : {}),
           ...(request_complexity_limit ? { request_complexity_limit } : {}),
           ...(depth_limit ? { depth_limit } : {}),
-          ...rateLimit,
+          ...createRateLimitPayload(rate_limit),
         },
         sources: sources.map(({ _id }: DataSource) => _id),
         enabled,
