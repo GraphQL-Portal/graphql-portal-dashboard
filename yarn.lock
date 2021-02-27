@@ -3325,14 +3325,7 @@
   resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-1.8.0.tgz#682477dbbbd07cd032731cb3b0e7eaee3d026b69"
   integrity sha512-2aoSC4UUbHDj2uCsCxcG/vRMXey/m17bC7UwitVm5hn22nI8O8Y9iDpA76Orc+DWkQ4zZrOKEshCqR/jSuXAHA==
 
-"@types/ioredis@4.19.4":
-  version "4.19.4"
-  resolved "https://registry.yarnpkg.com/@types/ioredis/-/ioredis-4.19.4.tgz#81fbdae1e0abe83cee9832b51e46bb692070c30d"
-  integrity sha512-NrXnrymvlUioki2hoFCGakAf/1ej/scdI+ViuTchFmc8KL8DHM2uMcxWx5foKd2C4IkXswX46yoMsexvnr9kPg==
-  dependencies:
-    "@types/node" "*"
-
-"@types/ioredis@^4.17.9":
+"@types/ioredis@4.22.0", "@types/ioredis@^4.17.9":
   version "4.22.0"
   resolved "https://registry.yarnpkg.com/@types/ioredis/-/ioredis-4.22.0.tgz#b07cc3405d98bae50a642b20790471b4c3c390a9"
   integrity sha512-BhgyAqt+CIFj/ejdYpWSGYUQzoQr7sFOBYLL8yEExa1tSTi2cy2D3a952zF8Tm4Q1cY3srn8xXZfb2riX6hWjw==
@@ -9539,10 +9532,10 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
-ioredis@4.22.0, ioredis@^4.17.3:
-  version "4.22.0"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.22.0.tgz#a2e18a29300ffb759670d7ed7023fcf6592031a2"
-  integrity sha512-mtC+jNFMPRxReWx0HodDbcwj34Gj5pK/P4+aE6Nh0pdqgtZKvxUh4z2lVtLjqnRIvMhKaBnIgMYFR8qH/xtttA==
+ioredis@4.23.0, ioredis@^4.19.4:
+  version "4.23.0"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.23.0.tgz#f61b65633a25c93f43fccebcacac2f4342e418f9"
+  integrity sha512-R5TDCODwnEH3J3A5TSoB17+6a+SeJTtIOW6vsy5Q1yag/AM8FejHjZC5R2O1QepSXV8hwOnGSm/4buJc/LeXTQ==
   dependencies:
     cluster-key-slot "^1.1.0"
     debug "^4.1.1"
@@ -9555,10 +9548,10 @@ ioredis@4.22.0, ioredis@^4.17.3:
     redis-parser "^3.0.0"
     standard-as-callback "^2.0.1"
 
-ioredis@^4.19.4:
-  version "4.23.0"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.23.0.tgz#f61b65633a25c93f43fccebcacac2f4342e418f9"
-  integrity sha512-R5TDCODwnEH3J3A5TSoB17+6a+SeJTtIOW6vsy5Q1yag/AM8FejHjZC5R2O1QepSXV8hwOnGSm/4buJc/LeXTQ==
+ioredis@^4.17.3:
+  version "4.22.0"
+  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.22.0.tgz#a2e18a29300ffb759670d7ed7023fcf6592031a2"
+  integrity sha512-mtC+jNFMPRxReWx0HodDbcwj34Gj5pK/P4+aE6Nh0pdqgtZKvxUh4z2lVtLjqnRIvMhKaBnIgMYFR8qH/xtttA==
   dependencies:
     cluster-key-slot "^1.1.0"
     debug "^4.1.1"
