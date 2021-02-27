@@ -1726,7 +1726,7 @@
     "@graphql-portal/types" "^0.16.0"
     axios "^0.21.1"
 
-"@graphql-portal/gateway@^0.16.0":
+"@graphql-portal/gateway@0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.16.0.tgz#4d7b4e735a9499eaecd798c4292b603027143d87"
   integrity sha512-sHQ+OgqomhET4WkGLuxzuVGR4pbkYBWiyvQmpNLAefh5fk0clC9WZKGZkexaGujtA8E77rguOBkQpokQ8BqIRQ==
@@ -1796,7 +1796,7 @@
   dependencies:
     ajv "7.1.1"
 
-"@graphql-portal/types@^0.16.2":
+"@graphql-portal/types@0.16.2", "@graphql-portal/types@^0.16.2":
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.16.2.tgz#4daf3ad5a5e941cfbb292753f3ca62334d1e8511"
   integrity sha512-56h9PJf2rjjpehNZv5RVBtsNzmnWss8N53Q2Nn+GTTrCGRRL9eX/i0zXB6MeqOh/GRXkE0TkiZxuGfmFk+w6oQ==
@@ -5997,7 +5997,7 @@ code-block-writer@^10.1.1:
   resolved "https://registry.yarnpkg.com/code-block-writer/-/code-block-writer-10.1.1.tgz#ad5684ed4bfb2b0783c8b131281ae84ee640a42f"
   integrity sha512-67ueh2IRGst/51p0n6FvPrnRjAGHY5F8xdjkgrYE7DDzpJe6qA07RYQ9VcoUeo5ATOjSOiWpSL3SWBRRbempMw==
 
-codemirror-graphql@^1.0.0:
+codemirror-graphql@1.0.0, codemirror-graphql@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-1.0.0.tgz#ba8db60dc42b87768d643b3d19bf088f43dc5380"
   integrity sha512-6LnSeRldL7psIBfjDr4xXKxCqPVYfQE4Yj04p2VpIyAIpc4MVE4VOjzvILgnmAW8X93ou5/s5gQXvB4huDwTUQ==
@@ -6010,15 +6010,15 @@ codemirror@5.59.0:
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.59.0.tgz#6d8132055459aabf21d04cae5cf5c430e5c57bb9"
   integrity sha512-UGzSkCacY9z0rSpQ3wnTWRN2nvRE6foDXnJltWW8pazInR/R+3gXHrao4IFQMv/bSBvFBxt8/HPpkpKAS54x5Q==
 
+codemirror@5.59.3:
+  version "5.59.3"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.59.3.tgz#237ec3ac0e39fee50d6f1a6196c8172a7c7c2ba1"
+  integrity sha512-p1d4BjmBBssgnEGtQeWvE5PdiDffqZjiJ77h2FZ2J2BpW9qdOzf6v7IQscyE+TgyKBQS3PpsYimfEDNgcNRZGQ==
+
 codemirror@^5.54.0:
   version "5.59.2"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.59.2.tgz#ee674d3a4a8d241af38d52afc482625ba7393922"
   integrity sha512-/D5PcsKyzthtSy2NNKCyJi3b+htRkoKv3idswR/tR6UAvMNKA7SrmyZy6fOONJxSRs1JlUWEDAbxqfdArbK8iA==
-
-codemirror@^5.59.3:
-  version "5.59.3"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.59.3.tgz#237ec3ac0e39fee50d6f1a6196c8172a7c7c2ba1"
-  integrity sha512-p1d4BjmBBssgnEGtQeWvE5PdiDffqZjiJ77h2FZ2J2BpW9qdOzf6v7IQscyE+TgyKBQS3PpsYimfEDNgcNRZGQ==
 
 collect-v8-coverage@^1.0.0:
   version "1.0.1"
