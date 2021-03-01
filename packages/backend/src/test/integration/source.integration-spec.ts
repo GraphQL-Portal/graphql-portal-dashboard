@@ -33,7 +33,7 @@ describe('SourceResolver', () => {
       .overrideProvider(SourceService)
       .useValue({
         findAllByUser: jest.fn().mockResolvedValue([sourceExample]),
-        getSchema: jest.fn().mockResolvedValue('schema'),
+        getSchemaById: jest.fn().mockResolvedValue('schema'),
         create: jest.fn().mockResolvedValue(sourceExample),
         update: jest.fn().mockResolvedValue(sourceExample),
         delete: jest.fn().mockResolvedValue(true),
@@ -95,7 +95,7 @@ describe('SourceResolver', () => {
     });
 
     describe('getSourceSchema', () => {
-      it('should call getSchema', async () => {
+      it('should call getSchemaById', async () => {
         const id = randomObjectId().toString();
         await graphQlRequest(
           `query($id: ID!) {
@@ -104,8 +104,8 @@ describe('SourceResolver', () => {
           { id }
         ).expect(HttpStatus.OK);
 
-        expect(sourceService.getSchema).toHaveBeenCalledTimes(1);
-        expect(sourceService.getSchema).toHaveBeenCalledWith(id);
+        expect(sourceService.getSchemaById).toHaveBeenCalledTimes(1);
+        expect(sourceService.getSchemaById).toHaveBeenCalledWith(id);
       });
     });
 

@@ -26,7 +26,7 @@ export default class SourceResolver {
   @Roles([RolesEnum.USER])
   @AccessControl(AccessControlModels.Source)
   public getSourceSchema(@Args('id') id: string): Promise<string> {
-    return this.service.getSchema(id);
+    return this.service.getSchemaById(id);
   }
 
   @Mutation()
