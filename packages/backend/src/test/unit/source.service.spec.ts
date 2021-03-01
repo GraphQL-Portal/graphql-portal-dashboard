@@ -20,13 +20,6 @@ describe('SourceService', () => {
   let apiDefService: ApiDefService;
   let source: ISourceDocument;
 
-  let getSchemaMock: jest.SpyInstance;
-  const setGetSchemaMock = (): void => {
-    getSchemaMock = jest
-      .spyOn(sourceService, 'getSchema')
-      .mockResolvedValue('');
-  };
-
   const userId = randomObjectId();
 
   beforeAll(async () => {
@@ -35,7 +28,6 @@ describe('SourceService', () => {
 
     sourceService = app.get<SourceService>(SourceService);
     apiDefService = app.get<ApiDefService>(ApiDefService);
-    setGetSchemaMock();
   });
 
   afterAll(async () => {
@@ -55,7 +47,6 @@ describe('SourceService', () => {
       source = await sourceService.create(sourceExample, userId);
       expect(source).toBeDefined();
       expectSource(source);
-      expect(getSchemaMock).toBeCalledTimes(1);
     });
 
     it('findAllByUser returns a source', async () => {
@@ -69,25 +60,6 @@ describe('SourceService', () => {
       const result = await sourceService.findByIds([source.id!]);
       expect(result).toBeDefined();
       expect(result).toHaveLength(1);
-    });
-  });
-
-  describe('getSchemaById', () => {
-    it('should call apiDefService.getMeshSchema', async () => {
-      getSchemaMock.mockRestore();
-      const spiedGetMeshSchema = jest
-        .spyOn(apiDefService, 'getMeshSchema')
-        .mockResolvedValue('schema');
-      await sourceService.getSchemaById(source._id);
-      expect(spiedGetMeshSchema).toBeCalledTimes(1);
-      expect(spiedGetMeshSchema).toBeCalledWith(
-        expect.objectContaining({
-          sources: expect.arrayContaining([
-            expect.objectContaining({ _id: source._id }),
-          ]),
-        })
-      );
-      setGetSchemaMock();
     });
   });
 
@@ -119,10 +91,9 @@ describe('SourceService', () => {
         ...newData,
         ...mongoDocumentSchema,
       });
-      expect(isSourceUsedMock).toBeCalledTimes(1);
-      expect(setLastUpdateTimeMock).toBeCalledTimes(1);
-      expect(publishApiDefsUpdatedMock).toBeCalledTimes(1);
-      expect(getSchemaMock).toBeCalledTimes(1);
+      expect(isSourceUsedMock).toHaveBeenCalledTimes(1);
+      expect(setLastUpdateTimeMock).toHaveBeenCalledTimes(1);
+      expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -135,7 +106,7 @@ describe('SourceService', () => {
       await expect(() => sourceService.delete(source._id)).rejects.toThrow(
         'is used'
       );
-      expect(isSourceUsedMock).toBeCalledTimes(1);
+      expect(isSourceUsedMock).toHaveBeenCalledTimes(1);
     });
 
     it('should delete document and call publishApiDefsUpdated', async () => {
@@ -146,7 +117,7 @@ describe('SourceService', () => {
       const result = await sourceService.delete(source._id);
 
       expect(result).toBe(true);
-      expect(isSourceUsedMock).toBeCalledTimes(1);
+      expect(isSourceUsedMock).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -29,8 +29,6 @@ export default class SourceService implements IAccessControlService {
     data: SourceConfig,
     user: string
   ): Promise<ISourceDocument> {
-    await this.getSchema(data);
-
     const source = await this.sourceModel.create({ ...data, user });
 
     this.logger.log(`Created source ${data.name}`, this.constructor.name, data);
@@ -46,8 +44,6 @@ export default class SourceService implements IAccessControlService {
 
     if (!toUpdate)
       throw new ValidationError(`Source with id ${id} does not exist`);
-
-    await this.getSchema({ ...toUpdate, ...data });
 
     const source = (await this.sourceModel.findByIdAndUpdate(id, data, {
       new: true,
@@ -80,18 +76,5 @@ export default class SourceService implements IAccessControlService {
 
   public async isOwner(user: string, _id: string): Promise<boolean> {
     return Boolean(await this.sourceModel.findOne({ _id, user }));
-  }
-
-  public async getSchema(source: SourceConfig): Promise<string> {
-    return this.apiDefService.getMeshSchema({
-      name: '',
-      endpoint: '',
-      sources: [source],
-    });
-  }
-
-  public async getSchemaById(_id: string): Promise<string> {
-    const source = (await this.sourceModel.findOne({ _id }))!;
-    return this.getSchema(source);
   }
 }
