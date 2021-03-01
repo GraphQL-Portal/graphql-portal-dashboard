@@ -24,7 +24,6 @@ const HANDLERS_LIST = [
   'postgraphile',
   'soap',
   'thrift',
-  'tuql',
   'ContentfulHandler',
   'CrunchbaseHandler',
   'FedexHandler',
