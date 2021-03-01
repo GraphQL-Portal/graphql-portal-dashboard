@@ -1733,7 +1733,7 @@
     pascal-case "3.1.2"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@^0.12.0":
+"@graphql-mesh/openapi@^0.12.0", "@graphql-mesh/openapi@^0.12.14":
   version "0.12.18"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.12.18.tgz#46d328708057b0ecc671071380194f888364cd7a"
   integrity sha512-dR3ZdpmK0y5yzRTkrG4Gx3UheSMLDgu1yiTbJ8gCv0wWW/OlIjwceaHFDL4bJTYE1j1ph3oBFU8C0k7nT45N3g==
@@ -1951,6 +1951,13 @@
   dependencies:
     "@graphql-mesh/graphql" "^0.13.0"
 
+"@graphql-portal/crunchbase@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.0.2.tgz#3ac1587b902049d34a6b892f8312758d9f892814"
+  integrity sha512-V16qxlLvoGUQwfM3dA7p9PeDVHOXNqVMoFUf+pXNyHa3Ut3nO1AvPQ4UzuSJYB3/JbvxVMVzbv5tteRBp/i2iQ==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.12.0"
+
 "@graphql-portal/dashboard@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/dashboard/-/dashboard-0.1.1.tgz#f7b7b11da66e9ec7b46eb32a53aafed8ddf529ea"
@@ -1959,6 +1966,18 @@
     "@graphql-portal/logger" "^0.3.0"
     "@graphql-portal/types" "^0.16.0"
     axios "^0.21.1"
+
+"@graphql-portal/datasources@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.0.3.tgz#0cdba5a63a49421bf73f69157e5377278d7f1b0b"
+  integrity sha512-PuCyUmi3wBZ0Bmra3/7KW6mwZEYgCf9lbkFr3EzG4xM24uwtbxvpkCa2OZSy+Jkc+FbKhBEbRX4tz0whLyZU0w==
+
+"@graphql-portal/fedex@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/fedex/-/fedex-0.0.2.tgz#3833ac03aabac03a765354ab80b84bc43cb155a7"
+  integrity sha512-UDTvb4gX6xZ6ZlabOFZ8aHkdTdIT2LngsBESD0fDydB2VG1z3Mc30QCDSYHAug9Pds/SPao/HFaw6JlrDeFPmQ==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.12.0"
 
 "@graphql-portal/gateway@0.16.0":
   version "0.16.0"
@@ -2000,6 +2019,14 @@
     uuid "^8.3.2"
     yaml "^1.10.0"
 
+"@graphql-portal/ip-api@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.0.1.tgz#6016745de29d8e934ea9fd0124860a7f867587a6"
+  integrity sha512-4Ql0engG4vSNiHIzlwF6+zoJNWTSv5rLMER/qtWleJJIPG1J6ArUbgH8BQol9HySKYmz+9xGyVO4Nu/Yx2dcrA==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.12.0"
+    graphql "^15.4.0"
+
 "@graphql-portal/logger@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/logger/-/logger-0.3.0.tgz#a6b6e15d73fbbc6c6b650f1047665d3738221f70"
@@ -2015,6 +2042,13 @@
     chalk "4.1.0"
     winston "3.3.3"
 
+"@graphql-portal/salesforce@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/salesforce/-/salesforce-0.0.2.tgz#645ad0ac9f33048a49311cf0ccdf9df5b6d4de0f"
+  integrity sha512-23ulSR6q8AYiI89XcU+65kri5sM2sa/BnYXoff3CaUihSnp3xWvpyO+YSlzkTAXA00yXzyPB+UWYM06AikQN5A==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.12.0"
+
 "@graphql-portal/slack@^0.0.3":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@graphql-portal/slack/-/slack-0.0.3.tgz#6431ea652f5aff30ec98e1bfec95d83b3d528a73"
@@ -2022,6 +2056,21 @@
   dependencies:
     "@graphql-mesh/openapi" "^0.12.0"
     graphql "^15.4.0"
+
+"@graphql-portal/stripe@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/stripe/-/stripe-0.0.2.tgz#fe2abb20ba933bc5a573d76c0c33ec64d0c98851"
+  integrity sha512-SY52/+1dElpBgKA5BtpuCohg/7779AmkhRYsbl45ke0Z471JgfzTEqb8/lrQTxGmfxjfWR4ySreKNTKhUPtRnw==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.12.0"
+
+"@graphql-portal/twitter@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.1.0.tgz#8a3ae1574855f6b9769fb8624cc6878796c26c4d"
+  integrity sha512-R/kDk7BHXkBqfCr+01o5JoDQ21x6EkI/8zZ2aQNCSCfxMEKxA8Vja5N+b9jgDoO5qh4yveRWMHtAkr9Me4d9Kg==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.12.14"
+    "@graphql-mesh/types" "^0.32.0"
 
 "@graphql-portal/types@0.16.2", "@graphql-portal/types@^0.16.2":
   version "0.16.2"
@@ -2036,6 +2085,13 @@
   integrity sha512-wxjQvB/nNC8X/U2tgn2HRHsDwj8GSHO11OihKSK9SFcjpdFDpKInNFg8OCu6qPirZByM25msq3Kgdk/CuaFioQ==
   dependencies:
     ajv "7.1.1"
+
+"@graphql-portal/weatherbit@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.0.2.tgz#cbc33ba2342024dd5e1ab05a6dfd1cc61a413899"
+  integrity sha512-Prua6xDCYVLi2T7O93uWzLCbUpN59NX09F+tCcnnMgY39MLOE5knyXstLgyVcSQFodHporZUFnI8ym3f65shaw==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.12.0"
 
 "@graphql-tools/batch-delegate@^6.2.4", "@graphql-tools/batch-delegate@^6.2.6":
   version "6.2.6"
