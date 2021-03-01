@@ -23,14 +23,15 @@ export default class ApiDefResolver {
   }
 
   @Query()
-  @Roles([RolesEnum.ADMIN, RolesEnum.GATEWAY])
-  public getAllApiDefs(
-    @AuthorizationEntity() user: { role: RolesEnum }
-  ): Promise<ApiDefsWithTimestamp> {
-    if (user.role === RolesEnum.GATEWAY) {
-      return this.service.findAllForGateway();
-    }
+  @Roles([RolesEnum.ADMIN])
+  public getAllApiDefs(): Promise<ApiDefsWithTimestamp> {
     return this.service.findAll();
+  }
+
+  @Query()
+  @Roles([RolesEnum.GATEWAY])
+  public getAllApiDefsForGateway(): Promise<ApiDefsWithTimestamp> {
+    return this.service.findAllForGateway();
   }
 
   @Query()

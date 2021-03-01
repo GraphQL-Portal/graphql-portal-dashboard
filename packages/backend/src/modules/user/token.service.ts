@@ -69,20 +69,21 @@ export default class TokenService implements OnModuleInit {
     return { refreshToken, accessToken };
   }
 
-  public async generateGatewaySecret(): Promise<void> {
+  public async generateGatewaySecret(): Promise<string> {
     if (config.gateway.secret) {
       try {
         if (jwt.verify(config.gateway.secret).userId === Roles.GATEWAY) {
-          return;
+          return config.gateway.secret;
         }
       } catch (error) {}
     }
 
     const secret = jwt.sign(Roles.GATEWAY, Roles.GATEWAY, 0); // gateway secret should not expire
-    config.gateway.secret = secret;
     this.logger.warn(
-      `config.gateway.secret is not set, generated secret: ${secret}`,
+      `config.gateway.secret is not set, gateway routes won't be protected, please use generated secret: ${secret}`,
       this.constructor.name
     );
+
+    return secret;
   }
 }

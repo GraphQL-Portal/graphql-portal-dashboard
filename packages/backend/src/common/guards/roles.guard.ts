@@ -4,6 +4,7 @@ import PermissionTool from '../tool/permission.tool';
 import Metadata from '../enum/metadata.enum';
 import { AuthenticationError } from 'apollo-server-express';
 import Roles from '../enum/roles.enum';
+import { config } from 'node-config-ts';
 
 @Injectable()
 export default class RolesGuard implements CanActivate {
@@ -15,6 +16,9 @@ export default class RolesGuard implements CanActivate {
       context.getHandler()
     );
     if (!roles) return true;
+    if (roles.includes(Roles.GATEWAY) && !config.gateway.secret) {
+      return true;
+    }
 
     const user = PermissionTool.getUserFromRequest(context);
 
