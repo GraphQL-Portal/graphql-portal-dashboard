@@ -83,6 +83,7 @@ describe('ApiDefService', () => {
         { ...sourceExample, name: 'api-source' },
         userId
       );
+      expect(getMeshSchemaMock).toHaveBeenCalledTimes(1);
       const result = await apiDefService.create(
         apiDefExample,
         [source._id],
@@ -92,7 +93,7 @@ describe('ApiDefService', () => {
       expect(apiDef).toBeDefined();
       expectApiDef(apiDef);
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
-      expect(getMeshSchemaMock).toHaveBeenCalledTimes(1);
+      expect(getMeshSchemaMock).toHaveBeenCalledTimes(2);
     });
 
     it('findAll returns an apiDef', async () => {

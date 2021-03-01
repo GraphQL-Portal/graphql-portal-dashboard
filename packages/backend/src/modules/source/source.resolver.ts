@@ -22,6 +22,13 @@ export default class SourceResolver {
     return this.service.findAllByUser(user);
   }
 
+  @Query()
+  @Roles([RolesEnum.USER])
+  @AccessControl(AccessControlModels.Source)
+  public getSourceSchema(@Args('id') id: string): Promise<string> {
+    return this.service.getSchemaById(id);
+  }
+
   @Mutation()
   @Roles([RolesEnum.USER])
   public createSource(
