@@ -6,11 +6,20 @@ import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
+import { isUrl } from './validation';
 
 const suite = vest.create('odata_handler', ({ baseUrl }) => {
   test('baseUrl', 'baseUrl is required', () => {
     enforce(baseUrl).isNotEmpty();
   });
+
+  test(
+    'baseUrl',
+    'Please use absolute URL http://example.com or http://localhost:80',
+    () => {
+      isUrl(baseUrl);
+    }
+  );
 });
 
 const ODATA_DEFAULT_STATE = {

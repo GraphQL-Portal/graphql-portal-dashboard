@@ -30,7 +30,7 @@ export const ContentfulHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Endpoint"
+            label="URL of an existing Contentful endpoint"
             required
             name="endpoint"
             error={hasErrors('endpoint')}

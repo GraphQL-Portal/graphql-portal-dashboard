@@ -31,7 +31,7 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Base url"
+            label="Base URL for an existing OData endpoint"
             required
             name="baseUrl"
             error={hasErrors('baseUrl')}

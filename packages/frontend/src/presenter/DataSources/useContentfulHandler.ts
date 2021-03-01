@@ -4,6 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
+import { isUrl } from './validation';
 
 const CONTENTFUL_DEFAULT_STATE = {
   token: '',
@@ -14,9 +15,18 @@ const suite = vest.create('contentful_handler', ({ token, endpoint }) => {
   test('token', 'Token is required', () => {
     enforce(token).isNotEmpty();
   });
+
   test('endpoint', 'Endpoint is required', () => {
     enforce(endpoint).isNotEmpty();
   });
+
+  test(
+    'endpoint',
+    'Please use absolute URL http://example.com or http://localhost:80',
+    () => {
+      isUrl(endpoint);
+    }
+  );
 });
 
 export const useContentfulHandler = ({

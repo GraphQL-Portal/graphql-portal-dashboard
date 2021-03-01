@@ -5,6 +5,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
+import { isUrl } from './validation';
 
 const suite = vest.create(
   'grpc_handler',
@@ -12,6 +13,15 @@ const suite = vest.create(
     test('endpoint', 'Endpoint is required', () => {
       enforce(endpoint).isNotEmpty();
     });
+
+    test(
+      'endpoint',
+      'Please use absolute URL http://example.com or http://localhost:80',
+      () => {
+        isUrl(endpoint);
+      }
+    );
+
     test('protoFilePath', 'gRPC Proto file path is required', () => {
       enforce(protoFilePath).isNotEmpty();
     });
