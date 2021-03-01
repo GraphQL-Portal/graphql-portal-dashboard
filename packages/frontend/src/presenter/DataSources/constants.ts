@@ -34,6 +34,7 @@ const HANDLERS_LIST = [
   'WeatherbitHandler',
   'IPAPIHandler',
 ];
+
 const TRANSFORMS_LIST = [
   'cache',
   'encapsulate',
@@ -82,4 +83,12 @@ export const TRANSFORMS_LABELS: { [key: string]: string } = {
   filterSchema: 'Filter Schema',
   namingConvention: 'Naming Convention',
   resolversComposition: 'Resolvers Composition',
+};
+
+export const CUSTOM_HANDLER_TO_PACKAGE: Record<string, string> = {
+  ContentfulHandler: '@graphql-portal/contentful',
+};
+
+export const PACKAGE_TO_CUSTOM_HANDLER: Record<string, string> = {
+  '@graphql-portal/contentful': 'ContentfulHandler',
 };

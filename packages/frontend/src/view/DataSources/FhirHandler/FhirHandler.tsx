@@ -17,7 +17,7 @@ export const FhirHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Endpoint"
+            label="URL of an existing Fhir endpoint"
             required
             name="endpoint"
             error={hasErrors('endpoint')}

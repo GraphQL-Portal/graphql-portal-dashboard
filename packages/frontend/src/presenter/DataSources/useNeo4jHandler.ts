@@ -9,9 +9,19 @@ const suite = vest.create('neo4j_handler', ({ url, password, username }) => {
   test('url', 'Url is required', () => {
     enforce(url).isNotEmpty();
   });
+
+  test(
+    'url',
+    'Please enter valid URL for the Neo4j instance (example: neo4j://localhost)',
+    () => {
+      enforce(url).matches(/^neo4j:\/\/(.*)?/);
+    }
+  );
+
   test('username', 'Username is required', () => {
     enforce(username).isNotEmpty();
   });
+
   test('password', 'Password is required', () => {
     enforce(password).isNotEmpty();
   });
@@ -28,7 +38,7 @@ const NEO4J_DEFAULT_STATE = {
 };
 
 export const useNeo4jHandler = ({ state, updateState, step }: HandlerStep) => {
-  const defaultValues = Object.assign({}, NEO4J_DEFAULT_STATE, state);
+  const defaultValues = Object.assign({}, NEO4J_DEFAULT_STATE, state.handler);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',

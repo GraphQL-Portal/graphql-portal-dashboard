@@ -6,6 +6,7 @@ import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
+import { isUrl } from './validation';
 
 const GRAPHQL_DEFAULT_STATE = {
   endpoint: '',
@@ -22,6 +23,14 @@ const suite = vest.create('graphql_handler', ({ endpoint }) => {
   test('endpoint', 'Endpoint is required', () => {
     enforce(endpoint).isNotEmpty();
   });
+
+  test(
+    'endpoint',
+    'Please use absolute URL http://example.com or http://localhost:80',
+    () => {
+      isUrl(endpoint);
+    }
+  );
 });
 
 export const useGraphQLHandler = ({

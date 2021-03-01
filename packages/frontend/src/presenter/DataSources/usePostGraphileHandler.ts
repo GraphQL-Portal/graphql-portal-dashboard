@@ -11,14 +11,11 @@ import {
   arrayToFieldArray,
 } from './helpers';
 
-const suite = vest.create(
-  'post_graphile_handler',
-  ({ connectionString, port, database, user, password }) => {
-    test('connectionString', 'Connection string is required', () => {
-      enforce(connectionString).isNotEmpty();
-    });
-  }
-);
+const suite = vest.create('post_graphile_handler', ({ connectionString }) => {
+  test('connectionString', 'Connection string is required', () => {
+    enforce(connectionString).isNotEmpty();
+  });
+});
 
 const POST_GRAPHILE_DEFAULT_STATE = {
   connectionString: '',

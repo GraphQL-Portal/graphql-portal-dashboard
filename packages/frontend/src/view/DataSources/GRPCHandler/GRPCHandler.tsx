@@ -27,7 +27,7 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="Endpoint"
+            label="URL of an existing gRPC endpoint"
             required
             name="endpoint"
             error={hasErrors('endpoint')}
