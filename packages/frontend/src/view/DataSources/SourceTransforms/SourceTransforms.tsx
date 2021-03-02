@@ -7,6 +7,7 @@ import { Select, OutlineButton, FormGroup } from '../../../ui';
 import { HandlerRow, HandlerCol } from '../Layout';
 import { TransformEditors } from '../TransformEditors';
 import { PrefixTransform } from '../PrefixTransform';
+import { RenameTransform } from '../RenameTransform';
 
 import { List } from './List';
 import { useStyles } from './useStyles';
@@ -14,6 +15,7 @@ import { useStyles } from './useStyles';
 // Put Transform Custom Forms here
 const TRANSFORM_TABLE: TransformsMapper = {
   prefix: PrefixTransform,
+  rename: RenameTransform,
 };
 
 const getTransform = (transform: string) =>

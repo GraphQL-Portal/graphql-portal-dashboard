@@ -2,6 +2,7 @@ import {
   OpenapiHandler,
   PrefixTransformConfig,
   SelectQueryOrMutationFieldConfig,
+  RenameTransformObject,
 } from '@graphql-portal/types';
 import { ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
@@ -27,3 +28,9 @@ export type PrefixForm = Omit<PrefixTransformConfig, 'ignore'> & {
 };
 
 export type PrefixFormMethods = FormMethods<PrefixForm>;
+
+export type RenameForm = {
+  items: RenameTransformObject[];
+};
+
+export type RenameFormMethods = FormMethods<RenameForm>;

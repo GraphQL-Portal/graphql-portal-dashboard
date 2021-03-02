@@ -1,4 +1,7 @@
-import { SelectQueryOrMutationFieldConfig } from '@graphql-portal/types';
+import {
+  RenameTransformObject,
+  SelectQueryOrMutationFieldConfig,
+} from '@graphql-portal/types';
 import { ObjectArrayItem, StringArrayItem } from '../Forms';
 import {
   FieldArray,
@@ -7,7 +10,11 @@ import {
   OnSubmit,
 } from '../HookForm';
 import { HandlerStep, TransformStep } from './components';
-import { OpenapiFormMethods, PrefixFormMethods } from './forms';
+import {
+  OpenapiFormMethods,
+  PrefixFormMethods,
+  RenameFormMethods,
+} from './forms';
 
 export type UseOpenapiDataSourceHook = (
   props: HandlerStep
@@ -34,4 +41,13 @@ export type UsePrefixTransformHook = (
   ignoredTypes: FieldArray<StringArrayItem>;
   addIgnoredTypes: FieldArrayAppend;
   removeIgnoredTypes: FieldArrayRemove;
+};
+
+export type UseRenameTransformHook = (
+  props: TransformStep
+) => Pick<RenameFormMethods, 'control' | 'errors' | 'register'> & {
+  onSubmit: OnSubmit;
+  items: FieldArray<RenameTransformObject>;
+  onAdd: FieldArrayAppend;
+  onRemove: FieldArrayRemove;
 };
