@@ -6,12 +6,15 @@ import { TransformsStep, TransformsMapper } from '../../../types';
 import { Select, OutlineButton, FormGroup } from '../../../ui';
 import { HandlerRow, HandlerCol } from '../Layout';
 import { TransformEditors } from '../TransformEditors';
+import { PrefixTransform } from '../PrefixTransform';
 
 import { List } from './List';
 import { useStyles } from './useStyles';
 
 // Put Transform Custom Forms here
-const TRANSFORM_TABLE: TransformsMapper = {};
+const TRANSFORM_TABLE: TransformsMapper = {
+  prefix: PrefixTransform,
+};
 
 const getTransform = (transform: string) =>
   TRANSFORM_TABLE[transform] || TransformEditors;
@@ -41,9 +44,8 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
         const { name } = transform;
         const Handler = getTransform(name);
         return (
-          <FormGroup title={name}>
+          <FormGroup title={name} key={`${name}-${key}`}>
             <Handler
-              key={`${name}-${key}`}
               type={name}
               onCancel={onCancelEdit(key)}
               onSuccess={onUpdateTransform(Number(key))}
@@ -75,9 +77,8 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
       {fields.map((field, idx) => {
         const Handler = getTransform(field);
         return (
-          <FormGroup title={field}>
+          <FormGroup title={field} key={`${field}-${idx}`}>
             <Handler
-              key={`${field}-${idx}`}
               type={field}
               onCancel={onRemoveTransform(idx)}
               onSuccess={addTransform}

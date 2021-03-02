@@ -54,20 +54,16 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Use HTTP GET for query operations"
-                control={
-                  <Controller
-                    name="useGETForQueries"
-                    control={control}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormControlLabel
+            label="Use HTTP GET for query operations"
+            control={
+              <Controller
+                name="useGETForQueries"
+                control={control}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <HandlerRow>

@@ -1,13 +1,13 @@
 import { SelectQueryOrMutationFieldConfig } from '@graphql-portal/types';
-import { ObjectArrayItem } from '../Forms';
+import { ObjectArrayItem, StringArrayItem } from '../Forms';
 import {
   FieldArray,
   FieldArrayAppend,
   FieldArrayRemove,
   OnSubmit,
 } from '../HookForm';
-import { HandlerStep } from './components';
-import { OpenapiFormMethods } from './forms';
+import { HandlerStep, TransformStep } from './components';
+import { OpenapiFormMethods, PrefixFormMethods } from './forms';
 
 export type UseOpenapiDataSourceHook = (
   props: HandlerStep
@@ -25,4 +25,13 @@ export type UseOpenapiDataSourceHook = (
   queryOrMutationFields: FieldArray<SelectQueryOrMutationFieldConfig>;
   addQueryOrMutationField: FieldArrayAppend;
   removeQueryOrMutationField: FieldArrayRemove;
+};
+
+export type UsePrefixTransformHook = (
+  props: TransformStep
+) => Pick<PrefixFormMethods, 'control' | 'errors' | 'register'> & {
+  onSubmit: OnSubmit;
+  ignoredTypes: FieldArray<StringArrayItem>;
+  addIgnoredTypes: FieldArrayAppend;
+  removeIgnoredTypes: FieldArrayRemove;
 };
