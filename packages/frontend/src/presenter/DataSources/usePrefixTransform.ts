@@ -1,7 +1,6 @@
 import { useFieldArray, useForm } from 'react-hook-form';
 
 import { PrefixForm, UsePrefixTransformHook } from '../../types';
-import { AVAILABLE_TRANSFORMS } from './constants';
 import { arrayStringFromObjectArray, arrayToFieldArray } from './helpers';
 
 const PREFIX_DEFAULT_VALUES = {
@@ -16,7 +15,6 @@ export const usePrefixTransform: UsePrefixTransformHook = ({
   onSuccess,
   value,
 }) => {
-  const { description = '' } = AVAILABLE_TRANSFORMS[type];
   const { ignore, ...transform } = value || {};
   const defaultValues = Object.assign({}, PREFIX_DEFAULT_VALUES, transform, {
     ignore: arrayToFieldArray(ignore || []),
@@ -33,8 +31,6 @@ export const usePrefixTransform: UsePrefixTransformHook = ({
   const onSubmit = ({ ignore, ...rest }: PrefixForm) => {
     onCancel();
     onSuccess({
-      name: type,
-      description,
       [type]: {
         ...rest,
         ignore: arrayStringFromObjectArray(ignore),

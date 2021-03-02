@@ -49,11 +49,7 @@ export const useTransformEditors = ({
 
   const onSubmit = ({ transform }: { transform: any }) => {
     onCancel();
-    onSuccess({
-      name: type,
-      description: source.description || '',
-      [type]: transform,
-    });
+    onSuccess({ [type]: transform });
   };
 
   return {

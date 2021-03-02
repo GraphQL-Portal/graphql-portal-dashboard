@@ -17,3 +17,4 @@ export { filterObjectByList } from './filterObjectByList';
 export { getHandlerName, getPackageName } from './transformHandlerName';
 export { getHandlerKey } from './getHandlerKey';
 export { createDataSourceList } from './createDataSourceList';
+export { createTransformList } from './createTransformList';

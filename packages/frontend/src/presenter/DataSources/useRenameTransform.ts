@@ -1,11 +1,8 @@
 import { useFieldArray, useForm } from 'react-hook-form';
 
 import { RenameForm, UseRenameTransformHook } from '../../types';
-import { AVAILABLE_TRANSFORMS } from './constants';
 
-const RENAME_DEFAULT_VALUES = {
-  items: [],
-};
+const RENAME_DEFAULT_VALUES = { items: [] };
 
 export const useRenameTransform: UseRenameTransformHook = ({
   type,
@@ -13,8 +10,9 @@ export const useRenameTransform: UseRenameTransformHook = ({
   onSuccess,
   value,
 }) => {
-  const { description = '' } = AVAILABLE_TRANSFORMS[type];
-  const defaultValues = Object.assign({}, RENAME_DEFAULT_VALUES, value || {});
+  const defaultValues = Object.assign({}, RENAME_DEFAULT_VALUES, {
+    items: value || {},
+  });
 
   const { handleSubmit, control, errors, register } = useForm<RenameForm>({
     mode: 'onSubmit',
@@ -26,11 +24,7 @@ export const useRenameTransform: UseRenameTransformHook = ({
 
   const onSubmit = ({ items }: RenameForm) => {
     onCancel();
-    onSuccess({
-      name: type,
-      description,
-      [type]: items,
-    });
+    onSuccess({ [type]: items });
   };
 
   return {
