@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { enforce, test } from 'vest';
 
-import { TransformEditors } from '../../types';
+import { TransformStep } from '../../types';
 import { useFormErrors } from '../../model/Hooks';
 import { validateAjv, getTransformSchema } from './helpers';
 import {
@@ -18,7 +18,7 @@ export const useTransformEditors = ({
   onCancel,
   onSuccess,
   value,
-}: TransformEditors) => {
+}: TransformStep) => {
   const source = AVAILABLE_TRANSFORMS[type];
 
   enforce.extend({

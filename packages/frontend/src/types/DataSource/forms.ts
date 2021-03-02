@@ -1,8 +1,9 @@
 import {
   OpenapiHandler,
+  PrefixTransformConfig,
   SelectQueryOrMutationFieldConfig,
 } from '@graphql-portal/types';
-import { ObjectArrayItem } from '../Forms';
+import { ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
 
 export type OpenapiForm = Omit<
@@ -20,3 +21,9 @@ export type OpenapiForm = Omit<
 };
 
 export type OpenapiFormMethods = FormMethods<OpenapiForm>;
+
+export type PrefixForm = Omit<PrefixTransformConfig, 'ignore'> & {
+  ignore: FieldArray<StringArrayItem>;
+};
+
+export type PrefixFormMethods = FormMethods<PrefixForm>;
