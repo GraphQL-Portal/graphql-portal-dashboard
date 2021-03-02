@@ -1,10 +1,10 @@
-import { StringArray } from '../../../types';
+import { FieldArray, StringArrayItem } from '../../../types';
 
 export const arrayStringFromObjectArray = (
-  objects: StringArray = []
+  objects: FieldArray<StringArrayItem> = []
 ): string[] => {
   return objects.reduce((acc, { value }) => {
-    acc.push(value);
+    acc.push(value!);
     return acc;
   }, [] as string[]);
 };

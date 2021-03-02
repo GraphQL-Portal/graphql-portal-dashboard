@@ -15,7 +15,7 @@ export type HandlerStep = DataSourceStep<HandlerForm> & Partial<SourceProp>;
 export type TransformsStep = DataSourceStep<TransformsForm> &
   Partial<SourceProp>;
 
-export type TransformEditors = {
+export type TransformStep = {
   type: string;
   onCancel: NOOP;
   onSuccess(data: any): void;
