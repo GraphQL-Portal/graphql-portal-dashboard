@@ -15,11 +15,13 @@ import { getKeyFromText } from '../../../utils';
 import { TransformsList as Props } from '../../../types';
 import { TRANSFORMS_HEAD } from '../constants';
 import { useStyles } from './useStyles';
-import { formatTransformLabel } from '../../../presenter/DataSources/helpers/formatTransformLabel';
+import { createTransformList } from '../../../presenter/DataSources/helpers';
 
 export const List: React.FC<Props> = ({ transforms, onRemove, onEdit }) => {
   const { list } = useStyles();
   if (transforms.length === 0) return null;
+  const transformsList = createTransformList(transforms);
+
   return (
     <Table className={list}>
       <TableHead>
@@ -33,9 +35,9 @@ export const List: React.FC<Props> = ({ transforms, onRemove, onEdit }) => {
         ))}
       </TableHead>
       <TableBody>
-        {transforms.map((transform, idx) => (
-          <TableRow key={transform.name}>
-            <TableCell>{formatTransformLabel(transform.name)}</TableCell>
+        {transformsList.map((transform, idx) => (
+          <TableRow key={getKeyFromText(transform.name)}>
+            <TableCell>{transform.title}</TableCell>
             <TableCell>{transform.description}</TableCell>
             <TableCell />
             <TableActionCell>
