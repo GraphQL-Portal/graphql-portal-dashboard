@@ -34,15 +34,16 @@ export const useContentfulHandler = ({
   updateState,
   step,
 }: HandlerStep) => {
-  const handlerState = Object.assign(
+  const defaultValues = Object.assign(
     {},
     CONTENTFUL_DEFAULT_STATE,
     state.handler
   );
+
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: handlerState,
+    defaultValues,
   });
 
   useFormErrors(errors);

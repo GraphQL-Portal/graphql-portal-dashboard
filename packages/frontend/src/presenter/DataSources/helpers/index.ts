@@ -13,5 +13,7 @@ export { arrayStringFromObjectArray } from './arrayStringFromObjectArray';
 export { packHandler, unpackHandler } from './transformHandler';
 export { objectToFieldArray } from './objectToFieldArray';
 export { arrayToFieldArray } from './arrayToFieldArray';
-export { sortSourcesByName } from './sortSourcesByName';
 export { filterObjectByList } from './filterObjectByList';
+export { getHandlerName, getPackageName } from './transformHandlerName';
+export { getHandlerKey } from './getHandlerKey';
+export { createDataSourceList } from './createDataSourceList';
