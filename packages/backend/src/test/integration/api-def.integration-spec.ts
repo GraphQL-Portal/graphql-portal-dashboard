@@ -96,11 +96,11 @@ describe('ApiDefResolver', () => {
           .send({ query, variables });
     });
 
-    describe('getAllApiDefs', () => {
-      it('should call findAllForGateway', async () => {
+    describe('getAllApiDefsForGateway', () => {
+      it('should call findAllForGateway without config.gateway.token', async () => {
         await graphQlRequest(
           `query {
-            getAllApiDefs {
+            getAllApiDefsForGateway {
               timestamp
               apiDefs {
                 name
@@ -125,13 +125,40 @@ describe('ApiDefResolver', () => {
               }
             }
           }`,
-          null,
-          { [HeadersEnum.AUTHORIZATION]: gatewayToken }
+          {},
+          {}
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.findAllForGateway).toHaveBeenCalledTimes(1);
       });
 
+      it('return unauthorized without token with config.gateway.token', async () => {
+        config.gateway.secret = await tokenService.generateGatewaySecret();
+        const { body } = await graphQlRequest(
+          `query {
+            getAllApiDefsForGateway {
+              timestamp
+              apiDefs {
+                name
+                endpoint
+                sources {
+                  name
+                  handler
+                  transforms
+                }
+              }
+            }
+          }`,
+          {},
+          {}
+        ).expect(HttpStatus.OK);
+
+        expect(body.errors[0].extensions.code).toBe('UNAUTHENTICATED');
+        expect(apiDefService.findAllByUser).toHaveBeenCalledTimes(0);
+      });
+    });
+
+    describe('getAllApiDefs', () => {
       it('should call findAll for admin', async () => {
         await graphQlRequest(
           `query {
