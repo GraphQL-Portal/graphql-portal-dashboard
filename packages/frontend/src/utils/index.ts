@@ -15,3 +15,7 @@ export { alignFirstCellLeft } from './alignFirstCellLeft';
 export { formatArgumentLabel } from './formatArgumentLabel';
 export { formatValueLabel } from './formatValueLabel';
 export { checkHandler } from './checkHandler';
+export { getHead } from './getHead';
+export { objectKeys } from './objectKeys';
+export { getObjProp } from './getObjProp';
+export { getObjPropOr } from './getObjPropOr';

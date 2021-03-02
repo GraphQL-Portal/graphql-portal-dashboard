@@ -87,8 +87,24 @@ export const TRANSFORMS_LABELS: { [key: string]: string } = {
 
 export const CUSTOM_HANDLER_TO_PACKAGE: Record<string, string> = {
   ContentfulHandler: '@graphql-portal/contentful',
+  CrunchbaseHandler: '@graphql-portal/crunchbase',
+  FedexHandler: '@graphql-portal/contentful',
+  IPAPIHandler: '@graphql-portal/ip-api',
+  SalesforceHandler: '@graphql-portal/salesforce',
+  SlackHandler: '@graphql-portal/slack',
+  StripeHandler: '@graphql-portal/stripe',
+  TwitterHandler: '@graphql-portal/twitter',
+  WeatherbitHandler: '@graphql-portal/weatherbit',
 };
 
 export const PACKAGE_TO_CUSTOM_HANDLER: Record<string, string> = {
   '@graphql-portal/contentful': 'ContentfulHandler',
+  '@graphql-portal/crunchbase': 'CrunchbaseHandler',
+  '@graphql-portal/fedex': 'FedexHandler',
+  '@graphql-portal/ip-api': 'IPAPIHandler',
+  '@graphql-portal/salesforce': 'SalesforceHandler',
+  '@graphql-portal/slack': 'SlackHandler',
+  '@graphql-portal/stripe': 'StripeHandler',
+  '@graphql-portal/twitter': 'TwitterHandler',
+  '@graphql-portal/weatherbit': 'WeatherbitHandler',
 };

@@ -11,7 +11,7 @@ import { useDeleteSource } from '../../model/DataSources/commands';
 import { DELETE_DATA_SOURCE } from '../../view/Dialogs';
 import { DataSource, AError } from '../../types';
 import { AVAILABLE_HANDLERS } from './constants';
-import { sortSourcesByName } from './helpers';
+import { getHandlerKey, createDataSourceList } from './helpers';
 
 export const useDataSources = () => {
   const { showErrorToast } = useToast();
@@ -28,8 +28,10 @@ export const useDataSources = () => {
     },
   });
 
+  const connected = createDataSourceList(data || []);
+
   const onDelete = (idx: number) => () => {
-    const { _id: id, name } = data[idx];
+    const { _id: id, name } = connected[idx];
     onOpenDialog(DELETE_DATA_SOURCE, {
       onSuccess: () => {
         deleteSource({ variables: { id } });
@@ -41,7 +43,8 @@ export const useDataSources = () => {
   };
 
   const onUpdate = ({ handler, name, transforms, _id }: DataSource) => () => {
-    const key = Object.keys(handler)[0];
+    const key = getHandlerKey(handler);
+
     setSource({
       key,
       connector: AVAILABLE_HANDLERS[key],
@@ -51,7 +54,7 @@ export const useDataSources = () => {
   };
 
   return {
-    connected: sortSourcesByName(data),
+    connected,
     loading,
     onDelete,
     onUpdate,

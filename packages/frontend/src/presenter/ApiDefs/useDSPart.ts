@@ -8,6 +8,7 @@ import {
   UseDSPartHook,
 } from '../../types';
 import { useSources } from '../../model/DataSources/queries';
+import { createDataSourceList } from '../DataSources/helpers';
 
 export const useDSPart: UseDSPartHook = ({
   control,
@@ -19,6 +20,8 @@ export const useDSPart: UseDSPartHook = ({
   const sourceTable = useRef<AnyTable>({});
   const { data, loading } = useSources();
 
+  const added = createDataSourceList(data);
+
   const {
     fields: sourceFields,
     append: addSource,
@@ -26,7 +29,7 @@ export const useDSPart: UseDSPartHook = ({
   } = useFieldArray({ control, name: 'sources' });
 
   useEffect(() => {
-    const { trig, table } = data.reduce(
+    const { trig, table } = added.reduce(
       (acc: { trig: TriggersTable; table: AnyTable }, source: any) => {
         const { name } = source;
         acc.trig[name] = false;
@@ -42,7 +45,7 @@ export const useDSPart: UseDSPartHook = ({
       triggers.current = {};
       sourceTable.current = {};
     };
-  }, [data.length]);
+  }, [added.length, reset]);
 
   const source = watch('source');
 
@@ -59,7 +62,7 @@ export const useDSPart: UseDSPartHook = ({
     removeSource(idx);
   };
 
-  const options = data.reduce(
+  const options = added.reduce(
     (acc: SelectOption[], { name }: any) => {
       return triggers.current[name]
         ? acc

@@ -16,7 +16,7 @@ import {
 import { getKeyFromText } from '../../../utils';
 import { ConnectedList as Props } from '../../../types';
 import { CONNECTED_HEAD } from '../constants';
-import { formatDateDistance, formatHandlerType } from '../helpers';
+import { formatHandlerType } from '../helpers';
 import { handlerMapper } from './helpers';
 
 export const ConnectedList: React.FC<Props> = ({
@@ -48,7 +48,7 @@ export const ConnectedList: React.FC<Props> = ({
                 <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
                 {fHandler}
               </TableIconCell>
-              <TableCell>{formatDateDistance(updatedAt)}</TableCell>
+              <TableCell>{updatedAt}</TableCell>
               <TableActionCell>
                 {typeof onUpdate === 'function' && (
                   <Tooltip
