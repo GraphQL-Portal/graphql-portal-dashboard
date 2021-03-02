@@ -22,3 +22,4 @@ export { useTransformEditors } from './useTransformEditors';
 export { useUpdateDataSource } from './useUpdateDataSource';
 export { useOpenapiHandler } from './useOpenapiHandler';
 export { usePrefixTransform } from './usePrefixTransform';
+export { useRenameTransform } from './useRenameTransform';
