@@ -4,19 +4,19 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { UseOpenapiDataSourceHook, OpenapiForm } from '../../types';
-
+import { clearEmptyFields } from '../../utils';
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const OPENAPI_DEFAULT_STATE = {
   source: '',
-  sourceFormat: 'json',
+  sourceFormat: '',
   schemaHeaders: [],
   operationHeaders: [],
   baseUrl: '',
   qs: [],
-  includeHttpDetails: false,
-  addLimitArgument: false,
-  genericPayloadArgName: false,
+  includeHttpDetails: null,
+  addLimitArgument: null,
+  genericPayloadArgName: null,
   selectQueryOrMutationField: [],
 };
 
@@ -83,19 +83,24 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
     name: 'selectQueryOrMutationField',
   });
 
-  const onSubmit = ({
-    schemaHeaders,
-    operationHeaders,
-    qs,
-    ...handler
-  }: OpenapiForm) => {
+  const onSubmit = (handler: OpenapiForm) => {
+    const {
+      schemaHeaders,
+      operationHeaders,
+      qs,
+      ...cleared
+    } = clearEmptyFields(handler);
     updateState(
       {
         handler: {
-          ...handler,
-          schemaHeaders: arrayObjectToObject(schemaHeaders),
-          operationHeaders: arrayObjectToObject(operationHeaders),
-          qs: arrayObjectToObject(qs),
+          ...cleared,
+          ...(schemaHeaders
+            ? { schemaHeaders: arrayObjectToObject(schemaHeaders) }
+            : {}),
+          ...(operationHeaders
+            ? { operationHeaders: arrayObjectToObject(operationHeaders) }
+            : {}),
+          ...(qs ? { qs: arrayObjectToObject(qs) } : {}),
         },
       },
       step

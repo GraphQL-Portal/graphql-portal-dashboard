@@ -38,6 +38,7 @@ export const THRIFT_PROTOCOLS = [
 ];
 
 export const OPENAPI_SOURCE_FORMAT = [
+  { label: '-', value: '' },
   { label: 'JSON', value: 'json' },
   { label: 'YAML', value: 'yaml' },
 ];
