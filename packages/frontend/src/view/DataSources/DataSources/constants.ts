@@ -68,4 +68,5 @@ export const TYPE_MAPPER: ElementsTable = {
   Stripe: Portal,
   Twitter: Portal,
   Weatherbit: Portal,
+  IPAPI: Portal,
 };
