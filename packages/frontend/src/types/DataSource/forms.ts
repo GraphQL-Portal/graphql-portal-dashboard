@@ -3,6 +3,7 @@ import {
   PrefixTransformConfig,
   SelectQueryOrMutationFieldConfig,
   RenameTransformObject,
+  SalesforceHandler,
 } from '@graphql-portal/types';
 import { ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
@@ -20,17 +21,15 @@ export type OpenapiForm = Omit<
   qs: FieldArray<ObjectArrayItem>;
   selectQueryOrMutationField: FieldArray<SelectQueryOrMutationFieldConfig>;
 };
-
 export type OpenapiFormMethods = FormMethods<OpenapiForm>;
 
 export type PrefixForm = Omit<PrefixTransformConfig, 'ignore'> & {
   ignore: FieldArray<StringArrayItem>;
 };
-
 export type PrefixFormMethods = FormMethods<PrefixForm>;
 
-export type RenameForm = {
-  items: RenameTransformObject[];
-};
-
+export type RenameForm = { items: RenameTransformObject[] };
 export type RenameFormMethods = FormMethods<RenameForm>;
+
+export type SalesforceForm = SalesforceHandler;
+export type SalesforceFormMethods = FormMethods<SalesforceForm>;

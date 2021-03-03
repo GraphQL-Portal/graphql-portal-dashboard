@@ -14,6 +14,7 @@ import {
   OpenapiFormMethods,
   PrefixFormMethods,
   RenameFormMethods,
+  SalesforceFormMethods,
 } from './forms';
 
 export type UseOpenapiDataSourceHook = (
@@ -50,4 +51,10 @@ export type UseRenameTransformHook = (
   items: FieldArray<RenameTransformObject>;
   onAdd: FieldArrayAppend;
   onRemove: FieldArrayRemove;
+};
+
+export type UseSalesforceHandlerHook = (
+  props: HandlerStep
+) => Pick<SalesforceFormMethods, 'register' | 'errors'> & {
+  onSubmit: OnSubmit;
 };
