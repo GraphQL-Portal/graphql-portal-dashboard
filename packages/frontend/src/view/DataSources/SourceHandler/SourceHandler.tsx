@@ -15,12 +15,14 @@ import { SoapHandler } from '../SoapHandler';
 import { GRPCHandler } from '../GRPCHandler';
 import { EditorsHandler } from '../EditorsHandler';
 import { OpenapiHandler } from '../OpenapiHandler';
+import { SalesforceHandler } from '../SalesforceHandler';
 
 // The list of custom handler forms
 // Each handler should have React.FC<HandlerStep> type signature
 const HANDLERS_MAPPER: HandlersMapper = {
   SlackHandler,
   ContentfulHandler,
+  SalesforceHandler,
   graphql: GraphQLHandler,
   fhir: FhirHandler,
   tuql: TuqlHandler,

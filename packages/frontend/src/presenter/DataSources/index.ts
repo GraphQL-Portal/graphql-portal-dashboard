@@ -23,3 +23,4 @@ export { useUpdateDataSource } from './useUpdateDataSource';
 export { useOpenapiHandler } from './useOpenapiHandler';
 export { usePrefixTransform } from './usePrefixTransform';
 export { useRenameTransform } from './useRenameTransform';
+export { useSalesforceHandler } from './useSalesforceHandler';
