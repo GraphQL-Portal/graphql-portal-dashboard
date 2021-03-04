@@ -24,4 +24,9 @@ export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem>;
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem>;
 
+export type AddFieldArrayHeader = {
+  title: string;
+  onAddClick: FieldArrayAppend;
+};
+
 export type FormGroup = { title: string };
