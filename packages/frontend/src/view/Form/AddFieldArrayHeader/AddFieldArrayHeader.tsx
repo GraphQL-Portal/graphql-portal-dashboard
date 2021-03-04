@@ -2,9 +2,10 @@ import React from 'react';
 
 import { Add } from '../../../icons';
 import { Col, IconButton, Row, Tooltip, H6 } from '../../../ui';
+import { AddFieldArrayHeader as Props } from '../../../types';
 import { useStyles } from './useStyles';
 
-export const AddFieldArrayHeader: React.FC<any> = ({ title, onAddClick }) => {
+export const AddFieldArrayHeader: React.FC<Props> = ({ title, onAddClick }) => {
   const { header, titleCol, buttonCol } = useStyles();
   return (
     <Row className={header} spacing={2}>

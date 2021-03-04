@@ -1,3 +1,4 @@
+export { useAdditionalResolver } from './useAdditionalResolver';
 export { useApiById } from './useApiById';
 export { useAPIPlayground } from './useAPIPlayground';
 export { useAPIViewSchema } from './useAPIViewSchema';
