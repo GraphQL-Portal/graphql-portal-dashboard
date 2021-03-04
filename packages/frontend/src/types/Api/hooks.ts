@@ -12,10 +12,10 @@ import { AnyTable, NOOP } from '../General';
 import { UseTabsHook } from '../Tabs';
 import { DataSource } from '../DataSource';
 import GraphiQL from 'graphiql';
-import { ApiDef } from './data';
+import { AdditionalResolver, ApiDef } from './data';
 import { EditApiTab } from './components';
 import { Fetcher } from './methods';
-import { ApiDefFormMethods } from './forms';
+import { AdditionalResolverFormMethods, ApiDefFormMethods } from './forms';
 
 export type UseApiByIdHook = () => ReturnType<QueryHook<ApiDef>> &
   ReturnType<UseTabsHook>;
@@ -108,3 +108,12 @@ export type UseUpdateIPFilteringHook = (
   props: EditApiTab
 ) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors'> &
   ReturnType<UseIPFilteringHook> & { onSubmit: OnSubmit };
+
+export type UseAdditionalResolverHook = (
+  props: EditApiTab
+) => Pick<AdditionalResolverFormMethods, 'register' | 'errors'> & {
+  onSubmit: OnSubmit;
+  resolvers: FieldArray;
+  onAddResolver: FieldArrayAppend;
+  onRemoveResolver: FieldArrayRemove;
+};

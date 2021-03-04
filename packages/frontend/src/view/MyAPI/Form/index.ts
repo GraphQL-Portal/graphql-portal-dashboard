@@ -1,3 +1,4 @@
+export { AdditionalResolvers } from './AdditionalResolvers';
 export { DataSourcesForm } from './DataSources';
 export { GeneralForm } from './General';
 export { IPForm } from './IP';
