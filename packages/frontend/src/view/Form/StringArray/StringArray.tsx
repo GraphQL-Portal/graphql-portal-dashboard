@@ -43,7 +43,7 @@ export const StringArray: React.FC<Props> = ({
                 control={control}
                 name={`${name}[${idx}].value`}
                 fullWidth
-                defaultValue={field.value || ''}
+                defaultValue={field.value || null}
                 error={!!errors?.[name]?.[idx]?.value}
               />
             </Col>

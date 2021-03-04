@@ -13,11 +13,9 @@ import { objectKeys } from './objectKeys';
  * @returns boolean
  */
 const isEmpty = (
-  val: string | null | undefined | number | Array<any> | object
+  val: string | null | undefined | number | Array<any> | RecordStringAny
 ) =>
-  val === '' ||
   val == null ||
-  val === 0 ||
   (isArray(val) && isZeroLength(val as Array<any>)) ||
   (isPOJO(val) && isEmptyObject(val as object));
 

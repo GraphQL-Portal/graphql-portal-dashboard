@@ -8,16 +8,16 @@ import { clearEmptyFields } from '../../utils';
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const OPENAPI_DEFAULT_STATE = {
-  source: '',
-  sourceFormat: '',
-  schemaHeaders: [],
-  operationHeaders: [],
-  baseUrl: '',
-  qs: [],
+  source: null,
+  sourceFormat: undefined,
+  schemaHeaders: undefined,
+  operationHeaders: undefined,
+  baseUrl: null,
+  qs: undefined,
   includeHttpDetails: null,
   addLimitArgument: null,
   genericPayloadArgName: null,
-  selectQueryOrMutationField: [],
+  selectQueryOrMutationField: undefined,
 };
 
 const suite = vest.create('graphql_handler', ({ source }) => {
@@ -90,6 +90,7 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
       qs,
       ...cleared
     } = clearEmptyFields(handler);
+    console.log('CLEARED IS: ', cleared);
     updateState(
       {
         handler: {
