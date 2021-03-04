@@ -19,3 +19,7 @@ export { getHead } from './getHead';
 export { objectKeys } from './objectKeys';
 export { getObjProp } from './getObjProp';
 export { getObjPropOr } from './getObjPropOr';
+export { clearEmptyFields } from './clearEmptyFields';
+export { isEqual } from './isEqual';
+export { isZeroLength } from './isZeroLength';
+export { isEmptyObject } from './isEmptyObject';

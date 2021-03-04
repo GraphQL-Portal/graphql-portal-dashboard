@@ -17,3 +17,4 @@ export * from './Tabs';
 export * from './User';
 export * from './ButtonGroup';
 export * from './Metrics';
+export * from './Utils';

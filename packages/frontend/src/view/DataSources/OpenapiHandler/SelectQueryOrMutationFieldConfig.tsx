@@ -54,7 +54,7 @@ export const SelectQueryOrMutationFieldConfig: React.FC<Props> = ({
                 error={!!errors?.[name]?.[idx]?.title}
                 label="OAS Title"
                 fullWidth
-                defaultValue={field.title || ''}
+                defaultValue={field.title || null}
               />
             </HandlerCol>
             <HandlerCol>
@@ -64,7 +64,7 @@ export const SelectQueryOrMutationFieldConfig: React.FC<Props> = ({
                 error={!!errors?.[name]?.[idx]?.path}
                 label="Operation Path"
                 fullWidth
-                defaultValue={field.path || ''}
+                defaultValue={field.path || null}
               />
             </HandlerCol>
           </HandlerRow>
@@ -88,7 +88,7 @@ export const SelectQueryOrMutationFieldConfig: React.FC<Props> = ({
                 error={!!errors?.[name]?.[idx]?.method}
                 label="Method"
                 fullWidth
-                defaultValue={field.method || ''}
+                defaultValue={field.method || null}
               />
             </HandlerCol>
           </HandlerRow>
