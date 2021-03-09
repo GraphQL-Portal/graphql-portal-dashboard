@@ -11,6 +11,10 @@ export const QUERY_API_DEFS = gql`
         createdAt
         updatedAt
         enabled
+        endpoint
+        sources {
+          _id
+        }
       }
       timestamp
     }
@@ -18,7 +22,7 @@ export const QUERY_API_DEFS = gql`
 `;
 
 export const useApiDefs: QueryHook<ApiDef[]> = (options = {}) => {
-  const { data, loading, error } = useQuery<GetApiDefsData>(
+  const { data, loading, error, refetch } = useQuery<GetApiDefsData>(
     QUERY_API_DEFS,
     options
   );
@@ -27,5 +31,6 @@ export const useApiDefs: QueryHook<ApiDef[]> = (options = {}) => {
     data: data?.getApiDefs?.apiDefs || [],
     loading,
     error,
+    refetch,
   };
 };

@@ -7,7 +7,7 @@ import {
 } from '../HookForm';
 import { ObjectArrayItem, StringArrayItem } from './data';
 
-export type Switch = SwitchProps & {
+export type Switch = Omit<SwitchProps, 'onChange'> & {
   value: boolean;
   onChange(value: boolean): void;
 };
