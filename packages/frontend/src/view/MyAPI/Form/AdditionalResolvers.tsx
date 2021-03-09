@@ -12,7 +12,7 @@ export const AdditionalResolvers: React.FC<any> = ({
   errors,
 }) => {
   const { formRow } = useStyles();
-  console.log('ERRORS IS: ', errors);
+
   return (
     <FormGroup title="Additional Resolvers">
       <AddFieldArrayHeader
@@ -36,8 +36,6 @@ export const AdditionalResolvers: React.FC<any> = ({
                   required
                 />
               </Col>
-            </Row>
-            <Row spacing={2} className={formRow}>
               <Col xs={6}>
                 <Input
                   ref={register()}
@@ -45,32 +43,6 @@ export const AdditionalResolvers: React.FC<any> = ({
                   label="Field in selected type"
                   error={!!errors?.mesh?.additionalResolvers?.[idx]?.field}
                   defaultValue={resolver.field || null}
-                  fullWidth
-                  required
-                />
-              </Col>
-              <Col xs={6}>
-                <Input
-                  ref={register()}
-                  name={`mesh.additionalResolvers[${idx}].fieldType`}
-                  label="Field Type"
-                  error={!!errors?.mesh?.additionalResolvers?.[idx]?.fieldType}
-                  defaultValue={resolver.fieldType || null}
-                  fullWidth
-                />
-              </Col>
-            </Row>
-            <Row spacing={2} className={formRow}>
-              <Col xs={6}>
-                <Input
-                  ref={register()}
-                  name={`mesh.additionalResolvers[${idx}].requiredSelectionSet`}
-                  label="What field should be set in Type"
-                  error={
-                    !!errors?.mesh?.additionalResolvers?.[idx]
-                      ?.requiredSelectionSet
-                  }
-                  defaultValue={resolver.requiredSelectionSet || null}
                   fullWidth
                   required
                 />
@@ -105,6 +77,22 @@ export const AdditionalResolvers: React.FC<any> = ({
               </Col>
             </Row>
             <Row spacing={2} className={formRow}>
+              <Col xs={6}>
+                <Input
+                  ref={register()}
+                  name={`mesh.additionalResolvers[${idx}].requiredSelectionSet`}
+                  label="Selection Set"
+                  error={
+                    !!errors?.mesh?.additionalResolvers?.[idx]
+                      ?.requiredSelectionSet
+                  }
+                  defaultValue={resolver.requiredSelectionSet || null}
+                  fullWidth
+                  required
+                />
+              </Col>
+            </Row>
+            <Row spacing={2}>
               <Col xs={6}>
                 <OutlineButton onClick={() => onRemoveResolver(idx)}>
                   Remove Resolver

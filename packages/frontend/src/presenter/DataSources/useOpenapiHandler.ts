@@ -90,7 +90,6 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
       qs,
       ...cleared
     } = clearEmptyFields(handler);
-    console.log('CLEARED IS: ', cleared);
     updateState(
       {
         handler: {
