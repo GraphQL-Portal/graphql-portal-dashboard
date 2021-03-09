@@ -15,18 +15,17 @@ import { useToast } from '../../model/providers';
 
 const createName = (idx: number, key: string) =>
   `mesh.additionalResolvers[${idx}].${key}`;
-const isFieldType = isEqual('fieldType');
+const isSelectionSet = isEqual('requiredSelectionSet');
 
 const suite = vest.create(
   'edit_additional_resolver',
   ({ mesh: { additionalResolvers } }: AdditionalResolverForm) => {
-    console.log(!!additionalResolvers && !isZeroLength(additionalResolvers));
     if (!!additionalResolvers && !isZeroLength(additionalResolvers)) {
       additionalResolvers.forEach(
         (resolver: AdditionalResolver, idx: number) => {
           const getFromResolver = getObjProp(resolver);
           objectKeys(resolver).forEach((key: string) => {
-            if (!isFieldType(key)) {
+            if (!isSelectionSet(key)) {
               test(createName(idx, key), `${key} is required`, () => {
                 enforce(getFromResolver(key)).isNotEmpty();
               });
