@@ -1,6 +1,6 @@
 {
   "name": "graphql-portal-dashboard",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "GraphQL API Gateway management dashboard",
   "private": true,
   "workspaces": [
