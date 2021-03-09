@@ -9,6 +9,7 @@ import { UseCreateApiDefHook, UseIPFilteringHook } from './hooks';
 
 export type ApiList = {
   list: ApiDef[];
+  refetch: Refetch;
   onDelete: (api: ApiDef) => NOOP;
   onUpdate: (api: ApiDef) => NOOP;
   onView: (api: ApiDef) => NOOP;
@@ -51,3 +52,8 @@ export type APILimitsForm = Pick<
   ReturnType<UseCreateApiDefHook>,
   'register' | 'errors'
 >;
+
+export type EnableSwitch = {
+  api: ApiDef;
+  refetch: Refetch;
+};

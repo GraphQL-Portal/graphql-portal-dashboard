@@ -15,6 +15,7 @@ import {
 } from '../../../ui';
 import { Loading } from '../../Loading';
 import { EDIT_TABS } from '../constants';
+import { EnableSwitch } from '../Form';
 import { GeneralTab } from './GeneralTab';
 import { DataSourcesTab } from './DataSourcesTab';
 import { SchemaAndLimits } from './SchemaAndLimits';
@@ -39,7 +40,9 @@ export const EditApi: React.FC = () => {
       />
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title={`Edit ${name} API`} />
+          <WidgetHeader title={`Edit ${name} API`}>
+            <EnableSwitch api={data} refetch={refetch!} />
+          </WidgetHeader>
           <WidgetBody>
             <TabsHead value={tab} onChange={onChange} tabsList={EDIT_TABS} />
             <TabsBody value={tab}>

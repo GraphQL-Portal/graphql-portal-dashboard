@@ -1,5 +1,5 @@
 import React, { MutableRefObject } from 'react';
-import { QueryHook } from '../Apollo';
+import { QueryHook, Refetch } from '../Apollo';
 import {
   ControlType,
   FieldArray,
@@ -116,4 +116,13 @@ export type UseAdditionalResolverHook = (
   resolvers: FieldArray;
   onAddResolver: FieldArrayAppend;
   onRemoveResolver: FieldArrayRemove;
+};
+
+export type UseEnableApiHook = (props: {
+  api: ApiDef;
+  refetch: Refetch;
+}) => {
+  onChange(value: boolean): void;
+  value: boolean;
+  disabled: boolean;
 };
