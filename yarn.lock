@@ -2057,13 +2057,6 @@
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.0.3.tgz#0cdba5a63a49421bf73f69157e5377278d7f1b0b"
   integrity sha512-PuCyUmi3wBZ0Bmra3/7KW6mwZEYgCf9lbkFr3EzG4xM24uwtbxvpkCa2OZSy+Jkc+FbKhBEbRX4tz0whLyZU0w==
 
-"@graphql-portal/fedex@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/fedex/-/fedex-0.0.2.tgz#3833ac03aabac03a765354ab80b84bc43cb155a7"
-  integrity sha512-UDTvb4gX6xZ6ZlabOFZ8aHkdTdIT2LngsBESD0fDydB2VG1z3Mc30QCDSYHAug9Pds/SPao/HFaw6JlrDeFPmQ==
-  dependencies:
-    "@graphql-mesh/openapi" "^0.12.0"
-
 "@graphql-portal/gateway@0.16.1":
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.16.1.tgz#ae8b6b1a33cdc31943326dcf621c153680ade014"

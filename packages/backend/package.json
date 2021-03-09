@@ -44,7 +44,6 @@
     "@graphql-portal/contentful": "0.0.2",
     "@graphql-portal/crunchbase": "0.0.2",
     "@graphql-portal/datasources": "0.0.3",
-    "@graphql-portal/fedex": "0.0.2",
     "@graphql-portal/gateway": "0.16.1",
     "@graphql-portal/ip-api": "0.0.1",
     "@graphql-portal/salesforce": "0.0.2",

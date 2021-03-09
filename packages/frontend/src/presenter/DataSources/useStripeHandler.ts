@@ -5,18 +5,19 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 
-const suite = vest.create('slack_handler', ({ token }) => {
+const STRIPE_DEFAULT_STATE = {
+  token: '',
+};
+
+const suite = vest.create('stripe_handler', ({ token }) => {
   test('token', 'Token is required', () => {
     enforce(token).isNotEmpty();
   });
 });
 
-const SLACK_DEFAULT_STATE = {
-  token: '',
-};
+export const useStripeHandler = ({ state, updateState, step }: HandlerStep) => {
+  const defaultValues = Object.assign({}, STRIPE_DEFAULT_STATE, state.handler);
 
-export const useSlackHandler = ({ state, updateState, step }: HandlerStep) => {
-  const defaultValues = Object.assign({}, SLACK_DEFAULT_STATE, state.handler);
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',

@@ -16,7 +16,6 @@ import {
   NotLinearStepper,
   PrimaryButton,
 } from '../../../ui';
-import { ADD_SOURCE_STEPS } from '../constants';
 import { SourceName } from '../SourceName';
 import { SourceHandler } from '../SourceHandler';
 import { SourceTransforms } from '../SourceTransforms';
@@ -39,13 +38,37 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
     setStep,
     completed,
     text,
-  } = hook(ADD_SOURCE_STEPS.length - 1);
+    steps,
+  } = hook();
   const { visibleOverflow } = useStyles({});
 
   if (!source) return <Redirect to={ROUTES.DATA_SOURCES} />;
 
   const { title, description } = source.connector;
   const { name, handler, transforms } = state;
+
+  const stepsComponents =
+    steps.length === 3
+      ? [
+          <SourceHandler
+            updateState={updateState}
+            state={{ handler }}
+            source={source}
+            step={1}
+          />,
+          <SourceTransforms
+            updateState={updateState}
+            state={{ transforms }}
+            step={2}
+          />,
+        ]
+      : [
+          <SourceTransforms
+            updateState={updateState}
+            state={{ transforms }}
+            step={1}
+          />,
+        ];
 
   return (
     <>
@@ -66,7 +89,7 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
               description={description}
             />
             <NotLinearStepper
-              steps={ADD_SOURCE_STEPS}
+              steps={steps}
               nonLinear
               activeStep={step}
               setStep={setStep}
@@ -74,17 +97,7 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
             />
             <StepperBody step={step}>
               <SourceName updateState={updateState} state={{ name }} step={0} />
-              <SourceHandler
-                updateState={updateState}
-                state={{ handler }}
-                source={source}
-                step={1}
-              />
-              <SourceTransforms
-                updateState={updateState}
-                state={{ transforms }}
-                step={2}
-              />
+              {stepsComponents}
             </StepperBody>
           </WidgetBody>
         </HugeWidget>

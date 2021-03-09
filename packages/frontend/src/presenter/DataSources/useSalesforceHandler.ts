@@ -6,8 +6,8 @@ import { useFormErrors } from '../../model/Hooks';
 import { SalesforceForm, UseSalesforceHandlerHook } from '../../types';
 import { isUrl } from './validation';
 
-const suite = vest.create('saleseforce_handler', ({ baseUrl }) => {
-  test('baseUrl', 'Token is required', () => {
+const suite = vest.create('saleseforce_handler', ({ baseUrl, token }) => {
+  test('baseUrl', 'Base url is required', () => {
     enforce(baseUrl).isNotEmpty();
   });
 
@@ -20,7 +20,7 @@ const suite = vest.create('saleseforce_handler', ({ baseUrl }) => {
   );
 });
 
-const SALESFORCE_DEFAULT_STATE = { baseUrl: '' };
+const SALESFORCE_DEFAULT_STATE = { baseUrl: '', token: '' };
 
 export const useSalesforceHandler: UseSalesforceHandlerHook = ({
   state,
