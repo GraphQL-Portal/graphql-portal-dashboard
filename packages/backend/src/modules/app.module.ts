@@ -17,38 +17,44 @@ import SourceModule from './source/source.module';
 import UserModule from './user/user.module';
 import MetricModule from './metric/metric.module';
 
-@Module({
-  imports: [
+const imports = [
+  MongooseModule.forRoot(
+    process.env.NODE_ENV === 'test'
+      ? config.db.mongodb.connectionString.split('/').slice(0, -1).join('/') +
+          `/${randomString()}`
+      : config.db.mongodb.connectionString,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    }
+  ),
+  RedisModule.forRoot(config.db.redis.connectionString),
+  GraphQLModule.forRoot({
+    installSubscriptionHandlers: true,
+    playground: config.application.graphQL.playground,
+    debug: config.application.graphQL.debug,
+    typePaths: ['./**/*.gql'],
+    context: ({ req }) => ({ req }),
+  }),
+  LoggerModule.forRoot(config),
+  ApiDefModule,
+  SourceModule,
+  UserModule,
+  GatewayModule,
+  MetricModule,
+];
+if (config.application.serveStatic) {
+  imports.push(
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', '..', 'frontend', 'build'),
-    }),
-    MongooseModule.forRoot(
-      process.env.NODE_ENV === 'test'
-        ? config.db.mongodb.connectionString.split('/').slice(0, -1).join('/') +
-            `/${randomString()}`
-        : config.db.mongodb.connectionString,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
-      }
-    ),
-    RedisModule.forRoot(config.db.redis.connectionString),
-    GraphQLModule.forRoot({
-      installSubscriptionHandlers: true,
-      playground: config.application.graphQL.playground,
-      debug: config.application.graphQL.debug,
-      typePaths: ['./**/*.gql'],
-      context: ({ req }) => ({ req }),
-    }),
-    LoggerModule.forRoot(config),
-    ApiDefModule,
-    SourceModule,
-    UserModule,
-    GatewayModule,
-    MetricModule,
-  ],
+    })
+  );
+}
+
+@Module({
+  imports,
   providers: [
     {
       provide: APP_GUARD,
