@@ -63,27 +63,30 @@ export const createClient = (token: string) => {
       if (graphQLErrors) {
         for (let err of graphQLErrors) {
           const { extensions = {}, message } = err;
-          if (extensions.code === STATUS_401) {
-            // Sign out if refresh token is invalid
-            if (message.indexOf('Refresh token is invalid') !== -1) {
-              removeAccessToken();
-              removeRefreshToken();
-              window.location.href = '/login';
-            }
-
-            return promise2Observable(
-              refreshTokens(createClient).then(
-                ({ accessToken, refreshToken }) => {
-                  storeAccessToken(accessToken);
-                  storeRefreshToken(refreshToken);
-                  operation.setContext(({ headers = {} }) => ({
-                    headers: { ...headers, authorization: accessToken },
-                  }));
-                  return forward(operation);
-                }
-              )
-            );
+          if (
+            extensions.code !== STATUS_401 ||
+            /Wrong email or password/.test(message)
+          )
+            return;
+          // Sign out if refresh token is invalid
+          if (message.indexOf('Refresh token is invalid') !== -1) {
+            removeAccessToken();
+            removeRefreshToken();
+            window.location.href = '/login';
           }
+
+          return promise2Observable(
+            refreshTokens(createClient).then(
+              ({ accessToken, refreshToken }) => {
+                storeAccessToken(accessToken);
+                storeRefreshToken(refreshToken);
+                operation.setContext(({ headers = {} }) => ({
+                  headers: { ...headers, authorization: accessToken },
+                }));
+                return forward(operation);
+              }
+            )
+          );
         }
       }
     }
