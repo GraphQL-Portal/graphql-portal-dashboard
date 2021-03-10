@@ -3,7 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep, StripeForm, UseStripeHandlerHook } from '../../types';
+import { StripeForm, UseStripeHandlerHook } from '../../types';
 
 const STRIPE_DEFAULT_STATE = {
   token: '',
@@ -19,7 +19,7 @@ export const useStripeHandler: UseStripeHandlerHook = ({
   state,
   updateState,
   step,
-}: HandlerStep) => {
+}) => {
   const defaultValues = Object.assign({}, STRIPE_DEFAULT_STATE, state.handler);
 
   const { handleSubmit, errors, control } = useForm<StripeForm>({

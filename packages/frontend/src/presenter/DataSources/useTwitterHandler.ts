@@ -3,7 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep, TwitterForm, UseTwitterHandlerHook } from '../../types';
+import { TwitterForm, UseTwitterHandlerHook } from '../../types';
 
 const TWITTER_DEFAULT_STATE = {
   authorization: '',
@@ -19,7 +19,7 @@ export const useTwitterHandler: UseTwitterHandlerHook = ({
   state,
   updateState,
   step,
-}: HandlerStep) => {
+}) => {
   const defaultValues = Object.assign({}, TWITTER_DEFAULT_STATE, state.handler);
 
   const { handleSubmit, errors, control } = useForm<TwitterForm>({
