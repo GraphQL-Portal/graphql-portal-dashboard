@@ -4,10 +4,12 @@ import { useEditDataSource } from './useEditDataSource';
 import { INITIAL_STATE } from './constants';
 import { packHandler } from './helpers';
 import { AError } from '../../types';
+import { getSourceSteps } from '../../view/DataSources/helpers';
 
-export const useAddDataSource = (limit: number) => {
+export const useAddDataSource = () => {
   const { showErrorToast, showSuccessToast } = useToast();
   const { source = {}, clearSource } = useDataSourceContext();
+  const steps = getSourceSteps(source);
   const {
     state,
     step,
@@ -15,7 +17,7 @@ export const useAddDataSource = (limit: number) => {
     updateState,
     completeStep,
     setStep,
-  } = useEditDataSource(limit, INITIAL_STATE);
+  } = useEditDataSource(steps.length - 1, INITIAL_STATE);
 
   const { createSource } = useCreateSource({
     onCompleted() {
@@ -39,9 +41,11 @@ export const useAddDataSource = (limit: number) => {
     source,
     onSubmit,
     step,
+    steps,
     state,
     updateState,
-    isDisabled: !completed[0] || !completed[1],
+    isDisabled:
+      steps.length === 3 ? !completed[0] || !completed[1] : !completed[0],
     completed,
     completeStep,
     setStep,

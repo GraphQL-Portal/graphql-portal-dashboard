@@ -22,6 +22,17 @@ export const SalesforceHandler: React.FC<HandlerStep> = (props) => {
           />
         </HandlerCol>
       </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <Input
+            ref={register}
+            label="Authentication token"
+            name="token"
+            error={!!errors?.token}
+            fullWidth
+          />
+        </HandlerCol>
+      </HandlerRow>
       <PrimaryButton type="submit">Save Handler</PrimaryButton>
     </form>
   );

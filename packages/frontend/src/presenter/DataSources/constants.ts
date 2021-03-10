@@ -26,7 +26,6 @@ const HANDLERS_LIST = [
   'thrift',
   'ContentfulHandler',
   'CrunchbaseHandler',
-  'FedexHandler',
   'SalesforceHandler',
   'SlackHandler',
   'StripeHandler',
@@ -88,7 +87,6 @@ export const TRANSFORMS_LABELS: { [key: string]: string } = {
 export const CUSTOM_HANDLER_TO_PACKAGE: Record<string, string> = {
   ContentfulHandler: '@graphql-portal/contentful',
   CrunchbaseHandler: '@graphql-portal/crunchbase',
-  FedexHandler: '@graphql-portal/contentful',
   IPAPIHandler: '@graphql-portal/ip-api',
   SalesforceHandler: '@graphql-portal/salesforce',
   SlackHandler: '@graphql-portal/slack',
@@ -100,7 +98,6 @@ export const CUSTOM_HANDLER_TO_PACKAGE: Record<string, string> = {
 export const PACKAGE_TO_CUSTOM_HANDLER: Record<string, string> = {
   '@graphql-portal/contentful': 'ContentfulHandler',
   '@graphql-portal/crunchbase': 'CrunchbaseHandler',
-  '@graphql-portal/fedex': 'FedexHandler',
   '@graphql-portal/ip-api': 'IPAPIHandler',
   '@graphql-portal/salesforce': 'SalesforceHandler',
   '@graphql-portal/slack': 'SlackHandler',
