@@ -34,8 +34,12 @@ export const decrypt = (hash: { iv: string; content: string }): string => {
 export const encryptAny = (object: any): string =>
   encrypt(JSON.stringify(object));
 
-export const decryptAny = (hashJson: string): any =>
-  JSON.parse(decrypt(JSON.parse(hashJson)));
+export const decryptAny = (hashJson: string): any => {
+  if (typeof hashJson !== 'string') {
+    return hashJson;
+  }
+  return JSON.parse(decrypt(JSON.parse(hashJson)));
+};
 
 export const mongoCipherType = {
   type: String,
