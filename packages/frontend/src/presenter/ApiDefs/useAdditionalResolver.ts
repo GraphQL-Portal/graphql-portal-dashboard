@@ -6,20 +6,33 @@ import {
   AdditionalResolver,
   AdditionalResolverForm,
   AError,
-  DataSource,
   UseAdditionalResolverHook,
 } from '../../types';
-import { getObjProp, isEqual, isZeroLength, objectKeys } from '../../utils';
+import {
+  getObjProp,
+  getProp,
+  isEqual,
+  isZeroLength,
+  objectKeys,
+} from '../../utils';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useToast } from '../../model/providers';
+import { createMeshPayload, createMeshDefaultValues } from './helpers';
 
 const createName = (idx: number, key: string) =>
   `mesh.additionalResolvers[${idx}].${key}`;
 const isSelectionSet = isEqual('requiredSelectionSet');
 
+const ADDITIONAL_RESOLVER_DEFAULT_VALUE = {
+  mesh: {
+    additionalResolvers: undefined,
+  },
+};
+
 const suite = vest.create(
   'edit_additional_resolver',
-  ({ mesh: { additionalResolvers } }: AdditionalResolverForm) => {
+  ({ mesh }: AdditionalResolverForm) => {
+    const { additionalResolvers } = mesh || { additionalResolvers: undefined };
     if (!!additionalResolvers && !isZeroLength(additionalResolvers)) {
       additionalResolvers.forEach(
         (resolver: AdditionalResolver, idx: number) => {
@@ -37,34 +50,22 @@ const suite = vest.create(
   }
 );
 
-const ADDITIONAL_RESOLVER_DEFAULT_VALUE = {
-  mesh: {
-    additionalResolvers: undefined,
-  },
-};
-
 export const useAdditionalResolver: UseAdditionalResolverHook = ({
   api,
   refetch,
 }) => {
   const { showErrorToast, showSuccessToast } = useToast();
   const { _id: id, enabled, mesh, sources, name, endpoint, playground } = api;
-  const { additionalResolvers } = mesh || {};
 
   const defaultValues = Object.assign(
     {},
     ADDITIONAL_RESOLVER_DEFAULT_VALUE,
-    !!additionalResolvers && !isZeroLength(additionalResolvers)
-      ? { mesh: { additionalResolvers } }
-      : {}
+    createMeshDefaultValues(mesh)
   );
 
-  const {
-    register,
-    errors,
-    handleSubmit,
-    control,
-  } = useForm<AdditionalResolverForm>({
+  const { register, errors, handleSubmit, control } = useForm<
+    AdditionalResolverForm
+  >({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -90,7 +91,9 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
     name: 'mesh.additionalResolvers',
   });
 
-  const onSubmit = ({ mesh }: AdditionalResolverForm) => {
+  const onSubmit = (data: AdditionalResolverForm) => {
+    const mesh = createMeshPayload(data);
+
     updateApiDef({
       variables: {
         id,
@@ -100,7 +103,7 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
           playground,
           mesh,
         },
-        sources: sources.map(({ _id }: DataSource) => _id),
+        sources: sources.map(getProp('_id')),
         enabled,
       },
     });

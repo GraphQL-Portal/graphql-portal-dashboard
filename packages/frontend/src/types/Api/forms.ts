@@ -26,6 +26,7 @@ export type ApiDefFormMethods = FormMethods<ApiDefForm>;
 export type AdditionalResolverForm = {
   mesh: {
     additionalResolvers: AdditionalResolver[] | undefined;
+    additionalTypeDefs: string[] | undefined;
   };
 };
 export type AdditionalResolverFormMethods = FormMethods<AdditionalResolverForm>;

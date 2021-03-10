@@ -36,6 +36,8 @@ export const AdditionalResolvers: React.FC<any> = ({
                   required
                 />
               </Col>
+            </Row>
+            <Row spacing={2} className={formRow}>
               <Col xs={6}>
                 <Input
                   ref={register()}
@@ -43,6 +45,17 @@ export const AdditionalResolvers: React.FC<any> = ({
                   label="Field in selected type"
                   error={!!errors?.mesh?.additionalResolvers?.[idx]?.field}
                   defaultValue={resolver.field || null}
+                  fullWidth
+                  required
+                />
+              </Col>
+              <Col xs={6}>
+                <Input
+                  ref={register()}
+                  name={`mesh.additionalResolvers[${idx}].fieldType`}
+                  label="Type of selected field"
+                  error={!!errors?.mesh?.additionalResolvers?.[idx]?.fieldType}
+                  defaultValue={resolver.fieldType || null}
                   fullWidth
                   required
                 />
