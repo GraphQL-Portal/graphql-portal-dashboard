@@ -17,6 +17,10 @@ import TokenService from './token.service';
 @Injectable()
 export default class UserService {
   private readonly sendgrid = Sendgrid;
+  private readonly defaultAdmin = {
+    email: 'admin@example.com',
+    password: 'Secret123!',
+  };
 
   public constructor(
     @InjectModel('User') private userModel: Model<IUserDocument>,
@@ -39,6 +43,7 @@ export default class UserService {
     device: string
   ): Promise<ITokens> {
     const user = await this.userModel.findOne({ email });
+    const { email: defaultAdminEmailEnv } = config.application.defaultAdmin;
 
     if (await this.isEmailNotConfirmed(email)) {
       await this.sendEmailConfirmationCode(email);
@@ -47,7 +52,16 @@ export default class UserService {
       );
     }
 
-    if (!user || user.deletedAt || !user.isValidPassword(password))
+    const isNotAdminFromEnv =
+      email === this.defaultAdmin.email &&
+      defaultAdminEmailEnv !== this.defaultAdmin.email;
+
+    if (
+      isNotAdminFromEnv ||
+      !user ||
+      user.deletedAt ||
+      !user.isValidPassword(password)
+    )
       throw new AuthenticationError('Wrong email or password');
 
     const tokens = await this.tokenService.issueTokens(user._id!, device);
@@ -116,7 +130,10 @@ export default class UserService {
   public async createDefaultUser(): Promise<void> {
     const { email, password } = config.application.defaultAdmin;
 
-    if (email === 'admin@example.com' || password === 'Secret123!') {
+    if (
+      email === this.defaultAdmin.email ||
+      password === this.defaultAdmin.password
+    ) {
       this.logger.warn(
         'You are running application with default admin credentials',
         `${this.constructor.name}:${this.createDefaultUser.name}`
