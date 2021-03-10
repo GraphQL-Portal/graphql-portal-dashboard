@@ -18,6 +18,8 @@ export type DenyIps<T> = {
   deny_ips?: T;
 };
 
+export type AdditionalApiDefs = string[];
+
 export type AdditionalResolver = {
   type: string;
   field: string;
@@ -46,6 +48,7 @@ export type ApiDef = {
   updatedAt: string;
   mesh?: {
     additionalResolvers: undefined | AdditionalResolver[];
+    additionalTypeDefs: undefined | string[];
   };
 } & AllowIps<string[]> &
   DenyIps<string[]>;
