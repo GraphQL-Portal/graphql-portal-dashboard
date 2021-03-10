@@ -48,6 +48,7 @@ const imports = [
 if (config.application.serveStatic) {
   imports.push(
     ServeStaticModule.forRoot({
+      renderPath: '/',
       rootPath: join(__dirname, '..', '..', '..', 'frontend', 'build'),
     })
   );

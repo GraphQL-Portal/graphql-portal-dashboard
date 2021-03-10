@@ -32,7 +32,8 @@
       "enabled": "@@METRICS_ENABLED",
       "chunk": "@@METRICS_CHUNK",
       "delay": "@@METRICS_DELAY"
-    }
+    },
+    "secret": "@@BACKEND_SECRET"
   },
   "client": {
     "host": "@@CLIENT_HOST"

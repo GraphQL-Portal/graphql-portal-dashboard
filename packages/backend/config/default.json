@@ -9,8 +9,9 @@
       "playground": true,
       "debug": true
     },
-    "serveStatic": false,
+    "serveStatic": true,
     "logLevel": "debug",
+    "secret": "sMVzaYsaR9wM5R9cxLpJgjvqH9w6Ynlw",
     "jwtSecret": "jwtSecret",
     "salt": "salt",
     "defaultAdmin": {

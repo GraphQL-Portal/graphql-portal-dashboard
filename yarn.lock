@@ -2013,16 +2013,16 @@
     js-yaml "4.0.0"
     object-hash "2.1.1"
 
-"@graphql-portal/config@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/config/-/config-0.8.2.tgz#2c2b00d0604dbdabc26761d539280aad31830a62"
-  integrity sha512-w2QEzqpPFnhDnEXkS/y60OLUNX61zH4gfVhMTFN/mzlc0NI8d01jmjkvT669GY3pIOcNaYhd20JqHgReF/4MLg==
+"@graphql-portal/config@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/config/-/config-0.9.0.tgz#27aa5a2609b971a82b2d939923bf7bc34c6aec9d"
+  integrity sha512-6TuS5NOCq0cvHa68UXLsi5X6TyqamQiaSmDBK0rIdOEPERJSS0I0NjSSmnzL58x/T2/IyIfS7154gb00nhS9yg==
   dependencies:
     "@graphql-portal/contentful" "^0.0.2"
-    "@graphql-portal/dashboard" "^0.1.3"
-    "@graphql-portal/logger" "^0.4.0"
+    "@graphql-portal/dashboard" "^0.1.4"
+    "@graphql-portal/logger" "^0.4.1"
     "@graphql-portal/slack" "^0.0.3"
-    "@graphql-portal/types" "^0.17.0"
+    "@graphql-portal/types" "^0.18.0"
     ajv "^7.0.1"
     cosmiconfig "^7.0.0"
     find-yarn-workspace-root "^2.0.0"
@@ -2043,13 +2043,13 @@
   dependencies:
     "@graphql-mesh/openapi" "^0.12.0"
 
-"@graphql-portal/dashboard@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/dashboard/-/dashboard-0.1.3.tgz#31c50021c0fcd04012ad7d3e71ac643a65804c8f"
-  integrity sha512-ThYOAOJ+ew/xOkLzY+Jx+mQxry6dQiM1exK0rLiN3sBviYxCcmUvMe/2zGhAk1ypDdITGGZIkm9FLhdUgzElLQ==
+"@graphql-portal/dashboard@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/dashboard/-/dashboard-0.1.4.tgz#f2500d52c2237ac8af1e55755e8e1946276f6e04"
+  integrity sha512-bIQrcI9/Uk/p/AUc7w1w6T4eIx3zrU06+u+CqotCFOm58Iph0QwPdxaz9YLk7h0YxBAha4QnUl5F6qK4/i660A==
   dependencies:
-    "@graphql-portal/logger" "^0.4.0"
-    "@graphql-portal/types" "^0.17.0"
+    "@graphql-portal/logger" "^0.4.1"
+    "@graphql-portal/types" "^0.18.0"
     axios "^0.21.1"
 
 "@graphql-portal/datasources@0.0.3":
@@ -2064,10 +2064,10 @@
   dependencies:
     "@graphql-mesh/openapi" "^0.12.0"
 
-"@graphql-portal/gateway@0.16.1":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.16.1.tgz#ae8b6b1a33cdc31943326dcf621c153680ade014"
-  integrity sha512-+Z7wlTh/eyEyyRkVU1lqS23W/6RW16TRs/BSp19CgdFmIvfdxL7JVKG4pBZy5ojUGLYK8gaydkJ27j9BWQLvYg==
+"@graphql-portal/gateway@0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.16.3.tgz#7b4cbb3720229fd828e0206fb6222c3044df17d5"
+  integrity sha512-FLbL8lkk4WAX88PfhHIhf3TvEtACtPU2Nhzlic+x2+8fCDgdmoOi2CyTZBZ8PMThcmSIr3LdBfQvStodsOwjUA==
   dependencies:
     "@graphql-inspector/core" "^2.3.0"
     "@graphql-mesh/config" "^0.14.0"
@@ -2097,10 +2097,10 @@
     "@graphql-mesh/transform-resolvers-composition" "^0.8.1"
     "@graphql-mesh/transform-snapshot" "^0.8.1"
     "@graphql-mesh/types" "^0.35.0"
-    "@graphql-portal/config" "^0.8.2"
-    "@graphql-portal/dashboard" "^0.1.3"
-    "@graphql-portal/logger" "^0.4.0"
-    "@graphql-portal/types" "^0.17.0"
+    "@graphql-portal/config" "^0.9.0"
+    "@graphql-portal/dashboard" "^0.1.4"
+    "@graphql-portal/logger" "^0.4.1"
+    "@graphql-portal/types" "^0.18.0"
     "@graphql-tools/schema" "^7.1.3"
     "@types/cookie-parser" "^1.4.2"
     "@types/express" "^4.17.9"
@@ -2132,12 +2132,12 @@
     "@graphql-mesh/openapi" "^0.12.0"
     graphql "^15.4.0"
 
-"@graphql-portal/logger@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/logger/-/logger-0.4.0.tgz#c4da31fa914976803d5af6d6c9edf2994b350a90"
-  integrity sha512-Nz8B1KdF2uKUXVBYEDII4MqcLkGIbpDx8IL4hy+Oe3vbfwuVJUvvzyhMWjJavB1Qfv0joEuuaDWnubdT5r1QKw==
+"@graphql-portal/logger@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/logger/-/logger-0.4.1.tgz#decbf6c8853698de41f6a7520faf10ea4be7c32a"
+  integrity sha512-LODW0d4SKoG0Nz+0Ib/w+D6umXbgBUJlrIAamar+vDJ+DgDEkjJn6lltJ31Ir7aIFBjzxaSX6M2lEXPLjpXZ1g==
   dependencies:
-    "@graphql-portal/types" "0.17.0"
+    "@graphql-portal/types" "0.18.0"
     chalk "4.1.0"
     fast-safe-stringify "^2.0.7"
     winston "3.3.3"
@@ -2173,12 +2173,19 @@
     "@graphql-mesh/openapi" "^0.12.14"
     "@graphql-mesh/types" "^0.32.0"
 
-"@graphql-portal/types@0.17.0", "@graphql-portal/types@^0.17.0":
+"@graphql-portal/types@0.17.0":
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.17.0.tgz#215d7149eca607fc22920f8788b7648f28e100e6"
   integrity sha512-iMAUn+8uejs654pLOWIDNDDBEySfVTfCdeik0Zrn6lppwnatRu4VkYWFR3P2p1H8AMmOYHA+vFfGxowysC2COQ==
   dependencies:
     ajv "7.1.1"
+
+"@graphql-portal/types@0.18.0", "@graphql-portal/types@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.18.0.tgz#1959c4044393b7e3aa8e277a3d7df7686be4bc94"
+  integrity sha512-FfK7KTBKvZVWB+J3EfkILLYj/LCcVW0XFx71JERwkst3MWqgCCUh99bJNYRXo+1t3w9izs2jg6LuGoEpqrlUng==
+  dependencies:
+    ajv "7.2.1"
 
 "@graphql-portal/weatherbit@0.0.2":
   version "0.0.2"
