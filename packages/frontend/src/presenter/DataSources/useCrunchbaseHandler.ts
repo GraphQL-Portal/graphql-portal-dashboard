@@ -3,7 +3,11 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep } from '../../types';
+import {
+  CrunchbaseForm,
+  HandlerStep,
+  UseCrunchbaseHandlerHook,
+} from '../../types';
 
 const suite = vest.create('crunchbase_handler', ({ userKey }) => {
   test('userKey', 'User key is required', () => {
@@ -11,14 +15,14 @@ const suite = vest.create('crunchbase_handler', ({ userKey }) => {
   });
 });
 
-export const useCrunchbaseHandler = ({
+export const useCrunchbaseHandler: UseCrunchbaseHandlerHook = ({
   state,
   updateState,
   step,
 }: HandlerStep) => {
   const defaultValues = Object.assign({}, { userKey: '' }, state.handler);
 
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control } = useForm<CrunchbaseForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -26,7 +30,7 @@ export const useCrunchbaseHandler = ({
 
   useFormErrors(errors);
 
-  const onSubmit = (handler: any) => updateState({ handler }, step);
+  const onSubmit = (handler: CrunchbaseForm) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),

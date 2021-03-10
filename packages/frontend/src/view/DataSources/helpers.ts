@@ -9,7 +9,7 @@ import {
   ADD_SOURCE_STEPS,
   ADD_SOURCE_STEPS_WITH_CONFIGURATION,
 } from './constants';
-import { compose, getProp, getObjPropOr } from '../../utils';
+import { compose, getProp, getObjPropOr, objectKeys } from '../../utils';
 
 export const getError = (errors: any) => (field: string) => !!errors?.[field];
 
@@ -24,8 +24,7 @@ export const formatHandlerType: (handler: DataSource) => string = compose(
 );
 
 export const getSourceSteps = (source: Source) => {
-  if (Object.keys(source?.connector?.properties || {}).length > 0) {
-    return ADD_SOURCE_STEPS_WITH_CONFIGURATION;
-  }
-  return ADD_SOURCE_STEPS;
+  return objectKeys(source?.connector?.properties || {}).length > 0
+    ? ADD_SOURCE_STEPS_WITH_CONFIGURATION
+    : ADD_SOURCE_STEPS;
 };
