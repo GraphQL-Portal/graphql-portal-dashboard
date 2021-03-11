@@ -1,4 +1,4 @@
-import { NOOP } from '../General';
+import { NOOP, RecordStringAny } from '../General';
 import { Errors } from '../HookForm';
 import {
   DataSourceStep,
@@ -26,6 +26,11 @@ export type TransformsList = {
   transforms: any[];
   onRemove(idx: number): NOOP;
   onEdit(idx: number, transform: any): NOOP;
+};
+
+export type AvailableTransforms = {
+  transforms: RecordStringAny;
+  onAdd(transform: string): NOOP;
 };
 
 export type ConnectedList = {

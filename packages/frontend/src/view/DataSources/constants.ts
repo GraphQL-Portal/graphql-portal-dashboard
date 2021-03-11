@@ -7,6 +7,13 @@ export const AVAILABLE_HEAD = [
 
 export const CONNECTED_HEAD = ['Name', 'Connector Type', 'Updated', 'Actions'];
 
+export const AVAILABLE_TRANSFORMS_HEAD = [
+  'Transform name',
+  'Type',
+  'Description',
+  'Actions',
+];
+
 export const TRANSFORMS_HEAD = [
   'Transform',
   'Description',
