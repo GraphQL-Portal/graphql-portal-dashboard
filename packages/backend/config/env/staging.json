@@ -5,6 +5,7 @@
   "application": {
     "env": "staging",
     "host": "@@HOST",
+    "publicHost": "@@PUBLIC_HOST",
     "useSwaggerUi": false,
     "graphQL": {
       "playground": "@@GRAPHQL_PLAYGROUND",

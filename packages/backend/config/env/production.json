@@ -5,6 +5,7 @@
   "application": {
     "env": "production",
     "host": "@@HOST",
+    "publicHost": "@@PUBLIC_HOST",
     "useSwaggerUi": false,
     "port": "@@DASHBOARD_PORT",
     "graphQL": {
