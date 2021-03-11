@@ -24,6 +24,7 @@ declare module 'node-config-ts' {
   interface Application {
     env: string;
     host: string;
+    publicHost: string;
     port: number;
     useSwaggerUi: boolean;
     graphQL: GraphQL;

@@ -222,7 +222,7 @@ export default class UserService {
       to: email,
       templateId: config.application.sendgrid.confirmationTemplateId,
       dynamicTemplateData: {
-        confirmationUrl: `${config.application.host}/user/confirm-email?code=${codeEntity.code}&email=${email}`,
+        confirmationUrl: `${config.application.publicHost}/user/confirm-email?code=${codeEntity.code}&email=${email}`,
         firstName: user.firstName || email,
       },
     });
