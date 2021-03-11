@@ -38,10 +38,18 @@ const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
   });
 });
 
-const INITIAL_VALUES = {
-  email: 'admin@example.com',
-  password: 'Secret123!',
-};
+const { NODE_ENV } = process?.env || {};
+const isDevelopment = NODE_ENV === 'development';
+
+const INITIAL_VALUES = isDevelopment
+  ? {
+      email: 'admin@example.com',
+      password: 'Secret123!',
+    }
+  : {
+      email: undefined,
+      password: undefined,
+    };
 
 export const useLogin: UseLoginHook = () => {
   const { showErrorToast } = useToast();
