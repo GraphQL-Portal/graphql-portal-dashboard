@@ -1,44 +1,26 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 
-import { TransformsStep } from '../../types';
+import { RecordStringAny, TransformsStep } from '../../types';
 import { AVAILABLE_TRANSFORMS } from './constants';
-import { formatTransformLabel } from './helpers/formatTransformLabel';
-
-const createOption = (option: string) => ({
-  label: formatTransformLabel(option),
-  value: option,
-});
-const options = Object.keys(AVAILABLE_TRANSFORMS).map(createOption);
 
 const removeFromArray = (arr: any[], idx: number) =>
   arr.slice(0, idx).concat(arr.slice(idx + 1));
 
 const insertToArray = (arr: any[], idx: number, member: any) =>
-  arr.slice(0, idx).concat(member).concat(arr.slice(idx));
+  arr
+    .slice(0, idx)
+    .concat(member)
+    .concat(arr.slice(idx));
 
 export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
-  const [edited, setEdited] = useState<{
-    [key: string]: { [key: string]: any };
-  }>({});
+  const [edited, setEdited] = useState<Record<string, RecordStringAny>>({});
   const [fields, setFields] = useState<string[]>([]);
-  const { handleSubmit, control, reset } = useForm({
-    mode: 'onSubmit',
-    defaultValues: {
-      transform: '',
-    },
-  });
 
-  const onAddTransform = ({ transform }: { transform: string }) => {
-    if (!!transform) {
-      setFields((s) => s.concat(transform));
-      reset({ transform: '' });
-    }
-  };
+  const onAddTransform = (transform: string) => () =>
+    setFields(s => s.concat(transform));
 
-  const onRemoveTransform = (idx: number) => () => {
-    setFields((s) => removeFromArray(s, idx));
-  };
+  const onRemoveTransform = (idx: number) => () =>
+    setFields(s => removeFromArray(s, idx));
 
   const addTransform = (data: object) => {
     const { transforms } = state;
@@ -51,12 +33,12 @@ export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
   };
 
   const onEdit = (idx: number, transform: any) => () =>
-    setEdited((s) => {
+    setEdited(s => {
       return Object.assign({}, s, { [idx]: transform });
     });
 
   const onCancelEdit = (idx: string) => () =>
-    setEdited((s) => {
+    setEdited(s => {
       const newState = Object.assign({}, s);
       delete newState[idx];
       return newState;
@@ -75,10 +57,9 @@ export const useTransforms = ({ state, updateState, step }: TransformsStep) => {
 
   return {
     state,
-    transforms: options,
-    onAddTransform: handleSubmit(onAddTransform),
+    transforms: AVAILABLE_TRANSFORMS,
+    onAddTransform,
     onRemoveTransform,
-    control,
     fields,
     addTransform,
     onRemove,
