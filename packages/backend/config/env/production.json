@@ -11,7 +11,7 @@
       "playground": false,
       "debug": false
     },
-    "serveStatic": false,
+    "serveStatic": "@@SERVE_STATIC",
     "logLevel": "log",
     "maxmind": {
       "dbPath": "@@MAXMIND_DB_PATH",

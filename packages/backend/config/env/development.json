@@ -5,6 +5,7 @@
   "application": {
     "env": "development",
     "host": "@@HOST",
+    "serveStatic": "@@SERVE_STATIC",
     "maxmind": {
       "dbPath": "@@MAXMIND_DB_PATH",
       "licenseKey": "@@MAXMIND_LICENSE_KEY",

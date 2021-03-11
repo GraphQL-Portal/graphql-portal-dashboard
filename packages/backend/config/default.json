@@ -9,7 +9,7 @@
       "playground": true,
       "debug": true
     },
-    "serveStatic": false,
+    "serveStatic": true,
     "logLevel": "debug",
     "jwtSecret": "jwtSecret",
     "salt": "salt",
