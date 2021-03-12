@@ -14,3 +14,10 @@ export type NavigationGroup = {
   name?: string;
   items: GroupItem[];
 };
+
+export type UseNavigationGroupHook = (
+  items: GroupItem[]
+) => {
+  navItems: GroupItem[];
+  withoutItems: boolean;
+};
