@@ -21,6 +21,7 @@ import { DataSourcesTab } from './DataSourcesTab';
 import { SchemaAndLimits } from './SchemaAndLimits';
 import { IPTab } from './IPTab';
 import { AdditionalResolversTab } from './AdditionalResolversTab';
+import { FormControlLabel } from '@material-ui/core';
 
 export const EditApi: React.FC = () => {
   const { loading, data, tab, onChange, refetch } = useApiById();
@@ -41,7 +42,11 @@ export const EditApi: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title={`Edit ${name} API`}>
-            <EnableSwitch api={data} refetch={refetch!} />
+            <FormControlLabel
+              label="Active"
+              labelPlacement="start"
+              control={<EnableSwitch api={data} refetch={refetch!} />}
+            />
           </WidgetHeader>
           <WidgetBody>
             <TabsHead value={tab} onChange={onChange} tabsList={EDIT_TABS} />
