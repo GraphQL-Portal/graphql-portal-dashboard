@@ -1,9 +1,9 @@
 import { Redirect } from 'react-router';
 import { useAuth } from '../../model/providers';
-import { Roles } from '../../model/providers/Auth/constants';
+import { Role } from '../../types';
 
 export const RoleProtectedComponent: React.FC<{
-  roles: Roles[];
+  roles: Role[];
   Component: React.FC<any>;
   redirectTo?: string;
 }> = ({ roles, Component, redirectTo, ...componentProps }) => {
