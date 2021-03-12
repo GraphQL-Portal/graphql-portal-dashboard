@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { ROUTES, useAuth } from '../../model/providers';
-import { Roles } from '../../model/providers/Auth/constants';
+import { ROLE_ADMIN } from '../../model/providers/Auth/constants';
 import { Content } from '../Content';
 import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
@@ -47,7 +47,7 @@ export const ProtectedRoutes: React.FC = () => {
           <Route path={ROUTES.USERS}>
             <RoleProtectedComponent
               Component={Users}
-              roles={[Roles.ADMIN]}
+              roles={[ROLE_ADMIN]}
               redirectTo={ROUTES.MAIN}
             />
           </Route>

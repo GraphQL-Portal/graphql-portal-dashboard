@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getKeyFromText } from '../../../utils/getKeyFromText';
-import { Group as Props } from '../../../types';
+import { NavigationGroup as Props } from '../../../types';
 import { H6 } from '../../../ui';
 import { isZeroLength } from '../../../utils';
 import { RoleProtectedComponent } from '../../RoleProtectedComponent';
