@@ -8316,10 +8316,10 @@ eslint-plugin-import@2.22.1, eslint-plugin-import@^2.22.1:
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
-eslint-plugin-jest@24.1.8:
-  version "24.1.8"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.1.8.tgz#c790cab5d556d3918c45c9842984cb281723af69"
-  integrity sha512-0ZU0d4ohDF/ibC1RT/VJQY4orrFw0tyaGBWET09yB/V7ilnjKENSPFSGaLp3u0KHGiNDhZZKe+ZbWSAwy2Sffg==
+eslint-plugin-jest@24.3.0:
+  version "24.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.3.0.tgz#b8ce5499982a304caeea7392b7d50f63b8f333cd"
+  integrity sha512-0xbEiu4Wqja+0W6UnxlglZJ27twfJJmf2HDALpElN16+gAKSIYmXywdrIrMC2Y28AxDl1yvVr1mKP37kFE5Qqg==
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
