@@ -59,7 +59,7 @@
     "@nestjs/mongoose": "7.2.4",
     "@nestjs/platform-express": "7.6.13",
     "@nestjs/serve-static": "2.1.4",
-    "@nestjs/swagger": "4.7.15",
+    "@nestjs/swagger": "4.7.16",
     "@sendgrid/mail": "7.4.2",
     "apollo-server-express": "2.21.0",
     "class-transformer": "0.4.0",
