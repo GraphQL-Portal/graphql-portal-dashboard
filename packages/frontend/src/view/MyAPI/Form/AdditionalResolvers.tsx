@@ -107,6 +107,18 @@ export const AdditionalResolvers: React.FC<any> = ({
                 />
               </Col>
             </Row>
+            <Row spacing={2} className={formRow}>
+              <Col xs={6}>
+                <Input
+                  ref={register()}
+                  name={`mesh.additionalResolvers[${idx}].returnData`}
+                  label="Return Data"
+                  error={!!errors?.mesh?.additionalResolvers?.[idx]?.returnData}
+                  defaultValue={resolver.returnData || null}
+                  fullWidth
+                />
+              </Col>
+            </Row>
             <AdditionalResolverArguments
               nestIndex={idx}
               {...{ control, errors }}

@@ -31,6 +31,7 @@ export type AdditionalResolver = {
   requiredSelectionSet: string;
   targetSource: string;
   targetMethod: string;
+  returnData?: string;
   args?: undefined | AdditionalResolverArgument[] | { [key: string]: string };
 };
 

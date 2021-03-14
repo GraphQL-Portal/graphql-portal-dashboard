@@ -19,7 +19,7 @@ const TRANSFORM_TABLE: TransformsMapper = {
 const getTransform = (transform: string) =>
   TRANSFORM_TABLE[transform] || TransformEditors;
 
-export const SourceTransforms: React.FC<TransformsStep> = props => {
+export const SourceTransforms: React.FC<TransformsStep> = (props) => {
   const {
     state,
     addTransform,
@@ -37,7 +37,7 @@ export const SourceTransforms: React.FC<TransformsStep> = props => {
   return (
     <>
       <List transforms={state.transforms} onRemove={onRemove} onEdit={onEdit} />
-      {Object.keys(edited).map(key => {
+      {Object.keys(edited).map((key) => {
         const transform = edited[key];
         const { name } = transform;
         const Handler = getTransform(name);
@@ -53,7 +53,6 @@ export const SourceTransforms: React.FC<TransformsStep> = props => {
         );
       })}
       {fields.map((field, idx) => {
-        console.log(field);
         const Handler = getTransform(field);
         return (
           <FormGroup title={field} key={`${field}-${idx}`}>

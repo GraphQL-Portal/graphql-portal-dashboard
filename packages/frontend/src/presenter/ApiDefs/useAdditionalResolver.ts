@@ -22,6 +22,7 @@ import { createMeshPayload, createMeshDefaultValues } from './helpers';
 const createName = (idx: number, key: string) =>
   `mesh.additionalResolvers[${idx}].${key}`;
 const isSelectionSet = isEqual('requiredSelectionSet');
+const isReturnData = isEqual('returnData');
 
 const ADDITIONAL_RESOLVER_DEFAULT_VALUE = {
   mesh: {
@@ -38,7 +39,7 @@ const suite = vest.create(
         (resolver: AdditionalResolver, idx: number) => {
           const getFromResolver = getObjProp(resolver);
           objectKeys(resolver).forEach((key: string) => {
-            if (!isSelectionSet(key)) {
+            if (!isSelectionSet(key) && !isReturnData) {
               test(createName(idx, key), `${key} is required`, () => {
                 enforce(getFromResolver(key)).isNotEmpty();
               });

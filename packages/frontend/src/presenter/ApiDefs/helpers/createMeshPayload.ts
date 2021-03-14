@@ -16,6 +16,7 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
         targetSource,
         requiredSelectionSet,
         args,
+        returnData,
       },
       idx: number
     ) => {
@@ -33,6 +34,7 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
         targetSource,
         requiredSelectionSet,
         args,
+        returnData,
       };
       additionalTypeDefs[idx] = `type ${type} { ${field}: ${fieldType} }`;
 

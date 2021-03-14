@@ -32,7 +32,7 @@ export const AdditionalResolverArguments: React.FC<any> = ({
               <Controller
                 as={Input}
                 control={control}
-                label="Argument name"
+                label="Name"
                 name={`${name}[${idx}].name`}
                 fullWidth
                 defaultValue={field.name || ''}
@@ -43,7 +43,7 @@ export const AdditionalResolverArguments: React.FC<any> = ({
               <Controller
                 as={Input}
                 control={control}
-                label="Argument value"
+                label="Value"
                 name={`${name}[${idx}].value`}
                 fullWidth
                 defaultValue={field.value || ''}
