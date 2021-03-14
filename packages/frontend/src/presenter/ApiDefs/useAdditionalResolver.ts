@@ -63,9 +63,12 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
     createMeshDefaultValues(mesh)
   );
 
-  const { register, errors, handleSubmit, control } = useForm<
-    AdditionalResolverForm
-  >({
+  const {
+    register,
+    errors,
+    handleSubmit,
+    control,
+  } = useForm<AdditionalResolverForm>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -116,5 +119,6 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
     resolvers,
     onAddResolver,
     onRemoveResolver,
+    control,
   };
 };

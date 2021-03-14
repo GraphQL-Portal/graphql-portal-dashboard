@@ -3,6 +3,7 @@ import React from 'react';
 import { FormGroup, Row, Col, Input, OutlineButton } from '../../../ui';
 import { AddFieldArrayHeader } from '../../Form/AddFieldArrayHeader';
 import { useStyles } from './useStyles';
+import { AdditionalResolverArguments } from './AdditionalResolverArguments';
 
 export const AdditionalResolvers: React.FC<any> = ({
   resolvers,
@@ -10,6 +11,7 @@ export const AdditionalResolvers: React.FC<any> = ({
   onRemoveResolver,
   register,
   errors,
+  control,
 }) => {
   const { formRow } = useStyles();
 
@@ -105,6 +107,10 @@ export const AdditionalResolvers: React.FC<any> = ({
                 />
               </Col>
             </Row>
+            <AdditionalResolverArguments
+              nestIndex={idx}
+              {...{ control, errors }}
+            />
             <Row spacing={2}>
               <Col xs={6}>
                 <OutlineButton onClick={() => onRemoveResolver(idx)}>

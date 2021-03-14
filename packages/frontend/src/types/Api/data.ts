@@ -20,6 +20,10 @@ export type DenyIps<T> = {
 
 export type AdditionalApiDefs = string[];
 
+export type AdditionalResolverArgument = {
+  [k: string]: string;
+};
+
 export type AdditionalResolver = {
   type: string;
   field: string;
@@ -27,6 +31,7 @@ export type AdditionalResolver = {
   requiredSelectionSet: string;
   targetSource: string;
   targetMethod: string;
+  args?: undefined | AdditionalResolverArgument[] | { [key: string]: string };
 };
 
 export type ApiDef = {
