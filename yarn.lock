@@ -2193,14 +2193,14 @@
     "@graphql-mesh/openapi" "^0.12.14"
     "@graphql-mesh/types" "^0.32.0"
 
-"@graphql-portal/types@0.18.2", "@graphql-portal/types@^0.18.0", "@graphql-portal/types@^0.18.2":
+"@graphql-portal/types@0.18.2", "@graphql-portal/types@^0.18.2":
   version "0.18.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.18.2.tgz#7ee7da01be95e06d48910dc1a76269e999b568f3"
   integrity sha512-6FJkt2P1HsZ3VvsR1hzi1YCJ+r+pZs3PJR0z4FIn2eed4Ab6nF8WYUQ5VW8lnAn8uVZNdwJ4lSDVCvaeC5wrzQ==
   dependencies:
     ajv "7.2.1"
 
-"@graphql-portal/types@0.18.0", "@graphql-portal/types@^0.18.0":
+"@graphql-portal/types@^0.18.0":
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.18.0.tgz#1959c4044393b7e3aa8e277a3d7df7686be4bc94"
   integrity sha512-FfK7KTBKvZVWB+J3EfkILLYj/LCcVW0XFx71JERwkst3MWqgCCUh99bJNYRXo+1t3w9izs2jg6LuGoEpqrlUng==

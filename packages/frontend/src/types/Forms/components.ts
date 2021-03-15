@@ -20,9 +20,14 @@ type FieldArrayComponent<T> = {
   fields: FieldArray<T>;
 } & ErrorsAndControl;
 
-export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem>;
+export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
+  keyLabel?: string;
+  valueLabel?: string;
+};
 
-export type StringArrayForm = FieldArrayComponent<StringArrayItem>;
+export type StringArrayForm = FieldArrayComponent<StringArrayItem> & {
+  valueLabel?: string;
+};
 
 export type AddFieldArrayHeader = {
   title: string;
