@@ -1,11 +1,12 @@
 import React from 'react';
 
+import { AdditionalResolvers as Props } from '../../../types';
 import { FormGroup, Row, Col, Input, OutlineButton } from '../../../ui';
 import { AddFieldArrayHeader } from '../../Form/AddFieldArrayHeader';
 import { useStyles } from './useStyles';
 import { AdditionalResolverArguments } from './AdditionalResolverArguments';
 
-export const AdditionalResolvers: React.FC<any> = ({
+export const AdditionalResolvers: React.FC<Props> = ({
   resolvers,
   onAddResolver,
   onRemoveResolver,
@@ -32,7 +33,7 @@ export const AdditionalResolvers: React.FC<any> = ({
                   label="Type"
                   error={!!errors?.mesh?.additionalResolvers?.[idx]?.type}
                   defaultValue={
-                    resolver.type === 'click' ? null : resolver.type
+                    resolver.type === 'click' ? undefined : resolver.type
                   }
                   fullWidth
                   required
@@ -46,7 +47,7 @@ export const AdditionalResolvers: React.FC<any> = ({
                   name={`mesh.additionalResolvers[${idx}].field`}
                   label="Field in selected type"
                   error={!!errors?.mesh?.additionalResolvers?.[idx]?.field}
-                  defaultValue={resolver.field || null}
+                  defaultValue={resolver.field || undefined}
                   fullWidth
                   required
                 />
@@ -57,7 +58,7 @@ export const AdditionalResolvers: React.FC<any> = ({
                   name={`mesh.additionalResolvers[${idx}].fieldType`}
                   label="Type of selected field"
                   error={!!errors?.mesh?.additionalResolvers?.[idx]?.fieldType}
-                  defaultValue={resolver.fieldType || null}
+                  defaultValue={resolver.fieldType || undefined}
                   fullWidth
                   required
                 />
@@ -72,7 +73,7 @@ export const AdditionalResolvers: React.FC<any> = ({
                   error={
                     !!errors?.mesh?.additionalResolvers?.[idx]?.targetSource
                   }
-                  defaultValue={resolver.targetSource || null}
+                  defaultValue={resolver.targetSource || undefined}
                   fullWidth
                   required
                 />
@@ -85,7 +86,7 @@ export const AdditionalResolvers: React.FC<any> = ({
                   error={
                     !!errors?.mesh?.additionalResolvers?.[idx]?.targetMethod
                   }
-                  defaultValue={resolver.targetMethod || null}
+                  defaultValue={resolver.targetMethod || undefined}
                   fullWidth
                   required
                 />
@@ -101,9 +102,8 @@ export const AdditionalResolvers: React.FC<any> = ({
                     !!errors?.mesh?.additionalResolvers?.[idx]
                       ?.requiredSelectionSet
                   }
-                  defaultValue={resolver.requiredSelectionSet || null}
+                  defaultValue={resolver.requiredSelectionSet || undefined}
                   fullWidth
-                  required
                 />
               </Col>
             </Row>
@@ -114,14 +114,15 @@ export const AdditionalResolvers: React.FC<any> = ({
                   name={`mesh.additionalResolvers[${idx}].returnData`}
                   label="Return Data"
                   error={!!errors?.mesh?.additionalResolvers?.[idx]?.returnData}
-                  defaultValue={resolver.returnData || null}
+                  defaultValue={resolver.returnData || undefined}
                   fullWidth
                 />
               </Col>
             </Row>
             <AdditionalResolverArguments
               nestIndex={idx}
-              {...{ control, errors }}
+              control={control}
+              errors={errors}
             />
             <Row spacing={2}>
               <Col xs={6}>

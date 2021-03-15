@@ -3,7 +3,6 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import {
-  AdditionalResolver,
   AdditionalResolverForm,
   AError,
   UseAdditionalResolverHook,
@@ -23,6 +22,7 @@ const createName = (idx: number, key: string) =>
   `mesh.additionalResolvers[${idx}].${key}`;
 const isSelectionSet = isEqual('requiredSelectionSet');
 const isReturnData = isEqual('returnData');
+const isArgs = isEqual('args');
 
 const ADDITIONAL_RESOLVER_DEFAULT_VALUE = {
   mesh: {
@@ -35,18 +35,16 @@ const suite = vest.create(
   ({ mesh }: AdditionalResolverForm) => {
     const { additionalResolvers } = mesh || { additionalResolvers: undefined };
     if (!!additionalResolvers && !isZeroLength(additionalResolvers)) {
-      additionalResolvers.forEach(
-        (resolver: AdditionalResolver, idx: number) => {
-          const getFromResolver = getObjProp(resolver);
-          objectKeys(resolver).forEach((key: string) => {
-            if (!isSelectionSet(key) && !isReturnData) {
-              test(createName(idx, key), `${key} is required`, () => {
-                enforce(getFromResolver(key)).isNotEmpty();
-              });
-            }
-          });
-        }
-      );
+      additionalResolvers.forEach((resolver, idx: number) => {
+        const getFromResolver = getObjProp(resolver);
+        objectKeys(resolver).forEach((key: string) => {
+          if (!isSelectionSet(key) && !isReturnData(key) && !isArgs(key)) {
+            test(createName(idx, key), `${key} is required`, () => {
+              enforce(getFromResolver(key)).isNotEmpty();
+            });
+          }
+        });
+      });
     }
   }
 );

@@ -1,4 +1,12 @@
-import { AdditionalResolver, AdditionalResolverForm } from '../../../types';
+import {
+  AdditionalResolver,
+  AdditionalResolverForm,
+  ApiDef,
+} from '../../../types';
+import {
+  arrayObjectToObject,
+  objectToFieldArray,
+} from '../../DataSources/helpers';
 
 export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
   if (!mesh?.additionalResolvers) {
@@ -20,20 +28,13 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
       },
       idx: number
     ) => {
-      // marshalling additional resolver arguments
-      if (args && Array.isArray(args)) {
-        args = args
-          .map((v) => ({ [v.name]: v.value }))
-          .reduce((a, b) => ({ ...a, ...b }));
-      }
-
       additionalResolvers[idx] = {
         type,
         field,
         targetMethod,
         targetSource,
         requiredSelectionSet,
-        args,
+        args: arrayObjectToObject(args),
         returnData,
       };
       additionalTypeDefs[idx] = `type ${type} { ${field}: ${fieldType} }`;
@@ -47,36 +48,23 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
   );
 };
 
-export const createMeshDefaultValues = (
-  mesh?: AdditionalResolverForm['mesh']
-) => {
+export const createMeshDefaultValues = (mesh?: ApiDef['mesh']) => {
   const { additionalResolvers, additionalTypeDefs } = mesh || {};
   const hasResolvers = additionalResolvers && additionalTypeDefs;
 
   return hasResolvers
     ? {
         mesh: {
-          additionalResolvers: additionalResolvers!
-            .map((resolver, idx: number) => ({
+          additionalResolvers: additionalResolvers!.map(
+            ({ args, ...resolver }, idx: number) => ({
               ...resolver,
               fieldType: additionalTypeDefs![idx].replace(
                 /^.+:\s([\w]+!*)\s.+$/,
                 '$1'
               ),
-            }))
-            // marshalling additional resolver args
-            .map((resolver) => {
-              if (
-                resolver.args !== undefined &&
-                typeof resolver.args === 'object'
-              ) {
-                resolver.args = Object.entries(resolver.args).map((entry) => ({
-                  name: entry[0],
-                  value: entry[1],
-                }));
-              }
-              return resolver;
-            }),
+              args: objectToFieldArray(args),
+            })
+          ),
         },
       }
     : {};
