@@ -30,7 +30,7 @@
       "chunk": "@@METRICS_CHUNK",
       "delay": "@@METRICS_DELAY"
     },
-    "secret": "@@BACKEND_SECRET"
+    "cryptoSecret": "@@BACKEND_SECRET"
   },
   "client": {
     "host": "@@CLIENT_HOST"

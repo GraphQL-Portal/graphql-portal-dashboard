@@ -29,7 +29,7 @@ declare module 'node-config-ts' {
     graphQL: GraphQL;
     serveStatic: boolean;
     logLevel: string;
-    secret: string;
+    cryptoSecret: string;
     jwtSecret: string;
     salt: string;
     defaultAdmin: DefaultAdmin;

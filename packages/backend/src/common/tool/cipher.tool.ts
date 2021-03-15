@@ -2,7 +2,7 @@ import { config } from 'node-config-ts';
 import crypto from 'crypto';
 
 const algorithm = 'aes-256-ctr';
-const secretKey = config.application.secret;
+const secretKey = config.application.cryptoSecret;
 const iv = crypto.randomBytes(16);
 
 export const encrypt = (text: string): string => {
