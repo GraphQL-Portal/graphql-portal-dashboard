@@ -5,6 +5,12 @@
   "application": {
     "env": "development",
     "host": "@@HOST",
+    "publicHost": "@@PUBLIC_HOST",
+    "graphQL": {
+      "playground": "@@GRAPHQL_PLAYGROUND",
+      "debug": "@@GRAPHQL_PLAYGROUND"
+    },
+    "serveStatic": "@@SERVE_STATIC",
     "maxmind": {
       "dbPath": "@@MAXMIND_DB_PATH",
       "licenseKey": "@@MAXMIND_LICENSE_KEY",

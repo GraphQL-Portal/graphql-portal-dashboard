@@ -16,3 +16,5 @@ export type UsersList = {
   onUnblock: (index: number) => any;
   onEdit: (index: number) => any;
 };
+
+export type Role = 'admin' | 'user' | '';

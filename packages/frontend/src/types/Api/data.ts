@@ -18,6 +18,17 @@ export type DenyIps<T> = {
   deny_ips?: T;
 };
 
+export type AdditionalApiDefs = string[];
+
+export type AdditionalResolver = {
+  type: string;
+  field: string;
+  fieldType?: string;
+  requiredSelectionSet: string;
+  targetSource: string;
+  targetMethod: string;
+};
+
 export type ApiDef = {
   _id: string;
   name: string;
@@ -35,6 +46,10 @@ export type ApiDef = {
   rate_limit?: ApiDefRateLimit;
   createdAt: string;
   updatedAt: string;
+  mesh?: {
+    additionalResolvers: undefined | AdditionalResolver[];
+    additionalTypeDefs: undefined | string[];
+  };
 } & AllowIps<string[]> &
   DenyIps<string[]>;
 

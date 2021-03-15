@@ -15,6 +15,9 @@ import {
   PrefixFormMethods,
   RenameFormMethods,
   SalesforceFormMethods,
+  CrunchbaseFormMethods,
+  TwitterFormMethods,
+  StripeFormMethods,
 } from './forms';
 
 export type UseOpenapiDataSourceHook = (
@@ -56,5 +59,22 @@ export type UseRenameTransformHook = (
 export type UseSalesforceHandlerHook = (
   props: HandlerStep
 ) => Pick<SalesforceFormMethods, 'register' | 'errors'> & {
+  onSubmit: OnSubmit;
+};
+export type UseCrunchbaseHandlerHook = (
+  props: HandlerStep
+) => Pick<CrunchbaseFormMethods, 'errors' | 'control'> & {
+  onSubmit: OnSubmit;
+};
+
+export type UseTwitterHandlerHook = (
+  props: HandlerStep
+) => Pick<TwitterFormMethods, 'errors' | 'control'> & {
+  onSubmit: OnSubmit;
+};
+
+export type UseStripeHandlerHook = (
+  props: HandlerStep
+) => Pick<StripeFormMethods, 'errors' | 'control'> & {
   onSubmit: OnSubmit;
 };

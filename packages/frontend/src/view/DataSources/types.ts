@@ -7,3 +7,11 @@ type DataSource = {
 export type AvailableList = {
   list: DataSource[];
 };
+
+export type Source = {
+  connector?: {
+    properties?: {
+      [key: string]: unknown;
+    };
+  };
+};

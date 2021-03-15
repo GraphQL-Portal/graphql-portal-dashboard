@@ -33,6 +33,7 @@ const GET_API_DEF_BY_ID = gql`
       enable_ip_filtering
       allow_ips
       deny_ips
+      mesh
     }
   }
 `;

@@ -1,16 +1,23 @@
 import React from 'react';
 
-import { Roles } from '../model/providers/Auth/constants';
+import { Role } from './User';
 
 export type GroupItem = {
   text: string;
   link: string;
-  roles: Roles[];
+  roles: Role[];
   Icon: React.JSXElementConstructor<{}>;
   external?: boolean;
 };
 
-export type Group = {
+export type NavigationGroup = {
   name?: string;
   items: GroupItem[];
+};
+
+export type UseNavigationGroupHook = (
+  items: GroupItem[]
+) => {
+  navItems: GroupItem[];
+  withoutItems: boolean;
 };

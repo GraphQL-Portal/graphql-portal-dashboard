@@ -2,7 +2,6 @@ import React from 'react';
 
 import { HandlerStep, HandlersMapper } from '../../../types';
 import { GraphQLHandler } from '../GraphQLHandler';
-import { SlackHandler } from '../SlackHandler';
 import { ContentfulHandler } from '../ContentfulHandler';
 import { FhirHandler } from '../FhirHandler';
 import { TuqlHandler } from '../TuqlHandler';
@@ -16,11 +15,16 @@ import { GRPCHandler } from '../GRPCHandler';
 import { EditorsHandler } from '../EditorsHandler';
 import { OpenapiHandler } from '../OpenapiHandler';
 import { SalesforceHandler } from '../SalesforceHandler';
+import { CrunchbaseHandler } from '../CrunchbaseHandler';
+import { TwitterHandler } from '../TwitterHandler';
+import { StripeHandler } from '../StripeHandler';
 
 // The list of custom handler forms
 // Each handler should have React.FC<HandlerStep> type signature
 const HANDLERS_MAPPER: HandlersMapper = {
-  SlackHandler,
+  StripeHandler,
+  TwitterHandler,
+  CrunchbaseHandler,
   ContentfulHandler,
   SalesforceHandler,
   graphql: GraphQLHandler,

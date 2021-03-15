@@ -4,6 +4,9 @@ import {
   SelectQueryOrMutationFieldConfig,
   RenameTransformObject,
   SalesforceHandler,
+  CrunchbaseHandler,
+  TwitterHandler,
+  StripeHandler,
 } from '@graphql-portal/types';
 import { ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
@@ -33,3 +36,12 @@ export type RenameFormMethods = FormMethods<RenameForm>;
 
 export type SalesforceForm = SalesforceHandler;
 export type SalesforceFormMethods = FormMethods<SalesforceForm>;
+
+export type CrunchbaseForm = CrunchbaseHandler;
+export type CrunchbaseFormMethods = FormMethods<CrunchbaseForm>;
+
+export type TwitterForm = TwitterHandler;
+export type TwitterFormMethods = FormMethods<TwitterForm>;
+
+export type StripeForm = StripeHandler;
+export type StripeFormMethods = FormMethods<StripeForm>;

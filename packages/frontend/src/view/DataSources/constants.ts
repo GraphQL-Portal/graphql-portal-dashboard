@@ -7,6 +7,13 @@ export const AVAILABLE_HEAD = [
 
 export const CONNECTED_HEAD = ['Name', 'Connector Type', 'Updated', 'Actions'];
 
+export const AVAILABLE_TRANSFORMS_HEAD = [
+  'Transform name',
+  'Type',
+  'Description',
+  'Actions',
+];
+
 export const TRANSFORMS_HEAD = [
   'Transform',
   'Description',
@@ -14,11 +21,13 @@ export const TRANSFORMS_HEAD = [
   'Actions',
 ];
 
-export const ADD_SOURCE_STEPS = [
+export const ADD_SOURCE_STEPS_WITH_CONFIGURATION = [
   { label: 'Name' },
   { label: 'Data Connector Configuration' },
   { label: 'Transforms' },
 ];
+
+export const ADD_SOURCE_STEPS = [{ label: 'Name' }, { label: 'Transforms' }];
 
 export const GRAPHQL_METHODS = [
   { label: 'GET', value: 'GET' },

@@ -1,15 +1,18 @@
 import { useUpdateSource } from '../../model/DataSources/commands';
 import { useDataSourceContext, useToast } from '../../model/providers';
 import { AError } from '../../types';
+import { getSourceSteps } from '../../view/DataSources/helpers';
 import { INITIAL_STATE } from './constants';
 import { unpackHandler, packHandler } from './helpers';
 import { useEditDataSource } from './useEditDataSource';
 
-export const useUpdateDataSource = (limit: number) => {
+export const useUpdateDataSource = () => {
   const { showSuccessToast, showErrorToast } = useToast();
   const { source = {}, clearSource } = useDataSourceContext();
   const { state: initialState, key } = source || {};
   const { _id } = initialState || {};
+
+  const steps = getSourceSteps(source);
 
   const {
     state,
@@ -20,7 +23,7 @@ export const useUpdateDataSource = (limit: number) => {
     setStep,
     isTouched,
   } = useEditDataSource(
-    limit,
+    steps.length - 1,
     unpackHandler(initialState || INITIAL_STATE, key || '')
   );
 
@@ -47,6 +50,7 @@ export const useUpdateDataSource = (limit: number) => {
     source,
     onSubmit,
     step,
+    steps,
     state,
     updateState,
     isDisabled: !isTouched,

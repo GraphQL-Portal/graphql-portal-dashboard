@@ -1,4 +1,4 @@
-import { ApiAuth, ApiDef } from './data';
+import { AdditionalResolver, ApiAuth, ApiDef } from './data';
 import { FormMethods } from '../HookForm';
 import { StringArray } from '../Forms';
 
@@ -22,3 +22,11 @@ export type ApiDefForm = Omit<
 };
 
 export type ApiDefFormMethods = FormMethods<ApiDefForm>;
+
+export type AdditionalResolverForm = {
+  mesh: {
+    additionalResolvers: AdditionalResolver[] | undefined;
+    additionalTypeDefs: string[] | undefined;
+  };
+};
+export type AdditionalResolverFormMethods = FormMethods<AdditionalResolverForm>;

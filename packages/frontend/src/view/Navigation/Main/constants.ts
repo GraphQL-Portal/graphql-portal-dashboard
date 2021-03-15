@@ -12,16 +12,17 @@ import {
   MailOutline,
 } from '../../../icons';
 import { ROUTES } from '../../../model/providers';
-import { Roles } from '../../../model/providers/Auth/constants';
+import { ROLE_ADMIN, ROLE_USER } from '../../../model/providers/Auth/constants';
+import { NavigationGroup } from '../../../types';
 
-export const GROUPS = [
+export const GROUPS: NavigationGroup[] = [
   {
     items: [
       {
         text: 'Dashboard',
         link: ROUTES.DASHBOARD,
         Icon: DashboardRounded,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [ROLE_ADMIN, ROLE_USER],
       },
     ],
   },
@@ -32,19 +33,19 @@ export const GROUPS = [
         text: 'My APIs',
         link: ROUTES.APIS,
         Icon: FormatListBulleted,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [ROLE_ADMIN, ROLE_USER],
       },
       {
         text: 'My Data Sources',
         link: ROUTES.DATA_SOURCES,
         Icon: VerticalSplit,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [ROLE_ADMIN, ROLE_USER],
       },
       {
         text: 'Metrics & Logs',
         link: ROUTES.METRICS_AND_LOGS,
         Icon: Assessment,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [ROLE_ADMIN, ROLE_USER],
       },
     ],
   },
@@ -55,25 +56,25 @@ export const GROUPS = [
         text: 'Users & Permissions',
         link: ROUTES.USERS,
         Icon: PeopleAlt,
-        roles: [Roles.ADMIN],
+        roles: [ROLE_ADMIN],
       },
       // {
       //   text: 'Global settings',
       //   link: ROUTES.GLOBAL,
       //   Icon: Settings,
-      //   roles: [Roles.ADMIN, Roles.USER],
+      //   roles: [ROLE_ADMIN, ROLE_USER],
       // },
       // {
       //   text: 'Webhooks',
       //   link: ROUTES.WEBHOOKS,
       //   Icon: AllInclusive,
-      //   roles: [Roles.ADMIN, Roles.USER],
+      //   roles: [ROLE_ADMIN, ROLE_USER],
       // },
       {
         text: 'Gateway nodes',
         link: ROUTES.NODES,
         Icon: Ballot,
-        roles: [Roles.ADMIN],
+        roles: [ROLE_ADMIN],
       },
     ],
   },
@@ -84,21 +85,21 @@ export const GROUPS = [
         text: 'Documentation',
         link: ROUTES.DOCUMENTATION,
         Icon: ImportContacts,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [ROLE_ADMIN, ROLE_USER],
         external: true,
       },
       {
         text: 'GitHub',
         link: ROUTES.GITHUB,
         Icon: GitHub,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [ROLE_ADMIN, ROLE_USER],
         external: true,
       },
       {
         text: 'Contact Us',
         link: ROUTES.CONTACT_US,
         Icon: MailOutline,
-        roles: [Roles.ADMIN, Roles.USER],
+        roles: [ROLE_ADMIN, ROLE_USER],
         external: true,
       },
     ],

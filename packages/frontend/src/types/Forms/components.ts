@@ -7,7 +7,7 @@ import {
 } from '../HookForm';
 import { ObjectArrayItem, StringArrayItem } from './data';
 
-export type Switch = SwitchProps & {
+export type Switch = Omit<SwitchProps, 'onChange'> & {
   value: boolean;
   onChange(value: boolean): void;
 };
@@ -23,5 +23,10 @@ type FieldArrayComponent<T> = {
 export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem>;
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem>;
+
+export type AddFieldArrayHeader = {
+  title: string;
+  onAddClick: FieldArrayAppend;
+};
 
 export type FormGroup = { title: string };

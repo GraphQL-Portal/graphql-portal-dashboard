@@ -332,7 +332,7 @@ describe('UserService', () => {
         to: user.email,
         templateId: config.application.sendgrid.confirmationTemplateId,
         dynamicTemplateData: {
-          confirmationUrl: `${config.application.host}/user/confirm-email?code=${codeEntity.code}&email=${user.email}`,
+          confirmationUrl: `${config.application.publicHost}/user/confirm-email?code=${codeEntity.code}&email=${user.email}`,
           firstName: user.firstName,
         },
       });

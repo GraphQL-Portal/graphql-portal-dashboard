@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
+import { ApolloError } from '@apollo/client';
 import vest, { test, enforce } from 'vest';
 import validator from 'validator';
-import { useAuth } from '../../model/providers';
 
+import { useAuth, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
-// import { useToast } from '../../model/providers';
 import { useLogin as login } from '../../model/Login/commands';
 import { UA } from '../../model/providers/Auth/constants';
 import { LoginForm, UseLoginHook } from '../../types';
@@ -38,13 +38,21 @@ const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
   });
 });
 
-const INITIAL_VALUES = {
-  email: 'admin@example.com',
-  password: 'Secret123!',
-};
+const { NODE_ENV } = process?.env || {};
+const isDevelopment = NODE_ENV === 'development';
+
+const INITIAL_VALUES = isDevelopment
+  ? {
+      email: 'admin@example.com',
+      password: 'Secret123!',
+    }
+  : {
+      email: undefined,
+      password: undefined,
+    };
 
 export const useLogin: UseLoginHook = () => {
-  // const { showErrorToast } = useToast();
+  const { showErrorToast } = useToast();
   const { setAuth } = useAuth();
   const { handleSubmit, register, errors } = useForm<LoginForm>({
     reValidateMode: 'onSubmit',
@@ -52,12 +60,9 @@ export const useLogin: UseLoginHook = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const handleLogin = (data: any) => {
-    setAuth(data.login);
-  };
+  const handleLogin = (data: any) => setAuth(data.login);
 
-  // @TODO use showErrorToast with message to show why error appeared
-  const handleError = (err: any) => console.error(err);
+  const handleError = (err: ApolloError) => showErrorToast(err.message);
 
   const { onLogin } = login({ onCompleted: handleLogin, onError: handleError });
 
