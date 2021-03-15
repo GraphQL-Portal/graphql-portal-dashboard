@@ -1,11 +1,10 @@
-import { SourceConfig } from '@graphql-portal/types';
 import * as mongoose from 'mongoose';
-import { mongoCipherType } from '../../common/tool/cipher.tool';
+import { SourceConfig } from '@graphql-portal/types';
 
 const sourceSchema = new mongoose.Schema(
   {
     name: String,
-    handler: mongoCipherType,
+    handler: Object,
     transforms: [Object],
     user: {
       type: mongoose.Schema.Types.ObjectId,

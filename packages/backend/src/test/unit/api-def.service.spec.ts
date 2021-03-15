@@ -148,13 +148,13 @@ describe('ApiDefService', () => {
 
     it('should update document and call publishApiDefsUpdated', async () => {
       const newData = ({
-        ...apiDef.toObject({ getters: true }),
+        ...apiDef.toJSON(),
         endpoint: 'new-endpoint',
       } as any) as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 
       expect(result.apiDef).toBeDefined();
-      expect(result.apiDef.toObject({ getters: true })).toMatchObject({
+      expect(result.apiDef.toJSON()).toMatchObject({
         ...newData,
         ...mongoDocumentSchema,
       });
@@ -165,7 +165,7 @@ describe('ApiDefService', () => {
 
     it('should save all fields', async () => {
       const newData = ({
-        ...apiDef.toObject({ getters: true }),
+        ...apiDef.toJSON(),
         schema_polling_interval: 1,
         schema_updates_through_control_api: true,
         enable_ip_filtering: true,
@@ -179,7 +179,7 @@ describe('ApiDefService', () => {
       const result = await apiDefService.update(apiDef._id, newData, []);
 
       expect(result.apiDef).toBeDefined();
-      expect(result.apiDef.toObject({ getters: true })).toMatchObject({
+      expect(result.apiDef.toJSON()).toMatchObject({
         ...newData,
         ...mongoDocumentSchema,
       });
