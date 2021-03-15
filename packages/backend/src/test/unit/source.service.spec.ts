@@ -1,15 +1,15 @@
+import { SourceConfig } from '@graphql-portal/types';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
-import AppModule from '../../modules/app.module';
-import SourceService from '../../modules/source/source.service';
-import { SourceConfig } from '@graphql-portal/types';
 import { ISourceDocument } from '../../data/schema/source.schema';
 import ApiDefService from '../../modules/api-def/api-def.service';
+import AppModule from '../../modules/app.module';
+import SourceService from '../../modules/source/source.service';
 import {
-  sourceExample,
-  mongoDocumentSchema,
   expectSource,
+  mongoDocumentSchema,
   randomObjectId,
+  sourceExample,
 } from '../common';
 
 jest.mock('ioredis');
@@ -111,11 +111,14 @@ describe('SourceService', () => {
         .spyOn(apiDefService, 'publishApiDefsUpdated')
         .mockResolvedValueOnce(1);
 
-      const newData = { ...source.toJSON(), transforms: [{}] } as SourceConfig;
+      const newData = {
+        ...source.toObject({ getters: true }),
+        transforms: [{}],
+      } as SourceConfig;
       const result = await sourceService.update(source._id, newData);
 
       expect(result).toBeDefined();
-      expect(result.toJSON()).toMatchObject({
+      expect(result.toObject({ getters: true })).toMatchObject({
         ...newData,
         ...mongoDocumentSchema,
       });

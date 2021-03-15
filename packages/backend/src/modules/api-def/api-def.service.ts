@@ -87,7 +87,7 @@ export default class ApiDefService implements IAccessControlService {
       error = err;
     });
     if (error) {
-      this.logger.error(error.message, null, context, error);
+      this.logger.error(error.message, error.stack, context, error);
       const validationError = new ValidationError(error.message);
       validationError.originalError = error;
       throw validationError;
