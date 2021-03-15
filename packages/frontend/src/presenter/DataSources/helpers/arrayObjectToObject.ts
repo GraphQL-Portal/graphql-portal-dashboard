@@ -1,10 +1,10 @@
-import { FieldArray } from '../../../types';
+import { FieldArray, ObjectArrayItem } from '../../../types';
 
 export const arrayObjectToObject = (
-  objects: FieldArray = []
-): Record<string, unknown> => {
+  objects: FieldArray<ObjectArrayItem> = []
+): Record<string, string> => {
   return objects.reduce((acc, { key, value }) => {
-    acc[key] = value;
+    if (!!key && !!value) acc[key] = value;
     return acc;
-  }, {} as Record<string, unknown>);
+  }, {} as Record<string, string>);
 };

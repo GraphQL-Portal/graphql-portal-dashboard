@@ -1,6 +1,6 @@
 import { AdditionalResolver, ApiAuth, ApiDef } from './data';
-import { FormMethods } from '../HookForm';
-import { StringArray } from '../Forms';
+import { FieldArray, FormMethods } from '../HookForm';
+import { ObjectArrayItem, StringArray } from '../Forms';
 
 export type ApiAuthFields = ApiAuth<StringArray>;
 
@@ -23,9 +23,13 @@ export type ApiDefForm = Omit<
 
 export type ApiDefFormMethods = FormMethods<ApiDefForm>;
 
+type FormAdditionalResolver = Omit<AdditionalResolver, 'args'> & {
+  args: FieldArray<ObjectArrayItem> | undefined;
+};
+
 export type AdditionalResolverForm = {
   mesh: {
-    additionalResolvers: AdditionalResolver[] | undefined;
+    additionalResolvers: FormAdditionalResolver[] | undefined;
     additionalTypeDefs: string[] | undefined;
   };
 };

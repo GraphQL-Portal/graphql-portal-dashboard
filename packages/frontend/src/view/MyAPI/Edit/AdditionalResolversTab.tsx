@@ -14,6 +14,7 @@ export const AdditionalResolversTab: React.FC<Props> = (props) => {
     onSubmit,
     register,
     errors,
+    control,
   } = useAdditionalResolver(props);
   const { form } = useStyles();
   return (
@@ -24,6 +25,7 @@ export const AdditionalResolversTab: React.FC<Props> = (props) => {
         onRemoveResolver={onRemoveResolver}
         register={register}
         errors={errors}
+        control={control}
       />
       <PrimaryButton type="submit">Update additional resolvers</PrimaryButton>
     </form>
