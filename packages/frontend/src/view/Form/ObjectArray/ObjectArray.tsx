@@ -16,6 +16,8 @@ export const ObjectArray: React.FC<Props> = ({
   title,
   fields,
   name,
+  keyLabel,
+  valueLabel,
 }) => {
   const { objectField, lastField, objectRow } = useStyles();
 
@@ -31,10 +33,10 @@ export const ObjectArray: React.FC<Props> = ({
               <Controller
                 as={Input}
                 control={control}
-                label="key"
+                label={keyLabel || 'key'}
                 name={`${name}[${idx}].key`}
                 fullWidth
-                defaultValue={field.key || null}
+                defaultValue={field.key || undefined}
                 error={!!errors?.[name]?.[idx]?.key}
               />
             </Col>
@@ -42,10 +44,10 @@ export const ObjectArray: React.FC<Props> = ({
               <Controller
                 as={Input}
                 control={control}
-                label="value"
+                label={valueLabel || 'value'}
                 name={`${name}[${idx}].value`}
                 fullWidth
-                defaultValue={field.value || null}
+                defaultValue={field.value || undefined}
                 error={!!errors?.[name]?.[idx]?.value}
               />
             </Col>
