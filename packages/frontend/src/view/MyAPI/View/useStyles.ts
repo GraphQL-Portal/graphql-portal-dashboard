@@ -5,6 +5,11 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     height: '30rem',
     marginTop: spacing(4),
   },
+  playground: {
+    '& .graphiql-container .doc-explorer-title-bar': {
+      height: 47,
+    },
+  },
   // playground: {
   //   '& .graphiql-container': {
   //     border: `1px solid ${palette.action.disabled}`,
