@@ -1,26 +1,25 @@
 import React from 'react';
-import clsx from 'clsx';
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror-graphql/mode';
+import 'codemirror/theme/dracula.css';
 
 import { ViewAPITab as Props } from '../../../types';
 import { useStyles } from './useStyles';
 import { useAPIViewSchema } from '../../../presenter/ApiDefs';
 
 export const Schema: React.FC<Props> = ({ fetcher }) => {
-  const { wrapper, editor } = useStyles();
+  const { wrapper } = useStyles();
   const { value } = useAPIViewSchema(fetcher);
 
-  const className = clsx(wrapper, editor);
-
   return (
-    <div className={className}>
+    <div className={wrapper}>
       <CodeMirror
         value={value}
         options={{
           mode: 'graphql',
           tabSize: 2,
           readOnly: 'nocursor',
+          theme: 'dracula',
         }}
       />
     </div>
