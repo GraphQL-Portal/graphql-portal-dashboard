@@ -75,7 +75,13 @@ export default class TokenService implements OnModuleInit {
         if (jwt.verify(config.gateway.secret).userId === Roles.GATEWAY) {
           return config.gateway.secret;
         }
-      } catch (error) {}
+      } catch (error) {
+        this.logger.error(
+          `Could not verify the Gateway secret ${config.gateway.secret}`,
+          '',
+          this.constructor.name
+        );
+      }
     }
 
     const secret = jwt.sign(Roles.GATEWAY, Roles.GATEWAY, 0); // gateway secret should not expire
