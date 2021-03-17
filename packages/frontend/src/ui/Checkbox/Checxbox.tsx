@@ -11,7 +11,7 @@ export const Checkbox = forwardRef<unknown, Props>(
     return (
       <MUICheckbox
         onChange={handleChange}
-        checked={value || false}
+        checked={value}
         {...params}
         innerRef={ref}
       />
