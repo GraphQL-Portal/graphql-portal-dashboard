@@ -14,7 +14,11 @@
     "lint": "eslint '{src,apps,libs,test}/**/*.ts' --fix",
     "test": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "clear": "rm -rf node_modules"
+    "clear": "rm -rf node_modules",
+    "migrate:create": "sh -c 'ts-node node_modules/.bin/migrate-mongo create $0' ",
+    "migrate:status": "ts-node node_modules/.bin/migrate-mongo status",
+    "migrate:undo-last": "ts-node node_modules/.bin/migrate-mongo down && npm run migrate:status",
+    "migrate": "ts-node node_modules/.bin/migrate-mongo up"
   },
   "dependencies": {
     "@graphql-mesh/fhir": "0.9.9",
@@ -73,6 +77,7 @@
     "graphql-tools": "6.2.6",
     "ioredis": "4.24.2",
     "jsonwebtoken": "8.5.1",
+    "migrate-mongo": "^8.2.2",
     "mongodb": "3.6.4",
     "mongoose": "5.12.0",
     "node-config-ts": "3.1.0",

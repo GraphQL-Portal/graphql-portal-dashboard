@@ -12,3 +12,20 @@ export const randomEmail = (length = 10, domainLength = 3): string => {
 
 export const getObjectKey = (obj: { [key: string]: any }, path: string): any =>
   path.split('.').reduce((o, i) => o?.[i], obj);
+
+export const getArrayRepeats = (arr: string[]): string[] => {
+  const counts: { [key: string]: number } = {};
+  for (const value of arr) {
+    if (!counts[value]) {
+      counts[value] = 0;
+    }
+    counts[value] += 1;
+  }
+  const repeats = [];
+  for (const key of Object.keys(counts)) {
+    if (counts[key] > 1) {
+      repeats.push(key);
+    }
+  }
+  return repeats;
+};
