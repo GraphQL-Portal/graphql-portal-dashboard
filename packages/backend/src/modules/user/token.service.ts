@@ -23,6 +23,10 @@ export default class TokenService implements OnModuleInit {
   ) {}
 
   public async onModuleInit(): Promise<void> {
+    const { jwtSecret } = config.application;
+    if (!jwtSecret || jwtSecret === 'jwtSecret') {
+      this.logger.warn('jwtSecret is not set', this.constructor.name);
+    }
     await this.generateGatewaySecret();
   }
 
