@@ -13,5 +13,6 @@ RUN yarn build
 EXPOSE 3030
 
 ENV NODE_ENV production
+ENV SERVE_STATIC true
 
 CMD ["yarn", "start:prod"]
