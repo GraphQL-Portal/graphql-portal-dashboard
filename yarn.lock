@@ -1620,7 +1620,7 @@
     fetchache "0.0.4"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.14.1", "@graphql-mesh/graphql@^0.14.1":
+"@graphql-mesh/graphql@0.14.1", "@graphql-mesh/graphql@^0.14.0", "@graphql-mesh/graphql@^0.14.1":
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.14.1.tgz#b29670e66dbc113948e3790292c81b8d24a4c4cd"
   integrity sha512-VHtlpS5cGg9P7YQiLi7fO0U1vBc+6G3CT62S+tQqGdkvkhBbysoKN5qL1Uy9x1YHSP716NWX/kNUnjdHwdYSHw==
@@ -2056,7 +2056,14 @@
     nanoid "^3.1.20"
     yaml "^1.10.0"
 
-"@graphql-portal/contentful@0.0.2", "@graphql-portal/contentful@^0.0.2":
+"@graphql-portal/contentful@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/contentful/-/contentful-0.0.3.tgz#a511af9b1850f4664cd5130c500873c7f09765ea"
+  integrity sha512-aKOYdGy7XRumRjLWd5xRDWhqwe9sQKj71KZFFen1id5ASkxVdKXtPtku5HrR1gr0b4ANw+kPsOFZe+//AzbccQ==
+  dependencies:
+    "@graphql-mesh/graphql" "^0.14.0"
+
+"@graphql-portal/contentful@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/contentful/-/contentful-0.0.2.tgz#fa66e2cfcc05a8c4363a324f1eb570ae19a5db97"
   integrity sha512-CdP3JY7+a6ryQMwb8kJYo6mNo4ib0BQ/vsu0vX2cB0bYUqj4iydrapjB15A3GMOZ/T2vuN8l5piB2y3NHy1+GA==

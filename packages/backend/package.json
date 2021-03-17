@@ -40,7 +40,7 @@
     "@graphql-mesh/transform-rename": "0.8.5",
     "@graphql-mesh/transform-resolvers-composition": "0.8.1",
     "@graphql-mesh/transform-snapshot": "0.8.1",
-    "@graphql-portal/contentful": "0.0.2",
+    "@graphql-portal/contentful": "0.0.3",
     "@graphql-portal/crunchbase": "0.0.2",
     "@graphql-portal/datasources": "0.0.3",
     "@graphql-portal/gateway": "0.16.3",
