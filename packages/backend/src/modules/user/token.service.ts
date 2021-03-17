@@ -29,13 +29,19 @@ export default class TokenService implements OnModuleInit {
   public async refreshTokens(token: string, device: string): Promise<ITokens> {
     const context = `${this.constructor.name}:${this.refreshTokens.name}`;
     const refreshToken = await this.tokenModel.findOne({ token, device });
+    const authError = new AuthenticationError('Refresh token is invalid'); // front-end relies on this error.message
 
     if (!refreshToken) {
-      throw new AuthenticationError('Refresh token is invalid');
+      throw authError;
     }
 
     this.logger.log('Verifying token...', context);
-    await jwt.verify(refreshToken.token);
+    try {
+      await jwt.verify(refreshToken.token);
+    } catch (error) {
+      this.logger.error(error, error.stack, context);
+      throw authError;
+    }
 
     return this.issueTokens(refreshToken.user, refreshToken.device);
   }
