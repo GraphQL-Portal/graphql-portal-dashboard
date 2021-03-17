@@ -1,0 +1,1 @@
+export { useGatewayLogsWithSubscription } from './useGatewayLogs';

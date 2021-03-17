@@ -18,3 +18,4 @@ export * from './User';
 export * from './ButtonGroup';
 export * from './Metrics';
 export * from './Utils';
+export * from './GatewayLogs';

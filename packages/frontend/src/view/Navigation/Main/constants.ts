@@ -46,6 +46,12 @@ export const GROUPS = [
         Icon: Assessment,
         roles: [Roles.ADMIN, Roles.USER],
       },
+      {
+        text: 'Logs',
+        link: ROUTES.LOGS,
+        Icon: Ballot,
+        roles: [Roles.ADMIN],
+      },
     ],
   },
   {
