@@ -43,7 +43,8 @@
   },
   "db": {
     "redis": {
-      "connectionString": "redis://localhost:6379"
+      "connectionString": "redis://localhost:6379",
+      "clusterNodes": ""
     },
     "mongodb": {
       "connectionString": "mongodb://localhost:27017/graphql-portal-dashboard"
