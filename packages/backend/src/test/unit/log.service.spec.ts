@@ -38,7 +38,10 @@ describe('LogService', () => {
       await app.init();
 
       expect(onMock).toHaveBeenCalledTimes(2);
-      expect(onMock).toHaveBeenCalledWith('logs-updated', expect.any(Function));
+      expect(onMock).toHaveBeenCalledWith(
+        Channel.logsUpdated,
+        expect.any(Function)
+      );
     });
   });
 

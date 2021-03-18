@@ -1,3 +1,4 @@
+import { Channel } from '@graphql-portal/types';
 import { Inject, Injectable } from '@nestjs/common';
 import { Redis } from 'ioredis';
 import Provider from '../../common/enum/provider.enum';
@@ -17,7 +18,7 @@ export default class LogService {
   }
 
   public onApplicationBootstrap(): void {
-    this.redisService.on('logs-updated' as any, (message: string) =>
+    this.redisService.on(Channel.logsUpdated, (message: string) =>
       this.logsUpdated(JSON.parse(message))
     );
   }

@@ -2180,6 +2180,13 @@
   dependencies:
     ajv "7.2.1"
 
+"@graphql-portal/types@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.19.0.tgz#1f11494d88938e72f8f95e626ce9d835e0791816"
+  integrity sha512-xNT1fd8hSPHQ+oA7MBRQ/4Poe/kwGK2N507WG88Zp1wH34DiCko3ilRLjuhfP2ztuH6WL3r8XKCEo4z4/elfcA==
+  dependencies:
+    ajv "7.2.1"
+
 "@graphql-portal/weatherbit@0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.0.2.tgz#cbc33ba2342024dd5e1ab05a6dfd1cc61a413899"
