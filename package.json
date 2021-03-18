@@ -1,6 +1,6 @@
 {
   "name": "graphql-portal-dashboard",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "GraphQL API Gateway management dashboard",
   "private": true,
   "workspaces": [
@@ -16,6 +16,7 @@
     "frontend:build": "yarn workspace graphql-portal-dashboard-frontend build",
     "build": "yarn frontend:build && yarn backend:build",
     "start:prod": "yarn workspace graphql-portal-dashboard-backend start:prod",
+    "start:debug": "yarn workspace graphql-portal-dashboard-backend start:debug",
     "start": "concurrently --kill-others-on-fail 'yarn backend' 'yarn frontend'",
     "clear": "rm -rf node_modules && yarn frontend:clear && yarn backend:clear",
     "test": "yarn backend:test && yarn workspace graphql-portal-dashboard-frontend start & npx wait-on --timeout=240000 http://localhost:8080",
@@ -54,14 +55,14 @@
     "concurrently": "6.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "4.16.1",
-    "@typescript-eslint/parser": "4.16.1",
-    "eslint": "7.21.0",
+    "@typescript-eslint/eslint-plugin": "4.17.0",
+    "@typescript-eslint/parser": "4.17.0",
+    "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-config-react-app": "6.0.0",
     "eslint-config-standard": "16.0.2",
     "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jest": "24.1.8",
+    "eslint-plugin-jest": "24.3.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.3.1",
     "eslint-plugin-testing-library": "3.10.1",

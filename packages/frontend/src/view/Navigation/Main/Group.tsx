@@ -1,18 +1,23 @@
 import React from 'react';
 
 import { getKeyFromText } from '../../../utils/getKeyFromText';
-import { Group as Props } from '../../../types';
+import { NavigationGroup as Props } from '../../../types';
 import { H6 } from '../../../ui';
+import { useNavigationGroup } from '../../../presenter/Navigation';
 import { RoleProtectedComponent } from '../../RoleProtectedComponent';
 import { Item } from './Item';
 import { useStyles } from './useStyles';
 
 export const Group: React.FC<Props> = ({ name, items }) => {
   const { group, groupName } = useStyles();
+  const { navItems, withoutItems } = useNavigationGroup(items);
+
+  if (withoutItems) return null;
+
   return (
     <section className={group}>
       {!!name && <H6 className={groupName}>{name}</H6>}
-      {items.map((item) => {
+      {navItems.map(item => {
         return (
           <RoleProtectedComponent
             Component={Item}

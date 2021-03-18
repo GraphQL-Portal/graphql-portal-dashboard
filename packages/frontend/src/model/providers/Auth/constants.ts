@@ -8,8 +8,6 @@ export const TOKENS_DOMAIN: string = window.location.hostname.replace(
 );
 export const UA = window.navigator.userAgent;
 
-export enum Roles {
-  USER = 'user',
-  ADMIN = 'admin',
-  GUEST = '',
-}
+export const ROLE_ADMIN = 'admin';
+export const ROLE_USER = 'user';
+export const ROLE_GUEST = '';

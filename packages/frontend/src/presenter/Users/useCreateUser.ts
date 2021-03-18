@@ -4,7 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { useDialogs } from '../../model/providers';
-import { Roles } from '../../model/providers/Auth/constants';
+import { ROLE_ADMIN, ROLE_USER } from '../../model/providers/Auth/constants';
 
 const suite = vest.create(
   'create_user',
@@ -39,14 +39,14 @@ const suite = vest.create(
 );
 
 export const USER_ROLES = [
-  { label: 'User', value: Roles.USER },
-  { label: 'Admin', value: Roles.ADMIN },
+  { label: 'User', value: ROLE_USER },
+  { label: 'Admin', value: ROLE_ADMIN },
 ];
 
-const DEFAUL_CREATE_USER_STATE = {
+const DEFAULT_CREATE_USER_STATE = {
   firstName: '',
   lastName: '',
-  role: USER_ROLES[0].value,
+  role: ROLE_USER,
   email: '',
   password: '',
   confirmPassword: '',
@@ -57,13 +57,13 @@ export const useCreateUser = () => {
   const { handleSubmit, errors, control } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
-    defaultValues: DEFAUL_CREATE_USER_STATE,
+    defaultValues: DEFAULT_CREATE_USER_STATE,
   });
 
   useFormErrors(errors);
 
   return {
-    onSubmit: handleSubmit((data) => {
+    onSubmit: handleSubmit(data => {
       dialogConfig.onSuccess({
         firstName: data.firstName,
         lastName: data.lastName,

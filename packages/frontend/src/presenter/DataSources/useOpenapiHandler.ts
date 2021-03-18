@@ -8,15 +8,15 @@ import { clearEmptyFields } from '../../utils';
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const OPENAPI_DEFAULT_STATE = {
-  source: null,
+  source: undefined,
   sourceFormat: undefined,
   schemaHeaders: undefined,
   operationHeaders: undefined,
-  baseUrl: null,
+  baseUrl: undefined,
   qs: undefined,
-  includeHttpDetails: null,
-  addLimitArgument: null,
-  genericPayloadArgName: null,
+  includeHttpDetails: undefined,
+  addLimitArgument: undefined,
+  genericPayloadArgName: undefined,
   selectQueryOrMutationField: undefined,
 };
 
@@ -39,12 +39,18 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
     qs: objectToFieldArray(qs),
   });
 
-  const { handleSubmit, errors, control, register } = useForm<OpenapiForm>({
+  const {
+    handleSubmit,
+    errors,
+    control,
+    register,
+    formState,
+  } = useForm<OpenapiForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
   });
-
+  const { dirtyFields } = formState;
   useFormErrors(errors);
 
   const {
@@ -88,9 +94,11 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
       schemaHeaders,
       operationHeaders,
       qs,
+      baseUrl,
       ...cleared
     } = clearEmptyFields(handler);
-    console.log('CLEARED IS: ', cleared);
+
+    const clearBaseUrl = baseUrl === '' && !dirtyFields.baseUrl;
     updateState(
       {
         handler: {
@@ -102,6 +110,7 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
             ? { operationHeaders: arrayObjectToObject(operationHeaders) }
             : {}),
           ...(qs ? { qs: arrayObjectToObject(qs) } : {}),
+          ...(clearBaseUrl ? {} : { baseUrl }),
         },
       },
       step

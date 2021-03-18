@@ -2,10 +2,11 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import clsx from 'clsx';
 
-import { Add, Remove } from '../../../icons';
+import { Remove } from '../../../icons';
 import { ObjectArrayForm as Props } from '../../../types';
-import { Col, IconButton, Row, Input, Tooltip, H6 } from '../../../ui';
+import { Col, IconButton, Row, Input, Tooltip } from '../../../ui';
 import { useStyles } from './useStyles';
+import { AddFieldArrayHeader } from '../AddFieldArrayHeader';
 
 export const ObjectArray: React.FC<Props> = ({
   onAdd,
@@ -15,6 +16,8 @@ export const ObjectArray: React.FC<Props> = ({
   title,
   fields,
   name,
+  keyLabel,
+  valueLabel,
 }) => {
   const { objectField, lastField, objectRow } = useStyles();
 
@@ -22,18 +25,7 @@ export const ObjectArray: React.FC<Props> = ({
 
   return (
     <>
-      <Row className={objectRow} spacing={2}>
-        <Col xs={6} className={objectField}>
-          <H6>{title}</H6>
-        </Col>
-        <Col xs={6} className={lastObjectField}>
-          <Tooltip title={`Add ${title}`} placement="left">
-            <IconButton onClick={onAdd}>
-              <Add />
-            </IconButton>
-          </Tooltip>
-        </Col>
-      </Row>
+      <AddFieldArrayHeader title={title} onAddClick={onAdd} />
       {fields.length > 0 &&
         fields.map((field, idx) => (
           <Row className={objectRow} key={field.id} spacing={2}>
@@ -41,10 +33,10 @@ export const ObjectArray: React.FC<Props> = ({
               <Controller
                 as={Input}
                 control={control}
-                label="key"
+                label={keyLabel || 'key'}
                 name={`${name}[${idx}].key`}
                 fullWidth
-                defaultValue={field.key || null}
+                defaultValue={field.key || undefined}
                 error={!!errors?.[name]?.[idx]?.key}
               />
             </Col>
@@ -52,10 +44,10 @@ export const ObjectArray: React.FC<Props> = ({
               <Controller
                 as={Input}
                 control={control}
-                label="value"
+                label={valueLabel || 'value'}
                 name={`${name}[${idx}].value`}
                 fullWidth
-                defaultValue={field.value || null}
+                defaultValue={field.value || undefined}
                 error={!!errors?.[name]?.[idx]?.value}
               />
             </Col>

@@ -1,16 +1,14 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 
 import { useTransforms } from '../../../presenter/DataSources';
 import { TransformsStep, TransformsMapper } from '../../../types';
-import { Select, OutlineButton, FormGroup } from '../../../ui';
-import { HandlerRow, HandlerCol } from '../Layout';
+import { FormGroup } from '../../../ui';
 import { TransformEditors } from '../TransformEditors';
 import { PrefixTransform } from '../PrefixTransform';
 import { RenameTransform } from '../RenameTransform';
+import { AvailableTransforms } from './Available';
 
 import { List } from './List';
-import { useStyles } from './useStyles';
 
 // Put Transform Custom Forms here
 const TRANSFORM_TABLE: TransformsMapper = {
@@ -26,7 +24,6 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
     state,
     addTransform,
     transforms,
-    control,
     fields,
     onAddTransform,
     onRemoveTransform,
@@ -36,7 +33,6 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
     onCancelEdit,
     onUpdateTransform,
   } = useTransforms(props);
-  const { addButton } = useStyles();
 
   return (
     <>
@@ -56,26 +52,6 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
           </FormGroup>
         );
       })}
-      <form noValidate autoComplete="off" onSubmit={onAddTransform}>
-        <HandlerRow>
-          <HandlerCol>
-            <Controller
-              as={Select}
-              control={control}
-              name="transform"
-              options={transforms}
-              labelId="transform"
-              label="Select a transform"
-              fullWidth
-            />
-          </HandlerCol>
-          <HandlerCol>
-            <OutlineButton type="submit" className={addButton}>
-              Add transform
-            </OutlineButton>
-          </HandlerCol>
-        </HandlerRow>
-      </form>
       {fields.map((field, idx) => {
         const Handler = getTransform(field);
         return (
@@ -88,6 +64,7 @@ export const SourceTransforms: React.FC<TransformsStep> = (props) => {
           </FormGroup>
         );
       })}
+      <AvailableTransforms transforms={transforms} onAdd={onAddTransform} />
     </>
   );
 };

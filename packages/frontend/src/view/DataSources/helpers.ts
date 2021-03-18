@@ -4,7 +4,12 @@ import {
 } from '../../presenter/DataSources/constants';
 import { getHandlerKey } from '../../presenter/DataSources/helpers';
 import { DataSource } from '../../types';
-import { compose, getProp, getObjPropOr } from '../../utils';
+import { Source } from './types';
+import {
+  ADD_SOURCE_STEPS,
+  ADD_SOURCE_STEPS_WITH_CONFIGURATION,
+} from './constants';
+import { compose, getProp, getObjPropOr, objectKeys } from '../../utils';
 
 export const getError = (errors: any) => (field: string) => !!errors?.[field];
 
@@ -17,3 +22,9 @@ export const formatHandlerType: (handler: DataSource) => string = compose(
   getObjPropOr(AVAILABLE_HANDLERS, {}),
   getHandlerKey
 );
+
+export const getSourceSteps = (source: Source) => {
+  return objectKeys(source?.connector?.properties || {}).length > 0
+    ? ADD_SOURCE_STEPS_WITH_CONFIGURATION
+    : ADD_SOURCE_STEPS;
+};

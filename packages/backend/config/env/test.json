@@ -3,5 +3,8 @@
     "mongodb": {
       "connectionString": "@@MONGO_URL"
     }
+  },
+  "gateway": {
+    "secret": ""
   }
 }

@@ -9,7 +9,15 @@ import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
 
 export const MyAPI: React.FC = () => {
-  const { data, loading, onDelete, onUpdate, onCreate, onView } = useMyApi();
+  const {
+    data,
+    loading,
+    onDelete,
+    onUpdate,
+    onCreate,
+    onView,
+    refetch,
+  } = useMyApi();
 
   if (loading) return <Loading />;
 
@@ -26,6 +34,7 @@ export const MyAPI: React.FC = () => {
           {data.length ? (
             <ApiDefsList
               list={data}
+              refetch={refetch!}
               onDelete={onDelete}
               onUpdate={onUpdate}
               onView={onView}

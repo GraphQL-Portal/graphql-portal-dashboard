@@ -9,7 +9,7 @@ import { createApiDefList } from './helpers';
 
 export const useMyApi: UseMyAPIHook = () => {
   const { push } = useHistory();
-  const { data, loading } = useApiDefs();
+  const { data, loading, refetch } = useApiDefs();
   const [deleteApiDef] = useDeleteApiDef();
   const { onOpenDialog, onCloseDialog } = useDialogs()!;
 
@@ -34,6 +34,7 @@ export const useMyApi: UseMyAPIHook = () => {
   return {
     data: createApiDefList(data),
     loading,
+    refetch,
     onDelete,
     onUpdate,
     onCreate,

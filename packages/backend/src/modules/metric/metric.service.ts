@@ -139,11 +139,25 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
           ],
           count: [{ $group: { _id: '$apiDef', value: { $sum: 1 } } }],
           failed: [
-            { $match: { 'resolvers.errorAt': { $exists: true } } },
+            {
+              $match: {
+                $or: [
+                  { 'resolvers.errorAt': { $exists: true } },
+                  { error: { $exists: true } },
+                ],
+              },
+            },
             { $group: { _id: '$apiDef', value: { $sum: 1 } } },
           ],
           success: [
-            { $match: { 'resolvers.errorAt': { $exists: false } } },
+            {
+              $match: {
+                $and: [
+                  { 'resolvers.errorAt': { $exists: false } },
+                  { error: { $exists: false } },
+                ],
+              },
+            },
             { $group: { _id: '$apiDef', value: { $sum: 1 } } },
           ],
           lastAccess: [
@@ -221,7 +235,14 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             },
           ],
           failures: [
-            { $match: { 'resolvers.errorAt': { $exists: true } } },
+            {
+              $match: {
+                $or: [
+                  { 'resolvers.errorAt': { $exists: true } },
+                  { error: { $exists: true } },
+                ],
+              },
+            },
             {
               $bucket: {
                 groupBy: '$resolvers.errorAt',
@@ -232,7 +253,14 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             },
           ],
           successes: [
-            { $match: { 'resolvers.errorAt': { $exists: false } } },
+            {
+              $match: {
+                $and: [
+                  { 'resolvers.errorAt': { $exists: false } },
+                  { error: { $exists: false } },
+                ],
+              },
+            },
             {
               $bucket: {
                 groupBy: '$requestDate',

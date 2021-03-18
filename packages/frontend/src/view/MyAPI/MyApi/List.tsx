@@ -16,11 +16,13 @@ import {
 import { ApiList as Props } from '../../../types';
 import { alignFirstCellLeft, getKeyFromText } from '../../../utils';
 import { ROUTES } from '../../../model/providers';
+import { EnableSwitch } from '../Form';
 import { TABLE_HEAD } from './constants';
 import { useStyles } from './useStyles';
 
 export const ApiDefsList: React.FC<Props> = ({
   list,
+  refetch,
   onDelete,
   onUpdate,
   onView,
@@ -51,7 +53,7 @@ export const ApiDefsList: React.FC<Props> = ({
                 </Link>
               </TableCell>
               <TableCell align="right">
-                {api.enabled ? 'active' : 'inactive'}
+                <EnableSwitch api={api} refetch={refetch} />
               </TableCell>
               <TableCell align="right">{api.createdAt}</TableCell>
               <TableActionCell>

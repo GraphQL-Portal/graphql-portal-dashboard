@@ -5,10 +5,15 @@ import { NOOP } from '../General';
 import { DataSource } from '../DataSource';
 import { ApiDef } from './data';
 import { Fetcher } from './methods';
-import { UseCreateApiDefHook, UseIPFilteringHook } from './hooks';
+import {
+  UseAdditionalResolverHook,
+  UseCreateApiDefHook,
+  UseIPFilteringHook,
+} from './hooks';
 
 export type ApiList = {
   list: ApiDef[];
+  refetch: Refetch;
   onDelete: (api: ApiDef) => NOOP;
   onUpdate: (api: ApiDef) => NOOP;
   onView: (api: ApiDef) => NOOP;
@@ -51,3 +56,20 @@ export type APILimitsForm = Pick<
   ReturnType<UseCreateApiDefHook>,
   'register' | 'errors'
 >;
+
+export type EnableSwitch = {
+  api: ApiDef;
+  refetch: Refetch;
+};
+
+export type AdditionalResolvers = Omit<
+  ReturnType<UseAdditionalResolverHook>,
+  'onSubmit'
+>;
+
+export type AdditionalResolverArguments = Pick<
+  AdditionalResolvers,
+  'control' | 'errors'
+> & {
+  nestIndex: number;
+};

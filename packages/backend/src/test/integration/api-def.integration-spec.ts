@@ -98,6 +98,7 @@ describe('ApiDefResolver', () => {
 
     describe('getAllApiDefsForGateway', () => {
       it('should call findAllForGateway without config.gateway.token', async () => {
+        config.gateway.secret = '';
         await graphQlRequest(
           `query {
             getAllApiDefsForGateway {

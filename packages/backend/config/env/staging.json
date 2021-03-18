@@ -5,11 +5,14 @@
   "application": {
     "env": "staging",
     "host": "@@HOST",
+    "publicHost": "@@PUBLIC_HOST",
     "useSwaggerUi": false,
     "graphQL": {
-      "playground": false,
-      "debug": false
+      "playground": "@@GRAPHQL_PLAYGROUND",
+      "debug": "@@GRAPHQL_PLAYGROUND"
     },
+    "serveStatic": "@@SERVE_STATIC",
+    "jwtSecret": "@@JWT_SECRET",
     "sendgrid": {
       "senderEmail": "@@SENDGRID_SENDER_EMAIL",
       "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",

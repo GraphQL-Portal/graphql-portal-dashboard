@@ -3,12 +3,14 @@
   "application": {
     "env": "default",
     "host": "localhost",
+    "publicHost": "https://localhost:3030",
     "port": 3030,
     "useSwaggerUi": true,
     "graphQL": {
       "playground": true,
       "debug": true
     },
+    "serveStatic": true,
     "logLevel": "debug",
     "jwtSecret": "jwtSecret",
     "salt": "salt",

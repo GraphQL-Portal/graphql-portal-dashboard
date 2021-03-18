@@ -30,6 +30,7 @@ export default class GatewayService {
       hostname,
       listenHostname,
       listenPort,
+      servername,
     } = JSON.parse(data);
     this.nodes[nodeId] = {
       nodeId,
@@ -39,6 +40,7 @@ export default class GatewayService {
       status: 'active',
       listenHostname,
       listenPort,
+      servername,
     };
     this.setTimer(nodeId);
     this.gatewaysUpdated();

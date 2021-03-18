@@ -23,19 +23,29 @@ export default class TokenService implements OnModuleInit {
   ) {}
 
   public async onModuleInit(): Promise<void> {
+    const { jwtSecret } = config.application;
+    if (!jwtSecret || jwtSecret === 'jwtSecret') {
+      this.logger.warn('jwtSecret is not set', this.constructor.name);
+    }
     await this.generateGatewaySecret();
   }
 
   public async refreshTokens(token: string, device: string): Promise<ITokens> {
     const context = `${this.constructor.name}:${this.refreshTokens.name}`;
     const refreshToken = await this.tokenModel.findOne({ token, device });
+    const authError = new AuthenticationError('Refresh token is invalid'); // front-end relies on this error.message
 
     if (!refreshToken) {
-      throw new AuthenticationError('Refresh token is invalid');
+      throw authError;
     }
 
     this.logger.log('Verifying token...', context);
-    await jwt.verify(refreshToken.token);
+    try {
+      await jwt.verify(refreshToken.token);
+    } catch (error) {
+      this.logger.error(error, error.stack, context);
+      throw authError;
+    }
 
     return this.issueTokens(refreshToken.user, refreshToken.device);
   }
@@ -75,7 +85,13 @@ export default class TokenService implements OnModuleInit {
         if (jwt.verify(config.gateway.secret).userId === Roles.GATEWAY) {
           return config.gateway.secret;
         }
-      } catch (error) {}
+      } catch (error) {
+        this.logger.error(
+          `Could not verify the Gateway secret ${config.gateway.secret}`,
+          '',
+          this.constructor.name
+        );
+      }
     }
 
     const secret = jwt.sign(Roles.GATEWAY, Roles.GATEWAY, 0); // gateway secret should not expire
