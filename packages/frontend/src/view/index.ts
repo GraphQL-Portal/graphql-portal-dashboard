@@ -16,4 +16,4 @@ export { Sidebar } from './Sidebar';
 export { Users } from './Users';
 export { Webhooks } from './Webhooks';
 export { RoleProtectedComponent } from './RoleProtectedComponent';
-export { Log } from './LogPage';
+export { GatewayLogs } from './GatewayLogs';

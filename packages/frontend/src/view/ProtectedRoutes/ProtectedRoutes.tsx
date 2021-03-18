@@ -12,7 +12,7 @@ import { MetricsAndLogs } from '../MetricsAndLogs';
 import { MyAPI } from '../MyAPI';
 import { Sidebar } from '../Sidebar';
 import { Users } from '../Users';
-import { Log } from '../LogPage';
+import { GatewayLogs } from '../GatewayLogs';
 // import { Webhooks } from '../Webhooks';
 import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
@@ -44,8 +44,8 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
           <Route path={ROUTES.LOGS}>
             <RoleProtectedComponent
-              Component={Log}
-              roles={[Roles.ADMIN]}
+              Component={GatewayLogs}
+              roles={[ROLE_ADMIN]}
               redirectTo={ROUTES.MAIN}
             />
           </Route>

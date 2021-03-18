@@ -4,7 +4,7 @@ import { useStyles } from './useStyles';
 import { Log as ILog } from '../../types';
 import { useGatewayLogsWithSubscription } from '../../presenter/GatewayLogs/useGatewayLogs';
 
-export const Log: React.FC = () => {
+export const GatewayLogs: React.FC = () => {
   const { subscribeToNewLogs, list } = useGatewayLogsWithSubscription();
   useEffect(() => {
     subscribeToNewLogs();
