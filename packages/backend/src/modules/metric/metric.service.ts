@@ -6,7 +6,6 @@ import {
   OnModuleDestroy,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Redis } from 'ioredis';
 import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
@@ -35,18 +34,20 @@ import {
   IApiActivity,
   IMetric,
 } from './interfaces';
-import { IApiDefDocument } from 'src/data/schema/api-def.schema';
+import { IApiDefDocument } from '../../data/schema/api-def.schema';
+import { RedisClient } from '../../common/types';
 
 type MetricScale = 'hour' | 'day' | 'week' | 'month';
 
 @Injectable()
 export default class MetricService implements OnModuleInit, OnModuleDestroy {
-  private redis: Redis;
+  private redis: RedisClient;
   private maxmind: ReaderModel | WebServiceClient | void;
   private intervals: NodeJS.Timer[] = [];
 
   public constructor(
-    @Inject(Provider.REDIS) private readonly redisClients: [Redis, Redis],
+    @Inject(Provider.REDIS)
+    private readonly redisClients: [RedisClient, RedisClient],
     private readonly apiDefService: ApiDefService,
     @InjectModel('RequestMetric')
     private requestMetricModel: Model<IRequestMetricDocument>,
@@ -139,11 +140,25 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
           ],
           count: [{ $group: { _id: '$apiDef', value: { $sum: 1 } } }],
           failed: [
-            { $match: { 'resolvers.errorAt': { $exists: true } } },
+            {
+              $match: {
+                $or: [
+                  { 'resolvers.errorAt': { $exists: true } },
+                  { error: { $exists: true } },
+                ],
+              },
+            },
             { $group: { _id: '$apiDef', value: { $sum: 1 } } },
           ],
           success: [
-            { $match: { 'resolvers.errorAt': { $exists: false } } },
+            {
+              $match: {
+                $and: [
+                  { 'resolvers.errorAt': { $exists: false } },
+                  { error: { $exists: false } },
+                ],
+              },
+            },
             { $group: { _id: '$apiDef', value: { $sum: 1 } } },
           ],
           lastAccess: [
@@ -221,7 +236,14 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             },
           ],
           failures: [
-            { $match: { 'resolvers.errorAt': { $exists: true } } },
+            {
+              $match: {
+                $or: [
+                  { 'resolvers.errorAt': { $exists: true } },
+                  { error: { $exists: true } },
+                ],
+              },
+            },
             {
               $bucket: {
                 groupBy: '$resolvers.errorAt',
@@ -232,7 +254,14 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             },
           ],
           successes: [
-            { $match: { 'resolvers.errorAt': { $exists: false } } },
+            {
+              $match: {
+                $and: [
+                  { 'resolvers.errorAt': { $exists: false } },
+                  { error: { $exists: false } },
+                ],
+              },
+            },
             {
               $bucket: {
                 groupBy: '$requestDate',

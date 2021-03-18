@@ -1,19 +1,19 @@
 import { Channel } from '@graphql-portal/types';
 import { Inject, Injectable, OnModuleDestroy } from '@nestjs/common';
 import { RedisPubSub } from 'graphql-redis-subscriptions';
-import { Redis } from 'ioredis';
+import { RedisClient } from '../../common/types';
 import Provider from '../../common/enum/provider.enum';
 import Subscription from '../../common/enum/subscription.enum';
 import { LoggerService } from '../../common/logger';
 
 @Injectable({})
 export default class RedisService implements OnModuleDestroy {
-  private publisher: Redis;
-  private subscriber: Redis;
+  private publisher: RedisClient;
+  private subscriber: RedisClient;
   public readonly pubSub: RedisPubSub;
 
   public constructor(
-    @Inject(Provider.REDIS) redisClients: [Redis, Redis],
+    @Inject(Provider.REDIS) redisClients: [RedisClient, RedisClient],
     private readonly logger: LoggerService
   ) {
     this.publisher = redisClients[0];

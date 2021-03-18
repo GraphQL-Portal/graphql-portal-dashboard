@@ -30,7 +30,10 @@ const imports = [
       useFindAndModify: false,
     }
   ),
-  RedisModule.forRoot(config.db.redis.connectionString),
+  RedisModule.forRoot(
+    config.db.redis.connectionString,
+    config.db.redis.clusterNodes?.split(',')
+  ),
   GraphQLModule.forRoot({
     installSubscriptionHandlers: true,
     playground: config.application.graphQL.playground,
