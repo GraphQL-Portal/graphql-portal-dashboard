@@ -5,9 +5,13 @@ export const getUrlFromGatewayNodes = (
   endpoint: string = ''
 ) => {
   const { listenPort, listenHostname, servername } = nodes[0] || {};
-  const uri =
-    servername || (listenPort && listenHostname)
-      ? `${listenHostname}:${listenPort}`
-      : '';
+
+  let uri = '';
+  if (servername) {
+    uri = servername;
+  } else if (listenPort && listenHostname) {
+    uri = `${listenHostname}:${listenPort}`;
+  }
+
   return `${window.location.protocol}//${uri}${endpoint}`;
 };

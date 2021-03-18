@@ -24,9 +24,11 @@ export type AdditionalResolver = {
   type: string;
   field: string;
   fieldType?: string;
-  requiredSelectionSet: string;
+  requiredSelectionSet?: string;
   targetSource: string;
   targetMethod: string;
+  returnData?: string;
+  args?: Record<string, string>;
 };
 
 export type ApiDef = {

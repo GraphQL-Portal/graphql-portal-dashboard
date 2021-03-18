@@ -111,7 +111,7 @@ export type UseUpdateIPFilteringHook = (
 
 export type UseAdditionalResolverHook = (
   props: EditApiTab
-) => Pick<AdditionalResolverFormMethods, 'register' | 'errors'> & {
+) => Pick<AdditionalResolverFormMethods, 'register' | 'errors' | 'control'> & {
   onSubmit: OnSubmit;
   resolvers: FieldArray;
   onAddResolver: FieldArrayAppend;

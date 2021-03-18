@@ -13,6 +13,7 @@
       "debug": "@@GRAPHQL_PLAYGROUND"
     },
     "serveStatic": "@@SERVE_STATIC",
+    "jwtSecret": "@@JWT_SECRET",
     "logLevel": "log",
     "maxmind": {
       "dbPath": "@@MAXMIND_DB_PATH",

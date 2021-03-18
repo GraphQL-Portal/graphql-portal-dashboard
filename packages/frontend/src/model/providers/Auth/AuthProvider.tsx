@@ -1,6 +1,7 @@
 import React, { useContext, useState, createContext } from 'react';
-import { Roles } from './constants';
 
+import { Role } from '../../../types';
+import { getRoleFromToken } from '../../../utils';
 import {
   getAccessToken,
   getRefreshToken,
@@ -9,8 +10,8 @@ import {
   removeAccessToken,
   removeRefreshToken,
 } from './helpers';
-import { AuthContextShape, Tokens } from './types';
-import { getRoleFromToken } from '../../../utils';
+import { AuthContextShape, Tokens } from '../../../types';
+import { ROLE_GUEST } from './constants';
 
 const AuthContext = createContext<null | AuthContextShape>(null);
 export const useAuth = () => useContext(AuthContext)!;
@@ -18,10 +19,10 @@ const { Provider } = AuthContext;
 
 const ACCESS_TOKEN = getAccessToken() || '';
 const REFRESH_TOKEN = getRefreshToken() || '';
-const ROLE: Roles = getRoleFromToken(ACCESS_TOKEN);
+const ROLE: Role = getRoleFromToken(ACCESS_TOKEN);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [role, setRole] = useState<Roles>(ROLE);
+  const [role, setRole] = useState<Role>(ROLE);
   const [accessToken, setAccessToken] = useState<string>(ACCESS_TOKEN);
   const [refreshToken, setRefreshToken] = useState<string>(REFRESH_TOKEN);
 
@@ -44,7 +45,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     // remove tokens from state
     setAccessToken('');
     setRefreshToken('');
-    setRole(Roles.GUEST);
+    setRole(ROLE_GUEST);
   };
 
   return (

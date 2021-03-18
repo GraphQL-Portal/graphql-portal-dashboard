@@ -11,6 +11,7 @@
       "debug": "@@GRAPHQL_PLAYGROUND"
     },
     "serveStatic": "@@SERVE_STATIC",
+    "jwtSecret": "@@JWT_SECRET",
     "maxmind": {
       "dbPath": "@@MAXMIND_DB_PATH",
       "licenseKey": "@@MAXMIND_LICENSE_KEY",

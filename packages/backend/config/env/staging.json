@@ -12,6 +12,7 @@
       "debug": "@@GRAPHQL_PLAYGROUND"
     },
     "serveStatic": "@@SERVE_STATIC",
+    "jwtSecret": "@@JWT_SECRET",
     "sendgrid": {
       "senderEmail": "@@SENDGRID_SENDER_EMAIL",
       "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",

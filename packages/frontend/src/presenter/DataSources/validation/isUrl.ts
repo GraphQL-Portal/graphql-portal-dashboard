@@ -1,5 +1,20 @@
 import { enforce } from 'vest';
 
-const URL_EXP = /^http[s]?:\/\/\w+(\.\w+)*(:[0-9]+)*(\/\w+)*\??(&?\w+=[-\w]+)*$/;
+function validateURL(url: string): boolean {
+  let result;
+  try {
+    result = new URL(url);
+  } catch (e) {
+    return false;
+  }
 
-export const isUrl = (url: string) => enforce(url).matches(URL_EXP);
+  return /https?:/.test(result.protocol);
+}
+
+enforce.extend({
+  isValidUrl(url: string) {
+    return { pass: validateURL(url), message: '' };
+  },
+});
+
+export const isUrl = (url: string) => enforce(url).isValidUrl();

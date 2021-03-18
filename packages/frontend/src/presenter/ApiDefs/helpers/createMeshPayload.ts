@@ -1,4 +1,12 @@
-import { AdditionalResolver, AdditionalResolverForm } from '../../../types';
+import {
+  AdditionalResolver,
+  AdditionalResolverForm,
+  ApiDef,
+} from '../../../types';
+import {
+  arrayObjectToObject,
+  objectToFieldArray,
+} from '../../DataSources/helpers';
 
 export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
   if (!mesh?.additionalResolvers) {
@@ -15,6 +23,8 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
         targetMethod,
         targetSource,
         requiredSelectionSet,
+        args,
+        returnData,
       },
       idx: number
     ) => {
@@ -24,6 +34,8 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
         targetMethod,
         targetSource,
         requiredSelectionSet,
+        args: arrayObjectToObject(args),
+        returnData,
       };
       additionalTypeDefs[idx] = `type ${type} { ${field}: ${fieldType} }`;
 
@@ -36,9 +48,7 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
   );
 };
 
-export const createMeshDefaultValues = (
-  mesh?: AdditionalResolverForm['mesh']
-) => {
+export const createMeshDefaultValues = (mesh?: ApiDef['mesh']) => {
   const { additionalResolvers, additionalTypeDefs } = mesh || {};
   const hasResolvers = additionalResolvers && additionalTypeDefs;
 
@@ -46,12 +56,13 @@ export const createMeshDefaultValues = (
     ? {
         mesh: {
           additionalResolvers: additionalResolvers!.map(
-            (resolver, idx: number) => ({
+            ({ args, ...resolver }, idx: number) => ({
               ...resolver,
               fieldType: additionalTypeDefs![idx].replace(
                 /^.+:\s([\w]+!*)\s.+$/,
                 '$1'
               ),
+              args: objectToFieldArray(args),
             })
           ),
         },
