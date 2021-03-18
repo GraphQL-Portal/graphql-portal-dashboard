@@ -6,7 +6,6 @@ import {
   OnModuleDestroy,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Redis } from 'ioredis';
 import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
@@ -35,18 +34,20 @@ import {
   IApiActivity,
   IMetric,
 } from './interfaces';
-import { IApiDefDocument } from 'src/data/schema/api-def.schema';
+import { IApiDefDocument } from '../../data/schema/api-def.schema';
+import { RedisClient } from '../../common/types';
 
 type MetricScale = 'hour' | 'day' | 'week' | 'month';
 
 @Injectable()
 export default class MetricService implements OnModuleInit, OnModuleDestroy {
-  private redis: Redis;
+  private redis: RedisClient;
   private maxmind: ReaderModel | WebServiceClient | void;
   private intervals: NodeJS.Timer[] = [];
 
   public constructor(
-    @Inject(Provider.REDIS) private readonly redisClients: [Redis, Redis],
+    @Inject(Provider.REDIS)
+    private readonly redisClients: [RedisClient, RedisClient],
     private readonly apiDefService: ApiDefService,
     @InjectModel('RequestMetric')
     private requestMetricModel: Model<IRequestMetricDocument>,

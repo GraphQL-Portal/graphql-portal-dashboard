@@ -14,6 +14,7 @@ declare module 'node-config-ts' {
   }
   interface Redis {
     connectionString: string;
+    clusterNodes: string;
   }
   interface Client {
     host: string;
