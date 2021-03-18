@@ -6,7 +6,7 @@ import { Log } from '../../types';
 export const useGatewayLogsWithSubscription = () => {
   const { loading, data, subscribeToMore } = useGatewayLogs();
 
-  const subscribeToNewComments = () =>
+  const subscribeToNewLogs = () =>
     subscribeToMore({
       document: LOGS_UPDATE,
       updateQuery: (prev: any, { subscriptionData }: any) => {
@@ -27,6 +27,6 @@ export const useGatewayLogsWithSubscription = () => {
   return {
     loading,
     list,
-    subscribeToNewComments,
+    subscribeToNewLogs,
   };
 };

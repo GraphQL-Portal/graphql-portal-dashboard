@@ -5,9 +5,9 @@ import { Log as ILog } from '../../types';
 import { useGatewayLogsWithSubscription } from '../../presenter/GatewayLogs/useGatewayLogs';
 
 export const Log: React.FC = () => {
-  const { subscribeToNewComments, list } = useGatewayLogsWithSubscription();
+  const { subscribeToNewLogs, list } = useGatewayLogsWithSubscription();
   useEffect(() => {
-    subscribeToNewComments();
+    subscribeToNewLogs();
   }, []);
   const { logWraper, errorLog, infoLog, messageWrapper, content } = useStyles();
   const levels: { error: string; info: string } = {
