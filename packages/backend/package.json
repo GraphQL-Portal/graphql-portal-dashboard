@@ -17,7 +17,7 @@
     "clear": "rm -rf node_modules",
     "migrate:create": "sh -c 'ts-node node_modules/.bin/migrate-mongo create $0' ",
     "migrate:status": "ts-node node_modules/.bin/migrate-mongo status",
-    "migrate:undo-last": "ts-node node_modules/.bin/migrate-mongo down && npm run migrate:status",
+    "migrate:down": "ts-node node_modules/.bin/migrate-mongo down",
     "migrate": "ts-node node_modules/.bin/migrate-mongo up"
   },
   "dependencies": {
@@ -64,6 +64,7 @@
     "@nestjs/serve-static": "2.1.4",
     "@nestjs/swagger": "4.7.16",
     "@sendgrid/mail": "7.4.2",
+    "@types/migrate-mongo": "^8.1.0",
     "apollo-server-express": "2.21.1",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",

@@ -4,7 +4,7 @@
     "outDir": "dist",
     "moduleResolution": "Node",
     "module": "CommonJS",
-    "target": "ES2018",
+    "target": "ES2019",
     "sourceMap": true,
     "esModuleInterop": true,
     "declaration": true,

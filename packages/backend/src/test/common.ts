@@ -67,25 +67,23 @@ export const apiDefExample: IApiDef = {
 };
 
 export const sourceSchema = {
+  ...mongoDocumentSchema,
   name: expect.any(String),
-  handler: {
-    graphql: { endpoint: expect.any(String) },
-  },
+  handler: expect.any(String),
   transforms: expect.anything(),
 };
 
 export const apiDefSchema = {
+  ...mongoDocumentSchema,
   name: expect.any(String),
   endpoint: expect.any(String),
-  authentication: expect.objectContaining({
-    auth_tokens: expect.arrayContaining([expect.any(String)]),
-  }),
+  authentication: expect.any(String),
   playground: expect.any(Boolean),
   schema_polling_interval: expect.any(Number),
   schema_updates_through_control_api: expect.any(Boolean),
   enable_ip_filtering: expect.any(Boolean),
-  allow_ips: expect.arrayContaining([expect.any(String)]),
-  deny_ips: expect.arrayContaining([expect.any(String)]),
+  allow_ips: expect.any(String),
+  deny_ips: expect.any(String),
   request_size_limit: expect.any(String),
   depth_limit: expect.any(Number),
   request_complexity_limit: expect.any(Number),
@@ -116,10 +114,7 @@ export const createUser = async (
 };
 
 export const expectSource = (source: ISourceDocument): void =>
-  expect(source.toJSON()).toMatchObject({
-    ...sourceSchema,
-    ...mongoDocumentSchema,
-  });
+  expect(source.toJSON()).toMatchObject(sourceSchema);
 
 export const expectTokens = (result: ITokens): void =>
   expect(result).toMatchObject({
@@ -130,10 +125,9 @@ export const expectTokens = (result: ITokens): void =>
 export const expectApiDef = (apiDef: IApiDefDocument): void => {
   expect(apiDef.toJSON()).toMatchObject({
     ...apiDefSchema,
-    ...mongoDocumentSchema,
     sources: expect.anything(),
   });
-  apiDef.sources.forEach((source) => {
+  apiDef.sources.forEach(source => {
     expectSource(source);
   });
 };
