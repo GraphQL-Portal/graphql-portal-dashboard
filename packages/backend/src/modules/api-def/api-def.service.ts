@@ -1,7 +1,10 @@
 import { getMeshForApiDef } from '@graphql-portal/gateway/dist/src/server/router';
+import { SourceConfig } from '@graphql-portal/types';
+import { AdditionalStitchingResolverObject } from '@graphql-portal/types/src/api-def-config';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ValidationError } from 'apollo-server-express';
+import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 import { printSchema } from 'graphql/utilities';
 import { Model } from 'mongoose';
 import IAccessControlService from '../../common/interface/access-control.interface';
@@ -38,7 +41,10 @@ export default class ApiDefService implements IAccessControlService {
   }
 
   public async findAll(): Promise<ApiDefsWithTimestamp> {
-    const apiDefs = await this.apiDefModel.find().populate('sources').exec();
+    const apiDefs = await this.apiDefModel
+      .find()
+      .populate('sources')
+      .exec();
     return {
       apiDefs,
       timestamp: this.lastUpdateTime,
@@ -46,8 +52,11 @@ export default class ApiDefService implements IAccessControlService {
   }
 
   public async findAllForGateway(): Promise<ApiDefsWithTimestamp> {
-    let apiDefs = await this.apiDefModel.find().populate('sources').exec();
-    apiDefs = apiDefs.filter((apiDef) => apiDef.enabled);
+    let apiDefs = await this.apiDefModel
+      .find()
+      .populate('sources')
+      .exec();
+    apiDefs = apiDefs.filter(apiDef => apiDef.enabled);
 
     return {
       apiDefs,
@@ -77,22 +86,10 @@ export default class ApiDefService implements IAccessControlService {
   }
 
   public async findById(_id: string): Promise<IApiDef> {
-    return this.apiDefModel.findOne({ _id }).populate('sources').exec();
-  }
-
-  public async getMeshSchema(apiDef: IApiDef): Promise<string> {
-    const context = `${this.constructor.name}.getMeshSchema`;
-    let error: Error | undefined;
-    const mesh = await getMeshForApiDef(apiDef, undefined, 0, (err) => {
-      error = err;
-    });
-    if (error) {
-      this.logger.error(error.message, error.stack, context, error);
-      const validationError = new ValidationError(error.message);
-      validationError.originalError = error;
-      throw validationError;
-    }
-    return mesh?.schema ? printSchema(mesh.schema) : '';
+    return this.apiDefModel
+      .findOne({ _id })
+      .populate('sources')
+      .exec();
   }
 
   public async create(
@@ -168,5 +165,96 @@ export default class ApiDefService implements IAccessControlService {
 
   public async isOwner(user: string, _id: string): Promise<boolean> {
     return Boolean(await this.apiDefModel.findOne({ _id, user }));
+  }
+
+  public async getMeshSchema(apiDef: IApiDef): Promise<string> {
+    const context = `${this.constructor.name}.getMeshSchema`;
+    let error: Error | undefined;
+    const apiDefWithPlainSources = {
+      ...apiDef,
+      sources: apiDef.sources.map((source: ISourceDocument) =>
+        source.toObject({ getters: true })
+      ) as SourceConfig[],
+    };
+    const mesh = await getMeshForApiDef(
+      apiDefWithPlainSources,
+      undefined,
+      0,
+      err => {
+        error = err;
+      }
+    );
+    if (!error) {
+      try {
+        this.validateApiDef(apiDefWithPlainSources, mesh);
+      } catch (err) {
+        error = err;
+      }
+    }
+    if (error) {
+      this.logger.error(error.message, error.stack, context, error);
+      const validationError = new ValidationError(error.message);
+      validationError.originalError = error;
+      throw validationError;
+    }
+    return mesh?.schema ? printSchema(mesh.schema) : '';
+  }
+
+  private validateApiDef(apiDef: IApiDef, mesh: any): void {
+    apiDef.mesh?.additionalResolvers?.forEach(
+      (additionalResolver: AdditionalStitchingResolverObject) => {
+        const { targetSource, targetMethod, type, field } = additionalResolver;
+
+        const source = apiDef.sources.find(
+          source => source.name === targetSource
+        );
+        if (!source) {
+          throw new Error(
+            `Source with name '${targetSource}' was not found in the API`
+          );
+        }
+
+        const meshSource = mesh?.rawSources?.find(
+          (source: { name: string }) => source.name === targetSource
+        );
+        if (!meshSource) {
+          throw new Error(`Mesh source was not built: ${targetSource}`);
+        }
+        const { schema } = meshSource as { schema: GraphQLSchema };
+        const methods = ['Query', 'Mutation']
+          .map(type => {
+            const fields = (schema.getType(
+              type
+            ) as GraphQLObjectType)?.getFields();
+            return fields ? Object.keys(fields) : [];
+          })
+          .flat(3);
+        if (!methods.find(method => method === targetMethod)) {
+          throw new Error(
+            `Method ${targetMethod} not found in source ${targetSource}`
+          );
+        }
+
+        const additionalTypeDef = (apiDef.mesh
+          ?.additionalTypeDefs as string[])?.find(
+          (typeDef: string) => typeDef.includes(type) && typeDef.includes(field)
+        );
+        if (!additionalTypeDef) {
+          throw new Error(`additionalTypeDef not found for ${type}.${field}`);
+        }
+        const additionalType: string = additionalTypeDef
+          .replace(/[{}]/g, '')
+          .split(':')?.[1]
+          ?.trim();
+        if (!additionalType) {
+          throw new Error(
+            `Invalid additionalTypeDef format: ${additionalTypeDef}`
+          );
+        }
+        if (!schema.getTypeMap()[additionalType]) {
+          throw new Error(`Invalid type: ${additionalType}`);
+        }
+      }
+    );
   }
 }
