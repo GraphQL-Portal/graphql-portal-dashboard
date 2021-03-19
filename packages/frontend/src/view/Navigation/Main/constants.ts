@@ -51,7 +51,7 @@ export const GROUPS: NavigationGroup[] = [
         text: 'Logs',
         link: ROUTES.LOGS,
         Icon: Ballot,
-        roles: [Roles.ADMIN],
+        roles: [ROLE_ADMIN],
       },
     ],
   },
