@@ -6,10 +6,10 @@ import {
   DatePicker,
   Header,
   HugeWidget,
-  PrimaryButton,
   Widget,
   WidgetRow,
   ButtonGroup,
+  HeaderBackButton,
 } from '../../ui';
 import {
   CountryChart,
@@ -19,6 +19,7 @@ import {
 } from '../MetricChart';
 import { formatArgumentLabel, formatValueLabel } from '../../utils';
 import { useStyles } from './useStyles';
+import { ROUTES } from '../../model/providers';
 
 export const ApiMetrics: React.FC = () => {
   const { date, buttons } = useStyles();
@@ -31,7 +32,6 @@ export const ApiMetrics: React.FC = () => {
     setStartDate,
     setEndDate,
     setScale,
-    goBack,
   } = useApiMetrics();
   const { latency = [], count = [], countries = [], failures = [] } = data;
 
@@ -40,10 +40,15 @@ export const ApiMetrics: React.FC = () => {
       <Helmet>
         <title>API Metrics</title>
       </Helmet>
-      <Header title="API Metrics" />
-      <Header title="Your API Metric">
-        <PrimaryButton onClick={goBack}>Go Back</PrimaryButton>
-      </Header>
+      <Header
+        startChildren={
+          <HeaderBackButton
+            to={ROUTES.APIS_ACTIVITY}
+            title="Back to APIs Activity"
+          />
+        }
+        title=""
+      />
       <WidgetRow>
         <Widget className={buttons}>
           <ButtonGroup onClick={setScale} buttons={chartButtons} />
