@@ -1,4 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
+import { ApiMetric, QueryHook } from '../../../types';
 
 export const QUERY_API_ACTIVITY = gql`
   query getApiActivity($filters: MetricFilters!) {
@@ -13,19 +14,16 @@ export const QUERY_API_ACTIVITY = gql`
   }
 `;
 
-export const useApiActivityQuery = (startDate: Date, endDate: Date) => {
-  const { data, loading, error } = useQuery(QUERY_API_ACTIVITY, {
-    variables: {
-      filters: {
-        startDate: startDate.getTime(),
-        endDate: endDate.getTime(),
-      },
-    },
-  });
+export const useApiActivityQuery: QueryHook<ApiMetric[]> = (options = {}) => {
+  const { data, loading, error, refetch } = useQuery(
+    QUERY_API_ACTIVITY,
+    options
+  );
 
   return {
-    data: data?.getApiActivity,
+    data: data?.getApiActivity || [],
     loading,
     error,
+    refetch,
   };
 };

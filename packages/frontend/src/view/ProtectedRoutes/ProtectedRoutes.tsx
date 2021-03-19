@@ -8,13 +8,13 @@ import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
 import { GatewayNodes } from '../GatewayNodes';
 // import { GlobalSettings } from '../GlobalSettings';
-import { MetricsAndLogs } from '../MetricsAndLogs';
 import { MyAPI } from '../MyAPI';
 import { Sidebar } from '../Sidebar';
 import { Users } from '../Users';
 // import { Webhooks } from '../Webhooks';
 import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
+import { ApisActivity } from '../ApisActivity';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
@@ -41,8 +41,8 @@ export const ProtectedRoutes: React.FC = () => {
           <Route path={ROUTES.DATA_SOURCES}>
             <DataSources />
           </Route>
-          <Route path={ROUTES.METRICS_AND_LOGS}>
-            <MetricsAndLogs />
+          <Route path={ROUTES.APIS_ACTIVITY}>
+            <ApisActivity />
           </Route>
           <Route path={ROUTES.USERS}>
             <RoleProtectedComponent
