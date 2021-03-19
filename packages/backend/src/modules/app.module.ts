@@ -32,7 +32,7 @@ const imports = [
   ),
   RedisModule.forRoot(
     config.db.redis.connectionString,
-    config.db.redis.clusterNodes?.split(',')
+    config.db.redis.clusterNodes
   ),
   GraphQLModule.forRoot({
     installSubscriptionHandlers: true,

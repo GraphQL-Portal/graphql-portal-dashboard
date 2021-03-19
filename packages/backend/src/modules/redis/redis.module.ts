@@ -38,18 +38,16 @@ class RedisClientCluster extends IORedisClient.Cluster {
 export default class RedisModule {
   public static forRoot(
     connectionString: string,
-    clusterNodes?: string[]
+    clusterNodes: string
   ): DynamicModule {
     const redisProvider: FactoryProvider<
       [RedisClient, RedisClient] | [RedisClientCluster, RedisClientCluster]
     > = {
       provide: ProviderEnum.REDIS,
       useFactory: () => {
-        if (clusterNodes?.length) {
-          return [
-            new RedisClientCluster(clusterNodes),
-            new RedisClientCluster(clusterNodes),
-          ];
+        if (clusterNodes) {
+          const nodes = clusterNodes.split(',');
+          return [new RedisClientCluster(nodes), new RedisClientCluster(nodes)];
         }
         return [
           new RedisClient(connectionString),
