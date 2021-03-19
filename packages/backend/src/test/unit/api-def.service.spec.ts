@@ -114,6 +114,7 @@ describe('ApiDefService', () => {
           _id: randomObjectId(),
           name: randomString(),
           enabled: false,
+          endpoint: '/endpoint2',
         },
         [],
         randomObjectId()
