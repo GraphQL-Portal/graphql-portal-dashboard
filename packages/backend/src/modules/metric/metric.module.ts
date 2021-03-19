@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import MetricService from './metric.service';
 import RequestMetricSchema from '../../data/schema/request-metric.schema';
 import NetworkMetricSchema from '../../data/schema/network-metric.schema';
@@ -8,12 +8,13 @@ import ApiDefModule from '../api-def/api-def.module';
 
 @Module({
   imports: [
-    ApiDefModule,
+    forwardRef(() => ApiDefModule),
     MongooseModule.forFeature([
       { name: 'RequestMetric', schema: RequestMetricSchema },
       { name: 'NetworkMetric', schema: NetworkMetricSchema },
     ]),
   ],
   providers: [MetricService, MetricResolver],
+  exports: [MetricService],
 })
 export default class MetricModule {}
