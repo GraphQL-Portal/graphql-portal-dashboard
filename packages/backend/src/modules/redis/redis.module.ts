@@ -6,7 +6,7 @@ import RedisService from './redis.service';
 class RedisClient extends IORedisClient {
   public async onModuleInit(): Promise<void> {
     await new Promise((resolve, reject) => {
-      this.on('error', (e) => {
+      this.on('error', e => {
         this.disconnect();
         reject(e);
       });
@@ -21,7 +21,7 @@ class RedisClient extends IORedisClient {
 class RedisClientCluster extends IORedisClient.Cluster {
   public async onModuleInit(): Promise<void> {
     await new Promise((resolve, reject) => {
-      this.on('error', (e) => {
+      this.on('error', e => {
         this.disconnect();
         reject(e);
       });
@@ -46,7 +46,7 @@ export default class RedisModule {
       provide: ProviderEnum.REDIS,
       useFactory: () => {
         if (clusterNodes) {
-          const nodes = clusterNodes.split(',');
+          const nodes = clusterNodes.split(',').filter(Boolean);
           return [new RedisClientCluster(nodes), new RedisClientCluster(nodes)];
         }
         return [
