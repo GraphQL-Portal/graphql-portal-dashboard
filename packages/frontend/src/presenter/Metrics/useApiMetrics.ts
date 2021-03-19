@@ -1,12 +1,11 @@
 import { add } from 'date-fns';
 import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 import { useApiMetricsQuery } from '../../model/Metrics/queries';
 import { Scale } from '../../types';
 
 export const useApiMetrics = () => {
-  const { goBack } = useHistory();
   const { id: apiDef } = useParams<{ id: string }>();
   const [startDate, setStartDate] = useState(add(new Date(), { days: -25 }));
   const [endDate, setEndDate] = useState(new Date());
@@ -42,6 +41,5 @@ export const useApiMetrics = () => {
     setStartDate,
     setEndDate,
     setScale,
-    goBack,
   };
 };
