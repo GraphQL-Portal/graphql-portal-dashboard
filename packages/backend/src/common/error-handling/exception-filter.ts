@@ -1,10 +1,15 @@
-import { Catch } from '@nestjs/common';
+import { Catch, HttpServer } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 import { ValidationError } from 'apollo-server-express';
 import { MongoError } from 'mongodb';
+import { LoggerService } from '../logger';
 
 @Catch()
 export default class ValidationExceptionFilter extends BaseExceptionFilter {
+  public constructor(httpAdapter: HttpServer, private logger: LoggerService) {
+    super(httpAdapter);
+  }
+
   public catch(exception: any): any {
     if (exception instanceof ValidationError) {
       return exception;
@@ -15,8 +20,8 @@ export default class ValidationExceptionFilter extends BaseExceptionFilter {
         message = `Duplicate key ${JSON.stringify(
           (exception as any).keyValue
         )}`;
+        return new ValidationError(message);
       }
-      return new ValidationError(message);
     }
     if (exception.stack.includes('Validation')) {
       const message =
@@ -26,6 +31,7 @@ export default class ValidationExceptionFilter extends BaseExceptionFilter {
       return new ValidationError(message);
     }
 
+    this.logger.error(exception, exception.stack, 'ExceptionFilter');
     return exception;
   }
 }

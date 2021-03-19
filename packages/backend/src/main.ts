@@ -32,7 +32,9 @@ const bootstrap = async (): Promise<void> => {
 
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new ValidationExceptionFilter(app.getHttpAdapter()));
+  app.useGlobalFilters(
+    new ValidationExceptionFilter(app.getHttpAdapter(), logger)
+  );
 
   await app.listen(config.application.port, () => {
     logger.log(`Start listen ${config.application.port}`, 'bootstrap');

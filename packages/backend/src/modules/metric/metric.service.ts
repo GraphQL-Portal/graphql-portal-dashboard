@@ -144,7 +144,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $or: [
                   { 'resolvers.errorAt': { $exists: true } },
-                  { error: { $exists: true } },
+                  { error: { $not: { $eq: null } } },
                 ],
               },
             },
@@ -155,7 +155,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $and: [
                   { 'resolvers.errorAt': { $exists: false } },
-                  { error: { $exists: false } },
+                  { error: { $eq: null } },
                 ],
               },
             },
@@ -240,7 +240,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $or: [
                   { 'resolvers.errorAt': { $exists: true } },
-                  { error: { $exists: true } },
+                  { error: { $not: { $eq: null } } },
                 ],
               },
             },
@@ -258,7 +258,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $and: [
                   { 'resolvers.errorAt': { $exists: false } },
-                  { error: { $exists: false } },
+                  { error: { $eq: null } },
                 ],
               },
             },
