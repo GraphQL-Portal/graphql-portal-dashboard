@@ -24,7 +24,10 @@ export default class ValidationExceptionFilter extends BaseExceptionFilter {
       }
     }
     if (exception.stack.includes('Validation')) {
-      const message = exception.response.message.toString();
+      const message =
+        exception.response?.message?.toString() ||
+        exception.message ||
+        exception.toString();
       return new ValidationError(message);
     }
 

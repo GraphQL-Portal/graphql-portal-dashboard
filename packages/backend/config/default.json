@@ -12,6 +12,7 @@
     },
     "serveStatic": true,
     "logLevel": "debug",
+    "cryptoSecret": "sMVzaYsaR9wM5R9cxLpJgjvqH9w6Ynlw",
     "jwtSecret": "jwtSecret",
     "salt": "salt",
     "defaultAdmin": {

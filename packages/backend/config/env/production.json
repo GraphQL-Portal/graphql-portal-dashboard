@@ -34,7 +34,8 @@
       "enabled": "@@METRICS_ENABLED",
       "chunk": "@@METRICS_CHUNK",
       "delay": "@@METRICS_DELAY"
-    }
+    },
+    "cryptoSecret": "@@CRYPTO_SECRET"
   },
   "client": {
     "host": "@@CLIENT_HOST"

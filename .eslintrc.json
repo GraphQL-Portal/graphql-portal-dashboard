@@ -81,6 +81,7 @@
     "examples",
     "scripts",
     "*.js",
-    "Config.d.ts"
+    "Config.d.ts",
+    "migrate-mongo-config.ts"
   ]
 }
