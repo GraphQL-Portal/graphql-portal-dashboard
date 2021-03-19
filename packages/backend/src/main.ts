@@ -7,13 +7,17 @@ import AppModule from './modules/app.module';
 import Header from './common/enum/headers.enum';
 import { LoggerService } from './common/logger';
 import ValidationExceptionFilter from './common/error-handling/exception-filter';
-import { database, status } from 'migrate-mongo';
+import { database, status, config as migrateConfig } from 'migrate-mongo';
+const migrateMongoConfig = require('../migrate-mongo-config');
 
 const bootstrap = async (): Promise<void> => {
+  migrateConfig.set(migrateMongoConfig as any);
   const { db } = await database.connect();
   const migrations = await status(db);
   if (!migrations?.length || migrations.pop()?.appliedAt === 'PENDING') {
-    console.error("Migrations are not applied, please run 'yarn migrate'");
+    console.error(
+      "There are pending database migrations, please backup your database and run 'yarn migrate' to apply them"
+    );
     process.exit(1);
   }
 

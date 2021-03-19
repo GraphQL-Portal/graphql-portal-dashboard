@@ -1,4 +1,4 @@
-// migrations doesn't work without the reference
+// migrations don't work without the reference
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../config/Config.d.ts" />
 import { config } from 'node-config-ts';
@@ -10,7 +10,9 @@ if (!secretKey || typeof secretKey !== 'string') {
   throw new Error('config.application.cryptoSecret string is not set');
 }
 if (secretKey.length !== 32) {
-  throw new Error('config.application.cryptoSecret should have length 32');
+  throw new Error(
+    'config.application.cryptoSecret should have length of 32 chars'
+  );
 }
 const iv = crypto.randomBytes(16);
 

@@ -10,7 +10,10 @@ declare module 'node-config-ts' {
   }
   interface Db {
     redis: Redis;
-    mongodb: Redis;
+    mongodb: Mongodb;
+  }
+  interface Mongodb {
+    connectionString: string;
   }
   interface Redis {
     connectionString: string;

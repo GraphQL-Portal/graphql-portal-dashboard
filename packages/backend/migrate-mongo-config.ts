@@ -1,8 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="./config/Config.d.ts" />
+import { config as appConfig } from 'node-config-ts';
+
 const config = {
   mongodb: {
-    url:
-      process.env.MONGODB_CONNECTION_STRING ||
-      'mongodb://localhost:27017/graphql-portal-dashboard',
+    url: appConfig.db.mongodb.connectionString,
     options: {
       useNewUrlParser: true,
       useUnifiedTopology: true,

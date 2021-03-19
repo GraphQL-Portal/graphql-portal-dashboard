@@ -1,17 +1,29 @@
 import { Db } from 'mongodb';
-import { getArrayRepeats } from '../../common/tool';
+import { getArrayDuplicates } from '../../common/tool';
 
 const index: any = { endpoint: 1 };
 
 export const up = async (db: Db): Promise<void> => {
   const apiDefsCollection = await db.collection('apidefs');
   const apiDefs: {
+    _id: string;
+    name: string;
     endpoint: string;
   }[] = await apiDefsCollection.find().toArray();
-  const repeats = getArrayRepeats(apiDefs.map((apiDef) => apiDef.endpoint));
-  if (repeats.length) {
-    throw new Error(
-      `Cannot create index as apiDef.endpoint has repeats: ${repeats}`
+  const duplicates = getArrayDuplicates(apiDefs.map(apiDef => apiDef.endpoint));
+  if (duplicates.length) {
+    const apiDefsWithDuplicates = apiDefs.filter(apiDef =>
+      duplicates.includes(apiDef.endpoint)
+    );
+    await Promise.all(
+      apiDefsWithDuplicates.map(async (apiDef, i) => {
+        const endpoint = `${apiDef.endpoint}_${i}`;
+        console.log(`ApiDef '${apiDef.name}' endpoint changed to: ${endpoint}`);
+        await apiDefsCollection.updateOne(
+          { _id: apiDef._id },
+          { $set: { endpoint } }
+        );
+      })
     );
   }
 
