@@ -1779,20 +1779,20 @@
     pascal-case "3.1.2"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.13.2", "@graphql-mesh/openapi@^0.13.2":
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.13.2.tgz#94892d9284034db8bbb7c2d12ab1bad2e6afc46a"
-  integrity sha512-o+6Ln8LGq2CXtmF+xscKyM+IEB+k45zmRkJnJsd14vxb82E1fO/bLzzWSHSNKD10uVBzD2asjXV9Z+36004+gw==
+"@graphql-mesh/openapi@0.13.3":
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.13.3.tgz#08700f221965bb6c10adca17ef6932d7af9c8584"
+  integrity sha512-5hPY2NpJdcKL9tbzSo4y04hOa0Q2V2P7zv1JgZRHX+/0Wv9VXOYh700kE+Axvgz42cbQ2nLT+VCxIXw/kS6KMA==
   dependencies:
     "@graphql-mesh/types" "0.35.1"
     "@graphql-mesh/utils" "0.9.0"
     deep-equal "2.0.5"
     fetchache "0.0.4"
     form-urlencoded "4.2.1"
-    graphql-scalars "1.8.0"
-    graphql-subscriptions "1.2.0"
+    graphql-scalars "1.9.0"
+    graphql-subscriptions "1.2.1"
     json-ptr "2.0.0"
-    jsonpath-plus "5.0.3"
+    jsonpath-plus "5.0.4"
     lodash "4.17.21"
     pluralize "8.0.0"
     swagger2openapi "7.0.5"
@@ -1809,6 +1809,25 @@
     fetchache "0.0.4"
     form-urlencoded "4.2.1"
     graphql-scalars "1.7.1"
+    graphql-subscriptions "1.2.0"
+    json-ptr "2.0.0"
+    jsonpath-plus "5.0.3"
+    lodash "4.17.21"
+    pluralize "8.0.0"
+    swagger2openapi "7.0.5"
+    url-join "4.0.1"
+
+"@graphql-mesh/openapi@^0.13.2":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.13.2.tgz#94892d9284034db8bbb7c2d12ab1bad2e6afc46a"
+  integrity sha512-o+6Ln8LGq2CXtmF+xscKyM+IEB+k45zmRkJnJsd14vxb82E1fO/bLzzWSHSNKD10uVBzD2asjXV9Z+36004+gw==
+  dependencies:
+    "@graphql-mesh/types" "0.35.1"
+    "@graphql-mesh/utils" "0.9.0"
+    deep-equal "2.0.5"
+    fetchache "0.0.4"
+    form-urlencoded "4.2.1"
+    graphql-scalars "1.8.0"
     graphql-subscriptions "1.2.0"
     json-ptr "2.0.0"
     jsonpath-plus "5.0.3"
@@ -9803,10 +9822,24 @@ graphql-scalars@1.8.0:
   dependencies:
     tslib "~2.1.0"
 
+graphql-scalars@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.9.0.tgz#fd3171cafc6f51b71d58f6a8ff89ea97477c16d3"
+  integrity sha512-31bBDnHdBapb2wknLCjNzTSjKfVEtm+0HxI7DKM7jQ4Uipk1o1aMUCYCkYunmRDdgQaI03u1MD5KutLf7yHnvw==
+  dependencies:
+    tslib "~2.1.0"
+
 graphql-subscriptions@1.2.0, graphql-subscriptions@^1.0.0, graphql-subscriptions@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-1.2.0.tgz#d82ff76e7504ac91acbbea15f36cd3904043937b"
   integrity sha512-uXvp729fztqwa7HFUFaAqKwNMwwOfsvu4HwOu7/35Cd44bNrMPCn97mNGN0ybuuZE36CPXBTaW/4U/xyOS4D9w==
+  dependencies:
+    iterall "^1.3.0"
+
+graphql-subscriptions@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-1.2.1.tgz#2142b2d729661ddf967b7388f7cf1dd4cf2e061d"
+  integrity sha512-95yD/tKi24q8xYa7Q9rhQN16AYj5wPbrb8tmHGM3WRc9EBmWrG/0kkMl+tQG8wcEuE9ibR4zyOM31p5Sdr2v4g==
   dependencies:
     iterall "^1.3.0"
 
@@ -11888,6 +11921,11 @@ jsonpath-plus@5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-5.0.3.tgz#502f0fc953d0f92428b2c2357c0c6809a803ec36"
   integrity sha512-RDvpzY21CmKTvEfxuGqQmPqRTuzNOim7L+/TcsdBM8jguI5ok38t0p2eKr9GAsVkazrTyylpMZV/hKSQCWqx9g==
+
+jsonpath-plus@5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-5.0.4.tgz#3b8ce2ea6904ee6c6750ed027fe8df31789b62e3"
+  integrity sha512-w3pI3PewtwIrrGRCFvTkCkKu8IrOwjsqoYRxvxuXQjPB0udEtAuBY0B6/SEztsxMmuIHVHGFQ0knVnTCPW9qYw==
 
 jsonrepair@^2.0.0:
   version "2.0.0"
