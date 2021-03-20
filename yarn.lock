@@ -1779,7 +1779,7 @@
     pascal-case "3.1.2"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.13.3":
+"@graphql-mesh/openapi@0.13.3", "@graphql-mesh/openapi@^0.13.0":
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.13.3.tgz#08700f221965bb6c10adca17ef6932d7af9c8584"
   integrity sha512-5hPY2NpJdcKL9tbzSo4y04hOa0Q2V2P7zv1JgZRHX+/0Wv9VXOYh700kE+Axvgz42cbQ2nLT+VCxIXw/kS6KMA==
@@ -2108,12 +2108,12 @@
   dependencies:
     "@graphql-mesh/graphql" "^0.13.0"
 
-"@graphql-portal/crunchbase@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.0.2.tgz#3ac1587b902049d34a6b892f8312758d9f892814"
-  integrity sha512-V16qxlLvoGUQwfM3dA7p9PeDVHOXNqVMoFUf+pXNyHa3Ut3nO1AvPQ4UzuSJYB3/JbvxVMVzbv5tteRBp/i2iQ==
+"@graphql-portal/crunchbase@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.0.3.tgz#50f4845f87be7d38382cf46218a0de9c4459f857"
+  integrity sha512-9MrKChGf3rB91rej6tPaQyvbAUG5+c+h3PejdLw1+1jLgzxbaKn/0HERG+jgRc7Pm8mdCXfrHBpKyoWRYLWa+A==
   dependencies:
-    "@graphql-mesh/openapi" "^0.12.0"
+    "@graphql-mesh/openapi" "^0.13.0"
 
 "@graphql-portal/dashboard@^0.1.4":
   version "0.1.4"
