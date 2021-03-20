@@ -3963,7 +3963,7 @@
   resolved "https://registry.yarnpkg.com/@types/md5-file/-/md5-file-4.0.2.tgz#c7241e88f4aa17218c774befb0fc34f33f21fe36"
   integrity sha512-8gacRfEqLrmZ6KofpFfxyjsm/LYepeWUWUJGaf5A9W9J5B2/dRZMdkDqFDL6YDa9IweH12IO76jO7mpsK2B3wg==
 
-"@types/migrate-mongo@^8.1.0":
+"@types/migrate-mongo@8.1.0":
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@types/migrate-mongo/-/migrate-mongo-8.1.0.tgz#2332beeb5a780f9bed28fa690ba6a87f1445c642"
   integrity sha512-dmw6PY9pQNKXtHApQZ6BPT/DVAgJboSqHGj1x/f1anrjZSewT4pb7lkZ5r/3tEhQirPidcNzmQlRUHq+R8wV2g==
@@ -4473,7 +4473,7 @@
     "@typescript-eslint/types" "4.17.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/react-codemirror@^3.0.5":
+"@uiw/react-codemirror@3.0.5":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.0.5.tgz#cda1ad64cb5a82b085575e316ed462db2bf320b4"
   integrity sha512-Fwn55BYknCScDuN6MIzlFxSU3BsHHQDADcr6q46O6NBGRRFyD1UEIdN0cgitHqBCX2v1+b4CajadPChat6WVrQ==
@@ -6694,7 +6694,7 @@ code-block-writer@^10.1.1:
   resolved "https://registry.yarnpkg.com/code-block-writer/-/code-block-writer-10.1.1.tgz#ad5684ed4bfb2b0783c8b131281ae84ee640a42f"
   integrity sha512-67ueh2IRGst/51p0n6FvPrnRjAGHY5F8xdjkgrYE7DDzpJe6qA07RYQ9VcoUeo5ATOjSOiWpSL3SWBRRbempMw==
 
-codemirror-graphql@^0.12.3:
+codemirror-graphql@0.12.4:
   version "0.12.4"
   resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.12.4.tgz#607e113035856a179ee019e8451210cd1a8ca340"
   integrity sha512-gWxmLk2OzPVzvwAXO0K52MtU1n6ylMNbKp0LtZHioK0NEUwLnSL5iPKVXn8MgvYqS8Yos/CG5WrP9Y7RWTO4mg==
@@ -12711,7 +12711,7 @@ micromatch@^3.1.10, micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-migrate-mongo@^8.2.2:
+migrate-mongo@8.2.2:
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/migrate-mongo/-/migrate-mongo-8.2.2.tgz#6c4aaf9bbc6c001276320e5e406b0e21a7046d9a"
   integrity sha512-RK8zE9QGzaDZ8xN+Cyb/mUhSIA1pkj1Q/aNYeH4QB9U2UNfKej1lmxh20Ot1xFl1C62ro3hqiaZ9QErzCN3qPw==
