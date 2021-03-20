@@ -1787,7 +1787,7 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@^0.12.0", "@graphql-mesh/openapi@^0.12.14":
+"@graphql-mesh/openapi@^0.12.0":
   version "0.12.18"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.12.18.tgz#46d328708057b0ecc671071380194f888364cd7a"
   integrity sha512-dR3ZdpmK0y5yzRTkrG4Gx3UheSMLDgu1yiTbJ8gCv0wWW/OlIjwceaHFDL4bJTYE1j1ph3oBFU8C0k7nT45N3g==
@@ -2027,16 +2027,6 @@
     "@graphql-typed-document-node/core" "3.1.0"
     fetchache "0.0.4"
 
-"@graphql-mesh/types@^0.32.0":
-  version "0.32.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.32.0.tgz#b8ef810f136ec308801724c633d7629f85599c03"
-  integrity sha512-f4HrlEh7eNRMnulvKIltclCbJJS6+MxAUk95KAmF99U0KUtci53eAQIPgsI2rWDthWZQKQTMw3HQvyAdYcsUFg==
-  dependencies:
-    "@graphql-tools/delegate" "7.0.10"
-    "@graphql-tools/utils" "7.3.0"
-    "@graphql-typed-document-node/core" "3.1.0"
-    fetchache "0.0.4"
-
 "@graphql-mesh/utils@0.8.8":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.8.8.tgz#5819ac40816a932a50a4c4a2c2bb04fc8abc5323"
@@ -2213,13 +2203,13 @@
   dependencies:
     "@graphql-mesh/openapi" "^0.12.0"
 
-"@graphql-portal/twitter@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.1.0.tgz#8a3ae1574855f6b9769fb8624cc6878796c26c4d"
-  integrity sha512-R/kDk7BHXkBqfCr+01o5JoDQ21x6EkI/8zZ2aQNCSCfxMEKxA8Vja5N+b9jgDoO5qh4yveRWMHtAkr9Me4d9Kg==
+"@graphql-portal/twitter@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.1.1.tgz#0deb4b6c9cee56ea1a55faf9ccf0731acf496cba"
+  integrity sha512-C3QYis+PsDSvqAeGSMNU+gwHHHvLK9hjXdyZLLFC6QdoygfrZaEJwRmv1MunWqxxPNkGaY2jMKteGVYMID0CIg==
   dependencies:
-    "@graphql-mesh/openapi" "^0.12.14"
-    "@graphql-mesh/types" "^0.32.0"
+    "@graphql-mesh/openapi" "^0.13.0"
+    "@graphql-mesh/types" "^0.35.0"
 
 "@graphql-portal/types@0.18.2":
   version "0.18.2"
@@ -2639,15 +2629,6 @@
     "@ardatan/aggregate-error" "0.0.6"
     camel-case "4.1.1"
     tslib "~2.0.1"
-
-"@graphql-tools/utils@7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-7.3.0.tgz#e978a02da12d20781becf2442f66d215f63e6694"
-  integrity sha512-8MD5/jRsvbA4zSdI5bBRXvXh5pn208pSc+KGd0xjBVyY3m/tTFxl0hohDPC5hw6JcHnz8IfhpuuNfi8gm9I+5g==
-  dependencies:
-    "@ardatan/aggregate-error" "0.0.6"
-    camel-case "4.1.2"
-    tslib "~2.1.0"
 
 "@graphql-tools/utils@7.5.0", "@graphql-tools/utils@^7.0.1", "@graphql-tools/utils@^7.0.2", "@graphql-tools/utils@^7.2.4", "@graphql-tools/utils@^7.5.0":
   version "7.5.0"
