@@ -1,11 +1,13 @@
 {
-  "extends": [
-    "config:base",
-    "schedule:weekends"
-  ],
+  "extends": ["config:base", "schedule:weekends"],
   "automerge": true,
   "major": {
     "automerge": false
   },
-  "labels": ["dependencies"]
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "excludePackageNames": "codemirror-graphql"
+    }
+  ]
 }
