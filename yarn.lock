@@ -6636,13 +6636,13 @@ code-block-writer@^10.1.1:
   resolved "https://registry.yarnpkg.com/code-block-writer/-/code-block-writer-10.1.1.tgz#ad5684ed4bfb2b0783c8b131281ae84ee640a42f"
   integrity sha512-67ueh2IRGst/51p0n6FvPrnRjAGHY5F8xdjkgrYE7DDzpJe6qA07RYQ9VcoUeo5ATOjSOiWpSL3SWBRRbempMw==
 
-codemirror-graphql@0.12.4:
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.12.4.tgz#607e113035856a179ee019e8451210cd1a8ca340"
-  integrity sha512-gWxmLk2OzPVzvwAXO0K52MtU1n6ylMNbKp0LtZHioK0NEUwLnSL5iPKVXn8MgvYqS8Yos/CG5WrP9Y7RWTO4mg==
+codemirror-graphql@0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.15.2.tgz#69e94beee94cba4d5117a2a92ffef92e850aa290"
+  integrity sha512-Hxod/lFyDV3kXXgnqVDzThpxIudBCH70yJ5YospeBAFqdHpd8dgsJLIAlIxeqT3x5hcdWu1Rd1RI3qx84FTvMg==
   dependencies:
-    graphql-language-service-interface "^2.4.3"
-    graphql-language-service-parser "^1.6.5"
+    graphql-language-service-interface "^2.8.2"
+    graphql-language-service-parser "^1.9.0"
 
 codemirror-graphql@^1.0.0:
   version "1.0.0"
@@ -9660,7 +9660,7 @@ graphql-iso-date@~3.3.0:
   resolved "https://registry.yarnpkg.com/graphql-iso-date/-/graphql-iso-date-3.3.0.tgz#cbe434b41e035e806338121b1b2b509a0f72bb80"
   integrity sha1-y+Q0tB4DXoBjOBIbGytQmg9yu4A=
 
-graphql-language-service-interface@^2.4.3, graphql-language-service-interface@^2.8.2:
+graphql-language-service-interface@^2.8.2:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/graphql-language-service-interface/-/graphql-language-service-interface-2.8.2.tgz#b3bb2aef7eaf0dff0b4ea419fa412c5f66fa268b"
   integrity sha512-otbOQmhgkAJU1QJgQkMztNku6SbJLu/uodoFOYOOtJsizTjrMs93vkYaHCcYnLA3oi1Goj27XcHjMnRCYQOZXQ==
@@ -9670,7 +9670,7 @@ graphql-language-service-interface@^2.4.3, graphql-language-service-interface@^2
     graphql-language-service-utils "^2.5.1"
     vscode-languageserver-types "^3.15.1"
 
-graphql-language-service-parser@^1.6.5, graphql-language-service-parser@^1.9.0:
+graphql-language-service-parser@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/graphql-language-service-parser/-/graphql-language-service-parser-1.9.0.tgz#79af21294119a0a7e81b6b994a1af36833bab724"
   integrity sha512-B5xPZLbBmIp0kHvpY1Z35I5DtPoDK9wGxQVRDIzcBaiIvAmlTrDvjo3bu7vKREdjFbYKvWNgrEWENuprMbF17Q==
