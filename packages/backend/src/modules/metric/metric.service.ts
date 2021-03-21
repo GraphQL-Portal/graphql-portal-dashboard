@@ -4,6 +4,7 @@ import {
   Injectable,
   OnModuleInit,
   OnModuleDestroy,
+  forwardRef,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
@@ -48,6 +49,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
   public constructor(
     @Inject(Provider.REDIS)
     private readonly redisClients: [RedisClient, RedisClient],
+    @Inject(forwardRef(() => ApiDefService))
     private readonly apiDefService: ApiDefService,
     @InjectModel('RequestMetric')
     private requestMetricModel: Model<IRequestMetricDocument>,
@@ -324,6 +326,18 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
         success: obj.success,
       })),
     };
+  }
+
+  public async removeForApiDef(apiDefId: string): Promise<boolean> {
+    this.logger.debug(
+      `Removing metrics for apiDef: ${apiDefId}`,
+      this.constructor.name
+    );
+    const deleted = await this.requestMetricModel.deleteMany({
+      apiDef: apiDefId,
+    });
+
+    return Boolean(deleted?.ok);
   }
 
   private async getRecords(

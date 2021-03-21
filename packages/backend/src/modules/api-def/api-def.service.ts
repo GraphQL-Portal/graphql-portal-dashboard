@@ -11,6 +11,7 @@ import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import { ISourceDocument } from '../../data/schema/source.schema';
 import RedisService from '../redis/redis.service';
 import SourceService from '../source/source.service';
+import MetricService from '../metric/metric.service';
 
 export type ApiDefsWithTimestamp = { apiDefs: IApiDef[]; timestamp: number };
 
@@ -23,7 +24,9 @@ export default class ApiDefService implements IAccessControlService {
     private readonly logger: LoggerService,
     private readonly redisService: RedisService,
     @Inject(forwardRef(() => SourceService))
-    private readonly sourceService: SourceService
+    private readonly sourceService: SourceService,
+    @Inject(forwardRef(() => MetricService))
+    private readonly metricService: MetricService
   ) {
     this.setLastUpdateTime();
   }
@@ -147,6 +150,17 @@ export default class ApiDefService implements IAccessControlService {
       this.logger.log(`Deleted apiDef ${deleted._id}`, this.constructor.name);
       this.setLastUpdateTime();
       this.publishApiDefsUpdated();
+
+      const removedMetrics = await this.metricService.removeForApiDef(id);
+      removedMetrics
+        ? this.logger.log(
+            `Removed metrics for apiDef ${id}`,
+            this.constructor.name
+          )
+        : this.logger.warn(
+            `Couldn't remove metrics for apiDef ${id}`,
+            this.constructor.name
+          );
     }
 
     return Boolean(deleted);
