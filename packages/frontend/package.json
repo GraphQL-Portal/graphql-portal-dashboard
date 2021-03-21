@@ -18,7 +18,7 @@
     "ajv": "7.2.3",
     "clsx": "1.1.1",
     "codemirror": "5.60.0",
-    "codemirror-graphql": "0.12.4",
+    "codemirror-graphql": "0.15.2",
     "date-fns": "2.19.0",
     "graphiql": "1.4.0",
     "graphql": "15.5.0",
