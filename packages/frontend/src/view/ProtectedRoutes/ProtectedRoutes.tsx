@@ -15,9 +15,11 @@ import { Users } from '../Users';
 import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
 import { ApisActivity } from '../ApisActivity';
+import { useAllHotKeys } from '../../ui/HotKey';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
+  useAllHotKeys();
 
   if (!accessToken) return <Redirect to={ROUTES.LOGIN} />;
 
