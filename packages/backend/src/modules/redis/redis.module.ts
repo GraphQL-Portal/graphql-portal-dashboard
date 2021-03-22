@@ -1,12 +1,12 @@
 import { DynamicModule, FactoryProvider, Global, Module } from '@nestjs/common';
-import IORedisClient from 'ioredis';
+import IORedisClient, { Cluster } from 'ioredis';
 import ProviderEnum from '../../common/enum/provider.enum';
 import RedisService from './redis.service';
 
 class RedisClient extends IORedisClient {
   public async onModuleInit(): Promise<void> {
     await new Promise((resolve, reject) => {
-      this.on('error', e => {
+      this.on('error', (e) => {
         this.disconnect();
         reject(e);
       });
@@ -18,10 +18,10 @@ class RedisClient extends IORedisClient {
     await this.quit();
   }
 }
-class RedisClientCluster extends IORedisClient.Cluster {
+class RedisClientCluster extends Cluster {
   public async onModuleInit(): Promise<void> {
     await new Promise((resolve, reject) => {
-      this.on('error', e => {
+      this.on('error', (e) => {
         this.disconnect();
         reject(e);
       });
