@@ -23,3 +23,4 @@ export { clearEmptyFields } from './clearEmptyFields';
 export { isEqual } from './isEqual';
 export { isZeroLength } from './isZeroLength';
 export { isEmptyObject } from './isEmptyObject';
+export { getUuid } from './getUuid';

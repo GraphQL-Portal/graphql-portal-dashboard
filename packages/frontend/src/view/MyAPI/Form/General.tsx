@@ -6,6 +6,7 @@ import { FormGroup, Row, Col, Input, Switch } from '../../../ui';
 import { ApiGeneralForm as Props } from '../../../types';
 import { StringArray } from '../../Form';
 import { useStyles } from './useStyles';
+import { getUuid } from '../../../utils';
 
 export const GeneralForm: React.FC<Props> = ({
   register,
@@ -79,6 +80,7 @@ export const GeneralForm: React.FC<Props> = ({
           fields={tokenFields}
           control={control}
           errors={errors}
+          defaultValue={getUuid}
         />
       </FormGroup>
     </>
