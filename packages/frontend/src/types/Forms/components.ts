@@ -27,7 +27,6 @@ export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem> & {
   valueLabel?: string;
-  defaultValue?: string | { (): string };
 };
 
 export type AddFieldArrayHeader = {

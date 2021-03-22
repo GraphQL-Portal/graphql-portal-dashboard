@@ -17,7 +17,6 @@ export const StringArray: React.FC<Props> = ({
   fields,
   name,
   valueLabel,
-  defaultValue,
 }) => {
   const { objectField, lastField, objectRow } = useStyles();
 
@@ -35,12 +34,7 @@ export const StringArray: React.FC<Props> = ({
                 control={control}
                 name={`${name}[${idx}].value`}
                 fullWidth
-                defaultValue={
-                  field.value ||
-                  (defaultValue && typeof defaultValue === 'string'
-                    ? defaultValue
-                    : typeof defaultValue === 'function' && defaultValue())
-                }
+                defaultValue={field.value || undefined}
                 error={!!errors?.[name]?.[idx]?.value}
                 label={valueLabel || ''}
               />
