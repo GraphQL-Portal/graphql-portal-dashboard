@@ -45,12 +45,16 @@ export const ApiDefsList: React.FC<Props> = ({
           {list.map((api, idx) => (
             <TableRow key={`node-${idx}`}>
               <TableCell>
-                <Link
-                  to={generatePath(ROUTES.API_VIEW, { id: api._id })}
-                  className={name}
-                >
-                  {api.name}
-                </Link>
+                {api.enabled ? (
+                  <Link
+                    to={generatePath(ROUTES.API_VIEW, { id: api._id })}
+                    className={name}
+                  >
+                    {api.name}
+                  </Link>
+                ) : (
+                  <span className={name}>{api.name}</span>
+                )}
               </TableCell>
               <TableCell align="right">
                 <EnableSwitch api={api} refetch={refetch} />
@@ -58,7 +62,7 @@ export const ApiDefsList: React.FC<Props> = ({
               <TableCell align="right">{api.createdAt}</TableCell>
               <TableActionCell>
                 <Tooltip title="View API" placement="left">
-                  <IconButton onClick={onView(api)}>
+                  <IconButton onClick={onView(api)} disabled={!api.enabled}>
                     <Visibility />
                   </IconButton>
                 </Tooltip>
