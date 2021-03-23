@@ -11,8 +11,10 @@ import {
   WidgetBody,
   WidgetHeader,
   WidgetRow,
-  MediumWidget,
   Emoji,
+  EmptyIcon,
+  EmptyText,
+  EmptyContainer,
 } from '../../../ui';
 import { useViewAPI } from '../../../presenter/ApiDefs';
 import { Loading } from '../../Loading';
@@ -44,20 +46,28 @@ export const ViewAPI: React.FC = () => {
       />
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title={`View ${name} API`} />
           {enabled ? (
-            <WidgetBody>
-              <TabsHead value={tab} onChange={onChange} tabsList={VIEW_TABS} />
-              <TabsBody value={tab}>
-                <Playground fetcher={fetcher} name={name} />
-                <Schema fetcher={fetcher} />
-              </TabsBody>
-            </WidgetBody>
+            <>
+              <WidgetHeader title={`View ${name} API`} />
+              <WidgetBody>
+                <TabsHead
+                  value={tab}
+                  onChange={onChange}
+                  tabsList={VIEW_TABS}
+                />
+                <TabsBody value={tab}>
+                  <Playground fetcher={fetcher} name={name} />
+                  <Schema fetcher={fetcher} />
+                </TabsBody>
+              </WidgetBody>
+            </>
           ) : (
-            <MediumWidget>
-              API {name} is disabled
-              <Emoji label="dizzy face"> 😵</Emoji>
-            </MediumWidget>
+            <EmptyContainer>
+              <EmptyIcon />
+              <EmptyText>
+                API {name} is disabled <Emoji label="dizzy face"> 😵</Emoji>
+              </EmptyText>
+            </EmptyContainer>
           )}
         </HugeWidget>
       </WidgetRow>

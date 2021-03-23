@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import { generatePath, Link } from 'react-router-dom';
 
 import { Delete, Edit, Visibility } from '../../../icons';
@@ -45,15 +45,15 @@ export const ApiDefsList: React.FC<Props> = ({
           {list.map((api, idx) => (
             <TableRow key={`node-${idx}`}>
               <TableCell>
-                {api.enabled ? (
-                  <Link
-                    to={generatePath(ROUTES.API_VIEW, { id: api._id })}
-                    className={name}
-                  >
-                    {api.name}
-                  </Link>
-                ) : (
-                  <span className={name}>{api.name}</span>
+                {createElement(
+                  api.enabled ? Link : 'spawn',
+                  {
+                    className: name,
+                    to: api.enabled
+                      ? generatePath(ROUTES.API_VIEW, { id: api._id })
+                      : '',
+                  },
+                  api.name
                 )}
               </TableCell>
               <TableCell align="right">
