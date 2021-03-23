@@ -1,31 +1,37 @@
-import { add } from 'date-fns';
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useHistory, generatePath } from 'react-router-dom';
+
 import { useApiActivityQuery } from '../../model/Metrics/queries';
 import { ROUTES } from '../../model/providers';
-import { DateRange } from '../../types';
+import { UseApiActivityHook } from '../../types';
 
-export const useApiActivity = () => {
+const MILLISECONDS_IN_ONE_YEAR = 31536000000;
+
+export const useApiActivity: UseApiActivityHook = () => {
   const { push } = useHistory();
-  const [dateRange, setDateRange] = useState('year' as DateRange);
 
   const { startDate, endDate } = useMemo(() => {
     return {
-      startDate: add(new Date(), { [`${dateRange}s`]: -1 }),
-      endDate: new Date(),
+      startDate: Date.now() - MILLISECONDS_IN_ONE_YEAR,
+      endDate: Date.now(),
     };
-  }, [dateRange]);
+  }, []);
 
-  const { data, loading } = useApiActivityQuery(startDate, endDate);
+  const { data, loading } = useApiActivityQuery({
+    variables: {
+      filters: {
+        startDate,
+        endDate,
+      },
+    },
+  });
 
-  const onApiClick = (id: string) =>
+  const onApiClick = (id: string) => () =>
     push(generatePath(`${ROUTES.API_METRICS}`, { id }));
 
   return {
     data,
     loading,
-    dateRange,
     onApiClick,
-    setDateRange,
   };
 };

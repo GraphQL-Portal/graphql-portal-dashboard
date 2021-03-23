@@ -1,6 +1,19 @@
+import { QueryHook } from './Apollo';
+import { NOOP } from './General';
+
 export type Scale = 'hour' | 'day' | 'week' | 'month';
 
 export type DateRange = Omit<Scale, 'hour'> | 'year';
+
+export type ApiMetric = {
+  apiDef?: string;
+  apiName?: string;
+  lastAccess?: string;
+  count?: number;
+  failed?: number;
+  success?: number;
+  latency?: number;
+};
 
 export type RequestChartProps = {
   data: any[];
@@ -29,14 +42,11 @@ export type FailureRequestRateChartProps = {
   valueLabelHandler?: Function;
 };
 
-export type ApiActivityListProps = {
-  data: {
-    apiName: string;
-    apiDef: string;
-    success: number;
-    failed: number;
-    count: number;
-    lastAccess: number;
-  }[];
-  onApiClick: (apiDef: string) => void;
+export type UseApiActivityHook = () => Pick<
+  ReturnType<QueryHook<ApiMetric[]>>,
+  'data' | 'loading'
+> & {
+  onApiClick(apiDef: string): NOOP;
 };
+
+export type ApiActivityList = Omit<ReturnType<UseApiActivityHook>, 'loading'>;

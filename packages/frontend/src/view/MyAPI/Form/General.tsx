@@ -5,6 +5,7 @@ import { FormControlLabel } from '@material-ui/core';
 import { FormGroup, Row, Col, Input, Switch } from '../../../ui';
 import { ApiGeneralForm as Props } from '../../../types';
 import { StringArray } from '../../Form';
+
 import { useStyles } from './useStyles';
 
 export const GeneralForm: React.FC<Props> = ({

@@ -10,10 +10,14 @@ declare module 'node-config-ts' {
   }
   interface Db {
     redis: Redis;
-    mongodb: Redis;
+    mongodb: Mongodb;
+  }
+  interface Mongodb {
+    connectionString: string;
   }
   interface Redis {
     connectionString: string;
+    clusterNodes: string;
   }
   interface Client {
     host: string;
@@ -30,6 +34,7 @@ declare module 'node-config-ts' {
     graphQL: GraphQL;
     serveStatic: boolean;
     logLevel: string;
+    cryptoSecret: string;
     jwtSecret: string;
     salt: string;
     defaultAdmin: DefaultAdmin;

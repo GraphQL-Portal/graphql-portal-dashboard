@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import { generatePath, Link } from 'react-router-dom';
 
 import { Delete, Edit, Visibility } from '../../../icons';
@@ -45,12 +45,16 @@ export const ApiDefsList: React.FC<Props> = ({
           {list.map((api, idx) => (
             <TableRow key={`node-${idx}`}>
               <TableCell>
-                <Link
-                  to={generatePath(ROUTES.API_VIEW, { id: api._id })}
-                  className={name}
-                >
-                  {api.name}
-                </Link>
+                {createElement(
+                  api.enabled ? Link : 'spawn',
+                  {
+                    className: name,
+                    to: api.enabled
+                      ? generatePath(ROUTES.API_VIEW, { id: api._id })
+                      : '',
+                  },
+                  api.name
+                )}
               </TableCell>
               <TableCell align="right">
                 <EnableSwitch api={api} refetch={refetch} />
@@ -58,7 +62,7 @@ export const ApiDefsList: React.FC<Props> = ({
               <TableCell align="right">{api.createdAt}</TableCell>
               <TableActionCell>
                 <Tooltip title="View API" placement="left">
-                  <IconButton onClick={onView(api)}>
+                  <IconButton onClick={onView(api)} disabled={!api.enabled}>
                     <Visibility />
                   </IconButton>
                 </Tooltip>

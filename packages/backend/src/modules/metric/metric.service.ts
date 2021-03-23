@@ -4,9 +4,9 @@ import {
   Injectable,
   OnModuleInit,
   OnModuleDestroy,
+  forwardRef,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Redis } from 'ioredis';
 import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
@@ -35,18 +35,21 @@ import {
   IApiActivity,
   IMetric,
 } from './interfaces';
-import { IApiDefDocument } from 'src/data/schema/api-def.schema';
+import { IApiDefDocument } from '../../data/schema/api-def.schema';
+import { RedisClient } from '../../common/types';
 
 type MetricScale = 'hour' | 'day' | 'week' | 'month';
 
 @Injectable()
 export default class MetricService implements OnModuleInit, OnModuleDestroy {
-  private redis: Redis;
+  private redis: RedisClient;
   private maxmind: ReaderModel | WebServiceClient | void;
   private intervals: NodeJS.Timer[] = [];
 
   public constructor(
-    @Inject(Provider.REDIS) private readonly redisClients: [Redis, Redis],
+    @Inject(Provider.REDIS)
+    private readonly redisClients: [RedisClient, RedisClient],
+    @Inject(forwardRef(() => ApiDefService))
     private readonly apiDefService: ApiDefService,
     @InjectModel('RequestMetric')
     private requestMetricModel: Model<IRequestMetricDocument>,
@@ -143,7 +146,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $or: [
                   { 'resolvers.errorAt': { $exists: true } },
-                  { error: { $exists: true } },
+                  { error: { $not: { $eq: null } } },
                 ],
               },
             },
@@ -154,7 +157,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $and: [
                   { 'resolvers.errorAt': { $exists: false } },
-                  { error: { $exists: false } },
+                  { error: { $eq: null } },
                 ],
               },
             },
@@ -239,7 +242,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $or: [
                   { 'resolvers.errorAt': { $exists: true } },
-                  { error: { $exists: true } },
+                  { error: { $not: { $eq: null } } },
                 ],
               },
             },
@@ -257,7 +260,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               $match: {
                 $and: [
                   { 'resolvers.errorAt': { $exists: false } },
-                  { error: { $exists: false } },
+                  { error: { $eq: null } },
                 ],
               },
             },
@@ -323,6 +326,18 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
         success: obj.success,
       })),
     };
+  }
+
+  public async removeForApiDef(apiDefId: string): Promise<boolean> {
+    this.logger.debug(
+      `Removing metrics for apiDef: ${apiDefId}`,
+      this.constructor.name
+    );
+    const deleted = await this.requestMetricModel.deleteMany({
+      apiDef: apiDefId,
+    });
+
+    return Boolean(deleted?.ok);
   }
 
   private async getRecords(

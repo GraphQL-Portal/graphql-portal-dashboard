@@ -1,12 +1,16 @@
+import { QueryHook } from './Apollo';
+import { NOOP } from './General';
+import { FormMethods, OnSubmit } from './HookForm';
+
 export type User = {
   _id?: string;
-  firstName: string;
-  lastName: string;
-  role: string;
-  email: string;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string;
+  firstName?: string;
+  lastName?: string;
+  role?: string;
+  email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
 };
 
 export type UsersList = {
@@ -18,3 +22,14 @@ export type UsersList = {
 };
 
 export type Role = 'admin' | 'user' | '';
+
+export type ProfileForm = FormMethods<User>;
+
+export type UseProfileHook = () => Pick<
+  ReturnType<QueryHook<User>>,
+  'data' | 'loading'
+> &
+  Pick<ProfileForm, 'register' | 'errors'> & {
+    onSubmit: OnSubmit;
+    signOut: NOOP;
+  };

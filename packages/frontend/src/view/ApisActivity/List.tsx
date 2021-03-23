@@ -12,13 +12,12 @@ import {
 } from '../../ui';
 import { getKeyFromText } from '../../utils/getKeyFromText';
 import { TABLE_HEAD } from './constants';
-import { ApiActivityListProps } from '../../types';
+import { ApiActivityList as Props } from '../../types';
 import { alignFirstCellLeft } from '../../utils';
+import { useStyles } from './useStyles';
 
-export const ApiActivityList: React.FC<ApiActivityListProps> = ({
-  data,
-  onApiClick,
-}) => {
+export const ApiActivityList: React.FC<Props> = ({ data, onApiClick }) => {
+  const { tableRow } = useStyles();
   return (
     <>
       <WidgetHeader title="Traffic Activity per API" />
@@ -36,20 +35,18 @@ export const ApiActivityList: React.FC<ApiActivityListProps> = ({
           </TableHead>
           <TableBody>
             {data.map(
-              (
-                { apiName, apiDef, success, failed, count, lastAccess },
-                idx
-              ) => (
+              ({ apiName, apiDef, success, failed, count, lastAccess }) => (
                 <TableRow
-                  onClick={() => onApiClick(apiDef)}
-                  key={`node-${idx}`}
+                  onClick={onApiClick(apiDef!)}
+                  key={`apiActivity-${apiDef}`}
+                  className={tableRow}
                 >
-                  <TableCell align="left">{apiName}</TableCell>
+                  <TableCell>{apiName}</TableCell>
                   <TableCell align="right">{count}</TableCell>
                   <TableCell align="right">{success}</TableCell>
                   <TableCell align="right">{failed}</TableCell>
                   <TableCell align="right">
-                    {formatDistanceToNow(Number(lastAccess))} ago{' '}
+                    {formatDistanceToNow(Number(lastAccess))} ago
                   </TableCell>
                 </TableRow>
               )

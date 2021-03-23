@@ -21,8 +21,7 @@ import MetricModule from './metric/metric.module';
 const imports = [
   MongooseModule.forRoot(
     process.env.NODE_ENV === 'test'
-      ? config.db.mongodb.connectionString.split('/').slice(0, -1).join('/') +
-          `/${randomString()}`
+      ? process.env.MONGO_URL!.replace(/\?$/, `-${randomString()}`)
       : config.db.mongodb.connectionString,
     {
       useNewUrlParser: true,
@@ -31,7 +30,10 @@ const imports = [
       useFindAndModify: false,
     }
   ),
-  RedisModule.forRoot(config.db.redis.connectionString),
+  RedisModule.forRoot(
+    config.db.redis.connectionString,
+    config.db.redis.clusterNodes
+  ),
   GraphQLModule.forRoot({
     installSubscriptionHandlers: true,
     playground: config.application.graphQL.playground,

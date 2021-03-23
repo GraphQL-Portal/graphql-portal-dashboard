@@ -19,10 +19,12 @@ export const DATA_SOURCE_ADD = `${DATA_SOURCES}/add`;
 export const DATA_SOURCE_EDIT = `${DATA_SOURCES}/edit`;
 
 export const METRICS_AND_LOGS = '/metrics-and-logs';
-export const API_METRICS = `${METRICS_AND_LOGS}/:id`;
 export const LOGS = '/logs';
+export const APIS_ACTIVITY = '/apis-activity';
+export const API_METRICS = `${APIS_ACTIVITY}/:id`;
 
 // Settings
+export const PROFILE = '/user-profile';
 export const USERS = '/users-and-permissions';
 export const GLOBAL = '/global-settings';
 export const WEBHOOKS = '/webhooks';

@@ -3,12 +3,12 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { ROUTES, useAuth } from '../../model/providers';
 import { ROLE_ADMIN } from '../../model/providers/Auth/constants';
+import { useAllHotKeys } from '../../model/Hooks';
 import { Content } from '../Content';
 import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
 import { GatewayNodes } from '../GatewayNodes';
 // import { GlobalSettings } from '../GlobalSettings';
-import { MetricsAndLogs } from '../MetricsAndLogs';
 import { MyAPI } from '../MyAPI';
 import { Sidebar } from '../Sidebar';
 import { Users } from '../Users';
@@ -16,9 +16,12 @@ import { GatewayLogs } from '../GatewayLogs';
 // import { Webhooks } from '../Webhooks';
 import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
+import { ApisActivity } from '../ApisActivity';
+import { Profile } from '../Profile';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
+  useAllHotKeys();
 
   if (!accessToken) return <Redirect to={ROUTES.LOGIN} />;
 
@@ -42,15 +45,18 @@ export const ProtectedRoutes: React.FC = () => {
           <Route path={ROUTES.DATA_SOURCES}>
             <DataSources />
           </Route>
-          <Route path={ROUTES.LOGS}>
-            <RoleProtectedComponent
-              Component={GatewayLogs}
-              roles={[ROLE_ADMIN]}
-              redirectTo={ROUTES.MAIN}
-            />
+          <Route path={ROUTES.APIS_ACTIVITY}>
+            <ApisActivity />
+            <Route path={ROUTES.LOGS}>
+              <RoleProtectedComponent
+                Component={GatewayLogs}
+                roles={[ROLE_ADMIN]}
+                redirectTo={ROUTES.MAIN}
+              />
+            </Route>
           </Route>
-          <Route path={ROUTES.METRICS_AND_LOGS}>
-            <MetricsAndLogs />
+          <Route path={ROUTES.PROFILE}>
+            <Profile />
           </Route>
           <Route path={ROUTES.USERS}>
             <RoleProtectedComponent
