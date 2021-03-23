@@ -1,4 +1,5 @@
 import { DataSource } from '../DataSource';
+import { Gateway } from '../Gateway';
 
 export type ApiAuth<T> = {
   auth_header_name: string;
@@ -35,7 +36,7 @@ export type ApiDef = {
   _id: string;
   name: string;
   endpoint: string;
-  playground: boolean;
+  playground?: boolean;
   enabled: boolean;
   authentication?: ApiAuth<string[]>;
   sources: DataSource[];
@@ -63,4 +64,9 @@ export type GetApiDefsData = {
 
 export type GetApiDefById = {
   getApiDefById: ApiDef;
+};
+
+export type ApiDefAndGateways = {
+  getApiDefById: ApiDef;
+  getGateways: Gateway[];
 };

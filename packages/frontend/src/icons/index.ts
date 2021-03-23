@@ -10,6 +10,7 @@ export {
   Edit,
   ErrorOutline,
   FormatListBulleted,
+  FileCopyOutlined,
   GitHub,
   Help,
   ImportContacts,

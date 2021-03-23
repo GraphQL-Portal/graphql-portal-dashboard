@@ -6,10 +6,10 @@ export const createNodeList = (data: Gateway[]): Gateway[] => {
 
   return data
     .slice()
-    .sort((a, b) => b.lastPingAt - a.lastPingAt)
+    .sort((a, b) => b.lastPingAt! - a.lastPingAt!)
     .map((gateway: Gateway) =>
       Object.assign({}, gateway, {
-        lastPingAt: formatDistanceToNow(gateway.lastPingAt, {
+        lastPingAt: formatDistanceToNow(gateway.lastPingAt!, {
           addSuffix: true,
         }),
       })
