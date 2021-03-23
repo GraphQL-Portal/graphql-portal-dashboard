@@ -10,6 +10,7 @@ import {
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
 import { useToast } from '../../model/providers';
+import { getUuid } from '../../utils';
 import { arrayToFieldArray } from '../DataSources/helpers';
 import { createAuth } from './helpers';
 import { suite } from './validation';
@@ -60,6 +61,8 @@ export const useUpdateGeneral: UseUpdateGeneralHook = ({ api, refetch }) => {
     remove: removeToken,
   } = useFieldArray({ control, name: 'authentication.auth_tokens' });
 
+  const onAddToken = () => addToken({ value: getUuid() });
+
   const onSubmit = ({ authentication, name, endpoint, playground }: any) => {
     updateApiDef({
       variables: {
@@ -82,7 +85,7 @@ export const useUpdateGeneral: UseUpdateGeneralHook = ({ api, refetch }) => {
     control,
     errors,
     tokenFields,
-    addToken,
+    addToken: onAddToken,
     removeToken,
   };
 };

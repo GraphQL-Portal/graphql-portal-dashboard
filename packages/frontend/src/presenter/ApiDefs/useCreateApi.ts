@@ -6,6 +6,7 @@ import { useCreateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
 import { AError, ApiDefForm, UseCreateApiDefHook } from '../../types';
 import { ROUTES, useToast } from '../../model/providers';
+import { getUuid } from '../../utils';
 import {
   createAuth,
   createIPsPayload,
@@ -83,6 +84,8 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     remove: removeToken,
   } = useFieldArray({ control, name: 'authentication.auth_tokens' });
 
+  const onAddToken = () => addToken({ value: getUuid() });
+
   const onSubmit = (data: ApiDefForm) => {
     const {
       authentication,
@@ -132,7 +135,7 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     register,
     options,
     tokenFields,
-    addToken,
+    addToken: onAddToken,
     removeToken,
     connected,
     onAddSource,
