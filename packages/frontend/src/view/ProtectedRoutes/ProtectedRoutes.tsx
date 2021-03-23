@@ -16,6 +16,7 @@ import { Users } from '../Users';
 import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
 import { ApisActivity } from '../ApisActivity';
+import { Profile } from '../Profile';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
@@ -45,6 +46,9 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
           <Route path={ROUTES.APIS_ACTIVITY}>
             <ApisActivity />
+          </Route>
+          <Route path={ROUTES.PROFILE}>
+            <Profile />
           </Route>
           <Route path={ROUTES.USERS}>
             <RoleProtectedComponent

@@ -6,6 +6,7 @@ import {
   FormatListBulleted,
   ImportContacts,
   PeopleAlt,
+  Person,
   // Settings,
   VerticalSplit,
   GitHub,
@@ -57,6 +58,12 @@ export const GROUPS: NavigationGroup[] = [
   {
     name: 'Settings',
     items: [
+      {
+        text: 'Your Profile',
+        link: ROUTES.PROFILE,
+        Icon: Person,
+        roles: [ROLE_ADMIN, ROLE_USER],
+      },
       {
         text: 'Users & Permissions',
         link: ROUTES.USERS,

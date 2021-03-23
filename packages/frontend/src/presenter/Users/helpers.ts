@@ -18,9 +18,9 @@ export const createUsersList = (data: User[]) => {
       email,
       role,
       id: _id,
-      firstName: formatString(firstName),
-      lastName: formatString(lastName),
-      createdAt: formatTimestamp(createdAt),
+      firstName: formatString(firstName!),
+      lastName: formatString(lastName!),
+      createdAt: formatTimestamp(createdAt!),
       deletedAt,
     });
     return acc;

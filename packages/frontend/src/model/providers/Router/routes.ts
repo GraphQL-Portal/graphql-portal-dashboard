@@ -23,6 +23,7 @@ export const APIS_ACTIVITY = '/apis-activity';
 export const API_METRICS = `${APIS_ACTIVITY}/:id`;
 
 // Settings
+export const PROFILE = '/user-profile';
 export const USERS = '/users-and-permissions';
 export const GLOBAL = '/global-settings';
 export const WEBHOOKS = '/webhooks';
