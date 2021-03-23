@@ -38,4 +38,4 @@ ENV MONGODB_CONNECTION_STRING "mongodb://localhost:27017/graphql-portal-dashboar
 ENV REACT_APP_DASHBOARD_URL "http://localhost:3030/graphql"
 ENV REACT_APP_DASHBOARD_WS_URL "$REACT_APP_DASHBOARD_URL"
 
-CMD ["concurrently", "--kill-others-on-fail", "\"serve -s packages/frontend/build -l 8080\"", "\"yarn start:prod\""]
+CMD ["concurrently", "--kill-others-on-fail", "\"serve -s packages/frontend/build -l 8080\"", "\"yarn workspace graphql-portal-dashboard-backend migrate && yarn start:prod\""]
