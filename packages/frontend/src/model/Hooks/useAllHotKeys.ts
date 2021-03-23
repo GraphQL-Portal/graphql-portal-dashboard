@@ -2,7 +2,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { useHistory } from 'react-router-dom';
 import { History } from 'history';
 
-import { ROUTES } from '../../model/providers/Router';
+import { ROUTES } from '../providers/Router';
 
 const useGoToApis = (history: History) => {
   useHotkeys('a', () => {
