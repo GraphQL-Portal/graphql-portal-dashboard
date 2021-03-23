@@ -12,13 +12,19 @@ import { AnyTable, NOOP } from '../General';
 import { UseTabsHook } from '../Tabs';
 import { DataSource } from '../DataSource';
 import GraphiQL from 'graphiql';
-import { ApiDef } from './data';
+import { ApiDef, ApiDefAndGateways } from './data';
 import { EditApiTab } from './components';
 import { Fetcher } from './methods';
 import { AdditionalResolverFormMethods, ApiDefFormMethods } from './forms';
 
-export type UseApiByIdHook = () => ReturnType<QueryHook<ApiDef>> &
-  ReturnType<UseTabsHook>;
+export type UseApiByIdHook = () => Omit<
+  ReturnType<QueryHook<ApiDefAndGateways>>,
+  'data'
+> &
+  ReturnType<UseTabsHook> & {
+    api: ApiDef;
+    apiEndpoint: string;
+  };
 
 export type UseUpdateDataSourcesHook = (
   props: EditApiTab
@@ -31,8 +37,11 @@ export type UseUpdateDataSourcesHook = (
   loading: boolean;
 } & ControlType;
 
-export type UseViewAPIHook = () => ReturnType<UseApiByIdHook> & {
+export type UseViewAPIHook = () => Omit<ReturnType<UseApiByIdHook>, 'api'> & {
   fetcher: Fetcher;
+  name: string;
+  apiEndpoint: string;
+  enabled: boolean;
 };
 
 export type UseMyAPIHook = () => ReturnType<QueryHook<ApiDef[]>> & {

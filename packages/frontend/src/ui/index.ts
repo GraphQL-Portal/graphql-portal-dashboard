@@ -3,6 +3,8 @@ export {
   OutlineButton,
   PrimaryButton,
   TextButton,
+  ButtonIcon,
+  CopyToClipboard,
 } from './Buttons';
 export { Checkbox } from './Checkbox';
 export { Dialog, DialogText, DialogTitle } from './Dialogs';

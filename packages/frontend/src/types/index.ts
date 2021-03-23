@@ -2,6 +2,7 @@ export * from './Api';
 export * from './Apollo';
 export * from './Auth';
 export * from './Checkbox';
+export * from './CopyToClipboard';
 export * from './DataSource';
 export * from './Dialogs';
 export * from './Editors';

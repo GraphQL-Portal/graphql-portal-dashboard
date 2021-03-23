@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { ROUTES } from '../../../model/providers';
 
 import {
   Header,
@@ -15,7 +14,9 @@ import {
   EmptyIcon,
   EmptyText,
   EmptyContainer,
+  CopyToClipboard,
 } from '../../../ui';
+import { ROUTES } from '../../../model/providers';
 import { useViewAPI } from '../../../presenter/ApiDefs';
 import { Loading } from '../../Loading';
 import { VIEW_TABS } from '../constants';
@@ -27,8 +28,10 @@ export const ViewAPI: React.FC = () => {
     tab,
     onChange,
     fetcher,
-    data: { name, enabled },
+    name,
+    enabled,
     loading,
+    apiEndpoint,
   } = useViewAPI();
 
   if (loading) return <Loading />;
@@ -48,7 +51,13 @@ export const ViewAPI: React.FC = () => {
         <HugeWidget>
           {enabled ? (
             <>
-              <WidgetHeader title={`View ${name} API`} />
+              <WidgetHeader title={`View ${name} API`}>
+                <CopyToClipboard
+                  text={apiEndpoint}
+                  buttonText={apiEndpoint}
+                  message="Successfully copied to clipboard"
+                />
+              </WidgetHeader>
               <WidgetBody>
                 <TabsHead
                   value={tab}

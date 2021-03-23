@@ -1,5 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
-import { QueryHook, ApiDef } from '../../../types';
+import { QueryHook, ApiDefAndGateways } from '../../../types';
 
 const GET_API_DEF_BY_ID = gql`
   query getApiDefById($id: String!) {
@@ -35,17 +35,22 @@ const GET_API_DEF_BY_ID = gql`
       deny_ips
       mesh
     }
+    getGateways {
+      listenHostname
+      listenPort
+      servername
+    }
   }
 `;
 
-export const useApiDefById: QueryHook<ApiDef> = (options = {}) => {
+export const useApiDefById: QueryHook<ApiDefAndGateways> = (options = {}) => {
   const { data, loading, error, refetch } = useQuery(
     GET_API_DEF_BY_ID,
     options
   );
 
   return {
-    data: data?.getApiDefById || {},
+    data: data || {},
     loading,
     error,
     refetch,
