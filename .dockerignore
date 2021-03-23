@@ -1,8 +1,9 @@
 .github
 .vscode
 **/node_modules
-dist
-build
+**/dist
+**/build
 coverage
 database-volume
 Dockerfile
+.dockerignore
