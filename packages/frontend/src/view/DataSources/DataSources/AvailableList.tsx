@@ -49,6 +49,7 @@ export const AvailableList: React.FC = () => {
           placeholder="Search data connectors"
           name="search"
           onKeyDown={onKeyDown}
+          autoFocus
           InputProps={{
             startAdornment: <Search className={searchIcon} />,
             endAdornment: showClearButton ? (

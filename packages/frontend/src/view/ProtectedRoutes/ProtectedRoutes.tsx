@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { ROUTES, useAuth } from '../../model/providers';
 import { ROLE_ADMIN } from '../../model/providers/Auth/constants';
+import { useAllHotKeys } from '../../model/Hooks';
 import { Content } from '../Content';
 import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
@@ -18,6 +19,7 @@ import { ApisActivity } from '../ApisActivity';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
+  useAllHotKeys();
 
   if (!accessToken) return <Redirect to={ROUTES.LOGIN} />;
 
