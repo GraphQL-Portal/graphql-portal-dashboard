@@ -1,0 +1,16 @@
+type Log {
+  nodeId: String
+  hostname: String
+  prefix: String
+  message: String
+  level: String
+  timestamp: Timestamp
+}
+
+type Query {
+  getLatestLogs: [Log]
+}
+
+type Subscription {
+  logsUpdated: Log
+}

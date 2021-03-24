@@ -2,7 +2,6 @@ import {
   ApolloClient,
   HttpLink,
   InMemoryCache,
-  // split,
   from,
   Observable,
 } from '@apollo/client';
@@ -16,10 +15,7 @@ import {
   removeAccessToken,
   removeRefreshToken,
 } from '../Auth/helpers';
-import {
-  URI,
-  // wsURI,
-} from './config';
+import { URI } from './config';
 import { promise2Observable } from './promise2Observable';
 import { refreshTokens } from './refreshToken';
 import { STATUS_401, REFRESH_LIMIT } from './constants';
@@ -34,11 +30,6 @@ export const createClient = (token: string) => {
   const headers = Object.assign({}, token ? { authorization: token } : {});
   const httpLink = new HttpLink({ uri: URI, headers });
 
-  // const wsAuthLink = setContext((request, previousContext) => ({
-  //   headers: {
-  //     authorization: token,
-  //   },
-  // }));
   // const wsLink = new WebSocketLink({
   //   uri: wsURI,
   //   options: {

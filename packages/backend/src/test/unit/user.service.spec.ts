@@ -207,6 +207,7 @@ describe('UserService', () => {
           resetPasswordUrl: `${config.client.host}/reset-password?code=${codeEntity.code}&email=${user.email}`,
           firstName: user.firstName,
         },
+        hideWarnings: true,
       });
     });
 
@@ -335,6 +336,7 @@ describe('UserService', () => {
           confirmationUrl: `${config.application.publicHost}/user/confirm-email?code=${codeEntity.code}&email=${user.email}`,
           firstName: user.firstName,
         },
+        hideWarnings: true,
       });
     });
   });

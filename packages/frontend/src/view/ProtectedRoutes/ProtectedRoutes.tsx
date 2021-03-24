@@ -12,6 +12,7 @@ import { GatewayNodes } from '../GatewayNodes';
 import { MyAPI } from '../MyAPI';
 import { Sidebar } from '../Sidebar';
 import { Users } from '../Users';
+import { GatewayLogs } from '../GatewayLogs';
 // import { Webhooks } from '../Webhooks';
 import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
@@ -46,6 +47,13 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
           <Route path={ROUTES.APIS_ACTIVITY}>
             <ApisActivity />
+          </Route>
+          <Route path={ROUTES.LOGS}>
+            <RoleProtectedComponent
+              Component={GatewayLogs}
+              roles={[ROLE_ADMIN]}
+              redirectTo={ROUTES.MAIN}
+            />
           </Route>
           <Route path={ROUTES.PROFILE}>
             <Profile />

@@ -19,6 +19,7 @@ export const DATA_SOURCE_ADD = `${DATA_SOURCES}/add`;
 export const DATA_SOURCE_EDIT = `${DATA_SOURCES}/edit`;
 
 export const METRICS_AND_LOGS = '/metrics-and-logs';
+export const LOGS = '/logs';
 export const APIS_ACTIVITY = '/apis-activity';
 export const API_METRICS = `${APIS_ACTIVITY}/:id`;
 

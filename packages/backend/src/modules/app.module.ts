@@ -12,6 +12,7 @@ import AuthenticationMiddleware from '../common/middlewares/auth.middleware';
 import { randomString } from '../common/tool';
 import ApiDefModule from './api-def/api-def.module';
 import GatewayModule from './gateway/gateway.module';
+import LogModule from './log/log.module';
 import RedisModule from './redis/redis.module';
 import SourceModule from './source/source.module';
 import UserModule from './user/user.module';
@@ -46,6 +47,7 @@ const imports = [
   UserModule,
   GatewayModule,
   MetricModule,
+  LogModule,
 ];
 if (config.application.serveStatic) {
   imports.push(

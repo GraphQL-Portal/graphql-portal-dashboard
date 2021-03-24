@@ -12,7 +12,7 @@ import { AnyTable, NOOP } from '../General';
 import { UseTabsHook } from '../Tabs';
 import { DataSource } from '../DataSource';
 import GraphiQL from 'graphiql';
-import { AdditionalResolver, ApiDef } from './data';
+import { ApiDef } from './data';
 import { EditApiTab } from './components';
 import { Fetcher } from './methods';
 import { AdditionalResolverFormMethods, ApiDefFormMethods } from './forms';
