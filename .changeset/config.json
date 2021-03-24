@@ -3,11 +3,7 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "linked": [
-    [
-      "graphql-portal-dashboard",
-      "graphql-portal-dashboard-backend",
-      "graphql-portal-dashboard-frontend"
-    ]
+    ["graphql-portal-dashboard-backend", "graphql-portal-dashboard-frontend"]
   ],
   "access": "restricted",
   "baseBranch": "main",
