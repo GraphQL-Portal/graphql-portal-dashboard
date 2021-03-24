@@ -48,7 +48,7 @@
       "eslint --fix"
     ],
     "*.{ts,tsx,graphql,yml,json}": [
-      "prettier --write"
+      "prettier --write --config .prettierrc"
     ]
   },
   "dependencies": {
