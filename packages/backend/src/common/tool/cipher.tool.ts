@@ -3,6 +3,7 @@
 /// <reference path="../../../config/Config.d.ts" />
 import { config } from 'node-config-ts';
 import crypto from 'crypto';
+import Logger from '../logger/logger.service';
 
 const algorithm = 'aes-256-ctr';
 const secretKey = config.application.cryptoSecret;
@@ -14,6 +15,13 @@ if (secretKey.length !== 32) {
     'config.application.cryptoSecret should have length of 32 chars'
   );
 }
+if (secretKey === 'sMVzaYsaR9wM5R9cxLpJgjvqH9w6Ynlw') {
+  new Logger(config).warn(
+    'You are running application with default crypto secret key',
+    'Cipher tool'
+  );
+}
+
 const iv = crypto.randomBytes(16);
 
 export const encrypt = (text: string): string => {
