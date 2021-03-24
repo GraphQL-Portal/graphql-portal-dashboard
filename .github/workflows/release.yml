@@ -10,10 +10,6 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    outputs:
-      dashboard-version: ${{ steps.package-version.outputs.current-version }}
-      dashboard-version-major: ${{ steps.semver_parser.outputs.major }}
-      dashboard-version-minor: ${{ steps.semver_parser.outputs.minor }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -40,7 +36,7 @@ jobs:
             ${{ runner.os }}-14-yarn-
 
       - name: Install dependencies
-        run: yarn install && yarn build
+        run: yarn install
 
       - name: Create Release Pull Request
         uses: changesets/action@master
@@ -51,18 +47,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Get current dashboard version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
-        with:
-          path: packages/dashboard
-
-      - name: Parse semver dashboard version
-        id: semver_parser
-        uses: booxmedialtd/ws-action-parse-semver@v1
-        with:
-          input_string: ${{ steps.package-version.outputs.current-version }}
 
   dockerhub:
     name: DockerHub
