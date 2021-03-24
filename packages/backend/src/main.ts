@@ -16,7 +16,8 @@ const bootstrap = async (): Promise<void> => {
   const migrations = await status(db);
   if (!migrations?.length || migrations.pop()?.appliedAt === 'PENDING') {
     console.error(
-      "There are pending database migrations, please backup your database and run 'yarn migrate' to apply them"
+      'There are pending database migrations, please backup your database and run ' +
+        "'yarn workspace graphql-portal-dashboard-backend migrate' to apply them"
     );
     process.exit(1);
   }
