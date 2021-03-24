@@ -1,4 +1,4 @@
-import { Catch, HttpServer } from '@nestjs/common';
+import { Catch, HttpServer, HttpStatus } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 import { ValidationError } from 'apollo-server-express';
 import { MongoError } from 'mongodb';
@@ -11,6 +11,10 @@ export default class ValidationExceptionFilter extends BaseExceptionFilter {
   }
 
   public catch(exception: any): any {
+    if (exception.response?.statusCode === HttpStatus.NOT_FOUND) {
+      this.logger.verbose(exception.response?.message, this.constructor.name);
+      return;
+    }
     if (exception instanceof ValidationError) {
       return exception;
     }
