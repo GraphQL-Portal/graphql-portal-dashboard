@@ -5,7 +5,8 @@
   "author": "code.store",
   "license": "MIT",
   "scripts": {
-    "postinstall": "node-config-ts",
+    "node-config-ts": "node-config-ts && prettier --write ./config/Config.d.ts",
+    "postinstall": "yarn node-config-ts",
     "prettier": "prettier --write ./src",
     "prebuild": "rimraf dist && yarn prettier",
     "build": "nest build -p tsconfig.json",
