@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "description": "Backend part of graphql-portal-dashboard",
   "author": "code.store",
+  "private": true,
   "license": "MIT",
   "scripts": {
-    "postinstall": "node-config-ts",
+    "node-config-ts": "node-config-ts && prettier --write ./config/Config.d.ts",
+    "postinstall": "yarn node-config-ts",
     "prettier": "prettier --write ./src",
     "prebuild": "rimraf dist && yarn prettier",
     "build": "nest build -p tsconfig.json",
