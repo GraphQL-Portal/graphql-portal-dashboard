@@ -10,9 +10,11 @@ export const up = async (db: Db): Promise<void> => {
     name: string;
     endpoint: string;
   }[] = await apiDefsCollection.find().toArray();
-  const duplicates = getArrayDuplicates(apiDefs.map(apiDef => apiDef.endpoint));
+  const duplicates = getArrayDuplicates(
+    apiDefs.map((apiDef) => apiDef.endpoint)
+  );
   if (duplicates.length) {
-    const apiDefsWithDuplicates = apiDefs.filter(apiDef =>
+    const apiDefsWithDuplicates = apiDefs.filter((apiDef) =>
       duplicates.includes(apiDef.endpoint)
     );
     await Promise.all(

@@ -127,7 +127,7 @@ export const expectApiDef = (apiDef: IApiDefDocument): void => {
     ...apiDefSchema,
     sources: expect.anything(),
   });
-  apiDef.sources.forEach(source => {
+  apiDef.sources.forEach((source) => {
     expectSource(source);
   });
 };

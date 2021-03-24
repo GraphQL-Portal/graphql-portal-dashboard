@@ -31,7 +31,7 @@ describe('ApiDefService', () => {
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
-    await Promise.all(mongoose.connections.map(c => c.db?.dropDatabase()));
+    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     sourceService = app.get<SourceService>(SourceService);
     apiDefService = app.get<ApiDefService>(ApiDefService);

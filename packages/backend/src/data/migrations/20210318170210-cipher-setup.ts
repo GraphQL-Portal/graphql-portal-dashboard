@@ -17,7 +17,7 @@ const migrate = async (
         await db
           .collection(table)
           .find({ [field]: { $exists: true } })
-          .map(function(row) {
+          .map(function (row) {
             row[field] = cipherMethod(row[field]);
             return db
               .collection(table)

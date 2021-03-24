@@ -44,10 +44,7 @@ export default class ApiDefService implements IAccessControlService {
   }
 
   public async findAll(): Promise<ApiDefsWithTimestamp> {
-    const apiDefs = await this.apiDefModel
-      .find()
-      .populate('sources')
-      .exec();
+    const apiDefs = await this.apiDefModel.find().populate('sources').exec();
     return {
       apiDefs,
       timestamp: this.lastUpdateTime,
@@ -55,11 +52,8 @@ export default class ApiDefService implements IAccessControlService {
   }
 
   public async findAllForGateway(): Promise<ApiDefsWithTimestamp> {
-    let apiDefs = await this.apiDefModel
-      .find()
-      .populate('sources')
-      .exec();
-    apiDefs = apiDefs.filter(apiDef => apiDef.enabled);
+    let apiDefs = await this.apiDefModel.find().populate('sources').exec();
+    apiDefs = apiDefs.filter((apiDef) => apiDef.enabled);
 
     return {
       apiDefs,
@@ -89,10 +83,7 @@ export default class ApiDefService implements IAccessControlService {
   }
 
   public async findById(_id: string): Promise<IApiDef> {
-    return this.apiDefModel
-      .findOne({ _id })
-      .populate('sources')
-      .exec();
+    return this.apiDefModel.findOne({ _id }).populate('sources').exec();
   }
 
   public async create(
@@ -194,7 +185,7 @@ export default class ApiDefService implements IAccessControlService {
       apiDefWithPlainSources,
       undefined,
       0,
-      err => {
+      (err) => {
         error = err;
       }
     );
@@ -220,7 +211,7 @@ export default class ApiDefService implements IAccessControlService {
         const { targetSource, targetMethod, type, field } = additionalResolver;
 
         const source = apiDef.sources.find(
-          source => source.name === targetSource
+          (source) => source.name === targetSource
         );
         if (!source) {
           throw new Error(
@@ -236,14 +227,14 @@ export default class ApiDefService implements IAccessControlService {
         }
         const { schema } = meshSource as { schema: GraphQLSchema };
         const methods = ['Query', 'Mutation']
-          .map(type => {
+          .map((type) => {
             const fields = (schema.getType(
               type
             ) as GraphQLObjectType)?.getFields();
             return fields ? Object.keys(fields) : [];
           })
           .flat(3);
-        if (!methods.find(method => method === targetMethod)) {
+        if (!methods.find((method) => method === targetMethod)) {
           throw new Error(
             `Method ${targetMethod} not found in source ${targetSource}`
           );
