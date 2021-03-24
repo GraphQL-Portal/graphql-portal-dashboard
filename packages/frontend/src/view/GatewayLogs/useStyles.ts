@@ -13,6 +13,12 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   infoLog: {
     color: palette.success.main,
   },
+  warnLog: {
+    color: '#d9c338',
+  },
+  debugLog: {
+    color: '#d468b7',
+  },
   logWraper: {
     padding: spacing(0.5),
     display: 'block',

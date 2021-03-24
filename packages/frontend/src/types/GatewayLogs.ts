@@ -6,3 +6,8 @@ export interface Log {
   level: 'error' | 'info';
   timestamp: string;
 }
+
+export type UseGatewayLogsPresenter = () => {
+  loading: boolean;
+  data: Log[];
+};

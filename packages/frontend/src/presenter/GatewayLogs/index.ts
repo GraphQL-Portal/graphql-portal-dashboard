@@ -1,1 +1,1 @@
-export { useGatewayLogsWithSubscription } from './useGatewayLogs';
+export { useGatewayLogs } from './useGatewayLogs';

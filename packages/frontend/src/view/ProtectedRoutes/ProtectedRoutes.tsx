@@ -47,13 +47,13 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
           <Route path={ROUTES.APIS_ACTIVITY}>
             <ApisActivity />
-            <Route path={ROUTES.LOGS}>
-              <RoleProtectedComponent
-                Component={GatewayLogs}
-                roles={[ROLE_ADMIN]}
-                redirectTo={ROUTES.MAIN}
-              />
-            </Route>
+          </Route>
+          <Route path={ROUTES.LOGS}>
+            <RoleProtectedComponent
+              Component={GatewayLogs}
+              roles={[ROLE_ADMIN]}
+              redirectTo={ROUTES.MAIN}
+            />
           </Route>
           <Route path={ROUTES.PROFILE}>
             <Profile />

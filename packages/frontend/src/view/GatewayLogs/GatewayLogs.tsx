@@ -1,18 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { WidgetBody, HugeWidget, Header } from '../../ui';
 import { useStyles } from './useStyles';
 import { Log as ILog } from '../../types';
-import { useGatewayLogsWithSubscription } from '../../presenter/GatewayLogs/useGatewayLogs';
+import { useGatewayLogs } from '../../presenter/GatewayLogs';
 
 export const GatewayLogs: React.FC = () => {
-  const { subscribeToNewLogs, list } = useGatewayLogsWithSubscription();
-  useEffect(() => {
-    subscribeToNewLogs();
-  }, []);
-  const { logWraper, errorLog, infoLog, messageWrapper, content } = useStyles();
-  const levels: { error: string; info: string } = {
+  const { data } = useGatewayLogs();
+
+  const {
+    logWraper,
+    errorLog,
+    infoLog,
+    debugLog,
+    warnLog,
+    messageWrapper,
+    content,
+  } = useStyles();
+  const levels: { [key: string]: string } = {
     error: errorLog,
-    info: infoLog,
+    log: infoLog,
+    debug: debugLog,
+    warn: warnLog,
   };
 
   return (
@@ -21,7 +29,7 @@ export const GatewayLogs: React.FC = () => {
       <HugeWidget>
         <WidgetBody>
           <div className={content}>
-            {list.map(
+            {data.map(
               ({
                 nodeId,
                 hostname,
@@ -31,7 +39,7 @@ export const GatewayLogs: React.FC = () => {
                 timestamp,
               }: ILog) => (
                 <span className={logWraper}>
-                  <span className={levels[level] || levels.info}>
+                  <span className={levels[level] || levels.log}>
                     {timestamp}:{hostname}:{nodeId}:{prefix}:{level}:
                   </span>
                   <span className={messageWrapper}>{message}</span>

@@ -35,8 +35,8 @@ describe('LogResolver', () => {
 
     request = requestTo(app);
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
-    logService = app.get<LogService>(LogService);
 
+    logService = app.get<LogService>(LogService);
     userService = app.get<UserService>(UserService);
 
     admin = await createUser(userService, Roles.ADMIN);

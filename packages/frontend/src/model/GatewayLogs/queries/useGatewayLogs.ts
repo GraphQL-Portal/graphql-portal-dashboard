@@ -1,4 +1,5 @@
 import { useQuery, gql } from '@apollo/client';
+import { Log, QueryHook } from '../../../types';
 
 export const QUERY_LOGS = gql`
   {
@@ -13,16 +14,12 @@ export const QUERY_LOGS = gql`
   }
 `;
 
-export const useGatewayLogs = (options = {}) => {
-  const { data, loading, error, subscribeToMore } = useQuery(
-    QUERY_LOGS,
-    options
-  );
+export const useGatewayLogs: QueryHook<Log[]> = (options) => {
+  const { data, loading, error } = useQuery(QUERY_LOGS, options);
 
   return {
     data: data?.getLatestLogs || [],
     loading,
     error,
-    subscribeToMore,
   };
 };
