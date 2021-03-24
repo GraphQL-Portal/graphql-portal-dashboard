@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Backend part of graphql-portal-dashboard",
   "author": "code.store",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "node-config-ts": "node-config-ts && prettier --write ./config/Config.d.ts",

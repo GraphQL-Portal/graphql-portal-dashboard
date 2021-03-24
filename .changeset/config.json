@@ -2,7 +2,13 @@
   "$schema": "https://unpkg.com/@changesets/config@1.5.0/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": false,
-  "linked": [],
+  "linked": [
+    [
+      "graphql-portal-dashboard",
+      "graphql-portal-dashboard-backend",
+      "graphql-portal-dashboard-frontend"
+    ]
+  ],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
