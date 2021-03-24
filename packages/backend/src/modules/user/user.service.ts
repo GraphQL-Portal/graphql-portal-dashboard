@@ -176,6 +176,7 @@ export default class UserService {
         resetPasswordUrl: `${config.client.host}/reset-password?code=${codeEntity.code}&email=${email}`,
         firstName: user.firstName || user.email,
       },
+      hideWarnings: true,
     });
 
     return true;
@@ -225,6 +226,7 @@ export default class UserService {
         confirmationUrl: `${config.application.publicHost}/user/confirm-email?code=${codeEntity.code}&email=${email}`,
         firstName: user.firstName || email,
       },
+      hideWarnings: true,
     });
   }
 
