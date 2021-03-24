@@ -14,14 +14,17 @@ import {
 
 jest.mock('ioredis');
 
-describe('SourceService', () => {let app: TestingModule;
+describe('SourceService', () => {
+  let app: TestingModule;
   let sourceService: SourceService;
   let apiDefService: ApiDefService;
   let source: ISourceDocument;
 
   let getSchemaMock: jest.SpyInstance;
   const setGetSchemaMock = (): void => {
-    getSchemaMock = jest.spyOn(sourceService, 'getSchema').mockResolvedValue('');
+    getSchemaMock = jest
+      .spyOn(sourceService, 'getSchema')
+      .mockResolvedValue('');
   };
 
   const userId = randomObjectId();
