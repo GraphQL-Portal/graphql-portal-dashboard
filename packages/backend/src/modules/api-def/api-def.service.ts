@@ -177,8 +177,9 @@ export default class ApiDefService implements IAccessControlService {
     let error: Error | undefined;
     const apiDefWithPlainSources = {
       ...apiDef,
-      sources: apiDef.sources.map((source: ISourceDocument) =>
-        source.toObject({ getters: true })
+      sources: apiDef.sources.map(
+        (source: ISourceDocument) =>
+          source.toObject?.({ getters: true }) || source
       ) as SourceConfig[],
     };
     const mesh = await getMeshForApiDef(
