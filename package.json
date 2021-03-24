@@ -51,11 +51,6 @@
       "prettier --write"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged"
-    }
-  },
   "dependencies": {
     "concurrently": "6.0.0"
   },
