@@ -10,6 +10,11 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
       height: 47,
     },
   },
+  editor: {
+    '& .CodeMirror-wrap pre': {
+      wordBreak: 'break-word',
+    },
+  },
   // playground: {
   //   '& .graphiql-container': {
   //     border: `1px solid ${palette.action.disabled}`,
