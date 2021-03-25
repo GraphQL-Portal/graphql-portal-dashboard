@@ -12,7 +12,7 @@
       "playground": "@@GRAPHQL_PLAYGROUND",
       "debug": "@@GRAPHQL_PLAYGROUND"
     },
-    "serveStatic": "false",
+    "serveStatic": false,
     "jwtSecret": "@@JWT_SECRET",
     "logLevel": "log",
     "maxmind": {
