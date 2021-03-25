@@ -3,7 +3,7 @@ import React from 'react';
 import { EditApiTab as Props } from '../../../types';
 import { PrimaryButton } from '../../../ui';
 import { useUpdateGeneral } from '../../../presenter/ApiDefs';
-import { GeneralForm } from '../Form';
+import { AuthenticationForm, GeneralForm } from '../Form';
 import { useStyles } from './useStyles';
 
 export const GeneralTab: React.FC<Props> = (props) => {
@@ -20,7 +20,8 @@ export const GeneralTab: React.FC<Props> = (props) => {
 
   return (
     <form onSubmit={onSubmit} noValidate autoComplete="off" className={form}>
-      <GeneralForm
+      <GeneralForm register={register} control={control} errors={errors} />
+      <AuthenticationForm
         register={register}
         control={control}
         errors={errors}

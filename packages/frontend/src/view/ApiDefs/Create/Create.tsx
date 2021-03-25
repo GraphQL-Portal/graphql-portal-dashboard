@@ -13,6 +13,7 @@ import {
 } from '../../../ui';
 import { ROUTES } from '../../../model/providers';
 import {
+  AuthenticationForm,
   GeneralForm,
   DataSourcesForm,
   SchemaForm,
@@ -64,9 +65,6 @@ export const CreateApi: React.FC = () => {
                 register={register}
                 control={control}
                 errors={errors}
-                tokenFields={tokenFields}
-                addToken={addToken}
-                removeToken={removeToken}
               />
               <DataSourcesForm
                 control={control}
@@ -74,6 +72,14 @@ export const CreateApi: React.FC = () => {
                 connected={connected}
                 onAddSource={onAddSource}
                 onRemoveSource={onRemoveSource}
+              />
+              <AuthenticationForm
+                register={register}
+                control={control}
+                errors={errors}
+                tokenFields={tokenFields}
+                addToken={addToken}
+                removeToken={removeToken}
               />
               <SchemaForm
                 control={control}
