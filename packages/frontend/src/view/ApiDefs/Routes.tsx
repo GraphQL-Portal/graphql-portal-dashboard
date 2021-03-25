@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { ROUTES } from '../../model/providers';
-import { MyAPI } from './MyApi';
+import { ApiDefs } from './ApiDefs';
 import { CreateApi } from './Create';
 import { EditApi } from './Edit';
 import { ViewAPI } from './View';
@@ -20,7 +20,7 @@ export const Routes: React.FC = () => {
         <ViewAPI />
       </Route>
       <Route path={ROUTES.APIS} exact>
-        <MyAPI />
+        <ApiDefs />
       </Route>
     </Switch>
   );

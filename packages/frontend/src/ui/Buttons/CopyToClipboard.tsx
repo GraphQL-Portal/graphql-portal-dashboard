@@ -6,7 +6,6 @@ import { FileCopyOutlined } from '../../icons';
 import { CopyToClipboard as Props } from '../../types';
 import { TextButton } from './Text';
 import { ButtonIcon } from './ButtonIcon';
-import { useStyles } from './useStyles';
 
 export const CopyToClipboard: React.FC<Props> = ({
   onCopy,
@@ -19,13 +18,12 @@ export const CopyToClipboard: React.FC<Props> = ({
     message,
     onCopy,
   });
-  const { svgIcon } = useStyles();
 
   return (
     <CopyComponent text={text} onCopy={onCopySuccess}>
-      <TextButton className={className || ''}>
+      <TextButton className={className || ''} size="small">
         <ButtonIcon>
-          <FileCopyOutlined className={svgIcon} />
+          <FileCopyOutlined />
         </ButtonIcon>
         {buttonText}
       </TextButton>

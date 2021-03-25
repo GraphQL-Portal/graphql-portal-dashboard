@@ -29,6 +29,13 @@ export type ViewAPITab = {
   name?: string;
 };
 
+export type ViewApiHeader = {
+  name: string;
+  apiEndpoint: string;
+};
+
+export type EditApiHeader = ViewApiHeader & EnableSwitch;
+
 export type ApiGeneralForm = Pick<
   ReturnType<UseCreateApiDefHook>,
   'register' | 'control' | 'errors' | 'addToken' | 'removeToken' | 'tokenFields'

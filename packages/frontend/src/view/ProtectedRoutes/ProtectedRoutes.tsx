@@ -9,7 +9,7 @@ import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
 import { GatewayNodes } from '../GatewayNodes';
 // import { GlobalSettings } from '../GlobalSettings';
-import { MyAPI } from '../MyAPI';
+import { ApiDefs } from '../ApiDefs';
 import { Sidebar } from '../Sidebar';
 import { Users } from '../Users';
 import { GatewayLogs } from '../GatewayLogs';
@@ -40,7 +40,7 @@ export const ProtectedRoutes: React.FC = () => {
             <ApiMetrics />
           </Route>
           <Route path={ROUTES.APIS}>
-            <MyAPI />
+            <ApiDefs />
           </Route>
           <Route path={ROUTES.DATA_SOURCES}>
             <DataSources />
