@@ -1,4 +1,5 @@
 export { AdditionalResolvers } from './AdditionalResolvers';
+export { AuthenticationForm } from './Authentication';
 export { DataSourcesForm } from './DataSources';
 export { EnableSwitch } from './EnableSwitch';
 export { GeneralForm } from './General';
