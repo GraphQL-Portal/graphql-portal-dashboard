@@ -1,5 +1,5 @@
 import { makeStyles, Theme } from '@material-ui/core';
-import { WidgetActions } from '../types';
+import { WidgetActions } from '../../../types';
 
 export const useStyles = makeStyles(({ spacing }: Theme) => ({
   footer: {

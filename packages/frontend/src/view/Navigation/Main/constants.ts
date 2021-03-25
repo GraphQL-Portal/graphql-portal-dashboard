@@ -1,5 +1,6 @@
 import {
   Assessment,
+  Assignment,
   // AllInclusive,
   Ballot,
   DashboardRounded,
@@ -56,7 +57,7 @@ export const GROUPS: NavigationGroup[] = [
       {
         text: 'Logs',
         link: ROUTES.LOGS,
-        Icon: Ballot,
+        Icon: Assignment,
         roles: [ROLE_ADMIN],
       },
     ],

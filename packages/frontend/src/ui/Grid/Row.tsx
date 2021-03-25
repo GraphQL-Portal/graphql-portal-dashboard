@@ -1,6 +1,8 @@
 import React from 'react';
-import { Grid, GridProps } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-export const Row: React.FC<GridProps> = (props) => {
+import { Row as Props } from '../../types';
+
+export const Row: React.FC<Props> = (props) => {
   return <Grid item container xs={12} {...props} />;
 };

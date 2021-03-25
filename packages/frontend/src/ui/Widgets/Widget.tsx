@@ -3,7 +3,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 import { useStyles } from './useStyles';
-import { Widget as Props } from './types';
+import { Widget as Props } from '../../types';
 
 export const Widget: React.FC<Props> = ({ children, className }) => {
   const { widget } = useStyles();

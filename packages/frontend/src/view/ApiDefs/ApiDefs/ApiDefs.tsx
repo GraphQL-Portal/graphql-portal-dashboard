@@ -8,7 +8,7 @@ import { DeleteAPI } from '../DeleteAPI';
 import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
 
-export const MyAPI: React.FC = () => {
+export const ApiDefs: React.FC = () => {
   const {
     data,
     loading,

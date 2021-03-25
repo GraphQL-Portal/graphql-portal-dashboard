@@ -3,6 +3,7 @@ export {
   AllInclusive,
   ArrowBack,
   Assessment,
+  Assignment,
   Ballot,
   Close,
   DashboardRounded,
@@ -23,6 +24,7 @@ export {
   Remove,
   Search,
   Settings,
+  Sync,
   VerticalSplit,
   Visibility,
 } from '@material-ui/icons';

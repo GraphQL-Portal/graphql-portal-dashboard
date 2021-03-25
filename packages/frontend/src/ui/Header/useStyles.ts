@@ -6,11 +6,17 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     marginBottom: spacing(2),
   },
   toolbarRoot: {
-    justifyContent: 'space-between',
     padding: 0,
   },
-  side: {
+  center: {
     display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  end: {
+    display: 'flex',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   backButton: {

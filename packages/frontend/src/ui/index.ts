@@ -13,7 +13,7 @@ export { EmptyContainer, EmptyIcon, EmptyText } from './Empty';
 export { Errors } from './Errors';
 export * from './Form';
 export { Grid, Row, Col } from './Grid';
-export { Header, HeaderBackButton } from './Header';
+export * from './Header';
 export { Input } from './Input';
 export { Select } from './Select';
 export { Snackbar } from './Snackbar';

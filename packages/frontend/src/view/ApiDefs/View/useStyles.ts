@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
-export const useStyles = makeStyles(({ spacing }: Theme) => ({
+export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   wrapper: {
     height: '30rem',
     marginTop: spacing(4),
@@ -14,6 +14,9 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     '& .CodeMirror-wrap pre': {
       wordBreak: 'break-word',
     },
+  },
+  copyButton: {
+    color: palette.text.secondary,
   },
   // playground: {
   //   '& .graphiql-container': {

@@ -3,7 +3,7 @@ import React from 'react';
 import { Help } from '../../../icons';
 import { H5 } from '../../Typography';
 import { Tooltip } from '../../Tooltip';
-import { WidgetHeader as Props } from '../types';
+import { WidgetHeader as Props } from '../../../types';
 import { useStyles } from './useStyles';
 
 export const WidgetHeader: React.FC<Props> = ({ title, children, tooltip }) => {
