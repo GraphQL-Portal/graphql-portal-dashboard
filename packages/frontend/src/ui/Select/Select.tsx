@@ -6,7 +6,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
-import { Select as Props } from './types';
+import { Select as Props } from '../../types';
 import { getKeyFromText } from '../../utils';
 
 export const Select = forwardRef<unknown, Props>(

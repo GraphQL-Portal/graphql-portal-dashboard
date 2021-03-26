@@ -1,14 +1,9 @@
-import {
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  from,
-  Observable,
-} from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client';
 // import { getMainDefinition } from '@apollo/client/utilities';
 // import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 
+import { ErrorCallback } from '../../../types';
 import {
   storeAccessToken,
   storeRefreshToken,
@@ -20,8 +15,6 @@ import { promise2Observable } from './promise2Observable';
 import { refreshTokens } from './refreshToken';
 import { STATUS_401, REFRESH_LIMIT } from './constants';
 // import { setContext } from '@apollo/client/link/context';
-
-type ErrorCallback = Observable<any> | undefined;
 
 let client: ApolloClient<any>;
 let refreshCount: number = 0;

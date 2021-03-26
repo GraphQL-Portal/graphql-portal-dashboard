@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Emoji as Props } from './types';
+import { Emoji as Props } from '../../types';
 
 export const Emoji: React.FC<Props> = ({ className, label = '', children }) => {
   return (

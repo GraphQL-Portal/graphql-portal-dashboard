@@ -3,8 +3,7 @@ import {
   HANDLERS_LABELS,
 } from '../../presenter/DataSources/constants';
 import { getHandlerKey } from '../../presenter/DataSources/helpers';
-import { DataSource } from '../../types';
-import { Source } from './types';
+import { DataSource, SourceStep } from '../../types';
 import {
   ADD_SOURCE_STEPS,
   ADD_SOURCE_STEPS_WITH_CONFIGURATION,
@@ -23,7 +22,7 @@ export const formatHandlerType: (handler: DataSource) => string = compose(
   getHandlerKey
 );
 
-export const getSourceSteps = (source: Source) => {
+export const getSourceSteps = (source: SourceStep) => {
   return objectKeys(source?.connector?.properties || {}).length > 0
     ? ADD_SOURCE_STEPS_WITH_CONFIGURATION
     : ADD_SOURCE_STEPS;

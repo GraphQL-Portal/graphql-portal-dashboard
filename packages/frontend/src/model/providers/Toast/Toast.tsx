@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Snackbar, Errors } from '../../../ui';
-import { Toast as Props } from './types';
+import { Toast as Props } from '../../../types';
 
 export const Toast: React.FC<Props> = ({ state, dispatch }) => {
   const { isVisible, severity, messages } = state;

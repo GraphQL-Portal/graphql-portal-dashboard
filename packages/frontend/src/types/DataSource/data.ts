@@ -26,3 +26,9 @@ export type DataSource = NameForm &
     _id?: string;
     updatedAt?: string;
   };
+
+export type SourceStep = {
+  connector?: {
+    properties?: Record<string, unknown>;
+  };
+};

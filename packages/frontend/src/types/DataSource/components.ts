@@ -49,3 +49,9 @@ export type SelectQueryOrMutationFieldConfig = Pick<
 > & {
   name: string;
 } & Errors;
+
+export type DataSourceContext = {
+  setSource(source: any): void;
+  clearSource(): void;
+  source: any;
+};
