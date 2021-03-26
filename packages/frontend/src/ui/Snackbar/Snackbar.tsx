@@ -2,7 +2,7 @@ import React from 'react';
 import { Snackbar as MuiSnackbar } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 
-import { Snackbar as Props } from './types';
+import { Snackbar as Props } from '../../types';
 import { useStyles } from './useStyles';
 
 export const Snackbar: React.FC<Props> = ({

@@ -3,6 +3,8 @@ export {
   OutlineButton,
   PrimaryButton,
   TextButton,
+  ButtonIcon,
+  CopyToClipboard,
 } from './Buttons';
 export { Checkbox } from './Checkbox';
 export { Dialog, DialogText, DialogTitle } from './Dialogs';
@@ -11,7 +13,7 @@ export { EmptyContainer, EmptyIcon, EmptyText } from './Empty';
 export { Errors } from './Errors';
 export * from './Form';
 export { Grid, Row, Col } from './Grid';
-export { Header, HeaderBackButton } from './Header';
+export * from './Header';
 export { Input } from './Input';
 export { Select } from './Select';
 export { Snackbar } from './Snackbar';

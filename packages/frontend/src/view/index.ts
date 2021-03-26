@@ -7,7 +7,7 @@ export { Login } from './Login';
 export { SignUp } from './SignUp';
 export { ConfirmEmail } from './ConfirmEmail';
 export { ResetPasswordRequest, ResetPassword } from './ResetPassword';
-export { MyAPI } from './MyAPI';
+export { ApiDefs } from './ApiDefs';
 export { ApisActivity } from './ApisActivity';
 export { ApiMetrics } from './ApiMetrics';
 export { ProtectedRoutes } from './ProtectedRoutes';

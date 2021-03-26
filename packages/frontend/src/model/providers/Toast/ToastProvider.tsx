@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 
 import { Toast } from './Toast';
-import { ToastMessage, Action, Dispatch } from './types';
+import { ToastMessage, Action, Dispatch } from '../../../types';
 
 export const ToastContext = createContext<Dispatch | null>(null);
 const { Provider } = ToastContext;

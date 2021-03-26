@@ -3,6 +3,7 @@ export {
   AllInclusive,
   ArrowBack,
   Assessment,
+  Assignment,
   Ballot,
   Close,
   DashboardRounded,
@@ -10,6 +11,7 @@ export {
   Edit,
   ErrorOutline,
   FormatListBulleted,
+  FileCopyOutlined,
   GitHub,
   Help,
   ImportContacts,
@@ -22,6 +24,7 @@ export {
   Remove,
   Search,
   Settings,
+  Sync,
   VerticalSplit,
   Visibility,
 } from '@material-ui/icons';

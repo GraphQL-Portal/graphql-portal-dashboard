@@ -1,13 +1,20 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { Header, HugeWidget, PrimaryButton, WidgetRow } from '../../ui';
+import {
+  ButtonIcon,
+  Header,
+  HugeWidget,
+  PrimaryButton,
+  WidgetRow,
+} from '../../ui';
 import { useGatewayNodes } from '../../presenter/GatewayNodes';
 
 import { EmptyGatewayNodes } from './Empty';
 import { GatewayNodesList } from './List';
 import { useStyles } from './useStyles';
 import { Loading } from '../Loading';
+import { Sync } from '../../icons';
 
 export const GatewayNodes: React.FC = () => {
   const { data, onSyncClick, timestamp, loading } = useGatewayNodes();
@@ -26,7 +33,12 @@ export const GatewayNodes: React.FC = () => {
             <span>Config version:</span> {timestamp}
           </p>
         )}
-        <PrimaryButton onClick={onSyncClick}>Sync configuration</PrimaryButton>
+        <PrimaryButton onClick={onSyncClick}>
+          <ButtonIcon>
+            <Sync />
+          </ButtonIcon>
+          Sync
+        </PrimaryButton>
       </Header>
       <WidgetRow>
         <HugeWidget>

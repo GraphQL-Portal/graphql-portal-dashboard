@@ -45,3 +45,5 @@ export type TwitterFormMethods = FormMethods<TwitterForm>;
 
 export type StripeForm = StripeHandler;
 export type StripeFormMethods = FormMethods<StripeForm>;
+
+export type SearchAvailableForm = { search: string };

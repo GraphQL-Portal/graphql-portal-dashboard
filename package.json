@@ -25,7 +25,8 @@
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "reinstall": "yarn clear; yarn"
+    "reinstall": "yarn clear; yarn",
+    "release": "changeset publish"
   },
   "repository": {
     "type": "git",

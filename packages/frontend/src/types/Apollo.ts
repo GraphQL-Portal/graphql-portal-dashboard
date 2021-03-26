@@ -6,6 +6,7 @@ import {
   FetchResult,
   ApolloQueryResult,
   ApolloError,
+  Observable,
 } from '@apollo/client';
 import { RecordStringAny } from './General';
 
@@ -33,3 +34,5 @@ export type QueryHook<T> = (
   error?: ApolloError;
   refetch?: Refetch;
 };
+
+export type ErrorCallback = Observable<any> | undefined;

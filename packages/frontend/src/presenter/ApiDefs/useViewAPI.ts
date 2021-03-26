@@ -1,26 +1,26 @@
 import { UseViewAPIHook } from '../../types';
-import { useGateways } from '../../model/GatewayNodes/queries';
 import { useApiById } from './useApiById';
-import { getUrlFromGatewayNodes, createFetcher } from './helpers';
+import { createFetcher } from './helpers';
 
 export const useViewAPI: UseViewAPIHook = () => {
-  const { data, loading, tab, onChange } = useApiById();
-  const { data: gatewayData, loading: gatewayLoading } = useGateways();
+  const { api, loading, tab, onChange, apiEndpoint } = useApiById();
 
-  const viewLoading = loading || gatewayLoading;
-
-  const fetcher = !viewLoading
-    ? createFetcher(getUrlFromGatewayNodes(gatewayData, data?.endpoint), {
+  const fetcher = !loading
+    ? createFetcher(apiEndpoint, {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       })
     : (body: any) => Promise.resolve(body);
 
+  const { name = '', enabled = false } = api || {};
+
   return {
     tab,
     onChange,
     fetcher,
-    data,
-    loading: viewLoading,
+    name,
+    enabled,
+    loading,
+    apiEndpoint,
   };
 };

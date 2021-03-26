@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { ToastContext } from './ToastProvider';
-import { Messages, Severity } from './types';
+import { Messages, Severity } from '../../../types';
 
 export const useToast = () => {
   const dispatch = useContext(ToastContext)!;
