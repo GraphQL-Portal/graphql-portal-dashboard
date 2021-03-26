@@ -30,8 +30,15 @@ input MetricFilters {
   user: ID
 }
 
+input MetricFilter {
+  sourceId: ID
+  apiDef: ID
+  user: ID
+}
+
 type Query {
   metrics(scale: String, filters: MetricFilters!): Chart
   getUserMetrics(scale: String, filters: MetricFilters!): Chart
   getApiActivity(filters: MetricFilters!): [ApiActivity]
+  getDashboardMetrics(range: String, customRange: Timestamp, filters: MetricFilter): Chart
 }

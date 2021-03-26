@@ -43,25 +43,7 @@ export const Dashboard: React.FC = () => {
       <Header title="Dashboard" />
       <WidgetRow>
         <Widget className={widget}>
-          <ButtonGroup onClick={setScale} buttons={chartButtons} />
-        </Widget>
-        <Widget className={widget}>
-          <DatePicker
-            label="Start Date"
-            value={startDate}
-            disableFuture
-            maxDate={endDate}
-            onChange={(e) => e && setStartDate(e)}
-          />
-        </Widget>
-        <Widget className={widget}>
-          <DatePicker
-            label="End Date"
-            value={endDate}
-            disableFuture
-            minDate={startDate}
-            onChange={(e) => e && setEndDate(e)}
-          />
+          <ButtonGroup buttons={chartButtons} onClick={setRange} />
         </Widget>
         <Widget className={widget}>
           <Select
@@ -72,44 +54,44 @@ export const Dashboard: React.FC = () => {
           />
         </Widget>
       </WidgetRow>
-      <WidgetRow>
-        <HugeWidget>
-          <RequestChart
-            data={latency}
-            title="Average Request Latency"
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            valueLabelHandler={formatValueLabel}
-          />
-        </HugeWidget>
-      </WidgetRow>
-      <WidgetRow>
-        <HugeWidget>
-          <RequestChart
-            data={count}
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            title="Average Request Count"
-          />
-        </HugeWidget>
-      </WidgetRow>
-      {countries.length > 0 && (
-        <WidgetRow>
-          <HugeWidget>
-            <CountryChart
-              data={countries}
-              title="Countries where requests were made from"
-            />
-          </HugeWidget>
-        </WidgetRow>
-      )}
-      <WidgetRow>
-        <HugeWidget>
-          <FailureRequestRateChart
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            data={failures}
-            title="Failure/Success Chart"
-          />
-        </HugeWidget>
-      </WidgetRow>
+      {/*<WidgetRow>*/}
+      {/*  <HugeWidget>*/}
+      {/*    <RequestChart*/}
+      {/*      data={latency}*/}
+      {/*      title="Average Request Latency"*/}
+      {/*      argumentLabelHandler={formatArgumentLabel(scale)}*/}
+      {/*      valueLabelHandler={formatValueLabel}*/}
+      {/*    />*/}
+      {/*  </HugeWidget>*/}
+      {/*</WidgetRow>*/}
+      {/*<WidgetRow>*/}
+      {/*  <HugeWidget>*/}
+      {/*    <RequestChart*/}
+      {/*      data={count}*/}
+      {/*      argumentLabelHandler={formatArgumentLabel(scale)}*/}
+      {/*      title="Average Request Count"*/}
+      {/*    />*/}
+      {/*  </HugeWidget>*/}
+      {/*</WidgetRow>*/}
+      {/*{countries.length > 0 && (*/}
+      {/*  <WidgetRow>*/}
+      {/*    <HugeWidget>*/}
+      {/*      <CountryChart*/}
+      {/*        data={countries}*/}
+      {/*        title="Countries where requests were made from"*/}
+      {/*      />*/}
+      {/*    </HugeWidget>*/}
+      {/*  </WidgetRow>*/}
+      {/*)}*/}
+      {/*<WidgetRow>*/}
+      {/*  <HugeWidget>*/}
+      {/*    <FailureRequestRateChart*/}
+      {/*      argumentLabelHandler={formatArgumentLabel(scale)}*/}
+      {/*      data={failures}*/}
+      {/*      title="Failure/Success Chart"*/}
+      {/*    />*/}
+      {/*  </HugeWidget>*/}
+      {/*</WidgetRow>*/}
     </>
   );
 };

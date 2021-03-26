@@ -1,7 +1,12 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { AuthorizationParam, Roles } from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
-import { IAggregateFilters, IApiActivity, IMetric } from './interfaces';
+import {
+  IAggregateFilters,
+  IApiActivity,
+  IMetric,
+  IMetricFilter,
+} from './interfaces';
 import MetricService from './metric.service';
 
 @Resolver('Metric')
@@ -34,5 +39,16 @@ export default class MetricResolver {
     @Args('filters') filters: IAggregateFilters
   ): Promise<IApiActivity[]> {
     return this.metricService.getApiActivity({ ...filters, user });
+  }
+
+  @Query()
+  @Roles([RolesEnum.USER])
+  public getDashboardMetrics(
+    @AuthorizationParam('_id') user: string,
+    @Args('range') range: 'hour' | 'day' | 'week' | 'month',
+    @Args('customRange') customRange: number | Date,
+    @Args('filters') filters: IMetricFilter
+  ): Promise<IMetric> {
+    return this.metricService.dashboardMetrics(range, customRange, filters);
   }
 }

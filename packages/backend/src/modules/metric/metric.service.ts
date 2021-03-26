@@ -16,7 +16,18 @@ import {
   ReaderModel,
   WebServiceClient,
 } from '@maxmind/geoip2-node';
-import { add, differenceInSeconds } from 'date-fns';
+import {
+  add,
+  addDays,
+  addHours,
+  addMinutes,
+  differenceInSeconds,
+  endOfDay,
+  startOfHour,
+  startOfMinute,
+  subDays,
+  subHours,
+} from 'date-fns';
 import Provider from '../../common/enum/provider.enum';
 import { LoggerService } from '../../common/logger';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
@@ -34,6 +45,7 @@ import {
   IAggregateFilters,
   IApiActivity,
   IMetric,
+  IMetricFilter,
 } from './interfaces';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import { RedisClient } from '../../common/types';
@@ -328,6 +340,19 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     };
   }
 
+  public async dashboardMetrics(
+    range: 'hour' | 'day' | 'week' | 'month',
+    customRange: number | Date,
+    filters: IMetricFilter
+  ): Promise<IMetric> {
+    return {
+      latency: [],
+      count: [],
+      countries: [],
+      failures: [],
+    };
+  }
+
   public async removeForApiDef(apiDefId: string): Promise<boolean> {
     this.logger.debug(
       `Removing metrics for apiDef: ${apiDefId}`,
@@ -563,6 +588,66 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     do {
       boundaries.push(sdate);
     } while (next());
+
+    this.logger.debug(
+      `boundaries ${JSON.stringify(boundaries)}`,
+      this.constructor.name
+    );
+    return boundaries;
+  }
+
+  private genRange(
+    addFN: Function,
+    interval: number,
+    start: Date,
+    end: Date
+  ): Date[] {
+    const result: Date[] = [start];
+    while (differenceInSeconds(start, end) < 0) {
+      start = addFN(start, interval);
+      result.push(start);
+    }
+
+    return result;
+  }
+
+  private getDateBoundaries(
+    range?: 'hour' | 'day' | 'week' | 'month',
+    startDate?: Date | number,
+    endDate?: Date | number
+  ): Date[] {
+    let sdate: Date;
+    let edate: Date;
+    let boundaries: Date[] = [];
+
+    if (range) {
+      switch (range) {
+        case 'hour': {
+          const end = startOfMinute(new Date());
+          const start = subHours(end, 1);
+          boundaries = this.genRange(addMinutes, 5, start, end);
+          break;
+        }
+        case 'day': {
+          const end = startOfHour(new Date());
+          const start = subDays(end, 1);
+          boundaries = this.genRange(addHours, 1, start, end);
+          break;
+        }
+        case 'week': {
+          const end = startOfHour(new Date());
+          const start = subDays(end, 7);
+          boundaries = this.genRange(addHours, 6, start, end);
+          break;
+        }
+        case 'month': {
+          const end = endOfDay(new Date());
+          const start = subDays(end, 30);
+          boundaries = this.genRange(addDays, 1, start, end);
+          break;
+        }
+      }
+    }
 
     return boundaries;
   }
