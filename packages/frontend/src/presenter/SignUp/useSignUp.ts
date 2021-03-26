@@ -1,23 +1,19 @@
 import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test, enforce } from 'vest';
+import { useHistory } from 'react-router-dom';
 import validator from 'validator';
+
 import { ROUTES, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
 import { useSignUp as signUp } from '../../model/SignUp/commands';
-import { useHistory } from 'react-router-dom';
-
-type SignUpFormInput = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+import { SignUpForm } from '../../types';
 
 enforce.extend({ isEmail: validator.isEmail });
 
 const validationSuite = vest.create(
   'signup_form',
-  ({ email, password, confirmPassword }: SignUpFormInput) => {
+  ({ email, password, confirmPassword }: SignUpForm) => {
     test('email', 'Email is required', () => {
       enforce(email).isNotEmpty();
     });
@@ -45,7 +41,7 @@ const validationSuite = vest.create(
 export const useSignUp = () => {
   const { showSuccessToast, showErrorToast } = useToast();
   const { push } = useHistory();
-  const { handleSubmit, control, errors } = useForm<SignUpFormInput>({
+  const { handleSubmit, control, errors } = useForm<SignUpForm>({
     reValidateMode: 'onSubmit',
     resolver: vestResolver(validationSuite),
   });
@@ -66,7 +62,7 @@ export const useSignUp = () => {
 
   useFormErrors(errors);
 
-  const onSubmit = ({ email, password }: SignUpFormInput) => {
+  const onSubmit = ({ email, password }: SignUpForm) => {
     onSignUp({
       variables: {
         data: {

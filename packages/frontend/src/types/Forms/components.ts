@@ -1,4 +1,5 @@
-import { SwitchProps } from '@material-ui/core';
+import { ReactNode } from 'react';
+import { SwitchProps, SelectProps } from '@material-ui/core';
 import {
   ErrorsAndControl,
   FieldArray,
@@ -35,3 +36,13 @@ export type AddFieldArrayHeader = {
 };
 
 export type FormGroup = { title: string };
+
+type Option = {
+  value: string | number | undefined;
+  label: ReactNode;
+};
+
+export type Select = SelectProps & {
+  options: Option[];
+  fullWidth?: boolean;
+};

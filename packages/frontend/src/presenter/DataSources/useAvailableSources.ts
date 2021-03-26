@@ -3,15 +3,15 @@ import { useHistory } from 'react-router-dom';
 
 import { ROUTES, useDataSourceContext } from '../../model/providers';
 import { NOOP } from '../../utils';
+import { SearchAvailableForm } from '../../types';
 import { AVAILABLE_HANDLERS } from './constants';
 import { getFilteredSources } from './helpers';
-import { SearchInput } from './types';
 
 export const useAvailableSources = () => {
   const { setSource } = useDataSourceContext();
   const { push } = useHistory();
 
-  const { control, handleSubmit, reset, watch } = useForm<SearchInput>({
+  const { control, handleSubmit, reset, watch } = useForm<SearchAvailableForm>({
     reValidateMode: 'onSubmit',
     defaultValues: {
       search: '',

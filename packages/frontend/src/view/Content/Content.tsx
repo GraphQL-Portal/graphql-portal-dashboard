@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 import { useStyles } from './useStyles';
-import { Content as Props } from './types';
+import { ClassName as Props } from '../../types';
 
 export const Content: React.FC<Props> = ({ children, className }) => {
   const { main } = useStyles();

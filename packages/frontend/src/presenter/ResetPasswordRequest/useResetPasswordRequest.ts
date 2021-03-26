@@ -1,15 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
+import { useHistory } from 'react-router-dom';
 import vest, { test, enforce } from 'vest';
 import validator from 'validator';
+
 import { ROUTES, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
 import { useResetPasswordRequest as resetPasswordRequest } from '../../model/ResetPasswordRequest/commands';
-import { useHistory } from 'react-router-dom';
-
-type ResetPasswordRequestFormInput = {
-  email: string;
-};
+import { ResetPasswordRequestFormInput } from '../../types';
 
 enforce.extend({ isEmail: validator.isEmail });
 

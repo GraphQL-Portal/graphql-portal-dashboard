@@ -17,3 +17,9 @@ export interface Toast {
   state: ToastMessage;
   dispatch(action: Action): void;
 }
+
+export type Snackbar = {
+  severity: Severity;
+  isVisible: boolean;
+  onClose(): void;
+};

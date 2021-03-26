@@ -1,6 +1,4 @@
-type Obj = {
-  [key: string]: any;
-};
+import { RecordStringAny } from '../types';
 
-export const getPath = (obj: Obj) => (path: string[]) =>
-  path.reduce((acc: Obj, key: string) => acc[key], obj);
+export const getPath = (obj: RecordStringAny) => (path: string[]) =>
+  path.reduce((acc: RecordStringAny, key: string) => acc[key], obj);
