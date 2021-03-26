@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 
 import { useMetrics } from '../../presenter/Metrics';
 import {
-  DatePicker,
   Header,
   HugeWidget,
   Widget,
@@ -22,18 +21,10 @@ import { formatArgumentLabel, formatValueLabel } from '../../utils';
 
 export const Dashboard: React.FC = () => {
   const { widget, apiSelect } = useStyles();
-  const {
-    data = {},
-    startDate,
-    endDate,
-    scale,
-    setStartDate,
-    setEndDate,
-    setScale,
-    selectApiDef,
-    apis,
-  } = useMetrics();
+  const { data = {}, range, setRange, selectApiDef, apis } = useMetrics();
   const { latency = [], count = [], countries = [], failures = [] } = data;
+
+  console.log(range);
 
   return (
     <>

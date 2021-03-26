@@ -2,6 +2,7 @@ import { QueryHook } from './Apollo';
 import { NOOP } from './General';
 
 export type Scale = 'hour' | 'day' | 'week' | 'month';
+export type Range = 'hour' | 'day' | 'week' | 'month';
 
 export type DateRange = Omit<Scale, 'hour'> | 'year';
 
@@ -27,6 +28,11 @@ export type MetricsRefetch = {
   startDate: Date;
   endDate: Date;
   scale: Scale;
+};
+
+export type APIMetricsRefetch = {
+  apiDef: string | undefined;
+  chunks: Date[];
 };
 
 export type CountryChartProps = RequestChartProps;

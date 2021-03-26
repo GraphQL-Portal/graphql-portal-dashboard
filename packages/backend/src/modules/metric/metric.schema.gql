@@ -5,6 +5,13 @@ type Chart {
   failures: [ChartChunk]
 }
 
+type Metrics {
+  latency: [ChartChunk]
+  count: [ChartChunk]
+  countries: [ChartChunk]
+  failures: [ChartChunk]
+}
+
 type ChartChunk {
   argument: String
   value: Float
@@ -40,5 +47,5 @@ type Query {
   metrics(scale: String, filters: MetricFilters!): Chart
   getUserMetrics(scale: String, filters: MetricFilters!): Chart
   getApiActivity(filters: MetricFilters!): [ApiActivity]
-  getDashboardMetrics(range: String, customRange: Timestamp, filters: MetricFilter): Chart
+  getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): Metrics
 }

@@ -1,9 +1,9 @@
 import { useQuery, gql } from '@apollo/client';
-import { MetricsRefetch, Scale } from '../../../types';
+import { APIMetricsRefetch } from '../../../types';
 
 export const QUERY_METRICS = gql`
-  query getUserMetrics($scale: String, $filters: MetricFilters!) {
-    getUserMetrics(scale: $scale, filters: $filters) {
+  query getChunkedAPIMetrics($chunks: [String], $filters: MetricFilter!) {
+    getChunkedAPIMetrics(chunks: $chunks, filters: $filters) {
       latency {
         argument
         value
@@ -25,19 +25,12 @@ export const QUERY_METRICS = gql`
   }
 `;
 
-export const useMetricsQuery = (
-  apiDef: string | undefined,
-  startDate: Date,
-  endDate: Date,
-  scale: Scale
-) => {
+export const useMetricsQuery = (apiDef: string | undefined, chunks: Date[]) => {
   const { data, loading, error, refetch } = useQuery(QUERY_METRICS, {
     variables: {
-      scale,
+      chunks,
       filters: {
         apiDef,
-        startDate: startDate.getTime(),
-        endDate: endDate.getTime(),
       },
     },
   });
@@ -46,14 +39,12 @@ export const useMetricsQuery = (
     data: data?.getUserMetrics,
     loading,
     error,
-    refetch: (variables: MetricsRefetch) =>
+    refetch: (variables: APIMetricsRefetch) =>
       refetch({
         filters: {
           apiDef,
-          startDate: variables.startDate.getTime(),
-          endDate: variables.endDate.getTime(),
         },
-        scale: variables.scale,
+        chunks: variables.chunks,
       }),
   };
 };
