@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.4.1
+
+### Patch Changes
+
+- 62c1e90: Reduce padding between navigation group
+
 ## 0.4.0
 
 ### Minor Changes
