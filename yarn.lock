@@ -1471,7 +1471,7 @@
     "@manypkg/get-packages" "^1.0.1"
     semver "^5.4.1"
 
-"@changesets/cli@^2.14.1":
+"@changesets/cli@2.14.1":
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/@changesets/cli/-/cli-2.14.1.tgz#ef6ba9f69e4dd5f6cde4220e032200e3039a52f8"
   integrity sha512-ydU2ZUP/s7nHQmz8TrliT+kE2dJUpZYKh8MBHrkV6suchCBhT4DmoP4VDF9M4215r18iPbMpE1TjskzXGXB8eQ==
@@ -2413,13 +2413,6 @@
     "@graphql-mesh/types" "^0.35.0"
 
 "@graphql-portal/types@0.19.0", "@graphql-portal/types@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.19.0.tgz#1f11494d88938e72f8f95e626ce9d835e0791816"
-  integrity sha512-xNT1fd8hSPHQ+oA7MBRQ/4Poe/kwGK2N507WG88Zp1wH34DiCko3ilRLjuhfP2ztuH6WL3r8XKCEo4z4/elfcA==
-  dependencies:
-    ajv "7.2.1"
-
-"@graphql-portal/types@0.19.0":
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.19.0.tgz#1f11494d88938e72f8f95e626ce9d835e0791816"
   integrity sha512-xNT1fd8hSPHQ+oA7MBRQ/4Poe/kwGK2N507WG88Zp1wH34DiCko3ilRLjuhfP2ztuH6WL3r8XKCEo4z4/elfcA==
@@ -4343,7 +4336,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
-"@types/react-copy-to-clipboard@^5.0.0":
+"@types/react-copy-to-clipboard@5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.0.tgz#38b035ca0c28334d3e0efaf3f319b81eea9690cd"
   integrity sha512-faUg6Kx3Dfv0MBIcs+xzIptlRtjEVSaNjqyC14YAp4UwSiTHghnKtBOt9ERRTZZJfoJgnw10tomVaqG86GzdAw==
@@ -15686,7 +15679,7 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-react-copy-to-clipboard@^5.0.3:
+react-copy-to-clipboard@5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.3.tgz#2a0623b1115a1d8c84144e9434d3342b5af41ab4"
   integrity sha512-9S3j+m+UxDZOM0Qb8mhnT/rMR0NGSrj9A/073yz2DSxPMYhmYFBMYIdI2X4o8AjOjyFsSNxDRnCX6s/gRxpriw==
@@ -15758,7 +15751,7 @@ react-hook-form@6.15.5:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.5.tgz#c2578f9ce6a6df7b33015587d40cd880dc13e2db"
   integrity sha512-so2jEPYKdVk1olMo+HQ9D9n1hVzaPPFO4wsjgSeZ964R7q7CHsYRbVF0PGBi83FcycA5482WHflasdwLIUVENg==
 
-react-hotkeys-hook@^3.2.1:
+react-hotkeys-hook@3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/react-hotkeys-hook/-/react-hotkeys-hook-3.2.1.tgz#314760bad7b27c1cf5dedb4b8b15fb7eced3ae1f"
   integrity sha512-l5Y4Dr109Fz10hHq40hkJmppXUqdv7tNVFldPq7lDsgWBpPLWCtkkSkrzTySje4GK+t5VLzPA01cCyUsZutOmQ==
