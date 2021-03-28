@@ -182,6 +182,25 @@ export default class UserService {
     return true;
   }
 
+  public async changePassword(
+    email: string,
+    oldPassword: string,
+    newPassword: string
+  ): Promise<boolean> {
+    const user = await this.findByEmail(email);
+    if (!user) {
+      throw new UserInputError('Wrong email or password');
+    }
+    if (!user.isValidPassword(oldPassword)) {
+      throw new UserInputError('Wrong email or password');
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    return true;
+  }
+
   public async resetPassword(
     email: string,
     code: string,
