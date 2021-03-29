@@ -26,7 +26,7 @@ jest.mock('@sendgrid/mail', () => ({
   send: jest.fn(),
 }));
 
-describe('ApiDefResolver', () => {
+describe('UserResolver', () => {
   let request: RequestToResult;
   let app: INestApplication;
   let tokens: ITokens;
@@ -81,7 +81,7 @@ describe('ApiDefResolver', () => {
           .send({ query, variables });
     });
 
-    describe('register', () => {
+    describe('Register', () => {
       it('should call register', async () => {
         const { body } = await graphQlRequest(
           `mutation($data: UserInput!) {
@@ -230,6 +230,28 @@ describe('ApiDefResolver', () => {
         });
       });
     });
+
+    describe('Change password', () => {
+      it('shoud call changePassword', async () => {
+        const spy = jest
+          .spyOn(userService, 'changePassword')
+          .mockResolvedValueOnce(true);
+        const oldPassword = 'oldPassword';
+        const newPassword = 'newPassword';
+
+        const { body } = await graphQlRequest(
+          `mutation($oldPassword: String!, $newPassword: String!) {
+            changePassword(oldPassword: $oldPassword, newPassword: $newPassword)
+          }`,
+          { oldPassword, newPassword },
+          { [HeadersEnum.AUTHORIZATION]: tokens.accessToken }
+        ).expect(HttpStatus.OK);
+        expect(body.data.changePassword).toBeTruthy();
+        expect(spy).toBeCalledTimes(1);
+        expect(spy).toBeCalledWith(user.email, oldPassword, newPassword);
+      });
+    });
+
     describe('Reset password request and confirmation', () => {
       it('shoud call resetPasswordRequest', async () => {
         const spy = jest
@@ -335,6 +357,7 @@ describe('ApiDefResolver', () => {
         expectTokens(body.data.login);
       });
     });
+
     describe('Update', () => {
       it('usen with role "user" cannot update user data', async () => {
         const firstName = randomString();
@@ -379,6 +402,7 @@ describe('ApiDefResolver', () => {
         expect(body.data.updateUser.firstName).toBe(firstName);
       });
     });
+
     describe('Delete', () => {
       it('usen with role "user" cannot update user data', async () => {
         const { body } = await graphQlRequest(

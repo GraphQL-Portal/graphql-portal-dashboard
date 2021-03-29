@@ -3,13 +3,13 @@ import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
 import Roles from '../../common/enum/roles.enum';
 import { randomEmail, randomString } from '../../common/tool';
-import UserService from '../../modules/user/user.service';
-import TokenService from '../../modules/user/token.service';
-import AppModule from '../../modules/app.module';
 import { IUserDocument } from '../../data/schema/user.schema';
-import ITokens from '../../modules/user/interfaces/tokens.interface';
-import { createUser, randomObjectId } from '../common';
+import AppModule from '../../modules/app.module';
 import { CodeTypes } from '../../modules/user/enum';
+import ITokens from '../../modules/user/interfaces/tokens.interface';
+import TokenService from '../../modules/user/token.service';
+import UserService from '../../modules/user/user.service';
+import { createUser, randomObjectId } from '../common';
 
 jest.mock('ioredis');
 
@@ -174,6 +174,46 @@ describe('UserService', () => {
           expect(!users.some(({ _id }) => _id === adminId)).toBeTruthy();
         });
       });
+    });
+  });
+
+  describe('changePassword', () => {
+    it('changePassword: success', async () => {
+      const newPassword = 'newpassword';
+      const mockedUser = {
+        save: jest.fn(),
+        isValidPassword: jest.fn().mockReturnValue(true),
+        password: '',
+      };
+      const spyFindByEmail = jest
+        .spyOn(userService, 'findByEmail')
+        .mockResolvedValue(mockedUser as any);
+
+      const result = await userService.changePassword(
+        user.email,
+        user.password,
+        newPassword
+      );
+      expect(result).toBeTruthy();
+
+      expect(spyFindByEmail).toBeCalledWith(user.email);
+      expect(mockedUser.isValidPassword).toBeCalledWith(user.password);
+      expect(mockedUser.save).toBeCalledTimes(1);
+      expect(mockedUser.password).toBe(newPassword);
+    });
+
+    it('changePassword: fail', async () => {
+      const newPassword = 'newpassword';
+      const mockedUser = {
+        isValidPassword: jest.fn().mockReturnValue(false),
+      };
+      const spyFindByEmail = jest
+        .spyOn(userService, 'findByEmail')
+        .mockResolvedValue(mockedUser as any);
+
+      await expect(async () =>
+        userService.changePassword(user.email, user.password, newPassword)
+      ).rejects.toThrow('Wrong email or password');
     });
   });
 

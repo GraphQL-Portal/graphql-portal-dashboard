@@ -39,6 +39,7 @@ type Mutation {
   refreshTokens(refreshToken: String!, device: String!): Tokens!
   resetPasswordRequest(email: String!): Boolean
   resetPassword(email: String!, code: String!, password: String!): Boolean
+  changePassword(oldPassword: String!, newPassword: String!): Boolean
 }
 
 type Query {
