@@ -1,15 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useMetrics } from '../../presenter/Metrics';
-import {
-  Header,
-  HugeWidget,
-  Widget,
-  WidgetRow,
-  Select,
-  ButtonGroup,
-} from '../../ui';
+import { Header, HugeWidget, Widget, WidgetRow, Select } from '../../ui';
 import {
   CountryChart,
   FailureRequestRateChart,
@@ -18,13 +11,27 @@ import {
 } from '../MetricChart';
 import { useStyles } from './useStyles';
 import { formatArgumentLabel, formatValueLabel } from '../../utils';
+import { ToggleButtonGroup } from '@material-ui/lab';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import { Range, RangeList } from '../../types';
 
 export const Dashboard: React.FC = () => {
   const { widget, apiSelect } = useStyles();
-  const { data = {}, range, setRange, selectApiDef, apis } = useMetrics();
+  const {
+    data = {},
+    range,
+    setRange,
+    selectApiDef,
+    apiDef,
+    apis,
+  } = useMetrics();
   const { latency = [], count = [], countries = [], failures = [] } = data;
-
-  console.log(range);
+  const handleDateRange = (
+    event: React.MouseEvent<HTMLElement>,
+    newDateRange: Range | null
+  ) => {
+    newDateRange ? setRange(newDateRange) : setRange('hour');
+  };
 
   return (
     <>
@@ -34,12 +41,24 @@ export const Dashboard: React.FC = () => {
       <Header title="Dashboard" />
       <WidgetRow>
         <Widget className={widget}>
-          <ButtonGroup buttons={chartButtons} onClick={setRange} />
+          <ToggleButtonGroup
+            value={range}
+            onChange={handleDateRange}
+            exclusive
+            size="large"
+          >
+            {RangeList.map((value) => (
+              <ToggleButton value={value} key={value}>
+                {value}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
         </Widget>
         <Widget className={widget}>
           <Select
             className={apiSelect}
             options={apis}
+            value={apiDef}
             label="API"
             onChange={(e, { props }: any) => selectApiDef(props?.value)}
           />

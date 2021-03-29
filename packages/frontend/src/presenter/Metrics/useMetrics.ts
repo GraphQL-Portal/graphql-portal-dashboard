@@ -6,7 +6,7 @@ import { getDateChunks } from '../../utils/getDateChunks';
 
 export const useMetrics = () => {
   const [range, setRange] = useState('hour' as Range);
-  const [apiDef, selectApiDef] = useState(undefined);
+  const [apiDef, selectApiDef] = useState('');
   const { data: myApis } = useApiDefs();
 
   const apis = useMemo(() => {
@@ -35,6 +35,7 @@ export const useMetrics = () => {
     setRange,
     apis,
     selectApiDef,
+    apiDef,
   };
 };
 

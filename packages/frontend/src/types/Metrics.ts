@@ -2,7 +2,8 @@ import { QueryHook } from './Apollo';
 import { NOOP } from './General';
 
 export type Scale = 'hour' | 'day' | 'week' | 'month';
-export type Range = 'hour' | 'day' | 'week' | 'month';
+export const RangeList = ['hour', 'day', 'week', 'month'] as const;
+export type Range = typeof RangeList[number];
 
 export type DateRange = Omit<Scale, 'hour'> | 'year';
 
