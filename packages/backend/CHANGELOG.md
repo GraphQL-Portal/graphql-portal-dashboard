@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.5.1
+
+### Patch Changes
+
+- 80ce7eb: fix set user password
+
 ## 0.5.0
 
 ### Minor Changes
