@@ -52,13 +52,4 @@ userSchema.methods.isValidPassword = function (password: string): boolean {
   return this.password === hash;
 };
 
-userSchema.pre<IUserDocument>('save', function (next) {
-  try {
-    this.setPassword(this.password);
-    next();
-  } catch (error) {
-    next(error);
-  }
-});
-
 export default userSchema;

@@ -182,6 +182,7 @@ describe('UserService', () => {
       const newPassword = 'newpassword';
       const mockedUser = {
         save: jest.fn(),
+        setPassword: jest.fn(),
         isValidPassword: jest.fn().mockReturnValue(true),
         password: '',
       };
@@ -198,8 +199,8 @@ describe('UserService', () => {
 
       expect(spyFindByEmail).toBeCalledWith(user.email);
       expect(mockedUser.isValidPassword).toBeCalledWith(user.password);
+      expect(mockedUser.setPassword).toBeCalledWith(newPassword);
       expect(mockedUser.save).toBeCalledTimes(1);
-      expect(mockedUser.password).toBe(newPassword);
     });
 
     it('changePassword: fail', async () => {
@@ -255,6 +256,7 @@ describe('UserService', () => {
       const password = 'newpassword';
       const mockedUser = {
         save: jest.fn(),
+        setPassword: jest.fn(),
       };
       const spyIsConfirmed = jest
         .spyOn(userService, 'acceptConfirmationCode')
@@ -274,6 +276,7 @@ describe('UserService', () => {
       expect(spyFindByEmail).toBeCalledTimes(1);
       expect(spyFindByEmail).toBeCalledWith(user.email);
       expect(mockedUser.save).toBeCalledTimes(1);
+      expect(mockedUser.setPassword).toBeCalledTimes(1);
     });
 
     it('resetPassword: fail', async () => {

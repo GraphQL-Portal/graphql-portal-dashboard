@@ -83,6 +83,8 @@ export default class UserService {
 
   public async register(data: IUser): Promise<boolean> {
     const user = await this.userModel.create(data);
+    user.setPassword(data.password);
+    await user.save();
 
     await this.sendEmailConfirmationCode(user.email);
 
@@ -195,7 +197,7 @@ export default class UserService {
       throw new UserInputError('Wrong email or password');
     }
 
-    user.password = newPassword;
+    user.setPassword(newPassword);
     await user.save();
 
     return true;
@@ -219,8 +221,8 @@ export default class UserService {
     if (!user) {
       throw new UserInputError(`User with email: ${email} was found`);
     }
-    user.password = password;
 
+    user.setPassword(password);
     await user.save();
 
     return true;
