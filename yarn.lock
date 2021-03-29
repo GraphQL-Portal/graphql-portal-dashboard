@@ -2260,7 +2260,18 @@
     graphql-fields "2.0.3"
     object-hash "2.1.1"
 
-"@graphql-mesh/transform-encapsulate@0.1.31", "@graphql-mesh/transform-encapsulate@^0.1.31":
+"@graphql-mesh/transform-encapsulate@0.1.34":
+  version "0.1.34"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-encapsulate/-/transform-encapsulate-0.1.34.tgz#bab4f4a77433c384d03d152348b1bcf54331f545"
+  integrity sha512-7ZF6h2mmxSBpZUauYvFtfxSrAG+s7oMWytcUW3N65VPlT1gwn6H84ebBYbP02Je2+4cdpbQkGZAFwAbsgixt2Q==
+  dependencies:
+    "@graphql-mesh/types" "0.37.0"
+    "@graphql-mesh/utils" "0.9.3"
+    "@graphql-tools/delegate" "7.1.1"
+    "@graphql-tools/utils" "7.7.1"
+    "@graphql-tools/wrap" "7.0.5"
+
+"@graphql-mesh/transform-encapsulate@^0.1.31":
   version "0.1.31"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-encapsulate/-/transform-encapsulate-0.1.31.tgz#148663f4102f8cf5fddfac60a8e7259fa0999479"
   integrity sha512-4w2FK0x8MNICIr2NP0404yLHsMkmdYu4P8NXHz4hu3pEn+5Rx0x/RGxtTnTm+K7Jj2MQfl3HOalCMDSQtvX49A==
