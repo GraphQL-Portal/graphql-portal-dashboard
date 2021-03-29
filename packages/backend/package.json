@@ -68,7 +68,7 @@
     "@nestjs/swagger": "4.8.0",
     "@sendgrid/mail": "7.4.2",
     "@types/migrate-mongo": "8.1.0",
-    "apollo-server-express": "2.22.1",
+    "apollo-server-express": "2.21.2",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",
     "class-validator-mongo-object-id": "1.2.0",
