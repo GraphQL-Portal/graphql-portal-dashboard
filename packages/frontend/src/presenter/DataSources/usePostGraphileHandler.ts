@@ -52,7 +52,7 @@ export const usePostGraphileHandler = ({
       options: objectToFieldArray(options),
     }
   );
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control, register } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -124,6 +124,7 @@ export const usePostGraphileHandler = ({
     onSubmit: handleSubmit(onSubmit),
     errors,
     control,
+    register,
     poolFields,
     appendPoolField,
     removePoolField,

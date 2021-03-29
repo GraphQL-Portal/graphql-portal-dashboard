@@ -42,7 +42,7 @@ export const PrefixTransform: React.FC<Props> = (props) => {
         fields={ignoredTypes}
         onAdd={addIgnoredTypes}
         onRemove={removeIgnoredTypes}
-        control={control}
+        register={register}
         errors={errors}
       />
       <HandlerRow>

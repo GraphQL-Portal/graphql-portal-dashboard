@@ -75,7 +75,6 @@ export const CreateApi: React.FC = () => {
               />
               <AuthenticationForm
                 register={register}
-                control={control}
                 errors={errors}
                 tokenFields={tokenFields}
                 addToken={addToken}
@@ -87,6 +86,7 @@ export const CreateApi: React.FC = () => {
                 register={register}
               />
               <IPForm
+                register={register}
                 control={control}
                 errors={errors}
                 enableIPFiltering={enableIPFiltering}
