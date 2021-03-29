@@ -10,6 +10,10 @@ describe('LogService', () => {
   let app: TestingModule;
   let logService: LogService;
 
+  const log = {
+    nodeId: 1,
+  };
+
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
 
@@ -25,29 +29,20 @@ describe('LogService', () => {
 
   describe('getLatestLogs', () => {
     it('should parse and return latest logs', async () => {
-      const keys = [0, 1];
-      const logs = [
-        {
-          nodeId: 1,
-          timestamp: 1,
-        },
-        {
-          nodeId: 1,
-          timestamp: 2,
-        },
-      ];
+      const keys = [1, 2, 3, 4];
       const redisKeysMock = jest
         .spyOn((logService as any).redis, 'keys')
         .mockResolvedValue(keys);
       const redisGetMock = jest
         .spyOn((logService as any).redis, 'get')
-        .mockImplementation((key: number) => JSON.stringify(logs[key]));
+        .mockResolvedValue(JSON.stringify(log));
+
       const result = await logService.getLatestLogs();
 
       expect(redisKeysMock).toHaveBeenCalledTimes(1);
       expect(redisKeysMock).toHaveBeenCalledWith('logs:*');
       expect(redisGetMock).toHaveBeenCalledTimes(keys.length);
-      expect(result).toStrictEqual(logs);
+      expect(result).toStrictEqual(keys.map(() => log));
     });
   });
 });
