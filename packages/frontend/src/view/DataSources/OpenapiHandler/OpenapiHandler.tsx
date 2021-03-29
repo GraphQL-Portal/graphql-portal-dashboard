@@ -72,7 +72,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Schema Headers"
         name="schemaHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={schemaFields}
         onAdd={appendSchemaField}
@@ -81,7 +81,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Operation Headers"
         name="operationHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={operationFields}
         onAdd={appendOperationField}
@@ -90,7 +90,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Query Search Parameters"
         name="qs"
-        control={control}
+        register={register}
         errors={errors}
         fields={qsFields}
         onAdd={appendQSField}

@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { SwitchProps, SelectProps } from '@material-ui/core';
 import {
-  ErrorsAndControl,
   FieldArray,
   FieldArrayAppend,
   FieldArrayRemove,
@@ -20,16 +19,16 @@ type FieldArrayComponent<T> = {
   onAdd: FieldArrayAppend;
   onRemove: FieldArrayRemove;
   fields: FieldArray<T>;
-};
+} & Pick<GeneralFormMethods, 'register' | 'errors'>;
 
 export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
   keyLabel?: string;
   valueLabel?: string;
-} & ErrorsAndControl;
+};
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem> & {
   valueLabel?: string;
-} & Pick<GeneralFormMethods, 'register' | 'errors'>;
+};
 
 export type AddFieldArrayHeader = {
   title: string;

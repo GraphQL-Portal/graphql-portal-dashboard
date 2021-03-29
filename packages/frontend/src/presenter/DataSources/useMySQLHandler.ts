@@ -44,7 +44,7 @@ export const useMySQLHandler = ({ state, updateState, step }: HandlerStep) => {
   const defaultValues = Object.assign({}, MYSQL_DEFAULT_STATE, handler, {
     pool: objectToFieldArray(pool),
   });
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control, register } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -76,7 +76,7 @@ export const useMySQLHandler = ({ state, updateState, step }: HandlerStep) => {
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
     poolFields,
     appendPoolField,
     removePoolField,
