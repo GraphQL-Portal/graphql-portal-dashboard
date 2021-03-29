@@ -2116,7 +2116,21 @@
     thrift "0.14.0"
     url-join "4.0.1"
 
-"@graphql-mesh/transform-cache@0.8.34", "@graphql-mesh/transform-cache@^0.8.34":
+"@graphql-mesh/transform-cache@0.8.37":
+  version "0.8.37"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.8.37.tgz#b769557a6627d080ac07c30269c9769cce99d263"
+  integrity sha512-MrSGIyHX0C0OtsNgezUzEyWVtJIQSi6t4vXNAOlof76AQ8DhvCC0exX+Mcgzub+tP+VoSiIOzD9biNXlnEqHFA==
+  dependencies:
+    "@graphql-mesh/types" "0.37.0"
+    "@graphql-mesh/utils" "0.9.3"
+    "@graphql-tools/resolvers-composition" "6.2.6"
+    "@graphql-tools/schema" "7.1.3"
+    "@graphql-tools/utils" "7.7.1"
+    date-fns "2.19.0"
+    graphql-fields "2.0.3"
+    object-hash "2.1.1"
+
+"@graphql-mesh/transform-cache@^0.8.34":
   version "0.8.34"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.8.34.tgz#64b1655357bf88f7891bb232097c99f27585691d"
   integrity sha512-Q2s0KMSsIlOAwqMVwUwuLWD/s8SxEflbFeyL6niZ1XgudaBr9Q6cR/rL+F66Mgj12wU2yVWJ8+UdgN9wfMkbkA==
