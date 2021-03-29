@@ -14,6 +14,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
     control,
     errors,
     onSubmit,
+    register,
     poolFields,
     appendPoolField,
     removePoolField,
@@ -69,7 +70,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <StringArray
         title="Append plugins"
         name="appendPlugins"
-        control={control}
+        register={register}
         errors={errors}
         fields={appendPluginsFields}
         onAdd={appendAppendPluginsField}
@@ -78,7 +79,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <StringArray
         title="Skip plugins"
         name="skipPlugins"
-        control={control}
+        register={register}
         errors={errors}
         fields={skipPluginsFields}
         onAdd={appendSkipPluginsField}
@@ -87,7 +88,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <StringArray
         title="Schema name"
         name="schemaName"
-        control={control}
+        register={register}
         errors={errors}
         fields={schemaNameFields}
         onAdd={appendSchemaNameField}

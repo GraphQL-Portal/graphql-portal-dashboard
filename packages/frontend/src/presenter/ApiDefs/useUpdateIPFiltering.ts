@@ -39,7 +39,7 @@ export const useUpdateIPFiltering: UseUpdateIPFilteringHook = ({
     },
   });
 
-  const { handleSubmit, control, errors } = useForm<ApiDefForm>({
+  const { handleSubmit, control, errors, register } = useForm<ApiDefForm>({
     reValidateMode: 'onSubmit',
     mode: 'onSubmit',
     defaultValues: {
@@ -76,6 +76,7 @@ export const useUpdateIPFiltering: UseUpdateIPFilteringHook = ({
     onSubmit: handleSubmit(onSubmit),
     control,
     errors,
+    register,
     ...ipMethods,
   };
 };

@@ -115,7 +115,7 @@ export type UseUpdateSchemaAndLimitsHook = (
 
 export type UseUpdateIPFilteringHook = (
   props: EditApiTab
-) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors'> &
+) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors' | 'register'> &
   ReturnType<UseIPFilteringHook> & { onSubmit: OnSubmit };
 
 export type UseAdditionalResolverHook = (

@@ -5,6 +5,7 @@ import {
   FieldArray,
   FieldArrayAppend,
   FieldArrayRemove,
+  GeneralFormMethods,
 } from '../HookForm';
 import { ObjectArrayItem, StringArrayItem } from './data';
 
@@ -19,16 +20,16 @@ type FieldArrayComponent<T> = {
   onAdd: FieldArrayAppend;
   onRemove: FieldArrayRemove;
   fields: FieldArray<T>;
-} & ErrorsAndControl;
+};
 
 export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
   keyLabel?: string;
   valueLabel?: string;
-};
+} & ErrorsAndControl;
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem> & {
   valueLabel?: string;
-};
+} & Pick<GeneralFormMethods, 'register' | 'errors'>;
 
 export type AddFieldArrayHeader = {
   title: string;

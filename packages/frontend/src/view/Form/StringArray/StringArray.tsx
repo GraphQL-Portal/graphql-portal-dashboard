@@ -1,5 +1,4 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 import clsx from 'clsx';
 
 import { Remove } from '../../../icons';
@@ -11,7 +10,7 @@ import { AddFieldArrayHeader } from '../AddFieldArrayHeader';
 export const StringArray: React.FC<Props> = ({
   onAdd,
   onRemove,
-  control,
+  register,
   errors,
   title,
   fields,
@@ -29,9 +28,8 @@ export const StringArray: React.FC<Props> = ({
         fields.map((field, idx) => (
           <Row className={objectRow} key={field.id} spacing={2}>
             <Col xs={5} className={objectField}>
-              <Controller
-                as={Input}
-                control={control}
+              <Input
+                ref={register()}
                 name={`${name}[${idx}].value`}
                 fullWidth
                 defaultValue={field.value || undefined}
