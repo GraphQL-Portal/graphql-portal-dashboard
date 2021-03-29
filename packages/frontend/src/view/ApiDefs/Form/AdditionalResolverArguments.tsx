@@ -8,6 +8,7 @@ export const AdditionalResolverArguments: React.FC<Props> = ({
   nestIndex,
   control,
   errors,
+  register,
 }) => {
   const name = `mesh.additionalResolvers[${nestIndex}].args`;
   const { fields, remove, append } = useFieldArray({
@@ -22,7 +23,7 @@ export const AdditionalResolverArguments: React.FC<Props> = ({
       onAdd={append}
       onRemove={remove}
       name={name}
-      control={control}
+      register={register}
       errors={errors}
     />
   );

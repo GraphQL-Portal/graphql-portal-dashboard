@@ -12,6 +12,7 @@ export const IPTab: React.FC<Props> = (props) => {
     onSubmit,
     control,
     errors,
+    register,
     enableIPFiltering,
     allowedIP,
     addAllowedIP,
@@ -23,6 +24,7 @@ export const IPTab: React.FC<Props> = (props) => {
   return (
     <form onSubmit={onSubmit} noValidate autoComplete="off" className={form}>
       <IPForm
+        register={register}
         control={control}
         errors={errors}
         enableIPFiltering={enableIPFiltering}

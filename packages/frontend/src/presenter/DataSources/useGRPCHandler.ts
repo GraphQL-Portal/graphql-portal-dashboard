@@ -49,7 +49,7 @@ export const useGRPCHandler = ({ state, updateState, step }: HandlerStep) => {
     metaData: objectToFieldArray(metaData),
   });
 
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control, register } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -83,6 +83,7 @@ export const useGRPCHandler = ({ state, updateState, step }: HandlerStep) => {
     onSubmit: handleSubmit(onSubmit),
     errors,
     control,
+    register,
     metadataFields,
     appendMetadataField,
     removeMetadataField,

@@ -1,19 +1,11 @@
 import { BaseSyntheticEvent } from 'react';
-import {
-  Control,
-  FieldErrors,
-  ArrayField,
-  UseFormMethods,
-} from 'react-hook-form';
+import { ArrayField, UseFormMethods } from 'react-hook-form';
 import { RecordStringAny } from './General';
 
-export type ControlType = {
-  control: Control;
-};
+export type GeneralFormMethods = UseFormMethods<any>;
 
-export type Errors = {
-  errors: FieldErrors;
-};
+export type ControlType = Pick<GeneralFormMethods, 'control'>;
+export type Errors = Pick<GeneralFormMethods, 'errors'>;
 
 export type ErrorsAndControl = ControlType & Errors;
 

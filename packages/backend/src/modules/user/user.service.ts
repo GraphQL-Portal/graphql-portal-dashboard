@@ -83,6 +83,8 @@ export default class UserService {
 
   public async register(data: IUser): Promise<boolean> {
     const user = await this.userModel.create(data);
+    user.setPassword(data.password);
+    await user.save();
 
     await this.sendEmailConfirmationCode(user.email);
 
@@ -182,6 +184,25 @@ export default class UserService {
     return true;
   }
 
+  public async changePassword(
+    email: string,
+    oldPassword: string,
+    newPassword: string
+  ): Promise<boolean> {
+    const user = await this.findByEmail(email);
+    if (!user) {
+      throw new UserInputError('Wrong email or password');
+    }
+    if (!user.isValidPassword(oldPassword)) {
+      throw new UserInputError('Wrong email or password');
+    }
+
+    user.setPassword(newPassword);
+    await user.save();
+
+    return true;
+  }
+
   public async resetPassword(
     email: string,
     code: string,
@@ -200,8 +221,8 @@ export default class UserService {
     if (!user) {
       throw new UserInputError(`User with email: ${email} was found`);
     }
-    user.password = password;
 
+    user.setPassword(password);
     await user.save();
 
     return true;

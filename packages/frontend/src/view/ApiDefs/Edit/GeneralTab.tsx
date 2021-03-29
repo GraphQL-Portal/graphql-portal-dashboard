@@ -23,7 +23,6 @@ export const GeneralTab: React.FC<Props> = (props) => {
       <GeneralForm register={register} control={control} errors={errors} />
       <AuthenticationForm
         register={register}
-        control={control}
         errors={errors}
         tokenFields={tokenFields}
         addToken={addToken}

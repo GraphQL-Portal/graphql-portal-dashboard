@@ -9,6 +9,7 @@ import { StringArray } from '../../Form';
 import { useStyles } from './useStyles';
 
 export const IPForm: React.FC<Prop> = ({
+  register,
   control,
   errors,
   allowedIP,
@@ -48,7 +49,7 @@ export const IPForm: React.FC<Prop> = ({
               fields={allowedIP}
               onAdd={addAllowedIP}
               onRemove={removeAllowedIP}
-              control={control}
+              register={register}
               errors={errors}
             />
           </Row>
@@ -59,7 +60,7 @@ export const IPForm: React.FC<Prop> = ({
               fields={deniedIP}
               onAdd={addDeniedIP}
               onRemove={removeDeniedIP}
-              control={control}
+              register={register}
               errors={errors}
             />
           </Row>

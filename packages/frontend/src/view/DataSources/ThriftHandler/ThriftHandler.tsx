@@ -12,6 +12,7 @@ import { getError } from '../helpers';
 
 export const ThriftHandler: React.FC<HandlerStep> = (props) => {
   const {
+    register,
     control,
     errors,
     onSubmit,
@@ -28,9 +29,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Host Name"
             required
             name="hostName"
@@ -41,9 +41,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Port"
             required
             name="port"
@@ -54,9 +53,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Service Name"
             required
             name="serviceName"
@@ -67,9 +65,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="IDL"
             required
             name="idl"
@@ -99,9 +96,8 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Path"
             name="path"
             error={hasErrors('path')}
@@ -125,7 +121,7 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Schema Headers"
         name="schemaHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={schemaFields}
         onAdd={appendSchemaField}
@@ -134,7 +130,7 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Operation Headers"
         name="operationHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={operationFields}
         onAdd={appendOperationField}

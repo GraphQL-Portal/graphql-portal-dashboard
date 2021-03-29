@@ -14,6 +14,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
     control,
     errors,
     onSubmit,
+    register,
     poolFields,
     appendPoolField,
     removePoolField,
@@ -36,9 +37,8 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Connection String"
             required
             name="connectionString"
@@ -69,7 +69,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <StringArray
         title="Append plugins"
         name="appendPlugins"
-        control={control}
+        register={register}
         errors={errors}
         fields={appendPluginsFields}
         onAdd={appendAppendPluginsField}
@@ -78,7 +78,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <StringArray
         title="Skip plugins"
         name="skipPlugins"
-        control={control}
+        register={register}
         errors={errors}
         fields={skipPluginsFields}
         onAdd={appendSkipPluginsField}
@@ -87,7 +87,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <StringArray
         title="Schema name"
         name="schemaName"
-        control={control}
+        register={register}
         errors={errors}
         fields={schemaNameFields}
         onAdd={appendSchemaNameField}
@@ -96,7 +96,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Connection pool settings"
         name="pool"
-        control={control}
+        register={register}
         errors={errors}
         fields={poolFields}
         onAdd={appendPoolField}
@@ -105,7 +105,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Options"
         name="options"
-        control={control}
+        register={register}
         errors={errors}
         fields={optionsFields}
         onAdd={appendOptionsField}

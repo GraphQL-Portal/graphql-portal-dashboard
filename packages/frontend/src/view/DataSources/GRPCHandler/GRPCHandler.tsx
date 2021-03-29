@@ -12,6 +12,7 @@ import { getError } from '../helpers';
 export const GRPCHandler: React.FC<HandlerStep> = (props) => {
   const {
     control,
+    register,
     errors,
     onSubmit,
     appendMetadataField,
@@ -24,9 +25,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="URL of an existing gRPC endpoint"
             required
             name="endpoint"
@@ -37,9 +37,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="gRPC Proto file path"
             required
             name="protoFilePath"
@@ -50,9 +49,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Service Name"
             name="serviceName"
             error={hasErrors('serviceName')}
@@ -62,9 +60,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Package Name"
             name="packageName"
             error={hasErrors('packageName')}
@@ -74,9 +71,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Request Timeout"
             name="requestTimeout"
             error={hasErrors('requestTimeout')}
@@ -106,9 +102,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       <H6> SSL Credentials </H6>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Certicicate Chain"
             name="credentialsSsl.certChain"
             fullWidth
@@ -117,9 +112,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Private Key"
             name="credentialsSsl.privateKey"
             fullWidth
@@ -128,9 +122,8 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Root CA"
             name="credentialsSsl.rootCA"
             fullWidth
@@ -140,7 +133,7 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Metadata"
         name="metaData"
-        control={control}
+        register={register}
         errors={errors}
         fields={metadataFields}
         onAdd={appendMetadataField}
