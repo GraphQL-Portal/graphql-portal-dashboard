@@ -120,7 +120,7 @@
     apollo-graphql "^0.6.0"
     lodash.xorby "^4.7.0"
 
-"@apollo/federation@^0.22.0":
+"@apollo/federation@0.22.0", "@apollo/federation@^0.22.0":
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.22.0.tgz#30237bb483ea3a6c2ab76d0033713e8a384021f2"
   integrity sha512-WJyBV4TJtnhO1x60oUb+7AmkBV4+zQa4V7WZonc1iVQHMHfz/B7V/m0tZEHPgCOl4i8PUMoU9MuFPxI5vJmsyg==
@@ -2235,7 +2235,18 @@
     "@graphql-tools/load" "6.2.7"
     "@graphql-tools/merge" "6.2.10"
 
-"@graphql-mesh/transform-federation@0.5.1", "@graphql-mesh/transform-federation@^0.5.1":
+"@graphql-mesh/transform-federation@0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.5.4.tgz#7405703bfb0c2500ae17a8cfdce2dd037b46ab18"
+  integrity sha512-Hl8cz5/OYST6EbTX2s4/CufGaMrteReaGfPgDNmybiKdIyZJn+QxzdZ0FRpyIGSf4ul+5hK5OH02Lb96eBTWxQ==
+  dependencies:
+    "@apollo/federation" "0.22.0"
+    "@graphql-mesh/types" "0.37.0"
+    "@graphql-mesh/utils" "0.9.3"
+    graphql-transform-federation "2.2.0"
+    lodash "4.17.21"
+
+"@graphql-mesh/transform-federation@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.5.1.tgz#a0daaeaf135f269f788b45ed330ef44016d08273"
   integrity sha512-3gmS3+BDsqkrj3/ddFk8vBHfeDxv+lM/NZtJVT848hP73dIegQ+CudNZeN9Pq5ITDfbAukOlXcAena6V90P+gg==
