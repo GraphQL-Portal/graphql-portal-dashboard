@@ -81,7 +81,7 @@ export type AdditionalResolvers = Omit<
 
 export type AdditionalResolverArguments = Pick<
   AdditionalResolvers,
-  'control' | 'errors'
+  'control' | 'errors' | 'register'
 > & {
   nestIndex: number;
 };

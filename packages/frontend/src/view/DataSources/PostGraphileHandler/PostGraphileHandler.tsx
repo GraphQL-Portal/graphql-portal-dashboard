@@ -37,9 +37,8 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Connection String"
             required
             name="connectionString"
@@ -97,7 +96,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Connection pool settings"
         name="pool"
-        control={control}
+        register={register}
         errors={errors}
         fields={poolFields}
         onAdd={appendPoolField}
@@ -106,7 +105,7 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Options"
         name="options"
-        control={control}
+        register={register}
         errors={errors}
         fields={optionsFields}
         onAdd={appendOptionsField}

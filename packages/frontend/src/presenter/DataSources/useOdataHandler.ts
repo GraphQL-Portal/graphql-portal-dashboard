@@ -38,7 +38,7 @@ export const useOdataHandler = ({ state, updateState, step }: HandlerStep) => {
     operationHeaders: objectToFieldArray(operationHeaders),
   });
 
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control, register } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -86,6 +86,7 @@ export const useOdataHandler = ({ state, updateState, step }: HandlerStep) => {
     onSubmit: handleSubmit(onSubmit),
     errors,
     control,
+    register,
     schemaFields,
     appendSchemaField,
     removeSchemaField,

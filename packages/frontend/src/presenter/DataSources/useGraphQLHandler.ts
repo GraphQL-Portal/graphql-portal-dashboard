@@ -45,7 +45,7 @@ export const useGraphQLHandler = ({
     operationHeaders: objectToFieldArray(operationHeaders),
   });
 
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control, register } = useForm({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -94,6 +94,7 @@ export const useGraphQLHandler = ({
     onSubmit: handleSubmit(onSubmit),
     errors,
     control,
+    register,
     schemaFields,
     appendSchemaField,
     removeSchemaField,
