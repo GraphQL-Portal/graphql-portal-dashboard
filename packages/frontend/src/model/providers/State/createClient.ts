@@ -3,10 +3,10 @@ import {
   HttpLink,
   InMemoryCache,
   from,
-  split,
+  // split,
 } from '@apollo/client';
 // import { getMainDefinition } from '@apollo/client/utilities';
-import { WebSocketLink } from '@apollo/client/link/ws';
+// import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 
 import { ErrorCallback } from '../../../types';
@@ -16,11 +16,11 @@ import {
   removeAccessToken,
   removeRefreshToken,
 } from '../Auth/helpers';
-import { URI, wsURI } from './config';
+import { URI } from './config';
 import { promise2Observable } from './promise2Observable';
 import { refreshTokens } from './refreshToken';
 import { STATUS_401, REFRESH_LIMIT } from './constants';
-import { getMainDefinition } from '@apollo/client/utilities';
+// import { getMainDefinition } from '@apollo/client/utilities';
 // import { setContext } from '@apollo/client/link/context';
 
 let client: ApolloClient<any>;
@@ -30,25 +30,25 @@ export const createClient = (token: string) => {
   const headers = Object.assign({}, token ? { authorization: token } : {});
   const httpLink = new HttpLink({ uri: URI, headers });
 
-  const wsLink = new WebSocketLink({
-    uri: wsURI,
-    options: {
-      reconnect: true,
-      connectionParams: { headers: { authorization: token } },
-    },
-  });
+  // const wsLink = new WebSocketLink({
+  //   uri: wsURI,
+  //   options: {
+  //     reconnect: true,
+  //     connectionParams: { headers: { authorization: token } },
+  //   },
+  // });
 
-  const splitLink = split(
-    ({ query }) => {
-      const definition = getMainDefinition(query);
-      return (
-        definition.kind === 'OperationDefinition' &&
-        definition.operation === 'subscription'
-      );
-    },
-    wsLink,
-    httpLink
-  );
+  // const splitLink = split(
+  //   ({ query }) => {
+  //     const definition = getMainDefinition(query);
+  //     return (
+  //       definition.kind === 'OperationDefinition' &&
+  //       definition.operation === 'subscription'
+  //     );
+  //   },
+  //   wsLink,
+  //   httpLink
+  // );
 
   const errorLink = onError(
     ({ operation, forward, graphQLErrors }): ErrorCallback => {
@@ -95,7 +95,7 @@ export const createClient = (token: string) => {
 
   client = new ApolloClient({
     cache: new InMemoryCache(),
-    link: from([errorLink, splitLink]),
+    link: from([errorLink, httpLink]),
   });
 
   return client;
