@@ -8,7 +8,7 @@ export const useMetrics = () => {
   const [startDate, setStartDate] = useState(addDays(new Date(), -25));
   const [endDate, setEndDate] = useState(new Date());
   const [scale, setScale] = useState('day' as Scale);
-  const [apiDef, selectApiDef] = useState(undefined);
+  const [apiDef, selectApiDef] = useState('');
   const { data: myApis } = useApiDefs();
 
   const apis = useMemo(() => {
@@ -55,5 +55,6 @@ export const useMetrics = () => {
     setScale,
     apis,
     selectApiDef,
+    apiDef,
   };
 };
