@@ -2875,6 +2875,17 @@
     ts-is-defined "^1.0.0"
     tslib "~2.1.0"
 
+"@graphql-tools/mock@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.1.1.tgz#f261f19225216bf874baaedc84e323a4f1ec8a3c"
+  integrity sha512-EOKONEp6d5hOzN5jj1/tFjf9uL5PUYBu79beEeDTo0Iwr9RtSaOeVZ67UwGhO781TkAeMPtz6sp7VFjwzhBWcQ==
+  dependencies:
+    "@graphql-tools/schema" "^7.0.0"
+    "@graphql-tools/utils" "^7.0.0"
+    fast-json-stable-stringify "^2.1.0"
+    ts-is-defined "^1.0.0"
+    tslib "~2.1.0"
+
 "@graphql-tools/mock@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-7.0.0.tgz#b43858f47fedfbf7d8bbbf7d33e6acb64b8b7da7"
