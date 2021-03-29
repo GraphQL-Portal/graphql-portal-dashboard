@@ -46,6 +46,7 @@ import {
   IApiActivity,
   IMetric,
   IMetricFilter,
+  IAPIMetric,
 } from './interfaces';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import { RedisClient } from '../../common/types';
@@ -340,16 +341,76 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     };
   }
 
-  public async dashboardMetrics(
-    range: 'hour' | 'day' | 'week' | 'month',
-    customRange: number | Date,
+  public async getChunkedAPIMetrics(
+    chunks: Date[],
     filters: IMetricFilter
-  ): Promise<IMetric> {
+  ): Promise<IAPIMetric> {
+    this.logger.debug(
+      `getChunkedAPIMetrics with startDate: ${chunks[0]}, endDate: ${
+        chunks[chunks.length - 1]
+      }, filters: ${JSON.stringify(filters)}`,
+      this.constructor.name
+    );
+
+    const aggregationQuery = [
+      {
+        $match: this.makeMatchFromFilters({
+          ...filters,
+          startDate: chunks[0],
+          endDate: chunks[chunks.length - 1],
+        }),
+      },
+      {
+        $facet: {
+          latency: [
+            {
+              $bucket: {
+                groupBy: '$requestDate',
+                default: 'Other',
+                boundaries: chunks.map((v) => new Date(v)),
+                output: { latency: { $avg: '$latency' }, count: { $sum: 1 } },
+              },
+            },
+          ],
+        },
+      },
+    ];
+
+    const [aggregationResult] = await this.requestMetricModel.aggregate(
+      aggregationQuery
+    );
+
+    const aggregateToHashMap = (
+      accumulator: Record<string, any>,
+      curr: any
+    ): Record<string, any> => {
+      accumulator[curr._id.toISOString()] = curr;
+      return accumulator;
+    };
+
+    // Convert latency results into a HashMap and then map the results
+    // to the incoming chunks
+    const latencyMap = aggregationResult.latency.reduce(aggregateToHashMap, {});
+    const latencyMetrics = chunks.map((c: Date) => {
+      const date = new Date(c);
+      const metric = { chunk: date, latency: 0, count: 0 };
+
+      const key = date.toISOString();
+      if (latencyMap[key]) {
+        metric.latency = latencyMap[key].latency;
+        metric.count = latencyMap[key].count;
+      }
+
+      return metric;
+    });
+
+    this.logger.log(
+      `latency: ${JSON.stringify(latencyMetrics)}`,
+      this.constructor.name
+    );
+
     return {
-      latency: [],
-      count: [],
-      countries: [],
-      failures: [],
+      avgLatency: latencyMetrics,
     };
   }
 
@@ -580,6 +641,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
   ): Date[] {
     const boundaries: Date[] = [];
     let sdate = new Date(startDate);
+    endDate = new Date(endDate);
     const next = (): boolean => {
       sdate = add(sdate, { [`${scale}s`]: 1 });
       return differenceInSeconds(sdate, endDate) <= 0;
@@ -589,66 +651,10 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       boundaries.push(sdate);
     } while (next());
 
-    this.logger.debug(
-      `boundaries ${JSON.stringify(boundaries)}`,
-      this.constructor.name
-    );
-    return boundaries;
-  }
-
-  private genRange(
-    addFN: Function,
-    interval: number,
-    start: Date,
-    end: Date
-  ): Date[] {
-    const result: Date[] = [start];
-    while (differenceInSeconds(start, end) < 0) {
-      start = addFN(start, interval);
-      result.push(start);
-    }
-
-    return result;
-  }
-
-  private getDateBoundaries(
-    range?: 'hour' | 'day' | 'week' | 'month',
-    startDate?: Date | number,
-    endDate?: Date | number
-  ): Date[] {
-    let sdate: Date;
-    let edate: Date;
-    let boundaries: Date[] = [];
-
-    if (range) {
-      switch (range) {
-        case 'hour': {
-          const end = startOfMinute(new Date());
-          const start = subHours(end, 1);
-          boundaries = this.genRange(addMinutes, 5, start, end);
-          break;
-        }
-        case 'day': {
-          const end = startOfHour(new Date());
-          const start = subDays(end, 1);
-          boundaries = this.genRange(addHours, 1, start, end);
-          break;
-        }
-        case 'week': {
-          const end = startOfHour(new Date());
-          const start = subDays(end, 7);
-          boundaries = this.genRange(addHours, 6, start, end);
-          break;
-        }
-        case 'month': {
-          const end = endOfDay(new Date());
-          const start = subDays(end, 30);
-          boundaries = this.genRange(addDays, 1, start, end);
-          break;
-        }
-      }
-    }
-
+    // this.logger.debug(
+    //   `boundaries ${JSON.stringify(boundaries)}`,
+    //   this.constructor.name
+    // );
     return boundaries;
   }
 

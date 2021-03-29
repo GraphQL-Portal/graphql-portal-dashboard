@@ -4,6 +4,7 @@ import RolesEnum from '../../common/enum/roles.enum';
 import {
   IAggregateFilters,
   IApiActivity,
+  IAPIMetric,
   IMetric,
   IMetricFilter,
 } from './interfaces';
@@ -43,12 +44,14 @@ export default class MetricResolver {
 
   @Query()
   @Roles([RolesEnum.USER])
-  public getDashboardMetrics(
+  public getChunkedAPIMetrics(
     @AuthorizationParam('_id') user: string,
-    @Args('range') range: 'hour' | 'day' | 'week' | 'month',
-    @Args('customRange') customRange: number | Date,
+    @Args('chunks') chunks: Date[],
     @Args('filters') filters: IMetricFilter
-  ): Promise<IMetric> {
-    return this.metricService.dashboardMetrics(range, customRange, filters);
+  ): Promise<IAPIMetric> {
+    return this.metricService.getChunkedAPIMetrics(chunks, {
+      ...filters,
+      user,
+    });
   }
 }

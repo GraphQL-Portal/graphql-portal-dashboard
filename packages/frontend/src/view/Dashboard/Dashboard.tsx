@@ -1,19 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
+import {
+  Area,
+  AreaChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  LineChart,
+  Line,
+  Tooltip,
+  CartesianGrid,
+} from 'recharts';
 
 import { useMetrics } from '../../presenter/Metrics';
 import { Header, HugeWidget, Widget, WidgetRow, Select } from '../../ui';
-import {
-  CountryChart,
-  FailureRequestRateChart,
-  RequestChart,
-  chartButtons,
-} from '../MetricChart';
+
 import { useStyles } from './useStyles';
-import { formatArgumentLabel, formatValueLabel } from '../../utils';
 import { ToggleButtonGroup } from '@material-ui/lab';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { Range, RangeList } from '../../types';
+import { format } from 'date-fns';
+import {
+  NameType,
+  ValueType,
+} from 'recharts/src/component/DefaultTooltipContent';
+import { ContentType, TooltipProps } from 'recharts/src/component/Tooltip';
+
+function formatDateForRange(ts: Date, range: Range = 'hour') {
+  if (range === 'hour' || range === 'day') return format(new Date(ts), 'HH:mm');
+  else return format(new Date(ts), 'MM/dd');
+}
 
 export const Dashboard: React.FC = () => {
   const { widget, apiSelect } = useStyles();
@@ -25,7 +41,8 @@ export const Dashboard: React.FC = () => {
     apiDef,
     apis,
   } = useMetrics();
-  const { latency = [], count = [], countries = [], failures = [] } = data;
+  const { avgLatency = [], count = [], countries = [], failures = [] } = data;
+
   const handleDateRange = (
     event: React.MouseEvent<HTMLElement>,
     newDateRange: Range | null
@@ -63,6 +80,45 @@ export const Dashboard: React.FC = () => {
             onChange={(e, { props }: any) => selectApiDef(props?.value)}
           />
         </Widget>
+      </WidgetRow>
+      <WidgetRow>
+        <HugeWidget>
+          <ResponsiveContainer width={1400} height={400}>
+            <AreaChart
+              data={avgLatency}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <XAxis
+                dataKey="chunk"
+                type="category"
+                minTickGap={7}
+                tickFormatter={(ts) => {
+                  return ts === 'auto' || ts === 0
+                    ? ts
+                    : formatDateForRange(ts, range);
+                }}
+              />
+              <YAxis name="Date" unit="ms" />
+              <Area
+                type="monotone"
+                dataKey="latency"
+                stroke="#8884d8"
+                fill="#8884d8"
+              />
+              <Tooltip
+                labelFormatter={(v) => formatDateForRange(v, range)}
+                formatter={(value: any, name: any, props: any) =>
+                  `${Math.round(value)}ms`
+                }
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </HugeWidget>
       </WidgetRow>
       {/*<WidgetRow>*/}
       {/*  <HugeWidget>*/}

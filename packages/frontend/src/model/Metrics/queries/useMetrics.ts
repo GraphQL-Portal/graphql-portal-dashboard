@@ -2,24 +2,12 @@ import { useQuery, gql } from '@apollo/client';
 import { APIMetricsRefetch } from '../../../types';
 
 export const QUERY_METRICS = gql`
-  query getChunkedAPIMetrics($chunks: [String], $filters: MetricFilter!) {
+  query getChunkedAPIMetrics($chunks: [Timestamp], $filters: MetricFilter!) {
     getChunkedAPIMetrics(chunks: $chunks, filters: $filters) {
-      latency {
-        argument
-        value
-      }
-      count {
-        argument
-        value
-      }
-      countries {
-        argument
-        value
-      }
-      failures {
-        argument
-        failure
-        success
+      avgLatency {
+        latency
+        chunk
+        count
       }
     }
   }
@@ -36,7 +24,7 @@ export const useMetricsQuery = (apiDef: string | undefined, chunks: Date[]) => {
   });
 
   return {
-    data: data?.getUserMetrics,
+    data: data?.getChunkedAPIMetrics,
     loading,
     error,
     refetch: (variables: APIMetricsRefetch) =>

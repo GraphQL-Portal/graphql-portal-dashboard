@@ -12,6 +12,16 @@ type Metrics {
   failures: [ChartChunk]
 }
 
+type APIMetrics {
+  avgLatency: [LatencyMetric]
+}
+
+type LatencyMetric {
+  chunk: Timestamp
+  latency: Float
+  count: Int
+}
+
 type ChartChunk {
   argument: String
   value: Float
@@ -47,5 +57,5 @@ type Query {
   metrics(scale: String, filters: MetricFilters!): Chart
   getUserMetrics(scale: String, filters: MetricFilters!): Chart
   getApiActivity(filters: MetricFilters!): [ApiActivity]
-  getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): Metrics
+  getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): APIMetrics
 }
