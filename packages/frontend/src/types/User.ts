@@ -1,6 +1,7 @@
 import { QueryHook } from './Apollo';
 import { NOOP } from './General';
 import { FormMethods, OnSubmit } from './HookForm';
+import { UseTabsHook } from './Tabs';
 
 export type User = {
   _id?: string;
@@ -27,9 +28,35 @@ export type ProfileForm = FormMethods<User>;
 
 export type UseProfileHook = () => Pick<
   ReturnType<QueryHook<User>>,
-  'data' | 'loading'
+  'data' | 'loading' | 'refetch'
 > &
-  Pick<ProfileForm, 'register' | 'errors'> & {
-    onSubmit: OnSubmit;
+  ReturnType<UseTabsHook> & {
     signOut: NOOP;
   };
+
+export type ProfileGeneralTab = Pick<
+  ReturnType<QueryHook<User>>,
+  'data' | 'refetch'
+>;
+
+export type UseProfileGeneralHook = (
+  args: ProfileGeneralTab
+) => Pick<ProfileForm, 'register' | 'errors'> & {
+  onSubmit: OnSubmit;
+};
+
+export type ChangePasswordForm = {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+};
+
+export type ChangePasswordFormMethods = FormMethods<ChangePasswordForm>;
+
+export type ProfilePasswordTab = Pick<ReturnType<QueryHook<User>>, 'refetch'>;
+
+export type UseProfilePasswordTabHook = (
+  args: ProfilePasswordTab
+) => Pick<ChangePasswordFormMethods, 'errors' | 'register'> & {
+  onSubmit: OnSubmit;
+};

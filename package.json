@@ -21,7 +21,7 @@
     "clear": "rm -rf node_modules && yarn frontend:clear && yarn backend:clear",
     "test": "yarn backend:test && yarn workspace graphql-portal-dashboard-frontend start & npx wait-on --timeout=240000 http://localhost:8080",
     "lint": "eslint \"./packages/**/*.ts\" --fix",
-    "prettier": "prettier --write \"./packages/**/*.{ts,tsx}\" --config .prettierrc",
+    "prettier": "prettier --write \"./packages/**/*.{ts,tsx}\" --config .prettierrc.json",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
@@ -49,7 +49,7 @@
       "eslint --fix"
     ],
     "*.{ts,tsx,graphql,yml,json}": [
-      "prettier --write --config .prettierrc"
+      "prettier --write --config .prettierrc.json"
     ]
   },
   "dependencies": {
