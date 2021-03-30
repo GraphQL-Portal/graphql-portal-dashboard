@@ -360,7 +360,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
 
     const boundaries = chunks.map((v) => new Date(v));
 
-    // FIXME: shall we filter everything for latency != null to have consistent numbers?
     // FIXME: default should not be Other
     const aggregationQuery = [
       {
@@ -428,6 +427,18 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               },
             },
           ],
+          // Per-country metrics
+          countries: [
+            {
+              $match: { 'geo.country': { $ne: null } },
+            },
+            {
+              $group: {
+                _id: '$geo.country',
+                count: { $sum: 1 },
+              },
+            },
+          ],
         },
       },
     ];
@@ -479,7 +490,10 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       return metric;
     });
 
-    this.logger.log(`result: ${JSON.stringify(result)}`, this.constructor.name);
+    this.logger.debug(
+      `result: ${JSON.stringify(result)}`,
+      this.constructor.name
+    );
 
     return result;
   }
