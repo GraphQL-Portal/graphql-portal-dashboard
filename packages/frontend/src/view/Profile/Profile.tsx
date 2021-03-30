@@ -2,23 +2,22 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import {
-  Col,
   Header,
   HugeWidget,
-  Input,
   PrimaryButton,
-  Row,
+  TabsBody,
+  TabsHead,
   WidgetBody,
-  WidgetHeader,
   WidgetRow,
 } from '../../ui';
 import { useProfile } from '../../presenter/Users';
 import { Loading } from '../Loading';
-import { useStyles } from './useStyles';
+import { PROFILE_TABS } from './constants';
+import { GeneralTab } from './GeneralTab';
+import { PasswordTab } from './PasswordTab';
 
 export const Profile: React.FC = () => {
-  const { signOut, loading, onSubmit, register, errors } = useProfile();
-  const { formRow } = useStyles();
+  const { signOut, tab, onChange, loading, data, refetch } = useProfile();
 
   if (loading) return <Loading />;
 
@@ -32,45 +31,12 @@ export const Profile: React.FC = () => {
       </Header>
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title="Account information" />
           <WidgetBody>
-            <form onSubmit={onSubmit}>
-              <Row spacing={2} className={formRow}>
-                <Col xs={6}>
-                  <Input
-                    name="firstName"
-                    ref={register}
-                    error={!!errors?.firstName}
-                    fullWidth
-                    label="First name"
-                  />
-                </Col>
-              </Row>
-              <Row spacing={2} className={formRow}>
-                <Col xs={6}>
-                  <Input
-                    name="lastName"
-                    ref={register}
-                    error={!!errors?.lastName}
-                    fullWidth
-                    label="Last name"
-                  />
-                </Col>
-              </Row>
-              <Row spacing={2} className={formRow}>
-                <Col xs={6}>
-                  <Input
-                    name="email"
-                    ref={register}
-                    error={!!errors?.email}
-                    fullWidth
-                    label="Email"
-                    disabled
-                  />
-                </Col>
-              </Row>
-              <PrimaryButton type="submit">Update Profile</PrimaryButton>
-            </form>
+            <TabsHead value={tab} onChange={onChange} tabsList={PROFILE_TABS} />
+            <TabsBody value={tab}>
+              <GeneralTab data={data} refetch={refetch} />
+              <PasswordTab refetch={refetch} />
+            </TabsBody>
           </WidgetBody>
         </HugeWidget>
       </WidgetRow>
