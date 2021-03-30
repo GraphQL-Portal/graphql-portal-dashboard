@@ -1,7 +1,7 @@
 export default interface IAPIMetric {
-  avgLatency: {
-    chunk: Date;
-    latency: number;
-    count: number;
-  }[];
+  chunk: Date;
+  avgLatency: number;
+  count: number;
+  successes: number;
+  failures: number;
 }

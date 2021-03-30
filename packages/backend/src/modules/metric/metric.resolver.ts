@@ -48,7 +48,7 @@ export default class MetricResolver {
     @AuthorizationParam('_id') user: string,
     @Args('chunks') chunks: Date[],
     @Args('filters') filters: IMetricFilter
-  ): Promise<IAPIMetric> {
+  ): Promise<IAPIMetric[]> {
     return this.metricService.getChunkedAPIMetrics(chunks, {
       ...filters,
       user,

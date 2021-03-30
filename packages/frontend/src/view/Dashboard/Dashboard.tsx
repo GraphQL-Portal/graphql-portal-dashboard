@@ -20,11 +20,6 @@ import { ToggleButtonGroup } from '@material-ui/lab';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { Range, RangeList } from '../../types';
 import { format } from 'date-fns';
-import {
-  NameType,
-  ValueType,
-} from 'recharts/src/component/DefaultTooltipContent';
-import { ContentType, TooltipProps } from 'recharts/src/component/Tooltip';
 
 function formatDateForRange(ts: Date, range: Range = 'hour') {
   if (range === 'hour' || range === 'day') return format(new Date(ts), 'HH:mm');
@@ -41,7 +36,6 @@ export const Dashboard: React.FC = () => {
     apiDef,
     apis,
   } = useMetrics();
-  const { avgLatency = [], count = [], countries = [], failures = [] } = data;
 
   const handleDateRange = (
     event: React.MouseEvent<HTMLElement>,
@@ -76,7 +70,7 @@ export const Dashboard: React.FC = () => {
             className={apiSelect}
             options={apis}
             value={apiDef}
-            label="API"
+            label="Filter by API"
             onChange={(e, { props }: any) => selectApiDef(props?.value)}
           />
         </Widget>
@@ -85,7 +79,7 @@ export const Dashboard: React.FC = () => {
         <HugeWidget>
           <ResponsiveContainer width={1400} height={400}>
             <AreaChart
-              data={avgLatency}
+              data={data}
               margin={{
                 top: 10,
                 right: 30,
@@ -106,7 +100,7 @@ export const Dashboard: React.FC = () => {
               <YAxis name="Date" unit="ms" />
               <Area
                 type="monotone"
-                dataKey="latency"
+                dataKey="avgLatency"
                 stroke="#8884d8"
                 fill="#8884d8"
               />

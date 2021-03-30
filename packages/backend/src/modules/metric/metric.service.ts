@@ -341,10 +341,16 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     };
   }
 
+  /**
+   * Gets RequestMetrics split into date chunks.
+   *
+   * @param chunks
+   * @param filters
+   */
   public async getChunkedAPIMetrics(
     chunks: Date[],
     filters: IMetricFilter
-  ): Promise<IAPIMetric> {
+  ): Promise<IAPIMetric[]> {
     this.logger.debug(
       `getChunkedAPIMetrics with startDate: ${chunks[0]}, endDate: ${
         chunks[chunks.length - 1]
@@ -352,23 +358,73 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       this.constructor.name
     );
 
+    const boundaries = chunks.map((v) => new Date(v));
+
+    // FIXME: shall we filter everything for latency != null to have consistent numbers?
+    // FIXME: default should not be Other
     const aggregationQuery = [
       {
-        $match: this.makeMatchFromFilters({
-          ...filters,
-          startDate: chunks[0],
-          endDate: chunks[chunks.length - 1],
-        }),
+        $match: {
+          $and: [
+            this.makeMatchFromFilters({
+              ...filters,
+              startDate: chunks[0],
+              endDate: chunks[chunks.length - 1],
+            }),
+            { latency: { $ne: null } },
+          ],
+        },
       },
       {
         $facet: {
+          // Average Latency
           latency: [
+            // filter out documents without latency field
+            // { $match: { latency: { $ne: null } } },
             {
               $bucket: {
                 groupBy: '$requestDate',
                 default: 'Other',
-                boundaries: chunks.map((v) => new Date(v)),
+                boundaries,
                 output: { latency: { $avg: '$latency' }, count: { $sum: 1 } },
+              },
+            },
+          ],
+          // Count of successful requests
+          successes: [
+            {
+              $match: {
+                $and: [
+                  { 'resolvers.errorAt': { $exists: false } },
+                  { error: { $eq: null } },
+                ],
+              },
+            },
+            {
+              $bucket: {
+                groupBy: '$requestDate',
+                default: 'Other',
+                boundaries,
+                output: { count: { $sum: 1 } },
+              },
+            },
+          ],
+          // Count of failed requests
+          failures: [
+            {
+              $match: {
+                $or: [
+                  { 'resolvers.errorAt': { $exists: true } },
+                  { error: { $not: { $eq: null } } },
+                ],
+              },
+            },
+            {
+              $bucket: {
+                groupBy: '$resolvers.errorAt',
+                default: 'Other',
+                boundaries,
+                output: { count: { $sum: 1 } },
               },
             },
           ],
@@ -388,30 +444,44 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       return accumulator;
     };
 
-    // Convert latency results into a HashMap and then map the results
+    // Convert results into HashMaps and then map the results
     // to the incoming chunks
     const latencyMap = aggregationResult.latency.reduce(aggregateToHashMap, {});
-    const latencyMetrics = chunks.map((c: Date) => {
+    const sucessesMap = aggregationResult.successes.reduce(
+      aggregateToHashMap,
+      {}
+    );
+    const failuresMap = aggregationResult.failures.reduce(
+      aggregateToHashMap,
+      {}
+    );
+
+    // Map to chunks
+    const result: IAPIMetric[] = chunks.map((c) => {
       const date = new Date(c);
-      const metric = { chunk: date, latency: 0, count: 0 };
+      const metric: IAPIMetric = {
+        chunk: date,
+        avgLatency: 0,
+        count: 0,
+        failures: 0,
+        successes: 0,
+      };
 
       const key = date.toISOString();
       if (latencyMap[key]) {
-        metric.latency = latencyMap[key].latency;
+        metric.avgLatency = latencyMap[key].latency;
         metric.count = latencyMap[key].count;
       }
+
+      if (sucessesMap[key]) metric.successes = sucessesMap[key].count;
+      if (failuresMap[key]) metric.failures = failuresMap[key].count;
 
       return metric;
     });
 
-    this.logger.log(
-      `latency: ${JSON.stringify(latencyMetrics)}`,
-      this.constructor.name
-    );
+    this.logger.log(`result: ${JSON.stringify(result)}`, this.constructor.name);
 
-    return {
-      avgLatency: latencyMetrics,
-    };
+    return result;
   }
 
   public async removeForApiDef(apiDefId: string): Promise<boolean> {

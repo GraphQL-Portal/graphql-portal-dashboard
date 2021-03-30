@@ -4,11 +4,11 @@ import { APIMetricsRefetch } from '../../../types';
 export const QUERY_METRICS = gql`
   query getChunkedAPIMetrics($chunks: [Timestamp], $filters: MetricFilter!) {
     getChunkedAPIMetrics(chunks: $chunks, filters: $filters) {
-      avgLatency {
-        latency
-        chunk
-        count
-      }
+      chunk
+      count
+      avgLatency
+      successes
+      failures
     }
   }
 `;

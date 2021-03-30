@@ -10,15 +10,17 @@ export const useMetrics = () => {
   const { data: myApis } = useApiDefs();
 
   const apis = useMemo(() => {
-    return myApis
-      .map(({ name, _id }: { name: string; _id: string }) => ({
+    return [
+      {
+        value: '',
+        label: 'All APIs',
+      },
+    ].concat(
+      myApis.map(({ name, _id }: { name: string; _id: string }) => ({
         value: _id,
         label: name,
       }))
-      .concat({
-        value: '',
-        label: 'All APIs',
-      });
+    );
   }, [myApis]);
 
   const { data, loading, error, refetch } = useMetricsQuery(
