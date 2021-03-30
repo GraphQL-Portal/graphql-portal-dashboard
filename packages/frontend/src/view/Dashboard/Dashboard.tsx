@@ -2,15 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import {
   Area,
-  AreaChart,
   ComposedChart,
   ResponsiveContainer,
   XAxis,
   YAxis,
-  LineChart,
   Line,
   Tooltip,
-  CartesianGrid,
 } from 'recharts';
 
 import { useMetrics } from '../../presenter/Metrics';
@@ -42,7 +39,6 @@ export const Dashboard: React.FC = () => {
     selectApiDef,
     apiDef,
     apis,
-    apiDef,
   } = useMetrics();
 
   const handleDateRange = (
@@ -80,7 +76,6 @@ export const Dashboard: React.FC = () => {
             value={apiDef}
             label="Filter by API"
             onChange={(e, { props }: any) => selectApiDef(props?.value)}
-            value={apiDef}
           />
         </Widget>
       </WidgetRow>
