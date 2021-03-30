@@ -1,5 +1,16 @@
 # graphql-portal-dashboard-frontend
 
+## 0.5.0
+
+### Minor Changes
+
+- 1b394f8: Move ObjectArray to work with register
+- b332f36: Move StringArray to work using register
+
+### Patch Changes
+
+- 62c7808: Move all types to `./src/types` folder
+
 ## 0.4.1
 
 ### Patch Changes

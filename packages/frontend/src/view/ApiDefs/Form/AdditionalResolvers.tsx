@@ -123,6 +123,7 @@ export const AdditionalResolvers: React.FC<Props> = ({
               nestIndex={idx}
               control={control}
               errors={errors}
+              register={register}
             />
             <Row spacing={2}>
               <Col xs={6}>

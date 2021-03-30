@@ -42,6 +42,7 @@ export const Dashboard: React.FC = () => {
     selectApiDef,
     apiDef,
     apis,
+    apiDef,
   } = useMetrics();
 
   const handleDateRange = (
@@ -79,6 +80,7 @@ export const Dashboard: React.FC = () => {
             value={apiDef}
             label="Filter by API"
             onChange={(e, { props }: any) => selectApiDef(props?.value)}
+            value={apiDef}
           />
         </Widget>
       </WidgetRow>

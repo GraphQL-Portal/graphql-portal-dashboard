@@ -43,7 +43,7 @@ export type ApiGeneralForm = Pick<
 
 export type ApiAuthenticationForm = Pick<
   ReturnType<UseCreateApiDefHook>,
-  'register' | 'control' | 'errors' | 'addToken' | 'removeToken' | 'tokenFields'
+  'register' | 'errors' | 'addToken' | 'removeToken' | 'tokenFields'
 >;
 
 export type ApiDataSourcesForm = ControlType & {
@@ -60,7 +60,7 @@ export type ApiSchemaForm = Pick<
 
 export type APIIPForm = Pick<
   ReturnType<UseCreateApiDefHook>,
-  'control' | 'errors'
+  'control' | 'errors' | 'register'
 > &
   ReturnType<UseIPFilteringHook>;
 
@@ -81,7 +81,7 @@ export type AdditionalResolvers = Omit<
 
 export type AdditionalResolverArguments = Pick<
   AdditionalResolvers,
-  'control' | 'errors'
+  'control' | 'errors' | 'register'
 > & {
   nestIndex: number;
 };

@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import { SwitchProps, SelectProps } from '@material-ui/core';
 import {
-  ErrorsAndControl,
   FieldArray,
   FieldArrayAppend,
   FieldArrayRemove,
+  GeneralFormMethods,
 } from '../HookForm';
 import { ObjectArrayItem, StringArrayItem } from './data';
 
@@ -19,7 +19,7 @@ type FieldArrayComponent<T> = {
   onAdd: FieldArrayAppend;
   onRemove: FieldArrayRemove;
   fields: FieldArray<T>;
-} & ErrorsAndControl;
+} & Pick<GeneralFormMethods, 'register' | 'errors'>;
 
 export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
   keyLabel?: string;

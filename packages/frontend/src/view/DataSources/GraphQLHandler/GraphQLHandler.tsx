@@ -12,6 +12,7 @@ import { getError } from '../helpers';
 
 export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
   const {
+    register,
     control,
     errors,
     onSubmit,
@@ -28,9 +29,8 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="URL of an existing GraphQL endpoint"
             required
             name="endpoint"
@@ -125,7 +125,7 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Schema Headers"
         name="schemaHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={schemaFields}
         onAdd={appendSchemaField}
@@ -134,7 +134,7 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Operation Headers"
         name="operationHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={operationFields}
         onAdd={appendOperationField}

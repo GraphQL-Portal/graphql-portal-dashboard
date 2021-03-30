@@ -12,6 +12,7 @@ import { getError } from '../helpers';
 
 export const OdataHandler: React.FC<HandlerStep> = (props) => {
   const {
+    register,
     control,
     errors,
     onSubmit,
@@ -28,9 +29,8 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Base URL for an existing OData endpoint"
             required
             name="baseUrl"
@@ -54,9 +54,8 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Metadata"
             name="metadata"
             error={hasErrors('metadata')}
@@ -86,7 +85,7 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Schema headers"
         name="schemaHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={schemaFields}
         onAdd={appendSchemaField}
@@ -95,7 +94,7 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Operation Headers"
         name="operationHeaders"
-        control={control}
+        register={register}
         errors={errors}
         fields={operationFields}
         onAdd={appendOperationField}

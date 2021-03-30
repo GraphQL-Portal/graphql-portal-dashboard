@@ -94,6 +94,15 @@ export default class UserResolver {
   }
 
   @Mutation()
+  public changePassword(
+    @AuthorizationEntity() { email }: IUserDocument,
+    @Args('oldPassword') oldPassword: string,
+    @Args('newPassword') newPassword: string
+  ): Promise<boolean> {
+    return this.service.changePassword(email, oldPassword, newPassword);
+  }
+
+  @Mutation()
   public resetPassword(
     @Args('email') email: string,
     @Args('code') code: string,

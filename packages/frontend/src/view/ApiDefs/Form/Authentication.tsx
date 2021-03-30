@@ -8,7 +8,6 @@ import { useStyles } from './useStyles';
 
 export const AuthenticationForm: React.FC<Props> = ({
   register,
-  control,
   errors,
   tokenFields,
   addToken,
@@ -35,7 +34,7 @@ export const AuthenticationForm: React.FC<Props> = ({
         title="Auth tokens"
         name="authentication.auth_tokens"
         fields={tokenFields}
-        control={control}
+        register={register}
         errors={errors}
       />
     </FormGroup>

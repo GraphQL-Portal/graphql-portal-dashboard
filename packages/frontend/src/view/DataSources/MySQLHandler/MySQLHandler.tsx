@@ -1,5 +1,4 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 
 import { Input, PrimaryButton } from '../../../ui';
 import { useMySQLHandler } from '../../../presenter/DataSources';
@@ -10,7 +9,7 @@ import { getError } from '../helpers';
 
 export const MySQLHandler: React.FC<HandlerStep> = (props) => {
   const {
-    control,
+    register,
     errors,
     onSubmit,
     poolFields,
@@ -23,9 +22,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Host"
             required
             name="host"
@@ -36,9 +34,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Port"
             required
             name="port"
@@ -49,9 +46,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Database"
             required
             name="database"
@@ -62,9 +58,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="User"
             required
             name="user"
@@ -75,9 +70,8 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             type="password"
             label="Password"
             required
@@ -90,7 +84,7 @@ export const MySQLHandler: React.FC<HandlerStep> = (props) => {
       <ObjectArray
         title="Connection pool settings"
         name="pool"
-        control={control}
+        register={register}
         errors={errors}
         fields={poolFields}
         onAdd={appendPoolField}
