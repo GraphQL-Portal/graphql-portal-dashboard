@@ -1,5 +1,17 @@
 # graphql-portal-dashboard-frontend
 
+## 0.6.0
+
+### Minor Changes
+
+- 90ba1d2: Add Change Password form
+
+### Patch Changes
+
+- bc966b5: Add PasswordInput and use it on Login page
+- a121dd7: Add close button to error messages
+- 0eb2fce: Fix dashboard select start value
+
 ## 0.5.0
 
 ### Minor Changes
