@@ -22,6 +22,13 @@ const suite = vest.create(
     test('confirmPassword', 'Confirm password is required', () => {
       enforce(confirmPassword).isNotEmpty();
     });
+    test(
+      'newPassword',
+      'The new password must be different from the old one',
+      () => {
+        enforce(newPassword).notEquals(oldPassword);
+      }
+    );
     test('newPassword', 'Password must be at least 8 chars', () => {
       enforce(newPassword).longerThanOrEquals(8);
     });
