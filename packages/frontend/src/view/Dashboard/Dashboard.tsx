@@ -20,14 +20,16 @@ import { Range, RangeList } from '../../types';
 import { format } from 'date-fns';
 
 function formatDateForRange(ts: Date, range: Range = 'hour') {
-  console.log(ts);
+  console.log('ts', ts);
   if (range === 'hour' || range === 'day') return format(new Date(ts), 'HH:mm');
   else return format(new Date(ts), 'MM/dd');
 }
 
 function tickFormatter(range: Range = 'hour') {
-  return (ts: any) =>
-    ts === 'auto' || ts === 0 ? ts : formatDateForRange(ts, range);
+  return (ts: any) => {
+    console.log('tf', ts);
+    return ts === 'auto' || ts === 0 ? ts : formatDateForRange(ts, range);
+  };
 }
 
 export const Dashboard: React.FC = () => {
@@ -175,8 +177,8 @@ export const Dashboard: React.FC = () => {
                 yAxisId="failures"
                 type="monotone"
                 dataKey="failures"
-                stroke="#8884d8"
-                fill="#8884d8"
+                stroke="#FF8042"
+                fill="#FF8042 "
               />
               <Tooltip />
             </ComposedChart>
