@@ -57,3 +57,5 @@ export type UseApiActivityHook = () => Pick<
 };
 
 export type ApiActivityList = Omit<ReturnType<UseApiActivityHook>, 'loading'>;
+
+export type ChartButton = { text: string; value: Scale };

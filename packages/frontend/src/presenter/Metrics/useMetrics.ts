@@ -1,19 +1,21 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, ChangeEvent, ReactNode } from 'react';
 import { Range } from '../../types';
 import { useApiDefs } from '../../model/ApiDefs/queries';
 import { useMetricsQuery } from '../../model/Metrics/queries';
 import { getDateChunks } from '../../utils/getDateChunks';
 
+const ALL_APIS = 'All APIs';
+
 export const useMetrics = () => {
-  const [range, setRange] = useState('hour' as Range);
-  const [apiDef, selectApiDef] = useState('');
+  const [range, setRange] = useState<Range>('hour');
+  const [apiDef, selectApiDef] = useState<string>(ALL_APIS);
   const { data: myApis } = useApiDefs();
 
   const apis = useMemo(() => {
     return [
       {
-        value: '',
-        label: 'All APIs',
+        value: ALL_APIS,
+        label: ALL_APIS,
       },
     ].concat(
       myApis.map(({ name, _id }: { name: string; _id: string }) => ({
@@ -23,74 +25,33 @@ export const useMetrics = () => {
     );
   }, [myApis]);
 
-  const { data, loading, error, refetch } = useMetricsQuery(
-    apiDef,
+  const { data, loading, error } = useMetricsQuery(
+    apiDef === ALL_APIS ? '' : apiDef,
     getDateChunks(range)
   );
+
+  const onSelectChange = (
+    {
+      target: { value },
+    }: ChangeEvent<{
+      name?: string | undefined;
+      value: unknown;
+    }>,
+    _: ReactNode
+  ) => {
+    selectApiDef(value as string);
+  };
+
+  const onSetRange = (newDateRange: Range) => setRange(newDateRange || 'hour');
 
   return {
     data,
     loading,
     error,
-    refetch,
     range,
-    setRange,
+    onSetRange,
     apis,
-    selectApiDef,
     apiDef,
+    onSelectChange,
   };
 };
-
-// export const useMetrics = () => {
-//   const [startDate, setStartDate] = useState(addDays(new Date(), -25));
-//   const [endDate, setEndDate] = useState(new Date());
-//   const [scale, setScale] = useState('day' as Scale);
-//   const [apiDef, selectApiDef] = useState(undefined);
-//   const { data: myApis } = useApiDefs();
-//
-//   const apis = useMemo(() => {
-//     return myApis
-//       .map(({ name, _id }: { name: string; _id: string }) => ({
-//         value: _id,
-//         label: name,
-//       }))
-//       .concat({
-//         value: '',
-//         label: 'All APIs',
-//       });
-//   }, [myApis]);
-//
-//   const { data, loading, error, refetch } = useMetricsQuery(
-//     apiDef,
-//     startDate,
-//     endDate,
-//     scale
-//   );
-//
-//   useEffect(() => {
-//     let data = { startDate: startDate, endDate: endDate, scale, apiDef };
-//     if (scale === 'hour') {
-//       data = {
-//         ...data,
-//         endDate: addDays(startDate, 1),
-//       };
-//     }
-//     refetch(data);
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, [startDate, endDate, scale]);
-//
-//   return {
-//     data,
-//     loading,
-//     refetch,
-//     error,
-//     startDate,
-//     endDate,
-//     scale,
-//     setStartDate,
-//     setEndDate,
-//     setScale,
-//     apis,
-//     selectApiDef,
-//   };
-// };

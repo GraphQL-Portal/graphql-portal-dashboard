@@ -15,7 +15,7 @@ import {
   CountryChart,
   FailureRequestRateChart,
   RequestChart,
-  chartButtons,
+  CHART_BUTTONS,
 } from '../MetricChart';
 import { formatArgumentLabel, formatValueLabel } from '../../utils';
 import { useStyles } from './useStyles';
@@ -34,6 +34,7 @@ export const ApiMetrics: React.FC = () => {
     setScale,
   } = useApiMetrics();
   const { latency = [], count = [], countries = [], failures = [] } = data;
+  console.log(data);
 
   return (
     <>
@@ -51,7 +52,7 @@ export const ApiMetrics: React.FC = () => {
       />
       <WidgetRow>
         <Widget className={buttons}>
-          <ButtonGroup onClick={setScale} buttons={chartButtons} />
+          <ButtonGroup onClick={setScale} buttons={CHART_BUTTONS} />
         </Widget>
         <Widget className={date}>
           <DatePicker
