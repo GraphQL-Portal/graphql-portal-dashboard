@@ -4,7 +4,11 @@ import { Range } from '../../types';
 
 export const formatDateForRange = (range: Range = 'hour') => (ts: Date) => {
   const dateFormat = range === 'hour' || range === 'day' ? 'HH:mm' : 'MM/dd';
-  return format(new Date(ts), dateFormat);
+  try {
+    return format(new Date(ts), dateFormat);
+  } catch (e) {
+    return ts;
+  }
 };
 
 export const tickFormatter = (range: Range = 'hour') => (ts: any) =>

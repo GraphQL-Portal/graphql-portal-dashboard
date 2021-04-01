@@ -20,6 +20,11 @@ type APIMetric {
   failures: Int
 }
 
+type CountryMetric {
+  country: String
+  count: Int
+}
+
 type ChartChunk {
   argument: String
   value: Float
@@ -56,4 +61,5 @@ type Query {
   getUserMetrics(scale: String, filters: MetricFilters!): Chart
   getApiActivity(filters: MetricFilters!): [ApiActivity]
   getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): [APIMetric]
+  getCountryMetrics(startDate: Timestamp!, endDate: Timestamp!, filters: MetricFilter!, limit: Int): [CountryMetric]
 }

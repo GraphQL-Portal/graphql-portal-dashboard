@@ -9,6 +9,7 @@ import {
   IMetricFilter,
 } from './interfaces';
 import MetricService from './metric.service';
+import ICountryMetric from './interfaces/country-metric.interface';
 
 @Resolver('Metric')
 export default class MetricResolver {
@@ -53,5 +54,22 @@ export default class MetricResolver {
       ...filters,
       user,
     });
+  }
+
+  @Query()
+  @Roles([RolesEnum.USER])
+  public getCountryMetrics(
+    @AuthorizationParam('_id') user: string,
+    @Args('startDate') startDate: Date,
+    @Args('endDate') endDate: Date,
+    @Args('filters') filters: IMetricFilter,
+    @Args('limit') limit?: number
+  ): Promise<ICountryMetric[]> {
+    return this.metricService.getCountryMetrics(
+      startDate,
+      endDate,
+      filters,
+      limit
+    );
   }
 }

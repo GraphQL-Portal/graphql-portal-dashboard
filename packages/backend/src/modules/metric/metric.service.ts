@@ -1,10 +1,10 @@
 import { MetricsChannels } from '@graphql-portal/types';
 import {
+  forwardRef,
   Inject,
   Injectable,
-  OnModuleInit,
   OnModuleDestroy,
-  forwardRef,
+  OnModuleInit,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
@@ -12,22 +12,12 @@ import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
 import {
   LocationRecord,
+  PostalRecord,
   Reader,
   ReaderModel,
   WebServiceClient,
 } from '@maxmind/geoip2-node';
-import {
-  add,
-  addDays,
-  addHours,
-  addMinutes,
-  differenceInSeconds,
-  endOfDay,
-  startOfHour,
-  startOfMinute,
-  subDays,
-  subHours,
-} from 'date-fns';
+import { add, differenceInSeconds } from 'date-fns';
 import Provider from '../../common/enum/provider.enum';
 import { LoggerService } from '../../common/logger';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
@@ -37,19 +27,20 @@ import ApiDefService from '../api-def/api-def.service';
 import {
   AnyMetric,
   AnyResolverMetric,
-  IGotError,
-  IGotRequest,
-  ISentResponse,
-  IReducedResolver,
-  IMatch,
   IAggregateFilters,
   IApiActivity,
+  IAPIMetric,
+  IGotError,
+  IGotRequest,
+  IMatch,
   IMetric,
   IMetricFilter,
-  IAPIMetric,
+  IReducedResolver,
+  ISentResponse,
 } from './interfaces';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import { RedisClient } from '../../common/types';
+import ICountryMetric from './interfaces/country-metric.interface';
 
 type MetricScale = 'hour' | 'day' | 'week' | 'month';
 
@@ -359,9 +350,10 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     );
 
     const boundaries = chunks.map((v) => new Date(v));
+    const def = chunks[chunks.length - 1];
 
     // FIXME: default should not be Other
-    const aggregationQuery = [
+    const aggregationPipeline: unknown[] = [
       {
         $match: {
           $and: [
@@ -370,6 +362,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               startDate: chunks[0],
               endDate: chunks[chunks.length - 1],
             }),
+            // FIXME: remove once bug with empty latency will be fixed
             { latency: { $ne: null } },
           ],
         },
@@ -383,7 +376,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             {
               $bucket: {
                 groupBy: '$requestDate',
-                default: 'Other',
+                default: def,
                 boundaries,
                 output: { latency: { $avg: '$latency' }, count: { $sum: 1 } },
               },
@@ -402,7 +395,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             {
               $bucket: {
                 groupBy: '$requestDate',
-                default: 'Other',
+                default: def,
                 boundaries,
                 output: { count: { $sum: 1 } },
               },
@@ -421,21 +414,9 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             {
               $bucket: {
                 groupBy: '$resolvers.errorAt',
-                default: 'Other',
+                default: def,
                 boundaries,
                 output: { count: { $sum: 1 } },
-              },
-            },
-          ],
-          // Per-country metrics
-          countries: [
-            {
-              $match: { 'geo.country': { $ne: null } },
-            },
-            {
-              $group: {
-                _id: '$geo.country',
-                count: { $sum: 1 },
               },
             },
           ],
@@ -444,7 +425,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     ];
 
     const [aggregationResult] = await this.requestMetricModel.aggregate(
-      aggregationQuery
+      aggregationPipeline
     );
 
     const aggregateToHashMap = (
@@ -468,7 +449,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     );
 
     // Map to chunks
-    const result: IAPIMetric[] = chunks.map((c) => {
+    return chunks.map((c) => {
       const date = new Date(c);
       const metric: IAPIMetric = {
         chunk: date,
@@ -489,13 +470,49 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
 
       return metric;
     });
+  }
 
-    this.logger.debug(
-      `result: ${JSON.stringify(result)}`,
-      this.constructor.name
-    );
+  /**
+   * Get aggregated stats per country.
+   * Results are sorted by DESC and are not limited by default.
+   */
+  public async getCountryMetrics(
+    startDate: Date,
+    endDate: Date,
+    filters: IMetricFilter,
+    limit?: number
+  ): Promise<ICountryMetric[]> {
+    const query: unknown[] = [
+      {
+        $match: {
+          $and: [
+            this.makeMatchFromFilters({
+              ...filters,
+              startDate,
+              endDate,
+            }),
+            { 'geo.country': { $ne: null } },
+          ],
+        },
+      },
+      {
+        $group: {
+          _id: '$geo.country',
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { count: -1 } },
+    ];
+    if (limit) {
+      query.push({ $limit: limit });
+    }
 
-    return result;
+    const results = await this.requestMetricModel.aggregate(query);
+
+    return results.map(({ _id, count }: any) => ({
+      country: _id,
+      count,
+    }));
   }
 
   public async removeForApiDef(apiDefId: string): Promise<boolean> {
@@ -696,6 +713,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     | {
         city: string | undefined;
         location: LocationRecord | undefined;
+        postal: PostalRecord | undefined;
         country: string | undefined;
       }
     | Record<string, never>
@@ -704,13 +722,13 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     const context = `${this.constructor.name}:${this.getGeoData.name}`;
 
     try {
-      const { city, location } = await this.maxmind.city(ip);
-      const { country } = await this.maxmind.country(ip);
       this.logger.debug(`Looking for geo data for ip: ${ip}`, context);
+      const { city, location, country, postal } = await this.maxmind.city(ip);
       return {
         city: city?.names.en,
         country: country?.names.en,
         location,
+        postal,
       };
     } catch (error) {
       this.logger.error(error, null, context);
@@ -735,10 +753,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       boundaries.push(sdate);
     } while (next());
 
-    // this.logger.debug(
-    //   `boundaries ${JSON.stringify(boundaries)}`,
-    //   this.constructor.name
-    // );
     return boundaries;
   }
 
