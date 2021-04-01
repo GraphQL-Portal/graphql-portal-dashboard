@@ -14,7 +14,7 @@ export const QUERY_METRICS = gql`
 `;
 
 export const useMetricsQuery = (apiDef: string | undefined, chunks: Date[]) => {
-  const { data, loading, error, refetch } = useQuery(QUERY_METRICS, {
+  const { data, loading, error } = useQuery(QUERY_METRICS, {
     variables: {
       chunks,
       filters: {
@@ -27,12 +27,12 @@ export const useMetricsQuery = (apiDef: string | undefined, chunks: Date[]) => {
     data: data?.getChunkedAPIMetrics,
     loading,
     error,
-    refetch: (variables: APIMetricsRefetch) =>
-      refetch({
-        filters: {
-          apiDef,
-        },
-        chunks: variables.chunks,
-      }),
+    // refetch: (variables: APIMetricsRefetch) =>
+    //   refetch({
+    //     filters: {
+    //       apiDef,
+    //     },
+    //     chunks: variables.chunks,
+    //   }),
   };
 };
