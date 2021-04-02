@@ -43,18 +43,18 @@ export const SuccessFailureChart: React.FC<any> = ({ data, range }: any) => {
         />
 
         <Area
-          yAxisId="successes"
-          type="monotone"
-          dataKey="successes"
-          stroke={palette.success.light}
-          fill={palette.success.main}
-        />
-        <Area
           yAxisId="failures"
           type="monotone"
           dataKey="failures"
           stroke={palette.error.dark}
           fill={palette.error.light}
+        />
+        <Area
+          yAxisId="successes"
+          type="monotone"
+          dataKey="successes"
+          stroke={palette.success.light}
+          fill={palette.success.main}
         />
         <Tooltip
           labelStyle={{

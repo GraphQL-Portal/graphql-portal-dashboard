@@ -342,13 +342,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     chunks: Date[],
     filters: IMetricFilter
   ): Promise<IAPIMetric[]> {
-    this.logger.debug(
-      `getChunkedAPIMetrics with startDate: ${chunks[0]}, endDate: ${
-        chunks[chunks.length - 1]
-      }, filters: ${JSON.stringify(filters)}`,
-      this.constructor.name
-    );
-
     const boundaries = chunks.map((v) => new Date(v));
     const def = chunks[chunks.length - 1];
 
@@ -362,8 +355,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
               startDate: chunks[0],
               endDate: chunks[chunks.length - 1],
             }),
-            // FIXME: remove once bug with empty latency will be fixed
-            { latency: { $ne: null } },
           ],
         },
       },
@@ -371,8 +362,9 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
         $facet: {
           // Average Latency
           latency: [
-            // filter out documents without latency field
-            // { $match: { latency: { $ne: null } } },
+            {
+              $match: { latency: { $ne: null } },
+            },
             {
               $bucket: {
                 groupBy: '$requestDate',
@@ -389,6 +381,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
                 $and: [
                   { 'resolvers.errorAt': { $exists: false } },
                   { error: { $eq: null } },
+                  { latency: { $ne: null } },
                 ],
               },
             },
@@ -413,7 +406,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             },
             {
               $bucket: {
-                groupBy: '$resolvers.errorAt',
+                groupBy: '$requestDate',
                 default: def,
                 boundaries,
                 output: { count: { $sum: 1 } },
