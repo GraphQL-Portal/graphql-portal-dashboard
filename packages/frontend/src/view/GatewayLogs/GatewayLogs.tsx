@@ -12,7 +12,7 @@ export const GatewayLogs: React.FC = () => {
 
   return (
     <>
-      <Header title="Gateway Logs" />
+      <Header title="Live Gateway Logs" />
       <HugeWidget>
         <WidgetBody>
           {data.length ? <LogsTable logs={data} /> : <EmptyLogs />}

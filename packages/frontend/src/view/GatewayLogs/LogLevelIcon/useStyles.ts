@@ -11,7 +11,7 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     backgroundColor: '#d9c338',
   },
   debugLog: {
-    backgroundColor: '#d468b7',
+    backgroundColor: '#55aadf',
   },
   logLevelIcon: {
     width: '6px',

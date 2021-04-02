@@ -6,7 +6,6 @@ import { Log as ILog } from '../../../types';
 import { LogLevelIcon } from '../LogLevelIcon/LogLevelIcon';
 import { LogMessage } from '../LogMessage/LogMessage';
 import { LogCell } from './LogCell';
-import { AutoscrollCheckbox } from '../AutoscrollCheckbox';
 
 const TABLE_HEAD = ['DATE', 'HOST', 'NODE ID', 'PREFIX', 'CONTENT'];
 
@@ -38,7 +37,6 @@ export const LogsTable: React.FC<{ logs: ILog[] }> = ({ logs }) => {
           )
         )}
       </Table>
-      <AutoscrollCheckbox lastIndex={logs.length} />
     </>
   );
 };
