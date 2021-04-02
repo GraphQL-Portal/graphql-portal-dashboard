@@ -25,7 +25,7 @@ export const useMetrics = () => {
     );
   }, [myApis]);
 
-  const { data, loading, error } = useMetricsQuery(
+  const { data, loading } = useMetricsQuery(
     apiDef === ALL_APIS ? '' : apiDef,
     getDateChunks(range)
   );
@@ -47,7 +47,6 @@ export const useMetrics = () => {
   return {
     data,
     loading,
-    error,
     range,
     onSetRange,
     apis,

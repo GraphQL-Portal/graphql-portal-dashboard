@@ -17,13 +17,6 @@ export type ApiMetric = {
   latency?: number;
 };
 
-export type RequestChartProps = {
-  data: any[];
-  title?: string;
-  argumentLabelHandler?: any;
-  valueLabelHandler?: any;
-};
-
 export type MetricsRefetch = {
   apiDef: string | undefined;
   startDate: Date;
@@ -34,19 +27,6 @@ export type MetricsRefetch = {
 export type APIMetricsRefetch = {
   apiDef: string | undefined;
   chunks: Date[];
-};
-
-export type CountryChartProps = RequestChartProps;
-
-export type FailureRequestRateChartProps = {
-  data: {
-    success: number;
-    failure: number;
-    argument: number;
-  }[];
-  title?: string;
-  argumentLabelHandler?: Function;
-  valueLabelHandler?: Function;
 };
 
 export type UseApiActivityHook = () => Pick<

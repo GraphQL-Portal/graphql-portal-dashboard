@@ -10,6 +10,7 @@ import {
   ButtonGroup,
   Widget,
 } from '../../ui';
+import { Loading } from '../Loading';
 import {
   CHART_BUTTONS,
   LatencyRequestChart,
@@ -26,7 +27,10 @@ export const Dashboard: React.FC = () => {
     apiDef,
     apis,
     onSelectChange,
+    loading,
   } = useMetrics();
+
+  if (loading) return <Loading />;
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { useQuery, gql } from '@apollo/client';
-import { APIMetricsRefetch } from '../../../types';
 
 export const QUERY_METRICS = gql`
   query getChunkedAPIMetrics($chunks: [Timestamp], $filters: MetricFilter!) {

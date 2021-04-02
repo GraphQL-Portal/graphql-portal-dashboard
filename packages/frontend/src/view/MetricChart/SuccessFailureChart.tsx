@@ -7,14 +7,14 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
+  Legend,
 } from 'recharts';
 import { useTheme } from '@material-ui/core';
 
-import { formatDateForRange, formatter, tickFormatter } from './helpers';
+import { formatDateForRange, formatter } from './helpers';
 
 export const SuccessFailureChart: React.FC<any> = ({ data, range }: any) => {
-  const tick = tickFormatter(range);
-  const labelFormatter = formatDateForRange(range);
+  const formattedWithRange = formatDateForRange(range);
   const { palette } = useTheme();
 
   const tickStyles = { fill: palette.text.secondary, fontSize: 12 };
@@ -38,7 +38,7 @@ export const SuccessFailureChart: React.FC<any> = ({ data, range }: any) => {
           dataKey="chunk"
           type="category"
           minTickGap={7}
-          tickFormatter={tick}
+          tickFormatter={formattedWithRange}
           tick={tickStyles}
         />
 
@@ -61,10 +61,11 @@ export const SuccessFailureChart: React.FC<any> = ({ data, range }: any) => {
             color: palette.background.default,
             fontSize: 14,
           }}
-          labelFormatter={labelFormatter}
+          labelFormatter={formattedWithRange}
           formatter={formatter}
         />
         <CartesianGrid strokeDasharray="3 3" stroke={palette.action.disabled} />
+        <Legend />
       </ComposedChart>
     </ResponsiveContainer>
   );

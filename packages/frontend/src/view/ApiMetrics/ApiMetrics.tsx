@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 
 import { useApiMetrics } from '../../presenter/Metrics';
 import {
-  DatePicker,
   Header,
   HugeWidget,
   Widget,
@@ -11,30 +10,21 @@ import {
   ButtonGroup,
   HeaderBackButton,
 } from '../../ui';
-import {
-  CountryChart,
-  FailureRequestRateChart,
-  RequestChart,
-  CHART_BUTTONS,
-} from '../MetricChart';
-import { formatArgumentLabel, formatValueLabel } from '../../utils';
-import { useStyles } from './useStyles';
 import { ROUTES } from '../../model/providers';
+import {
+  CHART_BUTTONS,
+  LatencyRequestChart,
+  SuccessFailureChart,
+} from '../MetricChart';
+import { Loading } from '../Loading';
+
+import { useStyles } from './useStyles';
 
 export const ApiMetrics: React.FC = () => {
-  const { date, buttons } = useStyles();
+  const { widget } = useStyles();
+  const { data, loading, range, onSetRange } = useApiMetrics();
 
-  const {
-    data = {},
-    startDate,
-    endDate,
-    scale,
-    setStartDate,
-    setEndDate,
-    setScale,
-  } = useApiMetrics();
-  const { latency = [], count = [], countries = [], failures = [] } = data;
-  console.log(data);
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -51,62 +41,18 @@ export const ApiMetrics: React.FC = () => {
         title=""
       />
       <WidgetRow>
-        <Widget className={buttons}>
-          <ButtonGroup onClick={setScale} buttons={CHART_BUTTONS} />
-        </Widget>
-        <Widget className={date}>
-          <DatePicker
-            label="Start Date"
-            value={startDate}
-            disableFuture
-            maxDate={endDate}
-            onChange={(e) => e && setStartDate(e)}
-          />
-        </Widget>
-        <Widget className={date}>
-          <DatePicker
-            label="End Date"
-            value={endDate}
-            disableFuture
-            minDate={startDate}
-            onChange={(e) => e && setEndDate(e)}
-          />
+        <Widget className={widget}>
+          <ButtonGroup onClick={onSetRange} buttons={CHART_BUTTONS} />
         </Widget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <RequestChart
-            data={latency}
-            title="Average Request Latency"
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            valueLabelHandler={formatValueLabel}
-          />
+          <LatencyRequestChart data={data} range={range} />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <RequestChart
-            data={count}
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            title="Average Request Count"
-          />
-        </HugeWidget>
-      </WidgetRow>
-      <WidgetRow>
-        <HugeWidget>
-          <CountryChart
-            data={countries}
-            title="Countries where requests were made from"
-          />
-        </HugeWidget>
-      </WidgetRow>
-      <WidgetRow>
-        <HugeWidget>
-          <FailureRequestRateChart
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            data={failures}
-            title="Failure/Success Chart"
-          />
+          <SuccessFailureChart data={data} range={range} />
         </HugeWidget>
       </WidgetRow>
     </>
