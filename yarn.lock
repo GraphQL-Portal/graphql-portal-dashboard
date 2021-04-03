@@ -1823,16 +1823,15 @@
     fetchache "0.0.4"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.15.2":
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.15.2.tgz#ffb1b68f893f907364b162e31ec052ac754c22fd"
-  integrity sha512-1O9QkIO3RViH8Sa+YAJhGNk6IhHMAlDOeZ9ivvNauni8Z8poeUEAeuM3ByytbIfelzRl6A0fyDycL4bEqVa9mA==
+"@graphql-mesh/graphql@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.16.0.tgz#6ca3c38b454712586ee757a05be87fdf6e1a63b8"
+  integrity sha512-yClJh098tHFm3ocFP+kR2mP3rZ7iiACycmWuIxrmgYPQ3QiOcFmdU6S6U0O1Dy98H25C8T84EGk0awCSm8+TJQ==
   dependencies:
-    "@graphql-mesh/types" "0.37.0"
-    "@graphql-mesh/utils" "0.9.3"
+    "@graphql-mesh/types" "0.38.0"
+    "@graphql-mesh/utils" "0.10.0"
     "@graphql-tools/url-loader" "6.8.2"
     "@graphql-tools/wrap" "7.0.5"
-    fetchache "0.0.4"
 
 "@graphql-mesh/graphql@^0.14.0", "@graphql-mesh/graphql@^0.14.1":
   version "0.14.1"
