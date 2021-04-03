@@ -24,7 +24,7 @@
     "migrate": "ts-node node_modules/.bin/migrate-mongo up -f migrate-mongo-config.ts"
   },
   "dependencies": {
-    "@graphql-mesh/fhir": "0.9.12",
+    "@graphql-mesh/fhir": "0.10.0",
     "@graphql-mesh/graphql": "0.15.2",
     "@graphql-mesh/grpc": "0.10.0",
     "@graphql-mesh/json-schema": "0.12.0",
