@@ -1994,12 +1994,12 @@
     mysql-utilities "1.1.2"
     pascal-case "3.1.2"
 
-"@graphql-mesh/neo4j@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.0.tgz#53abcf013f1d7f1359504b436d9e5cec6a462747"
-  integrity sha512-T+uNpz6eX9LKhp72EP7fLjh1Kav6UKP+Tv0+eDkhNnzudQtIvf7vamK09MjzaUlJVZ1Kd9KUJByDGg6Y4ODcBA==
+"@graphql-mesh/neo4j@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.1.tgz#cf8f866c178be28cf93f498cb9992b0ecdff3d88"
+  integrity sha512-vc7p1h69kQn4qvE+5s2VTj93h7rrfneV+IPBb0WU80j0KHtTs0y1bZNycNvZNIeKxByrCmI23fquzG2R1G+l4w==
   dependencies:
-    "@graphql-mesh/types" "0.37.0"
+    "@graphql-mesh/types" "0.38.0"
     "@graphql-tools/code-file-loader" "6.3.1"
     "@graphql-tools/graphql-file-loader" "6.2.7"
     "@graphql-tools/load" "6.2.7"
