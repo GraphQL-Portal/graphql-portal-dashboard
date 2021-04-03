@@ -1844,10 +1844,10 @@
     "@graphql-tools/wrap" "7.0.5"
     fetchache "0.0.4"
 
-"@graphql-mesh/grpc@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.11.0.tgz#48ec3477a63078c79837d8bec0cbd83d2c8e3b4e"
-  integrity sha512-wYsq8PqQCi10WPokH0UOCQ6BOGWX3imJmgiha5PUgRkOFmfmY1/xKzI5s9rR69w5NgBJYppv8jjb7UkNwr55Dw==
+"@graphql-mesh/grpc@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.12.0.tgz#e30061ff8de1b1ca9cbf2bfc02fd131cad4f67b0"
+  integrity sha512-1r00eJrVMsS3lVspQxJKy0Wpt+MfrEe+bB4+gVXrCZvjFR8VZ5fNwJyVumKX9JNaQGXZ9wvzPdlgRT5gHOmh0w==
   dependencies:
     "@graphql-mesh/types" "0.38.0"
     "@graphql-mesh/utils" "0.10.0"
