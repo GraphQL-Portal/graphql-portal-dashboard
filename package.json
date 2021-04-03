@@ -76,6 +76,6 @@
   },
   "resolutions": {
     "**/mongodb": "3.6.5",
-    "**/xml-crypto": "2.1.0"
+    "**/xml-crypto": "2.1.1"
   }
 }
