@@ -2364,13 +2364,13 @@
     "@graphql-tools/utils" "7.5.0"
     faker "5.4.0"
 
-"@graphql-mesh/transform-naming-convention@0.6.37":
-  version "0.6.37"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.6.37.tgz#896d8bf9dd95911b60afcfe86078b71855f5d09c"
-  integrity sha512-KBP0i2NgRZxqyXNLdONKVIRvW6LZQWE5MEIzC5Z09pECvZLjJcbgGCLZzZPPXkQBguc43/rHDskTszzeSdh6EQ==
+"@graphql-mesh/transform-naming-convention@0.6.38":
+  version "0.6.38"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.6.38.tgz#59808a81ab50e1533e81906e7563cb07e750bd70"
+  integrity sha512-feaeErHKU2s8DFeRicH+K4n1eorQqFqa/d21ZcFJso9++7yAmrgD+gVQYHnJzNuewDDTPZPnw2wW5Tv7HeCTKg==
   dependencies:
-    "@graphql-mesh/types" "0.37.0"
-    "@graphql-mesh/utils" "0.9.3"
+    "@graphql-mesh/types" "0.38.0"
+    "@graphql-mesh/utils" "0.10.0"
     "@graphql-tools/delegate" "7.1.1"
     "@graphql-tools/utils" "7.7.1"
     "@graphql-tools/wrap" "7.0.5"
@@ -2456,16 +2456,6 @@
     "@graphql-typed-document-node/core" "3.1.0"
     fetchache "0.0.4"
 
-"@graphql-mesh/types@0.37.0":
-  version "0.37.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.37.0.tgz#173c688f76e3f5018958c44107ba99f52640f15a"
-  integrity sha512-8p9VyDcdSIRZ/AZ1cwiDc8hE0rzNfDBQAM1Bh5RrNroaMAkqEFM5LGnv+/nrWZNsUBQ5T3vUX5u+fVr5VzzN0A==
-  dependencies:
-    "@graphql-tools/delegate" "7.1.1"
-    "@graphql-tools/utils" "7.7.1"
-    "@graphql-typed-document-node/core" "3.1.0"
-    fetchache "0.0.4"
-
 "@graphql-mesh/types@0.38.0":
   version "0.38.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.38.0.tgz#9e37885f0ef93611a8f2cd4e077760de993cc77e"
@@ -2519,21 +2509,6 @@
     "@graphql-tools/utils" "7.5.0"
     "@graphql-typed-document-node/core" "3.1.0"
     date-fns "2.17.0"
-    fetchache "0.0.4"
-    is-url "1.2.4"
-    js-yaml "4.0.0"
-    object-hash "2.1.1"
-
-"@graphql-mesh/utils@0.9.3":
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.9.3.tgz#b9157e0ae1ea447f50530e9aef9094707e1033a2"
-  integrity sha512-vCMvGMhltkGerpmKXAvJHl9GBbTCNcSiTxDSN+PW1OJnfN1LA++4PyzbdaltMwX2ouVL4uxwK5SvX8z42HDizA==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.11"
-    "@graphql-tools/delegate" "7.1.1"
-    "@graphql-tools/utils" "7.7.1"
-    "@graphql-typed-document-node/core" "3.1.0"
-    date-fns "2.19.0"
     fetchache "0.0.4"
     is-url "1.2.4"
     js-yaml "4.0.0"
