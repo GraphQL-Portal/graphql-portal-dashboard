@@ -2142,6 +2142,25 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
+"@graphql-mesh/openapi@^0.14.0":
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.14.2.tgz#a0e26e3b05191026fa5c748ab6af6d29d6fd64ab"
+  integrity sha512-w0gjO3rhBtWiye/68Q2LS2DkMmOLyDaMgfzf0wZOqxYyC8jnj+m3rtvYFiOKSxDTamzhxa1P+/1oaXs53MUrQg==
+  dependencies:
+    "@graphql-mesh/types" "0.37.0"
+    "@graphql-mesh/utils" "0.9.3"
+    deep-equal "2.0.5"
+    fetchache "0.0.4"
+    form-urlencoded "4.2.1"
+    graphql-scalars "1.9.0"
+    graphql-subscriptions "1.2.1"
+    json-ptr "2.0.0"
+    jsonpath-plus "5.0.4"
+    lodash "4.17.21"
+    pluralize "8.0.0"
+    swagger2openapi "7.0.5"
+    url-join "4.0.1"
+
 "@graphql-mesh/postgraphile@0.11.3":
   version "0.11.3"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/postgraphile/-/postgraphile-0.11.3.tgz#25d28652e0b9f4066f0bda4d4e998c0aa26d943d"
@@ -2624,12 +2643,12 @@
   dependencies:
     "@graphql-mesh/graphql" "^0.14.0"
 
-"@graphql-portal/crunchbase@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.0.3.tgz#50f4845f87be7d38382cf46218a0de9c4459f857"
-  integrity sha512-9MrKChGf3rB91rej6tPaQyvbAUG5+c+h3PejdLw1+1jLgzxbaKn/0HERG+jgRc7Pm8mdCXfrHBpKyoWRYLWa+A==
+"@graphql-portal/crunchbase@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.0.4.tgz#d96374ab89ae30b0fbc12d3e8c211cb8eb5f2942"
+  integrity sha512-kkEJdKWLsHR5qsrYO0riw2JYy06N1hx6pluplOE+hCMhm8PpELcvHD+qqdVZm9Tnh7inEppEOYmXKByU8H28BQ==
   dependencies:
-    "@graphql-mesh/openapi" "^0.13.0"
+    "@graphql-mesh/openapi" "^0.14.0"
 
 "@graphql-portal/dashboard@^0.1.5":
   version "0.1.5"
