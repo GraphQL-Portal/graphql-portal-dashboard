@@ -2190,18 +2190,18 @@
     soap "0.36.0"
     soap-graphql "0.1.1"
 
-"@graphql-mesh/thrift@0.6.4":
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.6.4.tgz#59e6b105cbf2c50b9b68b8d85c64d94b99b0badb"
-  integrity sha512-NaLhYrpPuORLJcuBcwegOSYQVr06VhULA1WE5fYt7VFCDdwX1oHfT8HR2idbUBlTzsXldEhLGZjL0EtS8hly2g==
+"@graphql-mesh/thrift@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.0.tgz#b0780e052adce88cf19ac3d09a0cbb9ee532d832"
+  integrity sha512-KjetVmmJTX1E1kVxHg6Ppezv5OR7hCWZdX5hSmf0fvvaIcDFs3Ca8KnQqIN7ame980kOhTjuEAfttX4Cu+Xe6g==
   dependencies:
     "@ardatan/aggregate-error" "0.0.6"
     "@creditkarma/thrift-client" "0.16.1"
     "@creditkarma/thrift-parser" "1.2.0"
     "@creditkarma/thrift-server-core" "0.16.1"
-    "@graphql-mesh/types" "0.37.0"
-    "@graphql-mesh/utils" "0.9.3"
-    fetchache "0.0.4"
+    "@graphql-mesh/types" "0.38.0"
+    "@graphql-mesh/utils" "0.10.0"
+    fetchache "0.1.1"
     graphql-scalars "1.9.0"
     thrift "0.14.1"
     url-join "4.0.1"
