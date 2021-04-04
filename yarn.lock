@@ -2169,14 +2169,13 @@
     "@n1ru4l/graphql-live-query" "0.7.1"
     "@n1ru4l/in-memory-live-query-store" "0.6.0"
 
-"@graphql-mesh/soap@0.6.4":
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/soap/-/soap-0.6.4.tgz#2d51706679ef258307249dd5d72a9ed052b8c8f0"
-  integrity sha512-ekJ43js6D5B80QHWG+WVRsUFHJ1RJbeCSmgrAZMMaEALA18IdvgTqKeeTdNs6UkfxAItwUDfy+gbK93Jc75U6Q==
+"@graphql-mesh/soap@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/soap/-/soap-0.7.0.tgz#795ee6592fbe1e50bfe23f411deea97ee601527d"
+  integrity sha512-9ogf74AqJItnHqQadHiRmx7hQMOcVjYWWeKSl2dCQ/oIykqRVnH8S8/CC7bdCuk4jfP1gii37kKWe2wEReIHZw==
   dependencies:
-    "@graphql-mesh/types" "0.37.0"
-    "@graphql-mesh/utils" "0.9.3"
-    fetchache "0.0.4"
+    "@graphql-mesh/types" "0.38.0"
+    "@graphql-mesh/utils" "0.10.0"
     soap "0.36.0"
     soap-graphql "0.1.1"
 
