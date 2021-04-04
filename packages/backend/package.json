@@ -40,7 +40,7 @@
     "@graphql-mesh/transform-encapsulate": "0.1.35",
     "@graphql-mesh/transform-extend": "0.6.5",
     "@graphql-mesh/transform-federation": "0.5.5",
-    "@graphql-mesh/transform-filter-schema": "0.10.6",
+    "@graphql-mesh/transform-filter-schema": "0.10.7",
     "@graphql-mesh/transform-mock": "0.8.4",
     "@graphql-mesh/transform-naming-convention": "0.6.37",
     "@graphql-mesh/transform-prefix": "0.6.34",
