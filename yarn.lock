@@ -2697,15 +2697,7 @@
   dependencies:
     "@graphql-mesh/openapi" "^0.12.0"
 
-"@graphql-portal/slack@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/slack/-/slack-0.0.3.tgz#6431ea652f5aff30ec98e1bfec95d83b3d528a73"
-  integrity sha512-XG5XGjnQl06RFEeu+wVqLYMNrLbpaD1zYIykoIpJj+v6Cau36GcmmcZTtaILDqi+uFrQjz5bp7H42lyOyrIWKg==
-  dependencies:
-    "@graphql-mesh/openapi" "^0.12.0"
-    graphql "^15.4.0"
-
-"@graphql-portal/slack@^0.1.1":
+"@graphql-portal/slack@0.1.1", "@graphql-portal/slack@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/slack/-/slack-0.1.1.tgz#04fba3dc8d526a88e66da2f4ca1ba1b647d4d5ff"
   integrity sha512-JH/v0FgpBSBSkjX+GxaQ23AGJBooShuHcqRCdojITvvGJdkmKeNwwNgFlWE1+9tg8+9v21MTRD2ntcOfIiQvFA==
