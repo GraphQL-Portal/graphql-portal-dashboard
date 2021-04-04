@@ -55,7 +55,7 @@
     "@graphql-portal/salesforce": "0.0.2",
     "@graphql-portal/slack": "0.1.1",
     "@graphql-portal/stripe": "0.0.2",
-    "@graphql-portal/twitter": "0.1.1",
+    "@graphql-portal/twitter": "0.2.0",
     "@graphql-portal/types": "0.19.0",
     "@graphql-portal/weatherbit": "0.0.2",
     "@maxmind/geoip2-node": "2.3.1",
