@@ -2296,14 +2296,14 @@
     "@graphql-tools/load" "6.2.7"
     "@graphql-tools/merge" "6.2.10"
 
-"@graphql-mesh/transform-federation@0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.5.4.tgz#7405703bfb0c2500ae17a8cfdce2dd037b46ab18"
-  integrity sha512-Hl8cz5/OYST6EbTX2s4/CufGaMrteReaGfPgDNmybiKdIyZJn+QxzdZ0FRpyIGSf4ul+5hK5OH02Lb96eBTWxQ==
+"@graphql-mesh/transform-federation@0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.5.5.tgz#b359b3feb7821627e97fde71c6eea74877b87132"
+  integrity sha512-hemnYns0KmulAzeRTcC0gsaW9VFwMP4P7V6Sa2fEKNGu8N1qj4Ew+euf8yLECOOTcwKGi/NLKmynxcMgoEMmrA==
   dependencies:
     "@apollo/federation" "0.22.0"
-    "@graphql-mesh/types" "0.37.0"
-    "@graphql-mesh/utils" "0.9.3"
+    "@graphql-mesh/types" "0.38.0"
+    "@graphql-mesh/utils" "0.10.0"
     graphql-transform-federation "2.2.0"
     lodash "4.17.21"
 
