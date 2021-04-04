@@ -2098,25 +2098,6 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@^0.13.0":
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.13.3.tgz#08700f221965bb6c10adca17ef6932d7af9c8584"
-  integrity sha512-5hPY2NpJdcKL9tbzSo4y04hOa0Q2V2P7zv1JgZRHX+/0Wv9VXOYh700kE+Axvgz42cbQ2nLT+VCxIXw/kS6KMA==
-  dependencies:
-    "@graphql-mesh/types" "0.35.1"
-    "@graphql-mesh/utils" "0.9.0"
-    deep-equal "2.0.5"
-    fetchache "0.0.4"
-    form-urlencoded "4.2.1"
-    graphql-scalars "1.9.0"
-    graphql-subscriptions "1.2.1"
-    json-ptr "2.0.0"
-    jsonpath-plus "5.0.4"
-    lodash "4.17.21"
-    pluralize "8.0.0"
-    swagger2openapi "7.0.5"
-    url-join "4.0.1"
-
 "@graphql-mesh/openapi@^0.14.0":
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.14.2.tgz#a0e26e3b05191026fa5c748ab6af6d29d6fd64ab"
@@ -2473,7 +2454,7 @@
     "@graphql-typed-document-node/core" "3.1.0"
     fetchache "0.0.4"
 
-"@graphql-mesh/types@0.35.1", "@graphql-mesh/types@^0.35.0":
+"@graphql-mesh/types@0.35.1":
   version "0.35.1"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.35.1.tgz#b2eec8ed26c8df25f9bbd72175c4d9e109dc9f36"
   integrity sha512-Y3GaZbzjQ3tlJ37PSiXep4hfsSYcazHkJGESf78R4gqKAf8UhaiKTFsu/UWw6l8/mQcvQp9wlByJz8nwn5LQVQ==
@@ -2712,13 +2693,13 @@
   dependencies:
     "@graphql-mesh/openapi" "^0.12.0"
 
-"@graphql-portal/twitter@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.1.1.tgz#0deb4b6c9cee56ea1a55faf9ccf0731acf496cba"
-  integrity sha512-C3QYis+PsDSvqAeGSMNU+gwHHHvLK9hjXdyZLLFC6QdoygfrZaEJwRmv1MunWqxxPNkGaY2jMKteGVYMID0CIg==
+"@graphql-portal/twitter@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.2.0.tgz#4aae110cda9120e095a5448e3b067ab249fdad78"
+  integrity sha512-9lk5ZdwEBp4PtuWbHaiTMuSucs/7wu5FpyWfLSph0h9okKKjUNCFZ2q5izVahtlHdhkU6xiknRcDFLeHvPeLGA==
   dependencies:
-    "@graphql-mesh/openapi" "^0.13.0"
-    "@graphql-mesh/types" "^0.35.0"
+    "@graphql-mesh/openapi" "^0.14.0"
+    "@graphql-mesh/types" "^0.37.0"
 
 "@graphql-portal/types@0.19.0":
   version "0.19.0"
