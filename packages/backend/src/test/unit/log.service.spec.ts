@@ -29,20 +29,25 @@ describe('LogService', () => {
 
   describe('getLatestLogs', () => {
     it('should parse and return latest logs', async () => {
-      const keys = [1, 2, 3, 4];
-      const redisKeysMock = jest
-        .spyOn((logService as any).redis, 'keys')
-        .mockResolvedValue(keys);
-      const redisGetMock = jest
-        .spyOn((logService as any).redis, 'get')
-        .mockResolvedValue(JSON.stringify(log));
+      const redisZRangeMock = jest
+        .spyOn((logService as any).redis, 'zrangebyscore')
+        .mockResolvedValue(
+          Array.from({ length: 5 }, () => JSON.stringify(log))
+        );
 
-      const result = await logService.getLatestLogs();
+      const count = 10;
+      const result = await logService.getLatestLogs(undefined, count);
 
-      expect(redisKeysMock).toHaveBeenCalledTimes(1);
-      expect(redisKeysMock).toHaveBeenCalledWith('logs:*');
-      expect(redisGetMock).toHaveBeenCalledTimes(keys.length);
-      expect(result).toStrictEqual(keys.map(() => log));
+      expect(redisZRangeMock).toHaveBeenCalledTimes(1);
+      expect(redisZRangeMock).toHaveBeenCalledWith(
+        'recent-logs',
+        0,
+        expect.any(Number),
+        'LIMIT',
+        0,
+        count
+      );
+      expect(result).toStrictEqual(Array.from({ length: 5 }, () => log));
     });
   });
 });

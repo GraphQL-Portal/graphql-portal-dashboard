@@ -13,22 +13,23 @@ export default class LogService {
     [this.redis] = this.redisClients;
   }
 
-  public async getLatestLogs(latestTimestamp?: string): Promise<Log[]> {
-    const count = 20;
-    const keys = await this.redis.keys('logs:*');
-    const logs = (
-      await Promise.all<Log>(
-        keys.map(async (key) => {
-          const value = await this.redis.get(key);
-          if (!value) return;
-
-          const log = JSON.parse(value);
-          if (!latestTimestamp) return log;
-          if (+log.timestamp > +latestTimestamp) return log;
-        })
+  public async getLatestLogs(
+    latestTimestamp?: string,
+    count = 20
+  ): Promise<Log[]> {
+    const minScore = latestTimestamp ? +latestTimestamp + 1 : 0;
+    return (
+      await this.redis.zrangebyscore(
+        // import channel from graphql-portal
+        'recent-logs',
+        minScore,
+        +new Date(),
+        'LIMIT',
+        0,
+        count
       )
-    ).filter(Boolean);
-    logs.sort((a, b) => +b.timestamp - +a.timestamp);
-    return logs.slice(logs.length - count, logs.length);
+    )
+      .reverse()
+      .map((key) => JSON.parse(key));
   }
 }
