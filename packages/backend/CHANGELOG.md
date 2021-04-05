@@ -1,5 +1,12 @@
 # graphql-portal-dashboard-backend
 
+## 0.6.1
+
+### Patch Changes
+
+- 5e141d3: fix dependencies
+- 1e34951: fix creating default admin
+
 ## 0.5.1
 
 ### Patch Changes
