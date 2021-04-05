@@ -3,7 +3,7 @@ import { useGatewayLogs as useGatewayLogsQuery } from '../../model/GatewayLogs/q
 import { Log, UseGatewayLogsPresenter } from '../../types';
 
 export const useGatewayLogs: UseGatewayLogsPresenter = () => {
-  const pollingInterval = 10000;
+  const pollingInterval = 3000;
   const [latestTimestamp, setLatestTimestamp] = useState('');
   const [logs, setLogs] = useState<Log[]>([]);
   const [isInitialized, setInitilized] = useState(false);
