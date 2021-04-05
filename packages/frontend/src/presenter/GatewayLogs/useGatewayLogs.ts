@@ -21,7 +21,7 @@ export const useGatewayLogs: UseGatewayLogsPresenter = () => {
   useEffect(() => {
     if (loading && !data.length && !logs.length) return setInitilized(false);
     return setInitilized(true);
-  }, [data, loading]);
+  }, [data, logs, loading]);
 
   useEffect(() => {
     if (timeoutRef.current !== null) {
