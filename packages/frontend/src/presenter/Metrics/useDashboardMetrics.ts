@@ -1,13 +1,10 @@
 import { useState, useMemo, ChangeEvent, ReactNode } from 'react';
-import { Range } from '../../types';
 import { useApiDefs } from '../../model/ApiDefs/queries';
-import { useMetricsQuery } from '../../model/Metrics/queries';
-import { getDateChunks } from '../../utils';
+import { useApiMetrics } from './useApiMetrics';
 
 const ALL_APIS = 'All APIs';
 
-export const useMetrics = () => {
-  const [range, setRange] = useState<Range>('hour');
+export const useDashboardMetrics = () => {
   const [apiDef, selectApiDef] = useState<string>(ALL_APIS);
   const { data: myApis } = useApiDefs();
 
@@ -25,9 +22,8 @@ export const useMetrics = () => {
     );
   }, [myApis]);
 
-  const { data } = useMetricsQuery(
-    apiDef === ALL_APIS ? '' : apiDef,
-    getDateChunks(range)
+  const { data, range, onSetRange } = useApiMetrics(
+    apiDef === ALL_APIS ? '' : apiDef
   );
 
   const onSelectChange = (
@@ -41,8 +37,6 @@ export const useMetrics = () => {
   ) => {
     selectApiDef(value as string);
   };
-
-  const onSetRange = (newDateRange: Range) => setRange(newDateRange || 'hour');
 
   return {
     data,

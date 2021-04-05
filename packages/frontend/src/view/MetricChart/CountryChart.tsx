@@ -8,21 +8,22 @@ import {
   Tooltip,
 } from 'recharts';
 import { useTheme } from '@material-ui/core';
+import { CountryChart as Props } from '../../types';
 
-const COUNTRIES = [
-  { country: 'France', count: 10 },
-  { country: 'Germany', count: 20 },
-  { country: 'Egypt', count: 13 },
-  { country: 'Ukraine', count: 50 },
-  { country: 'Spain', count: 26 },
-  { country: 'Denmark', count: 3 },
-  { country: 'USA', count: 47 },
-  { country: 'China', count: 51 },
-  { country: 'Poland', count: 5 },
-  { country: 'Other', count: 113 },
-];
+// const COUNTRIES = [
+//   { country: 'France', count: 10 },
+//   { country: 'Germany', count: 20 },
+//   { country: 'Egypt', count: 13 },
+//   { country: 'Ukraine', count: 50 },
+//   { country: 'Spain', count: 26 },
+//   { country: 'Denmark', count: 3 },
+//   { country: 'USA', count: 47 },
+//   { country: 'China', count: 51 },
+//   { country: 'Poland', count: 5 },
+//   { country: 'Other', count: 113 },
+// ];
 
-export const CountryChart: React.FC = () => {
+export const CountryChart: React.FC<Props> = ({ data }) => {
   const { palette } = useTheme();
 
   const COLORS = [
@@ -45,7 +46,7 @@ export const CountryChart: React.FC = () => {
       <ResponsiveContainer height={400}>
         <PieChart>
           <Pie
-            data={COUNTRIES}
+            data={data}
             dataKey="count"
             nameKey="country"
             cx="50%"
@@ -53,7 +54,7 @@ export const CountryChart: React.FC = () => {
             outerRadius={150}
             label
           >
-            {COUNTRIES.map(({ country }, idx) => {
+            {data.map(({ country }, idx) => {
               return (
                 <Cell
                   key={country}

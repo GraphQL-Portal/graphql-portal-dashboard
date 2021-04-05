@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useMetrics } from '../../presenter/Metrics';
+import { useDashboardMetrics } from '../../presenter/Metrics';
 import {
   Header,
   HugeWidget,
@@ -9,9 +9,11 @@ import {
   Select,
   ButtonGroup,
   Widget,
+  WidgetHeader,
 } from '../../ui';
 import {
   CHART_BUTTONS,
+  CountryChart,
   LatencyRequestChart,
   SuccessFailureChart,
 } from '../MetricChart';
@@ -20,13 +22,13 @@ import { useStyles } from './useStyles';
 export const Dashboard: React.FC = () => {
   const { widget, apiSelect, apiSelectLabel } = useStyles();
   const {
-    data = {},
+    data,
     range,
     onSetRange,
     apiDef,
     apis,
     onSelectChange,
-  } = useMetrics();
+  } = useDashboardMetrics();
 
   return (
     <>
@@ -52,12 +54,26 @@ export const Dashboard: React.FC = () => {
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <LatencyRequestChart data={data} range={range} />
+          <WidgetHeader title="Latency and Request" />
+          <LatencyRequestChart
+            data={data?.getChunkedAPIMetrics || []}
+            range={range}
+          />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <SuccessFailureChart data={data} range={range} />
+          <WidgetHeader title="Success and Failure" />
+          <SuccessFailureChart
+            data={data?.getChunkedAPIMetrics || []}
+            range={range}
+          />
+        </HugeWidget>
+      </WidgetRow>
+      <WidgetRow>
+        <HugeWidget>
+          <WidgetHeader title="Countries" />
+          <CountryChart data={data?.getCountryMetrics || []} />
         </HugeWidget>
       </WidgetRow>
     </>

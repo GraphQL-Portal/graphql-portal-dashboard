@@ -22,9 +22,13 @@ export type CountryMetric = {
   count?: number;
 };
 
-export type APIMetricsRefetch = {
-  apiDef: string | undefined;
-  chunks: Date[];
+export type FullApiMetric = {
+  getChunkedAPIMetrics: ApiMetric[];
+  getCountryMetrics: CountryMetric[];
+};
+
+export type CountryChart = {
+  data: CountryMetric[];
 };
 
 export type UseApiActivityHook = () => Pick<
@@ -36,4 +40,4 @@ export type UseApiActivityHook = () => Pick<
 
 export type ApiActivityList = Omit<ReturnType<UseApiActivityHook>, 'loading'>;
 
-export type ChartButton = { text: string; value: Scale };
+export type ChartButton = { text: string; value: Range };

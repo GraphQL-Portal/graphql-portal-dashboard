@@ -1,7 +1,14 @@
 import { useQuery, gql } from '@apollo/client';
+import { FullApiMetric, QueryHook } from '../../../types';
 
 export const QUERY_METRICS = gql`
-  query getChunkedAPIMetrics($chunks: [Timestamp], $filters: MetricFilter!) {
+  query getAPIMetrics(
+    $chunks: [Timestamp]
+    $filters: MetricFilter!
+    $startDate: Timestamp!
+    $endDate: Timestamp!
+    $limit: Int
+  ) {
     getChunkedAPIMetrics(chunks: $chunks, filters: $filters) {
       chunk
       count
@@ -9,29 +16,24 @@ export const QUERY_METRICS = gql`
       successes
       failures
     }
+    getCountryMetrics(
+      startDate: $startDate
+      endDate: $endDate
+      filters: $filters
+      limit: $limit
+    ) {
+      country
+      count
+    }
   }
 `;
 
-export const useMetricsQuery = (apiDef: string | undefined, chunks: Date[]) => {
-  const { data, loading, error } = useQuery(QUERY_METRICS, {
-    variables: {
-      chunks,
-      filters: {
-        apiDef,
-      },
-    },
-  });
+export const useMetricsQuery: QueryHook<FullApiMetric> = (options = {}) => {
+  const { data, loading, error } = useQuery(QUERY_METRICS, options);
 
   return {
-    data: data?.getChunkedAPIMetrics,
+    data: data || {},
     loading,
     error,
-    // refetch: (variables: APIMetricsRefetch) =>
-    //   refetch({
-    //     filters: {
-    //       apiDef,
-    //     },
-    //     chunks: variables.chunks,
-    //   }),
   };
 };

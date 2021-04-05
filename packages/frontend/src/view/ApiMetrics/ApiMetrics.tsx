@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useApiMetrics } from '../../presenter/Metrics';
+import { useApiActivityMetrics } from '../../presenter/Metrics';
 import {
   Header,
   HugeWidget,
@@ -23,7 +23,7 @@ import { useStyles } from './useStyles';
 
 export const ApiMetrics: React.FC = () => {
   const { widget } = useStyles();
-  const { data, range, onSetRange } = useApiMetrics();
+  const { data, range, onSetRange } = useApiActivityMetrics();
 
   return (
     <>
@@ -47,19 +47,25 @@ export const ApiMetrics: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title="Latency and Request" />
-          <LatencyRequestChart data={data} range={range} />
+          <LatencyRequestChart
+            data={data?.getChunkedAPIMetrics || []}
+            range={range}
+          />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title="Success and Failure" />
-          <SuccessFailureChart data={data} range={range} />
+          <SuccessFailureChart
+            data={data?.getChunkedAPIMetrics || []}
+            range={range}
+          />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title="Countries" />
-          <CountryChart />
+          <CountryChart data={data?.getCountryMetrics || []} />
         </HugeWidget>
       </WidgetRow>
     </>
