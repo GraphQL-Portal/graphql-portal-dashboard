@@ -9,22 +9,21 @@ import {
   WidgetRow,
   ButtonGroup,
   HeaderBackButton,
+  WidgetHeader,
 } from '../../ui';
 import { ROUTES } from '../../model/providers';
 import {
   CHART_BUTTONS,
   LatencyRequestChart,
   SuccessFailureChart,
+  CountryChart,
 } from '../MetricChart';
-import { Loading } from '../Loading';
 
 import { useStyles } from './useStyles';
 
 export const ApiMetrics: React.FC = () => {
   const { widget } = useStyles();
-  const { data, loading, range, onSetRange } = useApiMetrics();
-
-  if (loading) return <Loading />;
+  const { data, range, onSetRange } = useApiMetrics();
 
   return (
     <>
@@ -47,12 +46,20 @@ export const ApiMetrics: React.FC = () => {
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
+          <WidgetHeader title="Latency and Request" />
           <LatencyRequestChart data={data} range={range} />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
+          <WidgetHeader title="Success and Failure" />
           <SuccessFailureChart data={data} range={range} />
+        </HugeWidget>
+      </WidgetRow>
+      <WidgetRow>
+        <HugeWidget>
+          <WidgetHeader title="Countries" />
+          <CountryChart />
         </HugeWidget>
       </WidgetRow>
     </>

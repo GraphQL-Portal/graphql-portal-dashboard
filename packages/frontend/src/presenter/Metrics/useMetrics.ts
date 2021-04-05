@@ -2,7 +2,7 @@ import { useState, useMemo, ChangeEvent, ReactNode } from 'react';
 import { Range } from '../../types';
 import { useApiDefs } from '../../model/ApiDefs/queries';
 import { useMetricsQuery } from '../../model/Metrics/queries';
-import { getDateChunks } from '../../utils/getDateChunks';
+import { getDateChunks } from '../../utils';
 
 const ALL_APIS = 'All APIs';
 
@@ -25,7 +25,7 @@ export const useMetrics = () => {
     );
   }, [myApis]);
 
-  const { data, loading } = useMetricsQuery(
+  const { data } = useMetricsQuery(
     apiDef === ALL_APIS ? '' : apiDef,
     getDateChunks(range)
   );
@@ -46,7 +46,6 @@ export const useMetrics = () => {
 
   return {
     data,
-    loading,
     range,
     onSetRange,
     apis,

@@ -1,6 +1,7 @@
 export { compose } from './compose';
 export { formatString } from './formatString';
 export { formatTimestamp } from './formatTimestamp';
+export * from './getDateChunks';
 export { getKeyFromText } from './getKeyFromText';
 export { getPath } from './getPath';
 export { getProp } from './getProp';

@@ -17,11 +17,9 @@ export type ApiMetric = {
   latency?: number;
 };
 
-export type MetricsRefetch = {
-  apiDef: string | undefined;
-  startDate: Date;
-  endDate: Date;
-  scale: Scale;
+export type CountryMetric = {
+  country?: string;
+  count?: number;
 };
 
 export type APIMetricsRefetch = {

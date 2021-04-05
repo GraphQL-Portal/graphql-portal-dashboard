@@ -11,52 +11,79 @@ import {
 } from 'date-fns';
 import { Range } from '../types';
 
-export function getDateChunks(range: Range): Date[] {
-  let boundaries: Date[] = [];
+const TRANSFORMER = {
+  hour: addMinutes,
+  day: addHours,
+  week: addHours,
+  month: addDays,
+};
 
-  if (range) {
-    switch (range) {
-      case 'hour': {
-        const end = startOfMinute(new Date());
-        const start = subHours(end, 1);
-        boundaries = genRange(addMinutes, 5, start, end);
-        break;
-      }
-      case 'day': {
-        const end = startOfHour(new Date());
-        const start = subDays(end, 1);
-        boundaries = genRange(addHours, 1, start, end);
-        break;
-      }
-      case 'week': {
-        const end = startOfHour(new Date());
-        const start = subDays(end, 7);
-        boundaries = genRange(addHours, 6, start, end);
-        break;
-      }
-      case 'month': {
-        const end = endOfDay(new Date());
-        const start = subDays(end, 30);
-        boundaries = genRange(addDays, 1, start, end);
-        break;
-      }
-    }
-  }
+const INTERVAL = {
+  hour: 5,
+  day: 1,
+  week: 6,
+  month: 1,
+};
 
-  return boundaries;
+const DATES = {
+  hour() {
+    const endDate = startOfMinute(new Date());
+    return {
+      endDate,
+      startDate: subHours(endDate, 1),
+    };
+  },
+  day() {
+    const endDate = startOfHour(new Date());
+    return {
+      endDate,
+      startDate: subDays(endDate, 1),
+    };
+  },
+  week() {
+    const endDate = startOfHour(new Date());
+    return {
+      endDate,
+      startDate: subDays(endDate, 7),
+    };
+  },
+  month() {
+    const endDate = endOfDay(new Date());
+    return {
+      endDate,
+      startDate: subDays(endDate, 30),
+    };
+  },
+};
+
+export function getDateRange(range: Range) {
+  return DATES[range]();
 }
 
-function genRange(
-  addFN: Function,
-  interval: number,
-  start: Date,
-  end: Date
-): Date[] {
-  const result: Date[] = [start];
-  while (differenceInSeconds(start, end) < 0) {
-    start = addFN(start, interval);
-    result.push(start);
+function genRange({
+  transformer,
+  interval,
+  startDate,
+  endDate,
+}: {
+  transformer: Function;
+  interval: number;
+  startDate: Date;
+  endDate: Date;
+}): Date[] {
+  const result: Date[] = [startDate];
+  while (differenceInSeconds(startDate, endDate) < 0) {
+    startDate = transformer(startDate, interval);
+    result.push(startDate);
   }
 
   return result;
+}
+
+export function getDateChunks(range: Range): Date[] {
+  return genRange({
+    transformer: TRANSFORMER[range],
+    interval: INTERVAL[range],
+    ...getDateRange(range),
+  });
 }
