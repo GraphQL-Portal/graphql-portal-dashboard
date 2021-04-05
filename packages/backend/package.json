@@ -57,7 +57,7 @@
     "@graphql-portal/stripe": "0.1.0",
     "@graphql-portal/twitter": "0.2.0",
     "@graphql-portal/types": "0.21.0",
-    "@graphql-portal/weatherbit": "0.0.2",
+    "@graphql-portal/weatherbit": "0.1.0",
     "@maxmind/geoip2-node": "2.3.1",
     "@nestjs/common": "7.6.15",
     "@nestjs/core": "7.6.15",

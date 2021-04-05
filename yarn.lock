@@ -2708,12 +2708,12 @@
   dependencies:
     ajv "8.0.1"
 
-"@graphql-portal/weatherbit@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.0.2.tgz#cbc33ba2342024dd5e1ab05a6dfd1cc61a413899"
-  integrity sha512-Prua6xDCYVLi2T7O93uWzLCbUpN59NX09F+tCcnnMgY39MLOE5knyXstLgyVcSQFodHporZUFnI8ym3f65shaw==
+"@graphql-portal/weatherbit@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.1.0.tgz#ab4adc8641b720883ec132c1686fa8438074e550"
+  integrity sha512-vOuGhhic7nTzIG4m0xA7yDrPqO7CfQGa49ExqSUWrCkGhb9QVtS+Mr+lU5Dn+7EHe0Oz72QxS6l9ABzWdP3lqg==
   dependencies:
-    "@graphql-mesh/openapi" "^0.12.0"
+    "@graphql-mesh/openapi" "^0.14.0"
 
 "@graphql-tools/batch-delegate@^7.0.0":
   version "7.0.2"
