@@ -5572,15 +5572,7 @@ anymatch@^3.0.3, anymatch@~3.1.1:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apollo-cache-control@^0.11.6:
-  version "0.11.6"
-  resolved "https://registry.yarnpkg.com/apollo-cache-control/-/apollo-cache-control-0.11.6.tgz#f7bdf924272af47ac474cf3f3f35cfc038cc9485"
-  integrity sha512-YZ+uuIG+fPy+mkpBS2qKF0v1qlzZ3PW6xZVaDukeK3ed3iAs4L/2YnkTqau3OmoF/VPzX2FmSkocX/OVd59YSw==
-  dependencies:
-    apollo-server-env "^3.0.0"
-    apollo-server-plugin-base "^0.10.4"
-
-apollo-cache-control@^0.12.0:
+apollo-cache-control@0.12.0, apollo-cache-control@^0.11.6, apollo-cache-control@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/apollo-cache-control/-/apollo-cache-control-0.12.0.tgz#45aea0a232d0704e33c2b1a3c428a5500b29818c"
   integrity sha512-kClF5rfAm159Nboul1LxA+l58Tjz0M8L1GUknEMpZt0UHhILLAn3BfcG3ToX4TbNoR9M57kKMUcbPWLdy3Up7w==
