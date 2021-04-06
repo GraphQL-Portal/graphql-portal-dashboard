@@ -2471,7 +2471,7 @@
     "@graphql-mesh/openapi" "^0.15.0"
     "@graphql-mesh/types" "^0.38.0"
 
-"@graphql-portal/types@0.22.1", "@graphql-portal/types@^0.22.0", "@graphql-portal/types@^0.22.1":
+"@graphql-portal/types@0.22.1", "@graphql-portal/types@^0.22.0":
   version "0.22.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.22.1.tgz#c19907b279128c8772b293783739c13833af5c15"
   integrity sha512-HI7GywBD73VU/QONqMgwxsoUfptQOPcBDghXyMijwXkvqYJQIEWvwnrZgI6enmDSVa7u6On8QITAtu39MbP78Q==
@@ -2479,7 +2479,7 @@
     "@graphql-portal/datasources" "^0.1.0"
     ajv "8.0.5"
 
-"@graphql-portal/types@0.23.0":
+"@graphql-portal/types@0.23.0", "@graphql-portal/types@^0.23.0":
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.0.tgz#a9eba1f14b8a64c5329cd6019854442ad85963c5"
   integrity sha512-iPd/ef1DM0q7h7D8i58KpZqNbz9SeWT/YiXMypKmE8HaBD9/x37B2nJ6joZ4DyMSG/LESdhRi+bmO5xKDYrqRg==
