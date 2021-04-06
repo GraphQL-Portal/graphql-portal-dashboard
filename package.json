@@ -21,7 +21,7 @@
     "clear": "rm -rf node_modules && yarn frontend:clear && yarn backend:clear",
     "test": "yarn backend:test && yarn workspace graphql-portal-dashboard-frontend start & npx wait-on --timeout=240000 http://localhost:8080",
     "lint": "eslint \"./packages/**/*.ts\" --fix",
-    "prettier": "prettier --write \"./packages/**/*.{ts,tsx}\" --config .prettierrc",
+    "prettier": "prettier --write \"./packages/**/*.{ts,tsx}\" --config .prettierrc.json",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
@@ -49,32 +49,34 @@
       "eslint --fix"
     ],
     "*.{ts,tsx,graphql,yml,json}": [
-      "prettier --write --config .prettierrc"
+      "prettier --write --config .prettierrc.json"
     ]
   },
   "dependencies": {
     "concurrently": "6.0.0"
   },
   "devDependencies": {
-    "@changesets/cli": "2.14.1",
-    "@typescript-eslint/eslint-plugin": "4.19.0",
-    "@typescript-eslint/parser": "4.19.0",
+    "@changesets/cli": "2.15.0",
+    "@typescript-eslint/eslint-plugin": "4.20.0",
+    "@typescript-eslint/parser": "4.20.0",
     "eslint": "7.23.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-config-react-app": "6.0.0",
     "eslint-config-standard": "16.0.2",
     "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jest": "24.3.2",
+    "eslint-plugin-jest": "24.3.3",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.3.1",
     "eslint-plugin-testing-library": "3.10.2",
-    "husky": "5.2.0",
+    "husky": "6.0.0",
     "lint-staged": "10.5.4",
     "pinst": "2.1.6",
     "prettier": "2.2.1",
     "typescript": "4.2.3"
   },
   "resolutions": {
-    "**/mongodb": "3.6.5"
+    "**/mongodb": "3.6.5",
+    "**/xml-crypto": "2.1.1",
+    "apollo-cache-control": "0.12.0"
   }
 }

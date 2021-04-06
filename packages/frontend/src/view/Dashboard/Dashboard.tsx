@@ -32,6 +32,7 @@ export const Dashboard: React.FC = () => {
     setScale,
     selectApiDef,
     apis,
+    apiDef,
   } = useMetrics();
   const { latency = [], count = [], countries = [], failures = [] } = data;
 
@@ -69,6 +70,7 @@ export const Dashboard: React.FC = () => {
             options={apis}
             label="API"
             onChange={(e, { props }: any) => selectApiDef(props?.value)}
+            value={apiDef}
           />
         </Widget>
       </WidgetRow>

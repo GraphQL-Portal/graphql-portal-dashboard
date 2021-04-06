@@ -4,4 +4,7 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
   formRow: {
     marginBottom: spacing(2),
   },
+  tab: {
+    paddingTop: spacing(4),
+  },
 }));

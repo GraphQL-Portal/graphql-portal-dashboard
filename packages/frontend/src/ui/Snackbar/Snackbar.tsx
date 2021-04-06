@@ -4,6 +4,8 @@ import Alert from '@material-ui/lab/Alert';
 
 import { Snackbar as Props } from '../../types';
 import { useStyles } from './useStyles';
+import { ButtonIcon } from '../Buttons';
+import { Close } from '../../icons';
 
 export const Snackbar: React.FC<Props> = ({
   children,
@@ -12,11 +14,12 @@ export const Snackbar: React.FC<Props> = ({
   onClose,
 }) => {
   const { root, icon } = useStyles();
+  const isError = severity === 'error';
 
   return (
     <MuiSnackbar
       open={isVisible}
-      autoHideDuration={4000}
+      autoHideDuration={isError ? null : 4000}
       onClose={onClose}
       anchorOrigin={{
         vertical: 'bottom',
@@ -28,6 +31,13 @@ export const Snackbar: React.FC<Props> = ({
         onClick={onClose}
         classes={{ root, icon }}
         variant="filled"
+        action={
+          isError && (
+            <ButtonIcon>
+              <Close />
+            </ButtonIcon>
+          )
+        }
       >
         {children}
       </Alert>
