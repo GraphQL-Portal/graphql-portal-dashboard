@@ -2361,6 +2361,11 @@
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.0.tgz#ab249fb4915bdeef8ff3a72170ad6a8fa96e4d04"
   integrity sha512-yWGhgQWWu0AhYiyfATjQT+f9wBJY66G8p1Im6vUfx1VNBU7rskuws44Nr5D8deXl5jW3iACQLe61gpl9a7eXuw==
 
+"@graphql-portal/datasources@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.1.tgz#93e93b92286a74173fda827bf6185383d520dfa4"
+  integrity sha512-qvqOX8HDAne06LvBMUOtDgow3k7FbXvDIpvgNM9ns7z2PgeNobbKTZcpzYikZpY1pMwIE9KzSsgzX64UzCYBEA==
+
 "@graphql-portal/gateway@^0.17.4":
   version "0.17.4"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.17.4.tgz#1007c32e9cebc85e6d2a736a5b38b5870e2754f1"
@@ -2479,12 +2484,12 @@
     "@graphql-portal/datasources" "^0.1.0"
     ajv "8.0.5"
 
-"@graphql-portal/types@0.23.0", "@graphql-portal/types@^0.23.0":
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.0.tgz#a9eba1f14b8a64c5329cd6019854442ad85963c5"
-  integrity sha512-iPd/ef1DM0q7h7D8i58KpZqNbz9SeWT/YiXMypKmE8HaBD9/x37B2nJ6joZ4DyMSG/LESdhRi+bmO5xKDYrqRg==
+"@graphql-portal/types@0.23.1", "@graphql-portal/types@^0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.1.tgz#fe80a35997e9ee9de42af2fbbdc49ba7c849c901"
+  integrity sha512-2UEd3QEZqUAnv6L0+K5oBLSsqggW7IvTeLjJVIxu1Mjy6JZoOnUQdThOI+04DJRCc7iwLfjZlQeu8YfQ2rBEmw==
   dependencies:
-    "@graphql-portal/datasources" "^0.1.0"
+    "@graphql-portal/datasources" "^0.1.1"
     ajv "8.0.5"
 
 "@graphql-portal/weatherbit@^0.2.1":
