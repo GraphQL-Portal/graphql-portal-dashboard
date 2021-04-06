@@ -17,19 +17,21 @@ export default class LogService {
     latestTimestamp?: string,
     count = 20
   ): Promise<Log[]> {
-    const minScore = latestTimestamp ? +latestTimestamp + 1 : 0;
-    return (
-      await this.redis.zrangebyscore(
-        // import channel from graphql-portal
+    const maxScore = +new Date();
+    let keys: string[];
+
+    if (!latestTimestamp) {
+      keys = await this.redis.zrangebyscore('recent-logs', 0, maxScore);
+    } else {
+      keys = await this.redis.zrangebyscore(
         'recent-logs',
-        minScore,
-        +new Date(),
+        +latestTimestamp + 1,
+        maxScore,
         'LIMIT',
         0,
         count
-      )
-    )
-      .reverse()
-      .map((key) => JSON.parse(key));
+      );
+    }
+    return keys.reverse().map((key) => JSON.parse(key));
   }
 }
