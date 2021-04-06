@@ -30,6 +30,8 @@ export const Dashboard: React.FC = () => {
     onSelectChange,
   } = useDashboardMetrics();
 
+  const { getChunkedAPIMetrics, getCountryMetrics } = data || {};
+
   return (
     <>
       <Helmet>
@@ -38,7 +40,11 @@ export const Dashboard: React.FC = () => {
       <Header title="Dashboard" />
       <WidgetRow>
         <Widget className={widget}>
-          <ButtonGroup onClick={onSetRange} buttons={CHART_BUTTONS} />
+          <ButtonGroup
+            onClick={onSetRange}
+            buttons={CHART_BUTTONS}
+            active={range}
+          />
         </Widget>
         <Widget className={widget}>
           <Select
@@ -56,7 +62,7 @@ export const Dashboard: React.FC = () => {
         <HugeWidget>
           <WidgetHeader title="Latency and Request" />
           <LatencyRequestChart
-            data={data?.getChunkedAPIMetrics || []}
+            data={getChunkedAPIMetrics || []}
             range={range}
           />
         </HugeWidget>
@@ -65,17 +71,19 @@ export const Dashboard: React.FC = () => {
         <HugeWidget>
           <WidgetHeader title="Success and Failure" />
           <SuccessFailureChart
-            data={data?.getChunkedAPIMetrics || []}
+            data={getChunkedAPIMetrics || []}
             range={range}
           />
         </HugeWidget>
       </WidgetRow>
-      <WidgetRow>
-        <HugeWidget>
-          <WidgetHeader title="Countries" />
-          <CountryChart data={data?.getCountryMetrics || []} />
-        </HugeWidget>
-      </WidgetRow>
+      {getCountryMetrics?.length > 0 && (
+        <WidgetRow>
+          <HugeWidget>
+            <WidgetHeader title="Countries" />
+            <CountryChart data={getCountryMetrics} />
+          </HugeWidget>
+        </WidgetRow>
+      )}
     </>
   );
 };
