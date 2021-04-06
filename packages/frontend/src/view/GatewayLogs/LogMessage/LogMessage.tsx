@@ -7,15 +7,19 @@ export const LogMessage: React.FC<{ message: string }> = ({ message }) => {
   const [isUnclickableArrowIcon, setIsUnclickableArrowIcon] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const messageRef = useRef<HTMLSpanElement>();
+
   useEffect(() => {
-    setIsUnclickableArrowIcon(
-      (messageRef.current?.offsetWidth || 0) <
-        (messageRef.current?.parentElement?.clientWidth || 0)
-    );
-  }, [messageRef]);
+    const messageWidth = messageRef?.current?.offsetWidth
+      ? messageRef.current?.offsetWidth + 10
+      : 0;
+    const parentWidth = messageRef?.current?.parentElement?.clientWidth || 0;
+    const isUnclickable = messageWidth < parentWidth;
+    if (isUnclickable) setIsOpen(false);
+    setIsUnclickableArrowIcon(isUnclickable);
+  }, [messageRef, message]);
 
   return (
-    <span ref={(span) => (messageRef.current = span || undefined)}>
+    <span ref={messageRef as React.LegacyRef<HTMLSpanElement>}>
       <span
         className={`${arrowIcon} ${
           isUnclickableArrowIcon && unclickableArrowIcon
