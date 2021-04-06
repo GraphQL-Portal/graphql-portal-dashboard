@@ -28,7 +28,28 @@ describe('LogService', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('getLatestLogs', () => {
-    it('should parse and return latest logs', async () => {
+    it('should parse and return first 100 logs', async () => {
+      const redisZRangeMock = jest
+        .spyOn((logService as any).redis, 'zrangebyscore')
+        .mockResolvedValue(
+          Array.from({ length: 5 }, () => JSON.stringify(log))
+        );
+
+      const result = await logService.getLatestLogs();
+
+      expect(redisZRangeMock).toHaveBeenCalledTimes(1);
+      expect(redisZRangeMock).toHaveBeenCalledWith(
+        'recent-logs',
+        0,
+        expect.any(Number),
+        'LIMIT',
+        0,
+        100
+      );
+      expect(result).toStrictEqual(Array.from({ length: 5 }, () => log));
+    });
+
+    it('should parse and return latest 20 logs', async () => {
       const redisZRangeMock = jest
         .spyOn((logService as any).redis, 'zrangebyscore')
         .mockResolvedValue(
@@ -36,12 +57,13 @@ describe('LogService', () => {
         );
 
       const count = 10;
-      const result = await logService.getLatestLogs(undefined, count);
+      const timestamp = '1';
+      const result = await logService.getLatestLogs(timestamp, count);
 
       expect(redisZRangeMock).toHaveBeenCalledTimes(1);
       expect(redisZRangeMock).toHaveBeenCalledWith(
         'recent-logs',
-        0,
+        +timestamp + 1,
         expect.any(Number),
         'LIMIT',
         0,

@@ -18,20 +18,20 @@ export default class LogService {
     count = 20
   ): Promise<Log[]> {
     const maxScore = +new Date();
-    let keys: string[];
+    const minScore = latestTimestamp ? +latestTimestamp + 1 : 0;
+    count = latestTimestamp ? count : 100;
 
-    if (!latestTimestamp) {
-      keys = await this.redis.zrangebyscore('recent-logs', 0, maxScore);
-    } else {
-      keys = await this.redis.zrangebyscore(
+    return (
+      await this.redis.zrangebyscore(
         'recent-logs',
-        +latestTimestamp + 1,
+        minScore,
         maxScore,
         'LIMIT',
         0,
         count
-      );
-    }
-    return keys.reverse().map((key) => JSON.parse(key));
+      )
+    )
+      .reverse()
+      .map((key) => JSON.parse(key));
   }
 }
