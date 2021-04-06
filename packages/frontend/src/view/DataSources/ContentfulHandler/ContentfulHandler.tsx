@@ -30,8 +30,32 @@ export const ContentfulHandler: React.FC<HandlerStep> = (props) => {
           <Controller
             as={Input}
             control={control}
-            label="URL of an existing Contentful endpoint"
+            label="Your space ID"
             required
+            name="space"
+            error={hasErrors('space')}
+            fullWidth
+          />
+        </HandlerCol>
+      </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <Controller
+            as={Input}
+            control={control}
+            label="Your environment ID (default to master)"
+            name="environment"
+            error={hasErrors('environment')}
+            fullWidth
+          />
+        </HandlerCol>
+      </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <Controller
+            as={Input}
+            control={control}
+            label="URL of an existing Contentful endpoint"
             name="endpoint"
             error={hasErrors('endpoint')}
             fullWidth
