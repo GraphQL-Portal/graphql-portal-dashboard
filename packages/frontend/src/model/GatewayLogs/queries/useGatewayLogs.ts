@@ -2,8 +2,8 @@ import { useQuery, gql } from '@apollo/client';
 import { Log, QueryHook } from '../../../types';
 
 export const QUERY_LOGS = gql`
-  {
-    getLatestLogs {
+  query getLatestLogs($latestTimestamp: String) {
+    getLatestLogs(latestTimestamp: $latestTimestamp) {
       nodeId
       hostname
       prefix

@@ -3,7 +3,7 @@ export interface Log {
   hostname: string;
   prefix: string;
   message: string;
-  level: 'error' | 'info';
+  level: LogLevel;
   timestamp: string;
 }
 
@@ -11,3 +11,10 @@ export type UseGatewayLogsPresenter = () => {
   loading: boolean;
   data: Log[];
 };
+
+export enum LogLevel {
+  info,
+  error,
+  debug,
+  warn,
+}
