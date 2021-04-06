@@ -2546,6 +2546,11 @@
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.0.3.tgz#0cdba5a63a49421bf73f69157e5377278d7f1b0b"
   integrity sha512-PuCyUmi3wBZ0Bmra3/7KW6mwZEYgCf9lbkFr3EzG4xM24uwtbxvpkCa2OZSy+Jkc+FbKhBEbRX4tz0whLyZU0w==
 
+"@graphql-portal/datasources@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.0.tgz#ab249fb4915bdeef8ff3a72170ad6a8fa96e4d04"
+  integrity sha512-yWGhgQWWu0AhYiyfATjQT+f9wBJY66G8p1Im6vUfx1VNBU7rskuws44Nr5D8deXl5jW3iACQLe61gpl9a7eXuw==
+
 "@graphql-portal/gateway@0.17.1":
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.17.1.tgz#af60566cb5d31fbb4c020bdd77a61f48d1b18927"
@@ -2662,6 +2667,14 @@
   integrity sha512-xNT1fd8hSPHQ+oA7MBRQ/4Poe/kwGK2N507WG88Zp1wH34DiCko3ilRLjuhfP2ztuH6WL3r8XKCEo4z4/elfcA==
   dependencies:
     ajv "7.2.1"
+
+"@graphql-portal/types@0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.0.tgz#a9eba1f14b8a64c5329cd6019854442ad85963c5"
+  integrity sha512-iPd/ef1DM0q7h7D8i58KpZqNbz9SeWT/YiXMypKmE8HaBD9/x37B2nJ6joZ4DyMSG/LESdhRi+bmO5xKDYrqRg==
+  dependencies:
+    "@graphql-portal/datasources" "^0.1.0"
+    ajv "8.0.5"
 
 "@graphql-portal/weatherbit@0.0.2":
   version "0.0.2"
@@ -5396,6 +5409,16 @@ ajv@7.2.4:
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.2.4.tgz#8e239d4d56cf884bccca8cca362f508446dc160f"
   integrity sha512-nBeQgg/ZZA3u3SYxyaDvpvDtgZ/EZPF547ARgZBrG9Bhu1vKDwAIjtIf+sDtJUKa2zOcEbmRLBRSyMraS/Oy1A==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
+    uri-js "^4.2.2"
+
+ajv@8.0.5:
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.0.5.tgz#f07d6fdeffcdbb80485570ce3f1bc845fcc812b9"
+  integrity sha512-RkiLa/AeJx7+9OvniQ/qeWu0w74A8DiPPBclQ6ji3ZQkv5KamO+QGpqmi7O4JIw3rHGUXZ6CoP9tsAkn3gyazg==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"

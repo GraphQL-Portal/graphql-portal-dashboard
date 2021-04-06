@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { Channel } from '@graphql-portal/types';
 import { Redis } from 'ioredis';
 import Provider from '../../common/enum/provider.enum';
 import { Log } from './interfaces/log.interface';
@@ -23,7 +24,7 @@ export default class LogService {
 
     return (
       await this.redis.zrangebyscore(
-        'recent-logs',
+        Channel.recentLogs,
         minScore,
         maxScore,
         'LIMIT',

@@ -1,3 +1,4 @@
+import { Channel } from '@graphql-portal/types';
 import { Test, TestingModule } from '@nestjs/testing';
 import AppModule from '../../modules/app.module';
 import LogService from '../../modules/log/log.service';
@@ -39,7 +40,7 @@ describe('LogService', () => {
 
       expect(redisZRangeMock).toHaveBeenCalledTimes(1);
       expect(redisZRangeMock).toHaveBeenCalledWith(
-        'recent-logs',
+        Channel.recentLogs,
         0,
         expect.any(Number),
         'LIMIT',
@@ -62,7 +63,7 @@ describe('LogService', () => {
 
       expect(redisZRangeMock).toHaveBeenCalledTimes(1);
       expect(redisZRangeMock).toHaveBeenCalledWith(
-        'recent-logs',
+        Channel.recentLogs,
         +timestamp + 1,
         expect.any(Number),
         'LIMIT',
