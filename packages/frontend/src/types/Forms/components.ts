@@ -1,5 +1,9 @@
 import { ReactNode } from 'react';
-import { SwitchProps, SelectProps } from '@material-ui/core';
+import {
+  SwitchProps,
+  SelectProps,
+  OutlinedInputProps,
+} from '@material-ui/core';
 import {
   FieldArray,
   FieldArrayAppend,
@@ -46,4 +50,8 @@ export type Select = SelectProps & {
   options: Option[];
   fullWidth?: boolean;
   labelClassName?: string;
+};
+
+export type PasswordInput = OutlinedInputProps & {
+  label: React.ReactNode;
 };

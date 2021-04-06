@@ -9,6 +9,7 @@ import {
   Row,
   Col,
   Input,
+  PasswordInput,
   PrimaryButton,
   Widget,
   WidgetBody,
@@ -50,14 +51,14 @@ export const Login: React.FC = () => {
                     name="email"
                     error={!!errors?.email}
                   />
-                  <Input
+                  <PasswordInput
                     ref={register}
                     className={formField}
                     fullWidth
                     label="Your Password"
                     name="password"
-                    type="password"
                     error={!!errors?.password}
+                    labelWidth={115}
                   />
                 </WidgetBody>
                 <WidgetActions>

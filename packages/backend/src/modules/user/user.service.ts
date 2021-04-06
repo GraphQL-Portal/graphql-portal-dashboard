@@ -145,11 +145,13 @@ export default class UserService {
     const toCreate = await this.userModel.findOne({ email });
 
     if (!toCreate) {
-      await this.userModel.create({
+      const created = await this.userModel.create({
         email,
         password,
         role: Roles.ADMIN,
       });
+      created.setPassword(password);
+      await created.save();
     }
   }
 

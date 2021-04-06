@@ -3,3 +3,4 @@ export * from './useUnblockUser';
 export * from './useDeleteUser';
 export * from './useCreateUser';
 export * from './useUpdateUser';
+export { useChangePassword } from './useChangePassword';

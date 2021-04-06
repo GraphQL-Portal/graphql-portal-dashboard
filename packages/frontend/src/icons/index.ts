@@ -27,5 +27,6 @@ export {
   Sync,
   VerticalSplit,
   Visibility,
+  VisibilityOff,
 } from '@material-ui/icons';
 export { LogoFull } from './LogoFull';
