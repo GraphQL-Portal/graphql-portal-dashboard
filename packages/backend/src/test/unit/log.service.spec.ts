@@ -1,3 +1,4 @@
+import { Channel } from '@graphql-portal/types';
 import { Test, TestingModule } from '@nestjs/testing';
 import AppModule from '../../modules/app.module';
 import LogService from '../../modules/log/log.service';
@@ -9,6 +10,10 @@ jest.mock('ioredis');
 describe('LogService', () => {
   let app: TestingModule;
   let logService: LogService;
+
+  const log = {
+    nodeId: 1,
+  };
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
@@ -24,30 +29,48 @@ describe('LogService', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('getLatestLogs', () => {
-    it('should parse and return latest logs', async () => {
-      const keys = [0, 1];
-      const logs = [
-        {
-          nodeId: 1,
-          timestamp: 1,
-        },
-        {
-          nodeId: 1,
-          timestamp: 2,
-        },
-      ];
-      const redisKeysMock = jest
-        .spyOn((logService as any).redis, 'keys')
-        .mockResolvedValue(keys);
-      const redisGetMock = jest
-        .spyOn((logService as any).redis, 'get')
-        .mockImplementation((key: number) => JSON.stringify(logs[key]));
+    it('should parse and return first 100 logs', async () => {
+      const redisZRangeMock = jest
+        .spyOn((logService as any).redis, 'zrangebyscore')
+        .mockResolvedValue(
+          Array.from({ length: 5 }, () => JSON.stringify(log))
+        );
+
       const result = await logService.getLatestLogs();
 
-      expect(redisKeysMock).toHaveBeenCalledTimes(1);
-      expect(redisKeysMock).toHaveBeenCalledWith('logs:*');
-      expect(redisGetMock).toHaveBeenCalledTimes(keys.length);
-      expect(result).toStrictEqual(logs);
+      expect(redisZRangeMock).toHaveBeenCalledTimes(1);
+      expect(redisZRangeMock).toHaveBeenCalledWith(
+        Channel.recentLogs,
+        0,
+        expect.any(Number),
+        'LIMIT',
+        0,
+        100
+      );
+      expect(result).toStrictEqual(Array.from({ length: 5 }, () => log));
+    });
+
+    it('should parse and return latest 20 logs', async () => {
+      const redisZRangeMock = jest
+        .spyOn((logService as any).redis, 'zrangebyscore')
+        .mockResolvedValue(
+          Array.from({ length: 5 }, () => JSON.stringify(log))
+        );
+
+      const count = 10;
+      const timestamp = '1';
+      const result = await logService.getLatestLogs(timestamp, count);
+
+      expect(redisZRangeMock).toHaveBeenCalledTimes(1);
+      expect(redisZRangeMock).toHaveBeenCalledWith(
+        Channel.recentLogs,
+        +timestamp + 1,
+        expect.any(Number),
+        'LIMIT',
+        0,
+        count
+      );
+      expect(result).toStrictEqual(Array.from({ length: 5 }, () => log));
     });
   });
 });

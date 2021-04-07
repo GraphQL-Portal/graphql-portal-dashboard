@@ -8,7 +8,7 @@ type Log {
 }
 
 type Query {
-  getLatestLogs: [Log]
+  getLatestLogs(latestTimestamp: String): [Log]
 }
 
 type Subscription {
