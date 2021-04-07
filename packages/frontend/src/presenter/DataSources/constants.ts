@@ -76,6 +76,16 @@ export const INITIAL_STATE = {
 
 export const HANDLERS_LABELS: { [key: string]: string } = {
   OpenapiHandler: 'OpenAPI',
+  MongooseHandler: 'MongoDB',
+  GrpcHandler: 'gRPC',
+  PostGraphileHandler: 'PostgreSQL',
+};
+
+export const HANDLERS_DESCRIPTIONS: { [key: string]: string } = {
+  FhirHandler:
+    'FHIR (Fast Healthcare Interoperability Resources) Protocol handler',
+  MySQLHandler: 'Handler for MySQL databases',
+  MongooseHandler: 'Handler for MongoDB database (based on Mongoose)',
 };
 
 export const TRANSFORMS_LABELS: { [key: string]: string } = {

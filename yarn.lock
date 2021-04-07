@@ -2198,11 +2198,6 @@
     "@graphql-portal/types" "^0.23.0"
     axios "^0.21.1"
 
-"@graphql-portal/datasources@^0.1.0", "@graphql-portal/datasources@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.1.tgz#93e93b92286a74173fda827bf6185383d520dfa4"
-  integrity sha512-qvqOX8HDAne06LvBMUOtDgow3k7FbXvDIpvgNM9ns7z2PgeNobbKTZcpzYikZpY1pMwIE9KzSsgzX64UzCYBEA==
-
 "@graphql-portal/datasources@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.1.tgz#93e93b92286a74173fda827bf6185383d520dfa4"
@@ -2319,14 +2314,6 @@
     "@graphql-mesh/types" "^0.38.0"
 
 "@graphql-portal/types@0.23.1", "@graphql-portal/types@^0.23.0", "@graphql-portal/types@^0.23.1":
-  version "0.23.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.1.tgz#fe80a35997e9ee9de42af2fbbdc49ba7c849c901"
-  integrity sha512-2UEd3QEZqUAnv6L0+K5oBLSsqggW7IvTeLjJVIxu1Mjy6JZoOnUQdThOI+04DJRCc7iwLfjZlQeu8YfQ2rBEmw==
-  dependencies:
-    "@graphql-portal/datasources" "^0.1.1"
-    ajv "8.0.5"
-
-"@graphql-portal/types@0.23.1", "@graphql-portal/types@^0.23.1":
   version "0.23.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.1.tgz#fe80a35997e9ee9de42af2fbbdc49ba7c849c901"
   integrity sha512-2UEd3QEZqUAnv6L0+K5oBLSsqggW7IvTeLjJVIxu1Mjy6JZoOnUQdThOI+04DJRCc7iwLfjZlQeu8YfQ2rBEmw==
