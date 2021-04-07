@@ -16,7 +16,10 @@ import {
 } from '../../utils';
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useToast } from '../../model/providers';
-import { createMeshPayload, createMeshDefaultValues } from './helpers';
+import {
+  createAdditionalResolversPayload,
+  createAdditionalResolversDefaultValues,
+} from './helpers';
 
 const createName = (idx: number, key: string) =>
   `mesh.additionalResolvers[${idx}].${key}`;
@@ -59,7 +62,7 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
   const defaultValues = Object.assign(
     {},
     ADDITIONAL_RESOLVER_DEFAULT_VALUE,
-    createMeshDefaultValues(mesh)
+    createAdditionalResolversDefaultValues(mesh)
   );
 
   const {
@@ -94,7 +97,7 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
   });
 
   const onSubmit = (data: AdditionalResolverForm) => {
-    const mesh = createMeshPayload(data);
+    const mesh = createAdditionalResolversPayload(data);
 
     updateApiDef({
       variables: {
