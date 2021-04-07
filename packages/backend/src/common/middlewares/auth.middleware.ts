@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction } from 'express';
 import { config } from 'node-config-ts';
-import { IUserDocument } from 'src/data/schema/user.schema';
+import { IUserDocument } from '../../data/schema/user.schema';
 import UserService from '../../modules/user/user.service';
 import Metadata from '../enum/metadata.enum';
 import Roles from '../enum/roles.enum';
