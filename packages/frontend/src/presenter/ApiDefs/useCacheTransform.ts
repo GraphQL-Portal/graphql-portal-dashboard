@@ -1,33 +1,48 @@
 import { vestResolver } from '@hookform/resolvers/vest';
 import { useFieldArray, useForm } from 'react-hook-form';
-import vest, { enforce, test } from 'vest';
+import vest, { test, enforce } from 'vest';
+
 import { useUpdateApiDef } from '../../model/ApiDefs/commands';
 import { useToast } from '../../model/providers';
 import { AError, CacheTransformForm, UseCacheHook } from '../../types';
-import { getObjProp, getProp, isEqual, objectKeys } from '../../utils';
+import {
+  getObjProp,
+  getProp,
+  isEqual,
+  isZeroLength,
+  objectKeys,
+} from '../../utils';
 
-const createName = (idx: number, key: string) =>
-  `mesh.transforms[${idx}].${key}`;
-const isField = isEqual('requiredField');
+const createName = (idx: number, key: string) => `cache[${idx}].${key}`;
+const isField = isEqual('field');
 
-const suite = vest.create('edit_cache', (caches: CacheTransformForm = []) => {
-  caches.forEach((cache, idx: number) => {
-    const getFromResolver = getObjProp(cache);
-    objectKeys(cache).forEach((key: string) => {
-      if (isField(key)) {
-        test(createName(idx, key), `${key} is required`, () => {
-          enforce(getFromResolver(key)).isNotEmpty();
-        });
-      }
+const suite = vest.create('edit_cache', ({ cache }: CacheTransformForm) => {
+  if (!!cache && !isZeroLength(cache)) {
+    cache.forEach((cacheItem, idx: number) => {
+      const getFromItem = getObjProp(cacheItem);
+      objectKeys(cacheItem).forEach((key: string) => {
+        if (isField(key)) {
+          test(createName(idx, key), `${key} is required`, () => {
+            enforce(getFromItem(key)).isNotEmpty();
+          });
+        }
+      });
     });
-  });
+  }
 });
 
 export const useCacheTransform: UseCacheHook = ({ api, refetch }) => {
   const { showErrorToast, showSuccessToast } = useToast();
   const { _id: id, enabled, mesh, sources, name, endpoint, playground } = api;
 
-  const defaultValues = mesh?.transforms || [];
+  const caches = mesh?.transforms
+    ?.filter((t) => Object.keys(t)[0] === 'cache')
+    .map((t) => [...t.cache!])
+    ?.flat(3);
+
+  const defaultValues: CacheTransformForm = {
+    cache: JSON.parse(JSON.stringify(caches || [])),
+  };
 
   const {
     register,
@@ -52,28 +67,31 @@ export const useCacheTransform: UseCacheHook = ({ api, refetch }) => {
   });
 
   const {
-    fields: transforms,
-    append: onAddTransform,
-    remove: onRemoveTransform,
+    fields: cache,
+    append: onAddCache,
+    remove: onRemoveCache,
   } = useFieldArray({
     control,
-    name: 'mesh.transforms',
+    name: 'cache',
   });
 
-  const onSubmit = (data: CacheTransformForm) => {
+  const onSubmit = ({ cache }: CacheTransformForm) => {
+    const nextCache = cache?.map((cache) => {
+      const resultCache = { ...cache };
+      if (cache.invalidate?.ttl) {
+        resultCache.invalidate!.ttl = +cache.invalidate.ttl;
+      }
+      return resultCache;
+    });
     const nextMesh = {
       ...mesh,
-      transforms: [
-        {
-          cache: data.mesh.transforms[0].cache.map((cache) => {
-            const resultCache = { ...cache };
-            if (cache.invalidate?.ttl) {
-              resultCache.invalidate!.ttl = +cache.invalidate.ttl;
-            }
-            return resultCache;
-          }),
-        },
-      ],
+      transforms: nextCache
+        ? [
+            {
+              cache: nextCache,
+            },
+          ]
+        : [],
     };
 
     updateApiDef({
@@ -95,9 +113,9 @@ export const useCacheTransform: UseCacheHook = ({ api, refetch }) => {
     onSubmit: handleSubmit(onSubmit),
     register,
     errors,
-    transforms,
-    onAddTransform,
-    onRemoveTransform,
+    cache,
+    onAddCache,
+    onRemoveCache,
     control,
   };
 };

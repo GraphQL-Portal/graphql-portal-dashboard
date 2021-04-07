@@ -22,6 +22,9 @@ export const ObjectArray: React.FC<Props> = ({
 
   const lastObjectField = clsx(objectField, lastField);
 
+  if (!keyLabel) keyLabel = 'key';
+  if (!valueLabel) valueLabel = 'key';
+
   return (
     <>
       <AddFieldArrayHeader title={title} onAddClick={onAdd} />
@@ -31,21 +34,21 @@ export const ObjectArray: React.FC<Props> = ({
             <Col xs={5} className={objectField}>
               <Input
                 ref={register()}
-                label={keyLabel || 'key'}
-                name={`${name}[${idx}].key`}
+                label={keyLabel}
+                name={`${name}[${idx}].${keyLabel}`}
                 fullWidth
-                defaultValue={field.key || undefined}
-                error={!!errors?.[name]?.[idx]?.key}
+                defaultValue={(field as any)[keyLabel!] || undefined}
+                error={!!errors?.[name]?.[idx]?.[keyLabel!]}
               />
             </Col>
             <Col xs={5} className={objectField}>
               <Input
                 ref={register()}
-                label={valueLabel || 'value'}
-                name={`${name}[${idx}].value`}
+                label={valueLabel}
+                name={`${name}[${idx}].${valueLabel}`}
                 fullWidth
-                defaultValue={field.value || undefined}
-                error={!!errors?.[name]?.[idx]?.value}
+                defaultValue={(field as any)[valueLabel!] || undefined}
+                error={!!errors?.[name]?.[idx]?.[valueLabel!]}
               />
             </Col>
             <Col xs={2} className={lastObjectField}>

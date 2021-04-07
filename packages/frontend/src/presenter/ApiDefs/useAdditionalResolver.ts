@@ -97,7 +97,7 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
   });
 
   const onSubmit = (data: AdditionalResolverForm) => {
-    const mesh = createAdditionalResolversPayload(data);
+    const nextMesh = createAdditionalResolversPayload(data, mesh);
 
     updateApiDef({
       variables: {
@@ -106,7 +106,7 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
           name,
           endpoint,
           playground,
-          mesh,
+          mesh: nextMesh,
         },
         sources: sources.map(getProp('_id')),
         enabled,

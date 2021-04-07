@@ -1,6 +1,7 @@
 import { AdditionalResolver, ApiAuth, ApiDef } from './data';
 import { FieldArray, FormMethods } from '../HookForm';
 import { ObjectArrayItem, StringArray } from '../Forms';
+import { CacheTransformConfig } from '@graphql-portal/types';
 
 export type ApiAuthFields = ApiAuth<StringArray>;
 
@@ -24,13 +25,18 @@ export type ApiDefForm = Omit<
 export type ApiDefFormMethods = FormMethods<ApiDefForm>;
 
 type FormAdditionalResolver = Omit<AdditionalResolver, 'args'> & {
-  args: FieldArray<ObjectArrayItem> | undefined;
+  args?: FieldArray<ObjectArrayItem>;
 };
 
 export type AdditionalResolverForm = {
   mesh: {
-    additionalResolvers: FormAdditionalResolver[] | undefined;
-    additionalTypeDefs: string[] | undefined;
+    additionalResolvers?: FormAdditionalResolver[];
+    additionalTypeDefs?: string[];
   };
 };
 export type AdditionalResolverFormMethods = FormMethods<AdditionalResolverForm>;
+
+export type CacheTransformForm = {
+  cache: CacheTransformConfig[];
+};
+export type CacheTransformFormMethods = FormMethods<CacheTransformForm>;
