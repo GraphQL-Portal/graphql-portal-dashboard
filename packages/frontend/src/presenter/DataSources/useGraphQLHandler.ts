@@ -15,7 +15,6 @@ const GRAPHQL_DEFAULT_STATE = {
   operationHeaders: [],
   useGETForQueries: false,
   useSSEForSubscription: false,
-  cacheIntrospection: false,
   multipart: false,
 };
 
