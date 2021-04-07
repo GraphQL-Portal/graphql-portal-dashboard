@@ -31,7 +31,6 @@ export const formatHandlerDescription = (
 ): string => HANDLERS_DESCRIPTIONS[title] ?? description;
 
 export const formatHandlerType: (handler: DataSource) => string = compose(
-  formatHandlerTitle,
   getProp('title'),
   getObjPropOr(AVAILABLE_HANDLERS, {}),
   getHandlerKey
