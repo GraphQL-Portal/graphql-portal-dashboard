@@ -40,16 +40,9 @@ export default class MetricResolver {
   @Roles([RolesEnum.USER])
   public getCountryMetrics(
     @AuthorizationParam('_id') user: string,
-    @Args('startDate') startDate: Date,
-    @Args('endDate') endDate: Date,
-    @Args('filters') filters: IMetricFilter,
+    @Args('filters') filters: IAggregateFilters,
     @Args('limit') limit?: number
   ): Promise<ICountryMetric[]> {
-    return this.metricService.getCountryMetrics(
-      startDate,
-      endDate,
-      { ...filters, user },
-      limit
-    );
+    return this.metricService.getCountryMetrics({ ...filters, user }, limit);
   }
 }

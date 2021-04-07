@@ -346,20 +346,14 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
    * Results are sorted by DESC and are not limited by default.
    */
   public async getCountryMetrics(
-    startDate: Date,
-    endDate: Date,
-    filters: IMetricFilter,
+    filters: IAggregateFilters,
     limit?: number
   ): Promise<ICountryMetric[]> {
     const query: unknown[] = [
       {
         $match: {
           $and: [
-            this.makeMatchFromFilters({
-              ...filters,
-              startDate,
-              endDate,
-            }),
+            this.makeMatchFromFilters(filters),
             { 'geo.country': { $ne: null } },
           ],
         },

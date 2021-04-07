@@ -5,8 +5,7 @@ export const QUERY_METRICS = gql`
   query getAPIMetrics(
     $chunks: [Timestamp]
     $filters: MetricFilter!
-    $startDate: Timestamp!
-    $endDate: Timestamp!
+    $countryFilters: MetricAggregateFilters!
     $limit: Int
   ) {
     getChunkedAPIMetrics(chunks: $chunks, filters: $filters) {
@@ -16,12 +15,7 @@ export const QUERY_METRICS = gql`
       successes
       failures
     }
-    getCountryMetrics(
-      startDate: $startDate
-      endDate: $endDate
-      filters: $filters
-      limit: $limit
-    ) {
+    getCountryMetrics(filters: $countryFilters, limit: $limit) {
       country
       count
     }

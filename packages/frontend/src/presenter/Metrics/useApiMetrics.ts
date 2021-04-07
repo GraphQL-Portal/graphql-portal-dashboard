@@ -4,6 +4,8 @@ import { Range } from '../../types';
 import { useMetricsQuery } from '../../model/Metrics/queries';
 import { getDateChunks, getDateRange } from '../../utils';
 
+const COUNTRIES_LIMIT = 10;
+
 export const useApiMetrics = (apiDef: string) => {
   const [range, setRange] = useState<Range>('hour');
   const { startDate, endDate } = useMemo(() => {
@@ -16,9 +18,12 @@ export const useApiMetrics = (apiDef: string) => {
       filters: {
         apiDef,
       },
-      startDate,
-      endDate,
-      limit: 10,
+      countryFilters: {
+        startDate,
+        endDate,
+        apiDef,
+      },
+      limit: COUNTRIES_LIMIT,
     },
   });
 

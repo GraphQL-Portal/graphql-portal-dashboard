@@ -21,7 +21,7 @@ type ApiActivity {
   count: Int
 }
 
-input MetricFilters {
+input MetricAggregateFilters {
   startDate: Timestamp!
   endDate: Timestamp!
   sourceId: ID
@@ -36,8 +36,7 @@ input MetricFilter {
 }
 
 type Query {
-  # TODO: move start/end date out of filters
-  getApiActivity(filters: MetricFilters!): [ApiActivity]
+  getApiActivity(filters: MetricAggregateFilters!): [ApiActivity]
   getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): [APIMetric]
-  getCountryMetrics(startDate: Timestamp!, endDate: Timestamp!, filters: MetricFilter!, limit: Int): [CountryMetric]
+  getCountryMetrics(filters: MetricAggregateFilters!, limit: Int): [CountryMetric]
 }

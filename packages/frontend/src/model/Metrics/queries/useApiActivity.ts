@@ -2,7 +2,7 @@ import { useQuery, gql } from '@apollo/client';
 import { ApiMetric, QueryHook } from '../../../types';
 
 export const QUERY_API_ACTIVITY = gql`
-  query getApiActivity($filters: MetricFilters!) {
+  query getApiActivity($filters: MetricAggregateFilters!) {
     getApiActivity(filters: $filters) {
       count
       failed
