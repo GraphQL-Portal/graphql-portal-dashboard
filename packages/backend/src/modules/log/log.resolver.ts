@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Query, Resolver, Args } from '@nestjs/graphql';
 import { Roles } from '../../common/decorators';
 import RolesEnum from '../../common/enum/roles.enum';
 import { Log } from './interfaces/log.interface';
@@ -10,7 +10,9 @@ export default class LogResolver {
 
   @Query()
   @Roles([RolesEnum.ADMIN])
-  public getLatestLogs(): Promise<Log[]> {
-    return this.logService.getLatestLogs();
+  public getLatestLogs(
+    @Args('latestTimestamp') latestTimestamp?: string
+  ): Promise<Log[]> {
+    return this.logService.getLatestLogs(latestTimestamp);
   }
 }

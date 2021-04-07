@@ -8,26 +8,31 @@ import { isUrl } from './validation';
 
 const CONTENTFUL_DEFAULT_STATE = {
   token: '',
+  space: '',
+  environment: '',
   endpoint: '',
 };
 
-const suite = vest.create('contentful_handler', ({ token, endpoint }) => {
-  test('token', 'Token is required', () => {
-    enforce(token).isNotEmpty();
-  });
+const suite = vest.create(
+  'contentful_handler',
+  ({ token, space, environment, endpoint }) => {
+    test('token', 'Token is required', () => {
+      enforce(token).isNotEmpty();
+    });
 
-  test('endpoint', 'Endpoint is required', () => {
-    enforce(endpoint).isNotEmpty();
-  });
+    test('space', 'Space ID is required', () => {
+      enforce(space).isNotEmpty();
+    });
 
-  test(
-    'endpoint',
-    'Please use absolute URL http://example.com or http://localhost:80',
-    () => {
-      isUrl(endpoint);
-    }
-  );
-});
+    test(
+      'endpoint',
+      'Please use absolute URL http://example.com or http://localhost:80',
+      () => {
+        endpoint && isUrl(endpoint);
+      }
+    );
+  }
+);
 
 export const useContentfulHandler = ({
   state,

@@ -1,4 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { Channel } from '@graphql-portal/types';
 import { Redis } from 'ioredis';
 import Provider from '../../common/enum/provider.enum';
 import { Log } from './interfaces/log.interface';
@@ -13,17 +14,25 @@ export default class LogService {
     [this.redis] = this.redisClients;
   }
 
-  public async getLatestLogs(): Promise<Log[]> {
-    const keys = await this.redis.keys('logs:*');
-    const logs = (
-      await Promise.all<Log>(
-        keys.map(async (key) => {
-          const value = await this.redis.get(key);
-          if (value) return JSON.parse(value);
-        })
+  public async getLatestLogs(
+    latestTimestamp?: string,
+    count = 20
+  ): Promise<Log[]> {
+    const maxScore = +new Date();
+    const minScore = latestTimestamp ? +latestTimestamp + 1 : 0;
+    count = latestTimestamp ? count : 100;
+
+    return (
+      await this.redis.zrangebyscore(
+        Channel.recentLogs,
+        minScore,
+        maxScore,
+        'LIMIT',
+        0,
+        count
       )
-    ).filter(Boolean);
-    logs.sort((a, b) => +a.timestamp - +b.timestamp);
-    return logs;
+    )
+      .reverse()
+      .map((key) => JSON.parse(key));
   }
 }
