@@ -19,6 +19,10 @@ import { AvailableTransforms as Props } from '../../../types';
 import { AVAILABLE_TRANSFORMS_HEAD } from '../constants';
 import { TYPE_MAPPER } from './constantst';
 import { useStyles } from './useStyles';
+import {
+  formatTransformDescription,
+  formatTransformStrings,
+} from '../../../presenter/DataSources/helpers/formatTransformStrings';
 
 export const AvailableTransforms: React.FC<Props> = ({ transforms, onAdd }) => {
   const { availableTitle } = useStyles();
@@ -44,12 +48,14 @@ export const AvailableTransforms: React.FC<Props> = ({ transforms, onAdd }) => {
             const TypeIcon = TYPE_MAPPER[key];
             return (
               <TableRow key={`transform-${key}`}>
-                <TableCell>{key}</TableCell>
+                <TableCell>{formatTransformStrings(key)}</TableCell>
                 <TableIconCell>
                   <TableIcon>{TypeIcon && <TypeIcon />}</TableIcon>
                   Free
                 </TableIconCell>
-                <TableCell>{description}</TableCell>
+                <TableCell>
+                  {formatTransformDescription(key, description)}
+                </TableCell>
                 <TableActionCell>
                   <Tooltip
                     title="Add transform"

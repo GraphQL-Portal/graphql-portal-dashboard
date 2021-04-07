@@ -14,12 +14,7 @@ export const AVAILABLE_TRANSFORMS_HEAD = [
   'Actions',
 ];
 
-export const TRANSFORMS_HEAD = [
-  'Transform',
-  'Description',
-  'Status',
-  'Actions',
-];
+export const TRANSFORMS_HEAD = ['Transform', 'Type', 'Description', 'Actions'];
 
 export const ADD_SOURCE_STEPS_WITH_CONFIGURATION = [
   { label: 'Name' },
