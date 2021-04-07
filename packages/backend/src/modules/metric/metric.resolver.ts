@@ -5,7 +5,6 @@ import {
   IAggregateFilters,
   IApiActivity,
   IAPIMetric,
-  IMetric,
   IMetricFilter,
 } from './interfaces';
 import MetricService from './metric.service';
@@ -14,25 +13,6 @@ import ICountryMetric from './interfaces/country-metric.interface';
 @Resolver('Metric')
 export default class MetricResolver {
   public constructor(private readonly metricService: MetricService) {}
-
-  @Query()
-  @Roles([RolesEnum.ADMIN])
-  public metrics(
-    @Args('filters') filters: IAggregateFilters,
-    @Args('scale') scale: 'day' | 'week' | 'month' | 'hour'
-  ): Promise<IMetric> {
-    return this.metricService.aggregateMetrics(scale, filters);
-  }
-
-  @Query()
-  @Roles([RolesEnum.USER])
-  public getUserMetrics(
-    @Args('filters') filters: IAggregateFilters,
-    @AuthorizationParam('_id') user: string,
-    @Args('scale') scale: 'day' | 'week' | 'month' | 'hour'
-  ): Promise<IMetric> {
-    return this.metricService.aggregateMetrics(scale, { ...filters, user });
-  }
 
   @Query()
   @Roles([RolesEnum.USER])
@@ -68,7 +48,7 @@ export default class MetricResolver {
     return this.metricService.getCountryMetrics(
       startDate,
       endDate,
-      filters,
+      { ...filters, user },
       limit
     );
   }

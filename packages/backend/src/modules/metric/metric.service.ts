@@ -17,7 +17,6 @@ import {
   ReaderModel,
   WebServiceClient,
 } from '@maxmind/geoip2-node';
-import { add, differenceInSeconds } from 'date-fns';
 import Provider from '../../common/enum/provider.enum';
 import { LoggerService } from '../../common/logger';
 import { INetworkMetricDocument } from '../../data/schema/network-metric.schema';
@@ -33,7 +32,6 @@ import {
   IGotError,
   IGotRequest,
   IMatch,
-  IMetric,
   IMetricFilter,
   IReducedResolver,
   ISentResponse,
@@ -41,8 +39,6 @@ import {
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import { RedisClient } from '../../common/types';
 import ICountryMetric from './interfaces/country-metric.interface';
-
-type MetricScale = 'hour' | 'day' | 'week' | 'month';
 
 @Injectable()
 export default class MetricService implements OnModuleInit, OnModuleDestroy {
@@ -125,6 +121,9 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
+  /**
+   * User's API Activity for "Api Activity" page
+   */
   public async getApiActivity(
     filters: IAggregateFilters
   ): Promise<IApiActivity[]> {
@@ -210,133 +209,11 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     );
   }
 
-  public async aggregateMetrics(
-    scale: MetricScale,
-    filters: IAggregateFilters
-  ): Promise<IMetric> {
-    const boundaries = this.getBoundaries(
-      filters.startDate,
-      filters.endDate,
-      scale
-    );
-    const aggregationQuery = [
-      { $match: this.makeMatchFromFilters(filters) },
-      {
-        $facet: {
-          latency: [
-            {
-              $bucket: {
-                groupBy: '$requestDate',
-                default: new Date(filters.endDate),
-                boundaries,
-                output: { latency: { $avg: '$latency' }, count: { $sum: 1 } },
-              },
-            },
-          ],
-          countries: [
-            {
-              $group: {
-                _id: '$geo.country',
-                count: { $sum: 1 },
-              },
-            },
-          ],
-          failures: [
-            {
-              $match: {
-                $or: [
-                  { 'resolvers.errorAt': { $exists: true } },
-                  { error: { $not: { $eq: null } } },
-                ],
-              },
-            },
-            {
-              $bucket: {
-                groupBy: '$resolvers.errorAt',
-                default: new Date(filters.endDate),
-                boundaries,
-                output: { count: { $sum: 1 } },
-              },
-            },
-          ],
-          successes: [
-            {
-              $match: {
-                $and: [
-                  { 'resolvers.errorAt': { $exists: false } },
-                  { error: { $eq: null } },
-                ],
-              },
-            },
-            {
-              $bucket: {
-                groupBy: '$requestDate',
-                default: new Date(filters.endDate),
-                boundaries,
-                output: { count: { $sum: 1 } },
-              },
-            },
-          ],
-        },
-      },
-    ];
-    const [aggregationResult] = await this.requestMetricModel.aggregate(
-      aggregationQuery
-    );
-    const makeMapFn = (p: any, c: any): Record<string, any> => {
-      p[c._id.toISOString()] = c;
-      return p;
-    };
-    const requestMap = aggregationResult.latency.reduce(makeMapFn, {});
-    const successMap = aggregationResult.successes.reduce(makeMapFn, {});
-    const failureMap = aggregationResult.failures.reduce(makeMapFn, {});
-    const requestData = boundaries.map((b) => {
-      const key = b.toISOString();
-      const data = { _id: key, latency: 0, count: 0 };
-
-      if (requestMap[key]) data.latency = requestMap[key].latency;
-      if (requestMap[key]) data.count = requestMap[key].count;
-
-      return data;
-    });
-    const failureData = boundaries.map((b) => {
-      const key = b.toISOString();
-      const data = { _id: key, failure: 0, success: 0 };
-
-      if (failureMap[key]) data.failure = failureMap[key].count;
-      if (successMap[key]) data.success = successMap[key].count;
-
-      return data;
-    });
-
-    return {
-      latency: requestData.map((obj) => ({
-        argument: obj._id,
-        value: obj.latency,
-      })),
-      count: requestData.map((obj) => ({
-        argument: obj._id,
-        value: obj.count,
-      })),
-      countries: aggregationResult.countries.map(
-        (obj: { _id: string; count: number }) => ({
-          argument: obj._id || 'Other',
-          value: obj.count,
-        })
-      ),
-      failures: failureData.map((obj) => ({
-        argument: obj._id,
-        failure: obj.failure,
-        success: obj.success,
-      })),
-    };
-  }
-
   /**
    * Gets RequestMetrics split into date chunks.
    *
-   * @param chunks
-   * @param filters
+   * @param chunks Array of dates that represents date boundaries
+   * @param filters Metric filters
    */
   public async getChunkedAPIMetrics(
     chunks: Date[],
@@ -345,7 +222,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     const boundaries = chunks.map((v) => new Date(v));
     const def = chunks[chunks.length - 1];
 
-    // FIXME: default should not be Other
     const aggregationPipeline: unknown[] = [
       {
         $match: {
@@ -701,16 +577,13 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
   }
 
   private async getGeoData(
-    ip: string | undefined
-  ): Promise<
-    | {
-        city: string | undefined;
-        location: LocationRecord | undefined;
-        postal: PostalRecord | undefined;
-        country: string | undefined;
-      }
-    | Record<string, never>
-  > {
+    ip?: string
+  ): Promise<{
+    city?: string;
+    location?: LocationRecord;
+    postal?: PostalRecord;
+    country?: string;
+  }> {
     if (!ip || !this.maxmind) return {};
     const context = `${this.constructor.name}:${this.getGeoData.name}`;
 
@@ -727,26 +600,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       this.logger.error(error, null, context);
       return {};
     }
-  }
-
-  private getBoundaries(
-    startDate: Date | number,
-    endDate: Date | number,
-    scale: MetricScale
-  ): Date[] {
-    const boundaries: Date[] = [];
-    let sdate = new Date(startDate);
-    endDate = new Date(endDate);
-    const next = (): boolean => {
-      sdate = add(sdate, { [`${scale}s`]: 1 });
-      return differenceInSeconds(sdate, endDate) <= 0;
-    };
-
-    do {
-      boundaries.push(sdate);
-    } while (next());
-
-    return boundaries;
   }
 
   private makeMatchFromFilters(filters: IAggregateFilters): IMatch {

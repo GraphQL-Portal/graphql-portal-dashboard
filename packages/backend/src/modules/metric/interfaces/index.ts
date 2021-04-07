@@ -9,7 +9,6 @@ import IMatch from './match.interface';
 import IAggregateFilters from './aggregate-filters.interface';
 import IMetricFilter from './metric-filter.interface';
 import IApiActivity from './api-activity.interface';
-import IMetric from './metric.interface';
 import IAPIMetric from './api-metric.interface';
 
 export type AnyMetric =
@@ -37,6 +36,5 @@ export {
   IAggregateFilters,
   IMetricFilter,
   IApiActivity,
-  IMetric,
   IAPIMetric,
 };
