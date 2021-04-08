@@ -35,17 +35,10 @@ const HANDLERS_LIST = [
 ];
 
 const TRANSFORMS_LIST = [
-  'cache',
-  'encapsulate',
-  'extend',
-  'federation',
   'filterSchema',
-  'mock',
   'namingConvention',
   'prefix',
   'rename',
-  'resolversComposition',
-  'snapshot',
 ];
 
 export const RESOLVED_SCHEMA = resolveSchema(RAW_SCHEMA);
