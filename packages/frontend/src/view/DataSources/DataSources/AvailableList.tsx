@@ -19,7 +19,7 @@ import { getKeyFromText } from '../../../utils';
 import { useAvailableSources } from '../../../presenter/DataSources';
 import { AVAILABLE_HEAD } from '../constants';
 import { useStyles } from './useStyles';
-import { formatHandlerTitle } from '../helpers';
+import { formatHandlerDescription, formatHandlerTitle } from '../helpers';
 import { handlerMapper, typeMapper } from './helpers';
 
 const getCellAlign = (idx: number, length: number) =>
@@ -77,8 +77,9 @@ export const AvailableList: React.FC = () => {
             const source = available[key];
             const { title, description } = source;
             const fTitle = formatHandlerTitle(title);
-            const HandlerIcon = handlerMapper(fTitle);
-            const TypeIcon = typeMapper(fTitle);
+            const fDescription = formatHandlerDescription(title, description);
+            const HandlerIcon = handlerMapper(title);
+            const TypeIcon = typeMapper(title);
             return (
               <TableRow key={key}>
                 <TableIconCell>
@@ -89,7 +90,7 @@ export const AvailableList: React.FC = () => {
                   <TableIcon>{TypeIcon && <TypeIcon />}</TableIcon>
                   Free
                 </TableIconCell>
-                <TableCell>{description}</TableCell>
+                <TableCell>{fDescription}</TableCell>
                 <TableActionCell>
                   <Tooltip
                     title="Add connector"

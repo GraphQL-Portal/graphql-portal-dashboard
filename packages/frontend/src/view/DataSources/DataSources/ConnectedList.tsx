@@ -16,7 +16,7 @@ import {
 import { getKeyFromText } from '../../../utils';
 import { ConnectedList as Props } from '../../../types';
 import { CONNECTED_HEAD } from '../constants';
-import { formatHandlerType } from '../helpers';
+import { formatHandlerTitle, formatHandlerType } from '../helpers';
 import { handlerMapper } from './helpers';
 
 export const ConnectedList: React.FC<Props> = ({
@@ -46,7 +46,7 @@ export const ConnectedList: React.FC<Props> = ({
               <TableCell>{name}</TableCell>
               <TableIconCell>
                 <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
-                {fHandler}
+                {formatHandlerTitle(fHandler)}
               </TableIconCell>
               <TableCell>{updatedAt}</TableCell>
               <TableActionCell>
