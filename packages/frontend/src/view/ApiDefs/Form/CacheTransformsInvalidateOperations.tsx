@@ -18,7 +18,7 @@ export const CacheTransformsInvalidateOperations: React.FC<Props> = ({
 
   return (
     <ObjectArray
-      title="Invalidate Operations"
+      title="Invalidation rules"
       fields={fields}
       onAdd={append}
       onRemove={remove}
@@ -27,6 +27,8 @@ export const CacheTransformsInvalidateOperations: React.FC<Props> = ({
       errors={errors}
       keyLabel="operation"
       valueLabel="matchKey"
+      keyHelperText="Operation name (i.e. Mutation.createUser) which will trigger the invalidation"
+      valueHelperText="Must match the Cache key which should be invalidated"
     />
   );
 };

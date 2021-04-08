@@ -28,6 +28,8 @@ type FieldArrayComponent<T> = {
 export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
   keyLabel?: string;
   valueLabel?: string;
+  keyHelperText?: string;
+  valueHelperText?: string;
 };
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem> & {

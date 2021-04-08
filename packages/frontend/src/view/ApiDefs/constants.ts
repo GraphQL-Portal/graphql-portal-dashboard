@@ -16,6 +16,6 @@ export const EDIT_TABS = [
   { label: 'Schema and Limits' },
   { label: 'IP Filtering' },
   { label: 'Additional Resolvers' },
-  { label: 'Cache Transforms' },
+  { label: 'Cache Settings' },
 ];
 export const VIEW_TABS = [{ label: 'Playground' }, { label: 'Schema' }];

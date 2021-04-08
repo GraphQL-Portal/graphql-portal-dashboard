@@ -16,8 +16,8 @@ export const CacheTransforms: React.FC<Props> = ({
   const { formRow } = useStyles();
 
   return (
-    <FormGroup title="Cache Transforms">
-      <AddFieldArrayHeader title="Cache Transform" onAddClick={onAddCache} />
+    <FormGroup title="Cache Settings">
+      <AddFieldArrayHeader title="Cache Rule" onAddClick={onAddCache} />
       {cache.map((cache: any, idx: number) => {
         return (
           <FormGroup key={`cacheTransform-${idx}`} title="Cache Transform">
@@ -31,6 +31,7 @@ export const CacheTransforms: React.FC<Props> = ({
                   defaultValue={cache.field || undefined}
                   fullWidth
                   required
+                  helperText="The Type and Field to apply cache too. You can use wildcards, for example Query.*"
                 />
               </Col>
             </Row>
@@ -43,6 +44,7 @@ export const CacheTransforms: React.FC<Props> = ({
                   error={!!errors?.cache?.[idx]?.cacheKey}
                   defaultValue={cache.cacheKey || undefined}
                   fullWidth
+                  helperText="Cache key used to store the responses. Default is {typeName}-{fieldName}-{argsHash}-{fieldNamesHash}"
                 />
               </Col>
             </Row>
@@ -55,6 +57,7 @@ export const CacheTransforms: React.FC<Props> = ({
                   error={!!errors?.cache?.[idx]?.invalidate?.ttl}
                   defaultValue={cache.invalidate?.ttl || undefined}
                   fullWidth
+                  helperText="Time-to-live of the cache, in seconds"
                 />
               </Col>
             </Row>
@@ -67,7 +70,7 @@ export const CacheTransforms: React.FC<Props> = ({
             <Row spacing={2}>
               <Col xs={6}>
                 <OutlineButton onClick={() => onRemoveCache(idx)}>
-                  Remove Cache Transform
+                  Remove Cache Rule
                 </OutlineButton>
               </Col>
             </Row>

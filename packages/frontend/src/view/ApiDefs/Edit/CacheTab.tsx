@@ -28,7 +28,7 @@ export const CacheTab: React.FC<Props> = (props) => {
         errors={errors}
         control={control}
       />
-      <PrimaryButton type="submit">Update cache tranforms</PrimaryButton>
+      <PrimaryButton type="submit">Update cache settings</PrimaryButton>
     </form>
   );
 };

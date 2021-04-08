@@ -17,13 +17,15 @@ export const ObjectArray: React.FC<Props> = ({
   name,
   keyLabel,
   valueLabel,
+  keyHelperText = '',
+  valueHelperText = '',
 }) => {
   const { objectField, lastField, objectRow } = useStyles();
 
   const lastObjectField = clsx(objectField, lastField);
 
   if (!keyLabel) keyLabel = 'key';
-  if (!valueLabel) valueLabel = 'key';
+  if (!valueLabel) valueLabel = 'value';
 
   return (
     <>
@@ -39,6 +41,7 @@ export const ObjectArray: React.FC<Props> = ({
                 fullWidth
                 defaultValue={(field as any)[keyLabel!] || undefined}
                 error={!!errors?.[name]?.[idx]?.[keyLabel!]}
+                helperText={keyHelperText}
               />
             </Col>
             <Col xs={5} className={objectField}>
@@ -49,6 +52,7 @@ export const ObjectArray: React.FC<Props> = ({
                 fullWidth
                 defaultValue={(field as any)[valueLabel!] || undefined}
                 error={!!errors?.[name]?.[idx]?.[valueLabel!]}
+                helperText={valueHelperText}
               />
             </Col>
             <Col xs={2} className={lastObjectField}>
