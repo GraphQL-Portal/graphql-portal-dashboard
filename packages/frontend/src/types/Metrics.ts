@@ -1,9 +1,8 @@
 import { QueryHook } from './Apollo';
 import { NOOP } from './General';
 
-export type Scale = 'hour' | 'day' | 'week' | 'month';
-
-export type DateRange = Omit<Scale, 'hour'> | 'year';
+export const RangeList = ['hour', 'day', 'week', 'month'] as const;
+export type Range = typeof RangeList[number];
 
 export type ApiMetric = {
   apiDef?: string;
@@ -15,31 +14,18 @@ export type ApiMetric = {
   latency?: number;
 };
 
-export type RequestChartProps = {
-  data: any[];
-  title?: string;
-  argumentLabelHandler?: any;
-  valueLabelHandler?: any;
+export type CountryMetric = {
+  country?: string;
+  count?: number;
 };
 
-export type MetricsRefetch = {
-  apiDef: string | undefined;
-  startDate: Date;
-  endDate: Date;
-  scale: Scale;
+export type FullApiMetric = {
+  getChunkedAPIMetrics: ApiMetric[];
+  getCountryMetrics: CountryMetric[];
 };
 
-export type CountryChartProps = RequestChartProps;
-
-export type FailureRequestRateChartProps = {
-  data: {
-    success: number;
-    failure: number;
-    argument: number;
-  }[];
-  title?: string;
-  argumentLabelHandler?: Function;
-  valueLabelHandler?: Function;
+export type CountryChart = {
+  data: CountryMetric[];
 };
 
 export type UseApiActivityHook = () => Pick<
@@ -50,3 +36,5 @@ export type UseApiActivityHook = () => Pick<
 };
 
 export type ApiActivityList = Omit<ReturnType<UseApiActivityHook>, 'loading'>;
+
+export type ChartButton = { text: string; value: Range };

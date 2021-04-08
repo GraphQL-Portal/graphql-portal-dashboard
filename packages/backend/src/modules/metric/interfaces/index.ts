@@ -7,8 +7,9 @@ import ISentResponse from './sent-response.interface';
 import IReducedResolver from './reduced-resolver.interface';
 import IMatch from './match.interface';
 import IAggregateFilters from './aggregate-filters.interface';
+import IMetricFilter from './metric-filter.interface';
 import IApiActivity from './api-activity.interface';
-import IMetric from './metric.interface';
+import IAPIMetric from './api-metric.interface';
 
 export type AnyMetric =
   | IGotRequest
@@ -33,6 +34,7 @@ export {
   IReducedResolver,
   IMatch,
   IAggregateFilters,
+  IMetricFilter,
   IApiActivity,
-  IMetric,
+  IAPIMetric,
 };

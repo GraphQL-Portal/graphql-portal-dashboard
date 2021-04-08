@@ -7,5 +7,6 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     flexDirection: 'column',
     padding: spacing(4, 6),
     paddingLeft: spacing(2),
+    overflowX: 'hidden',
   },
 }));

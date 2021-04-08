@@ -49,6 +49,7 @@ type Option = {
 export type Select = SelectProps & {
   options: Option[];
   fullWidth?: boolean;
+  labelClassName?: string;
 };
 
 export type PasswordInput = OutlinedInputProps & {

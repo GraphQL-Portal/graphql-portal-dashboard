@@ -7,6 +7,12 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     padding: spacing(1.5),
   },
   apiSelect: {
-    minWidth: '170px',
+    width: 322,
+    '& .MuiOutlinedInput-input': {
+      padding: spacing(1.5, 1.75),
+    },
+  },
+  apiSelectLabel: {
+    transform: 'translate(14px, 14px)',
   },
 }));
