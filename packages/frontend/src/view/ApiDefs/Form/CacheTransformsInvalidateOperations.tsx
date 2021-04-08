@@ -25,10 +25,17 @@ export const CacheTransformsInvalidateOperations: React.FC<Props> = ({
       name={name}
       register={register}
       errors={errors}
-      keyLabel="operation"
-      valueLabel="matchKey"
-      keyHelperText="Operation name (i.e. Mutation.createUser) which will trigger the invalidation"
-      valueHelperText="Must match the Cache key which should be invalidated"
+      objectSchema={{
+        operation: {
+          label: 'Operation',
+          helperText:
+            'Operation name (i.e. Mutation.createUser) which will trigger the invalidation',
+        },
+        matchKey: {
+          label: 'Match key',
+          helperText: 'Must match the Cache key which should be invalidated',
+        },
+      }}
     />
   );
 };
