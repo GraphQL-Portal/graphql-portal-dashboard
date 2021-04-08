@@ -1,59 +1,33 @@
 import { useQuery, gql } from '@apollo/client';
-import { MetricsRefetch, Scale } from '../../../types';
+import { FullApiMetric, QueryHook } from '../../../types';
 
 export const QUERY_METRICS = gql`
-  query getUserMetrics($scale: String, $filters: MetricFilters!) {
-    getUserMetrics(scale: $scale, filters: $filters) {
-      latency {
-        argument
-        value
-      }
-      count {
-        argument
-        value
-      }
-      countries {
-        argument
-        value
-      }
-      failures {
-        argument
-        failure
-        success
-      }
+  query getAPIMetrics(
+    $chunks: [Timestamp]
+    $filters: MetricFilter!
+    $countryFilters: MetricAggregateFilters!
+    $limit: Int
+  ) {
+    getChunkedAPIMetrics(chunks: $chunks, filters: $filters) {
+      chunk
+      count
+      avgLatency
+      successes
+      failures
+    }
+    getCountryMetrics(filters: $countryFilters, limit: $limit) {
+      country
+      count
     }
   }
 `;
 
-export const useMetricsQuery = (
-  apiDef: string | undefined,
-  startDate: Date,
-  endDate: Date,
-  scale: Scale
-) => {
-  const { data, loading, error, refetch } = useQuery(QUERY_METRICS, {
-    variables: {
-      scale,
-      filters: {
-        apiDef,
-        startDate: startDate.getTime(),
-        endDate: endDate.getTime(),
-      },
-    },
-  });
+export const useMetricsQuery: QueryHook<FullApiMetric> = (options = {}) => {
+  const { data, loading, error } = useQuery(QUERY_METRICS, options);
 
   return {
-    data: data?.getUserMetrics,
+    data: data || {},
     loading,
     error,
-    refetch: (variables: MetricsRefetch) =>
-      refetch({
-        filters: {
-          apiDef,
-          startDate: variables.startDate.getTime(),
-          endDate: variables.endDate.getTime(),
-        },
-        scale: variables.scale,
-      }),
   };
 };

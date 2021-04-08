@@ -1,6 +1,7 @@
 export { compose } from './compose';
 export { formatString } from './formatString';
 export { formatTimestamp } from './formatTimestamp';
+export * from './getDateChunks';
 export { getKeyFromText } from './getKeyFromText';
 export { getPath } from './getPath';
 export { getProp } from './getProp';
@@ -12,9 +13,6 @@ export { toLowerCase } from './toLowerCase';
 export { trace } from './trace';
 export { getRoleFromToken } from './getRoleFromToken';
 export { alignFirstCellLeft } from './alignFirstCellLeft';
-export { formatArgumentLabel } from './formatArgumentLabel';
-export { formatValueLabel } from './formatValueLabel';
-export { checkHandler } from './checkHandler';
 export { getHead } from './getHead';
 export { objectKeys } from './objectKeys';
 export { getObjProp } from './getObjProp';
