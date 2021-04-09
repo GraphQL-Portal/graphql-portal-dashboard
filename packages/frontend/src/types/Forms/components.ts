@@ -26,8 +26,12 @@ type FieldArrayComponent<T> = {
 } & Pick<GeneralFormMethods, 'register' | 'errors'>;
 
 export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
-  keyLabel?: string;
-  valueLabel?: string;
+  objectSchema?: {
+    [key: string]: {
+      label?: string;
+      helperText?: string;
+    };
+  };
 };
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem> & {

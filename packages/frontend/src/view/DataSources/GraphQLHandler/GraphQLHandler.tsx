@@ -89,25 +89,6 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
           <FormControl>
             <FormGroup>
               <FormControlLabel
-                label="Cache Introspection"
-                control={
-                  <Controller
-                    name="cacheIntrospection"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
-              />
-            </FormGroup>
-          </FormControl>
-        </HandlerCol>
-      </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
                 label="Enable multipart/formdata in order to support file uploads"
                 control={
                   <Controller

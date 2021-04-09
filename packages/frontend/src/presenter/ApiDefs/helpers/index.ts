@@ -5,6 +5,6 @@ export { createFetcher } from './createFetcher';
 export { getUrlFromGatewayNodes } from './getUrlFromGatewayNodes';
 export { createRateLimitPayload } from './createRateLimitPayload';
 export {
-  createMeshPayload,
-  createMeshDefaultValues,
-} from './createMeshPayload';
+  createAdditionalResolversPayload,
+  createAdditionalResolversDefaultValues,
+} from './createAdditionalResolversPayload';

@@ -15,7 +15,7 @@ export const PasswordTab: React.FC<Props> = (props) => {
           <PasswordInput
             ref={register}
             fullWidth
-            label="OLd Password"
+            label="Old Password"
             name="oldPassword"
             error={!!errors?.oldPassword}
             labelWidth={115}
