@@ -36,6 +36,7 @@ export type UseOpenapiDataSourceHook = (
   queryOrMutationFields: FieldArray<SelectQueryOrMutationFieldConfig>;
   addQueryOrMutationField: FieldArrayAppend;
   removeQueryOrMutationField: FieldArrayRemove;
+  disableInputs: boolean;
 };
 
 export type UsePrefixTransformHook = (

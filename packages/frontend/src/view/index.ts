@@ -16,3 +16,4 @@ export { Users } from './Users';
 export { Webhooks } from './Webhooks';
 export { RoleProtectedComponent } from './RoleProtectedComponent';
 export { GatewayLogs } from './GatewayLogs';
+export { Tour } from './Tour';

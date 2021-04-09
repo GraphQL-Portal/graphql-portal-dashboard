@@ -7,6 +7,7 @@ import { Loading } from '../../Loading';
 import { DeleteAPI } from '../DeleteAPI';
 import { EmptyApiDefs } from './Empty';
 import { ApiDefsList } from './List';
+import { selectors } from '../../Tour';
 
 export const ApiDefs: React.FC = () => {
   const {
@@ -27,9 +28,14 @@ export const ApiDefs: React.FC = () => {
         <title>My APIs</title>
       </Helmet>
       <Header title="Your APIs">
-        <PrimaryButton onClick={onCreate}>Create new API</PrimaryButton>
+        <PrimaryButton
+          onClick={onCreate}
+          data-intro={selectors.MY_APIS_CREATE_NEW_BUTTON}
+        >
+          Create new API
+        </PrimaryButton>
       </Header>
-      <WidgetRow>
+      <WidgetRow data-intro={selectors.MY_APIS_LIST}>
         <HugeWidget>
           {data.length ? (
             <ApiDefsList

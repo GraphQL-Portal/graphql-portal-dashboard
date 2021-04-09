@@ -5,7 +5,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import { useCreateApiDef } from '../../model/ApiDefs/commands';
 import { useFormErrors } from '../../model/Hooks';
 import { AError, ApiDefForm, UseCreateApiDefHook } from '../../types';
-import { ROUTES, useToast } from '../../model/providers';
+import { ROUTES, useToast, useTourContext } from '../../model/providers';
 import { getUuid } from '../../utils';
 import {
   createAuth,
@@ -16,8 +16,33 @@ import { suite } from './validation';
 import { useDSPart } from './useDSPart';
 import { useIPFiltering } from './useIPFiltering';
 
+const defaultValues = {
+  name: '',
+  endpoint: '',
+  source: '',
+  sources: [],
+  playground: true,
+  authentication: {
+    auth_header_name: '',
+    auth_tokens: [],
+  },
+  schema_polling_interval: 0,
+  schema_updates_through_control_api: false,
+  enable_ip_filtering: false,
+  allow_ips: [],
+  deny_ips: [],
+  request_size_limit: '',
+  request_complexity_limit: 0,
+  depth_limit: 0,
+  rate_limit: {
+    complexity: 0,
+    per: 0,
+  },
+};
+
 export const useCreateApi: UseCreateApiDefHook = () => {
   const { push } = useHistory();
+  const { tour } = useTourContext();
   const { showSuccessToast, showErrorToast } = useToast();
   const { createApiDef } = useCreateApiDef({
     onCompleted() {
@@ -38,29 +63,7 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     register,
   } = useForm<ApiDefForm>({
     mode: 'onSubmit',
-    defaultValues: {
-      name: '',
-      endpoint: '',
-      source: '',
-      sources: [],
-      playground: true,
-      authentication: {
-        auth_header_name: '',
-        auth_tokens: [],
-      },
-      schema_polling_interval: 0,
-      schema_updates_through_control_api: false,
-      enable_ip_filtering: false,
-      allow_ips: [],
-      deny_ips: [],
-      request_size_limit: '',
-      request_complexity_limit: 0,
-      depth_limit: 0,
-      rate_limit: {
-        complexity: 0,
-        per: 0,
-      },
-    },
+    defaultValues: tour.isStarted ? tour.api : defaultValues,
     resolver: vestResolver(suite),
   });
 
@@ -128,6 +131,7 @@ export const useCreateApi: UseCreateApiDefHook = () => {
   };
 
   return {
+    disableSelectDatasources: tour.isStarted,
     loading,
     onSubmit: handleSubmit(onSubmit),
     control,

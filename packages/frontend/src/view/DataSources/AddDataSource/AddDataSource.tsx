@@ -23,6 +23,7 @@ import { FormCaption } from './FormCaption';
 import { AddDataSourceHeader } from './Header';
 import { useStyles } from './useStyles';
 import { formatHandlerTitle } from '../helpers';
+import { selectors } from '../../Tour';
 
 export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
   mode,
@@ -76,10 +77,14 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
         <title>Add new data-source</title>
       </Helmet>
       <AddDataSourceHeader />
-      <WidgetRow>
+      <WidgetRow data-intro={selectors.DATA_SOURCE_ADD_WIDGET}>
         <HugeWidget className={visibleOverflow}>
           <WidgetHeader title={text.title}>
-            <PrimaryButton disabled={isDisabled} onClick={onSubmit}>
+            <PrimaryButton
+              data-intro={selectors.DATA_SOURCE_ADD_BUTTON}
+              disabled={isDisabled}
+              onClick={onSubmit}
+            >
               {text.button}
             </PrimaryButton>
           </WidgetHeader>

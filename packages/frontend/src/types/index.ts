@@ -25,3 +25,4 @@ export * from './ButtonGroup';
 export * from './Metrics';
 export * from './Utils';
 export * from './Widgets';
+export * from './Tour';

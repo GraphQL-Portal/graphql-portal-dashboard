@@ -15,6 +15,7 @@ import { AvailableList } from './AvailableList';
 import { EmptySources } from './Empty';
 import { ConnectedList } from './ConnectedList';
 import { DeleteDataSource } from '../DeleteDataSource';
+import { selectors } from '../../Tour';
 
 export const DataSources: React.FC = () => {
   const { loading, connected, onDelete, onUpdate } = useDataSources();
@@ -32,7 +33,7 @@ export const DataSources: React.FC = () => {
           {connected.length === 0 ? (
             <EmptySources />
           ) : (
-            <>
+            <div data-intro={selectors.DATA_SOURCE_MY_CONNECTED}>
               <WidgetHeader title="My connected data-sources" />
               <WidgetBody>
                 <ConnectedList
@@ -41,7 +42,7 @@ export const DataSources: React.FC = () => {
                   onUpdate={onUpdate}
                 />
               </WidgetBody>
-            </>
+            </div>
           )}
         </HugeWidget>
       </WidgetRow>

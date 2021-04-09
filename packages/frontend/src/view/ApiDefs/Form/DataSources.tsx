@@ -5,6 +5,7 @@ import { FormGroup, Row, Col, Select, OutlineButton } from '../../../ui';
 import { ApiDataSourcesForm as Props } from '../../../types';
 import { ConnectedList } from '../../DataSources/DataSources/ConnectedList';
 import { useStyles } from './useStyles';
+import { selectors } from '../../Tour';
 
 export const DataSourcesForm: React.FC<Props> = ({
   control,
@@ -12,6 +13,7 @@ export const DataSourcesForm: React.FC<Props> = ({
   onAddSource,
   connected,
   onRemoveSource,
+  disableSelect,
 }) => {
   const { addButton } = useStyles();
   return (
@@ -23,12 +25,18 @@ export const DataSourcesForm: React.FC<Props> = ({
             name="source"
             control={control}
             options={options}
+            disabled={disableSelect}
             label="Select data-source to add"
             fullWidth
+            data-intro={selectors.MY_APIS_CREATE_FORM_SELECT_DATA_SOURCE}
           />
         </Col>
         <Col xs={6}>
-          <OutlineButton onClick={onAddSource} className={addButton}>
+          <OutlineButton
+            data-intro={selectors.MY_APIS_CREATE_FORM_ADD_DATA_SOURCE_BUTTON}
+            onClick={onAddSource}
+            className={addButton}
+          >
             Add Data Source
           </OutlineButton>
         </Col>
