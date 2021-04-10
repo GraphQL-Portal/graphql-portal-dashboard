@@ -76,7 +76,7 @@
     "typescript": "4.2.3"
   },
   "resolutions": {
-    "**/mongodb": "3.6.5",
+    "**/mongodb": "3.6.6",
     "**/xml-crypto": "2.1.1",
     "apollo-cache-control": "0.12.0"
   }
