@@ -2264,10 +2264,10 @@
     winston "3.3.3"
     winston-transport "^4.4.0"
 
-"@graphql-portal/salesforce@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/salesforce/-/salesforce-0.1.1.tgz#5c2b5c0dccbbcd91fc1281d7283c127f0079925e"
-  integrity sha512-XyBKzrbsUWjQBLMieuo73RIe5UIsV5vFUGPBap2l2GmV4QSfbjyJN7qb9FHS35hbFryJo0bzw5jcCWQOAKVDBA==
+"@graphql-portal/salesforce@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/salesforce/-/salesforce-0.1.2.tgz#19430f028239662bfb870c850cd1257c963a7df0"
+  integrity sha512-vJdhmadUsAmBpZsnPBLWpXQBeCsI6WeYONFKrkSp/ggMJqvn354hCqL6ij7EK3rVMgqj1k+3ubazfZ2Y2bDonw==
   dependencies:
     "@graphql-mesh/openapi" "^0.15.0"
 

@@ -52,7 +52,7 @@
     "@graphql-portal/datasources": "0.1.1",
     "@graphql-portal/gateway": "0.17.5",
     "@graphql-portal/ip-api": "0.1.1",
-    "@graphql-portal/salesforce": "0.1.1",
+    "@graphql-portal/salesforce": "0.1.2",
     "@graphql-portal/slack": "0.2.1",
     "@graphql-portal/stripe": "0.2.1",
     "@graphql-portal/twitter": "0.3.1",
