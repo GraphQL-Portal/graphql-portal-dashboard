@@ -1661,6 +1661,57 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
+"@date-io/core@^1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
+  integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
+
+"@date-io/date-fns@1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
+  integrity sha512-yXxGzcRUPcogiMj58wVgFjc9qUYrCnnU9eLcyNbsQCmae4jPuZCDoIBR21j8ZURsM7GRtU62VOw5yNd4dDHunA==
+  dependencies:
+    "@date-io/core" "^1.3.13"
+
+"@devexpress/dx-chart-core@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-chart-core/-/dx-chart-core-2.7.5.tgz#99a99fc085450874f2c888b34c4db93d238a39e5"
+  integrity sha512-ZSpBN7SjnOhBOcvmuYZ5U+XyUYKlsTrYXCYMfFH2qXwvqh0e0UbhzW1FPfDXdWqx0Y52MtPX0HJrBC4QqH7Bcg==
+  dependencies:
+    d3-array "^2.4.0"
+    d3-scale "^3.2.0"
+    d3-shape "^1.3.7"
+
+"@devexpress/dx-core@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-2.7.5.tgz#f1460c072f05765fdc97b836541240a10250738f"
+  integrity sha512-VQQkz0uUqQ7YuVZeBEx1JFqpSSe5Bz9Qy2T0XAbilBQ8IItj74xjzaFMCNjuASAKXOJGtG0RUh+BOKrMGV7jlg==
+
+"@devexpress/dx-react-chart-material-ui@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-chart-material-ui/-/dx-react-chart-material-ui-2.7.5.tgz#3566956338330a0b284ff85afc320736523d1db8"
+  integrity sha512-uS450uSP1D6mZ2jgtueShqaATNRVqJEwqhgyRQUXL/gQyTrTCvM61TC5NLyEYCOW6RkiHK1BabWbhJlVATZbeg==
+  dependencies:
+    clsx "^1.0.4"
+    prop-types "^15.7.2"
+
+"@devexpress/dx-react-chart@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-chart/-/dx-react-chart-2.7.5.tgz#0e9b999cb195e9b9b6734d9d0c3a5b5f8633b018"
+  integrity sha512-j3nPsHrMiCbgm6olZCykxHOxxJ2XXG0CVihMYGOoyenM74Ed+NIaLi1bk2VtxKZdEPB5UrWgU10rd9SLH45BsQ==
+  dependencies:
+    "@devexpress/dx-chart-core" "2.7.5"
+    d3-scale "^3.2.0"
+    d3-shape "^1.3.7"
+
+"@devexpress/dx-react-core@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-2.7.5.tgz#978f1ead810819e9f3464e9f9d25ccbb87eaad96"
+  integrity sha512-YwJ4l8nnMs/vghqamo8OzirDnrbT1ZNIcMP5xJFJJQIyfYAXvGGDS4yLeYI4cwitBg/d2O4jMOReXDB8tUaDDQ==
+  dependencies:
+    "@devexpress/dx-core" "2.7.5"
+    prop-types "^15.7.2"
+
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
@@ -7285,7 +7336,7 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d3-array@^2.3.0:
+d3-array@^2.3.0, d3-array@^2.4.0:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
   integrity sha512-B0ErZK/66mHtEsR1TkPEEkwdy+WDesimkM5gpZr5Dsg54BiTA5RXtYW5qTLIAcekaS9xfZrzBLF/OAkB3Qn1YQ==
@@ -7309,12 +7360,17 @@ d3-array@^2.3.0:
   dependencies:
     d3-color "1 - 2"
 
+d3-path@1:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.9.tgz#48c050bb1fe8c262493a8caf5524e3e9591701cf"
+  integrity sha512-VLaYcn81dtHVTjEHd8B+pbe9yHWpXKZUC87PzoFmsFrJqgFwDe/qxfp5MlfsfM1V5E/iVt0MmEbWQ7FVIXh/bg==
+
 "d3-path@1 - 2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-2.0.0.tgz#55d86ac131a0548adae241eebfb56b4582dd09d8"
   integrity sha512-ZwZQxKhBnv9yHaiWd6ZU4x5BtCQ7pXszEV9CU6kRgwIQVQGLMv1oiL4M+MK/n79sYzsj+gcgpPQSctJUsLN7fA==
 
-d3-scale@^3.2.3:
+d3-scale@^3.2.0, d3-scale@^3.2.3:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-3.2.4.tgz#13d758d7cf4e4f1fc40196a63597d01f3ed81765"
   integrity sha512-PG6gtpbPCFqKbvdBEswQcJcTzHC8VEd/XzezF5e68KlkT4/ggELw/nR1tv863jY6ufKTvDlzCMZvhe06codbbA==
@@ -7324,6 +7380,13 @@ d3-scale@^3.2.3:
     d3-interpolate "1.2.0 - 2"
     d3-time "1 - 2"
     d3-time-format "2 - 3"
+
+d3-shape@^1.3.7:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.7.tgz#df63801be07bc986bc54f63789b4fe502992b5d7"
+  integrity sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==
+  dependencies:
+    d3-path "1"
 
 d3-shape@^2.0.0:
   version "2.1.0"
@@ -8276,10 +8339,10 @@ eslint-plugin-node@11.1.0:
     resolve "^1.10.1"
     semver "^6.1.0"
 
-eslint-plugin-promise@4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-4.3.1.tgz#61485df2a359e03149fdafc0a68b0e030ad2ac45"
-  integrity sha512-bY2sGqyptzFBDLh/GMbAxfdJC+b0f23ME63FOE4+Jao0oZ3E1LEwFtWJX/1pGMJLiTtrSSern2CRM/g+dfc0eQ==
+eslint-plugin-promise@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-5.1.0.tgz#fb2188fb734e4557993733b41aa1a688f46c6f24"
+  integrity sha512-NGmI6BH5L12pl7ScQHbg7tvtk4wPxxj8yPHH47NvSmMtFneC077PSeY3huFj06ZWZvtbfxSPt3RuOQD5XcR4ng==
 
 eslint-plugin-react-hooks@4.2.0, eslint-plugin-react-hooks@^4.2.0:
   version "4.2.0"
