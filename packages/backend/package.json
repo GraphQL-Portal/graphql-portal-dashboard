@@ -81,7 +81,7 @@
     "ioredis": "4.26.0",
     "jsonwebtoken": "8.5.1",
     "migrate-mongo": "8.2.2",
-    "mongodb": "3.6.5",
+    "mongodb": "3.6.6",
     "mongoose": "5.12.3",
     "node-config-ts": "3.1.0",
     "reflect-metadata": "0.1.13",
