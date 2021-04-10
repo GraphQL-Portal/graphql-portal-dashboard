@@ -53,7 +53,7 @@
     ]
   },
   "dependencies": {
-    "concurrently": "6.0.0"
+    "concurrently": "6.0.1"
   },
   "devDependencies": {
     "@changesets/cli": "2.16.0",
