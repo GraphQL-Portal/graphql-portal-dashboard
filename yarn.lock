@@ -1661,6 +1661,57 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
+"@date-io/core@^1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
+  integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
+
+"@date-io/date-fns@1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
+  integrity sha512-yXxGzcRUPcogiMj58wVgFjc9qUYrCnnU9eLcyNbsQCmae4jPuZCDoIBR21j8ZURsM7GRtU62VOw5yNd4dDHunA==
+  dependencies:
+    "@date-io/core" "^1.3.13"
+
+"@devexpress/dx-chart-core@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-chart-core/-/dx-chart-core-2.7.5.tgz#99a99fc085450874f2c888b34c4db93d238a39e5"
+  integrity sha512-ZSpBN7SjnOhBOcvmuYZ5U+XyUYKlsTrYXCYMfFH2qXwvqh0e0UbhzW1FPfDXdWqx0Y52MtPX0HJrBC4QqH7Bcg==
+  dependencies:
+    d3-array "^2.4.0"
+    d3-scale "^3.2.0"
+    d3-shape "^1.3.7"
+
+"@devexpress/dx-core@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-core/-/dx-core-2.7.5.tgz#f1460c072f05765fdc97b836541240a10250738f"
+  integrity sha512-VQQkz0uUqQ7YuVZeBEx1JFqpSSe5Bz9Qy2T0XAbilBQ8IItj74xjzaFMCNjuASAKXOJGtG0RUh+BOKrMGV7jlg==
+
+"@devexpress/dx-react-chart-material-ui@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-chart-material-ui/-/dx-react-chart-material-ui-2.7.5.tgz#3566956338330a0b284ff85afc320736523d1db8"
+  integrity sha512-uS450uSP1D6mZ2jgtueShqaATNRVqJEwqhgyRQUXL/gQyTrTCvM61TC5NLyEYCOW6RkiHK1BabWbhJlVATZbeg==
+  dependencies:
+    clsx "^1.0.4"
+    prop-types "^15.7.2"
+
+"@devexpress/dx-react-chart@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-chart/-/dx-react-chart-2.7.5.tgz#0e9b999cb195e9b9b6734d9d0c3a5b5f8633b018"
+  integrity sha512-j3nPsHrMiCbgm6olZCykxHOxxJ2XXG0CVihMYGOoyenM74Ed+NIaLi1bk2VtxKZdEPB5UrWgU10rd9SLH45BsQ==
+  dependencies:
+    "@devexpress/dx-chart-core" "2.7.5"
+    d3-scale "^3.2.0"
+    d3-shape "^1.3.7"
+
+"@devexpress/dx-react-core@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-core/-/dx-react-core-2.7.5.tgz#978f1ead810819e9f3464e9f9d25ccbb87eaad96"
+  integrity sha512-YwJ4l8nnMs/vghqamo8OzirDnrbT1ZNIcMP5xJFJJQIyfYAXvGGDS4yLeYI4cwitBg/d2O4jMOReXDB8tUaDDQ==
+  dependencies:
+    "@devexpress/dx-core" "2.7.5"
+    prop-types "^15.7.2"
+
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
@@ -2124,14 +2175,14 @@
     nanoid "^3.1.20"
     yaml "^1.10.0"
 
-"@graphql-portal/contentful@^0.1.0", "@graphql-portal/contentful@^0.1.1":
+"@graphql-portal/contentful@0.1.1", "@graphql-portal/contentful@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/contentful/-/contentful-0.1.1.tgz#55889df83c1b8f1ef60661f1c3c860c506c7bc44"
   integrity sha512-fA0ITyxH53D14ZFEeDfbk/BTrsa32RnlIYJ/FxVDqYQPFu3+TyrCPnJ37oV7ZifKcokEKjkj2nXhYE6Ri6mc7A==
   dependencies:
     "@graphql-mesh/graphql" "^0.16.0"
 
-"@graphql-portal/crunchbase@^0.1.1":
+"@graphql-portal/crunchbase@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.1.1.tgz#8708f3278854fd0565ca38502cef138654369150"
   integrity sha512-GcK0jvBXPSY0SI1KTTzPywUAJIkTkfFpOtxPRjU5BGvMcbUT3NpaHfjY2tW2P4qGcywFDFgAg9PkXRPwcIJGUQ==
@@ -2147,12 +2198,12 @@
     "@graphql-portal/types" "^0.23.0"
     axios "^0.21.1"
 
-"@graphql-portal/datasources@^0.1.1":
+"@graphql-portal/datasources@0.1.1", "@graphql-portal/datasources@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.1.tgz#93e93b92286a74173fda827bf6185383d520dfa4"
   integrity sha512-qvqOX8HDAne06LvBMUOtDgow3k7FbXvDIpvgNM9ns7z2PgeNobbKTZcpzYikZpY1pMwIE9KzSsgzX64UzCYBEA==
 
-"@graphql-portal/gateway@^0.17.4":
+"@graphql-portal/gateway@0.17.5":
   version "0.17.5"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.17.5.tgz#9c71f7d1093b51867fe5d9f08395ef95d4df6282"
   integrity sha512-xbZLtgbl393XWZ0EOlJQ1YwKwbX/PsS2zW1hMoO5jXt1+2l28LCH5Rh+pirBtWpUlvyHnvJGXKj8P0V0s29vxA==
@@ -2212,7 +2263,7 @@
     uuid "^8.3.2"
     yaml "^1.10.0"
 
-"@graphql-portal/ip-api@^0.1.1":
+"@graphql-portal/ip-api@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.1.1.tgz#f8fe65651c6e46ff06a9918185934113a2ae6350"
   integrity sha512-9rHK9JwJodwySAtrx5zg3A9Yhk2ccGSzdoBRqJiwEDhsiatS0zo68iDLv0z5tUS1haRT7Ac5fVP95l8tY1+mhw==
@@ -2232,14 +2283,14 @@
     winston "3.3.3"
     winston-transport "^4.4.0"
 
-"@graphql-portal/salesforce@^0.1.1":
+"@graphql-portal/salesforce@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/salesforce/-/salesforce-0.1.1.tgz#5c2b5c0dccbbcd91fc1281d7283c127f0079925e"
   integrity sha512-XyBKzrbsUWjQBLMieuo73RIe5UIsV5vFUGPBap2l2GmV4QSfbjyJN7qb9FHS35hbFryJo0bzw5jcCWQOAKVDBA==
   dependencies:
     "@graphql-mesh/openapi" "^0.15.0"
 
-"@graphql-portal/slack@^0.2.0", "@graphql-portal/slack@^0.2.1":
+"@graphql-portal/slack@0.2.1", "@graphql-portal/slack@^0.2.0":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/slack/-/slack-0.2.1.tgz#2c16abfeedd10e2f71c525099f90af8dcd938c40"
   integrity sha512-8d0LS/ooPgMFaEEt4XAavl+6IzZhf3GjI1hIhneKl/y+m5WndPP1s8WgYm+Njq36HCn5KjuMbl4VJgD8yRnTlA==
@@ -2247,14 +2298,14 @@
     "@graphql-mesh/openapi" "^0.15.0"
     graphql "^15.4.0"
 
-"@graphql-portal/stripe@^0.2.1":
+"@graphql-portal/stripe@0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/stripe/-/stripe-0.2.1.tgz#3d7997c77a52cd1545e651d348e0bc2a3d15ca17"
   integrity sha512-XGfnlbJx3V+iyq4qHcAfNe4GoqWRJtT79aJQkPwCeX3tVdg0Ix69Eylg5LLssugFcUrky/b/qLaDGhx2E19lTg==
   dependencies:
     "@graphql-mesh/openapi" "^0.15.0"
 
-"@graphql-portal/twitter@^0.3.1":
+"@graphql-portal/twitter@0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.3.1.tgz#72f010e0a70e667e214a3af4e21562981c9a7f72"
   integrity sha512-5T/G9PDRxXULMid9m1MtAOxHn2WX1FquqU4LoT3Qhdfx/LrgYg62aMjW2b10U/ztNWUE7g8YtVTsaMh6oy6rMA==
@@ -2262,7 +2313,7 @@
     "@graphql-mesh/openapi" "^0.15.0"
     "@graphql-mesh/types" "^0.38.0"
 
-"@graphql-portal/types@0.23.1", "@graphql-portal/types@^0.23.0", "@graphql-portal/types@^0.23.1":
+"@graphql-portal/types@0.23.1", "@graphql-portal/types@^0.23.0":
   version "0.23.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.1.tgz#fe80a35997e9ee9de42af2fbbdc49ba7c849c901"
   integrity sha512-2UEd3QEZqUAnv6L0+K5oBLSsqggW7IvTeLjJVIxu1Mjy6JZoOnUQdThOI+04DJRCc7iwLfjZlQeu8YfQ2rBEmw==
@@ -2270,7 +2321,7 @@
     "@graphql-portal/datasources" "^0.1.1"
     ajv "8.0.5"
 
-"@graphql-portal/types@^0.23.2":
+"@graphql-portal/types@0.23.2":
   version "0.23.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.2.tgz#0b043fc76b8f08fe340023289c46690950bb8466"
   integrity sha512-xQJETzVEqnBEIgpclLfk4Ix5bEcuY4lhhV9jg0Qri1PO6DCqqGahaTTkNGNEQmDJXlAcEQkJR8CAC3xk/32R8g==
@@ -2278,7 +2329,7 @@
     "@graphql-portal/datasources" "^0.1.1"
     ajv "8.0.5"
 
-"@graphql-portal/weatherbit@^0.2.1":
+"@graphql-portal/weatherbit@0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.2.1.tgz#c968614dd11dd5ba9a170685559636210bbf2712"
   integrity sha512-+rvWRPo4aKIhdEWje3XVI46P73ZwXSJ8LCKFsHYx3/upYcFdfTVpYdC5nVQWYgy0bVwEzF0xCsTFJu4xhRDUKw==
@@ -3715,7 +3766,7 @@
   resolved "https://registry.yarnpkg.com/@types/http-assert/-/http-assert-1.5.1.tgz#d775e93630c2469c2f980fc27e3143240335db3b"
   integrity sha512-PGAK759pxyfXE78NbKxyfRcWYA/KwW17X290cNev/qAsn9eQIxkH4shoNBafH37wewhDG/0p1cHPbK6+SzZjWQ==
 
-"@types/http-cache-semantics@^4.0.0":
+"@types/http-cache-semantics@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.0.tgz#9140779736aa2655635ee756e2467d787cfe8a2a"
   integrity sha512-c3Xy026kOF7QOTn00hbIllV1dLR9hG9NkSrLQgCVs8NF6sBU+VGWjD3wLPhmh1TYAc7ugCFsvHYMN4VcBN1U1A==
@@ -7285,7 +7336,7 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d3-array@^2.3.0:
+d3-array@^2.3.0, d3-array@^2.4.0:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
   integrity sha512-B0ErZK/66mHtEsR1TkPEEkwdy+WDesimkM5gpZr5Dsg54BiTA5RXtYW5qTLIAcekaS9xfZrzBLF/OAkB3Qn1YQ==
@@ -7309,12 +7360,17 @@ d3-array@^2.3.0:
   dependencies:
     d3-color "1 - 2"
 
+d3-path@1:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.9.tgz#48c050bb1fe8c262493a8caf5524e3e9591701cf"
+  integrity sha512-VLaYcn81dtHVTjEHd8B+pbe9yHWpXKZUC87PzoFmsFrJqgFwDe/qxfp5MlfsfM1V5E/iVt0MmEbWQ7FVIXh/bg==
+
 "d3-path@1 - 2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-2.0.0.tgz#55d86ac131a0548adae241eebfb56b4582dd09d8"
   integrity sha512-ZwZQxKhBnv9yHaiWd6ZU4x5BtCQ7pXszEV9CU6kRgwIQVQGLMv1oiL4M+MK/n79sYzsj+gcgpPQSctJUsLN7fA==
 
-d3-scale@^3.2.3:
+d3-scale@^3.2.0, d3-scale@^3.2.3:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-3.2.4.tgz#13d758d7cf4e4f1fc40196a63597d01f3ed81765"
   integrity sha512-PG6gtpbPCFqKbvdBEswQcJcTzHC8VEd/XzezF5e68KlkT4/ggELw/nR1tv863jY6ufKTvDlzCMZvhe06codbbA==
@@ -7324,6 +7380,13 @@ d3-scale@^3.2.3:
     d3-interpolate "1.2.0 - 2"
     d3-time "1 - 2"
     d3-time-format "2 - 3"
+
+d3-shape@^1.3.7:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.7.tgz#df63801be07bc986bc54f63789b4fe502992b5d7"
+  integrity sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==
+  dependencies:
+    d3-path "1"
 
 d3-shape@^2.0.0:
   version "2.1.0"
@@ -15468,7 +15531,7 @@ recharts-scale@^0.4.4:
   dependencies:
     decimal.js-light "^2.4.1"
 
-recharts@^2.0.9:
+recharts@2.0.9:
   version "2.0.9"
   resolved "https://registry.yarnpkg.com/recharts/-/recharts-2.0.9.tgz#048068eb01383291104548388712026948275f70"
   integrity sha512-JNsXE80PuF3hugUCE7JqDOMSvu5xQLxtjOaqFKKZI2pCJ1PVJzhwDv4TWk0nO4AvADbeWzYEHbg8C5Hcrh42UA==
