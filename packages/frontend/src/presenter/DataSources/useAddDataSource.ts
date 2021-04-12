@@ -15,13 +15,13 @@ export const useAddDataSource = () => {
   const { tour } = useTourContext();
   const { source = {}, clearSource } = useDataSourceContext();
   const steps = getSourceSteps(source);
-  const exampleState = tour.isStarted
+  const initialState = tour.isStarted
     ? {
         name: tour.source.state.name,
         handler: tour.source.state.handler.openapi,
         transforms: tour.source.state.transforms,
       }
-    : null;
+    : INITIAL_STATE;
 
   const {
     state,
@@ -30,7 +30,7 @@ export const useAddDataSource = () => {
     updateState,
     completeStep,
     setStep,
-  } = useEditDataSource(steps.length - 1, exampleState || INITIAL_STATE);
+  } = useEditDataSource(steps.length - 1, initialState);
 
   const { createSource } = useCreateSource({
     onCompleted() {
