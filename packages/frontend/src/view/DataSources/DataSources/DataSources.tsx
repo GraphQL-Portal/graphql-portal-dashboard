@@ -33,7 +33,7 @@ export const DataSources: React.FC = () => {
           {connected.length === 0 ? (
             <EmptySources />
           ) : (
-            <div data-intro={selectors.DATA_SOURCE_MY_CONNECTED}>
+            <div data-tour={selectors.DATA_SOURCE_MY_CONNECTED}>
               <WidgetHeader title="My connected data-sources" />
               <WidgetBody>
                 <ConnectedList

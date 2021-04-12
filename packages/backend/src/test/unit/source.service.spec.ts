@@ -151,5 +151,20 @@ describe('SourceService', () => {
       expect(result).toBe(true);
       expect(isSourceUsedMock).toBeCalledTimes(1);
     });
+
+    it('should delete document by name and call publishApiDefsUpdated', async () => {
+      source = await sourceService.create(
+        { ...sourceExample, _id: randomObjectId() },
+        userId
+      );
+      const isSourceUsedMock = jest
+        .spyOn(apiDefService, 'isSourceUsed')
+        .mockResolvedValueOnce(0 as any);
+
+      const result = await sourceService.deleteByName(source.name);
+
+      expect(result).toBe(true);
+      expect(isSourceUsedMock).toBeCalledTimes(1);
+    });
   });
 });

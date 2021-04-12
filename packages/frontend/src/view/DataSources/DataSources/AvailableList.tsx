@@ -41,7 +41,7 @@ export const AvailableList: React.FC = () => {
   const { form, searchIcon } = useStyles();
 
   return (
-    <div data-intro={selectors.DATA_SOURCE_AVAILABLE}>
+    <div data-tour={selectors.DATA_SOURCE_AVAILABLE}>
       <form noValidate autoComplete="off" className={form} onSubmit={onSubmit}>
         <Controller
           as={Input}
@@ -50,7 +50,7 @@ export const AvailableList: React.FC = () => {
           placeholder="Search data connectors"
           name="search"
           onKeyDown={onKeyDown}
-          data-intro={selectors.DATA_SOURCE_AVAILABLE_SEARCH_BAR}
+          data-tour={selectors.DATA_SOURCE_AVAILABLE_SEARCH_BAR}
           autoFocus
           InputProps={{
             startAdornment: <Search className={searchIcon} />,
@@ -93,7 +93,7 @@ export const AvailableList: React.FC = () => {
                 </TableIconCell>
                 <TableCell>{description}</TableCell>
                 <TableActionCell
-                  data-intro={`${selectors.DATA_SOURCE_AVAILABLE}-${key}`}
+                  data-tour={`${selectors.DATA_SOURCE_AVAILABLE}-${key}`}
                 >
                   <Tooltip
                     title="Add connector"

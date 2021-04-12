@@ -47,6 +47,7 @@ describe('ApiDefResolver', () => {
         create: jest.fn().mockResolvedValue(apiDefExample),
         update: jest.fn().mockResolvedValue(apiDefExample),
         delete: jest.fn().mockResolvedValue(true),
+        deleteByName: jest.fn().mockResolvedValue(true),
         isOwner: jest.fn().mockResolvedValue(true),
       })
       .compile();
@@ -370,6 +371,22 @@ describe('ApiDefResolver', () => {
 
         expect(apiDefService.delete).toHaveBeenCalledTimes(1);
         expect(apiDefService.delete).toHaveBeenCalledWith(createApiDef._id);
+      });
+    });
+
+    describe('deleteApiDefByName', () => {
+      it('should call delete', async () => {
+        await graphQlRequest(
+          `mutation($name:String!){
+            deleteApiDefByName(name:$name)
+          }`,
+          { name: createApiDef.name }
+        ).expect(HttpStatus.OK);
+
+        expect(apiDefService.deleteByName).toHaveBeenCalledTimes(1);
+        expect(apiDefService.deleteByName).toHaveBeenCalledWith(
+          createApiDef.name
+        );
       });
     });
   });

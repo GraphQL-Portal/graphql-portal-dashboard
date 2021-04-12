@@ -39,7 +39,7 @@ export const ViewAPI: React.FC = () => {
         <title>{`View ${name} API`}</title>
       </Helmet>
       <ViewHeader name={name} apiEndpoint={apiEndpoint} />
-      <WidgetRow data-intro={selectors.MY_APIS_EXAMPLE_API}>
+      <WidgetRow data-tour={selectors.MY_APIS_EXAMPLE_API}>
         <HugeWidget>
           {enabled ? (
             <WidgetBody>

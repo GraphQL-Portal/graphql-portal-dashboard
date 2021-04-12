@@ -25,7 +25,7 @@ export const SourceName: React.FC<NameStep> = (stepProps) => {
         </HandlerCol>
       </HandlerRow>
       <PrimaryButton
-        data-intro={selectors.DATA_SOURCE_NAME_SAVE_BUTTON}
+        data-tour={selectors.DATA_SOURCE_NAME_SAVE_BUTTON}
         type="submit"
       >
         Save Name

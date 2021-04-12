@@ -47,7 +47,7 @@ export const ApiDefsList: React.FC<Props> = ({
           {list.map((api, idx) => (
             <TableRow key={`node-${idx}`}>
               <TableCell
-                data-intro={
+                data-tour={
                   tour.isStarted &&
                   api.name === tour?.api?.name &&
                   selectors.MY_APIS_CREATED_API_LINK

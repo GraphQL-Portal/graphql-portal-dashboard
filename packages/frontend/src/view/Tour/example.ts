@@ -1,11 +1,3 @@
-export interface ITour {
-  DATA_CONNECTORS_SEARCH_VALUE: string;
-  source: any;
-  api: any;
-  query: string;
-  isStarted: boolean;
-}
-
 export const source = {
   key: 'openapi',
   connector: {

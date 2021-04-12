@@ -77,11 +77,11 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
         <title>Add new data-source</title>
       </Helmet>
       <AddDataSourceHeader />
-      <WidgetRow data-intro={selectors.DATA_SOURCE_ADD_WIDGET}>
+      <WidgetRow data-tour={selectors.DATA_SOURCE_ADD_WIDGET}>
         <HugeWidget className={visibleOverflow}>
           <WidgetHeader title={text.title}>
             <PrimaryButton
-              data-intro={selectors.DATA_SOURCE_ADD_BUTTON}
+              data-tour={selectors.DATA_SOURCE_ADD_BUTTON}
               disabled={isDisabled}
               onClick={onSubmit}
             >

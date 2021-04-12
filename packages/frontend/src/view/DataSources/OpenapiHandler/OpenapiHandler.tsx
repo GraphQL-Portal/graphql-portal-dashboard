@@ -154,7 +154,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
         </HandlerColBig>
       </HandlerRow>
       <PrimaryButton
-        data-intro={selectors.DATA_SOURCE_HANDLER_SAVE_BUTTON}
+        data-tour={selectors.DATA_SOURCE_HANDLER_SAVE_BUTTON}
         type="submit"
       >
         Save Openapi Handler

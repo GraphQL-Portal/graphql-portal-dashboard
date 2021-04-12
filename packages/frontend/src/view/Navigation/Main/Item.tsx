@@ -8,7 +8,7 @@ import { useStyles } from './useStyles';
 export const Item: React.FC<GroupItem> = ({ link, text, Icon, external }) => {
   const { item, activeItem, button } = useStyles();
 
-  const dataIntoValue = `navigation-item-${text
+  const dataTourValue = `navigation-item-${text
     .toLowerCase()
     .replace(/ /g, '-')}`;
 
@@ -17,7 +17,7 @@ export const Item: React.FC<GroupItem> = ({ link, text, Icon, external }) => {
       href={link}
       className={item}
       rel="noopener noreferrer"
-      data-intro={dataIntoValue}
+      data-tour={dataTourValue}
       target="_blank"
     >
       <TextButton fullWidth className={button} startIcon={<Icon />}>
@@ -28,7 +28,7 @@ export const Item: React.FC<GroupItem> = ({ link, text, Icon, external }) => {
     <NavLink
       to={link}
       className={item}
-      data-intro={dataIntoValue}
+      data-tour={dataTourValue}
       activeClassName={activeItem}
     >
       <TextButton fullWidth className={button} startIcon={<Icon />}>

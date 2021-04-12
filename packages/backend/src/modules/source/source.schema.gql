@@ -25,4 +25,5 @@ type Mutation {
   createSource(source: CreateSource!): Source
   updateSource(id: ID!, source: CreateSource!): Source
   deleteSource(id: ID!): Boolean
+  deleteSourceByName(name: String!): Boolean
 }

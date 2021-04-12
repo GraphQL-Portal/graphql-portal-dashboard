@@ -30,12 +30,12 @@ export const ApiDefs: React.FC = () => {
       <Header title="Your APIs">
         <PrimaryButton
           onClick={onCreate}
-          data-intro={selectors.MY_APIS_CREATE_NEW_BUTTON}
+          data-tour={selectors.MY_APIS_CREATE_NEW_BUTTON}
         >
           Create new API
         </PrimaryButton>
       </Header>
-      <WidgetRow data-intro={selectors.MY_APIS_LIST}>
+      <WidgetRow data-tour={selectors.MY_APIS_LIST}>
         <HugeWidget>
           {data.length ? (
             <ApiDefsList

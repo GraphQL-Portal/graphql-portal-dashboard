@@ -28,12 +28,12 @@ export const DataSourcesForm: React.FC<Props> = ({
             disabled={disableSelect}
             label="Select data-source to add"
             fullWidth
-            data-intro={selectors.MY_APIS_CREATE_FORM_SELECT_DATA_SOURCE}
+            data-tour={selectors.MY_APIS_CREATE_FORM_SELECT_DATA_SOURCE}
           />
         </Col>
         <Col xs={6}>
           <OutlineButton
-            data-intro={selectors.MY_APIS_CREATE_FORM_ADD_DATA_SOURCE_BUTTON}
+            data-tour={selectors.MY_APIS_CREATE_FORM_ADD_DATA_SOURCE_BUTTON}
             onClick={onAddSource}
             className={addButton}
           >

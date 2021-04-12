@@ -61,7 +61,7 @@ export const CreateApi: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title={PAGE_TITLE} />
-          <WidgetBody data-intro={selectors.MY_APIS_CREATE_FORM}>
+          <WidgetBody data-tour={selectors.MY_APIS_CREATE_FORM}>
             <form onSubmit={onSubmit} noValidate autoComplete="off">
               <GeneralForm
                 register={register}
@@ -102,7 +102,7 @@ export const CreateApi: React.FC = () => {
               />
               <LimitsForm register={register} errors={errors} />
               <PrimaryButton
-                data-intro={selectors.MY_APIS_CREATE_FORM_CREATE_NEW_BUTTON}
+                data-tour={selectors.MY_APIS_CREATE_FORM_CREATE_NEW_BUTTON}
                 type="submit"
               >
                 Create new API
