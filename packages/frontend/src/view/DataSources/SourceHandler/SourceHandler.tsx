@@ -18,6 +18,7 @@ import { SalesforceHandler } from '../SalesforceHandler';
 import { CrunchbaseHandler } from '../CrunchbaseHandler';
 import { TwitterHandler } from '../TwitterHandler';
 import { StripeHandler } from '../StripeHandler';
+import { JsonSchemaHandler } from '../JsonSchemaHandler';
 
 // The list of custom handler forms
 // Each handler should have React.FC<HandlerStep> type signature
@@ -38,6 +39,7 @@ const HANDLERS_MAPPER: HandlersMapper = {
   soap: SoapHandler,
   grpc: GRPCHandler,
   openapi: OpenapiHandler,
+  jsonSchema: JsonSchemaHandler,
 };
 
 const getHandler = (key: string) => HANDLERS_MAPPER[key] || EditorsHandler;
