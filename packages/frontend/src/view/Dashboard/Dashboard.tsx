@@ -1,40 +1,36 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useMetrics } from '../../presenter/Metrics';
+import { useDashboardMetrics } from '../../presenter/Metrics';
 import {
-  DatePicker,
   Header,
   HugeWidget,
-  Widget,
   WidgetRow,
   Select,
   ButtonGroup,
+  Widget,
+  WidgetHeader,
 } from '../../ui';
 import {
+  CHART_BUTTONS,
   CountryChart,
-  FailureRequestRateChart,
-  RequestChart,
-  chartButtons,
+  LatencyRequestChart,
+  SuccessFailureChart,
 } from '../MetricChart';
 import { useStyles } from './useStyles';
-import { formatArgumentLabel, formatValueLabel } from '../../utils';
 
 export const Dashboard: React.FC = () => {
-  const { widget, apiSelect } = useStyles();
+  const { widget, apiSelect, apiSelectLabel } = useStyles();
   const {
-    data = {},
-    startDate,
-    endDate,
-    scale,
-    setStartDate,
-    setEndDate,
-    setScale,
-    selectApiDef,
-    apis,
+    data,
+    range,
+    onSetRange,
     apiDef,
-  } = useMetrics();
-  const { latency = [], count = [], countries = [], failures = [] } = data;
+    apis,
+    onSelectChange,
+  } = useDashboardMetrics();
+
+  const { getChunkedAPIMetrics, getCountryMetrics } = data || {};
 
   return (
     <>
@@ -44,74 +40,50 @@ export const Dashboard: React.FC = () => {
       <Header title="Dashboard" />
       <WidgetRow>
         <Widget className={widget}>
-          <ButtonGroup onClick={setScale} buttons={chartButtons} />
-        </Widget>
-        <Widget className={widget}>
-          <DatePicker
-            label="Start Date"
-            value={startDate}
-            disableFuture
-            maxDate={endDate}
-            onChange={(e) => e && setStartDate(e)}
-          />
-        </Widget>
-        <Widget className={widget}>
-          <DatePicker
-            label="End Date"
-            value={endDate}
-            disableFuture
-            minDate={startDate}
-            onChange={(e) => e && setEndDate(e)}
+          <ButtonGroup
+            onClick={onSetRange}
+            buttons={CHART_BUTTONS}
+            active={range}
           />
         </Widget>
         <Widget className={widget}>
           <Select
+            labelClassName={apiSelectLabel}
             className={apiSelect}
             options={apis}
-            label="API"
-            onChange={(e, { props }: any) => selectApiDef(props?.value)}
             value={apiDef}
+            label="Filter by API"
+            onChange={onSelectChange}
+            fullWidth
           />
         </Widget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <RequestChart
-            data={latency}
-            title="Average Request Latency"
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            valueLabelHandler={formatValueLabel}
+          <WidgetHeader title="Latency and Request" />
+          <LatencyRequestChart
+            data={getChunkedAPIMetrics || []}
+            range={range}
           />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <RequestChart
-            data={count}
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            title="Average Request Count"
+          <WidgetHeader title="Success and Failure" />
+          <SuccessFailureChart
+            data={getChunkedAPIMetrics || []}
+            range={range}
           />
         </HugeWidget>
       </WidgetRow>
-      {countries.length > 0 && (
+      {getCountryMetrics?.length > 0 && (
         <WidgetRow>
           <HugeWidget>
-            <CountryChart
-              data={countries}
-              title="Countries where requests were made from"
-            />
+            <WidgetHeader title="Countries" />
+            <CountryChart data={getCountryMetrics} />
           </HugeWidget>
         </WidgetRow>
       )}
-      <WidgetRow>
-        <HugeWidget>
-          <FailureRequestRateChart
-            argumentLabelHandler={formatArgumentLabel(scale)}
-            data={failures}
-            title="Failure/Success Chart"
-          />
-        </HugeWidget>
-      </WidgetRow>
     </>
   );
 };

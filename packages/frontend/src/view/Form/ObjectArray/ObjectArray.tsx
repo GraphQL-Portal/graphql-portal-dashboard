@@ -15,8 +15,16 @@ export const ObjectArray: React.FC<Props> = ({
   title,
   fields,
   name,
-  keyLabel,
-  valueLabel,
+  objectSchema = {
+    key: {
+      label: 'key',
+      helperText: '',
+    },
+    value: {
+      label: 'value',
+      helperText: '',
+    },
+  },
 }) => {
   const { objectField, lastField, objectRow } = useStyles();
 
@@ -26,37 +34,42 @@ export const ObjectArray: React.FC<Props> = ({
     <>
       <AddFieldArrayHeader title={title} onAddClick={onAdd} />
       {fields.length > 0 &&
-        fields.map((field, idx) => (
-          <Row className={objectRow} key={field.id} spacing={2}>
-            <Col xs={5} className={objectField}>
-              <Input
-                ref={register()}
-                label={keyLabel || 'key'}
-                name={`${name}[${idx}].key`}
-                fullWidth
-                defaultValue={field.key || undefined}
-                error={!!errors?.[name]?.[idx]?.key}
-              />
-            </Col>
-            <Col xs={5} className={objectField}>
-              <Input
-                ref={register()}
-                label={valueLabel || 'value'}
-                name={`${name}[${idx}].value`}
-                fullWidth
-                defaultValue={field.value || undefined}
-                error={!!errors?.[name]?.[idx]?.value}
-              />
-            </Col>
-            <Col xs={2} className={lastObjectField}>
+        fields.map((field, idx) => {
+          const remove = (
+            <Col xs={1} className={lastObjectField}>
               <Tooltip title="Remove field" placement="left">
                 <IconButton onClick={() => onRemove(idx)}>
                   <Remove />
                 </IconButton>
               </Tooltip>
             </Col>
-          </Row>
-        ))}
+          );
+          const keys = Object.keys(objectSchema);
+          return (
+            <Row className={objectRow} key={field.id} spacing={2}>
+              {keys.map((key, i) => {
+                const schema = objectSchema[key];
+                return (
+                  <>
+                    <Col xs={5} className={objectField}>
+                      <Input
+                        ref={register()}
+                        label={schema.label || key}
+                        name={`${name}[${idx}].${key}`}
+                        fullWidth
+                        defaultValue={(field as any)[key!] || undefined}
+                        error={!!errors?.[name]?.[idx]?.[key!]}
+                        helperText={schema.helperText || ''}
+                      />
+                    </Col>
+                    {i === 1 ? remove : null}
+                  </>
+                );
+              })}
+              {keys.length < 2 ? remove : null}
+            </Row>
+          );
+        })}
     </>
   );
 };

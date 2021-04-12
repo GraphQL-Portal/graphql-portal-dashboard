@@ -7,6 +7,7 @@ import { ApiDef } from './data';
 import { Fetcher } from './methods';
 import {
   UseAdditionalResolverHook,
+  UseCacheHook,
   UseCreateApiDefHook,
   UseIPFilteringHook,
 } from './hooks';
@@ -82,6 +83,15 @@ export type AdditionalResolvers = Omit<
 
 export type AdditionalResolverArguments = Pick<
   AdditionalResolvers,
+  'control' | 'errors' | 'register'
+> & {
+  nestIndex: number;
+};
+
+export type CacheTransforms = Omit<ReturnType<UseCacheHook>, 'onSubmit'>;
+
+export type CacheTransformsInvalidateOperations = Pick<
+  CacheTransforms,
   'control' | 'errors' | 'register'
 > & {
   nestIndex: number;

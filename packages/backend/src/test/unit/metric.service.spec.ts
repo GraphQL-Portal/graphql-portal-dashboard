@@ -6,6 +6,8 @@ import { AnyMetric, AnyResolverMetric } from '../../modules/metric/interfaces';
 import AppModule from '../../modules/app.module';
 import MetricService from '../../modules/metric/metric.service';
 import { randomObjectId } from '../common';
+import { IApiDefDocument } from '../../data/schema/api-def.schema';
+import ApiDefService from '../../modules/api-def/api-def.service';
 
 jest.useFakeTimers();
 
@@ -14,6 +16,7 @@ jest.mock('ioredis');
 describe('MetricService', () => {
   let app: TestingModule;
   let metricService: MetricService;
+  let apiDefService: ApiDefService;
 
   const geo = {
     country: 'country',
@@ -22,15 +25,9 @@ describe('MetricService', () => {
       latitude: 90,
       longitude: 180,
     },
+    postal: { code: '75000' },
   };
   const maxmind = {
-    country: jest.fn(() => ({
-      country: {
-        names: {
-          en: geo.country,
-        },
-      },
-    })),
     city: jest.fn(() => ({
       city: {
         names: {
@@ -38,6 +35,14 @@ describe('MetricService', () => {
         },
       },
       location: geo.location,
+      country: {
+        names: {
+          en: geo.country,
+        },
+      },
+      postal: {
+        code: geo.postal.code,
+      },
     })),
   };
 
@@ -47,6 +52,7 @@ describe('MetricService', () => {
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     metricService = app.get<MetricService>(MetricService);
+    apiDefService = app.get<ApiDefService>(ApiDefService);
     (metricService as any).maxmind = maxmind;
   });
 
@@ -158,6 +164,8 @@ describe('MetricService', () => {
     });
 
     it('aggregateRequestMetric should create request-metric entity', async () => {
+      const apiDef = 'apiDef';
+      const user = 'user';
       const nodeId = '1.2.3';
       const userAgent = 'userAgent';
       const ip = '1.2.3';
@@ -199,6 +207,12 @@ describe('MetricService', () => {
       const spyReduceResolvers = jest
         .spyOn(metricService as any, 'reduceResolvers')
         .mockReturnValue(resolvers);
+      const spyFindByEndpoint = jest
+        .spyOn(apiDefService as any, 'findByEndpoint')
+        .mockReturnValue({
+          _id: apiDef,
+          user: { _id: user },
+        } as IApiDefDocument);
 
       const requestId = '1';
       await (metricService as any).aggregateRequestMetric(requestId);
@@ -208,12 +222,12 @@ describe('MetricService', () => {
       expect(spyLtrim).toBeCalledTimes(1);
       expect((metricService as any).maxmind.city).toBeCalledTimes(1);
       expect((metricService as any).maxmind.city).toBeCalledWith(ip);
-      expect((metricService as any).maxmind.country).toBeCalledTimes(1);
-      expect((metricService as any).maxmind.country).toBeCalledWith(ip);
       expect(spyLtrim).toBeCalledWith(requestId, records.length, -1);
       expect(spyReduceResolvers).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledTimes(1);
       expect(spyCreate).toBeCalledWith({
+        apiDef,
+        user,
         requestId,
         resolvers,
         latency: responseDate - requestDate,

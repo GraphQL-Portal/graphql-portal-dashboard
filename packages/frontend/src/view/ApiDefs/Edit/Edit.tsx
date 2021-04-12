@@ -16,6 +16,7 @@ import { DataSourcesTab } from './DataSourcesTab';
 import { SchemaAndLimits } from './SchemaAndLimits';
 import { IPTab } from './IPTab';
 import { AdditionalResolversTab } from './AdditionalResolversTab';
+import { CacheTab } from './CacheTab';
 import { EditHeader } from './EditHeader';
 
 export const EditApi: React.FC = () => {
@@ -44,6 +45,7 @@ export const EditApi: React.FC = () => {
               <SchemaAndLimits api={api} refetch={refetch!} />
               <IPTab api={api} refetch={refetch!} />
               <AdditionalResolversTab api={api} refetch={refetch!} />
+              <CacheTab api={api} refetch={refetch!} />
             </TabsBody>
           </WidgetBody>
         </HugeWidget>

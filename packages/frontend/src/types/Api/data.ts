@@ -1,5 +1,6 @@
 import { DataSource } from '../DataSource';
 import { Gateway } from '../Gateway';
+import { Transform } from '@graphql-portal/types';
 
 export type ApiAuth<T> = {
   auth_header_name: string;
@@ -50,8 +51,9 @@ export type ApiDef = {
   createdAt: string;
   updatedAt: string;
   mesh?: {
-    additionalResolvers: undefined | AdditionalResolver[];
-    additionalTypeDefs: undefined | string[];
+    additionalResolvers?: AdditionalResolver[];
+    additionalTypeDefs?: string[];
+    transforms?: Transform[];
   };
 } & AllowIps<string[]> &
   DenyIps<string[]>;

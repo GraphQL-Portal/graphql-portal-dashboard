@@ -8,12 +8,15 @@ import {
   objectToFieldArray,
 } from '../../DataSources/helpers';
 
-export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
-  if (!mesh?.additionalResolvers) {
-    return { additionalResolvers: [], additionalTypeDefs: [] };
+export const createAdditionalResolversPayload = (
+  data: AdditionalResolverForm,
+  mesh: Object = {}
+) => {
+  if (!data.mesh?.additionalResolvers) {
+    return { ...mesh, additionalResolvers: [], additionalTypeDefs: [] };
   }
 
-  return mesh.additionalResolvers?.reduce(
+  const nextAdditionalResolvers = data.mesh.additionalResolvers?.reduce(
     (
       { additionalResolvers, additionalTypeDefs },
       {
@@ -46,15 +49,20 @@ export const createMeshPayload = ({ mesh }: AdditionalResolverForm) => {
       additionalTypeDefs: [] as string[],
     }
   );
+
+  return { ...mesh, ...nextAdditionalResolvers };
 };
 
-export const createMeshDefaultValues = (mesh?: ApiDef['mesh']) => {
+export const createAdditionalResolversDefaultValues = (
+  mesh?: ApiDef['mesh']
+) => {
   const { additionalResolvers, additionalTypeDefs } = mesh || {};
   const hasResolvers = additionalResolvers && additionalTypeDefs;
 
   return hasResolvers
     ? {
         mesh: {
+          ...mesh,
           additionalResolvers: additionalResolvers!.map(
             ({ args, ...resolver }, idx: number) => ({
               ...resolver,

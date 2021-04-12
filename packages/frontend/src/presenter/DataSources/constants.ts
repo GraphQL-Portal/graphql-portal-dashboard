@@ -35,17 +35,10 @@ const HANDLERS_LIST = [
 ];
 
 const TRANSFORMS_LIST = [
-  'cache',
-  'encapsulate',
-  'extend',
-  'federation',
   'filterSchema',
-  'mock',
   'namingConvention',
   'prefix',
   'rename',
-  'resolversComposition',
-  'snapshot',
 ];
 
 export const RESOLVED_SCHEMA = resolveSchema(RAW_SCHEMA);
@@ -76,12 +69,30 @@ export const INITIAL_STATE = {
 
 export const HANDLERS_LABELS: { [key: string]: string } = {
   OpenapiHandler: 'OpenAPI',
+  MongooseHandler: 'MongoDB',
+  GrpcHandler: 'gRPC',
+  PostGraphileHandler: 'PostgreSQL',
+};
+
+export const HANDLERS_DESCRIPTIONS: { [key: string]: string } = {
+  FhirHandler:
+    'FHIR (Fast Healthcare Interoperability Resources) Protocol handler',
+  MySQLHandler: 'Handler for MySQL databases',
+  MongooseHandler: 'Handler for MongoDB database (based on Mongoose)',
+  OpenapiHandler: 'Handler for Swagger / OpenAPI 2/3 specification',
+  JsonSchemaHandler: 'Handler for JSON Schema specification',
 };
 
 export const TRANSFORMS_LABELS: { [key: string]: string } = {
   filterSchema: 'Filter Schema',
   namingConvention: 'Naming Convention',
   resolversComposition: 'Resolvers Composition',
+};
+
+export const TRANSFORM_DESCRIPTIONS: { [key: string]: string } = {
+  filterSchema:
+    'Transformer to filter (white/black list) GraphQL types, fields and arguments',
+  rename: 'Transformer to rename GraphQL types and fields',
 };
 
 export const CUSTOM_HANDLER_TO_PACKAGE: Record<string, string> = {

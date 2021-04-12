@@ -1,15 +1,14 @@
-type Chart {
-  latency: [ChartChunk]
-  count: [ChartChunk]
-  countries: [ChartChunk]
-  failures: [ChartChunk]
+type APIMetric {
+  chunk: Timestamp
+  avgLatency: Float
+  count: Int
+  successes: Int
+  failures: Int
 }
 
-type ChartChunk {
-  argument: String
-  value: Float
-  success: Float
-  failure: Float
+type CountryMetric {
+  country: String
+  count: Int
 }
 
 type ApiActivity {
@@ -22,7 +21,7 @@ type ApiActivity {
   count: Int
 }
 
-input MetricFilters {
+input MetricAggregateFilters {
   startDate: Timestamp!
   endDate: Timestamp!
   sourceId: ID
@@ -30,8 +29,14 @@ input MetricFilters {
   user: ID
 }
 
+input MetricFilter {
+  sourceId: ID
+  apiDef: ID
+  user: ID
+}
+
 type Query {
-  metrics(scale: String, filters: MetricFilters!): Chart
-  getUserMetrics(scale: String, filters: MetricFilters!): Chart
-  getApiActivity(filters: MetricFilters!): [ApiActivity]
+  getApiActivity(filters: MetricAggregateFilters!): [ApiActivity]
+  getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): [APIMetric]
+  getCountryMetrics(filters: MetricAggregateFilters!, limit: Int): [CountryMetric]
 }

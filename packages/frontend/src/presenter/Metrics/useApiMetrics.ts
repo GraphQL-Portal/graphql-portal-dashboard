@@ -1,45 +1,37 @@
-import { add } from 'date-fns';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useState, useMemo } from 'react';
 
-import { useApiMetricsQuery } from '../../model/Metrics/queries';
-import { Scale } from '../../types';
+import { Range } from '../../types';
+import { useMetricsQuery } from '../../model/Metrics/queries';
+import { getDateChunks, getDateRange } from '../../utils';
 
-export const useApiMetrics = () => {
-  const { id: apiDef } = useParams<{ id: string }>();
-  const [startDate, setStartDate] = useState(add(new Date(), { days: -25 }));
-  const [endDate, setEndDate] = useState(new Date());
-  const [scale, setScale] = useState('day' as Scale);
+const COUNTRIES_LIMIT = 10;
 
-  const { data, loading, error, refetch } = useApiMetricsQuery(
-    apiDef,
-    startDate,
-    endDate,
-    scale
-  );
+export const useApiMetrics = (apiDef: string) => {
+  const [range, setRange] = useState<Range>('hour');
+  const { startDate, endDate } = useMemo(() => {
+    return getDateRange(range);
+  }, [range]);
 
-  useEffect(() => {
-    let data = { startDate, endDate, scale, apiDef };
-    if (scale === 'hour') {
-      data = {
-        ...data,
-        endDate: add(new Date(), { days: 1 }),
-      };
-    }
-    refetch(data);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startDate, endDate, scale]);
+  const { data } = useMetricsQuery({
+    variables: {
+      chunks: getDateChunks(range),
+      filters: {
+        apiDef,
+      },
+      countryFilters: {
+        startDate,
+        endDate,
+        apiDef,
+      },
+      limit: COUNTRIES_LIMIT,
+    },
+  });
+
+  const onSetRange = (newDateRange: Range) => setRange(newDateRange || 'hour');
 
   return {
     data,
-    loading,
-    refetch,
-    error,
-    startDate,
-    endDate,
-    scale,
-    setStartDate,
-    setEndDate,
-    setScale,
+    range,
+    onSetRange,
   };
 };

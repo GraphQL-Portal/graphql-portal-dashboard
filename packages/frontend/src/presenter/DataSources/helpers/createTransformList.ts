@@ -1,5 +1,5 @@
 import { AVAILABLE_TRANSFORMS } from '../constants';
-import { formatTransformLabel } from './formatTransformLabel';
+import { formatTransformStrings } from './formatTransformStrings';
 import { getHandlerKey } from './getHandlerKey';
 
 export const createTransformList = (transforms: any[]) =>
@@ -8,7 +8,7 @@ export const createTransformList = (transforms: any[]) =>
     const { description = '' } = AVAILABLE_TRANSFORMS[key];
     return {
       name: key,
-      title: formatTransformLabel(key),
+      title: formatTransformStrings(key),
       description,
       ...transform,
     };

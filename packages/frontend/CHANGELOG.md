@@ -1,5 +1,17 @@
 # graphql-portal-dashboard-frontend
 
+## 0.7.0
+
+### Minor Changes
+
+- ae6aa4a: New version of Dashboard charts & Metrics
+
+### Patch Changes
+
+- d2b7695: update dependencies
+- aab9346: Logs view fix
+- 654c2df: Updating descriptions of connectors
+
 ## 0.6.0
 
 ### Minor Changes

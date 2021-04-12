@@ -15,7 +15,11 @@ import GraphiQL from 'graphiql';
 import { ApiDef, ApiDefAndGateways } from './data';
 import { EditApiTab } from './components';
 import { Fetcher } from './methods';
-import { AdditionalResolverFormMethods, ApiDefFormMethods } from './forms';
+import {
+  AdditionalResolverFormMethods,
+  ApiDefFormMethods,
+  CacheTransformFormMethods,
+} from './forms';
 
 export type UseApiByIdHook = () => Omit<
   ReturnType<QueryHook<ApiDefAndGateways>>,
@@ -126,6 +130,15 @@ export type UseAdditionalResolverHook = (
   resolvers: FieldArray;
   onAddResolver: FieldArrayAppend;
   onRemoveResolver: FieldArrayRemove;
+};
+
+export type UseCacheHook = (
+  props: EditApiTab
+) => Pick<CacheTransformFormMethods, 'register' | 'errors' | 'control'> & {
+  onSubmit: OnSubmit;
+  cache: FieldArray;
+  onAddCache: FieldArrayAppend;
+  onRemoveCache: FieldArrayRemove;
 };
 
 export type UseEnableApiHook = (props: {

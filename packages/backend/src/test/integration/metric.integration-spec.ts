@@ -12,6 +12,7 @@ import MetricService from '../../modules/metric/metric.service';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import UserService from '../../modules/user/user.service';
 import { createUser, Method, requestTo, RequestToResult } from '../common';
+import { IMetricFilter } from '../../modules/metric/interfaces';
 
 jest.mock('ioredis');
 
@@ -30,7 +31,8 @@ describe('MetricResolver', () => {
       .overrideProvider(MetricService)
       .useValue({
         getApiActivity: jest.fn().mockImplementation(() => {}),
-        aggregateMetrics: jest.fn().mockImplementation(() => {}),
+        getChunkedAPIMetrics: jest.fn().mockImplementation(() => {}),
+        getCountryMetrics: jest.fn().mockImplementation(() => {}),
       })
       .compile();
 
@@ -103,102 +105,63 @@ describe('MetricResolver', () => {
       });
     });
 
-    describe('getUserMetrics', () => {
-      const date = new Date().toString();
-      const apiDef = 'apiDef';
-      const sourceId = 'sourceId';
-      const scale = 'day';
+    describe('getChunkedAPIMetrics', () => {
+      const chunks = [new Date().toString(), new Date().toString()];
+      const filters: IMetricFilter = {
+        apiDef: 'apiDef',
+        sourceId: 'sourceId',
+      };
 
-      it('should call aggregateMetrics', async () => {
+      it('should call getChunkedAPIMetrics', async () => {
         await graphQlRequest(
-          `query getUserMetrics($scale: String!, $filters: MetricFilters!) {
-            getUserMetrics(scale: $scale, filters: $filters) {
-              count { argument }
+          `query getChunkedAPIMetrics($chunks: [Timestamp], $filters: MetricFilter!) {
+            getChunkedAPIMetrics(chunks: $chunks, filters: $filters) {
+              count
             }
           }`,
           {
-            scale,
-            filters: {
-              startDate: date,
-              endDate: date,
-              apiDef,
-              sourceId,
-            },
+            chunks,
+            filters,
           }
         ).expect(HttpStatus.OK);
 
-        expect(metricService.aggregateMetrics).toHaveBeenCalledTimes(1);
-        expect(metricService.aggregateMetrics).toHaveBeenCalledWith(scale, {
-          startDate: date,
-          endDate: date,
-          user: user._id,
-          apiDef,
-          sourceId,
-        });
+        expect(metricService.getChunkedAPIMetrics).toHaveBeenCalledTimes(1);
+        expect(metricService.getChunkedAPIMetrics).toHaveBeenCalledWith(
+          chunks,
+          { ...filters, user: user._id }
+        );
       });
+    });
 
-      describe('metrics', () => {
-        it('should throw unauthorized error', async () => {
-          const date = new Date().toString();
-          const apiDef = 'apiDef';
-          const sourceId = 'sourceId';
-          const scale = 'day';
+    describe('getCountryMetrics', () => {
+      it('should call getCountryMetrics', async () => {
+        const startDate = new Date().toString();
+        const endDate = startDate;
+        const filters: IMetricFilter = {
+          apiDef: 'apiDef',
+          sourceId: 'sourceId',
+        };
 
-          const { body } = await graphQlRequest(
-            `query metrics($scale: String!, $filters: MetricFilters!) {
-              metrics(scale: $scale, filters: $filters) {
-                count { argument }
-              }
-            }`,
-            {
-              scale,
-              filters: {
-                startDate: date,
-                endDate: date,
-                apiDef,
-                sourceId,
-              },
+        await graphQlRequest(
+          `query getCountryMetrics($startDate: Timestamp!, $endDate: Timestamp!, $filters: MetricFilter!) {
+            getCountryMetrics(startDate: $startDate, endDate: $endDate, filters: $filters) {
+              count
             }
-          ).expect(HttpStatus.OK);
+          }`,
+          {
+            startDate,
+            endDate,
+            filters,
+          }
+        ).expect(HttpStatus.OK);
 
-          expect(body.errors[0].message).toBe(
-            `User role is: ${Roles.USER}, but required one of: ${Roles.ADMIN}`
-          );
-
-          expect(metricService.aggregateMetrics).toHaveBeenCalledTimes(0);
-        });
-
-        it('should call aggregateMetrics', async () => {
-          await graphQlRequest(
-            `query metrics($scale: String!, $filters: MetricFilters!) {
-              metrics(scale: $scale, filters: $filters) {
-                count { argument }
-              }
-            }`,
-            {
-              scale,
-              filters: {
-                startDate: date,
-                endDate: date,
-                apiDef,
-                sourceId,
-                user: user._id,
-              },
-            },
-            {
-              [HeadersEnum.AUTHORIZATION]: admin.accessToken,
-            }
-          ).expect(HttpStatus.OK);
-
-          expect(metricService.aggregateMetrics).toHaveBeenCalledTimes(1);
-          expect(metricService.aggregateMetrics).toHaveBeenCalledWith(scale, {
-            startDate: date,
-            endDate: date,
-            user: user._id?.toString(),
-            apiDef,
-            sourceId,
-          });
-        });
+        expect(metricService.getCountryMetrics).toHaveBeenCalledTimes(1);
+        expect(metricService.getCountryMetrics).toHaveBeenCalledWith(
+          startDate,
+          endDate,
+          { ...filters, user: user._id },
+          undefined
+        );
       });
     });
   });
