@@ -1,4 +1,4 @@
-import { HttpStatus, INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
@@ -38,6 +38,7 @@ describe('MetricResolver', () => {
 
     app = moduleFixture.createNestApplication();
     app.useLogger(new LoggerService(config));
+    app.useGlobalPipes(new ValidationPipe());
     await app.init();
 
     request = requestTo(app);
@@ -77,7 +78,7 @@ describe('MetricResolver', () => {
       it('should call getApiActivity', async () => {
         const date = new Date().toString();
         await graphQlRequest(
-          `query getApiActivity($filters: MetricFilters!) {
+          `query getApiActivity($filters: MetricAggregateFilters!) {
             getApiActivity(filters: $filters) {
               apiName
               apiDef
@@ -140,25 +141,23 @@ describe('MetricResolver', () => {
         const filters: IMetricFilter = {
           apiDef: 'apiDef',
           sourceId: 'sourceId',
+          startDate,
+          endDate,
         };
 
         await graphQlRequest(
-          `query getCountryMetrics($startDate: Timestamp!, $endDate: Timestamp!, $filters: MetricFilter!) {
-            getCountryMetrics(startDate: $startDate, endDate: $endDate, filters: $filters) {
+          `query getCountryMetrics($filters: MetricAggregateFilters!, $limit: Int) {
+            getCountryMetrics(filters: $filters, limit: $limit) {
               count
             }
           }`,
           {
-            startDate,
-            endDate,
             filters,
           }
         ).expect(HttpStatus.OK);
 
         expect(metricService.getCountryMetrics).toHaveBeenCalledTimes(1);
         expect(metricService.getCountryMetrics).toHaveBeenCalledWith(
-          startDate,
-          endDate,
           { ...filters, user: user._id },
           undefined
         );
