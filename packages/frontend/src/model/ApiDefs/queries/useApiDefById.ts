@@ -22,6 +22,7 @@ const GET_API_DEF_BY_ID = gql`
       }
       schema_polling_interval
       schema_updates_through_control_api
+      invalidate_cache_through_control_api
       enable_ip_filtering
       request_size_limit
       depth_limit

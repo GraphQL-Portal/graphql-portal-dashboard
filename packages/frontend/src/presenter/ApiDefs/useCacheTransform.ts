@@ -33,7 +33,16 @@ const suite = vest.create('edit_cache', ({ cache }: CacheTransformForm) => {
 
 export const useCacheTransform: UseCacheHook = ({ api, refetch }) => {
   const { showErrorToast, showSuccessToast } = useToast();
-  const { _id: id, enabled, mesh, sources, name, endpoint, playground } = api;
+  const {
+    _id: id,
+    enabled,
+    mesh,
+    sources,
+    name,
+    endpoint,
+    playground,
+    invalidate_cache_through_control_api,
+  } = api;
 
   const caches = mesh?.transforms
     ?.filter((t) => Object.keys(t)[0] === 'cache')
@@ -41,6 +50,9 @@ export const useCacheTransform: UseCacheHook = ({ api, refetch }) => {
     ?.flat(3);
 
   const defaultValues: CacheTransformForm = {
+    invalidate_cache_through_control_api: Boolean(
+      invalidate_cache_through_control_api
+    ),
     cache: JSON.parse(JSON.stringify(caches || [])),
   };
 
@@ -75,7 +87,10 @@ export const useCacheTransform: UseCacheHook = ({ api, refetch }) => {
     name: 'cache',
   });
 
-  const onSubmit = ({ cache }: CacheTransformForm) => {
+  const onSubmit = ({
+    invalidate_cache_through_control_api,
+    cache,
+  }: CacheTransformForm) => {
     const nextCache = cache?.map((cache) => {
       const resultCache = { ...cache };
       if (cache.invalidate?.ttl) {
@@ -102,6 +117,7 @@ export const useCacheTransform: UseCacheHook = ({ api, refetch }) => {
           endpoint,
           playground,
           mesh: nextMesh,
+          invalidate_cache_through_control_api,
         },
         sources: sources.map(getProp('_id')),
         enabled,

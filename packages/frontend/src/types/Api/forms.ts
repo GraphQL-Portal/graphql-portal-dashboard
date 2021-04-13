@@ -37,6 +37,7 @@ export type AdditionalResolverForm = {
 export type AdditionalResolverFormMethods = FormMethods<AdditionalResolverForm>;
 
 export type CacheTransformForm = {
+  invalidate_cache_through_control_api?: boolean;
   cache: CacheTransformConfig[];
 };
 export type CacheTransformFormMethods = FormMethods<CacheTransformForm>;

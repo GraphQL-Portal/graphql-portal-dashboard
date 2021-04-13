@@ -14,6 +14,7 @@ type ApiDef {
   authentication: ApiDefAuthentication
   schema_polling_interval: Int
   schema_updates_through_control_api: Boolean
+  invalidate_cache_through_control_api: Boolean
   enable_ip_filtering: Boolean
   allow_ips: [String!]
   deny_ips: [String!]
@@ -52,6 +53,7 @@ input CreateApiDef {
   authentication: CreateApiDefAuthentication
   schema_polling_interval: Int
   schema_updates_through_control_api: Boolean
+  invalidate_cache_through_control_api: Boolean
   enable_ip_filtering: Boolean
   allow_ips: [String!]
   deny_ips: [String!]

@@ -43,6 +43,7 @@ export type ApiDef = {
   sources: DataSource[];
   schema_polling_interval?: number;
   schema_updates_through_control_api?: boolean;
+  invalidate_cache_through_control_api?: boolean;
   enable_ip_filtering?: boolean;
   request_size_limit?: string;
   depth_limit?: number;
