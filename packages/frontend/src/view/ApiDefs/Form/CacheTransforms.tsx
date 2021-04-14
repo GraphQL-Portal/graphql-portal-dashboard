@@ -28,7 +28,7 @@ export const CacheTransforms: React.FC<Props> = ({
   return (
     <FormGroup title="Cache Settings">
       <FormControlLabel
-        label="Enable cache key invalidation hook at the control API"
+        label="Enable cache invalidation through control API"
         control={
           <Controller
             name="invalidate_cache_through_control_api"
