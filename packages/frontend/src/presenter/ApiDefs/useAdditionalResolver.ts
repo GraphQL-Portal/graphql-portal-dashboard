@@ -121,6 +121,7 @@ export const useAdditionalResolver: UseAdditionalResolverHook = ({
     resolvers,
     onAddResolver,
     onRemoveResolver,
+    sources,
     control,
   };
 };

@@ -127,6 +127,7 @@ export type UseAdditionalResolverHook = (
 ) => Pick<AdditionalResolverFormMethods, 'register' | 'errors' | 'control'> & {
   onSubmit: OnSubmit;
   resolvers: FieldArray;
+  sources: DataSource[];
   onAddResolver: FieldArrayAppend;
   onRemoveResolver: FieldArrayRemove;
 };

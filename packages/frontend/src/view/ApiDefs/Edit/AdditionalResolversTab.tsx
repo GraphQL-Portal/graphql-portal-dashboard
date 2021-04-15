@@ -15,6 +15,7 @@ export const AdditionalResolversTab: React.FC<Props> = (props) => {
     register,
     errors,
     control,
+    sources,
   } = useAdditionalResolver(props);
   const { form } = useStyles();
   return (
@@ -26,6 +27,7 @@ export const AdditionalResolversTab: React.FC<Props> = (props) => {
         register={register}
         errors={errors}
         control={control}
+        sources={sources}
       />
       <PrimaryButton type="submit">Update additional resolvers</PrimaryButton>
     </form>
