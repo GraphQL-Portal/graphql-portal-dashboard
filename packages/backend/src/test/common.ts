@@ -72,6 +72,7 @@ export const sourceSchema = {
   name: expect.any(String),
   handler: expect.any(String),
   transforms: expect.anything(),
+  sourceSchema: expect.any(String),
 };
 
 export const apiDefSchema = {

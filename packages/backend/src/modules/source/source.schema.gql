@@ -7,6 +7,7 @@ type Source {
   transforms: [JSONObject]
   updatedAt: Timestamp
   createdAt: Timestamp
+  sourceSchema: String
 }
 
 input CreateSource {
@@ -18,7 +19,6 @@ input CreateSource {
 
 type Query {
   getSources: [Source]
-  getSourceSchema(id: ID!): String
 }
 
 type Mutation {

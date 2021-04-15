@@ -29,9 +29,13 @@ export default class SourceService implements IAccessControlService {
     data: SourceConfig,
     user: string
   ): Promise<ISourceDocument> {
-    await this.getSchema(data);
+    const sourceSchema = await this.getSchema(data);
 
-    const source = await this.sourceModel.create({ ...data, user });
+    const source = await this.sourceModel.create({
+      ...data,
+      sourceSchema,
+      user,
+    });
 
     this.logger.log(`Created source ${data.name}`, this.constructor.name, data);
 
@@ -47,11 +51,15 @@ export default class SourceService implements IAccessControlService {
     if (!toUpdate)
       throw new ValidationError(`Source with id ${id} does not exist`);
 
-    await this.getSchema({ ...toUpdate, ...data });
+    const sourceSchema = await this.getSchema({ ...toUpdate, ...data });
 
-    const source = (await this.sourceModel.findByIdAndUpdate(id, data, {
-      new: true,
-    }))!;
+    const source = (await this.sourceModel.findByIdAndUpdate(
+      id,
+      { ...data, sourceSchema },
+      {
+        new: true,
+      }
+    ))!;
 
     if (await this.apiDefService.isSourceUsed(source._id)) {
       this.apiDefService.setLastUpdateTime();
@@ -71,9 +79,9 @@ export default class SourceService implements IAccessControlService {
           `Source "${toDelete.name}" is used in API "${usedInApiDef.name}"`
         );
       }
-      await toDelete?.delete();
+      await toDelete.delete();
+      this.logger.log(`Deleted source ${id}`, this.constructor.name);
     }
-    this.logger.log(`Deleted source ${id}`, this.constructor.name);
 
     return Boolean(toDelete);
   }
@@ -82,7 +90,7 @@ export default class SourceService implements IAccessControlService {
     return Boolean(await this.sourceModel.findOne({ _id, user }));
   }
 
-  public async getSchema(source: SourceConfig): Promise<string> {
+  private async getSchema(source: SourceConfig): Promise<string> {
     return this.apiDefService.getMeshSchema({
       name: '',
       endpoint: '',
@@ -90,8 +98,9 @@ export default class SourceService implements IAccessControlService {
     });
   }
 
-  public async getSchemaById(_id: string): Promise<string> {
-    const source = (await this.sourceModel.findOne({ _id }))!;
-    return this.getSchema(source);
+  public async updateSchema(source: SourceConfig): Promise<string> {
+    const sourceSchema = await this.getSchema(source);
+    await this.sourceModel.findByIdAndUpdate(source.id, { sourceSchema });
+    return sourceSchema;
   }
 }

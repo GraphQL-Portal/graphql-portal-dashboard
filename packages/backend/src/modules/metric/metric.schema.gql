@@ -38,5 +38,8 @@ input MetricFilter {
 type Query {
   getApiActivity(filters: MetricAggregateFilters!): [ApiActivity]
   getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): [APIMetric]
-  getCountryMetrics(filters: MetricAggregateFilters!, limit: Int): [CountryMetric]
+  getCountryMetrics(
+    filters: MetricAggregateFilters!
+    limit: Int
+  ): [CountryMetric]
 }

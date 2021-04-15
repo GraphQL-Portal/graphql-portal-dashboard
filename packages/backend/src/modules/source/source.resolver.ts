@@ -1,5 +1,13 @@
 import { SourceConfig } from '@graphql-portal/types';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
+import { ISourceDocument } from 'src/data/schema/source.schema';
 import {
   AccessControl,
   AuthorizationParam,
@@ -22,11 +30,14 @@ export default class SourceResolver {
     return this.service.findAllByUser(user);
   }
 
-  @Query()
-  @Roles([RolesEnum.USER])
-  @AccessControl(AccessControlModels.Source)
-  public getSourceSchema(@Args('id') id: string): Promise<string> {
-    return this.service.getSchemaById(id);
+  @ResolveField()
+  public async sourceSchema(
+    @Parent() source: ISourceDocument
+  ): Promise<string> {
+    if (source.sourceSchema) {
+      return source.sourceSchema;
+    }
+    return this.service.updateSchema(source);
   }
 
   @Mutation()

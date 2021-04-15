@@ -23,8 +23,8 @@ describe('SourceService', () => {
   let getSchemaMock: jest.SpyInstance;
   const setGetSchemaMock = (): void => {
     getSchemaMock = jest
-      .spyOn(sourceService, 'getSchema')
-      .mockResolvedValue('');
+      .spyOn(sourceService as any, 'getSchema')
+      .mockResolvedValue('schema');
   };
 
   const userId = randomObjectId();
@@ -72,25 +72,6 @@ describe('SourceService', () => {
     });
   });
 
-  describe('getSchemaById', () => {
-    it('should call apiDefService.getMeshSchema', async () => {
-      getSchemaMock.mockRestore();
-      const spiedGetMeshSchema = jest
-        .spyOn(apiDefService, 'getMeshSchema')
-        .mockResolvedValue('schema');
-      await sourceService.getSchemaById(source._id);
-      expect(spiedGetMeshSchema).toBeCalledTimes(1);
-      expect(spiedGetMeshSchema).toBeCalledWith(
-        expect.objectContaining({
-          sources: expect.arrayContaining([
-            expect.objectContaining({ _id: source._id }),
-          ]),
-        })
-      );
-      setGetSchemaMock();
-    });
-  });
-
   describe('update', () => {
     it('should throw for wrong name', async () => {
       expect.assertions(1);
@@ -126,6 +107,16 @@ describe('SourceService', () => {
       expect(setLastUpdateTimeMock).toBeCalledTimes(1);
       expect(publishApiDefsUpdatedMock).toBeCalledTimes(1);
       expect(getSchemaMock).toBeCalledTimes(1);
+    });
+  });
+
+  describe('updateSchema', () => {
+    it('should get schema and save it', async () => {
+      const result = await sourceService.updateSchema(source);
+      expect(result).toBe('schema');
+      expect((sourceService as any).getSchema).toBeCalledTimes(1);
+      const sources = await sourceService.findByIds([source.id]);
+      expectSource(sources[0]);
     });
   });
 
