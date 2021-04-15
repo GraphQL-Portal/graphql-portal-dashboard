@@ -1,4 +1,4 @@
-import { HttpStatus, INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
@@ -16,6 +16,7 @@ import {
   apiDefExample,
   createUser,
   Method,
+  randomObjectId,
   requestTo,
   RequestToResult,
 } from '../common';
@@ -53,6 +54,8 @@ describe('ApiDefResolver', () => {
 
     app = moduleFixture.createNestApplication();
     app.useLogger(new LoggerService(config));
+    app.useGlobalPipes(new ValidationPipe());
+
     await app.init();
 
     request = requestTo(app);
@@ -79,11 +82,13 @@ describe('ApiDefResolver', () => {
       variables?: any,
       headers?: any
     ) => supertest.Test;
+    const id = randomObjectId();
     const createApiDef = {
       ...apiDefExample,
-      sources: undefined,
-      user: undefined,
     };
+    ['_id', 'sources', 'user'].forEach(
+      (key) => delete (createApiDef as any)[key]
+    );
 
     beforeAll(() => {
       graphQlRequest = (
@@ -113,6 +118,7 @@ describe('ApiDefResolver', () => {
                 }
                 schema_polling_interval
                 schema_updates_through_control_api
+                invalidate_cache_through_control_api
                 enable_ip_filtering
                 allow_ips
                 deny_ips
@@ -302,9 +308,10 @@ describe('ApiDefResolver', () => {
 
     describe('updateApiDef', () => {
       it('should call update', async () => {
-        await graphQlRequest(
-          `mutation($id:ID!, $apiDef: CreateApiDef!, $sources:[ID!]!) {
-            updateApiDef(id:$id, apiDef: $apiDef, sources: $sources) {
+        const enabled = true;
+        const response = await graphQlRequest(
+          `mutation($id:ID!, $apiDef: CreateApiDef!, $sources:[ID!]!, $enabled: Boolean) {
+            updateApiDef(id:$id, apiDef: $apiDef, sources: $sources, enabled: $enabled) {
               apiDef {
                 name
                 endpoint
@@ -318,13 +325,13 @@ describe('ApiDefResolver', () => {
               schema
             }
           }`,
-          { id: createApiDef._id, apiDef: createApiDef, sources: [] }
+          { id, apiDef: createApiDef, sources: [], enabled }
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.update).toHaveBeenCalledTimes(1);
         expect(apiDefService.update).toHaveBeenCalledWith(
-          createApiDef._id,
-          createApiDef,
+          id,
+          { ...createApiDef, enabled },
           []
         );
       });
@@ -348,7 +355,7 @@ describe('ApiDefResolver', () => {
               schema
             }
           }`,
-          { id: createApiDef._id, apiDef: createApiDef, sources: [] },
+          { id, apiDef: createApiDef, sources: [] },
           { [HeadersEnum.AUTHORIZATION]: anotherUser.accessToken }
         ).expect(HttpStatus.OK);
 
@@ -365,11 +372,11 @@ describe('ApiDefResolver', () => {
           `mutation($id:ID!){
             deleteApiDef(id:$id)
           }`,
-          { id: createApiDef._id }
+          { id }
         ).expect(HttpStatus.OK);
 
         expect(apiDefService.delete).toHaveBeenCalledTimes(1);
-        expect(apiDefService.delete).toHaveBeenCalledWith(createApiDef._id);
+        expect(apiDefService.delete).toHaveBeenCalledWith(id);
       });
     });
   });

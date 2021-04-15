@@ -30,6 +30,7 @@ const apiDefSchema = new mongoose.Schema(
     },
     schema_polling_interval: Number,
     schema_updates_through_control_api: Boolean,
+    invalidate_cache_through_control_api: Boolean,
     enable_ip_filtering: Boolean,
     allow_ips: mongoCipherType,
     deny_ips: mongoCipherType,

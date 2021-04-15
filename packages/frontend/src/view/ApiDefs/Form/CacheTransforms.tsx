@@ -1,9 +1,19 @@
+import { FormControlLabel } from '@material-ui/core';
 import React from 'react';
+import { Controller } from 'react-hook-form';
+
 import { CacheTransforms as Props } from '../../../types';
-import { Col, FormGroup, Input, OutlineButton, Row } from '../../../ui';
+import {
+  Checkbox,
+  Col,
+  FormGroup,
+  Input,
+  OutlineButton,
+  Row,
+} from '../../../ui';
 import { AddFieldArrayHeader } from '../../Form/AddFieldArrayHeader';
-import { useStyles } from './useStyles';
 import { CacheTransformsInvalidateOperations } from './CacheTransformsInvalidateOperations';
+import { useStyles } from './useStyles';
 
 export const CacheTransforms: React.FC<Props> = ({
   cache,
@@ -17,6 +27,17 @@ export const CacheTransforms: React.FC<Props> = ({
 
   return (
     <FormGroup title="Cache Settings">
+      <FormControlLabel
+        label="Enable cache invalidation through control API"
+        control={
+          <Controller
+            name="invalidate_cache_through_control_api"
+            control={control}
+            defaultValue={false}
+            render={(props) => <Checkbox {...props} color="primary" />}
+          />
+        }
+      />
       <AddFieldArrayHeader title="Cache Rule" onAddClick={onAddCache} />
       {cache.map((cache: any, idx: number) => {
         return (

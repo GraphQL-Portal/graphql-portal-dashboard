@@ -37,6 +37,7 @@ const imports = [
   GraphQLModule.forRoot({
     installSubscriptionHandlers: true,
     playground: config.application.graphQL.playground,
+    introspection: config.application.graphQL.debug,
     debug: config.application.graphQL.debug,
     typePaths: ['./**/*.gql'],
     context: ({ req }) => ({ req }),

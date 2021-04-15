@@ -1,4 +1,4 @@
-import { HttpStatus, INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
@@ -49,6 +49,7 @@ describe('UserResolver', () => {
 
     app = moduleFixture.createNestApplication();
     app.useLogger(new LoggerService(config));
+    app.useGlobalPipes(new ValidationPipe());
     await app.init();
 
     request = requestTo(app);
