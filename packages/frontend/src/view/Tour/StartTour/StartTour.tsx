@@ -26,12 +26,12 @@ export const StartTour: React.FC = () => {
 
   return (
     <ModalDialog id={START_TOUR}>
-      <DialogTitle>Start Tour</DialogTitle>
+      <DialogTitle>Quick Tour</DialogTitle>
       <DialogText>
-        Do you want to start a quick start guide and create your first API?
+        Do you want to run a product tour and create your first API?
       </DialogText>
       <PrimaryButton fullWidth onClick={onSuccess}>
-        Start
+        Let's go
       </PrimaryButton>
       <TextButton onClick={onCancel}>Cancel</TextButton>
     </ModalDialog>

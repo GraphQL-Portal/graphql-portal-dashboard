@@ -33,24 +33,23 @@ export const Tour: React.FC = () => {
   const steps: Array<ReactourStep & { buttonDisabled?: boolean }> = [
     {
       content:
-        'Dashboard tab. Here you can see metrics and charts of your apis.',
+        "Dashboard tab. Here you can see a quick summary of your API's metrics.",
       style,
       selector: getDataTourSelector(selectors.NAVIGATION_DASHBOARD),
     },
     {
-      content: 'API Tab. Here you can manage your apis.',
+      content: 'API tab. Here you can manage your APIs.',
       style,
       selector: getDataTourSelector(selectors.NAVIGATION_MY_APIS),
     },
     {
-      content:
-        'Data Sources tab. It contains available and created by you data sources. Here you can manage your created data sources.',
+      content: 'Data Sources tab. Create and manage your data sources here.',
       style,
       selector: getDataTourSelector(selectors.NAVIGATION_MY_DATA_SOURCES),
     },
     {
       content:
-        'This is profile tab. Here you can manage you profile information, reset, edit your password.',
+        'User Profile tab. Manage you profile information, reset and edit your password.',
       style,
       selector: getDataTourSelector(selectors.NAVIGATION_YOUR_PROFILE),
     },
@@ -71,24 +70,25 @@ export const Tour: React.FC = () => {
       selector: getDataTourSelector(selectors.NAVIGATION_MY_DATA_SOURCES),
     },
     {
-      content: "This is search bar. Let's find openapi data connector.",
+      content:
+        "This is search bar. Click 'Next' to find and create our first data source.",
       style,
       selector: getDataTourSelector(selectors.DATA_SOURCE_AVAILABLE),
       action: stopPropagationAction,
     },
     {
-      content: 'We have found open api.',
+      content: 'We have found OpenAPI data connector.',
       style,
       action(node) {
         node.addEventListener('click', stopPropagation);
         if (!tour.DATA_CONNECTORS_SEARCH_VALUE) {
-          setTourField('DATA_CONNECTORS_SEARCH_VALUE', 'openapi');
+          setTourField('DATA_CONNECTORS_SEARCH_VALUE', 'OpenAPI');
         }
       },
       selector: getDataTourSelector(selectors.DATA_SOURCE_AVAILABLE),
     },
     {
-      content: 'Click here to create.',
+      content: 'Click here to create the data source.',
       style,
       selector: getDataTourSelector(selectors.OPEN_API),
       action(node) {
@@ -100,7 +100,7 @@ export const Tour: React.FC = () => {
     },
     {
       content:
-        'There is form where you can set name of you data source. Name should be unique. Let\'s use "Pets data source" for example.',
+        'On this form, we are setting the name of the data source. Note: the name should be unique.',
       style,
       position: [10, 110],
       action: stopPropagationAction,
@@ -119,7 +119,7 @@ export const Tour: React.FC = () => {
     },
     {
       content:
-        'We will use petstore openAPI for example. So we have pass URL of swagger file, Base URL and format of swagger file. Also we can apply some headers (JWT Tokens) if its required. See documentation for more information...',
+        'On this page, we are configuring the data connector itself. In this example, we are using a PetStore OpenAPI as our data source, and we use an OpenAPI data connector to convert it to GraphQL.',
       style,
       position: [20, 50],
       action: stopPropagationAction,
@@ -137,7 +137,8 @@ export const Tour: React.FC = () => {
       buttonDisabled: true,
     },
     {
-      content: 'Here we can apply some transforms. We can skip it now!',
+      content:
+        'We can transform our GraphQL schema by applying various transformations. We will skip this step for now.',
       style,
       position: [20, 50],
       action: stopPropagationAction,
@@ -156,13 +157,13 @@ export const Tour: React.FC = () => {
     },
     {
       content:
-        "Well done! Now source is displaying here. Here you can edit or delete it. But we won't do that, let's create API and use it!",
+        "You can find your data sources here. Now, let's create an API to use that data source.",
       style,
       action: stopPropagationAction,
       selector: getDataTourSelector(selectors.DATA_SOURCE_MY_CONNECTED),
     },
     {
-      content: 'Go to my APIS, click here.',
+      content: 'Click on "My APIs".',
       style,
       selector: getDataTourSelector(selectors.NAVIGATION_MY_APIS),
       action(node) {
@@ -173,7 +174,7 @@ export const Tour: React.FC = () => {
       buttonDisabled: true,
     },
     {
-      content: 'And here..',
+      content: 'And click on "Create a new API".',
       style,
       selector: getDataTourSelector(selectors.MY_APIS_CREATE_NEW_BUTTON),
       action(node) {
@@ -184,14 +185,15 @@ export const Tour: React.FC = () => {
       buttonDisabled: true,
     },
     {
-      content: 'Here is form...',
+      content:
+        'The most important fields are the API Name and the API Endpoint.',
       style,
       action: stopPropagationAction,
       position: [20, 50],
       selector: getDataTourSelector(selectors.MY_APIS_CREATE_FORM),
     },
     {
-      content: 'We selected our created pet data source.',
+      content: 'As well as the datasources used in this API.',
       style,
       action: stopPropagationAction,
       selector: getDataTourSelector(
@@ -199,7 +201,7 @@ export const Tour: React.FC = () => {
       ),
     },
     {
-      content: 'Click here to add it.',
+      content: 'Click here to add our Pets data source.',
       style,
       action(node) {
         addOnceListenerToNode(node, () =>
@@ -212,7 +214,7 @@ export const Tour: React.FC = () => {
       ),
     },
     {
-      content: "That's all! Save it!",
+      content: "That's it! Now, click on 'Create new API' to save it.",
       style,
       selector: getDataTourSelector(
         selectors.MY_APIS_CREATE_FORM_CREATE_NEW_BUTTON
@@ -224,13 +226,13 @@ export const Tour: React.FC = () => {
     },
     {
       content:
-        "Here you can see some information about you apis, also you can update or delete. Let's do some requests!",
+        "You can see all your APIs on this page. You can view, edit or delete them. Let's go to the View page and do some requests with the playground.",
       style,
       action: stopPropagationAction,
       selector: getDataTourSelector(selectors.MY_APIS_LIST),
     },
     {
-      content: 'Click on api name to see schema and playground.',
+      content: 'Click on the API name to see its schema and the playground.',
       style,
       selector: getDataTourSelector(selectors.MY_APIS_CREATED_API_LINK),
       action(node) {
@@ -241,8 +243,16 @@ export const Tour: React.FC = () => {
       buttonDisabled: true,
     },
     {
-      content:
-        'Now you can look at schema in schemas tab and test you api with playground. Just click on "play button" and you will see response! That\'s all! Simple is not it?',
+      content: (
+        <>
+          That was simple, right? Visit our official documentation web-site{' '}
+          <a href="https://docs.graphql-portal.com">here</a> or
+          <a href="mailto:contact@code.store?subject=GraphQLPortal">
+            contact us
+          </a>{' '}
+          if you have any questions.
+        </>
+      ),
       style,
       selector: getDataTourSelector(selectors.MY_APIS_EXAMPLE_API),
     },
