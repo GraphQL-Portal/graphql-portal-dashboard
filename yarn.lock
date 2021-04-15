@@ -2690,6 +2690,14 @@
     "@graphql-portal/datasources" "^0.1.2"
     ajv "8.1.0"
 
+"@graphql-portal/types@^0.23.0":
+  version "0.23.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.23.2.tgz#0b043fc76b8f08fe340023289c46690950bb8466"
+  integrity sha512-xQJETzVEqnBEIgpclLfk4Ix5bEcuY4lhhV9jg0Qri1PO6DCqqGahaTTkNGNEQmDJXlAcEQkJR8CAC3xk/32R8g==
+  dependencies:
+    "@graphql-portal/datasources" "^0.1.1"
+    ajv "8.0.5"
+
 "@graphql-portal/weatherbit@0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.2.1.tgz#c968614dd11dd5ba9a170685559636210bbf2712"
