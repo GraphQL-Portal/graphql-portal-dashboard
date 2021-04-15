@@ -20,6 +20,7 @@ import {
   IPForm,
   LimitsForm,
 } from '../Form';
+import { selectors } from '../../Tour';
 
 const PAGE_TITLE = 'Create a new API';
 
@@ -43,6 +44,7 @@ export const CreateApi: React.FC = () => {
     addDeniedIP,
     removeDeniedIP,
     enableIPFiltering,
+    disableSelectDatasources,
   } = useCreateApi();
 
   return (
@@ -59,7 +61,7 @@ export const CreateApi: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <WidgetHeader title={PAGE_TITLE} />
-          <WidgetBody>
+          <WidgetBody data-tour={selectors.MY_APIS_CREATE_FORM}>
             <form onSubmit={onSubmit} noValidate autoComplete="off">
               <GeneralForm
                 register={register}
@@ -67,6 +69,7 @@ export const CreateApi: React.FC = () => {
                 errors={errors}
               />
               <DataSourcesForm
+                disableSelect={disableSelectDatasources}
                 control={control}
                 options={options}
                 connected={connected}
@@ -98,7 +101,12 @@ export const CreateApi: React.FC = () => {
                 removeDeniedIP={removeDeniedIP}
               />
               <LimitsForm register={register} errors={errors} />
-              <PrimaryButton type="submit">Create new API</PrimaryButton>
+              <PrimaryButton
+                data-tour={selectors.MY_APIS_CREATE_FORM_CREATE_NEW_BUTTON}
+                type="submit"
+              >
+                Create new API
+              </PrimaryButton>
             </form>
           </WidgetBody>
         </HugeWidget>

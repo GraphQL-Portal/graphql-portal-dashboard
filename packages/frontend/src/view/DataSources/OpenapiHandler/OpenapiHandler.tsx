@@ -9,6 +9,7 @@ import { ObjectArray } from '../../Form';
 import { HandlerRow, HandlerCol, HandlerColBig } from '../Layout';
 import { OPENAPI_SOURCE_FORMAT } from '../constants';
 import { SelectQueryOrMutationFieldConfig } from './SelectQueryOrMutationFieldConfig';
+import { selectors } from '../../Tour';
 
 export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
   const {
@@ -28,6 +29,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
     queryOrMutationFields,
     addQueryOrMutationField,
     removeQueryOrMutationField,
+    disableInputs,
   } = useOpenapiHandler(props);
 
   return (
@@ -52,6 +54,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
             name="sourceFormat"
             options={OPENAPI_SOURCE_FORMAT}
             labelId="sourceFormat"
+            disabled={disableInputs}
             label="Format of the source file"
             fullWidth
           />
@@ -150,7 +153,12 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
           />
         </HandlerColBig>
       </HandlerRow>
-      <PrimaryButton type="submit">Save Openapi Handler</PrimaryButton>
+      <PrimaryButton
+        data-tour={selectors.DATA_SOURCE_HANDLER_SAVE_BUTTON}
+        type="submit"
+      >
+        Save Openapi Handler
+      </PrimaryButton>
     </form>
   );
 };

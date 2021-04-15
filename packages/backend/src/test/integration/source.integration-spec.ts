@@ -37,6 +37,7 @@ describe('SourceResolver', () => {
         create: jest.fn().mockResolvedValue(sourceExample),
         update: jest.fn().mockResolvedValue(sourceExample),
         delete: jest.fn().mockResolvedValue(true),
+        deleteByName: jest.fn().mockResolvedValue(true),
         isOwner: jest.fn().mockResolvedValue(true),
       })
       .compile();
@@ -162,6 +163,22 @@ describe('SourceResolver', () => {
 
         expect(sourceService.delete).toHaveBeenCalledTimes(1);
         expect(sourceService.delete).toHaveBeenCalledWith(sourceExample._id);
+      });
+    });
+
+    describe('deleteSourceByName', () => {
+      it('should call update', async () => {
+        await graphQlRequest(
+          `mutation($name:String!){
+            deleteSourceByName(name:$name)
+          }`,
+          { name: sourceExample.name }
+        ).expect(HttpStatus.OK);
+
+        expect(sourceService.deleteByName).toHaveBeenCalledTimes(1);
+        expect(sourceService.deleteByName).toHaveBeenCalledWith(
+          sourceExample.name
+        );
       });
     });
   });

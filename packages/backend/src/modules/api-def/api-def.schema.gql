@@ -87,4 +87,5 @@ type Mutation {
     enabled: Boolean
   ): ApiDefWithSchema
   deleteApiDef(id: ID!): Boolean
+  deleteApiDefByName(name: String!): Boolean
 }

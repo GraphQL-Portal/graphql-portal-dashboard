@@ -1,9 +1,8 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { ROUTES, useAuth } from '../../model/providers';
+import { ROUTES, useAuth, useTourContext } from '../../model/providers';
 import { ROLE_ADMIN } from '../../model/providers/Auth/constants';
-import { useAllHotKeys } from '../../model/Hooks';
 import { Content } from '../Content';
 import { DataSources } from '../DataSources';
 import { Dashboard } from '../Dashboard';
@@ -18,10 +17,11 @@ import { ApiMetrics } from '../ApiMetrics';
 import { RoleProtectedComponent } from '../RoleProtectedComponent';
 import { ApisActivity } from '../ApisActivity';
 import { Profile } from '../Profile';
+import { HotKeys } from '../HotKeys';
 
 export const ProtectedRoutes: React.FC = () => {
   const { accessToken } = useAuth();
-  useAllHotKeys();
+  const { tour } = useTourContext();
 
   if (!accessToken) return <Redirect to={ROUTES.LOGIN} />;
 
@@ -70,6 +70,7 @@ export const ProtectedRoutes: React.FC = () => {
           </Route>
         </Switch>
       </Content>
+      {!tour.isStarted && <HotKeys />}
     </>
   );
 };

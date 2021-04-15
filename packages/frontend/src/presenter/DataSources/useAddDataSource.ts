@@ -1,5 +1,9 @@
 import { useCreateSource } from '../../model/DataSources/commands';
-import { useDataSourceContext, useToast } from '../../model/providers';
+import {
+  useDataSourceContext,
+  useToast,
+  useTourContext,
+} from '../../model/providers';
 import { useEditDataSource } from './useEditDataSource';
 import { INITIAL_STATE } from './constants';
 import { packHandler } from './helpers';
@@ -8,8 +12,19 @@ import { getSourceSteps } from '../../view/DataSources/helpers';
 
 export const useAddDataSource = () => {
   const { showErrorToast, showSuccessToast } = useToast();
+  const {
+    tour: {
+      isStarted,
+      source: { state: tourState },
+    },
+  } = useTourContext();
+  const { name, handler, transforms } = tourState;
   const { source = {}, clearSource } = useDataSourceContext();
   const steps = getSourceSteps(source);
+  const initialState = isStarted
+    ? { name, handler: handler.openapi, transforms }
+    : INITIAL_STATE;
+
   const {
     state,
     step,
@@ -17,7 +32,7 @@ export const useAddDataSource = () => {
     updateState,
     completeStep,
     setStep,
-  } = useEditDataSource(steps.length - 1, INITIAL_STATE);
+  } = useEditDataSource(steps.length - 1, initialState);
 
   const { createSource } = useCreateSource({
     onCompleted() {

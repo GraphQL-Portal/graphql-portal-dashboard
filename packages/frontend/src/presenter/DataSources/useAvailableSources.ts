@@ -1,14 +1,20 @@
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
-import { ROUTES, useDataSourceContext } from '../../model/providers';
+import {
+  ROUTES,
+  useDataSourceContext,
+  useTourContext,
+} from '../../model/providers';
 import { NOOP } from '../../utils';
 import { SearchAvailableForm } from '../../types';
 import { AVAILABLE_HANDLERS } from './constants';
 import { getFilteredSources } from './helpers';
+import { useEffect } from 'react';
 
 export const useAvailableSources = () => {
   const { setSource } = useDataSourceContext();
+  const { tour } = useTourContext();
   const { push } = useHistory();
 
   const { control, handleSubmit, reset, watch } = useForm<SearchAvailableForm>({
@@ -19,6 +25,10 @@ export const useAvailableSources = () => {
   });
 
   const onSubmit = NOOP;
+
+  useEffect(() => {
+    reset({ search: tour.DATA_CONNECTORS_SEARCH_VALUE });
+  }, [tour.DATA_CONNECTORS_SEARCH_VALUE]);
 
   const onReset = () => reset({ search: '' });
 

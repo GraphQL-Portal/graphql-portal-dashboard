@@ -3,6 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
+import { useTourContext } from '../../model/providers';
 import { UseOpenapiDataSourceHook, OpenapiForm } from '../../types';
 import { clearEmptyFields } from '../../utils';
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
@@ -31,6 +32,8 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
   updateState,
   step,
 }) => {
+  const { tour } = useTourContext();
+
   const { schemaHeaders, operationHeaders, qs, ...handler } = state.handler;
 
   const defaultValues = Object.assign({}, OPENAPI_DEFAULT_STATE, handler, {
@@ -38,6 +41,8 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
     operationHeaders: objectToFieldArray(operationHeaders),
     qs: objectToFieldArray(qs),
   });
+
+  const disableInputs = tour.isStarted;
 
   const {
     handleSubmit,
@@ -122,6 +127,7 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
     errors,
     control,
     register,
+    disableInputs,
     schemaFields,
     appendSchemaField,
     removeSchemaField,

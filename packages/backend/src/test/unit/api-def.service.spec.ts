@@ -29,6 +29,8 @@ describe('ApiDefService', () => {
   let publishApiDefsUpdatedMock: jest.SpyInstance;
   let getMeshSchemaMock: jest.SpyInstance;
 
+  const userId = randomObjectId();
+
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
     await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
@@ -78,7 +80,6 @@ describe('ApiDefService', () => {
     });
 
     it('should create an apiDef', async () => {
-      const userId = randomObjectId();
       source = await sourceService.create(
         { ...sourceExample, name: 'api-source' },
         userId
@@ -201,6 +202,28 @@ describe('ApiDefService', () => {
 
     it('should not change anything', async () => {
       const result = await apiDefService.delete(apiDef._id);
+      expect(result).toBe(false);
+      expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(0);
+    });
+
+    it('shoud delete document by name and call publishApiDefsUpdated', async () => {
+      const source = await sourceService.create(
+        { ...sourceExample, _id: randomObjectId(), name: 'api-source-2' },
+        userId
+      );
+      await apiDefService.create(
+        { ...apiDefExample, _id: randomObjectId() },
+        [source._id],
+        userId
+      );
+
+      const result = await apiDefService.deleteByName(apiDefExample.name);
+      expect(result).toBe(true);
+      expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(2);
+    });
+
+    it('should not change anything', async () => {
+      const result = await apiDefService.deleteByName(apiDefExample.name);
       expect(result).toBe(false);
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(0);
     });

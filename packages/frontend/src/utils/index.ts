@@ -23,3 +23,4 @@ export { isZeroLength } from './isZeroLength';
 export { isEmptyObject } from './isEmptyObject';
 export { getUuid } from './getUuid';
 export { scrollTo } from './scrollTo';
+export { toSnakeCase } from './toSnakeCase';

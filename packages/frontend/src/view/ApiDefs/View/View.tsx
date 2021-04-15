@@ -18,6 +18,7 @@ import { VIEW_TABS } from '../constants';
 import { Playground } from './Playground';
 import { Schema } from './Schema';
 import { ViewHeader } from './ViewHeader';
+import { selectors } from '../../Tour';
 
 export const ViewAPI: React.FC = () => {
   const {
@@ -38,7 +39,7 @@ export const ViewAPI: React.FC = () => {
         <title>{`View ${name} API`}</title>
       </Helmet>
       <ViewHeader name={name} apiEndpoint={apiEndpoint} />
-      <WidgetRow>
+      <WidgetRow data-tour={selectors.MY_APIS_EXAMPLE_API}>
         <HugeWidget>
           {enabled ? (
             <WidgetBody>

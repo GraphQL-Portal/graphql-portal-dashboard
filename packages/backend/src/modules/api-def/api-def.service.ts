@@ -154,6 +154,32 @@ export default class ApiDefService implements IAccessControlService {
     return Boolean(deleted);
   }
 
+  public async deleteByName(name: string): Promise<boolean> {
+    const toDelete = await this.apiDefModel.findOne({ name });
+
+    if (toDelete) {
+      this.logger.log(`Deleting apiDef ${toDelete._id}`, this.constructor.name);
+      await toDelete.delete();
+      this.setLastUpdateTime();
+      this.publishApiDefsUpdated();
+
+      const removedMetrics = await this.metricService.removeForApiDef(
+        toDelete._id
+      );
+      removedMetrics
+        ? this.logger.log(
+            `Removed metrics for apiDef ${toDelete._id}`,
+            this.constructor.name
+          )
+        : this.logger.warn(
+            `Couldn't remove metrics for apiDef ${toDelete._id}`,
+            this.constructor.name
+          );
+    }
+
+    return Boolean(toDelete);
+  }
+
   public async isSourceUsed(sources: string): Promise<IApiDefDocument | null> {
     return this.apiDefModel.findOne({ sources });
   }

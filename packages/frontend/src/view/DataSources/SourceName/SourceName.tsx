@@ -5,6 +5,7 @@ import { PrimaryButton, Input } from '../../../ui';
 import { useAddDataSourceName } from '../../../presenter/DataSources';
 import { NameStep } from '../../../types';
 import { HandlerRow, HandlerCol } from '../Layout';
+import { selectors } from '../../Tour';
 
 export const SourceName: React.FC<NameStep> = (stepProps) => {
   const { onSubmit, control, errors } = useAddDataSourceName(stepProps);
@@ -23,7 +24,12 @@ export const SourceName: React.FC<NameStep> = (stepProps) => {
           />
         </HandlerCol>
       </HandlerRow>
-      <PrimaryButton type="submit">Save Name</PrimaryButton>
+      <PrimaryButton
+        data-tour={selectors.DATA_SOURCE_NAME_SAVE_BUTTON}
+        type="submit"
+      >
+        Save Name
+      </PrimaryButton>
     </form>
   );
 };
