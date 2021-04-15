@@ -48,14 +48,6 @@ const suite = vest.create('graphql_handler', ({ baseUrl, operations }) => {
             enforce(responseSchema).isNotEmpty();
           }
         );
-
-        test(
-          `${name}.requestSchema`,
-          `Request Schema of the operation ${idx} is required`,
-          () => {
-            enforce(requestSchema).isNotEmpty();
-          }
-        );
       }
     );
   }

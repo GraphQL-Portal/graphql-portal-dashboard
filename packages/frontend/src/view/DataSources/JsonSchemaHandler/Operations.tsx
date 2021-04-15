@@ -82,7 +82,6 @@ export const Operations: React.FC<any> = ({
                   ref={register()}
                   label="Path to Request Schema"
                   name={`operations[${idx}].requestSchema`}
-                  required
                   fullWidth
                   defaultValue={operation.requestSchema}
                   error={!!errors?.operations?.[idx]?.requestSchema}
