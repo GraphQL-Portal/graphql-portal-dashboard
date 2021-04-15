@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
-export const useStyles = makeStyles(({ spacing }: Theme) => ({
+export const useStyles = makeStyles(({ palette }: Theme) => ({
   disabledNextStepButton: {
     cursor: 'not-allowed',
     color: '#ffffff0d',
@@ -22,6 +22,9 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
     '& > div > button': {
       outline: 'none',
       margin: 0,
+    },
+    '& > a': {
+      color: palette.text.primary,
     },
   },
 }));

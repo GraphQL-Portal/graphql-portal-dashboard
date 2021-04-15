@@ -12,15 +12,17 @@ import { getSourceSteps } from '../../view/DataSources/helpers';
 
 export const useAddDataSource = () => {
   const { showErrorToast, showSuccessToast } = useToast();
-  const { tour } = useTourContext();
+  const {
+    tour: {
+      isStarted,
+      source: { state: tourState },
+    },
+  } = useTourContext();
+  const { name, handler, transforms } = tourState;
   const { source = {}, clearSource } = useDataSourceContext();
   const steps = getSourceSteps(source);
-  const initialState = tour.isStarted
-    ? {
-        name: tour.source.state.name,
-        handler: tour.source.state.handler.openapi,
-        transforms: tour.source.state.transforms,
-      }
+  const initialState = isStarted
+    ? { name, handler: handler.openapi, transforms }
     : INITIAL_STATE;
 
   const {

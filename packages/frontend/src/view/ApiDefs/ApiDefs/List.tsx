@@ -30,6 +30,11 @@ export const ApiDefsList: React.FC<Props> = ({
 }) => {
   const { tour } = useTourContext();
   const { name } = useStyles();
+  const getDataTour = (apiName: string) =>
+    tour.isStarted &&
+    apiName === tour?.api?.name &&
+    selectors.MY_APIS_CREATED_API_LINK;
+
   return (
     <WidgetBody>
       <Table>
@@ -46,13 +51,7 @@ export const ApiDefsList: React.FC<Props> = ({
         <TableBody>
           {list.map((api, idx) => (
             <TableRow key={`node-${idx}`}>
-              <TableCell
-                data-tour={
-                  tour.isStarted &&
-                  api.name === tour?.api?.name &&
-                  selectors.MY_APIS_CREATED_API_LINK
-                }
-              >
+              <TableCell data-tour={getDataTour(api.name)}>
                 {createElement(
                   api.enabled ? Link : 'spawn',
                   {

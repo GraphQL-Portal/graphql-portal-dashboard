@@ -4,13 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { TextButton } from '../../../ui';
 import { GroupItem } from '../../../types';
 import { useStyles } from './useStyles';
+import { toSnakeCase } from '../../../utils';
 
 export const Item: React.FC<GroupItem> = ({ link, text, Icon, external }) => {
   const { item, activeItem, button } = useStyles();
 
-  const dataTourValue = `navigation-item-${text
-    .toLowerCase()
-    .replace(/ /g, '-')}`;
+  const dataTourValue = `navigation-item-${toSnakeCase(text)}`;
 
   return !!external ? (
     <a
