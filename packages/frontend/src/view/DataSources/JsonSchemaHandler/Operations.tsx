@@ -25,20 +25,21 @@ export const Operations: React.FC<any> = ({
       {operations.map((operation: any, idx: number) => (
         <FormGroup key={`operation-${idx}`} title="Operation">
           <HandlerRow>
-            <HandlerRow>
-              <HandlerCol>
-                <Controller
-                  as={Select}
-                  control={control}
-                  name={`operations[${idx}].type`}
-                  options={TYPE_OPTIONS}
-                  labelId="type"
-                  label="Target Type"
-                  fullWidth
-                  defaultValue={operation.type}
-                />
-              </HandlerCol>
-            </HandlerRow>
+            <HandlerCol>
+              <Controller
+                as={Select}
+                control={control}
+                name={`operations[${idx}].type`}
+                options={TYPE_OPTIONS}
+                labelId="type"
+                label="Target Type"
+                fullWidth
+                defaultValue={operation.type}
+                helperText="Type of the operation in GraphQL"
+              />
+            </HandlerCol>
+          </HandlerRow>
+          <HandlerRow>
             <HandlerCol>
               <Input
                 ref={register()}
@@ -76,6 +77,7 @@ export const Operations: React.FC<any> = ({
                 label="Origin HTTP Method"
                 fullWidth
                 defaultValue={operation.method}
+                helperText="HTTP Method to be used in the request to the Origin path (i.e. GET to /user)"
               />
             </HandlerCol>
           </HandlerRow>
