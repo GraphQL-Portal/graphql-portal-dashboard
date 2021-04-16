@@ -1,10 +1,13 @@
 import React from 'react';
+import { Controller } from 'react-hook-form';
 
 import { AdditionalResolvers as Props } from '../../../types';
-import { FormGroup, Row, Col, Input, OutlineButton } from '../../../ui';
+import { Col, FormGroup, Input, OutlineButton, Row, Select } from '../../../ui';
+import { nameToOptions } from '../../../utils/nameToOptions';
 import { AddFieldArrayHeader } from '../../Form/AddFieldArrayHeader';
-import { useStyles } from './useStyles';
 import { AdditionalResolverArguments } from './AdditionalResolverArguments';
+import { AdditionalResolversSourceMethods } from './AdditionalResolversSourceMethods';
+import { useStyles } from './useStyles';
 
 export const AdditionalResolvers: React.FC<Props> = ({
   resolvers,
@@ -13,8 +16,11 @@ export const AdditionalResolvers: React.FC<Props> = ({
   register,
   errors,
   control,
+  sources,
 }) => {
   const { formRow } = useStyles();
+  const sourceNames = sources?.map(source => source.name).sort() || [];
+  const targetSourceOptions = sourceNames.map(nameToOptions);
 
   return (
     <FormGroup title="Additional Resolvers">
@@ -66,29 +72,24 @@ export const AdditionalResolvers: React.FC<Props> = ({
             </Row>
             <Row spacing={2} className={formRow}>
               <Col xs={6}>
-                <Input
-                  ref={register()}
+                <Controller
+                  as={Select}
                   name={`mesh.additionalResolvers[${idx}].targetSource`}
+                  control={control}
+                  options={targetSourceOptions || []}
                   label="Target Source"
-                  error={
-                    !!errors?.mesh?.additionalResolvers?.[idx]?.targetSource
-                  }
-                  defaultValue={resolver.targetSource || undefined}
                   fullWidth
+                  defaultValue={resolver.targetSource || ''}
                   required
                 />
               </Col>
               <Col xs={6}>
-                <Input
-                  ref={register()}
+                <AdditionalResolversSourceMethods
+                  control={control}
                   name={`mesh.additionalResolvers[${idx}].targetMethod`}
-                  label="Target Method"
-                  error={
-                    !!errors?.mesh?.additionalResolvers?.[idx]?.targetMethod
-                  }
-                  defaultValue={resolver.targetMethod || undefined}
-                  fullWidth
-                  required
+                  sources={sources}
+                  defaultValue={resolver.targetMethod}
+                  defaultSource={resolver.targetSource}
                 />
               </Col>
             </Row>

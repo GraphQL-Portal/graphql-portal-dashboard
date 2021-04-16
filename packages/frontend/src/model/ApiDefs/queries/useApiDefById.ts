@@ -13,6 +13,7 @@ const GET_API_DEF_BY_ID = gql`
         _id
         name
         updatedAt
+        sourceSchema
       }
       createdAt
       updatedAt

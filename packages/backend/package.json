@@ -18,7 +18,7 @@
     "test": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "clear": "rm -rf node_modules",
-    "migrate:create": "sh -c 'ts-node node_modules/.bin/migrate-mongo create $0' -f migrate-mongo-config.ts",
+    "migrate:create": "sh -c 'ts-node node_modules/.bin/migrate-mongo create $0 -f migrate-mongo-config.ts'",
     "migrate:status": "ts-node node_modules/.bin/migrate-mongo status -f migrate-mongo-config.ts",
     "migrate:down": "ts-node node_modules/.bin/migrate-mongo down -f migrate-mongo-config.ts",
     "migrate": "ts-node node_modules/.bin/migrate-mongo up -f migrate-mongo-config.ts"

@@ -65,6 +65,7 @@ export const INITIAL_STATE = {
   name: '',
   handler: {},
   transforms: [],
+  sourceSchema: '',
 };
 
 export const HANDLERS_LABELS: { [key: string]: string } = {

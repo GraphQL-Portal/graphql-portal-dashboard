@@ -12,6 +12,7 @@ const sourceSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    sourceSchema: String,
   },
   { versionKey: false, timestamps: true }
 );
@@ -20,4 +21,6 @@ sourceSchema.index({ name: 1 }, { unique: true, sparse: true });
 
 export default sourceSchema;
 
-export interface ISourceDocument extends mongoose.Document, SourceConfig {}
+export interface ISourceDocument extends mongoose.Document, SourceConfig {
+  sourceSchema?: string;
+}

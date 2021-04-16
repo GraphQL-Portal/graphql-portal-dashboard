@@ -25,6 +25,7 @@ export type DataSource = NameForm &
   TransformsForm & {
     _id?: string;
     updatedAt?: string;
+    sourceSchema: string;
   };
 
 export type SourceStep = {
