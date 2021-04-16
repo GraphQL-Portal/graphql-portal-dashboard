@@ -6,7 +6,6 @@ import { HandlerCol, HandlerRow } from '../Layout';
 import { useStyles } from './useStyles';
 import { METHOD_OPTIONS, TYPE_OPTIONS } from './constants';
 import { Controller } from 'react-hook-form';
-// import { HookFormJsonEditor } from '../../Editors';
 
 export const Operations: React.FC<any> = ({
   operations,
@@ -19,15 +18,33 @@ export const Operations: React.FC<any> = ({
   const { lastRow } = useStyles();
   return (
     <>
-      <AddFieldArrayHeader title="Add Operation" onAddClick={addOperation} />
+      <AddFieldArrayHeader
+        title="Add API Operation"
+        onAddClick={addOperation}
+      />
       {operations.map((operation: any, idx: number) => (
         <FormGroup key={`operation-${idx}`} title="Operation">
           <HandlerRow>
+            <HandlerRow>
+              <HandlerCol>
+                <Controller
+                  as={Select}
+                  control={control}
+                  name={`operations[${idx}].type`}
+                  options={TYPE_OPTIONS}
+                  labelId="type"
+                  label="Target Type"
+                  fullWidth
+                  defaultValue={operation.type}
+                />
+              </HandlerCol>
+            </HandlerRow>
             <HandlerCol>
               <Input
                 ref={register()}
-                label="Field name"
+                label="Target field name"
                 name={`operations[${idx}].field`}
+                helperText="Name of the field to be added to Target Type"
                 fullWidth
                 defaultValue={operation.field}
                 error={!!errors?.operations?.[idx]?.field}
@@ -39,7 +56,8 @@ export const Operations: React.FC<any> = ({
             <HandlerCol>
               <Input
                 ref={register()}
-                label="Path"
+                label="Origin Path"
+                helperText="Path of the endpoint in the origin API (for example, /user)"
                 name={`operations[${idx}].path`}
                 fullWidth
                 defaultValue={operation.path}
@@ -52,30 +70,16 @@ export const Operations: React.FC<any> = ({
               <Controller
                 as={Select}
                 control={control}
-                name={`operations[${idx}].type`}
-                options={TYPE_OPTIONS}
-                labelId="type"
-                label="Operation Type"
-                fullWidth
-                defaultValue={operation.type}
-              />
-            </HandlerCol>
-          </HandlerRow>
-          <HandlerRow>
-            <HandlerCol>
-              <Controller
-                as={Select}
-                control={control}
                 name={`operations[${idx}].method`}
                 options={METHOD_OPTIONS}
                 labelId="method"
-                label="Operation Method"
+                label="Origin HTTP Method"
                 fullWidth
                 defaultValue={operation.method}
               />
             </HandlerCol>
           </HandlerRow>
-          <FormGroup title="Operation request">
+          <FormGroup title="Request schema">
             <HandlerRow>
               <HandlerCol>
                 <Input
@@ -88,37 +92,27 @@ export const Operations: React.FC<any> = ({
                 />
               </HandlerCol>
             </HandlerRow>
-            {/* <HandlerRow>
-              <HandlerCol>
-                <H6>Request sample</H6>
-                <HookFormJsonEditor
-                  className={editor}
-                  control={control}
-                  name={`operations[${idx}].requestSample`}
-                  defaultValue={operation.requestSample || {}}
-                />
-              </HandlerCol>
-            </HandlerRow> */}
             <HandlerRow>
               <HandlerCol>
                 <Input
                   ref={register()}
-                  label="Request Type Name"
-                  name={`operations[${idx}].requestTypeName`}
+                  label="URL to Request Sample"
+                  name={`operations[${idx}].requestSample`}
                   fullWidth
-                  defaultValue={operation.requestTypeName}
-                  error={!!errors?.operations?.[idx]?.requestTypeName}
+                  defaultValue={operation.requestSample}
+                  error={!!errors?.operations?.[idx]?.requestSample}
                 />
               </HandlerCol>
             </HandlerRow>
           </FormGroup>
-          <FormGroup title="Operation response">
+          <FormGroup title="Response Schema">
             <HandlerRow>
               <HandlerCol>
                 <Input
                   ref={register()}
-                  label="Path to Response Schema"
+                  label="URL of Response Schema"
                   name={`operations[${idx}].responseSchema`}
+                  helperText="JSON Schema of the response"
                   required
                   fullWidth
                   defaultValue={operation.responseSchema}
@@ -126,26 +120,15 @@ export const Operations: React.FC<any> = ({
                 />
               </HandlerCol>
             </HandlerRow>
-            {/* <HandlerRow>
-              <HandlerCol>
-                <H6>Response sample</H6>
-                <HookFormJsonEditor
-                  className={editor}
-                  control={control}
-                  name={`operations[${idx}].responseSample`}
-                  defaultValue={operation.responseSample || {}}
-                />
-              </HandlerCol>
-            </HandlerRow> */}
             <HandlerRow>
               <HandlerCol>
                 <Input
                   ref={register()}
-                  label="Response Type Name"
-                  name={`operations[${idx}].responseTypeName`}
+                  label="URL to Response sample"
+                  name={`operations[${idx}].responseSample`}
                   fullWidth
-                  defaultValue={operation.responseTypeName}
-                  error={!!errors?.operations?.[idx]?.responseTypeName}
+                  defaultValue={operation.responseSample}
+                  error={!!errors?.operations?.[idx]?.responseSample}
                 />
               </HandlerCol>
             </HandlerRow>

@@ -41,9 +41,9 @@ export type JsonSchemaOperation = {
   type: string;
   method: string;
   responseSchema: string;
-  responseTypeName?: string;
+  responseSample?: string;
   requestSchema: string;
-  requestTypeName?: string;
+  requestSample?: string;
 };
 
 export type JsonSchemaForm = {

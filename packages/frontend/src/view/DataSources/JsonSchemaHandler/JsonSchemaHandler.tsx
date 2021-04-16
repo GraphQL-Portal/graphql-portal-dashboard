@@ -38,6 +38,14 @@ export const JsonSchemaHandler: React.FC<HandlerStep> = (props) => {
           />
         </HandlerCol>
       </HandlerRow>
+      <Operations
+        operations={operations}
+        addOperation={addOperation}
+        removeOperation={removeOperation}
+        register={register}
+        control={control}
+        errors={errors}
+      />
       <ObjectArray
         title="Schema Headers"
         name="schemaHeaders"
@@ -55,14 +63,6 @@ export const JsonSchemaHandler: React.FC<HandlerStep> = (props) => {
         fields={operationFields}
         onAdd={appendOperationField}
         onRemove={removeOperationField}
-      />
-      <Operations
-        operations={operations}
-        addOperation={addOperation}
-        removeOperation={removeOperation}
-        register={register}
-        control={control}
-        errors={errors}
       />
       <PrimaryButton type="submit">Save Handler</PrimaryButton>
     </form>

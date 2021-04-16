@@ -2,56 +2,92 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep, JsonSchemaForm, RecordStringAny } from '../../types';
+import {
+  HandlerStep,
+  JsonSchemaForm,
+  JsonSchemaOperation,
+  RecordStringAny,
+} from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
 import { isUrl } from './validation';
 import { isZeroLength } from '../../utils';
 
-const suite = vest.create('graphql_handler', ({ baseUrl, operations }) => {
-  test('baseUrl', 'baseUrl is required', () => {
-    enforce(baseUrl).isNotEmpty();
-  });
+const URL_ERROR_MESSAGE =
+  'Please use absolute URL http://example.com or http://localhost:80';
 
-  test(
-    'baseUrl',
-    'Please use absolute URL http://example.com or http://localhost:80',
-    () => {
-      isUrl(baseUrl);
+const suite = vest.create(
+  'graphql_handler',
+  ({ baseUrl, operations }: JsonSchemaForm) => {
+    const urlTest = (name: string, value: string) => {
+      test(name, URL_ERROR_MESSAGE, () => {
+        isUrl(value);
+      });
+    };
+
+    test('baseUrl', 'baseUrl is required', () => {
+      enforce(baseUrl).isNotEmpty();
+    });
+
+    urlTest('baseUrl', baseUrl);
+
+    test('operations', 'Operations is required', () => {
+      enforce(operations).lengthNotEquals(0);
+    });
+
+    if (!!operations && !isZeroLength(operations)) {
+      operations.forEach(
+        (
+          {
+            type,
+            field,
+            responseSchema,
+            responseSample,
+            requestSample,
+          }: JsonSchemaOperation,
+          idx: number
+        ) => {
+          const name = `operations[${idx}]`;
+          test(
+            `${name}.type`,
+            `Type of the operation ${idx} is required`,
+            () => {
+              enforce(type).isNotEmpty();
+            }
+          );
+
+          test(
+            `${name}.type`,
+            `Field of the operation ${idx} is required`,
+            () => {
+              enforce(field).isNotEmpty();
+            }
+          );
+
+          test(
+            `${name}.responseSchema`,
+            `Response Schema of the operation ${idx} is required`,
+            () => {
+              enforce(responseSchema).isNotEmpty();
+            }
+          );
+
+          test(`sample`, 'Response or Request sample is required', () => {
+            enforce(responseSample || requestSample).isNotEmpty();
+          });
+
+          if (responseSample) {
+            urlTest(`${name}.responseSample`, responseSample);
+          }
+
+          if (requestSample) {
+            urlTest(`${name}.requestSample`, requestSample);
+          }
+        }
+      );
     }
-  );
-
-  test('operations', 'Operations is required', () => {
-    enforce(operations).lengthNotEquals(0);
-  });
-
-  if (!!operations && !isZeroLength(operations)) {
-    operations.forEach(
-      ({ type, field, responseSchema, requestSchema }: any, idx: number) => {
-        const name = `operations[${idx}]`;
-        test(`${name}.type`, `Type of the operation ${idx} is required`, () => {
-          enforce(type).isNotEmpty();
-        });
-
-        test(
-          `${name}.type`,
-          `Field of the operation ${idx} is required`,
-          () => {
-            enforce(field).isNotEmpty();
-          }
-        );
-
-        test(
-          `${name}.responseSchema`,
-          `Response Schema of the operation ${idx} is required`,
-          () => {
-            enforce(responseSchema).isNotEmpty();
-          }
-        );
-      }
-    );
   }
-});
+);
 
 const JSON_SCHEMA_DEFAULT_STATE = {
   baseUrl: undefined,
@@ -66,9 +102,9 @@ const OPERATION_DEFAULT_VALUE = {
   type: 'Query',
   method: 'GET',
   responseSchema: undefined,
-  responseTypeName: undefined,
+  responseSample: undefined,
   requestSchema: undefined,
-  requestTypeName: undefined,
+  requestSample: undefined,
 };
 
 export const useJsonSchemaHandler = ({
