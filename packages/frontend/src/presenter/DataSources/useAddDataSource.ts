@@ -18,11 +18,11 @@ export const useAddDataSource = () => {
       source: { state: tourState },
     },
   } = useTourContext();
-  const { name, handler, transforms } = tourState;
+  const { name, handler, transforms, sourceSchema } = tourState;
   const { source = {}, clearSource } = useDataSourceContext();
   const steps = getSourceSteps(source);
   const initialState = isStarted
-    ? { name, handler: handler.openapi, transforms }
+    ? { name, handler: handler.openapi, transforms, sourceSchema }
     : INITIAL_STATE;
 
   const {
