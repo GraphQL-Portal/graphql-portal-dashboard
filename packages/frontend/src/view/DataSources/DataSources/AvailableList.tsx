@@ -21,6 +21,7 @@ import { AVAILABLE_HEAD } from '../constants';
 import { useStyles } from './useStyles';
 import { formatHandlerDescription, formatHandlerTitle } from '../helpers';
 import { handlerMapper, typeMapper } from './helpers';
+import { selectors } from '../../Tour';
 
 const getCellAlign = (idx: number, length: number) =>
   idx + 1 === length ? 'right' : 'left';
@@ -40,7 +41,7 @@ export const AvailableList: React.FC = () => {
   const { form, searchIcon } = useStyles();
 
   return (
-    <>
+    <div data-tour={selectors.DATA_SOURCE_AVAILABLE}>
       <form noValidate autoComplete="off" className={form} onSubmit={onSubmit}>
         <Controller
           as={Input}
@@ -49,6 +50,7 @@ export const AvailableList: React.FC = () => {
           placeholder="Search data connectors"
           name="search"
           onKeyDown={onKeyDown}
+          data-tour={selectors.DATA_SOURCE_AVAILABLE_SEARCH_BAR}
           autoFocus
           InputProps={{
             startAdornment: <Search className={searchIcon} />,
@@ -81,7 +83,7 @@ export const AvailableList: React.FC = () => {
             const HandlerIcon = handlerMapper(title);
             const TypeIcon = typeMapper(title);
             return (
-              <TableRow key={key}>
+              <TableRow>
                 <TableIconCell>
                   <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
                   {fTitle}
@@ -91,7 +93,9 @@ export const AvailableList: React.FC = () => {
                   Free
                 </TableIconCell>
                 <TableCell>{fDescription}</TableCell>
-                <TableActionCell>
+                <TableActionCell
+                  data-tour={`${selectors.DATA_SOURCE_AVAILABLE}-${key}`}
+                >
                   <Tooltip
                     title="Add connector"
                     placement="left"
@@ -107,6 +111,6 @@ export const AvailableList: React.FC = () => {
           })}
         </TableBody>
       </Table>
-    </>
+    </div>
   );
 };

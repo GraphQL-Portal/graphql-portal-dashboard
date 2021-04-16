@@ -15,10 +15,11 @@ import {
 } from '../../../ui';
 import { ApiList as Props } from '../../../types';
 import { alignFirstCellLeft, getKeyFromText } from '../../../utils';
-import { ROUTES } from '../../../model/providers';
+import { ROUTES, useTourContext } from '../../../model/providers';
 import { EnableSwitch } from '../Form';
 import { TABLE_HEAD } from './constants';
 import { useStyles } from './useStyles';
+import { selectors } from '../../Tour';
 
 export const ApiDefsList: React.FC<Props> = ({
   list,
@@ -27,7 +28,13 @@ export const ApiDefsList: React.FC<Props> = ({
   onUpdate,
   onView,
 }) => {
+  const { tour } = useTourContext();
   const { name } = useStyles();
+  const getDataTour = (apiName: string) =>
+    tour.isStarted &&
+    apiName === tour?.api?.name &&
+    selectors.MY_APIS_CREATED_API_LINK;
+
   return (
     <WidgetBody>
       <Table>
@@ -44,7 +51,7 @@ export const ApiDefsList: React.FC<Props> = ({
         <TableBody>
           {list.map((api, idx) => (
             <TableRow key={`node-${idx}`}>
-              <TableCell>
+              <TableCell data-tour={getDataTour(api.name)}>
                 {createElement(
                   api.enabled ? Link : 'spawn',
                   {

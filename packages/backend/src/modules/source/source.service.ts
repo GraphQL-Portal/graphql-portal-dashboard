@@ -73,15 +73,22 @@ export default class SourceService implements IAccessControlService {
     const toDelete = await this.sourceModel.findById(id);
 
     if (toDelete) {
-      const usedInApiDef = await this.apiDefService.isSourceUsed(toDelete._id);
-      if (usedInApiDef) {
-        throw new ValidationError(
-          `Source "${toDelete.name}" is used in API "${usedInApiDef.name}"`
-        );
-      }
+      await this.checkIsSourceUsedInApiDef(toDelete);
       await toDelete.delete();
       this.logger.log(`Deleted source ${id}`, this.constructor.name);
     }
+
+    return Boolean(toDelete);
+  }
+
+  public async deleteByName(name: string): Promise<boolean> {
+    const toDelete = await this.sourceModel.findOne({ name });
+
+    if (toDelete) {
+      await this.checkIsSourceUsedInApiDef(toDelete);
+      await toDelete.delete();
+    }
+    this.logger.log(`Deleted source ${name}`, this.constructor.name);
 
     return Boolean(toDelete);
   }
@@ -102,5 +109,16 @@ export default class SourceService implements IAccessControlService {
     const sourceSchema = await this.getSchema(source);
     await this.sourceModel.findByIdAndUpdate(source.id, { sourceSchema });
     return sourceSchema;
+  }
+
+  private async checkIsSourceUsedInApiDef(
+    source: ISourceDocument
+  ): Promise<void> {
+    const usedInApiDef = await this.apiDefService.isSourceUsed(source._id);
+    if (usedInApiDef) {
+      throw new ValidationError(
+        `Source "${source._id}" is used in API "${usedInApiDef.name}"`
+      );
+    }
   }
 }

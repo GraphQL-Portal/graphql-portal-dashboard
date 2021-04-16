@@ -95,6 +95,7 @@ export type UseCreateApiDefHook = () => Pick<
     tokenFields: FieldArray;
     addToken: FieldArrayAppend;
     removeToken: FieldArrayRemove;
+    disableSelectDatasources: boolean;
   } & ReturnType<UseIPFilteringHook>;
 
 export type UseUpdateGeneralHook = (

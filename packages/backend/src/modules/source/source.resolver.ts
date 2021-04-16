@@ -65,4 +65,10 @@ export default class SourceResolver {
   public deleteSource(@Args('id') id: string): Promise<boolean> {
     return this.service.delete(id);
   }
+
+  @Mutation()
+  @Roles([RolesEnum.USER])
+  public deleteSourceByName(@Args('name') name: string): Promise<boolean> {
+    return this.service.deleteByName(name);
+  }
 }

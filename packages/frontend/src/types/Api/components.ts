@@ -52,6 +52,7 @@ export type ApiDataSourcesForm = ControlType & {
   onAddSource(): void;
   connected: DataSource[];
   onRemoveSource(idx: number): NOOP;
+  disableSelect?: boolean;
 };
 
 export type ApiSchemaForm = Pick<

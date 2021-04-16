@@ -77,4 +77,10 @@ export default class ApiDefResolver {
   public deleteApiDef(@Args('id') id: string): Promise<boolean> {
     return this.service.delete(id);
   }
+
+  @Mutation()
+  @Roles([RolesEnum.USER])
+  public deleteApiDefByName(@Args('name') name: string): Promise<boolean> {
+    return this.service.deleteByName(name);
+  }
 }
