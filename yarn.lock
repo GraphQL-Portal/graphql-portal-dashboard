@@ -1966,7 +1966,20 @@
     "@graphql-tools/wrap" "7.0.5"
     fetchache "0.1.1"
 
-"@graphql-mesh/mongoose@0.7.5", "@graphql-mesh/mongoose@^0.7.1":
+"@graphql-mesh/mongoose@0.7.6":
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/mongoose/-/mongoose-0.7.6.tgz#2af3091d2cd114998c0012bcd58ffddd86542790"
+  integrity sha512-XDyOVY6eUOqYtMvef56Mcx2gAdCE+/ExVLtxMUeK4NxWKS1QpA58l8qnH+rFsp+Tejul5IXiuY8gM1jpJzgV8w==
+  dependencies:
+    "@graphql-mesh/types" "0.39.0"
+    "@graphql-mesh/utils" "0.10.0"
+    camel-case "4.1.2"
+    graphql-compose "7.25.1"
+    graphql-compose-connection "8.0.1"
+    graphql-compose-mongoose "9.2.2"
+    graphql-compose-pagination "8.0.2"
+
+"@graphql-mesh/mongoose@^0.7.1":
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/mongoose/-/mongoose-0.7.5.tgz#c517f3824a57025a512e7fe8220a6ec6d8badca8"
   integrity sha512-7uIQs5NtsNZJb+EIH5y3Q7pOObJnwRmSoNuThaE01oxsn+QNfVtFP7XLTzjPPevOZGyS8EIIXDEx8d4cNdB9xw==
