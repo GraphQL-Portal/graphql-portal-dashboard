@@ -2024,7 +2024,20 @@
     mysql-utilities "1.1.2"
     pascal-case "3.1.2"
 
-"@graphql-mesh/neo4j@0.11.1", "@graphql-mesh/neo4j@^0.11.0":
+"@graphql-mesh/neo4j@0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.2.tgz#46b27e5ccdf1ea40dbaef59f0198e8e77073fec0"
+  integrity sha512-8tVNEmU21wHdrpscYa6WzF35G7qZxTzNcb82s4IDpum3OiwEy665FMSoqVYZmZgptsDcNViXmEyEwnXUzk/o3g==
+  dependencies:
+    "@graphql-mesh/types" "0.39.0"
+    "@graphql-tools/code-file-loader" "6.3.1"
+    "@graphql-tools/graphql-file-loader" "6.2.7"
+    "@graphql-tools/load" "6.2.8"
+    "@graphql-tools/merge" "6.2.12"
+    neo4j-driver "4.2.3"
+    neo4j-graphql-js "2.19.2"
+
+"@graphql-mesh/neo4j@^0.11.0":
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.1.tgz#cf8f866c178be28cf93f498cb9992b0ecdff3d88"
   integrity sha512-vc7p1h69kQn4qvE+5s2VTj93h7rrfneV+IPBb0WU80j0KHtTs0y1bZNycNvZNIeKxByrCmI23fquzG2R1G+l4w==
@@ -2622,6 +2635,21 @@
     unixify "1.0.0"
     valid-url "1.0.9"
 
+"@graphql-tools/load@6.2.8":
+  version "6.2.8"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-6.2.8.tgz#16900fb6e75e1d075cad8f7ea439b334feb0b96a"
+  integrity sha512-JpbyXOXd8fJXdBh2ta0Q4w8ia6uK5FHzrTNmcvYBvflFuWly2LDTk2abbSl81zKkzswQMEd2UIYghXELRg8eTA==
+  dependencies:
+    "@graphql-tools/merge" "^6.2.12"
+    "@graphql-tools/utils" "^7.5.0"
+    globby "11.0.3"
+    import-from "3.0.0"
+    is-glob "4.0.1"
+    p-limit "3.1.0"
+    tslib "~2.2.0"
+    unixify "1.0.0"
+    valid-url "1.0.9"
+
 "@graphql-tools/merge@6.2.10":
   version "6.2.10"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.10.tgz#cadb37b1bed786cba1b3c6f728c5476a164e153d"
@@ -2639,6 +2667,24 @@
     "@graphql-tools/schema" "^7.0.0"
     "@graphql-tools/utils" "^7.7.0"
     tslib "~2.1.0"
+
+"@graphql-tools/merge@6.2.12":
+  version "6.2.12"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.12.tgz#2a8171e6e4fe73e67b2049b219188e69a3479b05"
+  integrity sha512-SWq09Nv04QN/A5TlB54gKn8K3qmRIilyYWFTfyMTfKWWIaJFJG7XDWB1ZNDFTRb1h9XvKr0LCi4nL/Po8zMbSg==
+  dependencies:
+    "@graphql-tools/schema" "^7.0.0"
+    "@graphql-tools/utils" "^7.7.0"
+    tslib "~2.2.0"
+
+"@graphql-tools/merge@^6.2.12":
+  version "6.2.13"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.13.tgz#4603fac8fc44daff0a4704055634d95ca7fa62b2"
+  integrity sha512-Qjlki0fp+bBQPinhdv7rv24eurvThZ5oIFvGMpLxMZplbw/ovJ2c6llwXr5PCuWAk9HGZsyM9NxxDgtTRfq3dQ==
+  dependencies:
+    "@graphql-tools/schema" "^7.0.0"
+    "@graphql-tools/utils" "^7.7.0"
+    tslib "~2.2.0"
 
 "@graphql-tools/mock@8.1.1":
   version "8.1.1"
