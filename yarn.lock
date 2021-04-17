@@ -1874,7 +1874,24 @@
     "@graphql-tools/url-loader" "6.8.2"
     "@graphql-tools/wrap" "7.0.5"
 
-"@graphql-mesh/grpc@0.12.0", "@graphql-mesh/grpc@^0.12.0":
+"@graphql-mesh/grpc@0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.12.1.tgz#3653201863228d330413f183edb8207d41ffca4e"
+  integrity sha512-vaQSMWzJYbhj7uEZdOfZQHK/GSLqacwIdrq0if06+JpDO78wUOxudfIsDrgXhXuDkLlJcSUicdP1uaxLE5IMrw==
+  dependencies:
+    "@graphql-mesh/types" "0.39.0"
+    "@graphql-mesh/utils" "0.10.0"
+    "@grpc/grpc-js" "^1.1.7"
+    "@grpc/proto-loader" "0.6.1"
+    camel-case "4.1.2"
+    graphql-compose "7.25.1"
+    graphql-scalars "1.9.0"
+    grpc-reflection-js "0.1.1"
+    lodash "4.17.21"
+    pascal-case "3.1.2"
+    protobufjs "6.10.2"
+
+"@graphql-mesh/grpc@^0.12.0":
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.12.0.tgz#e30061ff8de1b1ca9cbf2bfc02fd131cad4f67b0"
   integrity sha512-1r00eJrVMsS3lVspQxJKy0Wpt+MfrEe+bB4+gVXrCZvjFR8VZ5fNwJyVumKX9JNaQGXZ9wvzPdlgRT5gHOmh0w==
@@ -2751,6 +2768,17 @@
   dependencies:
     lodash.camelcase "^4.3.0"
     protobufjs "^6.8.6"
+
+"@grpc/proto-loader@0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@grpc/proto-loader/-/proto-loader-0.6.1.tgz#ad63e8c7d2a23b0175c78eebc26dedf6b0af0b0b"
+  integrity sha512-4DIvEOZhw5nGj3RQngIoiMXRsre3InEH136krZTcirs/G2em3WMXdtx4Lqlnb4E2ertbWGs5gPeVDKU5BHffXw==
+  dependencies:
+    "@types/long" "^4.0.1"
+    lodash.camelcase "^4.3.0"
+    long "^4.0.0"
+    protobufjs "^6.10.0"
+    yargs "^16.1.1"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -15205,7 +15233,7 @@ prop-types@15.7.2, prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-protobufjs@6.10.2, protobufjs@^6.8.6, protobufjs@^6.9.0:
+protobufjs@6.10.2, protobufjs@^6.10.0, protobufjs@^6.8.6, protobufjs@^6.9.0:
   version "6.10.2"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.10.2.tgz#b9cb6bd8ec8f87514592ba3fdfd28e93f33a469b"
   integrity sha512-27yj+04uF6ya9l+qfpH187aqEzfCF4+Uit0I9ZBQVqK09hk/SQzKa2MUqUpXaVa7LOFRg1TSSr3lVxGOk6c0SQ==
