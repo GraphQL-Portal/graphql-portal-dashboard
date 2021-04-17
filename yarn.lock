@@ -2086,7 +2086,25 @@
     pascal-case "3.1.2"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.15.0", "@graphql-mesh/openapi@^0.15.0":
+"@graphql-mesh/openapi@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.0.tgz#cc0b02efc296399503f07956deac561543932fd4"
+  integrity sha512-xxcS7iEplyaoJLv78huRN8ZyhFbu/SSIIUtr3vtcHF+rUgkMP7dUaGBa/yk9q8DyJx3CdMsArSJuyrJAOLZjdg==
+  dependencies:
+    "@graphql-mesh/types" "0.39.0"
+    "@graphql-mesh/utils" "0.10.0"
+    deep-equal "2.0.5"
+    form-urlencoded "6.0.0"
+    graphql-scalars "1.9.0"
+    graphql-subscriptions "1.2.1"
+    json-ptr "2.0.0"
+    jsonpath-plus "5.0.7"
+    lodash "4.17.21"
+    pluralize "8.0.0"
+    swagger2openapi "7.0.5"
+    url-join "4.0.1"
+
+"@graphql-mesh/openapi@^0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.15.0.tgz#7ee2bf53c60c0a8876efcced0e95d5d1698dc81c"
   integrity sha512-6mMX9d0tDFWoHdXkrYxiNSvJKUDTwCKf2hjwuWDZEQpeC1Y9BglsSqPJmvVB+cCULu/lM66NtfFDU4a2O2ZnRg==
@@ -9501,6 +9519,11 @@ form-urlencoded@4.4.2:
   resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-4.4.2.tgz#92913ec8e7375824fa1cc2d13093c8d30a122a8f"
   integrity sha512-6sZj0HI9tCcGuzC9W/nkHvNLAjOo1G/jjnNluChOGMwn75Po6g5nGYASxQUJeSQHLng1SpovGjQr1f4xz1PqQw==
 
+form-urlencoded@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-6.0.0.tgz#c3d7c5b470664175fd3f8756fd05b46d86c6dc50"
+  integrity sha512-X8AvXpvwMZwbd3/qIegrkZLzPos6djGYaL0bm2nVREzEB/05csjKmdAPTDZMGcFYfVtV9hx5kbpo5Ze87n3HWA==
+
 formidable@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.2.2.tgz#bf69aea2972982675f00865342b982986f6b8dd9"
@@ -12122,6 +12145,11 @@ jsonpath-plus@5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-5.0.4.tgz#3b8ce2ea6904ee6c6750ed027fe8df31789b62e3"
   integrity sha512-w3pI3PewtwIrrGRCFvTkCkKu8IrOwjsqoYRxvxuXQjPB0udEtAuBY0B6/SEztsxMmuIHVHGFQ0knVnTCPW9qYw==
+
+jsonpath-plus@5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-5.0.7.tgz#95fb437ebb69c67595208711a69c95735cbff45b"
+  integrity sha512-7TS6wsiw1s2UMK/A6nA4n0aUJuirCVhJ87nWX5je5MPOl0z5VTr2qs7nMP8NZ2ed3rlt6kePTqddgVPE9F0i0w==
 
 jsonrepair@^2.2.0:
   version "2.2.0"
