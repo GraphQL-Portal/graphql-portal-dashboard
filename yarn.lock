@@ -1648,6 +1648,16 @@
     generic-pool "^3.4.2"
     request "^2.88.0"
 
+"@creditkarma/thrift-client@0.17.2":
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/@creditkarma/thrift-client/-/thrift-client-0.17.2.tgz#20c7a637948660e60cedfa3ce751d6d0d3fdcfce"
+  integrity sha512-xel9rz1bu01SPlHZEntJ7nzJsBlkyDRvLXaEAipGWFJjjDlYGcc+OjFsmoBuOC6L6lc3uA3waceg8jhZvpp53A==
+  dependencies:
+    "@types/generic-pool" "^3.1.4"
+    "@types/request" "^2.48.1"
+    generic-pool "^3.4.2"
+    request "^2.88.0"
+
 "@creditkarma/thrift-parser@1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@creditkarma/thrift-parser/-/thrift-parser-1.2.0.tgz#69b47dff3d2a5211e9417ff543ea65f681821906"
@@ -1657,6 +1667,14 @@
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@creditkarma/thrift-server-core/-/thrift-server-core-0.16.1.tgz#90ac060878b84214816e7b7b72dcf98d5429b735"
   integrity sha512-rbzmS46vH6oth1I7zcSLcTslRlzolAiD9TSCNoxZHdnwfM65QJQIVCJ8Tz3l/78fzZAiZ71+9wZAuf61jl0Wzg==
+  dependencies:
+    "@types/lodash" "^4.14.136"
+    lodash "^4.17.15"
+
+"@creditkarma/thrift-server-core@0.17.2":
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/@creditkarma/thrift-server-core/-/thrift-server-core-0.17.2.tgz#115630f6cc5b608706eff3d3173595e7d363e9cb"
+  integrity sha512-ohrTJIisrJpTSrRSkSn9UmE4xMj0Q72UP+UfhIWvLE9GuOJ7zMk1PihvYy04+767Y4/POxEsGTCiOHAS8lublQ==
   dependencies:
     "@types/lodash" "^4.14.136"
     lodash "^4.17.15"
@@ -2182,7 +2200,23 @@
     soap "0.36.0"
     soap-graphql "0.1.1"
 
-"@graphql-mesh/thrift@0.7.0", "@graphql-mesh/thrift@^0.7.0":
+"@graphql-mesh/thrift@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.1.tgz#d27ef677da145fb8562a3d9e71b318c4f6c57a43"
+  integrity sha512-BRq9RfpHbvrTYC6p4T1aoNCm3yzlASwlZDBSMBBvq67MlVDJA7ObiPEIRyKuiQ63RwEKqS52/ZwXqNhCfx1WXA==
+  dependencies:
+    "@ardatan/aggregate-error" "0.0.6"
+    "@creditkarma/thrift-client" "0.17.2"
+    "@creditkarma/thrift-parser" "1.2.0"
+    "@creditkarma/thrift-server-core" "0.17.2"
+    "@graphql-mesh/types" "0.39.0"
+    "@graphql-mesh/utils" "0.10.0"
+    fetchache "0.1.1"
+    graphql-scalars "1.9.0"
+    thrift "0.14.1"
+    url-join "4.0.1"
+
+"@graphql-mesh/thrift@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.0.tgz#b0780e052adce88cf19ac3d09a0cbb9ee532d832"
   integrity sha512-KjetVmmJTX1E1kVxHg6Ppezv5OR7hCWZdX5hSmf0fvvaIcDFs3Ca8KnQqIN7ame980kOhTjuEAfttX4Cu+Xe6g==
