@@ -2162,7 +2162,17 @@
     "@n1ru4l/in-memory-live-query-store" "0.6.2"
     graphql-jit "0.5.0"
 
-"@graphql-mesh/soap@0.7.0", "@graphql-mesh/soap@^0.7.0":
+"@graphql-mesh/soap@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/soap/-/soap-0.7.1.tgz#e6ed55e4212134d580915c8d47ed7a112f1a4e5a"
+  integrity sha512-yHmjnJl1R/bMo/04owaNMNV+ClHXfNO+X5kQUQqbx6YG2+X3a46HJrdTb/P2XzGavYxtohkoG66LhUnU/I5AjA==
+  dependencies:
+    "@graphql-mesh/types" "0.39.0"
+    "@graphql-mesh/utils" "0.10.0"
+    soap "0.37.0"
+    soap-graphql "0.1.1"
+
+"@graphql-mesh/soap@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/soap/-/soap-0.7.0.tgz#795ee6592fbe1e50bfe23f411deea97ee601527d"
   integrity sha512-9ogf74AqJItnHqQadHiRmx7hQMOcVjYWWeKSl2dCQ/oIykqRVnH8S8/CC7bdCuk4jfP1gii37kKWe2wEReIHZw==
@@ -17018,6 +17028,21 @@ soap@0.36.0:
     uuid "^8.3.0"
     xml-crypto "^2.0.0"
 
+soap@0.37.0:
+  version "0.37.0"
+  resolved "https://registry.yarnpkg.com/soap/-/soap-0.37.0.tgz#19f58cb5978d8b6b5e5bb84fde0d939f211e6f70"
+  integrity sha512-AFVq9EzLcZBoqhi06reLfAyYj6oj0GfBX+yyt7beMW/BdfH8MeL/OhgUabKvpNEqW5vo94VNIHEgN1r8GBH3dQ==
+  dependencies:
+    debug "^4.1.1"
+    get-stream "^6.0.0"
+    httpntlm "^1.5.2"
+    lodash "^4.17.19"
+    request ">=2.9.0"
+    sax ">=0.6"
+    strip-bom "^3.0.0"
+    uuid "^8.3.0"
+    xml-crypto "^2.1.0"
+
 sockjs-client@^1.5.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.5.1.tgz#256908f6d5adfb94dabbdbd02c66362cca0f9ea6"
@@ -19314,7 +19339,7 @@ ws@^6.0.0, ws@^6.2.1:
   dependencies:
     async-limiter "~1.0.0"
 
-xml-crypto@2.1.1, xml-crypto@^2.0.0:
+xml-crypto@2.1.1, xml-crypto@^2.0.0, xml-crypto@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/xml-crypto/-/xml-crypto-2.1.1.tgz#d1dfb4ee66f907c480379562cda130897dc05b99"
   integrity sha512-M+m4+HIJa83lu/CnspQjA7ap8gmanNDxxRjSisU8mPD4bqhxbo5N2bdpvG2WgVYOrPpOIOq55iY8Cz8Ai40IeQ==
