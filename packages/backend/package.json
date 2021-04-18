@@ -38,7 +38,7 @@
     "@graphql-mesh/thrift": "0.7.1",
     "@graphql-mesh/transform-cache": "0.8.39",
     "@graphql-mesh/transform-encapsulate": "0.1.36",
-    "@graphql-mesh/transform-extend": "0.6.5",
+    "@graphql-mesh/transform-extend": "0.6.6",
     "@graphql-mesh/transform-federation": "0.5.5",
     "@graphql-mesh/transform-filter-schema": "0.10.7",
     "@graphql-mesh/transform-mock": "0.8.5",
