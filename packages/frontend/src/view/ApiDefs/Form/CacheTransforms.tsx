@@ -7,12 +7,14 @@ import {
   Checkbox,
   Col,
   FormGroup,
+  HelpTooltipBlock,
   Input,
   OutlineButton,
   Row,
 } from '../../../ui';
 import { AddFieldArrayHeader } from '../../Form/AddFieldArrayHeader';
 import { CacheTransformsInvalidateOperations } from './CacheTransformsInvalidateOperations';
+import { CacheTransformTooltip } from './CacheTransformTooltip';
 import { useStyles } from './useStyles';
 
 export const CacheTransforms: React.FC<Props> = ({
@@ -58,15 +60,19 @@ export const CacheTransforms: React.FC<Props> = ({
             </Row>
             <Row spacing={2} className={formRow}>
               <Col xs={6}>
-                <Input
-                  ref={register()}
-                  name={`cache[${idx}].cacheKey`}
-                  label="Custom cache key"
-                  error={!!errors?.cache?.[idx]?.cacheKey}
-                  defaultValue={cache.cacheKey || undefined}
-                  fullWidth
-                  helperText="Cache key used to store the responses. Default is {typeName}-{fieldName}-{argsHash}-{fieldNamesHash}"
-                />
+                <HelpTooltipBlock
+                  tooltip={<CacheTransformTooltip />}
+                  placement="right"
+                >
+                  <Input
+                    ref={register()}
+                    name={`cache[${idx}].cacheKey`}
+                    label="Custom cache key"
+                    error={!!errors?.cache?.[idx]?.cacheKey}
+                    defaultValue={cache.cacheKey || undefined}
+                    fullWidth
+                  />
+                </HelpTooltipBlock>
               </Col>
             </Row>
             <Row spacing={2} className={formRow}>
