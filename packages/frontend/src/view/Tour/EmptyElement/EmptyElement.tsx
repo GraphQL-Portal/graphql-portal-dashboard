@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const EmptyElement: React.FC = () => <></>;
+export const EmptyElement: React.ReactElement = <></>;
