@@ -1,5 +1,13 @@
 # graphql-portal-dashboard-backend
 
+## 0.8.0
+
+### Minor Changes
+
+- b13377b: added source.sourceSchema resolver
+- 06da327: add ApiDef.invalidate_cache_through_control_api
+- Tour
+
 ## 0.7.0
 
 ### Minor Changes
