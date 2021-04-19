@@ -12,7 +12,7 @@
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "excludePackageNames": "codemirror-graphql"
+      "excludePackageNames": ["codemirror-graphql", "@shelf/jest-mongodb"]
     }
   ]
 }
