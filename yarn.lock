@@ -2541,12 +2541,7 @@
     "@graphql-portal/types" "^0.26.0"
     axios "^0.21.1"
 
-"@graphql-portal/datasources@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.1.tgz#93e93b92286a74173fda827bf6185383d520dfa4"
-  integrity sha512-qvqOX8HDAne06LvBMUOtDgow3k7FbXvDIpvgNM9ns7z2PgeNobbKTZcpzYikZpY1pMwIE9KzSsgzX64UzCYBEA==
-
-"@graphql-portal/datasources@^0.1.2":
+"@graphql-portal/datasources@0.1.2", "@graphql-portal/datasources@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.2.tgz#cc0814ec1f9ac270b54d8f4cc46f534fa86c7b10"
   integrity sha512-Q7/Ef+KW4yLyEy1lPw55+9/S7aLRBy0rBzNV3AOkZRtT/TALvKn3vhKIyswzGi9IXjdF29Ia2nx0txOQLX+wLw==
@@ -2555,6 +2550,7 @@
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.19.1.tgz#39634aba93c8bb1ef19ace76dbaa3d41c5d6931f"
   integrity sha512-OUO7gspkZkgpXS6QLxs8Ap0ZfkhtXNvO8ZNg6/yZC/3EGKibxENAPKGKK+HhYWonRQRZNm2TzA0i1kLFU2AEYA==
+
   dependencies:
     "@graphql-inspector/core" "^2.3.0"
     "@graphql-mesh/config" "^0.15.0"
