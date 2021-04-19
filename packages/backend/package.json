@@ -72,7 +72,7 @@
     "class-validator": "0.13.1",
     "class-validator-mongo-object-id": "1.2.0",
     "cli-color": "2.0.0",
-    "date-fns": "2.20.1",
+    "date-fns": "2.21.1",
     "envsub": "4.0.7",
     "express": "4.17.1",
     "graphql": "15.5.0",
