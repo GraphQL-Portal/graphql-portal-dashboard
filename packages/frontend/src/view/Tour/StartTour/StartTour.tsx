@@ -33,7 +33,8 @@ export const StartTour: React.FC = () => {
       <PrimaryButton fullWidth onClick={onSuccess}>
         Let's go
       </PrimaryButton>
-      <TextButton onClick={onCancel}>Cancel</TextButton>
+      <TextButton onClick={() => onCancel()}>Cancel</TextButton>
+      <TextButton onClick={() => onCancel(true)}>Don't show again</TextButton>
     </ModalDialog>
   );
 };
