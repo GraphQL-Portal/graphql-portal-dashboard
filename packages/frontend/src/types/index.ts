@@ -26,3 +26,5 @@ export * from './Metrics';
 export * from './Utils';
 export * from './Widgets';
 export * from './Tour';
+export * from './Tooltip';
+export * from './HelpTooltip';

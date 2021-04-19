@@ -14,6 +14,7 @@ export { Errors } from './Errors';
 export * from './Form';
 export { Grid, Row, Col } from './Grid';
 export * from './Header';
+export * from './HelpTooltip';
 export * from './Input';
 export { Select } from './Select';
 export { Snackbar } from './Snackbar';
