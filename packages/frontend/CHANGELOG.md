@@ -1,5 +1,19 @@
 # graphql-portal-dashboard-frontend
 
+## 0.8.0
+
+### Minor Changes
+
+- b13377b: additional resolver target source and method are selects
+- 3da7d53: added apiDef tab: cache transforms, removed cacheIntrospection field from apiDef.general
+- 06da327: add ApiDef.invalidate_cache_through_control_api
+- Tour
+
+### Patch Changes
+
+- 271f2e1: fix creating datasource
+- dda0f18: Empty element fc changed to react element
+
 ## 0.7.0
 
 ### Minor Changes
