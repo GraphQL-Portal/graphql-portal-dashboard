@@ -2659,10 +2659,10 @@
     "@graphql-portal/datasources" "^0.1.1"
     ajv "8.0.5"
 
-"@graphql-portal/types@0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.24.0.tgz#6e216e4a15ace5021ff08a0d76046195d43c9bab"
-  integrity sha512-xJZeLqroi7ENCCBqNvueVGPFFmluLXkDdRW3szSB8MZa9HjICn4molt5jsSJeDiCHktUKmsHMfnxxMnhIhAa5w==
+"@graphql-portal/types@0.25.0":
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-0.25.0.tgz#8b1d0d4d1646b80733563e708c13acc332f0c207"
+  integrity sha512-UAUWdojeUHOvPpsdwzSUuUAeZ0xkdfAmRpsMbCstGpkILablNot0TWV8kvKk+J4y11hVkI87cGy/+Wm++r/moA==
   dependencies:
     "@graphql-portal/datasources" "^0.1.2"
     ajv "8.1.0"
