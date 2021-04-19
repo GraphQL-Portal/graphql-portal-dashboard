@@ -24,7 +24,7 @@ export { SvgIcon } from './SvgIcon';
 export { Switch } from './Switch';
 export * from './Table';
 export { TabsBody, TabsHead } from './Tabs';
-export { Tooltip } from './Tooltip';
+export * from './Tooltip';
 export { H1, H2, H3, H4, H5, H6, Body1 } from './Typography';
 export {
   Widget,

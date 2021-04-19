@@ -1,6 +1,6 @@
 import { makeStyles, Theme } from '@material-ui/core';
 
-export const useStyles = makeStyles(({ palette }: Theme) => ({
+export const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
   root: {
     opacity: 0.75,
     cursor: 'pointer',
@@ -10,5 +10,13 @@ export const useStyles = makeStyles(({ palette }: Theme) => ({
     '&:hover': {
       opacity: 1,
     },
+  },
+  block: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  tooltipWrapper: {
+    marginLeft: spacing(1),
+    display: 'inline-flex',
   },
 }));
