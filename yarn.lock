@@ -2574,7 +2574,6 @@
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.19.1.tgz#39634aba93c8bb1ef19ace76dbaa3d41c5d6931f"
   integrity sha512-OUO7gspkZkgpXS6QLxs8Ap0ZfkhtXNvO8ZNg6/yZC/3EGKibxENAPKGKK+HhYWonRQRZNm2TzA0i1kLFU2AEYA==
-
   dependencies:
     "@graphql-inspector/core" "^2.3.0"
     "@graphql-mesh/config" "^0.15.0"
