@@ -74,7 +74,7 @@
     "@testing-library/dom": "7.30.3",
     "@testing-library/jest-dom": "5.11.10",
     "@testing-library/react": "11.2.6",
-    "@testing-library/user-event": "13.1.2",
+    "@testing-library/user-event": "13.1.4",
     "@types/isomorphic-fetch": "0.0.35",
     "@types/jest": "26.0.22",
     "@types/js-cookie": "2.2.6",
