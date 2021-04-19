@@ -50,7 +50,7 @@
     "@graphql-portal/contentful": "0.1.1",
     "@graphql-portal/crunchbase": "0.1.1",
     "@graphql-portal/datasources": "0.1.1",
-    "@graphql-portal/gateway": "0.17.5",
+    "@graphql-portal/gateway": "0.19.1",
     "@graphql-portal/ip-api": "0.1.1",
     "@graphql-portal/salesforce": "0.1.2",
     "@graphql-portal/slack": "0.2.1",
