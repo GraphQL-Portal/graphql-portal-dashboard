@@ -5,6 +5,7 @@ export type TourContextShape = {
   tour: ITour;
   endTour: (isFinished: boolean) => void;
   startTour: () => void;
+  dontShowTourAgain: () => void;
   setTourField: SetTourField;
 };
 

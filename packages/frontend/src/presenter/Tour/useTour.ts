@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 export const useTour = () => {
   const { push } = useHistory();
-  const { startTour } = useTourContext();
+  const { startTour, dontShowTourAgain } = useTourContext();
 
   const { onOpenDialog, onCloseDialog } = useDialogs()!;
 
@@ -15,7 +15,10 @@ export const useTour = () => {
         onCloseDialog();
         startTour();
       },
-      onCancel: onCloseDialog,
+      onCancel: (dontShowAgain = false) => {
+        if (dontShowAgain) dontShowTourAgain();
+        onCloseDialog();
+      },
     });
   };
 

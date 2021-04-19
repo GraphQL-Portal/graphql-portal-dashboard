@@ -31,6 +31,8 @@ export const TourProvider: React.FC = ({ children }) => {
     setTour(defaultValues);
   };
 
+  const dontShowTourAgain = () => endTour(true);
+
   const startTour = () => {
     onDeleteApiDef({
       variables: {
@@ -47,7 +49,9 @@ export const TourProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <Provider value={{ tour, endTour, startTour, setTourField }}>
+    <Provider
+      value={{ tour, endTour, startTour, setTourField, dontShowTourAgain }}
+    >
       {children}
     </Provider>
   );
