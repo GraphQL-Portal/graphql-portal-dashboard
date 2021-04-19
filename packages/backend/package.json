@@ -49,7 +49,7 @@
     "@graphql-mesh/transform-snapshot": "0.9.3",
     "@graphql-portal/contentful": "0.1.1",
     "@graphql-portal/crunchbase": "0.1.1",
-    "@graphql-portal/datasources": "0.1.1",
+    "@graphql-portal/datasources": "0.1.2",
     "@graphql-portal/gateway": "0.17.5",
     "@graphql-portal/ip-api": "0.1.1",
     "@graphql-portal/salesforce": "0.1.2",
