@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.8.1
+
+### Patch Changes
+
+- c5a3c06: update dependencies
+
 ## 0.8.0
 
 ### Minor Changes
