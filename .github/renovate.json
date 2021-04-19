@@ -1,5 +1,10 @@
 {
-  "extends": ["config:base", "schedule:weekends"],
+  "extends": [
+    "config:base",
+    "schedule:weekends",
+    ":automergeMinor",
+    ":disableRateLimiting"
+  ],
   "automerge": true,
   "major": {
     "automerge": false
