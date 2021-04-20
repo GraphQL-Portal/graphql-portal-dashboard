@@ -17,6 +17,9 @@ import { CacheTransformsInvalidateOperations } from './CacheTransformsInvalidate
 import { CacheTransformTooltip } from './CacheTransformTooltip';
 import { useStyles } from './useStyles';
 
+const CACHE_KEY_HELPER_TEXT =
+  'Cache key used to store the responses. Default is {typeName}-{fieldName}-{argsHash}-{fieldNamesHash}';
+
 export const CacheTransforms: React.FC<Props> = ({
   cache,
   onAddCache,
@@ -60,19 +63,22 @@ export const CacheTransforms: React.FC<Props> = ({
             </Row>
             <Row spacing={2} className={formRow}>
               <Col xs={6}>
-                <HelpTooltipBlock
-                  tooltip={<CacheTransformTooltip />}
-                  placement="right"
-                >
-                  <Input
-                    ref={register()}
-                    name={`cache[${idx}].cacheKey`}
-                    label="Custom cache key"
-                    error={!!errors?.cache?.[idx]?.cacheKey}
-                    defaultValue={cache.cacheKey || undefined}
-                    fullWidth
-                  />
-                </HelpTooltipBlock>
+                <Input
+                  ref={register()}
+                  name={`cache[${idx}].cacheKey`}
+                  label="Custom cache key"
+                  error={!!errors?.cache?.[idx]?.cacheKey}
+                  defaultValue={cache.cacheKey || undefined}
+                  helperText={
+                    <HelpTooltipBlock
+                      tooltip={<CacheTransformTooltip />}
+                      placement="right"
+                    >
+                      {CACHE_KEY_HELPER_TEXT}
+                    </HelpTooltipBlock>
+                  }
+                  fullWidth
+                />
               </Col>
             </Row>
             <Row spacing={2} className={formRow}>
