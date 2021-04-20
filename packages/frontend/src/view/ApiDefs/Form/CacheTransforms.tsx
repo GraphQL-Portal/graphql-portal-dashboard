@@ -18,7 +18,7 @@ import { CacheTransformTooltip } from './CacheTransformTooltip';
 import { useStyles } from './useStyles';
 
 const CACHE_KEY_HELPER_TEXT =
-  'Cache key used to store the responses. Default is {typeName}-{fieldName}-{argsHash}-{fieldNamesHash}';
+  'Default is {typeName}-{fieldName}-{argsHash}-{fieldNamesHash}';
 
 export const CacheTransforms: React.FC<Props> = ({
   cache,
