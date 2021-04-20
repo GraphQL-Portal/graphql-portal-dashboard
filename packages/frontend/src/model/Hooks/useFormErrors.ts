@@ -5,8 +5,15 @@ import { useToast } from '../providers';
 
 const getMessagesFromObject = (object: DeepObject): string[] =>
   Object.keys(object).reduce((acc: string[], key: string) => {
-    if (isPOJO(object[key]))
-      acc.push(...getMessagesFromObject(object[key] as DeepObject));
+    const currentValue = object[key] as DeepObject;
+    if (isPOJO(currentValue)) {
+      acc.push(...getMessagesFromObject(currentValue));
+    }
+    if (Array.isArray(currentValue)) {
+      currentValue.forEach((obj) =>
+        acc.push(...getMessagesFromObject(obj as DeepObject))
+      );
+    }
     if (key === 'message') acc.push(object[key] as string);
     return acc;
   }, []);

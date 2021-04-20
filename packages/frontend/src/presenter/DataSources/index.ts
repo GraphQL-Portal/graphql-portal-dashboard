@@ -27,3 +27,4 @@ export { useCrunchbaseHandler } from './useCrunchbaseHandler';
 export { useStripeHandler } from './useStripeHandler';
 export { useTwitterHandler } from './useTwitterHandler';
 export { useAdditionalResolversSourceMethods } from './useAdditionalResolversSourceMethods';
+export { useJsonSchemaHandler } from './useJsonSchemaHandler';

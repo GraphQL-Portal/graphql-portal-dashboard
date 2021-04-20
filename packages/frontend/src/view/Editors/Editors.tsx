@@ -1,13 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Controller } from 'react-hook-form';
-import { HandlerRow, HandlerCol } from '../DataSources/Layout';
-import { JsonEditor as Editor } from 'jsoneditor-react';
-import 'jsoneditor-react/es/editor.min.css';
 
 import { Editors as Props } from '../../types';
 import { H6 } from '../../ui';
+import { HandlerRow, HandlerCol } from '../DataSources/Layout';
+import { JsonEditor } from './Editor';
 import { useStyles } from './useStyles';
+import { HookFormJsonEditor } from './HookFormEditor';
 
 export const Editors: React.FC<Props> = ({
   control,
@@ -16,10 +15,8 @@ export const Editors: React.FC<Props> = ({
   title,
   name,
 }) => {
-  const { editor, code, schema, editorErrorHeader } = useStyles();
+  const { schema, editorErrorHeader } = useStyles();
 
-  const editorClassName = clsx(editor, code);
-  const schemaClassName = clsx(editor, schema);
   const editorConnectorHeader = clsx(!!errors?.handler && editorErrorHeader);
 
   return (
@@ -34,31 +31,14 @@ export const Editors: React.FC<Props> = ({
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            control={control}
-            name={name}
-            render={(props) => (
-              <Editor
-                htmlElementProps={{
-                  className: editorClassName,
-                }}
-                schema={source}
-                navigationBar={false}
-                mode="code"
-                {...props}
-              />
-            )}
-          />
+          <HookFormJsonEditor control={control} name={name} source={source} />
         </HandlerCol>
         <HandlerCol>
-          <Editor
+          <JsonEditor
             value={source}
             name={`${title} schema:`}
-            htmlElementProps={{
-              className: schemaClassName,
-            }}
+            className={schema}
             mode="view"
-            navigationBar={false}
           />
         </HandlerCol>
       </HandlerRow>

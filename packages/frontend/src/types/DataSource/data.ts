@@ -1,3 +1,4 @@
+import { ObjectArray } from '../Forms';
 import { Title, ElementsTable } from '../General';
 import { updateState } from './methods';
 
@@ -32,4 +33,22 @@ export type SourceStep = {
   connector?: {
     properties?: Record<string, unknown>;
   };
+};
+
+export type JsonSchemaOperation = {
+  field: string;
+  path: string;
+  type: string;
+  method: string;
+  responseSchema: string;
+  responseSample?: string;
+  requestSchema: string;
+  requestSample?: string;
+};
+
+export type JsonSchemaForm = {
+  baseUrl: string;
+  schemaHeaders?: ObjectArray;
+  operationHeaders: ObjectArray;
+  operations: JsonSchemaOperation[];
 };
