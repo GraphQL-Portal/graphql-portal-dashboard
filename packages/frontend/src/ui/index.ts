@@ -14,6 +14,7 @@ export { Errors } from './Errors';
 export * from './Form';
 export { Grid, Row, Col } from './Grid';
 export * from './Header';
+export * from './HelpTooltip';
 export * from './Input';
 export { Select } from './Select';
 export { Snackbar } from './Snackbar';
@@ -23,7 +24,7 @@ export { SvgIcon } from './SvgIcon';
 export { Switch } from './Switch';
 export * from './Table';
 export { TabsBody, TabsHead } from './Tabs';
-export { Tooltip } from './Tooltip';
+export * from './Tooltip';
 export { H1, H2, H3, H4, H5, H6, Body1 } from './Typography';
 export {
   Widget,

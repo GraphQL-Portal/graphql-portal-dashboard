@@ -7,13 +7,18 @@ import {
   Checkbox,
   Col,
   FormGroup,
+  HelpTooltipBlock,
   Input,
   OutlineButton,
   Row,
 } from '../../../ui';
 import { AddFieldArrayHeader } from '../../Form/AddFieldArrayHeader';
 import { CacheTransformsInvalidateOperations } from './CacheTransformsInvalidateOperations';
+import { CacheTransformTooltip } from './CacheTransformTooltip';
 import { useStyles } from './useStyles';
+
+const CACHE_KEY_HELPER_TEXT =
+  'Default is {typeName}-{fieldName}-{argsHash}-{fieldNamesHash}';
 
 export const CacheTransforms: React.FC<Props> = ({
   cache,
@@ -64,8 +69,15 @@ export const CacheTransforms: React.FC<Props> = ({
                   label="Custom cache key"
                   error={!!errors?.cache?.[idx]?.cacheKey}
                   defaultValue={cache.cacheKey || undefined}
+                  helperText={
+                    <HelpTooltipBlock
+                      tooltip={<CacheTransformTooltip />}
+                      placement="right"
+                    >
+                      {CACHE_KEY_HELPER_TEXT}
+                    </HelpTooltipBlock>
+                  }
                   fullWidth
-                  helperText="Cache key used to store the responses. Default is {typeName}-{fieldName}-{argsHash}-{fieldNamesHash}"
                 />
               </Col>
             </Row>
