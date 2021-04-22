@@ -2,14 +2,12 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test, enforce } from 'vest';
 import { useHistory } from 'react-router-dom';
-import validator from 'validator';
 
 import { ROUTES, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
 import { useSignUp as signUp } from '../../model/SignUp/commands';
 import { SignUpForm } from '../../types';
-
-enforce.extend({ isEmail: validator.isEmail });
+import { isEmail } from '../validation';
 
 const validationSuite = vest.create(
   'signup_form',
@@ -18,8 +16,9 @@ const validationSuite = vest.create(
       enforce(email).isNotEmpty();
     });
     test('email', 'Please enter correct Email', () => {
-      enforce(email).isEmail();
+      isEmail(email);
     });
+
     test('password', 'Password is required', () => {
       enforce(password).isNotEmpty();
     });
@@ -32,6 +31,7 @@ const validationSuite = vest.create(
     test('password', 'Password must contain a symbol', () => {
       enforce(password).matches(/[^A-Za-z0-9]/);
     });
+
     test('confirmPassword', 'Passwords do not match', () => {
       enforce(confirmPassword).equals(password);
     });
