@@ -8,7 +8,7 @@ import { useFormErrors } from '../../model/Hooks';
 import { useLogin as login } from '../../model/Login/commands';
 import { UA } from '../../model/providers/Auth/constants';
 import { LoginForm, UseLoginHook } from '../../types';
-import { isEmail } from '../validation';
+import { isCorrectPassword, isEmail } from '../validation';
 
 const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
   test('email', 'Email is required', () => {
@@ -19,21 +19,7 @@ const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
     isEmail(email);
   });
 
-  test('password', 'Password is required', () => {
-    enforce(password).isNotEmpty();
-  });
-
-  test('password', 'Password must be at least 8 chars', () => {
-    enforce(password).longerThanOrEquals(8);
-  });
-
-  test('password', 'Password must contain a digit', () => {
-    enforce(password).matches(/[0-9]/);
-  });
-
-  test('password', 'Password must contain a symbol', () => {
-    enforce(password).matches(/[^A-Za-z0-9]/);
-  });
+  isCorrectPassword(password);
 });
 
 const { NODE_ENV } = process?.env || {};

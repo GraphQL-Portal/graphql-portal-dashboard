@@ -7,7 +7,7 @@ import { ROUTES, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
 import { useSignUp as signUp } from '../../model/SignUp/commands';
 import { SignUpForm } from '../../types';
-import { isEmail } from '../validation';
+import { isCorrectPassword, isEmail } from '../validation';
 
 const validationSuite = vest.create(
   'signup_form',
@@ -19,18 +19,7 @@ const validationSuite = vest.create(
       isEmail(email);
     });
 
-    test('password', 'Password is required', () => {
-      enforce(password).isNotEmpty();
-    });
-    test('password', 'Password must be at least 8 chars', () => {
-      enforce(password).longerThanOrEquals(8);
-    });
-    test('password', 'Password must contain a digit', () => {
-      enforce(password).matches(/[0-9]/);
-    });
-    test('password', 'Password must contain a symbol', () => {
-      enforce(password).matches(/[^A-Za-z0-9]/);
-    });
+    isCorrectPassword(password);
 
     test('confirmPassword', 'Passwords do not match', () => {
       enforce(confirmPassword).equals(password);
