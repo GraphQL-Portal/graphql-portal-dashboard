@@ -1,4 +1,3 @@
-import { FormControlLabel } from '@material-ui/core';
 import React from 'react';
 
 import { ROUTES } from '../../../model/providers';
@@ -10,6 +9,7 @@ import {
   HeaderWrapper,
   CopyToClipboard,
   HeaderBackButton,
+  FormLabelStart,
 } from '../../../ui';
 import { EditApiHeader as Props } from '../../../types';
 import { EnableSwitch } from '../Form';
@@ -39,9 +39,8 @@ export const EditHeader: React.FC<Props> = ({
         />
       </HeaderContentCell>
       <HeaderEndCell xs={2}>
-        <FormControlLabel
+        <FormLabelStart
           label="Active"
-          labelPlacement="start"
           control={<EnableSwitch api={api} refetch={refetch!} />}
         />
       </HeaderEndCell>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { Input, Checkbox, PrimaryButton, Select } from '../../../ui';
+import { Input, Checkbox, PrimaryButton, Select, FormLabel } from '../../../ui';
 import { useGraphQLHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
 import { HandlerStep } from '../../../types';
@@ -54,7 +53,7 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControlLabel
+          <FormLabel
             label="Use HTTP GET for query operations"
             control={
               <Controller
@@ -68,39 +67,31 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Use SSE instead of WebSocked for subscriptions"
-                control={
-                  <Controller
-                    name="useSSEForSubscription"
-                    control={control}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Use SSE instead of WebSocked for subscriptions"
+            control={
+              <Controller
+                name="useSSEForSubscription"
+                control={control}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Enable multipart/formdata in order to support file uploads"
-                control={
-                  <Controller
-                    name="multipart"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Enable multipart/formdata in order to support file uploads"
+            control={
+              <Controller
+                name="multipart"
+                control={control}
+                defaultValue={false}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <ObjectArray

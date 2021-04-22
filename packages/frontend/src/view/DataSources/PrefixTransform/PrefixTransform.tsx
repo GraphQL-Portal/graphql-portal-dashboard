@@ -1,8 +1,13 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControlLabel } from '@material-ui/core';
 
-import { Checkbox, Input, OutlineButton, PrimaryButton } from '../../../ui';
+import {
+  Checkbox,
+  FormLabel,
+  Input,
+  OutlineButton,
+  PrimaryButton,
+} from '../../../ui';
 import { TransformStep as Props } from '../../../types';
 import { usePrefixTransform } from '../../../presenter/DataSources';
 import { StringArray } from '../../Form';
@@ -47,7 +52,7 @@ export const PrefixTransform: React.FC<Props> = (props) => {
       />
       <HandlerRow>
         <HandlerCol>
-          <FormControlLabel
+          <FormLabel
             label="Changes root types and changes the field names"
             control={
               <Controller

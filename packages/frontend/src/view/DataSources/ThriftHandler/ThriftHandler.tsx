@@ -1,8 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { Input, Checkbox, PrimaryButton, Select } from '../../../ui';
+import { Input, Checkbox, PrimaryButton, Select, FormLabel } from '../../../ui';
 import { useThriftHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
 import { HandlerStep } from '../../../types';
@@ -77,21 +76,17 @@ export const ThriftHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Use HTTPS"
-                control={
-                  <Controller
-                    name="https"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Use HTTPS"
+            control={
+              <Controller
+                name="https"
+                control={control}
+                defaultValue={false}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <HandlerRow>

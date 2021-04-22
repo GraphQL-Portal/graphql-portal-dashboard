@@ -1,6 +1,5 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControlLabel, IconButton } from '@material-ui/core';
 
 import {
   Checkbox,
@@ -10,6 +9,8 @@ import {
   FormGroup,
   Tooltip,
   H6,
+  FormLabel,
+  IconButton,
 } from '../../../ui';
 import { TransformStep as Props } from '../../../types';
 import { Add } from '../../../icons';
@@ -96,7 +97,7 @@ export const RenameTransform: React.FC<Props> = (props) => {
           </HandlerRow>
           <HandlerRow>
             <HandlerCol>
-              <FormControlLabel
+              <FormLabel
                 label="Use Regular Expression for field names"
                 control={
                   <Controller
@@ -108,7 +109,7 @@ export const RenameTransform: React.FC<Props> = (props) => {
               />
             </HandlerCol>
             <HandlerCol>
-              <FormControlLabel
+              <FormLabel
                 label="Use Regular Expression for type names"
                 control={
                   <Controller

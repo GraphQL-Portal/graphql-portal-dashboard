@@ -13,4 +13,10 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
     padding: spacing(0, 2),
     color: palette.text.secondary,
   },
+  startLabelPlacement: {
+    margin: 0,
+  },
+  startLabel: {
+    marginRight: spacing(1),
+  },
 }));
