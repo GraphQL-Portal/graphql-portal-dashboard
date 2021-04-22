@@ -4,7 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
-import { isUrl } from './validation';
+import { isUrl } from '../validation';
 
 const CONTENTFUL_DEFAULT_STATE = {
   token: '',

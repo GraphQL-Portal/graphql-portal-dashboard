@@ -6,7 +6,7 @@ import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
-import { isUrl } from './validation';
+import { isUrl } from '../validation';
 
 const GRAPHQL_DEFAULT_STATE = {
   endpoint: '',

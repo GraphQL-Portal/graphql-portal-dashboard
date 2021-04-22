@@ -4,7 +4,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { SalesforceForm, UseSalesforceHandlerHook } from '../../types';
-import { isUrl } from './validation';
+import { isUrl } from '../validation';
 
 const suite = vest.create('saleseforce_handler', ({ baseUrl, token }) => {
   test('baseUrl', 'Base url is required', () => {

@@ -1,6 +1,7 @@
 import { useFieldArray, useForm } from 'react-hook-form';
 import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
+
 import { useFormErrors } from '../../model/Hooks';
 import {
   HandlerStep,
@@ -8,10 +9,9 @@ import {
   JsonSchemaOperation,
   RecordStringAny,
 } from '../../types';
-
-import { arrayObjectToObject, objectToFieldArray } from './helpers';
-import { isUrl } from './validation';
 import { isZeroLength } from '../../utils';
+import { isUrl } from '../validation';
+import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const URL_ERROR_MESSAGE =
   'Please use absolute URL http://example.com or http://localhost:80';

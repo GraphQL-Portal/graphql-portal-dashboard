@@ -5,7 +5,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
-import { isUrl } from './validation';
+import { isUrl } from '../validation';
 
 const suite = vest.create(
   'grpc_handler',
