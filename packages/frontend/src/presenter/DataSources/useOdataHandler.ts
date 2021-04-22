@@ -6,7 +6,7 @@ import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
-import { isUrl } from './validation';
+import { isUrl } from '../validation';
 
 const suite = vest.create('odata_handler', ({ baseUrl }) => {
   test('baseUrl', 'baseUrl is required', () => {
