@@ -1,20 +1,11 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
-import {
-  FormGroup,
-  Input,
-  Select,
-  H6,
-  Tooltip,
-  IconButton,
-  OutlineButton,
-} from '../../../ui';
-import { Add } from '../../../icons';
+import { FormGroup, Input, Select, OutlineButton } from '../../../ui';
 import { SelectQueryOrMutationFieldConfig as Props } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
 import { QUERY_OR_MUTATION_FIELD } from '../constants';
-import { useStyles } from './useStyles';
+import { AddFieldArrayHeader } from '../../Form';
 
 const TITLE = 'Query or Mutation Field Config';
 
@@ -27,23 +18,9 @@ export const SelectQueryOrMutationFieldConfig: React.FC<Props> = ({
   addQueryOrMutationField,
   removeQueryOrMutationField,
 }) => {
-  const { buttonCol } = useStyles();
   return (
     <>
-      <HandlerRow>
-        <HandlerCol>
-          <H6>{TITLE}</H6>
-        </HandlerCol>
-        <HandlerCol>
-          <div className={buttonCol}>
-            <Tooltip title={`Add ${TITLE}`} placement="left">
-              <IconButton onClick={addQueryOrMutationField}>
-                <Add />
-              </IconButton>
-            </Tooltip>
-          </div>
-        </HandlerCol>
-      </HandlerRow>
+      <AddFieldArrayHeader title={TITLE} onAddClick={addQueryOrMutationField} />
       {queryOrMutationFields.map((field: any, idx: number) => (
         <FormGroup title="Field config" key={`${name}-${idx}`}>
           <HandlerRow>
