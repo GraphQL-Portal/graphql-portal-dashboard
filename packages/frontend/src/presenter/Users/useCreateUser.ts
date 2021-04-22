@@ -5,6 +5,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import { useFormErrors } from '../../model/Hooks';
 import { useDialogs } from '../../model/providers';
 import { ROLE_ADMIN, ROLE_USER } from '../../model/providers/Auth/constants';
+import { isEmail } from '../validation';
 
 const suite = vest.create(
   'create_user',
@@ -14,7 +15,7 @@ const suite = vest.create(
     });
 
     test('email', 'Please enter correct Email', () => {
-      enforce(email).isEmail();
+      isEmail(email);
     });
 
     test('password', 'Password is required', () => {
@@ -63,7 +64,7 @@ export const useCreateUser = () => {
   useFormErrors(errors);
 
   return {
-    onSubmit: handleSubmit(data => {
+    onSubmit: handleSubmit((data) => {
       dialogConfig.onSuccess({
         firstName: data.firstName,
         lastName: data.lastName,

@@ -2,14 +2,12 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import { useHistory } from 'react-router-dom';
 import vest, { test, enforce } from 'vest';
-import validator from 'validator';
 
 import { ROUTES, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
 import { useResetPasswordRequest as resetPasswordRequest } from '../../model/ResetPasswordRequest/commands';
 import { ResetPasswordRequestFormInput } from '../../types';
-
-enforce.extend({ isEmail: validator.isEmail });
+import { isEmail } from '../validation';
 
 const validationSuite = vest.create(
   'reset_password_request_form',
@@ -18,7 +16,7 @@ const validationSuite = vest.create(
       enforce(email).isNotEmpty();
     });
     test('email', 'Please enter correct Email', () => {
-      enforce(email).isEmail();
+      isEmail(email);
     });
   }
 );
