@@ -8,22 +8,13 @@ import { useFormErrors } from '../../model/Hooks';
 import { useResetPassword as resetPassword } from '../../model/ResetPassword/commands';
 import { getQueryData } from '../../utils/getQueryString';
 import { ResetPasswordFormInput } from '../../types';
+import { isCorrectPassword } from '../validation';
 
 const validationSuite = vest.create(
   'reset_password_request_form',
   ({ password, confirmPassword }: ResetPasswordFormInput) => {
-    test('password', 'Password is required', () => {
-      enforce(password).isNotEmpty();
-    });
-    test('password', 'Password must be at least 8 chars', () => {
-      enforce(password).longerThanOrEquals(8);
-    });
-    test('password', 'Password must contain a digit', () => {
-      enforce(password).matches(/[0-9]/);
-    });
-    test('password', 'Password must contain a symbol', () => {
-      enforce(password).matches(/[^A-Za-z0-9]/);
-    });
+    isCorrectPassword(password);
+
     test('confirmPassword', 'Passwords do not match', () => {
       enforce(confirmPassword).equals(password);
     });

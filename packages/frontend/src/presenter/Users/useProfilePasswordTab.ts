@@ -9,6 +9,7 @@ import {
   UseProfilePasswordTabHook,
 } from '../../types';
 import { useFormErrors } from '../../model/Hooks';
+import { isCorrectPassword } from '../validation';
 
 const suite = vest.create(
   'change_password_form',
@@ -16,9 +17,7 @@ const suite = vest.create(
     test('oldPassword', 'Old password is required', () => {
       enforce(oldPassword).isNotEmpty();
     });
-    test('newPassword', 'New password is required', () => {
-      enforce(newPassword).isNotEmpty();
-    });
+
     test('confirmPassword', 'Confirm password is required', () => {
       enforce(confirmPassword).isNotEmpty();
     });
@@ -29,15 +28,9 @@ const suite = vest.create(
         enforce(newPassword).notEquals(oldPassword);
       }
     );
-    test('newPassword', 'Password must be at least 8 chars', () => {
-      enforce(newPassword).longerThanOrEquals(8);
-    });
-    test('newPassword', 'Password must contain a digit', () => {
-      enforce(newPassword).matches(/[0-9]/);
-    });
-    test('newPassword', 'Password must contain a symbol', () => {
-      enforce(newPassword).matches(/[^A-Za-z0-9]/);
-    });
+
+    isCorrectPassword(newPassword);
+
     test('confirmPassword', 'Passwords do not match', () => {
       enforce(confirmPassword).equals(newPassword);
     });
