@@ -1,8 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { Input, Checkbox, PrimaryButton, H6 } from '../../../ui';
+import { Input, Checkbox, PrimaryButton, H6, FormLabel } from '../../../ui';
 import { useGRPCHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
 import { HandlerStep } from '../../../types';
@@ -82,21 +81,17 @@ export const GRPCHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Use HTTPS"
-                control={
-                  <Controller
-                    name="useHTTPS"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Use HTTPS"
+            control={
+              <Controller
+                name="useHTTPS"
+                control={control}
+                defaultValue={false}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <H6> SSL Credentials </H6>

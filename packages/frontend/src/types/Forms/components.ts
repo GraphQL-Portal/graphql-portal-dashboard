@@ -3,7 +3,9 @@ import {
   SwitchProps,
   SelectProps,
   OutlinedInputProps,
+  FormControlLabelProps,
 } from '@material-ui/core';
+
 import {
   FieldArray,
   FieldArrayAppend,
@@ -60,3 +62,5 @@ export type Select = SelectProps & {
 export type PasswordInput = OutlinedInputProps & {
   label: React.ReactNode;
 };
+
+export type FormLabel = FormControlLabelProps;

@@ -1,8 +1,7 @@
 import React from 'react';
-import { FormControlLabel } from '@material-ui/core';
 import { Controller } from 'react-hook-form';
 
-import { Col, Row, Input, Checkbox, FormGroup } from '../../../ui';
+import { Col, Row, Input, Checkbox, FormGroup, FormLabel } from '../../../ui';
 import { ApiSchemaForm as Props } from '../../../types';
 import { useStyles } from './useStyles';
 
@@ -24,7 +23,7 @@ export const SchemaForm: React.FC<Props> = ({ register, errors, control }) => {
           />
         </Col>
         <Col xs={6} className={collAlignCenter}>
-          <FormControlLabel
+          <FormLabel
             label="Update Schema through control API"
             control={
               <Controller

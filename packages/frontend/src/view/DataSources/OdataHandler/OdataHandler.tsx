@@ -1,8 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { Input, Checkbox, PrimaryButton, Select } from '../../../ui';
+import { Input, Checkbox, PrimaryButton, Select, FormLabel } from '../../../ui';
 import { useOdataHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
 import { HandlerStep } from '../../../types';
@@ -65,21 +64,17 @@ export const OdataHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Expand navigation props (use for navigation props instead of seperate HTTP requests)"
-                control={
-                  <Controller
-                    name="expandNavProps"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Expand navigation props (use for navigation props instead of seperate HTTP requests)"
+            control={
+              <Controller
+                name="expandNavProps"
+                control={control}
+                defaultValue={false}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <ObjectArray

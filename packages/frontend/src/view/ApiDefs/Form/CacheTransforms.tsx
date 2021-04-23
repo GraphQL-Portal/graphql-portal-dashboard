@@ -1,4 +1,3 @@
-import { FormControlLabel } from '@material-ui/core';
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
@@ -7,6 +6,7 @@ import {
   Checkbox,
   Col,
   FormGroup,
+  FormLabel,
   HelpTooltipBlock,
   Input,
   OutlineButton,
@@ -32,7 +32,7 @@ export const CacheTransforms: React.FC<Props> = ({
 
   return (
     <FormGroup title="Cache Settings">
-      <FormControlLabel
+      <FormLabel
         label="Enable cache invalidation through control API"
         control={
           <Controller
