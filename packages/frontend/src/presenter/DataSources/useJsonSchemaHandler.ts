@@ -64,14 +64,6 @@ const suite = vest.create(
             }
           );
 
-          test(
-            `${name}.responseSchema`,
-            `Response Schema of the operation ${idx} is required`,
-            () => {
-              enforce(responseSchema).isNotEmpty();
-            }
-          );
-
           test(`sample`, 'Response or Request sample is required', () => {
             enforce(responseSample || requestSample).isNotEmpty();
           });

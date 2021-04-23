@@ -115,7 +115,6 @@ export const Operations: React.FC<any> = ({
                   label="URL of Response Schema"
                   name={`operations[${idx}].responseSchema`}
                   helperText="JSON Schema of the response"
-                  required
                   fullWidth
                   defaultValue={operation.responseSchema}
                   error={!!errors?.operations?.[idx]?.responseSchema}
