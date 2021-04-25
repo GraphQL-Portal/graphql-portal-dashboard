@@ -77,7 +77,7 @@
   },
   "resolutions": {
     "**/mongodb": "3.6.6",
-    "**/xml-crypto": "2.1.1",
+    "**/xml-crypto": "2.1.2",
     "apollo-cache-control": "0.12.0"
   }
 }
