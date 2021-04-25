@@ -1900,10 +1900,10 @@
     "@graphql-tools/url-loader" "6.8.2"
     "@graphql-tools/wrap" "7.0.5"
 
-"@graphql-mesh/grpc@0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.12.1.tgz#3653201863228d330413f183edb8207d41ffca4e"
-  integrity sha512-vaQSMWzJYbhj7uEZdOfZQHK/GSLqacwIdrq0if06+JpDO78wUOxudfIsDrgXhXuDkLlJcSUicdP1uaxLE5IMrw==
+"@graphql-mesh/grpc@0.12.2":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.12.2.tgz#893b12be2e7f2ed3e3f7f580c17382f9f040dca5"
+  integrity sha512-T4nRx1OHlRQzZMgnN2JLWdspKHSu2yqjrTYR8OSavC8jbcsUrF8VLhbtJhZdb/1HOQT648VRPB/ARPOvNUbX+g==
   dependencies:
     "@graphql-mesh/types" "0.39.0"
     "@graphql-mesh/utils" "0.10.0"
