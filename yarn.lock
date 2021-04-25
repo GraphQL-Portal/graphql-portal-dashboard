@@ -2112,20 +2112,19 @@
     pascal-case "3.1.2"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.16.0", "@graphql-mesh/openapi@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.0.tgz#cc0b02efc296399503f07956deac561543932fd4"
-  integrity sha512-xxcS7iEplyaoJLv78huRN8ZyhFbu/SSIIUtr3vtcHF+rUgkMP7dUaGBa/yk9q8DyJx3CdMsArSJuyrJAOLZjdg==
+"@graphql-mesh/openapi@0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.1.tgz#49123081020db64ebb136bf9ea00ed060880da9d"
+  integrity sha512-O9tPczV2enpetJ3zmW6LWLfeT3uiKKTsORAcft9rqy88NdkYVAetQkuaeXj+VGUV0Q/LvFxmx7+0PqqDMEu4fQ==
   dependencies:
     "@graphql-mesh/types" "0.39.0"
     "@graphql-mesh/utils" "0.10.0"
     deep-equal "2.0.5"
-    form-urlencoded "6.0.0"
+    form-urlencoded "6.0.3"
     graphql-scalars "1.9.0"
     graphql-subscriptions "1.2.1"
     json-ptr "2.0.0"
     jsonpath-plus "5.0.7"
-    lodash "4.17.21"
     pluralize "8.0.0"
     swagger2openapi "7.0.5"
     url-join "4.0.1"
@@ -2143,6 +2142,24 @@
     graphql-subscriptions "1.2.1"
     json-ptr "2.0.0"
     jsonpath-plus "5.0.4"
+    lodash "4.17.21"
+    pluralize "8.0.0"
+    swagger2openapi "7.0.5"
+    url-join "4.0.1"
+
+"@graphql-mesh/openapi@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.0.tgz#cc0b02efc296399503f07956deac561543932fd4"
+  integrity sha512-xxcS7iEplyaoJLv78huRN8ZyhFbu/SSIIUtr3vtcHF+rUgkMP7dUaGBa/yk9q8DyJx3CdMsArSJuyrJAOLZjdg==
+  dependencies:
+    "@graphql-mesh/types" "0.39.0"
+    "@graphql-mesh/utils" "0.10.0"
+    deep-equal "2.0.5"
+    form-urlencoded "6.0.0"
+    graphql-scalars "1.9.0"
+    graphql-subscriptions "1.2.1"
+    json-ptr "2.0.0"
+    jsonpath-plus "5.0.7"
     lodash "4.17.21"
     pluralize "8.0.0"
     swagger2openapi "7.0.5"
@@ -9827,6 +9844,11 @@ form-urlencoded@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-6.0.0.tgz#c3d7c5b470664175fd3f8756fd05b46d86c6dc50"
   integrity sha512-X8AvXpvwMZwbd3/qIegrkZLzPos6djGYaL0bm2nVREzEB/05csjKmdAPTDZMGcFYfVtV9hx5kbpo5Ze87n3HWA==
+
+form-urlencoded@6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-6.0.3.tgz#98f79ba29366b129751c5fe8b5b00f4d2970f18f"
+  integrity sha512-WoIMOwRlxTmzzRI3tnocMi4FEDYshbSnbAkbExh2qELEaJaPHlcQC17Ce5TCTmR5xnGkvbe9m0Bq8nI2d6K5vA==
 
 formidable@^1.2.2:
   version "1.2.2"
