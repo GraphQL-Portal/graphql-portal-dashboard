@@ -61,7 +61,7 @@
     "@maxmind/geoip2-node": "2.3.2",
     "@nestjs/common": "7.6.15",
     "@nestjs/core": "7.6.15",
-    "@nestjs/graphql": "7.10.3",
+    "@nestjs/graphql": "7.10.6",
     "@nestjs/mongoose": "7.2.4",
     "@nestjs/platform-express": "7.6.15",
     "@nestjs/serve-static": "2.1.4",
