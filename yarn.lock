@@ -16069,10 +16069,10 @@ react-hook-form@6.15.7:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.7.tgz#e5ad7a9f73b0311ee770c56951276a3b85b06656"
   integrity sha512-cfJoBCF/hEjrgfto+70pLDi/F5IBWr5hQhYDFklxb+zyttQORVs+y70OaY4Z4V3IZFeY5oN3ECzEwBaiO1tT1A==
 
-react-hotkeys-hook@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/react-hotkeys-hook/-/react-hotkeys-hook-3.3.0.tgz#356428769fa990c333d4ee4998b866bbd45e54b8"
-  integrity sha512-DbxcZpswAcJKc0Fw5oTWeRImGLVerDlMU8ndIAH5Waed8wvpafk/F2i43BZo2O3Ftn/RzQsD4EFU8e8FSjVFTg==
+react-hotkeys-hook@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/react-hotkeys-hook/-/react-hotkeys-hook-3.3.1.tgz#8b03b0b2741d59f91b9b7564e8221c92e3230010"
+  integrity sha512-y6eCMEysh09lIgRQvIC76L7ehqUWf/7h8VlqT6w7RRnim5CX5CXldo64+CjWanIcgr++q5yTNwr7A/8DXA1u9A==
   dependencies:
     hotkeys-js "3.8.3"
 
