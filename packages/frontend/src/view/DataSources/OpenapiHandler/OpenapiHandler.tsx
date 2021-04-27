@@ -1,9 +1,8 @@
 import React from 'react';
-import { FormControlLabel } from '@material-ui/core';
 import { Controller } from 'react-hook-form';
 
 import { HandlerStep } from '../../../types';
-import { Input, PrimaryButton, Select, Checkbox } from '../../../ui';
+import { Input, PrimaryButton, Select, Checkbox, FormLabel } from '../../../ui';
 import { useOpenapiHandler } from '../../../presenter/DataSources';
 import { ObjectArray } from '../../Form';
 import { HandlerRow, HandlerCol, HandlerColBig } from '../Layout';
@@ -110,7 +109,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
       />
       <HandlerRow>
         <HandlerCol>
-          <FormControlLabel
+          <FormLabel
             label="Include HTTP Response details to the result object"
             control={
               <Controller
@@ -125,7 +124,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerColBig>
-          <FormControlLabel
+          <FormLabel
             label="Auto-generate a 'limit' argument for all fields that return lists of objects, including ones produced by links"
             control={
               <Controller
@@ -140,7 +139,7 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerColBig>
-          <FormControlLabel
+          <FormLabel
             label="Set argument name for mutation payload to 'requestBody'. If false, name defaults to camelCased pathname"
             control={
               <Controller

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { Checkbox, Input, PrimaryButton } from '../../../ui';
+import { Checkbox, FormLabel, Input, PrimaryButton } from '../../../ui';
 import { usePostGraphileHandler } from '../../../presenter/DataSources';
 import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
@@ -49,21 +48,17 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Cache Introspection"
-                control={
-                  <Controller
-                    name="cacheIntrospection"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Cache Introspection"
+            control={
+              <Controller
+                name="cacheIntrospection"
+                control={control}
+                defaultValue={false}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <StringArray

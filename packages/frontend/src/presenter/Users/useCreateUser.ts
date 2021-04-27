@@ -5,6 +5,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import { useFormErrors } from '../../model/Hooks';
 import { useDialogs } from '../../model/providers';
 import { ROLE_ADMIN, ROLE_USER } from '../../model/providers/Auth/constants';
+import { isCorrectPassword, isEmail } from '../validation';
 
 const suite = vest.create(
   'create_user',
@@ -14,24 +15,11 @@ const suite = vest.create(
     });
 
     test('email', 'Please enter correct Email', () => {
-      enforce(email).isEmail();
+      isEmail(email);
     });
 
-    test('password', 'Password is required', () => {
-      enforce(password).isNotEmpty();
-    });
+    isCorrectPassword(password);
 
-    test('password', 'Password must be at least 8 chars', () => {
-      enforce(password).longerThanOrEquals(8);
-    });
-
-    test('password', 'Password must contain a digit', () => {
-      enforce(password).matches(/[0-9]/);
-    });
-
-    test('password', 'Password must contain a symbol', () => {
-      enforce(password).matches(/[^A-Za-z0-9]/);
-    });
     test('confirmPassword', 'Passwords do not match', () => {
       enforce(confirmPassword).equals(password);
     });
@@ -63,7 +51,7 @@ export const useCreateUser = () => {
   useFormErrors(errors);
 
   return {
-    onSubmit: handleSubmit(data => {
+    onSubmit: handleSubmit((data) => {
       dialogConfig.onSuccess({
         firstName: data.firstName,
         lastName: data.lastName,

@@ -47,29 +47,7 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
 
   const { title, description } = source.connector;
   const { name, handler, transforms } = state;
-
-  const stepsComponents =
-    steps.length === 3
-      ? [
-          <SourceHandler
-            updateState={updateState}
-            state={{ handler }}
-            source={source}
-            step={1}
-          />,
-          <SourceTransforms
-            updateState={updateState}
-            state={{ transforms }}
-            step={2}
-          />,
-        ]
-      : [
-          <SourceTransforms
-            updateState={updateState}
-            state={{ transforms }}
-            step={1}
-          />,
-        ];
+  const withHandler = steps.length === 3;
 
   return (
     <>
@@ -102,7 +80,19 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
             />
             <StepperBody step={step}>
               <SourceName updateState={updateState} state={{ name }} step={0} />
-              {stepsComponents}
+              {withHandler && (
+                <SourceHandler
+                  updateState={updateState}
+                  state={{ handler }}
+                  source={source}
+                  step={1}
+                />
+              )}
+              <SourceTransforms
+                updateState={updateState}
+                state={{ transforms }}
+                step={withHandler ? 2 : 1}
+              />
             </StepperBody>
           </WidgetBody>
         </HugeWidget>

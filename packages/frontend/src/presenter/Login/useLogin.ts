@@ -2,15 +2,13 @@ import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
 import { ApolloError } from '@apollo/client';
 import vest, { test, enforce } from 'vest';
-import validator from 'validator';
 
 import { useAuth, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
 import { useLogin as login } from '../../model/Login/commands';
 import { UA } from '../../model/providers/Auth/constants';
 import { LoginForm, UseLoginHook } from '../../types';
-
-enforce.extend({ isEmail: validator.isEmail });
+import { isCorrectPassword, isEmail } from '../validation';
 
 const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
   test('email', 'Email is required', () => {
@@ -18,24 +16,10 @@ const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
   });
 
   test('email', 'Please enter correct Email', () => {
-    enforce(email).isEmail();
+    isEmail(email);
   });
 
-  test('password', 'Password is required', () => {
-    enforce(password).isNotEmpty();
-  });
-
-  test('password', 'Password must be at least 8 chars', () => {
-    enforce(password).longerThanOrEquals(8);
-  });
-
-  test('password', 'Password must contain a digit', () => {
-    enforce(password).matches(/[0-9]/);
-  });
-
-  test('password', 'Password must contain a symbol', () => {
-    enforce(password).matches(/[^A-Za-z0-9]/);
-  });
+  isCorrectPassword(password);
 });
 
 const { NODE_ENV } = process?.env || {};

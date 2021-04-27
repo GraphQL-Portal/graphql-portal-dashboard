@@ -4,13 +4,14 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  FormHelperText,
 } from '@material-ui/core';
 
 import { Select as Props } from '../../types';
 import { getKeyFromText } from '../../utils';
 
 export const Select = forwardRef<unknown, Props>(
-  ({ options, fullWidth, labelClassName, ...selectProps }, ref) => {
+  ({ options, fullWidth, labelClassName, helperText, ...selectProps }, ref) => {
     const { label, labelId } = selectProps;
     return (
       <FormControl fullWidth={fullWidth} variant="outlined">
@@ -26,6 +27,7 @@ export const Select = forwardRef<unknown, Props>(
             </MenuItem>
           ))}
         </MuiSelect>
+        {!!helperText && <FormHelperText>{helperText}</FormHelperText>}
       </FormControl>
     );
   }

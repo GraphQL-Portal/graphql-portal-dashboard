@@ -28,3 +28,4 @@ export { useStripeHandler } from './useStripeHandler';
 export { useTwitterHandler } from './useTwitterHandler';
 export { useFusionCreatorAccountInformationUSHandler } from './useFusionCreatorAccountInformationUSHandler';
 export { useAdditionalResolversSourceMethods } from './useAdditionalResolversSourceMethods';
+export { useJsonSchemaHandler } from './useJsonSchemaHandler';

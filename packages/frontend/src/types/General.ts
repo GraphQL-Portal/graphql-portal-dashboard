@@ -9,7 +9,7 @@ export type Table<T> = { [key: string]: T };
 export type ElementsTable = Table<React.JSXElementConstructor<any>>;
 
 export type DeepObject = {
-  [key: string]: string | number | DeepObject;
+  [key: string]: string | number | DeepObject | DeepObject[];
 };
 
 export type TriggersTable = Table<boolean>;

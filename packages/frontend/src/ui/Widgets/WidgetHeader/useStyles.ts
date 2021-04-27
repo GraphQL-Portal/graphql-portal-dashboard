@@ -14,14 +14,4 @@ export const useStyles = makeStyles(({ spacing, palette }: Theme) => ({
   titleText: {
     marginRight: spacing(1.5),
   },
-  iconRoot: {
-    opacity: 0.75,
-    cursor: 'pointer',
-    color: palette.secondary.main,
-    transition: 'opacity 0.3s ease-in-out 0s',
-
-    '&:hover': {
-      opacity: 1,
-    },
-  },
 }));

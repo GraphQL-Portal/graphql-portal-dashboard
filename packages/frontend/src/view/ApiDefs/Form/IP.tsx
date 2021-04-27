@@ -1,10 +1,9 @@
-import { FormControlLabel } from '@material-ui/core';
-import clsx from 'clsx';
 import React from 'react';
+import clsx from 'clsx';
 import { Controller } from 'react-hook-form';
 
 import { APIIPForm as Prop } from '../../../types';
-import { Col, Row, Switch, FormGroup } from '../../../ui';
+import { Col, Row, Switch, FormGroup, FormLabelStart } from '../../../ui';
 import { StringArray } from '../../Form';
 import { useStyles } from './useStyles';
 
@@ -20,14 +19,13 @@ export const IPForm: React.FC<Prop> = ({
   removeDeniedIP,
   enableIPFiltering,
 }) => {
-  const { label, labelPlacementStart, formRow } = useStyles();
+  const { formRow } = useStyles();
   const firstRowClassName = clsx(enableIPFiltering && formRow);
   return (
     <FormGroup title="IP Filtering">
       <Row spacing={2} className={firstRowClassName}>
         <Col xs={6}>
-          <FormControlLabel
-            classes={{ label, labelPlacementStart }}
+          <FormLabelStart
             control={
               <Controller
                 control={control}
@@ -36,7 +34,6 @@ export const IPForm: React.FC<Prop> = ({
               />
             }
             label="Enable IP Filtering"
-            labelPlacement="start"
           />
         </Col>
       </Row>

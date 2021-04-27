@@ -1,8 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { FormControl, FormControlLabel, FormGroup } from '@material-ui/core';
 
-import { Input, Checkbox, PrimaryButton } from '../../../ui';
+import { Input, Checkbox, PrimaryButton, FormLabel } from '../../../ui';
 import { useNeo4jHandler } from '../../../presenter/DataSources';
 import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
@@ -86,40 +85,32 @@ export const Neo4jHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Relationships should always be included in the type definitions"
-                control={
-                  <Controller
-                    name="alwaysIncludeRelationships"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Relationships should always be included in the type definitions"
+            control={
+              <Controller
+                name="alwaysIncludeRelationships"
+                control={control}
+                defaultValue={false}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <FormControl>
-            <FormGroup>
-              <FormControlLabel
-                label="Cache introspection"
-                control={
-                  <Controller
-                    name="cacheIntrospection"
-                    control={control}
-                    defaultValue={false}
-                    render={(props) => <Checkbox {...props} color="primary" />}
-                  />
-                }
+          <FormLabel
+            label="Cache introspection"
+            control={
+              <Controller
+                name="cacheIntrospection"
+                control={control}
+                defaultValue={false}
+                render={(props) => <Checkbox {...props} color="primary" />}
               />
-            </FormGroup>
-          </FormControl>
+            }
+          />
         </HandlerCol>
       </HandlerRow>
       <PrimaryButton type="submit">Save Handler</PrimaryButton>

@@ -8,7 +8,7 @@ import { ViewAPITab as Props } from '../../../types';
 import { useTourContext } from '../../../model/providers';
 import { useStyles } from './useStyles';
 
-const { Logo, Toolbar } = GraphiQL;
+const { Logo } = GraphiQL;
 
 export const Playground: React.FC<Props> = ({ fetcher, name }) => {
   const { tour } = useTourContext();
@@ -19,8 +19,7 @@ export const Playground: React.FC<Props> = ({ fetcher, name }) => {
   return (
     <div className={playgroundClassName}>
       <GraphiQL fetcher={fetcher} query={query} editorTheme="dracula">
-        <Logo>{name}</Logo>
-        <Toolbar>{null}</Toolbar>
+        <Logo>Run Query</Logo>
       </GraphiQL>
     </div>
   );
