@@ -17,5 +17,6 @@ export const EDIT_TABS = [
   { label: 'IP Filtering' },
   { label: 'Additional Resolvers' },
   { label: 'Cache Settings' },
+  { label: 'Webhooks' },
 ];
 export const VIEW_TABS = [{ label: 'Playground' }, { label: 'Schema' }];

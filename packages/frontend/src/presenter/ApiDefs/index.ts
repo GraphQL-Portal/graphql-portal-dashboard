@@ -11,3 +11,5 @@ export { useUpdateGeneral } from './useUpdateGeneral';
 export { useViewAPI } from './useViewAPI';
 export { useUpdateIPFiltering } from './useUpdateIPFiltering';
 export { useCacheTransform } from './useCacheTransform';
+export { useUpdateWebhooks } from './useUpdateWebhooks';
+export { useWebhooks } from './useWebhooks';

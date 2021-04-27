@@ -15,12 +15,15 @@ import { GeneralTab } from './GeneralTab';
 import { DataSourcesTab } from './DataSourcesTab';
 import { SchemaAndLimits } from './SchemaAndLimits';
 import { IPTab } from './IPTab';
+import { WebhooksTab } from './WebhooksTab';
 import { AdditionalResolversTab } from './AdditionalResolversTab';
 import { CacheTab } from './CacheTab';
 import { EditHeader } from './EditHeader';
+import { useStyles } from './useStyles';
 
 export const EditApi: React.FC = () => {
   const { loading, api, tab, onChange, refetch, apiEndpoint } = useApiById();
+  const { tabsHead } = useStyles();
 
   if (loading) return <Loading />;
   const { name } = api;
@@ -38,7 +41,12 @@ export const EditApi: React.FC = () => {
       <WidgetRow>
         <HugeWidget>
           <WidgetBody>
-            <TabsHead value={tab} onChange={onChange} tabsList={EDIT_TABS} />
+            <TabsHead
+              className={tabsHead}
+              value={tab}
+              onChange={onChange}
+              tabsList={EDIT_TABS}
+            />
             <TabsBody value={tab}>
               <GeneralTab api={api} refetch={refetch!} />
               <DataSourcesTab api={api} refetch={refetch!} />
@@ -46,6 +54,7 @@ export const EditApi: React.FC = () => {
               <IPTab api={api} refetch={refetch!} />
               <AdditionalResolversTab api={api} refetch={refetch!} />
               <CacheTab api={api} refetch={refetch!} />
+              <WebhooksTab api={api} refetch={refetch!} />
             </TabsBody>
           </WidgetBody>
         </HugeWidget>

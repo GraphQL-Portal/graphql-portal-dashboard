@@ -19,6 +19,7 @@ import {
   SchemaForm,
   IPForm,
   LimitsForm,
+  WebhooksForm,
 } from '../Form';
 import { selectors } from '../../Tour';
 
@@ -45,6 +46,9 @@ export const CreateApi: React.FC = () => {
     removeDeniedIP,
     enableIPFiltering,
     disableSelectDatasources,
+    hooks,
+    addHook,
+    removeHook,
   } = useCreateApi();
 
   return (
@@ -101,6 +105,14 @@ export const CreateApi: React.FC = () => {
                 removeDeniedIP={removeDeniedIP}
               />
               <LimitsForm register={register} errors={errors} />
+              <WebhooksForm
+                register={register}
+                control={control}
+                errors={errors}
+                hooks={hooks}
+                addHook={addHook}
+                removeHook={removeHook}
+              />
               <PrimaryButton
                 data-tour={selectors.MY_APIS_CREATE_FORM_CREATE_NEW_BUTTON}
                 type="submit"

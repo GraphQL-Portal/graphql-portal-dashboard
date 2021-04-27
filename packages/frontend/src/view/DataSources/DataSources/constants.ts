@@ -21,6 +21,7 @@ import { ReactComponent as Twitter } from '../../../icons/Twitter.svg';
 import { ReactComponent as Weatherbit } from '../../../icons/Weatherbit.svg';
 import { ReactComponent as Stripe } from '../../../icons/Stripe.svg';
 import { ReactComponent as Salesforce } from '../../../icons/Salesforce.svg';
+import { ReactComponent as IPApi } from '../../../icons/IPApi.svg';
 
 export const ICON_MAPPER: ElementsTable = {
   FhirHandler: Fhir,
@@ -42,6 +43,7 @@ export const ICON_MAPPER: ElementsTable = {
   WeatherbitHandler: Weatherbit,
   StripeHandler: Stripe,
   SalesforceHandler: Salesforce,
+  IPAPIHandler: IPApi,
 };
 
 export const TYPE_MAPPER: ElementsTable = {

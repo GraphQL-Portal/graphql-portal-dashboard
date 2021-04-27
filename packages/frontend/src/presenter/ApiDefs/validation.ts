@@ -25,7 +25,7 @@ export const suite = vest.create(
       enforce(endpoint).matches(/^\//);
     });
 
-    const { auth_header_name, auth_tokens = [] } = authentication;
+    const { auth_header_name, auth_tokens = [] } = authentication || {};
 
     if (!!auth_header_name) {
       test('auth_tokens', 'Auth header tokens is required', () => {

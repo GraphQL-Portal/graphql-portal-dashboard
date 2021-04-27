@@ -15,6 +15,7 @@ import {
 import { suite } from './validation';
 import { useDSPart } from './useDSPart';
 import { useIPFiltering } from './useIPFiltering';
+import { useWebhooks } from './useWebhooks';
 
 const defaultValues = {
   name: '',
@@ -78,6 +79,8 @@ export const useCreateApi: UseCreateApiDefHook = () => {
   } = useDSPart({ control, watch, setValue });
 
   const ipMethods = useIPFiltering({ control });
+
+  const webhooksMethods = useWebhooks({ control });
 
   useFormErrors(errors);
 
@@ -145,5 +148,6 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     onAddSource,
     onRemoveSource,
     ...ipMethods,
+    ...webhooksMethods,
   };
 };

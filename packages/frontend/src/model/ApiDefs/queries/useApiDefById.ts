@@ -36,6 +36,10 @@ const GET_API_DEF_BY_ID = gql`
       allow_ips
       deny_ips
       mesh
+      webhooks {
+        url
+        event
+      }
     }
     getGateways {
       listenHostname

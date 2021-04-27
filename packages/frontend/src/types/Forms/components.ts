@@ -10,7 +10,7 @@ import {
   FieldArrayRemove,
   GeneralFormMethods,
 } from '../HookForm';
-import { ObjectArrayItem, StringArrayItem } from './data';
+import { ObjectArrayItem, SelectOption, StringArrayItem } from './data';
 
 export type Switch = Omit<SwitchProps, 'onChange'> & {
   value: boolean;
@@ -32,6 +32,14 @@ export type ObjectArrayForm = FieldArrayComponent<ObjectArrayItem> & {
       helperText?: string;
     };
   };
+};
+
+export type ObjectArrayWithSelectForm = FieldArrayComponent<ObjectArrayItem> & {
+  label?: string;
+  helperText?: string;
+  selectLabel?: string;
+  options: SelectOption[];
+  control: any;
 };
 
 export type StringArrayForm = FieldArrayComponent<StringArrayItem> & {
