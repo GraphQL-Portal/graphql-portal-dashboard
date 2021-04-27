@@ -26,4 +26,5 @@ export { useSalesforceHandler } from './useSalesforceHandler';
 export { useCrunchbaseHandler } from './useCrunchbaseHandler';
 export { useStripeHandler } from './useStripeHandler';
 export { useTwitterHandler } from './useTwitterHandler';
+export { useFusionCreatorAccountInformationUSHandler } from './useFusionCreatorAccountInformationUSHandler';
 export { useAdditionalResolversSourceMethods } from './useAdditionalResolversSourceMethods';

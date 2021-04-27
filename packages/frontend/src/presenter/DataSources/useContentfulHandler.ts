@@ -15,7 +15,7 @@ const CONTENTFUL_DEFAULT_STATE = {
 
 const suite = vest.create(
   'contentful_handler',
-  ({ token, space, environment, endpoint }) => {
+  ({ token, space, endpoint }) => {
     test('token', 'Token is required', () => {
       enforce(token).isNotEmpty();
     });

@@ -2135,24 +2135,6 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.15.0.tgz#7ee2bf53c60c0a8876efcced0e95d5d1698dc81c"
-  integrity sha512-6mMX9d0tDFWoHdXkrYxiNSvJKUDTwCKf2hjwuWDZEQpeC1Y9BglsSqPJmvVB+cCULu/lM66NtfFDU4a2O2ZnRg==
-  dependencies:
-    "@graphql-mesh/types" "0.38.0"
-    "@graphql-mesh/utils" "0.10.0"
-    deep-equal "2.0.5"
-    form-urlencoded "4.4.2"
-    graphql-scalars "1.9.0"
-    graphql-subscriptions "1.2.1"
-    json-ptr "2.0.0"
-    jsonpath-plus "5.0.4"
-    lodash "4.17.21"
-    pluralize "8.0.0"
-    swagger2openapi "7.0.5"
-    url-join "4.0.1"
-
 "@graphql-mesh/postgraphile@0.11.4":
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/postgraphile/-/postgraphile-0.11.4.tgz#2c291e1b4950a117f2bf40e3f407e7e2086c56fb"
@@ -2563,26 +2545,19 @@
     nanoid "^3.1.20"
     yaml "^1.10.0"
 
-"@graphql-portal/contentful@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/contentful/-/contentful-0.1.1.tgz#55889df83c1b8f1ef60661f1c3c860c506c7bc44"
-  integrity sha512-fA0ITyxH53D14ZFEeDfbk/BTrsa32RnlIYJ/FxVDqYQPFu3+TyrCPnJ37oV7ZifKcokEKjkj2nXhYE6Ri6mc7A==
-  dependencies:
-    "@graphql-mesh/graphql" "^0.16.0"
-
-"@graphql-portal/contentful@^0.1.2":
+"@graphql-portal/contentful@0.1.2", "@graphql-portal/contentful@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/contentful/-/contentful-0.1.2.tgz#891a65b8271c983b6a12e82393fe159a38cc37b5"
   integrity sha512-+x+/cIB6woNJTPg4viuqu9SwsXBsUujzD8SOsS/WbfsE3UoU7VakaA29Cd9pFQHHdReOa/pwUcI1+pfmhCGHqg==
   dependencies:
     "@graphql-mesh/graphql" "^0.16.0"
 
-"@graphql-portal/crunchbase@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.1.1.tgz#8708f3278854fd0565ca38502cef138654369150"
-  integrity sha512-GcK0jvBXPSY0SI1KTTzPywUAJIkTkfFpOtxPRjU5BGvMcbUT3NpaHfjY2tW2P4qGcywFDFgAg9PkXRPwcIJGUQ==
+"@graphql-portal/crunchbase@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.1.2.tgz#fdef7c68a1223bc20e3c28a31c77d90fde504fd9"
+  integrity sha512-Sbnklb71O4bMyyhCC4we6ZB4yBJe357928luBrTjoG0lwNUNXOOe8BcDDkDRUNeV7sgg9KGFSB8JZxJBjB2U7Q==
   dependencies:
-    "@graphql-mesh/openapi" "^0.15.0"
+    "@graphql-mesh/openapi" "^0.16.0"
 
 "@graphql-portal/dashboard@^0.1.13":
   version "0.1.13"
@@ -2593,10 +2568,10 @@
     "@graphql-portal/types" "^0.27.0"
     axios "^0.21.1"
 
-"@graphql-portal/datasources@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.2.tgz#cc0814ec1f9ac270b54d8f4cc46f534fa86c7b10"
-  integrity sha512-Q7/Ef+KW4yLyEy1lPw55+9/S7aLRBy0rBzNV3AOkZRtT/TALvKn3vhKIyswzGi9IXjdF29Ia2nx0txOQLX+wLw==
+"@graphql-portal/datasources@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.4.tgz#2be8aafd6288db0ae8ea40e9f417e3b775a541e0"
+  integrity sha512-WSEKwo1Fk/c9yySB4Priq6Kt76YICdWAprnK55cPbJGoVxjL3rp4mlv1qd0ZzMLj7FZDGUVrXNieltITqt5Xrw==
 
 "@graphql-portal/datasources@^0.1.3":
   version "0.1.3"
@@ -9836,11 +9811,6 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-form-urlencoded@4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-4.4.2.tgz#92913ec8e7375824fa1cc2d13093c8d30a122a8f"
-  integrity sha512-6sZj0HI9tCcGuzC9W/nkHvNLAjOo1G/jjnNluChOGMwn75Po6g5nGYASxQUJeSQHLng1SpovGjQr1f4xz1PqQw==
-
 form-urlencoded@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-6.0.0.tgz#c3d7c5b470664175fd3f8756fd05b46d86c6dc50"
@@ -12492,11 +12462,6 @@ jsonfile@^6.0.1:
     universalify "^2.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
-
-jsonpath-plus@5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-5.0.4.tgz#3b8ce2ea6904ee6c6750ed027fe8df31789b62e3"
-  integrity sha512-w3pI3PewtwIrrGRCFvTkCkKu8IrOwjsqoYRxvxuXQjPB0udEtAuBY0B6/SEztsxMmuIHVHGFQ0knVnTCPW9qYw==
 
 jsonpath-plus@5.0.7:
   version "5.0.7"
