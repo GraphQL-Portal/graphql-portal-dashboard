@@ -117,10 +117,12 @@ export const useJsonSchemaHandler: UseJsonSchemaHook = ({
   const defaultValues = Object.assign({}, JSON_SCHEMA_DEFAULT_STATE, handler, {
     schemaHeaders: objectToFieldArray(schemaHeaders),
     operationHeaders: objectToFieldArray(operationHeaders),
-    operations: ops.map(({ argTypeMap, ...rest }: JsonSchemaOperation) => ({
-      ...rest,
-      argTypeMap: objectToFieldArray(argTypeMap),
-    })),
+    operations: (ops || []).map(
+      ({ argTypeMap, ...rest }: JsonSchemaOperation) => ({
+        ...rest,
+        argTypeMap: objectToFieldArray(argTypeMap),
+      })
+    ),
   });
 
   const { register, control, handleSubmit, errors } = useForm<JsonSchemaForm>({
