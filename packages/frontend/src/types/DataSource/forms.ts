@@ -8,8 +8,9 @@ import {
   TwitterHandler,
   StripeHandler,
 } from '@graphql-portal/types';
-import { ObjectArrayItem, StringArrayItem } from '../Forms';
+import { ObjectArray, ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
+import { JsonSchemaOperation } from './data';
 
 export type OpenapiForm = Omit<
   OpenapiHandler,
@@ -47,3 +48,12 @@ export type StripeForm = StripeHandler;
 export type StripeFormMethods = FormMethods<StripeForm>;
 
 export type SearchAvailableForm = { search: string };
+
+export type JsonSchemaForm = {
+  baseUrl: string;
+  schemaHeaders?: ObjectArray;
+  operationHeaders: ObjectArray;
+  operations: JsonSchemaOperation[];
+};
+
+export type JsonSchemaFormMethods = FormMethods<JsonSchemaForm>;
