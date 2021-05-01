@@ -1985,23 +1985,6 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.13.1.tgz#abe3210c883e1f0d04db56d5bf754a57f0aff1d8"
-  integrity sha512-9PdEhB5mEVedcLSt4DSDKFecEJ5wlpr5V5PlFt3NFFcMZ9kFhNJLPNRB+ECpicx/JDKfkSbeFVSr0yWDsuExlg==
-  dependencies:
-    "@ardatan/aggregate-error" "0.0.6"
-    "@graphql-mesh/types" "0.39.0"
-    "@graphql-mesh/utils" "0.10.0"
-    ajv "8.1.0"
-    graphql-compose "7.25.1"
-    graphql-scalars "1.9.0"
-    lodash "4.17.21"
-    object-hash "2.1.1"
-    pascal-case "3.1.2"
-    to-json-schema "0.2.5"
-    url-join "4.0.1"
-
 "@graphql-mesh/json-schema@0.14.2":
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.14.2.tgz#e5a2216e06a3b931f263ca538fb0ec1f6977b4aa"
