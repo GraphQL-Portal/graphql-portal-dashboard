@@ -2629,7 +2629,14 @@
     nanoid "^3.1.20"
     yaml "^1.10.0"
 
-"@graphql-portal/contentful@0.1.1", "@graphql-portal/contentful@^0.1.0":
+"@graphql-portal/contentful@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/contentful/-/contentful-0.1.2.tgz#891a65b8271c983b6a12e82393fe159a38cc37b5"
+  integrity sha512-+x+/cIB6woNJTPg4viuqu9SwsXBsUujzD8SOsS/WbfsE3UoU7VakaA29Cd9pFQHHdReOa/pwUcI1+pfmhCGHqg==
+  dependencies:
+    "@graphql-mesh/graphql" "^0.16.0"
+
+"@graphql-portal/contentful@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-portal/contentful/-/contentful-0.1.1.tgz#55889df83c1b8f1ef60661f1c3c860c506c7bc44"
   integrity sha512-fA0ITyxH53D14ZFEeDfbk/BTrsa32RnlIYJ/FxVDqYQPFu3+TyrCPnJ37oV7ZifKcokEKjkj2nXhYE6Ri6mc7A==
