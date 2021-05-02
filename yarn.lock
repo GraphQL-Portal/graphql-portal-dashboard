@@ -2146,16 +2146,16 @@
     pascal-case "3.1.2"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.16.1":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.1.tgz#49123081020db64ebb136bf9ea00ed060880da9d"
-  integrity sha512-O9tPczV2enpetJ3zmW6LWLfeT3uiKKTsORAcft9rqy88NdkYVAetQkuaeXj+VGUV0Q/LvFxmx7+0PqqDMEu4fQ==
+"@graphql-mesh/openapi@0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.3.tgz#9509b22c43cdde2955e1701301bcc17cd838e986"
+  integrity sha512-44fQgy5tHnkW6lu9fXcld+yES5lLGV0rDJhnTMVbzle3HoxUBoCkugJuheLZHnKBSl+iM5VXQW9QOELpnq+xfw==
   dependencies:
-    "@graphql-mesh/types" "0.39.0"
-    "@graphql-mesh/utils" "0.10.0"
+    "@graphql-mesh/types" "0.40.0"
+    "@graphql-mesh/utils" "0.11.0"
     deep-equal "2.0.5"
     form-urlencoded "6.0.3"
-    graphql-scalars "1.9.0"
+    graphql-scalars "1.9.3"
     graphql-subscriptions "1.2.1"
     json-ptr "2.0.0"
     jsonpath-plus "5.0.7"
