@@ -2410,15 +2410,15 @@
     "@graphql-tools/wrap" "7.0.5"
     micromatch "4.0.2"
 
-"@graphql-mesh/transform-mock@0.8.6":
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.8.6.tgz#b2d7bb9e0118db5818a495d52f50b3237147bfb4"
-  integrity sha512-Uuvq9Bk0nm0waLd+jNkkVavVSyjfUT77i3t/JqTwVoaO1lwZTtgIyIwhpT5dsHxyQtdRwXYRflDVrjGCKs7seg==
+"@graphql-mesh/transform-mock@0.8.8":
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.8.8.tgz#d7e179b8d0177411c063d1820705e0429448b1cf"
+  integrity sha512-BRy8eeG8V8B0ahVReROUdyDa1nhqqiwztOInFxCyxu7rlEzrP8CHmjKN8ANzAM+oDyZwlqTOQvsbIXFNUYo/OQ==
   dependencies:
-    "@graphql-mesh/types" "0.39.0"
-    "@graphql-mesh/utils" "0.10.0"
+    "@graphql-mesh/types" "0.40.0"
+    "@graphql-mesh/utils" "0.11.0"
     "@graphql-tools/mock" "8.1.1"
-    "@graphql-tools/utils" "7.7.3"
+    "@graphql-tools/utils" "7.8.1"
     faker "5.5.3"
 
 "@graphql-mesh/transform-mock@^0.8.1":
