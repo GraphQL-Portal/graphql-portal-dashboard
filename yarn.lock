@@ -2083,16 +2083,16 @@
     mysql-utilities "1.1.2"
     pascal-case "3.1.2"
 
-"@graphql-mesh/neo4j@0.11.2":
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.2.tgz#46b27e5ccdf1ea40dbaef59f0198e8e77073fec0"
-  integrity sha512-8tVNEmU21wHdrpscYa6WzF35G7qZxTzNcb82s4IDpum3OiwEy665FMSoqVYZmZgptsDcNViXmEyEwnXUzk/o3g==
+"@graphql-mesh/neo4j@0.11.3":
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.3.tgz#24d8399b46613b208b96865c1ac22de1992967d0"
+  integrity sha512-CULb8BCw8BPbXEtl8ntFlVPE5uPcLyA/mK1W5vwKdNBozNhzF+cqDgVX4Zo7qlDj5R0BTywIhjNhu/0uEvVN4w==
   dependencies:
-    "@graphql-mesh/types" "0.39.0"
+    "@graphql-mesh/types" "0.40.0"
     "@graphql-tools/code-file-loader" "6.3.1"
     "@graphql-tools/graphql-file-loader" "6.2.7"
     "@graphql-tools/load" "6.2.8"
-    "@graphql-tools/merge" "6.2.12"
+    "@graphql-tools/merge" "6.2.13"
     neo4j-driver "4.2.3"
     neo4j-graphql-js "2.19.2"
 
@@ -2985,7 +2985,7 @@
     "@graphql-tools/utils" "^7.7.0"
     tslib "~2.2.0"
 
-"@graphql-tools/merge@^6.2.12":
+"@graphql-tools/merge@6.2.13", "@graphql-tools/merge@^6.2.12":
   version "6.2.13"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.13.tgz#4603fac8fc44daff0a4704055634d95ca7fa62b2"
   integrity sha512-Qjlki0fp+bBQPinhdv7rv24eurvThZ5oIFvGMpLxMZplbw/ovJ2c6llwXr5PCuWAk9HGZsyM9NxxDgtTRfq3dQ==
