@@ -1,5 +1,4 @@
-import { ObjectArray } from '../Forms';
-import { Title, ElementsTable } from '../General';
+import { Title, ElementsTable, RecordStringAny } from '../General';
 import { updateState } from './methods';
 
 export type SourceProp = { source: any };
@@ -44,11 +43,5 @@ export type JsonSchemaOperation = {
   responseSample?: string;
   requestSchema: string;
   requestSample?: string;
-};
-
-export type JsonSchemaForm = {
-  baseUrl: string;
-  schemaHeaders?: ObjectArray;
-  operationHeaders: ObjectArray;
-  operations: JsonSchemaOperation[];
+  argTypeMap?: RecordStringAny[];
 };

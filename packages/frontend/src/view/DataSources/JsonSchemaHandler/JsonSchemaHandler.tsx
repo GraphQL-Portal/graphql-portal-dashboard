@@ -30,7 +30,7 @@ export const JsonSchemaHandler: React.FC<HandlerStep> = (props) => {
         <HandlerCol>
           <Input
             ref={register}
-            label="URL of an existing JsonSchema"
+            label="URL to JsonSchema API"
             required
             name="baseUrl"
             error={!!errors?.baseUrl}

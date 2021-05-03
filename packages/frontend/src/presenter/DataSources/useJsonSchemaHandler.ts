@@ -4,10 +4,10 @@ import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import {
-  HandlerStep,
   JsonSchemaForm,
   JsonSchemaOperation,
   RecordStringAny,
+  UseJsonSchemaHook,
 } from '../../types';
 import { isZeroLength } from '../../utils';
 import { isUrl } from '../validation';
@@ -64,17 +64,20 @@ const suite = vest.create(
             }
           );
 
-          test(`sample`, 'Response or Request sample is required', () => {
-            enforce(responseSample || requestSample).isNotEmpty();
+          // test(`sample`, 'Response or Request sample is required', () => {
+          //   enforce(responseSample || requestSample).isNotEmpty();
+          // });
+          test(`${name}.responseSample`, 'Response Sample is required', () => {
+            enforce(responseSample).isNotEmpty();
           });
 
           if (responseSample) {
             urlTest(`${name}.responseSample`, responseSample);
           }
 
-          if (requestSample) {
-            urlTest(`${name}.requestSample`, requestSample);
-          }
+          // if (requestSample) {
+          //   urlTest(`${name}.requestSample`, requestSample);
+          // }
         }
       );
     }
@@ -93,17 +96,18 @@ const OPERATION_DEFAULT_VALUE = {
   path: undefined,
   type: 'Query',
   method: 'GET',
-  responseSchema: undefined,
+  // responseSchema: undefined,
   responseSample: undefined,
-  requestSchema: undefined,
-  requestSample: undefined,
+  // requestSchema: undefined,
+  // requestSample: undefined,
+  argTypeMap: undefined,
 };
 
-export const useJsonSchemaHandler = ({
+export const useJsonSchemaHandler: UseJsonSchemaHook = ({
   state,
   updateState,
   step,
-}: HandlerStep) => {
+}) => {
   const {
     schemaHeaders,
     operationHeaders,
@@ -113,7 +117,12 @@ export const useJsonSchemaHandler = ({
   const defaultValues = Object.assign({}, JSON_SCHEMA_DEFAULT_STATE, handler, {
     schemaHeaders: objectToFieldArray(schemaHeaders),
     operationHeaders: objectToFieldArray(operationHeaders),
-    operations: ops,
+    operations: (ops || []).map(
+      ({ argTypeMap, ...rest }: JsonSchemaOperation) => ({
+        ...rest,
+        argTypeMap: objectToFieldArray(argTypeMap),
+      })
+    ),
   });
 
   const { register, control, handleSubmit, errors } = useForm<JsonSchemaForm>({
@@ -157,6 +166,7 @@ export const useJsonSchemaHandler = ({
   const onSubmit = ({
     schemaHeaders,
     operationHeaders,
+    operations,
     ...handler
   }: RecordStringAny) => {
     updateState(
@@ -165,6 +175,12 @@ export const useJsonSchemaHandler = ({
           ...handler,
           schemaHeaders: arrayObjectToObject(schemaHeaders),
           operationHeaders: arrayObjectToObject(operationHeaders),
+          operations: operations.map(
+            ({ argTypeMap, ...rest }: JsonSchemaOperation) => ({
+              ...rest,
+              argTypeMap: arrayObjectToObject(argTypeMap),
+            })
+          ),
         },
       },
       step

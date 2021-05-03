@@ -8,7 +8,7 @@ import {
   SourceProp,
   DataSource,
 } from './data';
-import { UseOpenapiDataSourceHook } from './hooks';
+import { UseJsonSchemaHook, UseOpenapiDataSourceHook } from './hooks';
 
 export type NameStep = DataSourceStep<NameForm>;
 export type HandlerStep = DataSourceStep<HandlerForm> & Partial<SourceProp>;
@@ -55,3 +55,17 @@ export type DataSourceContext = {
   clearSource(): void;
   source: any;
 };
+
+export type Operations = Pick<
+  ReturnType<UseJsonSchemaHook>,
+  | 'errors'
+  | 'register'
+  | 'control'
+  | 'operations'
+  | 'addOperation'
+  | 'removeOperation'
+>;
+
+export type ArgsTypeMap = {
+  name: string;
+} & Pick<ReturnType<UseJsonSchemaHook>, 'errors' | 'register' | 'control'>;
