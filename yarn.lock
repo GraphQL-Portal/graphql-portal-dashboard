@@ -2783,12 +2783,12 @@
     "@graphql-mesh/openapi" "^0.16.0"
     graphql "^15.4.0"
 
-"@graphql-portal/stripe@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/stripe/-/stripe-0.2.1.tgz#3d7997c77a52cd1545e651d348e0bc2a3d15ca17"
-  integrity sha512-XGfnlbJx3V+iyq4qHcAfNe4GoqWRJtT79aJQkPwCeX3tVdg0Ix69Eylg5LLssugFcUrky/b/qLaDGhx2E19lTg==
+"@graphql-portal/stripe@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/stripe/-/stripe-0.2.2.tgz#582a680e038efae57bb6c47e2ac1630b8a2fafa5"
+  integrity sha512-iQCgzxbVw4EAsxqoPhOkqYN5y49WS7ZkvI+R2u+APOnBJx5I98VHY91nyJGEFYcfolIXt9Cr3c4N4VNXCdTr0w==
   dependencies:
-    "@graphql-mesh/openapi" "^0.15.0"
+    "@graphql-mesh/openapi" "^0.16.0"
 
 "@graphql-portal/twitter@0.3.1":
   version "0.3.1"
