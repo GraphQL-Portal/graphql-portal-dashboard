@@ -2661,7 +2661,12 @@
     "@graphql-portal/types" "^0.26.0"
     axios "^0.21.1"
 
-"@graphql-portal/datasources@0.1.2", "@graphql-portal/datasources@^0.1.2":
+"@graphql-portal/datasources@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.4.tgz#2be8aafd6288db0ae8ea40e9f417e3b775a541e0"
+  integrity sha512-WSEKwo1Fk/c9yySB4Priq6Kt76YICdWAprnK55cPbJGoVxjL3rp4mlv1qd0ZzMLj7FZDGUVrXNieltITqt5Xrw==
+
+"@graphql-portal/datasources@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.2.tgz#cc0814ec1f9ac270b54d8f4cc46f534fa86c7b10"
   integrity sha512-Q7/Ef+KW4yLyEy1lPw55+9/S7aLRBy0rBzNV3AOkZRtT/TALvKn3vhKIyswzGi9IXjdF29Ia2nx0txOQLX+wLw==
