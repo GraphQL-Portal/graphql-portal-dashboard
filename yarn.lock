@@ -2748,12 +2748,12 @@
     uuid "^8.3.2"
     yaml "^1.10.0"
 
-"@graphql-portal/ip-api@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.1.1.tgz#f8fe65651c6e46ff06a9918185934113a2ae6350"
-  integrity sha512-9rHK9JwJodwySAtrx5zg3A9Yhk2ccGSzdoBRqJiwEDhsiatS0zo68iDLv0z5tUS1haRT7Ac5fVP95l8tY1+mhw==
+"@graphql-portal/ip-api@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.1.2.tgz#893157474bb65109fef84fb25df5482f86446d7b"
+  integrity sha512-QVaq2lCkWQexzizowSRICPT3Uz5BWrqVk6i1WSJdnaftKszYI1MnBnEHdnm+mHgXYuNqcB3Evn36XU/zfSKC4Q==
   dependencies:
-    "@graphql-mesh/openapi" "^0.15.0"
+    "@graphql-mesh/openapi" "^0.16.0"
     graphql "^15.4.0"
 
 "@graphql-portal/logger@^0.7.6":
