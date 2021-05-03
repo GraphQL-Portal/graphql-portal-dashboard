@@ -23,50 +23,48 @@ export const ObjectArrayWithSelect: React.FC<Props> = ({
 
   const lastObjectField = clsx(objectField, lastField);
 
+  if (fields.length === 0) return null;
+
   return (
     <>
-      {fields.length > 0 &&
-        fields.map((field, idx) => {
-          const remove = (
-            <Col xs={1} className={lastObjectField}>
-              <Tooltip title="Remove field" placement="left">
-                <IconButton onClick={() => onRemove(idx)}>
-                  <Remove />
-                </IconButton>
-              </Tooltip>
-            </Col>
-          );
-          return (
-            <Row className={objectRow} key={field.id} spacing={2}>
-              <>
-                <Col xs={5} className={objectField}>
-                  <Controller
-                    as={Select}
-                    name={`${name}[${idx}].${selectLabel}`}
-                    control={control}
-                    options={options}
-                    label={selectLabel}
-                    fullWidth
-                    defaultValue={options[0].value}
-                    error={!!errors?.[name]?.[idx]?.[selectLabel]}
-                  />
-                </Col>
-                <Col xs={5} className={objectField}>
-                  <Input
-                    ref={register()}
-                    label={label}
-                    name={`${name}[${idx}].${[label]}`}
-                    fullWidth
-                    defaultValue={(field as any)[label] || undefined}
-                    error={!!errors?.[name]?.[idx]?.[label]}
-                    helperText={helperText || ''}
-                  />
-                </Col>
-                {remove}
-              </>
-            </Row>
-          );
-        })}
+      {fields.map((field, idx) => {
+        return (
+          <Row className={objectRow} key={field.id} spacing={2}>
+            <>
+              <Col xs={5} className={objectField}>
+                <Controller
+                  as={Select}
+                  name={`${name}[${idx}].${selectLabel}`}
+                  control={control}
+                  options={options}
+                  label={selectLabel}
+                  fullWidth
+                  defaultValue={options[0].value}
+                  error={!!errors?.[name]?.[idx]?.[selectLabel]}
+                />
+              </Col>
+              <Col xs={5} className={objectField}>
+                <Input
+                  ref={register()}
+                  label={label}
+                  name={`${name}[${idx}].${[label]}`}
+                  fullWidth
+                  defaultValue={(field as any)[label] || undefined}
+                  error={!!errors?.[name]?.[idx]?.[label]}
+                  helperText={helperText || ''}
+                />
+              </Col>
+              <Col xs={1} className={lastObjectField}>
+                <Tooltip title="Remove field" placement="left">
+                  <IconButton onClick={() => onRemove(idx)}>
+                    <Remove />
+                  </IconButton>
+                </Tooltip>
+              </Col>
+            </>
+          </Row>
+        );
+      })}
     </>
   );
 };

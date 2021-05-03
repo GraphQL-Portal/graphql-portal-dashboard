@@ -1,4 +1,4 @@
-import { SourceConfig } from '@graphql-portal/types';
+import { SourceConfig, WebhookEvent } from '@graphql-portal/types';
 import { INestApplication } from '@nestjs/common';
 import supertest from 'supertest';
 import { ObjectId } from 'mongodb';
@@ -61,6 +61,12 @@ export const apiDefExample: IApiDef = {
   enable_ip_filtering: true,
   allow_ips: ['String'],
   deny_ips: ['String'],
+  webhooks: [
+    {
+      url: 'http://test.com',
+      event: WebhookEvent.SCHEMA_CHANGED,
+    },
+  ],
   request_size_limit: 'String',
   depth_limit: 1,
   request_complexity_limit: 1,
@@ -91,6 +97,7 @@ export const apiDefSchema = {
   depth_limit: expect.any(Number),
   request_complexity_limit: expect.any(Number),
   rate_limit: expect.any(Object),
+  webhooks: expect.any(String),
 };
 
 export const createUser = async (
@@ -133,4 +140,11 @@ export const expectApiDef = (apiDef: IApiDefDocument): void => {
   apiDef.sources.forEach((source) => {
     expectSource(source);
   });
+
+  expect(apiDef.webhooks).toMatchObject([
+    {
+      event: expect.any(String),
+      url: expect.any(String),
+    },
+  ]);
 };

@@ -24,7 +24,7 @@ type ApiDef {
   rate_limit: ApiDefRateLimit
   playground: Boolean!
   mesh: JSONObject
-  webhooks: [Webhook]!
+  webhooks: [Webhook!]
 }
 
 type ApiDefWithSchema {

@@ -23,7 +23,7 @@ export const useUpdateWebhooks: UseUpdateWebhooksHook = ({ api, refetch }) => {
     reValidateMode: 'onSubmit',
     mode: 'onSubmit',
     defaultValues: {
-      webhooks,
+      webhooks: webhooks || [],
     },
   });
 
