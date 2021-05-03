@@ -2645,12 +2645,12 @@
   dependencies:
     "@graphql-mesh/graphql" "^0.16.0"
 
-"@graphql-portal/crunchbase@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.1.1.tgz#8708f3278854fd0565ca38502cef138654369150"
-  integrity sha512-GcK0jvBXPSY0SI1KTTzPywUAJIkTkfFpOtxPRjU5BGvMcbUT3NpaHfjY2tW2P4qGcywFDFgAg9PkXRPwcIJGUQ==
+"@graphql-portal/crunchbase@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/crunchbase/-/crunchbase-0.1.2.tgz#fdef7c68a1223bc20e3c28a31c77d90fde504fd9"
+  integrity sha512-Sbnklb71O4bMyyhCC4we6ZB4yBJe357928luBrTjoG0lwNUNXOOe8BcDDkDRUNeV7sgg9KGFSB8JZxJBjB2U7Q==
   dependencies:
-    "@graphql-mesh/openapi" "^0.15.0"
+    "@graphql-mesh/openapi" "^0.16.0"
 
 "@graphql-portal/dashboard@^0.1.12":
   version "0.1.12"
