@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.11.1
+
+### Patch Changes
+
+- Fix stepper body
+
 ## 0.11.0
 
 ### Minor Changes
