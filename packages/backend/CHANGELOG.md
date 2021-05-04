@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.11.2
+
+### Patch Changes
+
+- b9a2383: Set admin password
+
 ## 0.11.0
 
 ### Minor Changes
