@@ -20,6 +20,7 @@ import {
   CrunchbaseFormMethods,
   TwitterFormMethods,
   StripeFormMethods,
+  FusionCreatorAIUSFormMethods,
   JsonSchemaFormMethods,
 } from './forms';
 
@@ -70,6 +71,12 @@ export type UseSalesforceHandlerHook = (
 export type UseCrunchbaseHandlerHook = (
   props: HandlerStep
 ) => Pick<CrunchbaseFormMethods, 'errors' | 'control'> & OnFormSubmit;
+
+export type useFusionCreatorAccountInformationUSHandlerHook = (
+  props: HandlerStep
+) => Pick<FusionCreatorAIUSFormMethods, 'errors' | 'control'> & {
+  onSubmit: OnSubmit;
+};
 
 export type UseTwitterHandlerHook = (
   props: HandlerStep

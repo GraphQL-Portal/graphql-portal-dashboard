@@ -24,6 +24,7 @@ type ApiDef {
   rate_limit: ApiDefRateLimit
   playground: Boolean!
   mesh: JSONObject
+  webhooks: [Webhook!]
 }
 
 type ApiDefWithSchema {
@@ -63,11 +64,26 @@ input CreateApiDef {
   rate_limit: CreateApiDefRateLimit
   playground: Boolean
   mesh: JSONObject
+  webhooks: [WebhookInput!]
 }
 
 type ApiDefsWithTimestamp {
   apiDefs: [ApiDef]
   timestamp: Timestamp
+}
+
+type Webhook {
+  event: WebhookEvent!
+  url: String!
+}
+
+input WebhookInput {
+  event: WebhookEvent!
+  url: String!
+}
+
+enum WebhookEvent {
+  schema_changed
 }
 
 type Query {

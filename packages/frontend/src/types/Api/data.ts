@@ -56,6 +56,7 @@ export type ApiDef = {
     additionalTypeDefs?: string[];
     transforms?: Transform[];
   };
+  webhooks: Webhook[];
 } & AllowIps<string[]> &
   DenyIps<string[]>;
 
@@ -63,6 +64,11 @@ export type GetApiDefsData = {
   getApiDefs: {
     apiDefs: ApiDef[];
   };
+};
+
+export type Webhook = {
+  event: string;
+  url: string;
 };
 
 export type GetApiDefById = {

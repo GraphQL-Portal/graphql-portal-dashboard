@@ -86,6 +86,14 @@ export type UseIPFilteringHook = (
   enableIPFiltering: boolean;
 };
 
+export type UseWebhooksHook = (
+  params: Pick<ApiDefFormMethods, 'control'>
+) => {
+  hooks: FieldArray;
+  addHook: FieldArrayAppend;
+  removeHook: FieldArrayRemove;
+};
+
 export type UseCreateApiDefHook = () => Pick<
   ApiDefFormMethods,
   'register' | 'control' | 'errors'
@@ -96,7 +104,8 @@ export type UseCreateApiDefHook = () => Pick<
     addToken: FieldArrayAppend;
     removeToken: FieldArrayRemove;
     disableSelectDatasources: boolean;
-  } & ReturnType<UseIPFilteringHook>;
+  } & ReturnType<UseIPFilteringHook> &
+  ReturnType<UseWebhooksHook>;
 
 export type UseUpdateGeneralHook = (
   props: EditApiTab
@@ -122,6 +131,11 @@ export type UseUpdateIPFilteringHook = (
   props: EditApiTab
 ) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors' | 'register'> &
   ReturnType<UseIPFilteringHook> & { onSubmit: OnSubmit };
+
+export type UseUpdateWebhooksHook = (
+  props: EditApiTab
+) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors' | 'register'> &
+  ReturnType<UseWebhooksHook> & { onSubmit: OnSubmit };
 
 export type UseAdditionalResolverHook = (
   props: EditApiTab

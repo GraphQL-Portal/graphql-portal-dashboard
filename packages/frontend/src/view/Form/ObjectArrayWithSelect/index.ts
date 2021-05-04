@@ -1,0 +1,1 @@
+export { ObjectArrayWithSelect } from './ObjectArrayWithSelect';

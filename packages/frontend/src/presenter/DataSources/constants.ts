@@ -32,6 +32,8 @@ const HANDLERS_LIST = [
   'TwitterHandler',
   'WeatherbitHandler',
   'IPAPIHandler',
+  'FusionCreatorAccountInformationUSHandler',
+  'FusionCreatorAccountInformationPSD2STETHandler',
 ];
 
 const TRANSFORMS_LIST = [
@@ -73,6 +75,9 @@ export const HANDLERS_LABELS: { [key: string]: string } = {
   MongooseHandler: 'MongoDB',
   GrpcHandler: 'gRPC',
   PostGraphileHandler: 'PostgreSQL',
+  FusionCreatorAccountInformationUSHandler: 'Fusion Fabric (Account Info. US)',
+  FusionCreatorAccountInformationPSD2STETHandler:
+    'Fusion Fabric (Account Info. PSD2-STET)',
 };
 
 export const HANDLERS_DESCRIPTIONS: { [key: string]: string } = {
@@ -105,6 +110,10 @@ export const CUSTOM_HANDLER_TO_PACKAGE: Record<string, string> = {
   StripeHandler: '@graphql-portal/stripe',
   TwitterHandler: '@graphql-portal/twitter',
   WeatherbitHandler: '@graphql-portal/weatherbit',
+  FusionCreatorAccountInformationUSHandler:
+    '@graphql-portal/fusion-creator-account-information-us',
+  FusionCreatorAccountInformationPSD2STETHandler:
+    '@graphql-portal/fusion-creator-account-information-psd2-stet',
 };
 
 export const PACKAGE_TO_CUSTOM_HANDLER: Record<string, string> = {
@@ -116,4 +125,8 @@ export const PACKAGE_TO_CUSTOM_HANDLER: Record<string, string> = {
   '@graphql-portal/stripe': 'StripeHandler',
   '@graphql-portal/twitter': 'TwitterHandler',
   '@graphql-portal/weatherbit': 'WeatherbitHandler',
+  '@graphql-portal/fusion-creator-account-information-us':
+    'FusionCreatorAccountInformationUSHandler',
+  '@graphql-portal/fusion-creator-account-information-psd2-stet':
+    'FusionCreatorAccountInformationPSD2STETHandler',
 };

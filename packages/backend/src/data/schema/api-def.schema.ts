@@ -39,6 +39,7 @@ const apiDefSchema = new mongoose.Schema(
     request_complexity_limit: Number,
     rate_limit: Object,
     mesh: Object,
+    webhooks: mongoCipherType,
   },
   { versionKey: false, timestamps: true }
 );

@@ -21,6 +21,8 @@ import { ReactComponent as Twitter } from '../../../icons/Twitter.svg';
 import { ReactComponent as Weatherbit } from '../../../icons/Weatherbit.svg';
 import { ReactComponent as Stripe } from '../../../icons/Stripe.svg';
 import { ReactComponent as Salesforce } from '../../../icons/Salesforce.svg';
+import { ReactComponent as IPApi } from '../../../icons/IPApi.svg';
+import { ReactComponent as Finastra } from '../../../icons/Finastra.svg';
 
 export const ICON_MAPPER: ElementsTable = {
   FhirHandler: Fhir,
@@ -42,6 +44,9 @@ export const ICON_MAPPER: ElementsTable = {
   WeatherbitHandler: Weatherbit,
   StripeHandler: Stripe,
   SalesforceHandler: Salesforce,
+  IPAPIHandler: IPApi,
+  FusionCreatorAccountInformationUSHandler: Finastra,
+  FusionCreatorAccountInformationPSD2STETHandler: Finastra,
 };
 
 export const TYPE_MAPPER: ElementsTable = {
@@ -66,4 +71,6 @@ export const TYPE_MAPPER: ElementsTable = {
   TwitterHandler: Portal,
   WeatherbitHandler: Portal,
   IPAPIHandler: Portal,
+  FusionCreatorAccountInformationUSHandler: Portal,
+  FusionCreatorAccountInformationPSD2STETHandler: Portal,
 };
