@@ -1,5 +1,17 @@
 # graphql-portal-dashboard-frontend
 
+## 0.10.0
+
+### Minor Changes
+
+- 4e8aaa9: FormLabel and FormLabelStart components
+
+### Patch Changes
+
+- 4fccbe9: Validation optimization
+- 3a55e93: Use AddFieldArrayHeader to fix openapi layout
+- d5e1531: Change styles of playground
+
 ## 0.9.0
 
 ### Minor Changes
