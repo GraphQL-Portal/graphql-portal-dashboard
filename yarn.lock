@@ -2662,6 +2662,22 @@
   resolved "https://registry.yarnpkg.com/@graphql-portal/datasources/-/datasources-0.1.4.tgz#2be8aafd6288db0ae8ea40e9f417e3b775a541e0"
   integrity sha512-WSEKwo1Fk/c9yySB4Priq6Kt76YICdWAprnK55cPbJGoVxjL3rp4mlv1qd0ZzMLj7FZDGUVrXNieltITqt5Xrw==
 
+"@graphql-portal/fusion-creator-account-information-psd2-stet@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/fusion-creator-account-information-psd2-stet/-/fusion-creator-account-information-psd2-stet-0.2.2.tgz#dffcf9a8829659ae469978f5b58e2c4abfa589de"
+  integrity sha512-QzOolxY/GCnpHphuTcHx6g5x5d42/VvmVNUtIEVfMGZHTs4XuRF0AL6VnPVJPM0DdxnWs+Ce581lrM1cvpXj/A==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.16.0"
+    graphql "^15.4.0"
+
+"@graphql-portal/fusion-creator-account-information-us@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/fusion-creator-account-information-us/-/fusion-creator-account-information-us-0.2.2.tgz#f1761a561bbb7bf97320a0cc4f0e35908b1ab383"
+  integrity sha512-KUh23fN2PJiMk1NqTwWP+402ZMu/KaPa9ej9pmF4bGxLbM/I+iMhdudXaIfr7wcbtXoehVEGakJWUy+5sDyEtg==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.16.0"
+    graphql "^15.4.0"
+
 "@graphql-portal/gateway@0.20.0":
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.20.0.tgz#eac05a4ea4d8efa496c8d3182bac66dd11bff9e5"
