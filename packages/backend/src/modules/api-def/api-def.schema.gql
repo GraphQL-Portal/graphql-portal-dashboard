@@ -73,13 +73,17 @@ type ApiDefsWithTimestamp {
 }
 
 type Webhook {
-  event: String!
+  event: WebhookEvent!
   url: String!
 }
 
 input WebhookInput {
-  event: String!
+  event: WebhookEvent!
   url: String!
+}
+
+enum WebhookEvent {
+  schema_changed
 }
 
 type Query {
