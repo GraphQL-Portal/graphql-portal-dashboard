@@ -58,6 +58,8 @@
     "@graphql-portal/twitter": "0.3.2",
     "@graphql-portal/types": "0.27.0",
     "@graphql-portal/weatherbit": "0.2.2",
+    "@graphql-portal/fusion-creator-account-information-psd2-stet": "0.2.2",
+    "@graphql-portal/fusion-creator-account-information-us": "0.2.2",
     "@maxmind/geoip2-node": "2.3.2",
     "@nestjs/common": "7.6.15",
     "@nestjs/core": "7.6.15",
