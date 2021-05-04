@@ -8922,7 +8922,7 @@ end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-enhanced-resolve@^4.0.0, enhanced-resolve@^4.3.0:
+enhanced-resolve@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-4.5.0.tgz#2f3cfd84dbe3b487f18f2db2ef1e064a571ca5ec"
   integrity sha512-Nv9m36S/vxpsI+Hc4/ZGRs0n9mXqSWGGq49zxb/cJfPAQMbUtttJAlNPS4AQzaBdw/pKskw5bMbekT/Y7W/Wlg==
@@ -8930,6 +8930,14 @@ enhanced-resolve@^4.0.0, enhanced-resolve@^4.3.0:
     graceful-fs "^4.1.2"
     memory-fs "^0.5.0"
     tapable "^1.0.0"
+
+enhanced-resolve@^5.0.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.8.0.tgz#d9deae58f9d3773b6a111a5a46831da5be5c9ac0"
+  integrity sha512-Sl3KRpJA8OpprrtaIswVki3cWPiPKxXuFxJXBp+zNb6s6VwNWwFRUdtmzd2ReUut8n+sCPx7QCtQ7w5wfJhSgQ==
+  dependencies:
+    graceful-fs "^4.2.4"
+    tapable "^2.2.0"
 
 enhanced-resolve@^5.7.0:
   version "5.7.0"
@@ -17366,7 +17374,14 @@ rxjs@6.6.3:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@6.6.7, rxjs@^6.6.0, rxjs@^6.6.3, rxjs@^6.6.7:
+rxjs@7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.0.0.tgz#c55d67c52aee8804d32ab60965e335bd41e2dc2d"
+  integrity sha512-I1V/ArAtGJg4kmCfms8fULm0SwYgEsAf2d5WPCBGzTYm2qTjO3Tx4EDFaGjbOox8CeEsC69jQK22mnmfyA26sw==
+  dependencies:
+    tslib "~2.1.0"
+
+rxjs@^6.6.0, rxjs@^6.6.3, rxjs@^6.6.7:
   version "6.6.7"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
   integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
@@ -19046,14 +19061,13 @@ ts-jest@26.5.5:
     semver "7.x"
     yargs-parser "20.x"
 
-ts-loader@8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-8.2.0.tgz#6a3aeaa378aecda543e2ed2c332d3123841d52e0"
-  integrity sha512-ebXBFrNyMSmbWgjnb3WBloUBK+VSx1xckaXsMXxlZRDqce/OPdYBVN5efB0W3V0defq0Gcy4YuzvPGqRgjj85A==
+ts-loader@9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-9.1.1.tgz#83f598c37e648f3b6b2350bfac6f58f9253d078c"
+  integrity sha512-u91MdIE4rtN/06Q881uUzVeMoYy+CdFXoanCQXVGRubKKxgLjqQ/H9nkDbp6klkiPv3t18KLjZbEofkJodM3ow==
   dependencies:
     chalk "^4.1.0"
-    enhanced-resolve "^4.0.0"
-    loader-utils "^2.0.0"
+    enhanced-resolve "^5.0.0"
     micromatch "^4.0.0"
     semver "^7.3.4"
 
