@@ -142,17 +142,17 @@ export default class UserService {
       );
     }
 
-    const toCreate = await this.userModel.findOne({ email });
+    let user = await this.userModel.findOne({ email });
 
-    if (!toCreate) {
-      const created = await this.userModel.create({
+    if (!user) {
+      user = await this.userModel.create({
         email,
         password,
         role: Roles.ADMIN,
       });
-      created.setPassword(password);
-      await created.save();
     }
+    user.setPassword(password);
+    await user.save();
   }
 
   public async getUsers(exceptUser: string): Promise<IUserDocument[]> {
