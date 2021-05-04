@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.11.0
+
+### Minor Changes
+
+- 56f0464: webhooks and 2 fusion connectors added
+
 ## 0.8.1
 
 ### Patch Changes

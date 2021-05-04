@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.11.0
+
+### Minor Changes
+
+- 56f0464: webhooks and 2 fusion connectors added
+
 ## 0.10.0
 
 ### Minor Changes
