@@ -6,6 +6,7 @@ import { FormGroup } from '../../../ui';
 import { TransformEditors } from '../TransformEditors';
 import { PrefixTransform } from '../PrefixTransform';
 import { RenameTransform } from '../RenameTransform';
+import { FilterTransform } from '../FilterTransform';
 import { AvailableTransforms } from './Available';
 
 import { List } from './List';
@@ -14,6 +15,7 @@ import { List } from './List';
 const TRANSFORM_TABLE: TransformsMapper = {
   prefix: PrefixTransform,
   rename: RenameTransform,
+  filterSchema: FilterTransform,
 };
 
 const getTransform = (transform: string) =>

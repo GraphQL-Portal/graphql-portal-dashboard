@@ -23,6 +23,7 @@ import {
   FusionCreatorAIUSFormMethods,
   JsonSchemaFormMethods,
   FusionCreatorAIPSD2STETFormMethods,
+  FilterTransformFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -106,4 +107,13 @@ export type UseJsonSchemaHook = (
     operations: FieldArray<JsonSchemaOperation>;
     addOperation: NOOP;
     removeOperation: FieldArrayRemove;
+  };
+
+export type UseFilterTransformHook = (
+  props: TransformStep
+) => Pick<FilterTransformFormMethods, 'register' | 'errors' | 'control'> &
+  OnFormSubmit & {
+    filters: FieldArray<ObjectArrayItem>;
+    onAddFilter: NOOP;
+    onRemoveFilter: FieldArrayRemove;
   };

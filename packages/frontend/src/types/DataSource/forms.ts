@@ -65,3 +65,9 @@ export type JsonSchemaForm = {
 };
 
 export type JsonSchemaFormMethods = FormMethods<JsonSchemaForm>;
+
+export type FilterTransformForm = {
+  mode: string;
+  filters: FieldArray<StringArrayItem>;
+};
+export type FilterTransformFormMethods = FormMethods<FilterTransformForm>;
