@@ -8,6 +8,7 @@ import {
   TwitterHandler,
   StripeHandler,
   FusionCreatorAccountInformationUSHandler,
+  FusionCreatorAccountInformationPSD2STETHandler,
 } from '@graphql-portal/types';
 import { ObjectArray, ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
@@ -44,6 +45,9 @@ export type CrunchbaseFormMethods = FormMethods<CrunchbaseForm>;
 
 export type FusionCreatorAIUSForm = FusionCreatorAccountInformationUSHandler;
 export type FusionCreatorAIUSFormMethods = FormMethods<FusionCreatorAIUSForm>;
+
+export type FusionCreatorAIPSD2STETForm = FusionCreatorAccountInformationPSD2STETHandler;
+export type FusionCreatorAIPSD2STETFormMethods = FormMethods<FusionCreatorAIPSD2STETForm>;
 
 export type TwitterForm = TwitterHandler;
 export type TwitterFormMethods = FormMethods<TwitterForm>;

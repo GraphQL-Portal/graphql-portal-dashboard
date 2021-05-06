@@ -20,6 +20,7 @@ import { TwitterHandler } from '../TwitterHandler';
 import { StripeHandler } from '../StripeHandler';
 import { JsonSchemaHandler } from '../JsonSchemaHandler';
 import { FusionCreatorAccountInformationUSHandler } from '../FusionCreatorAccountInformationUSHandler';
+import { FusionCreatorAccountInformationPSD2STETHandler } from '../FusionCreatorAccountInformationPSD2STETHandler';
 
 // The list of custom handler forms
 // Each handler should have React.FC<HandlerStep> type signature
@@ -30,6 +31,7 @@ const HANDLERS_MAPPER: HandlersMapper = {
   ContentfulHandler,
   SalesforceHandler,
   FusionCreatorAccountInformationUSHandler,
+  FusionCreatorAccountInformationPSD2STETHandler,
   graphql: GraphQLHandler,
   fhir: FhirHandler,
   tuql: TuqlHandler,
