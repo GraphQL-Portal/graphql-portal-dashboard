@@ -24,7 +24,7 @@ export const useFilterTransform: UseFilterTransformHook = ({
   onCancel,
   onSuccess,
   value,
-}: any) => {
+}) => {
   const { mode, filters } = value || {};
   const defaultValues = Object.assign({}, FILTER_DEFAULT_VALUE, mode, {
     filters: arrayToFieldArray(filters || []),

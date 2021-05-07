@@ -1,0 +1,1 @@
+export { NamingConventionTransform } from './NamingConventionTransform';
