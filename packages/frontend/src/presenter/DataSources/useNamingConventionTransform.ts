@@ -16,7 +16,7 @@ export const useNamingConventionTransform: UseNamingConventionTransformHook = ({
   onCancel,
   onSuccess,
   value,
-}: any) => {
+}) => {
   const defaultValues = Object.assign({}, NAMING_CONVENTION_DEFAULT, value);
   const { control, handleSubmit, errors } = useForm<NamingConventionForm>({
     mode: 'onSubmit',
