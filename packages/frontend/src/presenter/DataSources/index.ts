@@ -27,5 +27,6 @@ export { useCrunchbaseHandler } from './useCrunchbaseHandler';
 export { useStripeHandler } from './useStripeHandler';
 export { useTwitterHandler } from './useTwitterHandler';
 export { useFusionCreatorAccountInformationUSHandler } from './useFusionCreatorAccountInformationUSHandler';
+export { useFusionCreatorAccountInformationPSD2STETHandler } from './useFusionCreatorAccountInformationPSD2STETHandler';
 export { useAdditionalResolversSourceMethods } from './useAdditionalResolversSourceMethods';
 export { useJsonSchemaHandler } from './useJsonSchemaHandler';

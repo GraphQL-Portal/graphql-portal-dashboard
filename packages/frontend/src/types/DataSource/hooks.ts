@@ -22,6 +22,7 @@ import {
   StripeFormMethods,
   FusionCreatorAIUSFormMethods,
   JsonSchemaFormMethods,
+  FusionCreatorAIPSD2STETFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -75,6 +76,12 @@ export type UseCrunchbaseHandlerHook = (
 export type useFusionCreatorAccountInformationUSHandlerHook = (
   props: HandlerStep
 ) => Pick<FusionCreatorAIUSFormMethods, 'errors' | 'control'> & {
+  onSubmit: OnSubmit;
+};
+
+export type useFusionCreatorAccountInformationPSD2STETHandlerHook = (
+  props: HandlerStep
+) => Pick<FusionCreatorAIPSD2STETFormMethods, 'errors' | 'control'> & {
   onSubmit: OnSubmit;
 };
 
