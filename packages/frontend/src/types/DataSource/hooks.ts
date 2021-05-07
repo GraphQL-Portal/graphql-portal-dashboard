@@ -24,6 +24,7 @@ import {
   JsonSchemaFormMethods,
   FusionCreatorAIPSD2STETFormMethods,
   FilterTransformFormMethods,
+  NamingConventionFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -117,3 +118,7 @@ export type UseFilterTransformHook = (
     onAddFilter: NOOP;
     onRemoveFilter: FieldArrayRemove;
   };
+
+export type UseNamingConventionTransformHook = (
+  props: TransformStep
+) => Pick<NamingConventionFormMethods, 'control'> & OnFormSubmit;

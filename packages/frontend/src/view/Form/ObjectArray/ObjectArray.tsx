@@ -50,7 +50,7 @@ export const ObjectArray: React.FC<Props> = ({
               {keys.map((key, i) => {
                 const schema = objectSchema[key];
                 return (
-                  <>
+                  <React.Fragment key={`${field.id}-${key}-${i}`}>
                     <Col xs={5} className={objectField}>
                       <Input
                         ref={register()}
@@ -63,7 +63,7 @@ export const ObjectArray: React.FC<Props> = ({
                       />
                     </Col>
                     {i === 1 ? remove : null}
-                  </>
+                  </React.Fragment>
                 );
               })}
               {keys.length < 2 ? remove : null}

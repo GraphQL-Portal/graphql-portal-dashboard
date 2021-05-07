@@ -31,3 +31,4 @@ export { useFusionCreatorAccountInformationPSD2STETHandler } from './useFusionCr
 export { useAdditionalResolversSourceMethods } from './useAdditionalResolversSourceMethods';
 export { useJsonSchemaHandler } from './useJsonSchemaHandler';
 export { useFilterTransform } from './useFilterTransform';
+export { useNamingConventionTransform } from './useNamingConventionTransform';

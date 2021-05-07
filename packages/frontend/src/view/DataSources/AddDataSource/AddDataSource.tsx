@@ -55,11 +55,13 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
             state={{ handler }}
             source={source}
             step={1}
+            key="edit-data-source-step-2"
           />,
           <SourceTransforms
             updateState={updateState}
             state={{ transforms }}
             step={2}
+            key="edit-data-source-step-3"
           />,
         ]
       : [
@@ -67,6 +69,7 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
             updateState={updateState}
             state={{ transforms }}
             step={1}
+            key="edit-data-source-step-2"
           />,
         ];
 

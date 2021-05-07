@@ -71,3 +71,9 @@ export type FilterTransformForm = {
   filters: FieldArray<StringArrayItem>;
 };
 export type FilterTransformFormMethods = FormMethods<FilterTransformForm>;
+export type NamingConventionForm = {
+  enumValues: string;
+  fieldNames: string;
+  typeNames: string;
+};
+export type NamingConventionFormMethods = FormMethods<NamingConventionForm>;
