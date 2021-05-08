@@ -1946,13 +1946,13 @@
     "@graphql-tools/url-loader" "6.8.2"
     "@graphql-tools/wrap" "7.0.5"
 
-"@graphql-mesh/grpc@0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.14.1.tgz#786d44e909f2ae427e2ded2a37f45a47a861669a"
-  integrity sha512-4UpXEPRFygn55zU8eXYgGAlRQtCxgvFn2sfi9odsl0JLKfn7CuSZF7prx2Q8bBwhj/AQ1mCZ6XX/rfidT8nSHg==
+"@graphql-mesh/grpc@0.14.5":
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.14.5.tgz#c18de5e53b813b569189beb6f5cf03ea10b95dc8"
+  integrity sha512-Yevicabv1b6oGA9QWXzs92whFQ2+aXHu778ENtDxnJHria4N4AotnQsGYSC1K0fG4gzjpyK/2IRvOlJlQW4QQw==
   dependencies:
-    "@graphql-mesh/types" "0.40.0"
-    "@graphql-mesh/utils" "0.11.0"
+    "@graphql-mesh/types" "0.41.1"
+    "@graphql-mesh/utils" "0.11.3"
     "@grpc/grpc-js" "^1.1.7"
     "@grpc/proto-loader" "0.6.1"
     camel-case "4.1.2"
