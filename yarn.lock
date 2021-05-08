@@ -1906,13 +1906,13 @@
     lodash "4.17.21"
     param-case "3.0.4"
 
-"@graphql-mesh/fhir@0.10.8":
-  version "0.10.8"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/fhir/-/fhir-0.10.8.tgz#6683a97a6365e34ef538d575992fe59f4d31725c"
-  integrity sha512-FUj0qHAJztV8kPaZgMHlsWHsBQGTN1XmGzqzxbT1zA8cyoVOouapNYcRDVzra/5Qgy3ilIqdFRRgzSSBQOEmIg==
+"@graphql-mesh/fhir@0.10.9":
+  version "0.10.9"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/fhir/-/fhir-0.10.9.tgz#09002bb75a7153eb57f092001105bc8b48381678"
+  integrity sha512-lqtMHU6cObhxibauH4KHjWu0n4EyCosYtP+0KXvkG9OmU4E6WWlmVqQoD03Jm7To+k/4ktbU8E0Kqmq6yU3dQg==
   dependencies:
-    "@graphql-mesh/json-schema" "0.14.6"
-    "@graphql-mesh/types" "0.41.1"
+    "@graphql-mesh/json-schema" "0.14.7"
+    "@graphql-mesh/types" "0.42.0"
     "@graphql-mesh/utils" "0.11.3"
     url-join "4.0.1"
 
@@ -2004,6 +2004,23 @@
   dependencies:
     "@ardatan/aggregate-error" "0.0.6"
     "@graphql-mesh/types" "0.41.1"
+    "@graphql-mesh/utils" "0.11.3"
+    ajv "8.2.0"
+    graphql-compose "8.0.1"
+    graphql-scalars "1.9.3"
+    lodash "4.17.21"
+    object-hash "2.1.1"
+    pascal-case "3.1.2"
+    to-json-schema "0.2.5"
+    url-join "4.0.1"
+
+"@graphql-mesh/json-schema@0.14.7":
+  version "0.14.7"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.14.7.tgz#7fe82af7d79f296d65e9062438a91b19dec0caee"
+  integrity sha512-8rxq4bnwEteVVViiPNnHv83Q7Z6C3cEVx0pYrATLeywjd4nNRKHCYsHcvnkCAKQXjFt6BsAH99vQ2rvOQINHwg==
+  dependencies:
+    "@ardatan/aggregate-error" "0.0.6"
+    "@graphql-mesh/types" "0.42.0"
     "@graphql-mesh/utils" "0.11.3"
     ajv "8.2.0"
     graphql-compose "8.0.1"
@@ -2592,6 +2609,16 @@
   version "0.41.1"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.41.1.tgz#cf28ae88cbc7c0c69987ee9bd2798ba5306558fa"
   integrity sha512-r5dGCixUf7gN5tjEgpU9Hp3ibZDPCAhTZqT26VURb39GipFgKloxIixoNrnjNPg5GMUryjX4K3SYIxRbxU/0ww==
+  dependencies:
+    "@graphql-tools/delegate" "7.1.5"
+    "@graphql-tools/utils" "7.9.1"
+    "@graphql-typed-document-node/core" "3.1.0"
+    fetchache "0.1.1"
+
+"@graphql-mesh/types@0.42.0":
+  version "0.42.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.42.0.tgz#1f1637632aef28a17b1afeab9fcf4af37e17aed7"
+  integrity sha512-LKgRqoMol20XCPSheHbaJ7eu0CX4Q2i7o6WtOWIuKobg6Q+XkXQGyqFqjaVKKuZVWhGNCqXqCMjQr26JSQVxKA==
   dependencies:
     "@graphql-tools/delegate" "7.1.5"
     "@graphql-tools/utils" "7.9.1"
