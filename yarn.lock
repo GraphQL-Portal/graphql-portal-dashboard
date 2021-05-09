@@ -2131,14 +2131,14 @@
     neo4j-driver "4.2.3"
     neo4j-graphql-js "2.19.2"
 
-"@graphql-mesh/odata@0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/odata/-/odata-0.11.1.tgz#031d0ebdd0f81b7c5ab236c2a35ee51672ac3506"
-  integrity sha512-4r1I1BB5lDYEOd7P6qg2hvahfGQ6vNEibILJlDxovHQV0ZvswXNeMRMQwcx62Q3u8P/baQHUvPpsFM1mQyhKVw==
+"@graphql-mesh/odata@0.11.6":
+  version "0.11.6"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/odata/-/odata-0.11.6.tgz#32450c852cdac56f859c97c244d687d1d44240f3"
+  integrity sha512-nSUpyChGycLMnmx1xpf5gVzC1dSRjgVuSUuNXe5SIcRXG6Ck8z5J6eTNf7YkS+ABXs8x41A5H4A5Bk7ByYonVA==
   dependencies:
-    "@graphql-mesh/types" "0.40.0"
-    "@graphql-mesh/utils" "0.11.0"
-    "@graphql-tools/utils" "7.8.1"
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.11.3"
+    "@graphql-tools/utils" "7.9.1"
     cross-fetch "3.1.4"
     dataloader "2.0.0"
     fast-xml-parser "3.19.0"
