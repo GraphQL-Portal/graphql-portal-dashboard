@@ -2203,13 +2203,13 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/postgraphile@0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/postgraphile/-/postgraphile-0.12.1.tgz#87a3d76360126ad4bb9f5b4d6c31f338c70041fd"
-  integrity sha512-FM7V0koKl9+cRbYbsEceA3CU4H5PBC3/VtWdHsSSh930uOGO6E76h4ileMlakWCAxETZVrgeZIT3rr0r5Cteig==
+"@graphql-mesh/postgraphile@0.12.6":
+  version "0.12.6"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/postgraphile/-/postgraphile-0.12.6.tgz#ee3661edf57feeb368f4cad089f43c617f0d6d79"
+  integrity sha512-bGWg3ICEc9HTvyTf2e7iMwIxo9kSckEN6Fm3F4ZAx5X0583xFop7SuAJlz2Y17yHYFhp2z+C6h7fwelXrRUdNg==
   dependencies:
-    "@graphql-mesh/types" "0.40.0"
-    "@graphql-mesh/utils" "0.11.0"
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.11.3"
     pg "^8.6.0"
     postgraphile "4.11.0"
     postgraphile-core "4.11.2"
