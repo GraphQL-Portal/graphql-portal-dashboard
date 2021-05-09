@@ -2168,13 +2168,13 @@
     pascal-case "3.1.2"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.16.3":
-  version "0.16.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.3.tgz#9509b22c43cdde2955e1701301bcc17cd838e986"
-  integrity sha512-44fQgy5tHnkW6lu9fXcld+yES5lLGV0rDJhnTMVbzle3HoxUBoCkugJuheLZHnKBSl+iM5VXQW9QOELpnq+xfw==
+"@graphql-mesh/openapi@0.16.8":
+  version "0.16.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.8.tgz#c8d8c6d8ec26ae41490373fee813bb8c77d53a3b"
+  integrity sha512-x1GHqCnuZqax7Ee6ESxyp+8Ptm/CY3TllCKfYnir5hyT+/M/oHaHsUrwQbOiAHxd+zdDGEKTcH/KiFw+LmA7/g==
   dependencies:
-    "@graphql-mesh/types" "0.40.0"
-    "@graphql-mesh/utils" "0.11.0"
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.11.3"
     deep-equal "2.0.5"
     form-urlencoded "6.0.3"
     graphql-scalars "1.9.3"
