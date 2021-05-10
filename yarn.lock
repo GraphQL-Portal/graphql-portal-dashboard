@@ -2738,10 +2738,10 @@
     "@graphql-mesh/openapi" "^0.16.0"
     graphql "^15.4.0"
 
-"@graphql-portal/fusion-creator-account-information-us@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/fusion-creator-account-information-us/-/fusion-creator-account-information-us-0.2.2.tgz#f1761a561bbb7bf97320a0cc4f0e35908b1ab383"
-  integrity sha512-KUh23fN2PJiMk1NqTwWP+402ZMu/KaPa9ej9pmF4bGxLbM/I+iMhdudXaIfr7wcbtXoehVEGakJWUy+5sDyEtg==
+"@graphql-portal/fusion-creator-account-information-us@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/fusion-creator-account-information-us/-/fusion-creator-account-information-us-0.2.3.tgz#054a86176c747bb36f4a317d1c04288a9c2da7f7"
+  integrity sha512-E31YzYyEdJE4CwwkfFY981fQubqsNrZZ68dxfKveCxGDeGZugQNhHHEdNcDUeU9PTPVfYSDlpRYLdrWbQ2bNIg==
   dependencies:
     "@graphql-mesh/openapi" "^0.16.0"
     graphql "^15.4.0"
