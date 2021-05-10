@@ -2848,10 +2848,10 @@
     "@graphql-portal/datasources" "^0.1.5"
     ajv "8.2.0"
 
-"@graphql-portal/weatherbit@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.2.2.tgz#d4fa3271aa7ab37a0fdc92298e5542ace665ff2d"
-  integrity sha512-Ik2YkUmKdrG7VCt8ltwXPQ0jzLa/jow01Vuxdozlx/HbNB0nek1OeC5HjO8obwFcrurZSKVUKO62ZlKkgcdxew==
+"@graphql-portal/weatherbit@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/weatherbit/-/weatherbit-0.2.3.tgz#d6cd3ae6514c699c94fa72383e33113ad3c4efcd"
+  integrity sha512-Fj97vXRBJ4Zjb+6LOIDZBz8uB8yuwq4Na4azzbsH+rg/dxfRPtNc80pKtskoNN69qqTwTybR5zL4ZMJxgOOAqg==
   dependencies:
     "@graphql-mesh/openapi" "^0.16.0"
 
