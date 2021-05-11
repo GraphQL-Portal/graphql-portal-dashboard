@@ -2410,15 +2410,15 @@
     "@graphql-tools/wrap" "7.0.5"
     micromatch "4.0.2"
 
-"@graphql-mesh/transform-mock@0.8.8":
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.8.8.tgz#d7e179b8d0177411c063d1820705e0429448b1cf"
-  integrity sha512-BRy8eeG8V8B0ahVReROUdyDa1nhqqiwztOInFxCyxu7rlEzrP8CHmjKN8ANzAM+oDyZwlqTOQvsbIXFNUYo/OQ==
+"@graphql-mesh/transform-mock@0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.9.5.tgz#91fa75cb83d697ad78ff6f07ce48101f5e034f50"
+  integrity sha512-Za1+uTz/UWZnDB/5q35wDOozRbmCp52X/l6fYTmeX10zWJZAWQXf5IBCgTFnXaIYRQfbcMpEKcWmfxgvyB5nQg==
   dependencies:
-    "@graphql-mesh/types" "0.40.0"
-    "@graphql-mesh/utils" "0.11.0"
-    "@graphql-tools/mock" "8.1.1"
-    "@graphql-tools/utils" "7.8.1"
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.11.4"
+    "@graphql-tools/mock" "8.1.2"
+    "@graphql-tools/utils" "7.9.1"
     faker "5.5.3"
 
 "@graphql-mesh/transform-mock@^0.8.1":
@@ -2649,6 +2649,25 @@
     fetchache "0.1.1"
     flatstr "1.0.12"
     graphql-jit "0.5.0"
+    is-url "1.2.4"
+    js-yaml "4.1.0"
+    object-hash "2.1.1"
+    tiny-lru "7.0.6"
+
+"@graphql-mesh/utils@0.11.4":
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.11.4.tgz#e3b48ae351374f70545e92b26735477469d4793b"
+  integrity sha512-qVgX5IbatvRYmDgvfpfFTd0nJ1DTXFG0tRe/Noq1HIQ4GcVe3smyNnfpwiP36xkThq8bXs6YmH02cwxCtahnwQ==
+  dependencies:
+    "@ardatan/string-interpolation" "1.2.12"
+    "@graphql-tools/delegate" "7.1.5"
+    "@graphql-tools/utils" "7.9.1"
+    "@graphql-typed-document-node/core" "3.1.0"
+    cross-fetch "3.1.4"
+    date-fns "2.21.3"
+    fetchache "0.1.1"
+    flatstr "1.0.12"
+    graphql-jit "0.5.1"
     is-url "1.2.4"
     js-yaml "4.1.0"
     object-hash "2.1.1"
@@ -3114,6 +3133,17 @@
     fast-json-stable-stringify "^2.1.0"
     ts-is-defined "^1.0.0"
     tslib "~2.1.0"
+
+"@graphql-tools/mock@8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.1.2.tgz#c227144260c7ee3410dd47fba1d73d1ee0b75950"
+  integrity sha512-tgvy/NYZzd9D/UHMkmTE+XWHCYL01pDaNKBtKb37Pr1UOlPXtLhSQtqRPvvXIg+VUW5yK4pRlC9Xcxm0ZAKXhA==
+  dependencies:
+    "@graphql-tools/schema" "^7.0.0"
+    "@graphql-tools/utils" "^7.0.0"
+    fast-json-stable-stringify "^2.1.0"
+    ts-is-defined "^1.0.0"
+    tslib "~2.2.0"
 
 "@graphql-tools/mock@^7.0.0":
   version "7.0.0"
@@ -10918,6 +10948,18 @@ graphql-jit@0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/graphql-jit/-/graphql-jit-0.5.0.tgz#83965ae510892cac80325d269b6e1f54b4f67a7a"
   integrity sha512-9MnnbODEmcCQ75Y5+PvQF6bGj/of9fWigvZnyv29HnZOc5e5fa6cr/lyo7HOQZwvgtw9klJh+DwH1oUE8wsWIw==
+  dependencies:
+    fast-json-stringify "^1.13.0"
+    generate-function "^2.3.1"
+    json-schema "^0.2.3"
+    lodash.memoize "^4.1.2"
+    lodash.merge "4.6.2"
+    lodash.mergewith "4.6.2"
+
+graphql-jit@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/graphql-jit/-/graphql-jit-0.5.1.tgz#738cb2c772a65e9682f04f20dc8edac4365023da"
+  integrity sha512-gzgnlu9/R/SnMnPe7MGQWh6sIpK7Tva2mT2ulhUenD0GZD1izbakevGGRT6ApTMenCOiClSVcugDNziXC5KKYg==
   dependencies:
     fast-json-stringify "^1.13.0"
     generate-function "^2.3.1"
