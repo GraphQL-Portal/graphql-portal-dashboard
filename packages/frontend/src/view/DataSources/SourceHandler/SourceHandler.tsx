@@ -21,6 +21,7 @@ import { StripeHandler } from '../StripeHandler';
 import { JsonSchemaHandler } from '../JsonSchemaHandler';
 import { FusionCreatorAccountInformationUSHandler } from '../FusionCreatorAccountInformationUSHandler';
 import { FusionCreatorAccountInformationPSD2STETHandler } from '../FusionCreatorAccountInformationPSD2STETHandler';
+import { SlackHandler } from '../SlackHandler';
 
 // The list of custom handler forms
 // Each handler should have React.FC<HandlerStep> type signature
@@ -44,6 +45,7 @@ const HANDLERS_MAPPER: HandlersMapper = {
   grpc: GRPCHandler,
   openapi: OpenapiHandler,
   jsonSchema: JsonSchemaHandler,
+  SlackHandler: SlackHandler,
 };
 
 const getHandler = (key: string) => HANDLERS_MAPPER[key] || EditorsHandler;

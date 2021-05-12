@@ -32,3 +32,4 @@ export { useAdditionalResolversSourceMethods } from './useAdditionalResolversSou
 export { useJsonSchemaHandler } from './useJsonSchemaHandler';
 export { useFilterTransform } from './useFilterTransform';
 export { useNamingConventionTransform } from './useNamingConventionTransform';
+export { useSlackHandler } from './useSlackHandler';
