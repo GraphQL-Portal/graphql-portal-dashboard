@@ -25,6 +25,7 @@ import {
   FusionCreatorAIPSD2STETFormMethods,
   FilterTransformFormMethods,
   NamingConventionFormMethods,
+  SlackFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -122,3 +123,7 @@ export type UseFilterTransformHook = (
 export type UseNamingConventionTransformHook = (
   props: TransformStep
 ) => Pick<NamingConventionFormMethods, 'control'> & OnFormSubmit;
+
+export type UseSlackHandlerHook = (
+  props: HandlerStep
+) => Pick<SlackFormMethods, 'errors' | 'register'> & OnFormSubmit;
