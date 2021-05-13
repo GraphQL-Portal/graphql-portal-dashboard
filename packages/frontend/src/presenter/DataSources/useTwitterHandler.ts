@@ -6,7 +6,7 @@ import { useFormErrors } from '../../model/Hooks';
 import { TwitterForm, UseTwitterHandlerHook } from '../../types';
 
 const TWITTER_DEFAULT_STATE = {
-  authorization: '',
+  authorization: undefined,
 };
 
 const suite = vest.create('twitter_handler', ({ authorization }) => {
@@ -22,7 +22,7 @@ export const useTwitterHandler: UseTwitterHandlerHook = ({
 }) => {
   const defaultValues = Object.assign({}, TWITTER_DEFAULT_STATE, state.handler);
 
-  const { handleSubmit, errors, control } = useForm<TwitterForm>({
+  const { handleSubmit, errors, register } = useForm<TwitterForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -35,6 +35,6 @@ export const useTwitterHandler: UseTwitterHandlerHook = ({
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };
