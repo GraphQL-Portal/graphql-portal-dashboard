@@ -10,8 +10,8 @@ import {
   FieldArrayRemove,
   OnSubmit,
 } from '../HookForm';
-import { HandlerStep, TransformStep } from './components';
-import { JsonSchemaOperation } from './data';
+import { HandlerStep, NameStep, TransformStep } from './components';
+import { JsonSchemaOperation, NameFormMethods } from './data';
 import {
   OpenapiFormMethods,
   PrefixFormMethods,
@@ -144,3 +144,7 @@ export type UseNeo4JHandlerHook = (
 export type UseSoapHandlerHook = (
   props: HandlerStep
 ) => Pick<SoapFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseAddDataSourceNameHook = (
+  props: NameStep
+) => Pick<NameFormMethods, 'errors' | 'register'> & OnFormSubmit;

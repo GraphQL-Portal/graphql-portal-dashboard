@@ -3,7 +3,7 @@ import { vestResolver } from '@hookform/resolvers/vest';
 import vest, { test, enforce } from 'vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { NameForm, NameStep } from '../../types';
+import { NameForm, UseAddDataSourceNameHook } from '../../types';
 
 const suite = vest.create('data_source_name', ({ name }) => {
   test('name', 'Name is required', () => {
@@ -11,12 +11,12 @@ const suite = vest.create('data_source_name', ({ name }) => {
   });
 });
 
-export const useAddDataSourceName = ({
+export const useAddDataSourceName: UseAddDataSourceNameHook = ({
   state,
   updateState,
   step,
-}: NameStep) => {
-  const { control, errors, handleSubmit } = useForm<NameForm>({
+}) => {
+  const { register, errors, handleSubmit } = useForm<NameForm>({
     defaultValues: state,
     reValidateMode: 'onSubmit',
     resolver: vestResolver(suite),
@@ -24,13 +24,11 @@ export const useAddDataSourceName = ({
 
   useFormErrors(errors);
 
-  const onSubmit = (data: NameForm) => {
-    updateState(data, step);
-  };
+  const onSubmit = (data: NameForm) => updateState(data, step);
 
   return {
-    control,
-    errors,
     onSubmit: handleSubmit(onSubmit),
+    register,
+    errors,
   };
 };
