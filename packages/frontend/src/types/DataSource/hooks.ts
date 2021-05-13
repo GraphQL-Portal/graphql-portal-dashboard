@@ -75,7 +75,7 @@ export type UseSalesforceHandlerHook = (
 ) => Pick<SalesforceFormMethods, 'register' | 'errors'> & OnFormSubmit;
 export type UseCrunchbaseHandlerHook = (
   props: HandlerStep
-) => Pick<CrunchbaseFormMethods, 'errors' | 'control'> & OnFormSubmit;
+) => Pick<CrunchbaseFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type useFusionCreatorAccountInformationUSHandlerHook = (
   props: HandlerStep

@@ -18,7 +18,7 @@ export const useCrunchbaseHandler: UseCrunchbaseHandlerHook = ({
 }) => {
   const defaultValues = Object.assign({}, { userKey: '' }, state.handler);
 
-  const { handleSubmit, errors, control } = useForm<CrunchbaseForm>({
+  const { handleSubmit, errors, register } = useForm<CrunchbaseForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -31,6 +31,6 @@ export const useCrunchbaseHandler: UseCrunchbaseHandlerHook = ({
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };

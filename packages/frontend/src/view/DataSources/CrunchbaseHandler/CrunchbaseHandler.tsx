@@ -1,26 +1,22 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 import { Input, PrimaryButton } from '../../../ui';
 import { useCrunchbaseHandler } from '../../../presenter/DataSources';
 import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
-import { getError } from '../helpers';
 
 export const CrunchbaseHandler: React.FC<HandlerStep> = (props) => {
-  const { control, errors, onSubmit } = useCrunchbaseHandler(props);
-  const hasErrors = getError(errors);
+  const { register, errors, onSubmit } = useCrunchbaseHandler(props);
 
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="User Key"
             required
             name="userKey"
-            error={hasErrors('userKey')}
+            error={!!errors?.userKey}
             fullWidth
           />
         </HandlerCol>
