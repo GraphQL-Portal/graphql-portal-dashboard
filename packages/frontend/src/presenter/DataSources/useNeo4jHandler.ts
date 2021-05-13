@@ -3,7 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep } from '../../types';
+import { Neo4JForm, UseNeo4JHandlerHook } from '../../types';
 
 const suite = vest.create('neo4j_handler', ({ url, password, username }) => {
   test('url', 'Url is required', () => {
@@ -28,18 +28,22 @@ const suite = vest.create('neo4j_handler', ({ url, password, username }) => {
 });
 
 const NEO4J_DEFAULT_STATE = {
-  url: '',
-  username: '',
-  password: '',
-  database: '',
-  typeDefs: '',
+  url: undefined,
+  username: undefined,
+  password: undefined,
+  database: undefined,
+  typeDefs: undefined,
   cacheIntrospection: false,
   alwaysIncludeRelationships: false,
 };
 
-export const useNeo4jHandler = ({ state, updateState, step }: HandlerStep) => {
+export const useNeo4jHandler: UseNeo4JHandlerHook = ({
+  state,
+  updateState,
+  step,
+}) => {
   const defaultValues = Object.assign({}, NEO4J_DEFAULT_STATE, state.handler);
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, control, register } = useForm<Neo4JForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -47,11 +51,12 @@ export const useNeo4jHandler = ({ state, updateState, step }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (handler: any) => updateState({ handler }, step);
+  const onSubmit = (handler: Neo4JForm) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
     control,
+    register,
   };
 };

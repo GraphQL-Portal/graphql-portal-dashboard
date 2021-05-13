@@ -13,6 +13,7 @@ import {
   ContentfulHandler,
   FhirHandler,
 } from '@graphql-portal/types';
+import { Neo4JHandler } from '@graphql-portal/types/dist/src/api-def-config';
 import { ObjectArray, ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
 import { JsonSchemaOperation } from './data';
@@ -89,3 +90,6 @@ export type ContentfulFormMethods = FormMethods<ContentfulForm>;
 
 export type FhirForm = FhirHandler;
 export type FhirFormMethods = FormMethods<FhirHandler>;
+
+export type Neo4JForm = Neo4JHandler;
+export type Neo4JFormMethods = FormMethods<Neo4JHandler>;

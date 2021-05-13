@@ -28,6 +28,7 @@ import {
   SlackFormMethods,
   ContentfulFormMethods,
   FhirFormMethods,
+  Neo4JFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -134,3 +135,7 @@ export type UseContentfulHandlerHook = (
 export type UseFhirHandlerHook = (
   props: HandlerStep
 ) => Pick<FhirFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseNeo4JHandlerHook = (
+  props: HandlerStep
+) => Pick<Neo4JFormMethods, 'errors' | 'register' | 'control'> & OnFormSubmit;
