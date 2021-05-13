@@ -3,7 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep } from '../../types';
+import { UseFhirHandlerHook, FhirForm } from '../../types';
 import { isUrl } from '../validation';
 
 const suite = vest.create('fhir_handler', ({ endpoint }) => {
@@ -20,10 +20,14 @@ const suite = vest.create('fhir_handler', ({ endpoint }) => {
   );
 });
 
-export const useFhirHandler = ({ state, updateState, step }: HandlerStep) => {
+export const useFhirHandler: UseFhirHandlerHook = ({
+  state,
+  updateState,
+  step,
+}) => {
   const defaultValues = Object.assign({}, { endpoint: '' }, state.handler);
 
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, register } = useForm<FhirForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -31,11 +35,11 @@ export const useFhirHandler = ({ state, updateState, step }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (handler: any) => updateState({ handler }, step);
+  const onSubmit = (handler: FhirForm) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };

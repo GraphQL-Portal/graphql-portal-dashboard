@@ -10,7 +10,13 @@ import {
   FusionCreatorAccountInformationUSHandler,
   FusionCreatorAccountInformationPSD2STETHandler,
   SlackHandler,
+  ContentfulHandler,
+  FhirHandler,
 } from '@graphql-portal/types';
+import {
+  Neo4JHandler,
+  TuqlHandler,
+} from '@graphql-portal/types/dist/src/api-def-config';
 import { ObjectArray, ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
 import { JsonSchemaOperation } from './data';
@@ -81,3 +87,18 @@ export type NamingConventionForm = {
   typeNames: string;
 };
 export type NamingConventionFormMethods = FormMethods<NamingConventionForm>;
+
+export type ContentfulForm = ContentfulHandler;
+export type ContentfulFormMethods = FormMethods<ContentfulForm>;
+
+export type FhirForm = FhirHandler;
+export type FhirFormMethods = FormMethods<FhirHandler>;
+
+export type Neo4JForm = Neo4JHandler;
+export type Neo4JFormMethods = FormMethods<Neo4JHandler>;
+
+export type SoapForm = any;
+export type SoapFormMethods = FormMethods<SoapForm>;
+
+export type TuqlForm = TuqlHandler;
+export type TuqlFormMethods = FormMethods<TuqlForm>;

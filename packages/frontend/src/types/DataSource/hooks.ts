@@ -10,8 +10,8 @@ import {
   FieldArrayRemove,
   OnSubmit,
 } from '../HookForm';
-import { HandlerStep, TransformStep } from './components';
-import { JsonSchemaOperation } from './data';
+import { HandlerStep, NameStep, TransformStep } from './components';
+import { JsonSchemaOperation, NameFormMethods } from './data';
 import {
   OpenapiFormMethods,
   PrefixFormMethods,
@@ -26,6 +26,11 @@ import {
   FilterTransformFormMethods,
   NamingConventionFormMethods,
   SlackFormMethods,
+  ContentfulFormMethods,
+  FhirFormMethods,
+  Neo4JFormMethods,
+  SoapFormMethods,
+  TuqlFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -74,27 +79,24 @@ export type UseSalesforceHandlerHook = (
 ) => Pick<SalesforceFormMethods, 'register' | 'errors'> & OnFormSubmit;
 export type UseCrunchbaseHandlerHook = (
   props: HandlerStep
-) => Pick<CrunchbaseFormMethods, 'errors' | 'control'> & OnFormSubmit;
+) => Pick<CrunchbaseFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type useFusionCreatorAccountInformationUSHandlerHook = (
   props: HandlerStep
-) => Pick<FusionCreatorAIUSFormMethods, 'errors' | 'control'> & {
-  onSubmit: OnSubmit;
-};
+) => Pick<FusionCreatorAIUSFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type useFusionCreatorAccountInformationPSD2STETHandlerHook = (
   props: HandlerStep
-) => Pick<FusionCreatorAIPSD2STETFormMethods, 'errors' | 'control'> & {
-  onSubmit: OnSubmit;
-};
+) => Pick<FusionCreatorAIPSD2STETFormMethods, 'errors' | 'register'> &
+  OnFormSubmit;
 
 export type UseTwitterHandlerHook = (
   props: HandlerStep
-) => Pick<TwitterFormMethods, 'errors' | 'control'> & OnFormSubmit;
+) => Pick<TwitterFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type UseStripeHandlerHook = (
   props: HandlerStep
-) => Pick<StripeFormMethods, 'errors' | 'control'> & OnFormSubmit;
+) => Pick<StripeFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type UseJsonSchemaHook = (
   props: HandlerStep
@@ -127,3 +129,27 @@ export type UseNamingConventionTransformHook = (
 export type UseSlackHandlerHook = (
   props: HandlerStep
 ) => Pick<SlackFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseContentfulHandlerHook = (
+  props: HandlerStep
+) => Pick<ContentfulFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseFhirHandlerHook = (
+  props: HandlerStep
+) => Pick<FhirFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseNeo4JHandlerHook = (
+  props: HandlerStep
+) => Pick<Neo4JFormMethods, 'errors' | 'register' | 'control'> & OnFormSubmit;
+
+export type UseSoapHandlerHook = (
+  props: HandlerStep
+) => Pick<SoapFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseAddDataSourceNameHook = (
+  props: NameStep
+) => Pick<NameFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseTuqlHandlerHook = (
+  props: HandlerStep
+) => Pick<TuqlFormMethods, 'errors' | 'register'> & OnFormSubmit;
