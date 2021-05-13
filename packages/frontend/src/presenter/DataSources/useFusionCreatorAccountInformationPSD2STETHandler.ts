@@ -27,7 +27,7 @@ export const useFusionCreatorAccountInformationPSD2STETHandler: useFusionCreator
   const {
     handleSubmit,
     errors,
-    control,
+    register,
   } = useForm<FusionCreatorAIPSD2STETForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
@@ -42,6 +42,6 @@ export const useFusionCreatorAccountInformationPSD2STETHandler: useFusionCreator
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };
