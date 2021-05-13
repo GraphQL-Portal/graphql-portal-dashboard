@@ -10,6 +10,7 @@ import {
   FusionCreatorAccountInformationUSHandler,
   FusionCreatorAccountInformationPSD2STETHandler,
   SlackHandler,
+  ContentfulHandler,
 } from '@graphql-portal/types';
 import { ObjectArray, ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
@@ -81,3 +82,6 @@ export type NamingConventionForm = {
   typeNames: string;
 };
 export type NamingConventionFormMethods = FormMethods<NamingConventionForm>;
+
+export type ContentfulForm = ContentfulHandler;
+export type ContentfulFormMethods = FormMethods<ContentfulForm>;

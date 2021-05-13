@@ -3,7 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep } from '../../types';
+import { ContentfulForm, UseContentfulHandlerHook } from '../../types';
 import { isUrl } from '../validation';
 
 const CONTENTFUL_DEFAULT_STATE = {
@@ -34,18 +34,18 @@ const suite = vest.create(
   }
 );
 
-export const useContentfulHandler = ({
+export const useContentfulHandler: UseContentfulHandlerHook = ({
   state,
   updateState,
   step,
-}: HandlerStep) => {
+}) => {
   const defaultValues = Object.assign(
     {},
     CONTENTFUL_DEFAULT_STATE,
     state.handler
   );
 
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, register } = useForm<ContentfulForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -53,11 +53,11 @@ export const useContentfulHandler = ({
 
   useFormErrors(errors);
 
-  const onSubmit = (handler: any) => updateState({ handler }, step);
+  const onSubmit = (handler: ContentfulForm) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };

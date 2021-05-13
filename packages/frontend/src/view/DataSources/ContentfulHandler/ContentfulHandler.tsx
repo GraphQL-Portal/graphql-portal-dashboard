@@ -1,5 +1,4 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 import { Input, PrimaryButton } from '../../../ui';
 import { useContentfulHandler } from '../../../presenter/DataSources';
 import { HandlerStep } from '../../../types';
@@ -7,16 +6,15 @@ import { HandlerCol, HandlerRow } from '../Layout';
 import { getError } from '../helpers';
 
 export const ContentfulHandler: React.FC<HandlerStep> = (props) => {
-  const { control, errors, onSubmit } = useContentfulHandler(props);
+  const { register, errors, onSubmit } = useContentfulHandler(props);
   const hasErrors = getError(errors);
 
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Token"
             required
             name="token"
@@ -27,9 +25,8 @@ export const ContentfulHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Your space ID"
             required
             name="space"
@@ -40,9 +37,8 @@ export const ContentfulHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="Your environment ID (default to master)"
             name="environment"
             error={hasErrors('environment')}
@@ -52,9 +48,8 @@ export const ContentfulHandler: React.FC<HandlerStep> = (props) => {
       </HandlerRow>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
-            control={control}
+          <Input
+            ref={register}
             label="URL of an existing Contentful endpoint"
             name="endpoint"
             error={hasErrors('endpoint')}
