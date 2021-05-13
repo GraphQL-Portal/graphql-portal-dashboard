@@ -3,7 +3,7 @@ import vest, { test, enforce } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
-import { HandlerStep } from '../../types';
+import { SoapForm, UseSoapHandlerHook } from '../../types';
 
 const suite = vest.create(
   'neo4j_handler',
@@ -37,9 +37,13 @@ const SOAP_DEFAULT_STATE = {
   },
 };
 
-export const useSoapHandler = ({ state, updateState, step }: HandlerStep) => {
+export const useSoapHandler: UseSoapHandlerHook = ({
+  state,
+  updateState,
+  step,
+}) => {
   const defaultValues = Object.assign({}, SOAP_DEFAULT_STATE, state.handler);
-  const { handleSubmit, errors, control } = useForm({
+  const { handleSubmit, errors, register } = useForm<SoapForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -47,13 +51,11 @@ export const useSoapHandler = ({ state, updateState, step }: HandlerStep) => {
 
   useFormErrors(errors);
 
-  const onSubmit = (handler: any) => {
-    updateState({ handler }, step);
-  };
+  const onSubmit = (handler: SoapForm) => updateState({ handler }, step);
 
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };

@@ -29,6 +29,7 @@ import {
   ContentfulFormMethods,
   FhirFormMethods,
   Neo4JFormMethods,
+  SoapFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -139,3 +140,7 @@ export type UseFhirHandlerHook = (
 export type UseNeo4JHandlerHook = (
   props: HandlerStep
 ) => Pick<Neo4JFormMethods, 'errors' | 'register' | 'control'> & OnFormSubmit;
+
+export type UseSoapHandlerHook = (
+  props: HandlerStep
+) => Pick<SoapFormMethods, 'errors' | 'register'> & OnFormSubmit;
