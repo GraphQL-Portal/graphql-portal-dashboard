@@ -11,6 +11,7 @@ import {
   UseCreateApiDefHook,
   UseIPFilteringHook,
 } from './hooks';
+import { TabOnChange } from '../Tabs';
 
 export type ApiList = {
   list: ApiDef[];
@@ -74,6 +75,21 @@ export type APILimitsForm = Pick<
 export type EnableSwitch = {
   api: ApiDef;
   refetch: Refetch;
+};
+
+export type ReadyAPI = {
+  tab: number;
+  onChange: TabOnChange;
+  fetcher: Fetcher;
+  name: string;
+};
+
+export type InitializedAPI = {
+  name: string;
+};
+
+export type DeclinedAPI = {
+  name: string;
 };
 
 export type AdditionalResolvers = Omit<

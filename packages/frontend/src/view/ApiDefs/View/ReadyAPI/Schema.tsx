@@ -4,9 +4,9 @@ import 'codemirror-graphql/mode';
 import 'codemirror/theme/dracula.css';
 import clsx from 'clsx';
 
-import { ViewAPITab as Props } from '../../../types';
+import { ViewAPITab as Props } from '../../../../types';
 import { useStyles } from './useStyles';
-import { useAPIViewSchema } from '../../../presenter/ApiDefs';
+import { useAPIViewSchema } from '../../../../presenter/ApiDefs';
 
 export const Schema: React.FC<Props> = ({ fetcher }) => {
   const { wrapper, editor } = useStyles();

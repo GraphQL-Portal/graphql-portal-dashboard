@@ -3,7 +3,7 @@ import { useApiById } from './useApiById';
 import { createFetcher } from './helpers';
 
 export const useViewAPI: UseViewAPIHook = () => {
-  const { api, loading, tab, onChange, apiEndpoint } = useApiById();
+  const { api, loading, tab, onChange, apiEndpoint, refetch } = useApiById();
 
   const fetcher = !loading
     ? createFetcher(apiEndpoint, {
@@ -12,7 +12,7 @@ export const useViewAPI: UseViewAPIHook = () => {
       })
     : (body: any) => Promise.resolve(body);
 
-  const { name = '', enabled = false } = api || {};
+  const { name = '', enabled = false, status } = api || {};
 
   return {
     tab,
@@ -21,6 +21,8 @@ export const useViewAPI: UseViewAPIHook = () => {
     name,
     enabled,
     loading,
+    status,
+    refetch,
     apiEndpoint,
   };
 };

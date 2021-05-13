@@ -39,6 +39,7 @@ export type ApiDef = {
   endpoint: string;
   playground?: boolean;
   enabled: boolean;
+  status: string;
   authentication?: ApiAuth<string[]>;
   sources: DataSource[];
   schema_polling_interval?: number;

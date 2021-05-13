@@ -10,9 +10,9 @@ import {
 
 const suite = vest.create(
   'fusion_creator_account_information_psd2_stet_handler',
-  ({ token }) => {
-    test('token', 'Token is required', () => {
-      enforce(token).isNotEmpty();
+  ({ authorizationHeader }) => {
+    test('authorizationHeader', 'Authorization header name is required', () => {
+      enforce(authorizationHeader).isNotEmpty();
     });
   }
 );
@@ -22,7 +22,11 @@ export const useFusionCreatorAccountInformationPSD2STETHandler: useFusionCreator
   updateState,
   step,
 }) => {
-  const defaultValues = Object.assign({}, { token: '' }, state.handler);
+  const defaultValues = Object.assign(
+    {},
+    { authorizationHeader: '' },
+    state.handler
+  );
 
   const {
     handleSubmit,

@@ -1,24 +1,20 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import {
-  HugeWidget,
-  TabsBody,
-  TabsHead,
-  WidgetBody,
-  WidgetRow,
-  Emoji,
-  EmptyIcon,
-  EmptyText,
-  EmptyContainer,
-} from '../../../ui';
+import { HugeWidget, WidgetRow } from '../../../ui';
 import { useViewAPI } from '../../../presenter/ApiDefs';
 import { Loading } from '../../Loading';
-import { VIEW_TABS } from '../constants';
-import { Playground } from './Playground';
-import { Schema } from './Schema';
 import { ViewHeader } from './ViewHeader';
 import { selectors } from '../../Tour';
+import {
+  DeclinedAPI as DeclinedAPIProps,
+  InitializedAPI as InitializedAPIProps,
+  ReadyAPI as ReadyAPIProps,
+} from '../../../types';
+import { InitializedAPI } from './InitializedAPI';
+import { DeclinedAPI } from './DeclinedAPI';
+import { ReadyAPI } from './ReadyAPI';
+import { DisabledAPI } from './DisabledAPI';
 
 export const ViewAPI: React.FC = () => {
   const {
@@ -27,11 +23,29 @@ export const ViewAPI: React.FC = () => {
     fetcher,
     name,
     enabled,
+    status,
     loading,
     apiEndpoint,
   } = useViewAPI();
 
   if (loading) return <Loading />;
+
+  let ApiComponent:
+    | React.FC<DeclinedAPIProps>
+    | React.FC<InitializedAPIProps>
+    | React.FC<ReadyAPIProps>;
+
+  switch (status) {
+    case 'INITIALIZED':
+      ApiComponent = InitializedAPI;
+      break;
+    case 'DECLINED':
+      ApiComponent = DeclinedAPI;
+      break;
+    default:
+      ApiComponent = ReadyAPI;
+      break;
+  }
 
   return (
     <>
@@ -42,20 +56,14 @@ export const ViewAPI: React.FC = () => {
       <WidgetRow data-tour={selectors.MY_APIS_EXAMPLE_API}>
         <HugeWidget>
           {enabled ? (
-            <WidgetBody>
-              <TabsHead value={tab} onChange={onChange} tabsList={VIEW_TABS} />
-              <TabsBody value={tab}>
-                <Playground fetcher={fetcher} name={name} />
-                <Schema fetcher={fetcher} />
-              </TabsBody>
-            </WidgetBody>
+            <ApiComponent
+              tab={tab}
+              onChange={onChange}
+              name={name}
+              fetcher={fetcher}
+            />
           ) : (
-            <EmptyContainer>
-              <EmptyIcon />
-              <EmptyText>
-                API {name} is disabled <Emoji label="dizzy face"> 😵</Emoji>
-              </EmptyText>
-            </EmptyContainer>
+            <DisabledAPI name={name} />
           )}
         </HugeWidget>
       </WidgetRow>

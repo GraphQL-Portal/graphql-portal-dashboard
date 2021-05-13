@@ -7,6 +7,7 @@ const GET_API_DEF_BY_ID = gql`
       _id
       name
       enabled
+      status
       playground
       endpoint
       sources {

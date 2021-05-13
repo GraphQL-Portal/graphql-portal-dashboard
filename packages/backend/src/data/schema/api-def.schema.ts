@@ -3,6 +3,7 @@ import IApiDef from '../../common/interface/api-def.interface';
 import { ISourceDocument } from './source.schema';
 import { IUserDocument } from './user.schema';
 import { mongoCipherType } from '../../common/tool/cipher.tool';
+import { ApiDefStatus } from 'src/modules/api-def/enum';
 
 const apiDefSchema = new mongoose.Schema(
   {
@@ -11,6 +12,11 @@ const apiDefSchema = new mongoose.Schema(
     enabled: {
       type: Boolean,
       default: true,
+    },
+    status: {
+      type: String,
+      enum: Object.values(ApiDefStatus),
+      default: ApiDefStatus.INITIALIZED,
     },
     playground: {
       type: Boolean,

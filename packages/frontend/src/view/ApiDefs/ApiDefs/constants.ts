@@ -1,1 +1,7 @@
-export const TABLE_HEAD = ['API name', 'Status', 'Created date', 'Actions'];
+export const TABLE_HEAD = [
+  'API name',
+  'Status',
+  'Enabled',
+  'Created date',
+  'Actions',
+];

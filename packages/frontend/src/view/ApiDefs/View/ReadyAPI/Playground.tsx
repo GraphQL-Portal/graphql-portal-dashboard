@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import 'graphiql/graphiql.css';
 import 'codemirror/theme/dracula.css';
 
-import { ViewAPITab as Props } from '../../../types';
-import { useTourContext } from '../../../model/providers';
+import { ViewAPITab as Props } from '../../../../types';
+import { useTourContext } from '../../../../model/providers';
 import { useStyles } from './useStyles';
 
 const { Logo } = GraphiQL;
