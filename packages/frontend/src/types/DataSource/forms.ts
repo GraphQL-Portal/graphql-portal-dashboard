@@ -11,6 +11,7 @@ import {
   FusionCreatorAccountInformationPSD2STETHandler,
   SlackHandler,
   ContentfulHandler,
+  FhirHandler,
 } from '@graphql-portal/types';
 import { ObjectArray, ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
@@ -85,3 +86,6 @@ export type NamingConventionFormMethods = FormMethods<NamingConventionForm>;
 
 export type ContentfulForm = ContentfulHandler;
 export type ContentfulFormMethods = FormMethods<ContentfulForm>;
+
+export type FhirForm = FhirHandler;
+export type FhirFormMethods = FormMethods<FhirHandler>;
