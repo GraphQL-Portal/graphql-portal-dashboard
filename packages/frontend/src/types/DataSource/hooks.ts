@@ -92,7 +92,7 @@ export type useFusionCreatorAccountInformationPSD2STETHandlerHook = (
 
 export type UseTwitterHandlerHook = (
   props: HandlerStep
-) => Pick<TwitterFormMethods, 'errors' | 'control'> & OnFormSubmit;
+) => Pick<TwitterFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type UseStripeHandlerHook = (
   props: HandlerStep
