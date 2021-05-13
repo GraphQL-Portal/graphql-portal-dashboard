@@ -22,7 +22,7 @@ export const useStripeHandler: UseStripeHandlerHook = ({
 }) => {
   const defaultValues = Object.assign({}, STRIPE_DEFAULT_STATE, state.handler);
 
-  const { handleSubmit, errors, control } = useForm<StripeForm>({
+  const { handleSubmit, errors, register } = useForm<StripeForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -35,6 +35,6 @@ export const useStripeHandler: UseStripeHandlerHook = ({
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };
