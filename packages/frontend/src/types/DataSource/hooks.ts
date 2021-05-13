@@ -30,6 +30,7 @@ import {
   FhirFormMethods,
   Neo4JFormMethods,
   SoapFormMethods,
+  TuqlFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -148,3 +149,7 @@ export type UseSoapHandlerHook = (
 export type UseAddDataSourceNameHook = (
   props: NameStep
 ) => Pick<NameFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseTuqlHandlerHook = (
+  props: HandlerStep
+) => Pick<TuqlFormMethods, 'errors' | 'register'> & OnFormSubmit;

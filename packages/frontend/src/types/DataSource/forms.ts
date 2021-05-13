@@ -13,7 +13,10 @@ import {
   ContentfulHandler,
   FhirHandler,
 } from '@graphql-portal/types';
-import { Neo4JHandler } from '@graphql-portal/types/dist/src/api-def-config';
+import {
+  Neo4JHandler,
+  TuqlHandler,
+} from '@graphql-portal/types/dist/src/api-def-config';
 import { ObjectArray, ObjectArrayItem, StringArrayItem } from '../Forms';
 import { FieldArray, FormMethods } from '../HookForm';
 import { JsonSchemaOperation } from './data';
@@ -96,3 +99,6 @@ export type Neo4JFormMethods = FormMethods<Neo4JHandler>;
 
 export type SoapForm = any;
 export type SoapFormMethods = FormMethods<SoapForm>;
+
+export type TuqlForm = TuqlHandler;
+export type TuqlFormMethods = FormMethods<TuqlForm>;
