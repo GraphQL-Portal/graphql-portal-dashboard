@@ -1,5 +1,5 @@
 import { getMeshForApiDef } from '@graphql-portal/gateway/dist/src/server/router';
-import { SourceConfig, Channel } from '@graphql-portal/types';
+import { SourceConfig, Channel, ApiDefStatus } from '@graphql-portal/types';
 import { AdditionalStitchingResolverObject } from '@graphql-portal/types/src/api-def-config';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -37,7 +37,7 @@ export default class ApiDefService implements IAccessControlService {
 
   public onApplicationBootstrap(): void {
     this.redis.on(
-      Channel.apiDefsUpdated,
+      Channel.apiDefStatusUpdated,
       this.onApiDefStatusUpdated.bind(this)
     );
   }
@@ -154,7 +154,7 @@ export default class ApiDefService implements IAccessControlService {
 
     const apiDef = (await this.apiDefModel.findByIdAndUpdate(
       toUpdate._id,
-      data,
+      { ...data, status: ApiDefStatus.INITIALIZED },
       { new: true }
     ))!;
 

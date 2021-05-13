@@ -6,8 +6,8 @@ export const DeclinedAPI: React.FC<Props> = ({ name }) => {
     <EmptyContainer>
       <EmptyIcon />
       <EmptyText>
-        API {name} is declined <Emoji label="dizzy face"> 😵</Emoji>. Check you
-        API and Datasources.
+        API {name} is declined <Emoji label="dizzy face"> 😵</Emoji>.<br />
+        Check you API and data source configs.
       </EmptyText>
     </EmptyContainer>
   );

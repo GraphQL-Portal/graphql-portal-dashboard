@@ -86,6 +86,7 @@ export type ReadyAPI = {
 
 export type InitializedAPI = {
   name: string;
+  refetch: Refetch | undefined;
 };
 
 export type DeclinedAPI = {

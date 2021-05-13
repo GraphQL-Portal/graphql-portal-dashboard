@@ -1,9 +1,9 @@
 import * as mongoose from 'mongoose';
+import { ApiDefStatus } from '@graphql-portal/types';
 import IApiDef from '../../common/interface/api-def.interface';
 import { ISourceDocument } from './source.schema';
 import { IUserDocument } from './user.schema';
 import { mongoCipherType } from '../../common/tool/cipher.tool';
-import { ApiDefStatus } from 'src/modules/api-def/enum';
 
 const apiDefSchema = new mongoose.Schema(
   {

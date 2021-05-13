@@ -26,6 +26,7 @@ export const ViewAPI: React.FC = () => {
     status,
     loading,
     apiEndpoint,
+    refetch,
   } = useViewAPI();
 
   if (loading) return <Loading />;
@@ -61,6 +62,7 @@ export const ViewAPI: React.FC = () => {
               onChange={onChange}
               name={name}
               fetcher={fetcher}
+              refetch={refetch}
             />
           ) : (
             <DisabledAPI name={name} />
