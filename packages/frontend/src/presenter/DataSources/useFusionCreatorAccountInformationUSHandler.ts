@@ -24,7 +24,7 @@ export const useFusionCreatorAccountInformationUSHandler: useFusionCreatorAccoun
 }) => {
   const defaultValues = Object.assign({}, { token: '' }, state.handler);
 
-  const { handleSubmit, errors, control } = useForm<FusionCreatorAIUSForm>({
+  const { handleSubmit, errors, register } = useForm<FusionCreatorAIUSForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -38,6 +38,6 @@ export const useFusionCreatorAccountInformationUSHandler: useFusionCreatorAccoun
   return {
     onSubmit: handleSubmit(onSubmit),
     errors,
-    control,
+    register,
   };
 };
