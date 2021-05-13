@@ -8,19 +8,18 @@ import { HandlerRow, HandlerCol } from '../Layout';
 import { selectors } from '../../Tour';
 
 export const SourceName: React.FC<NameStep> = (stepProps) => {
-  const { onSubmit, control, errors } = useAddDataSourceName(stepProps);
+  const { onSubmit, register, errors } = useAddDataSourceName(stepProps);
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
       <HandlerRow>
         <HandlerCol>
-          <Controller
-            as={Input}
+          <Input
             name="name"
             label="Data source name"
             required
-            control={control}
+            ref={register}
             fullWidth
-            error={!!(errors && errors.name)}
+            error={!!errors?.name}
           />
         </HandlerCol>
       </HandlerRow>

@@ -1,4 +1,5 @@
 import { Title, ElementsTable, RecordStringAny } from '../General';
+import { FormMethods } from '../HookForm';
 import { updateState } from './methods';
 
 export type SourceProp = { source: any };
@@ -17,6 +18,8 @@ export type DataSourceStep<T> = {
 };
 
 export type NameForm = { name: string };
+export type NameFormMethods = FormMethods<NameForm>;
+
 export type HandlerForm = { handler: any };
 export type TransformsForm = { transforms: any[] };
 
