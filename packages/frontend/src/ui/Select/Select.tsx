@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 
 import { Select as Props } from '../../types';
-import { getKeyFromText } from '../../utils';
+import { getUuid } from '../../utils';
 
 export const Select = forwardRef<unknown, Props>(
   ({ options, fullWidth, labelClassName, helperText, ...selectProps }, ref) => {
@@ -22,7 +22,7 @@ export const Select = forwardRef<unknown, Props>(
         )}
         <MuiSelect {...selectProps} ref={ref}>
           {options.map(({ value, label }) => (
-            <MenuItem value={value} key={getKeyFromText(`${value}`)}>
+            <MenuItem value={value} key={getUuid()}>
               {label}
             </MenuItem>
           ))}

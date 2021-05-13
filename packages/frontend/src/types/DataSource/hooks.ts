@@ -23,6 +23,9 @@ import {
   FusionCreatorAIUSFormMethods,
   JsonSchemaFormMethods,
   FusionCreatorAIPSD2STETFormMethods,
+  FilterTransformFormMethods,
+  NamingConventionFormMethods,
+  SlackFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -107,3 +110,20 @@ export type UseJsonSchemaHook = (
     addOperation: NOOP;
     removeOperation: FieldArrayRemove;
   };
+
+export type UseFilterTransformHook = (
+  props: TransformStep
+) => Pick<FilterTransformFormMethods, 'register' | 'errors' | 'control'> &
+  OnFormSubmit & {
+    filters: FieldArray<ObjectArrayItem>;
+    onAddFilter: NOOP;
+    onRemoveFilter: FieldArrayRemove;
+  };
+
+export type UseNamingConventionTransformHook = (
+  props: TransformStep
+) => Pick<NamingConventionFormMethods, 'control'> & OnFormSubmit;
+
+export type UseSlackHandlerHook = (
+  props: HandlerStep
+) => Pick<SlackFormMethods, 'errors' | 'register'> & OnFormSubmit;

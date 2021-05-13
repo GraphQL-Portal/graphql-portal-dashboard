@@ -83,7 +83,7 @@ export const AvailableList: React.FC = () => {
             const HandlerIcon = handlerMapper(title);
             const TypeIcon = typeMapper(title);
             return (
-              <TableRow>
+              <TableRow key={key}>
                 <TableIconCell>
                   <TableIcon>{HandlerIcon && <HandlerIcon />}</TableIcon>
                   {fTitle}
