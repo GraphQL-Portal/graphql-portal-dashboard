@@ -26,6 +26,7 @@ import {
   FilterTransformFormMethods,
   NamingConventionFormMethods,
   SlackFormMethods,
+  ContentfulFormMethods,
 } from './forms';
 
 type OnFormSubmit = {
@@ -127,3 +128,7 @@ export type UseNamingConventionTransformHook = (
 export type UseSlackHandlerHook = (
   props: HandlerStep
 ) => Pick<SlackFormMethods, 'errors' | 'register'> & OnFormSubmit;
+
+export type UseContentfulHandlerHook = (
+  props: HandlerStep
+) => Pick<ContentfulFormMethods, 'errors' | 'register'> & OnFormSubmit;
