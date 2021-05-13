@@ -17,12 +17,14 @@ export const useAvailableSources = () => {
   const { tour } = useTourContext();
   const { push } = useHistory();
 
-  const { control, handleSubmit, reset, watch } = useForm<SearchAvailableForm>({
-    reValidateMode: 'onSubmit',
-    defaultValues: {
-      search: '',
-    },
-  });
+  const { register, handleSubmit, reset, watch } = useForm<SearchAvailableForm>(
+    {
+      reValidateMode: 'onSubmit',
+      defaultValues: {
+        search: '',
+      },
+    }
+  );
 
   const onSubmit = NOOP;
 
@@ -46,7 +48,7 @@ export const useAvailableSources = () => {
   return {
     available: getFilteredSources(search, AVAILABLE_HANDLERS),
     showClearButton: !!search,
-    control,
+    register,
     onSubmit: handleSubmit(onSubmit),
     onKeyDown,
     onReset,
