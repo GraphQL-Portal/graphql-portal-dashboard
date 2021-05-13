@@ -1,5 +1,4 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 
 import { PrimaryButton, Input } from '../../../ui';
 import { useAddDataSourceName } from '../../../presenter/DataSources';

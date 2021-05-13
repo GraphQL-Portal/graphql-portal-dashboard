@@ -95,7 +95,7 @@ export type UseTwitterHandlerHook = (
 
 export type UseStripeHandlerHook = (
   props: HandlerStep
-) => Pick<StripeFormMethods, 'errors' | 'control'> & OnFormSubmit;
+) => Pick<StripeFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type UseJsonSchemaHook = (
   props: HandlerStep
