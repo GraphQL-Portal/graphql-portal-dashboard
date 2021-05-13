@@ -80,9 +80,7 @@ export type UseCrunchbaseHandlerHook = (
 
 export type useFusionCreatorAccountInformationUSHandlerHook = (
   props: HandlerStep
-) => Pick<FusionCreatorAIUSFormMethods, 'errors' | 'control'> & {
-  onSubmit: OnSubmit;
-};
+) => Pick<FusionCreatorAIUSFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
 export type useFusionCreatorAccountInformationPSD2STETHandlerHook = (
   props: HandlerStep
