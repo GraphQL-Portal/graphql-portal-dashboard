@@ -1,5 +1,4 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 
 import { Search, Close, Add } from '../../../icons';
 import {
@@ -30,7 +29,7 @@ export const AvailableList: React.FC = () => {
   const { length } = AVAILABLE_HEAD;
   const {
     available,
-    control,
+    register,
     onReset,
     onSubmit,
     showClearButton,
@@ -43,9 +42,8 @@ export const AvailableList: React.FC = () => {
   return (
     <div data-tour={selectors.DATA_SOURCE_AVAILABLE}>
       <form noValidate autoComplete="off" className={form} onSubmit={onSubmit}>
-        <Controller
-          as={Input}
-          control={control}
+        <Input
+          ref={register}
           fullWidth
           placeholder="Search data connectors"
           name="search"
