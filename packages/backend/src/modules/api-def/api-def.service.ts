@@ -63,7 +63,7 @@ export default class ApiDefService implements IAccessControlService {
         }
       );
 
-      this.logger.debug('apiDef status updated', context);
+      this.logger.debug(`apiDef ${name} status updated to ${status}`, context);
     } catch (error) {
       this.logger.error(error, error.stack, context);
     }
