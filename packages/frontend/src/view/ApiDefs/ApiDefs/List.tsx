@@ -63,6 +63,7 @@ export const ApiDefsList: React.FC<Props> = ({
                   api.name
                 )}
               </TableCell>
+              <TableCell align="right">{api.status}</TableCell>
               <TableCell align="right">
                 <EnableSwitch api={api} refetch={refetch} />
               </TableCell>

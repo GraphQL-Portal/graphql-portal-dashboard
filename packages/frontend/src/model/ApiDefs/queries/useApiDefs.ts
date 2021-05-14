@@ -11,6 +11,7 @@ export const QUERY_API_DEFS = gql`
         createdAt
         updatedAt
         enabled
+        status
         endpoint
         sources {
           _id

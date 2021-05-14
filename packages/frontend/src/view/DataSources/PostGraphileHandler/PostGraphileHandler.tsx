@@ -46,21 +46,6 @@ export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
           />
         </HandlerCol>
       </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <FormLabel
-            label="Cache Introspection"
-            control={
-              <Controller
-                name="cacheIntrospection"
-                control={control}
-                defaultValue={false}
-                render={(props) => <Checkbox {...props} color="primary" />}
-              />
-            }
-          />
-        </HandlerCol>
-      </HandlerRow>
       <StringArray
         title="Append plugins"
         name="appendPlugins"

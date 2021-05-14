@@ -43,9 +43,11 @@ export type UseUpdateDataSourcesHook = (
 
 export type UseViewAPIHook = () => Omit<ReturnType<UseApiByIdHook>, 'api'> & {
   fetcher: Fetcher;
+  refetch: Refetch | undefined;
   name: string;
   apiEndpoint: string;
   enabled: boolean;
+  status: string;
 };
 
 export type UseMyAPIHook = () => ReturnType<QueryHook<ApiDef[]>> & {

@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { ApiDefStatus } from '@graphql-portal/types';
 import IApiDef from '../../common/interface/api-def.interface';
 import { ISourceDocument } from './source.schema';
 import { IUserDocument } from './user.schema';
@@ -11,6 +12,11 @@ const apiDefSchema = new mongoose.Schema(
     enabled: {
       type: Boolean,
       default: true,
+    },
+    status: {
+      type: String,
+      enum: Object.values(ApiDefStatus),
+      default: ApiDefStatus.INITIALIZED,
     },
     playground: {
       type: Boolean,

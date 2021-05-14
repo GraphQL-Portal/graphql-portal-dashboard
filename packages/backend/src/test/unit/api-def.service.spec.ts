@@ -1,3 +1,5 @@
+import { ApiDefStatus, Channel } from '@graphql-portal/types';
+
 import { Test, TestingModule } from '@nestjs/testing';
 import * as mongoose from 'mongoose';
 import IApiDef from '../../common/interface/api-def.interface';
@@ -50,6 +52,23 @@ describe('ApiDefService', () => {
 
   afterEach(() => jest.clearAllMocks());
 
+  describe('onApplicationBootstrap', () => {
+    it('should subscribe to the channel', async () => {
+      const onMock = jest.spyOn(redisService, 'on').mockResolvedValueOnce(1);
+      await app.init();
+
+      expect(onMock).toHaveBeenCalledTimes(2);
+      expect(onMock.mock.calls).toEqual(
+        expect.arrayContaining([
+          expect.arrayContaining([
+            Channel.apiDefStatusUpdated,
+            expect.any(Function),
+          ]),
+        ])
+      );
+    });
+  });
+
   describe('setLastUpdateTime', () => {
     it('should set current timestamp', async () => {
       const timestamp = apiDefService.setLastUpdateTime();
@@ -95,6 +114,21 @@ describe('ApiDefService', () => {
       expectApiDef(apiDef);
       expect(publishApiDefsUpdatedMock).toHaveBeenCalledTimes(1);
       expect(getMeshSchemaMock).toHaveBeenCalledTimes(2);
+    });
+
+    describe('onApiDefStatusUpdated', () => {
+      it('should update status of ApiDef by name', async () => {
+        const payload = {
+          name: apiDef.name,
+          status: ApiDefStatus.READY,
+        };
+
+        await apiDefService.onApiDefStatusUpdated(JSON.stringify(payload));
+
+        const { status } = await apiDefService.findById(apiDef._id);
+
+        expect(status).toEqual(payload.status);
+      });
     });
 
     it('findAll returns an apiDef', async () => {

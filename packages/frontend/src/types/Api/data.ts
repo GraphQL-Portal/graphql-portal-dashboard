@@ -1,6 +1,6 @@
 import { DataSource } from '../DataSource';
 import { Gateway } from '../Gateway';
-import { Transform } from '@graphql-portal/types';
+import { Transform, ApiDefStatus } from '@graphql-portal/types';
 
 export type ApiAuth<T> = {
   auth_header_name: string;
@@ -39,6 +39,7 @@ export type ApiDef = {
   endpoint: string;
   playground?: boolean;
   enabled: boolean;
+  status: ApiDefStatus;
   authentication?: ApiAuth<string[]>;
   sources: DataSource[];
   schema_polling_interval?: number;

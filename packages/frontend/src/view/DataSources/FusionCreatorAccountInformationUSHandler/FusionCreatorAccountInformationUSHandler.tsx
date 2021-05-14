@@ -19,10 +19,10 @@ export const FusionCreatorAccountInformationUSHandler: React.FC<HandlerStep> = (
         <HandlerCol>
           <Input
             ref={register}
-            label="Authorization token"
+            label="Authorization header name"
             required
-            name="token"
-            error={!!errors.token}
+            name="authorizationHeader"
+            error={!!errors.authorizationHeader}
             fullWidth
           />
         </HandlerCol>

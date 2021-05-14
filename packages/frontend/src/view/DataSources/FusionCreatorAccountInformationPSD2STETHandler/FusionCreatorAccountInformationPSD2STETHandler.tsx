@@ -8,9 +8,9 @@ export const FusionCreatorAccountInformationPSD2STETHandler: React.FC<HandlerSte
   props
 ) => {
   const {
-    register,
-    errors,
     onSubmit,
+    errors,
+    register,
   } = useFusionCreatorAccountInformationPSD2STETHandler(props);
 
   return (
@@ -19,10 +19,10 @@ export const FusionCreatorAccountInformationPSD2STETHandler: React.FC<HandlerSte
         <HandlerCol>
           <Input
             ref={register}
-            label="Authorization token"
+            label="Authorization header name"
             required
-            name="token"
-            error={!!errors?.token}
+            name="authorizationHeader"
+            error={!!errors.authorizationHeader}
             fullWidth
           />
         </HandlerCol>

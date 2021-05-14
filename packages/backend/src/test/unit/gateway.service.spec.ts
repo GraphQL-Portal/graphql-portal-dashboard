@@ -34,8 +34,12 @@ describe('GatewayService', () => {
       const onMock = jest.spyOn(redisService, 'on').mockResolvedValueOnce(1);
       await app.init();
 
-      expect(onMock).toHaveBeenCalledTimes(1);
-      expect(onMock).toHaveBeenCalledWith(Channel.ping, expect.any(Function));
+      expect(onMock).toHaveBeenCalledTimes(2);
+      expect(onMock.mock.calls).toEqual(
+        expect.arrayContaining([
+          expect.arrayContaining([Channel.ping, expect.any(Function)]),
+        ])
+      );
     });
   });
 

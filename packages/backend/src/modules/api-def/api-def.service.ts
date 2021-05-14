@@ -1,5 +1,5 @@
 import { getMeshForApiDef } from '@graphql-portal/gateway/dist/src/server/router';
-import { SourceConfig } from '@graphql-portal/types';
+import { SourceConfig, Channel, ApiDefStatus } from '@graphql-portal/types';
 import { AdditionalStitchingResolverObject } from '@graphql-portal/types/src/api-def-config';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -29,9 +29,44 @@ export default class ApiDefService implements IAccessControlService {
     @Inject(forwardRef(() => SourceService))
     private readonly sourceService: SourceService,
     @Inject(forwardRef(() => MetricService))
-    private readonly metricService: MetricService
+    private readonly metricService: MetricService,
+    private readonly redis: RedisService
   ) {
     this.setLastUpdateTime();
+  }
+
+  public onApplicationBootstrap(): void {
+    this.redis.on(
+      Channel.apiDefStatusUpdated,
+      this.onApiDefStatusUpdated.bind(this)
+    );
+  }
+
+  public async onApiDefStatusUpdated(message: string): Promise<void> {
+    const context = `${this.onApiDefStatusUpdated.name}`;
+    try {
+      const { name, status } = JSON.parse(message);
+      if (!name || !status) {
+        this.logger.error(
+          `Name or status is not defined in ${Channel.apiDefsUpdated} message`,
+          null,
+          context
+        );
+        return;
+      }
+      await this.apiDefModel.findOneAndUpdate(
+        { name },
+        {
+          $set: {
+            status,
+          },
+        }
+      );
+
+      this.logger.debug(`apiDef ${name} status updated to ${status}`, context);
+    } catch (error) {
+      this.logger.error(error, error.stack, context);
+    }
   }
 
   public setLastUpdateTime(): number {
@@ -119,7 +154,7 @@ export default class ApiDefService implements IAccessControlService {
 
     const apiDef = (await this.apiDefModel.findByIdAndUpdate(
       toUpdate._id,
-      data,
+      { ...data, status: ApiDefStatus.INITIALIZED },
       { new: true }
     ))!;
 
