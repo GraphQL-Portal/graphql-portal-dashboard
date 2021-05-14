@@ -5,5 +5,5 @@ export default interface IApiDef extends ApiDef {
   createdAt?: Date;
   updatedAt?: Date;
   enabled?: boolean;
-  status: ApiDefStatus;
+  status?: ApiDefStatus;
 }
