@@ -15,6 +15,7 @@ import { InitializedAPI } from './InitializedAPI';
 import { DeclinedAPI } from './DeclinedAPI';
 import { ReadyAPI } from './ReadyAPI';
 import { DisabledAPI } from './DisabledAPI';
+import { ApiDefStatus } from '@graphql-portal/types';
 
 export const ViewAPI: React.FC = () => {
   const {
@@ -37,10 +38,10 @@ export const ViewAPI: React.FC = () => {
     | React.FC<ReadyAPIProps>;
 
   switch (status) {
-    case 'INITIALIZED':
+    case ApiDefStatus.INITIALIZED:
       ApiComponent = InitializedAPI;
       break;
-    case 'DECLINED':
+    case ApiDefStatus.DECLINED:
       ApiComponent = DeclinedAPI;
       break;
     default:
