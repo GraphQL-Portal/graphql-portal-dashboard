@@ -2107,7 +2107,22 @@
     graphql-compose-mongoose "9.2.2"
     graphql-compose-pagination "8.0.2"
 
-"@graphql-mesh/mysql@0.10.6", "@graphql-mesh/mysql@^0.10.0":
+"@graphql-mesh/mysql@0.10.8":
+  version "0.10.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.10.8.tgz#140f73b1a1bfed15e535f74911d23659386ef137"
+  integrity sha512-c+Q04aqi9fBRpr7KL4aO2/chxAFIVO0CIt9YiswY8kD8R+mqA+OsoOSfmYQHw4yOByqkIhFx/rXkmYDIYO80aw==
+  dependencies:
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.11.4"
+    camel-case "4.1.2"
+    graphql-compose "8.0.1"
+    graphql-fields "2.0.3"
+    graphql-scalars "1.9.3"
+    mysql "2.18.1"
+    mysql-utilities "1.1.2"
+    pascal-case "3.1.2"
+
+"@graphql-mesh/mysql@^0.10.0":
   version "0.10.6"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.10.6.tgz#63518f02f4501ccb9050f5d14bf6d3cfdb8ae9eb"
   integrity sha512-8ojyuaUJBitNKw/Zi+18n11zpGppkAPCG20Xt+8/uuAXYzXSn2mlDD30XIIpRQwqTyApNFQklL7P2he4w2AoRQ==
