@@ -26,7 +26,7 @@
   "dependencies": {
     "@graphql-mesh/fhir": "0.10.11",
     "@graphql-mesh/graphql": "0.17.8",
-    "@graphql-mesh/grpc": "0.14.6",
+    "@graphql-mesh/grpc": "0.14.7",
     "@graphql-mesh/json-schema": "0.14.7",
     "@graphql-mesh/mongoose": "0.7.13",
     "@graphql-mesh/mysql": "0.10.6",

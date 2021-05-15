@@ -1971,13 +1971,13 @@
     "@graphql-tools/url-loader" "6.10.1"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/grpc@0.14.6":
-  version "0.14.6"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.14.6.tgz#3c3555185e42dc61c2ba9c4c1625ba559424a953"
-  integrity sha512-jScrRSZXhKzx7j14vtdToKYI2JFK0sfejyFfbNeREp5dqh7s+h5ufBZEedM1QH/f+iX6r7TQACPnJpwzL4EfeQ==
+"@graphql-mesh/grpc@0.14.7":
+  version "0.14.7"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.14.7.tgz#5a4e350ef6113172b914d49866528449dd8e00bd"
+  integrity sha512-Fa0+fh/gE2bekJGPO15PINYDwEg79DW5rWbPR1H3IIxxe5RgqRUizk56PNgnFQhTLbp6YLLXLIrwXRJTA5e5pg==
   dependencies:
     "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.11.3"
+    "@graphql-mesh/utils" "0.11.4"
     "@grpc/grpc-js" "^1.1.7"
     "@grpc/proto-loader" "0.6.1"
     camel-case "4.1.2"
