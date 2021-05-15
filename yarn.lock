@@ -2201,13 +2201,13 @@
     undici "3.3.6"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.16.8":
-  version "0.16.8"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.8.tgz#c8d8c6d8ec26ae41490373fee813bb8c77d53a3b"
-  integrity sha512-x1GHqCnuZqax7Ee6ESxyp+8Ptm/CY3TllCKfYnir5hyT+/M/oHaHsUrwQbOiAHxd+zdDGEKTcH/KiFw+LmA7/g==
+"@graphql-mesh/openapi@0.16.9":
+  version "0.16.9"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.9.tgz#bc513b1134462fb657748500668f25139053f761"
+  integrity sha512-hQzzxOwAtZz/w1tz7PWrymLYuS3T5yMPC7LpFBDfGZKmDCJtcidKia1hUHKEDaSGOVBLzhfZbunieJz0zDW6ow==
   dependencies:
     "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.11.3"
+    "@graphql-mesh/utils" "0.11.4"
     deep-equal "2.0.5"
     form-urlencoded "6.0.3"
     graphql-scalars "1.9.3"
