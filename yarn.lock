@@ -2163,7 +2163,26 @@
     neo4j-driver "4.2.3"
     neo4j-graphql-js "2.19.2"
 
-"@graphql-mesh/odata@0.11.6", "@graphql-mesh/odata@^0.11.0":
+"@graphql-mesh/odata@0.11.7":
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/odata/-/odata-0.11.7.tgz#d4fd77e819486ff73346cd049b63a7999180fba8"
+  integrity sha512-3u+n6QXH6mjMRFn9ohokcL1NXrhUXU2DgxI1Kv8juVHdm7TvWvya7XK4Xj15lDUzVfyUcIOpePdmgBYa/Fp1IA==
+  dependencies:
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.11.4"
+    "@graphql-tools/utils" "7.9.1"
+    cross-fetch "3.1.4"
+    dataloader "2.0.0"
+    fast-xml-parser "3.19.0"
+    graphql-compose "8.0.1"
+    graphql-parse-resolve-info "4.11.0"
+    graphql-scalars "1.9.3"
+    http-string-parser "0.0.6"
+    pascal-case "3.1.2"
+    undici "3.3.6"
+    url-join "4.0.1"
+
+"@graphql-mesh/odata@^0.11.0":
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/odata/-/odata-0.11.6.tgz#32450c852cdac56f859c97c244d687d1d44240f3"
   integrity sha512-nSUpyChGycLMnmx1xpf5gVzC1dSRjgVuSUuNXe5SIcRXG6Ck8z5J6eTNf7YkS+ABXs8x41A5H4A5Bk7ByYonVA==
