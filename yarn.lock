@@ -5246,13 +5246,13 @@
     "@typescript-eslint/types" "4.22.1"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/react-codemirror@3.0.6":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.0.6.tgz#62a2d2a9e970be07e091268adc71129a36d5ba2e"
-  integrity sha512-v0JT40Xl2w/dev8lXHzItCmq/Rtx8txFCTk4RrYWN0jWxT8AUIFPn8EH0yMWYtiEBYCtZ/lAKdDJIVHCoS63jw==
+"@uiw/react-codemirror@3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.0.8.tgz#17f89c24c5fb1f5b5effa6f5c847aadd8846b5cc"
+  integrity sha512-F1OjFanWvbX+6JTBEFWzDhvE/FYDUXLOD7lUaBpjeTQ+Xg3ApHoqZ2EPQWhhPFz+d+h4tbWUbSM0kgUBTaW1NA==
   dependencies:
     "@babel/runtime" "7.13.10"
-    codemirror "5.60.0"
+    codemirror "5.61.0"
 
 "@webassemblyjs/ast@1.11.0":
   version "1.11.0"
@@ -7580,15 +7580,15 @@ codemirror-graphql@^1.0.0:
     graphql-language-service-interface "^2.8.2"
     graphql-language-service-parser "^1.9.0"
 
-codemirror@5.60.0, codemirror@^5.54.0:
-  version "5.60.0"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.60.0.tgz#00a8cfd287d5d8737ceb73987f04aee2fe5860da"
-  integrity sha512-AEL7LhFOlxPlCL8IdTcJDblJm8yrAGib7I+DErJPdZd4l6imx8IMgKK3RblVgBQqz3TZJR4oknQ03bz+uNjBYA==
-
 codemirror@5.61.0:
   version "5.61.0"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.61.0.tgz#318e5b034a707207948b92ffc2862195e8fdb08e"
   integrity sha512-D3wYH90tYY1BsKlUe0oNj2JAhQ9TepkD51auk3N7q+4uz7A/cgJ5JsWHreT0PqieW1QhOuqxQ2reCXV1YXzecg==
+
+codemirror@^5.54.0:
+  version "5.60.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.60.0.tgz#00a8cfd287d5d8737ceb73987f04aee2fe5860da"
+  integrity sha512-AEL7LhFOlxPlCL8IdTcJDblJm8yrAGib7I+DErJPdZd4l6imx8IMgKK3RblVgBQqz3TZJR4oknQ03bz+uNjBYA==
 
 collect-v8-coverage@^1.0.0:
   version "1.0.1"
