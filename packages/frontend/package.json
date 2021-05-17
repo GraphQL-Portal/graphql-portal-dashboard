@@ -40,7 +40,7 @@
     "subscriptions-transport-ws": "0.9.18",
     "typescript": "4.2.4",
     "validator": "13.6.0",
-    "vest": "3.1.2",
+    "vest": "3.2.1",
     "web-vitals": "1.1.2"
   },
   "scripts": {
