@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { UseFhirHandlerHook, FhirForm } from '../../types';
-import { isUrl } from '../validation';
+import enforce from '../validation';
 
 const suite = vest.create('fhir_handler', ({ endpoint }) => {
   test('endpoint', 'Endpoint is required', () => {
@@ -15,7 +15,7 @@ const suite = vest.create('fhir_handler', ({ endpoint }) => {
     'endpoint',
     'Please use absolute URL http://example.com or http://localhost:80',
     () => {
-      isUrl(endpoint);
+      enforce(endpoint).isURL(endpoint);
     }
   );
 });

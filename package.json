@@ -22,7 +22,7 @@
     "test": "yarn backend:test && yarn workspace graphql-portal-dashboard-frontend start & npx wait-on --timeout=240000 http://localhost:8080",
     "lint": "eslint \"./packages/**/*.ts\" --fix",
     "prettier": "prettier --write \"./packages/**/*.{ts,tsx}\" --config .prettierrc.json",
-    "postinstall": "husky install",
+    "postinstall": "husky install && patch-package",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "reinstall": "yarn clear; yarn",
@@ -53,7 +53,8 @@
     ]
   },
   "dependencies": {
-    "concurrently": "6.1.0"
+    "concurrently": "6.1.0",
+    "patch-package": "6.4.7"
   },
   "devDependencies": {
     "@changesets/cli": "2.16.0",

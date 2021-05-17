@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { ContentfulForm, UseContentfulHandlerHook } from '../../types';
-import { isUrl } from '../validation';
+import enforce from '../validation';
 
 const CONTENTFUL_DEFAULT_STATE = {
   token: '',
@@ -28,7 +28,7 @@ const suite = vest.create(
       'endpoint',
       'Please use absolute URL http://example.com or http://localhost:80',
       () => {
-        endpoint && isUrl(endpoint);
+        endpoint && enforce(endpoint).isURL();
       }
     );
   }
