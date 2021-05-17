@@ -1,5 +1,21 @@
 # graphql-portal-dashboard-backend
 
+## 0.12.1
+
+### Patch Changes
+
+- d817a39: ApiDef interface fix
+
+## 0.12.0
+
+### Minor Changes
+
+- 4171307: API statuses added
+
+### Patch Changes
+
+- 85a245b: Added token to FusionCreator handler
+
 ## 0.11.2
 
 ### Patch Changes

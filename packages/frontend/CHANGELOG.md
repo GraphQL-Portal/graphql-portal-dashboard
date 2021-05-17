@@ -1,5 +1,17 @@
 # graphql-portal-dashboard-frontend
 
+## 0.12.0
+
+### Minor Changes
+
+- e2e13e3: Add Slack Handler form
+- 4171307: API statuses added
+- b6f3f77: Add Filter Transform form
+
+### Patch Changes
+
+- 85a245b: Added token to FusionCreator handler
+
 ## 0.11.1
 
 ### Patch Changes
