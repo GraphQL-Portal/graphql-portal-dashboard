@@ -14,7 +14,7 @@
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.58",
     "@uiw/react-codemirror": "3.0.8",
-    "ajv": "8.3.0",
+    "ajv": "8.4.0",
     "clsx": "1.1.1",
     "codemirror": "5.61.0",
     "codemirror-graphql": "0.15.2",
