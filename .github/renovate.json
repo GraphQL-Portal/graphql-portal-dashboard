@@ -12,7 +12,12 @@
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "excludePackageNames": ["codemirror-graphql", "@shelf/jest-mongodb"]
+      "excludePackageNames": [
+        "codemirror-graphql",
+        "@shelf/jest-mongodb",
+        "@types/react",
+        "@types/react-dom"
+      ]
     }
   ]
 }
