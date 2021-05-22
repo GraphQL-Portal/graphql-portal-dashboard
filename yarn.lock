@@ -18898,10 +18898,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vest@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/vest/-/vest-3.2.1.tgz#a73d1ee4d3dbd5e35a6f1561310a344bc43d4798"
-  integrity sha512-Wjvx2ap0x9Z70eCGIkAzpOGiY7X4+hkTszpIiMh/uSPNDqSIuefeotA78VUgxjHEv04NDJrAHX6EylEjcVqzwg==
+vest@3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/vest/-/vest-3.2.2.tgz#fbdf698c1824d21a9ceb66b6848708c6c39e3401"
+  integrity sha512-ZWHHXCLCQMdjBZl4vjd1HZczlyu/paYUTHyTcTjKLFaNJ2UjSnQ9rkqLf4IR6DFOrmJDkLE3YWNy5rlSXV6DKw==
   dependencies:
     context "^1.1.3"
 
