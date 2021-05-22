@@ -100,7 +100,7 @@
     "@types/cli-color": "2.0.0",
     "@types/express": "4.17.11",
     "@types/http-cache-semantics": "4.0.0",
-    "@types/ioredis": "4.26.3",
+    "@types/ioredis": "4.26.4",
     "@types/jest": "26.0.23",
     "@types/jsonwebtoken": "8.5.1",
     "@types/migrate-mongo": "8.1.0",
