@@ -16028,10 +16028,10 @@ react@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-reactour@1.18.3:
-  version "1.18.3"
-  resolved "https://registry.yarnpkg.com/reactour/-/reactour-1.18.3.tgz#e9b5d104d63b549f50110e17ba6547ff6264bc08"
-  integrity sha512-JeYP2cWeM6qQgy5mrTt/nUTsyvQRTy/vwG2TOnIpUWDztDM2MNbhAVAvIc88cz+IFdVmOIpsBnVdM3xDC2Ko/w==
+reactour@1.18.4:
+  version "1.18.4"
+  resolved "https://registry.yarnpkg.com/reactour/-/reactour-1.18.4.tgz#7f121ee7441eae1ad770efda2d476bb7f109ca3b"
+  integrity sha512-nsiAwMBy0LyTqeviFosJua6O/odjNhlgecXewsBIYPRXxshgp5DGoSHmKX65JuEkHv24jyoPuyrQ39b/zApBEw==
   dependencies:
     "@rooks/use-mutation-observer" "4.9.2"
     classnames "2.2.6"
