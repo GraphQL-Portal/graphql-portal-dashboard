@@ -84,7 +84,7 @@
     "jsonwebtoken": "8.5.1",
     "migrate-mongo": "8.2.2",
     "mongodb": "3.6.8",
-    "mongoose": "5.12.9",
+    "mongoose": "5.12.10",
     "node-config-ts": "3.1.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
