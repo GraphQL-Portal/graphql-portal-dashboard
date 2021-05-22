@@ -1940,7 +1940,7 @@
     pascal-case "3.1.2"
     protobufjs "6.10.2"
 
-"@graphql-mesh/json-schema@0.15.0":
+"@graphql-mesh/json-schema@0.15.0", "@graphql-mesh/json-schema@^0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.15.0.tgz#4f97039ae753fb50025ee1f30d962206a5f10730"
   integrity sha512-gQA9j6JhBRs3VtYmpo9xFSIxXC0RTFmmOG4jjsA4cULLqa9IAjTNFyI+C88f/Sa9N8Q86mlmF5vDeCtM3TZkWA==
@@ -1955,23 +1955,6 @@
     object-hash "2.1.1"
     pascal-case "3.1.2"
     qs "6.10.1"
-    to-json-schema "0.2.5"
-    url-join "4.0.1"
-
-"@graphql-mesh/json-schema@^0.13.0":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.13.1.tgz#abe3210c883e1f0d04db56d5bf754a57f0aff1d8"
-  integrity sha512-9PdEhB5mEVedcLSt4DSDKFecEJ5wlpr5V5PlFt3NFFcMZ9kFhNJLPNRB+ECpicx/JDKfkSbeFVSr0yWDsuExlg==
-  dependencies:
-    "@ardatan/aggregate-error" "0.0.6"
-    "@graphql-mesh/types" "0.39.0"
-    "@graphql-mesh/utils" "0.10.0"
-    ajv "8.1.0"
-    graphql-compose "7.25.1"
-    graphql-scalars "1.9.0"
-    lodash "4.17.21"
-    object-hash "2.1.1"
-    pascal-case "3.1.2"
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
@@ -2397,17 +2380,17 @@
     "@graphql-mesh/openapi" "^0.16.0"
     graphql "^15.4.0"
 
-"@graphql-portal/gateway@0.22.0":
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.22.0.tgz#1d837298a123a96456f5e87a71f84da82d8e213d"
-  integrity sha512-bdFZFlxlHPMvA9k+IqKvW4InBh/FqQ4qnI9yPLQnL1I+h9Hk1SycKo13ITKyHXVKC4yid1/7hAq1lhurrzVp8w==
+"@graphql-portal/gateway@0.22.1":
+  version "0.22.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.22.1.tgz#ee426edf027e51d007d019cc6b9d078ac193fbb5"
+  integrity sha512-XRyhf5qLfROl0f3b8/O+WIu04YZDxtoA8bRheP5nYAe34SdJUtNh8SFbEwwoSngoqEB/Ji5pVBHVCSwWeW5LLA==
   dependencies:
     "@graphql-inspector/core" "^2.3.0"
     "@graphql-mesh/config" "^0.16.0"
     "@graphql-mesh/fhir" "^0.10.0"
     "@graphql-mesh/graphql" "^0.17.0"
     "@graphql-mesh/grpc" "^0.12.0"
-    "@graphql-mesh/json-schema" "^0.13.0"
+    "@graphql-mesh/json-schema" "^0.15.0"
     "@graphql-mesh/merger-federation" "^0.8.7"
     "@graphql-mesh/mongoose" "^0.7.1"
     "@graphql-mesh/mysql" "^0.10.0"
@@ -5193,16 +5176,6 @@ ajv@6.12.6, ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.11.0, ajv@^6.12.0, ajv@
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
-    uri-js "^4.2.2"
-
-ajv@8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.1.0.tgz#45d5d3d36c7cdd808930cc3e603cf6200dbeb736"
-  integrity sha512-B/Sk2Ix7A36fs/ZkuGLIR86EdjbgR6fsAcbx9lOP/QBSXujDNbVmIS/U4Itz5k8fPFDeVZl/zQ/gJW4Jrq6XjQ==
-  dependencies:
-    fast-deep-equal "^3.1.1"
-    json-schema-traverse "^1.0.0"
-    require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
 ajv@8.3.0:
