@@ -19,6 +19,21 @@ export const QUERY_METRICS = gql`
       country
       count
     }
+    getSlowestRequests(filters: $filters) {
+      latency
+      error
+      query
+      requestDate
+      apiDef
+      apiName
+      resolver {
+        error
+        latency
+        path
+        source
+        sourceId
+      }
+    }
   }
 `;
 

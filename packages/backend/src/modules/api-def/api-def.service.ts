@@ -290,9 +290,9 @@ export default class ApiDefService implements IAccessControlService {
         const { schema } = meshSource as { schema: GraphQLSchema };
         const methods = ['Query', 'Mutation']
           .map((type) => {
-            const fields = (schema.getType(
-              type
-            ) as GraphQLObjectType)?.getFields();
+            const fields = (
+              schema.getType(type) as GraphQLObjectType
+            )?.getFields();
             return fields ? Object.keys(fields) : [];
           })
           .flat(3);
@@ -302,8 +302,9 @@ export default class ApiDefService implements IAccessControlService {
           );
         }
 
-        const additionalTypeDef = (apiDef.mesh
-          ?.additionalTypeDefs as string[])?.find(
+        const additionalTypeDef = (
+          apiDef.mesh?.additionalTypeDefs as string[]
+        )?.find(
           (typeDef: string) => typeDef.includes(type) && typeDef.includes(field)
         );
         if (!additionalTypeDef) {

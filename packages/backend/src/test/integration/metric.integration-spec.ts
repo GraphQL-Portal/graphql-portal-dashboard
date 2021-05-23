@@ -12,7 +12,10 @@ import MetricService from '../../modules/metric/metric.service';
 import ITokens from '../../modules/user/interfaces/tokens.interface';
 import UserService from '../../modules/user/user.service';
 import { createUser, Method, requestTo, RequestToResult } from '../common';
-import { IMetricFilter } from '../../modules/metric/interfaces';
+import {
+  IAggregateFilters,
+  IMetricFilter,
+} from '../../modules/metric/interfaces';
 
 jest.mock('ioredis');
 
@@ -24,6 +27,11 @@ describe('MetricResolver', () => {
   let user: IUser & ITokens;
   let admin: IUser & ITokens;
 
+  const filters: IMetricFilter = {
+    apiDef: 'apiDef',
+    sourceId: 'sourceId',
+  };
+
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -33,6 +41,7 @@ describe('MetricResolver', () => {
         getApiActivity: jest.fn().mockImplementation(() => {}),
         getChunkedAPIMetrics: jest.fn().mockImplementation(() => {}),
         getCountryMetrics: jest.fn().mockImplementation(() => {}),
+        getSlowestRequests: jest.fn().mockImplementation(() => {}),
       })
       .compile();
 
@@ -106,12 +115,28 @@ describe('MetricResolver', () => {
       });
     });
 
+    describe('getSlowestRequests', () => {
+      it('should call getSlowestRequests', async () => {
+        await graphQlRequest(
+          `query getSlowestRequests($filters: MetricFilter!) {
+            getSlowestRequests(filters: $filters) {
+              query
+              apiName
+              latency
+            }
+          }`,
+          {
+            filters,
+          }
+        ).expect(HttpStatus.OK);
+
+        expect(metricService.getSlowestRequests).toHaveBeenCalledTimes(1);
+        expect(metricService.getSlowestRequests).toHaveBeenCalledWith(filters);
+      });
+    });
+
     describe('getChunkedAPIMetrics', () => {
       const chunks = [new Date().toString(), new Date().toString()];
-      const filters: IMetricFilter = {
-        apiDef: 'apiDef',
-        sourceId: 'sourceId',
-      };
 
       it('should call getChunkedAPIMetrics', async () => {
         await graphQlRequest(
@@ -136,9 +161,9 @@ describe('MetricResolver', () => {
 
     describe('getCountryMetrics', () => {
       it('should call getCountryMetrics', async () => {
-        const startDate = new Date().toString();
+        const startDate = +new Date();
         const endDate = startDate;
-        const filters: IMetricFilter = {
+        const filters: IAggregateFilters = {
           apiDef: 'apiDef',
           sourceId: 'sourceId',
           startDate,

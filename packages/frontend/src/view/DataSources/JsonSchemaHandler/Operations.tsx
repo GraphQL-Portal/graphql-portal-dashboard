@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 
-import { JsonSchemaOperation, Operations as Props } from '../../../types';
+import { Operations as Props } from '../../../types';
 import { FormGroup, Input, OutlineButton, Select } from '../../../ui';
 import { AddFieldArrayHeader } from '../../Form';
 import { HandlerCol, HandlerRow } from '../Layout';

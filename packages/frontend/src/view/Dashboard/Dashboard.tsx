@@ -15,22 +15,18 @@ import {
   CHART_BUTTONS,
   CountryChart,
   LatencyRequestChart,
+  SlowestRequests,
   SuccessFailureChart,
 } from '../MetricChart';
 import { useStyles } from './useStyles';
 
 export const Dashboard: React.FC = () => {
   const { widget, apiSelect, apiSelectLabel } = useStyles();
-  const {
-    data,
-    range,
-    onSetRange,
-    apiDef,
-    apis,
-    onSelectChange,
-  } = useDashboardMetrics();
+  const { data, range, onSetRange, apiDef, apis, onSelectChange } =
+    useDashboardMetrics();
 
-  const { getChunkedAPIMetrics, getCountryMetrics } = data || {};
+  const { getChunkedAPIMetrics, getCountryMetrics, getSlowestRequests } =
+    data || {};
 
   return (
     <>
@@ -81,6 +77,14 @@ export const Dashboard: React.FC = () => {
           <HugeWidget>
             <WidgetHeader title="Countries" />
             <CountryChart data={getCountryMetrics} />
+          </HugeWidget>
+        </WidgetRow>
+      )}
+      {getSlowestRequests?.length > 0 && (
+        <WidgetRow>
+          <HugeWidget>
+            <WidgetHeader title="Slowest requests"></WidgetHeader>
+            <SlowestRequests data={getSlowestRequests} />
           </HugeWidget>
         </WidgetRow>
       )}

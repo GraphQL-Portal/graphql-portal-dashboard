@@ -10,6 +10,7 @@ import IAggregateFilters from './aggregate-filters.interface';
 import IMetricFilter from './metric-filter.interface';
 import IApiActivity from './api-activity.interface';
 import IAPIMetric from './api-metric.interface';
+import ISlowestRequest from './slowest-request.interface';
 
 export type AnyMetric =
   | IGotRequest
@@ -37,4 +38,5 @@ export {
   IMetricFilter,
   IApiActivity,
   IAPIMetric,
+  ISlowestRequest,
 };

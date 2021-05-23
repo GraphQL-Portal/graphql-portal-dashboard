@@ -19,9 +19,26 @@ export type CountryMetric = {
   count?: number;
 };
 
+export type SlowestRequestMetric = {
+  latency: number;
+  error: string;
+  query: Record<string, unknown> | null;
+  requestDate: string;
+  apiDef: string;
+  apiName: string;
+  resolver: {
+    error: any;
+    latency: number;
+    path: string;
+    source: string;
+    sourceId: string;
+  };
+};
+
 export type FullApiMetric = {
   getChunkedAPIMetrics: ApiMetric[];
   getCountryMetrics: CountryMetric[];
+  getSlowestRequests: SlowestRequestMetric[];
 };
 
 export type CountryChart = {

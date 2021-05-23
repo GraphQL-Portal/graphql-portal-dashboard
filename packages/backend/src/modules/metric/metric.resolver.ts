@@ -6,6 +6,7 @@ import {
   IApiActivity,
   IAPIMetric,
   IMetricFilter,
+  ISlowestRequest,
 } from './interfaces';
 import MetricService from './metric.service';
 import ICountryMetric from './interfaces/country-metric.interface';
@@ -21,6 +22,14 @@ export default class MetricResolver {
     @Args('filters') filters: IAggregateFilters
   ): Promise<IApiActivity[]> {
     return this.metricService.getApiActivity({ ...filters, user });
+  }
+
+  @Query()
+  @Roles([RolesEnum.USER])
+  public getSlowestRequests(
+    @Args('filters') filters: IMetricFilter
+  ): Promise<ISlowestRequest[]> {
+    return this.metricService.getSlowestRequests(filters);
   }
 
   @Query()
