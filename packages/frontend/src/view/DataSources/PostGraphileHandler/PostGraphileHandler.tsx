@@ -1,7 +1,6 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
 
-import { Checkbox, FormLabel, Input, PrimaryButton } from '../../../ui';
+import { Input, PrimaryButton } from '../../../ui';
 import { usePostGraphileHandler } from '../../../presenter/DataSources';
 import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
@@ -10,7 +9,6 @@ import { getError } from '../helpers';
 
 export const PostGraphileHandler: React.FC<HandlerStep> = (props) => {
   const {
-    control,
     errors,
     onSubmit,
     register,
