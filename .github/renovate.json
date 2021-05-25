@@ -16,7 +16,8 @@
         "codemirror-graphql",
         "@shelf/jest-mongodb",
         "@types/react",
-        "@types/react-dom"
+        "@types/react-dom",
+        "date-fns"
       ]
     }
   ]
