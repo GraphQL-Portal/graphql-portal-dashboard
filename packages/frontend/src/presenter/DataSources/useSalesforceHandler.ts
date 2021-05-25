@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { SalesforceForm, UseSalesforceHandlerHook } from '../../types';
-import { isUrl } from '../validation';
+import enforce from '../validation';
 
 const suite = vest.create('saleseforce_handler', ({ baseUrl, token }) => {
   test('baseUrl', 'Base url is required', () => {
@@ -15,7 +15,7 @@ const suite = vest.create('saleseforce_handler', ({ baseUrl, token }) => {
     'baseUrl',
     'Please use absolute URL http://example.com or http://localhost:80',
     () => {
-      isUrl(baseUrl);
+      enforce(baseUrl).isURL();
     }
   );
 });

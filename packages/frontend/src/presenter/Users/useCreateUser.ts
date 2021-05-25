@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { useDialogs } from '../../model/providers';
 import { ROLE_ADMIN, ROLE_USER } from '../../model/providers/Auth/constants';
-import { isCorrectPassword, isEmail } from '../validation';
+import enforce, { isCorrectPassword } from '../validation';
 
 const suite = vest.create(
   'create_user',
@@ -15,7 +15,7 @@ const suite = vest.create(
     });
 
     test('email', 'Please enter correct Email', () => {
-      isEmail(email);
+      enforce(email).isEmail();
     });
 
     isCorrectPassword(password);

@@ -88,7 +88,7 @@ export const Operations: React.FC<Props> = ({
               <HandlerCol>
                 <Input
                   ref={register()}
-                  label="URL to Response sample"
+                  label="JSON string or URL to Response sample"
                   name={`operations[${idx}].responseSample`}
                   fullWidth
                   defaultValue={operation.responseSample}

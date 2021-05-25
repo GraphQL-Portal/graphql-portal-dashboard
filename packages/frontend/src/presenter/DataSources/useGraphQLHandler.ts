@@ -1,12 +1,12 @@
 import { useForm, useFieldArray } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
-import { isUrl } from '../validation';
+import enforce from '../validation';
 
 const GRAPHQL_DEFAULT_STATE = {
   endpoint: '',
@@ -27,7 +27,7 @@ const suite = vest.create('graphql_handler', ({ endpoint }) => {
     'endpoint',
     'Please use absolute URL http://example.com or http://localhost:80',
     () => {
-      isUrl(endpoint);
+      enforce(endpoint).isURL();
     }
   );
 });

@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { vestResolver } from '@hookform/resolvers/vest';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { useHistory } from 'react-router-dom';
 
 import { ROUTES, useToast } from '../../model/providers';
 import { useFormErrors } from '../../model/Hooks';
 import { useSignUp as signUp } from '../../model/SignUp/commands';
 import { SignUpForm } from '../../types';
-import { isCorrectPassword, isEmail } from '../validation';
+import enforce, { isCorrectPassword } from '../validation';
 
 const validationSuite = vest.create(
   'signup_form',
@@ -16,7 +16,7 @@ const validationSuite = vest.create(
       enforce(email).isNotEmpty();
     });
     test('email', 'Please enter correct Email', () => {
-      isEmail(email);
+      enforce(email).isEmail();
     });
 
     isCorrectPassword(password);
