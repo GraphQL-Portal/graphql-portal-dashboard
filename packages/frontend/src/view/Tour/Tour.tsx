@@ -68,7 +68,7 @@ export const Tour: React.FC = () => {
 
   useEffect(() => {
     setNextButtonDisabled(!!steps[currentStep].buttonDisabled);
-  }, [currentStep]);
+  }, [steps, currentStep]);
 
   return (
     <>

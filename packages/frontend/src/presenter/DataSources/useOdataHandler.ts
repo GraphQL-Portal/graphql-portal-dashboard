@@ -1,12 +1,12 @@
 import { useForm, useFieldArray } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { HandlerStep } from '../../types';
 
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
-import { isUrl } from '../validation';
+import enforce from '../validation';
 
 const suite = vest.create('odata_handler', ({ baseUrl }) => {
   test('baseUrl', 'baseUrl is required', () => {
@@ -17,7 +17,7 @@ const suite = vest.create('odata_handler', ({ baseUrl }) => {
     'baseUrl',
     'Please use absolute URL http://example.com or http://localhost:80',
     () => {
-      isUrl(baseUrl);
+      enforce(baseUrl).isURL();
     }
   );
 });

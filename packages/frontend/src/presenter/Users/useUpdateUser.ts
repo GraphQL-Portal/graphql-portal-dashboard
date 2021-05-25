@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
 import { useDialogs } from '../../model/providers';
-import { isEmail } from '../validation';
+import enforce from '../validation';
 
 const suite = vest.create('update_user', ({ email }) => {
   test('email', 'Email is required', () => {
@@ -13,7 +13,7 @@ const suite = vest.create('update_user', ({ email }) => {
   });
 
   test('email', 'Please enter correct Email', () => {
-    isEmail(email);
+    enforce(email).isEmail();
   });
 });
 
@@ -35,7 +35,7 @@ export const useUpdateUser = () => {
 
   useEffect(() => {
     reset(user);
-  }, [user.email, user.firstName, user.lastName, reset]);
+  }, [user, reset]);
 
   return {
     onSubmit: handleSubmit(onSuccess),

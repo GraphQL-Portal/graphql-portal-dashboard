@@ -1,5 +1,5 @@
 import { useFieldArray, useForm } from 'react-hook-form';
-import vest, { test, enforce } from 'vest';
+import vest, { test } from 'vest';
 import { vestResolver } from '@hookform/resolvers/vest';
 
 import { useFormErrors } from '../../model/Hooks';
@@ -10,7 +10,7 @@ import {
   UseJsonSchemaHook,
 } from '../../types';
 import { isZeroLength } from '../../utils';
-import { isUrl } from '../validation';
+import enforce from '../validation';
 import { arrayObjectToObject, objectToFieldArray } from './helpers';
 
 const URL_ERROR_MESSAGE =
@@ -21,7 +21,7 @@ const suite = vest.create(
   ({ baseUrl, operations }: JsonSchemaForm) => {
     const urlTest = (name: string, value: string) => {
       test(name, URL_ERROR_MESSAGE, () => {
-        isUrl(value);
+        enforce(value).isURL();
       });
     };
 
@@ -72,7 +72,13 @@ const suite = vest.create(
           });
 
           if (responseSample) {
-            urlTest(`${name}.responseSample`, responseSample);
+            test(
+              `${name}.responseSample`,
+              'Should be absolute URL http://example.com or valid JSON',
+              () => {
+                enforce(responseSample).isJSONorURL();
+              }
+            );
           }
 
           // if (requestSample) {
