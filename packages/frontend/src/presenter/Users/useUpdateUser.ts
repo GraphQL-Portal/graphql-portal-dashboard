@@ -35,7 +35,7 @@ export const useUpdateUser = () => {
 
   useEffect(() => {
     reset(user);
-  }, [user, reset]);
+  }, [user.firstName, user.lastName, user.role, reset]);
 
   return {
     onSubmit: handleSubmit(onSuccess),
