@@ -45,7 +45,7 @@ export const useDSPart: UseDSPartHook = ({
       triggers.current = {};
       sourceTable.current = {};
     };
-  }, [added.length, reset]);
+  }, [added, reset]);
 
   const source = watch('source');
 

@@ -22,7 +22,7 @@ export const StartTour: React.FC = () => {
   useEffect(() => {
     if (!accessToken || tour) return;
     onOpenTourDialog();
-  }, [accessToken, tour]);
+  }, [accessToken, onOpenTourDialog, tour]);
 
   return (
     <ModalDialog id={START_TOUR}>
