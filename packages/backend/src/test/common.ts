@@ -21,10 +21,10 @@ export enum Method {
 export type RequestResult = supertest.Test;
 export type RequestToResult = (method: Method, route: string) => supertest.Test;
 
-export const requestTo = (app: INestApplication) => (
-  method: Method,
-  route: string
-): RequestResult => supertest(app.getHttpServer())[method](route);
+export const requestTo =
+  (app: INestApplication) =>
+  (method: Method, route: string): RequestResult =>
+    supertest(app.getHttpServer())[method](route);
 
 export const randomObjectId = (): string => new ObjectId().toHexString();
 

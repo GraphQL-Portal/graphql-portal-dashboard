@@ -570,9 +570,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
-  private async getGeoData(
-    ip?: string
-  ): Promise<{
+  private async getGeoData(ip?: string): Promise<{
     city?: string;
     location?: LocationRecord;
     postal?: PostalRecord;

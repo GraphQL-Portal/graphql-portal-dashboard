@@ -30,7 +30,7 @@ export const useAvailableSources = () => {
 
   useEffect(() => {
     reset({ search: tour.DATA_CONNECTORS_SEARCH_VALUE });
-  }, [tour.DATA_CONNECTORS_SEARCH_VALUE]);
+  }, [tour.DATA_CONNECTORS_SEARCH_VALUE, reset]);
 
   const onReset = () => reset({ search: '' });
 

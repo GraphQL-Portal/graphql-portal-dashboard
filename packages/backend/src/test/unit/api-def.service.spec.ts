@@ -183,10 +183,10 @@ describe('ApiDefService', () => {
     });
 
     it('should update document and call publishApiDefsUpdated', async () => {
-      const newData = ({
+      const newData = {
         ...apiDef.toObject({ getters: true }),
         endpoint: 'new-endpoint',
-      } as any) as IApiDef;
+      } as any as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 
       expect(result.apiDef).toBeDefined();
@@ -200,7 +200,7 @@ describe('ApiDefService', () => {
     });
 
     it('should save all fields', async () => {
-      const newData = ({
+      const newData = {
         ...apiDef.toObject({ getters: true }),
         schema_polling_interval: 1,
         schema_updates_through_control_api: true,
@@ -211,7 +211,7 @@ describe('ApiDefService', () => {
         depth_limit: 1,
         request_complexity_limit: 1,
         rate_limit: { field: 'value' },
-      } as any) as IApiDef;
+      } as any as IApiDef;
       const result = await apiDefService.update(apiDef._id, newData, []);
 
       expect(result.apiDef).toBeDefined();
