@@ -20,19 +20,23 @@ export type CountryMetric = {
 };
 
 export type SlowestRequestMetric = {
-  latency: number;
-  error: string;
+  requestId: string;
+  nodeId: string;
   query: Record<string, unknown> | null;
+  userAgent: string;
+  ip: string;
+  resolvers: [Record<string, unknown> | null];
+  request: Record<string, unknown> | null;
+  geo: Record<string, unknown> | null;
+  rawResponseBody: string;
   requestDate: string;
-  apiDef: string;
+  responseDate: string;
+  latency: number;
+  contentLength: number;
+  error: Error | Record<string, unknown> | string | null;
   apiName: string;
-  resolver: {
-    error: any;
-    latency: number;
-    path: string;
-    source: string;
-    sourceId: string;
-  };
+  apiDef: string;
+  user: string;
 };
 
 export type FullApiMetric = {

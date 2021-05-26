@@ -32,7 +32,7 @@ export const SlowestRequests: React.FC<{ data: SlowestRequestMetric[] }> = ({
       </TableHead>
       <TableBody>
         {data.map(
-          ({ requestDate, latency, apiName, resolver, query }, i: number) => {
+          ({ requestDate, latency, apiName, query, error, ip }, i: number) => {
             return (
               <TableRow key={i}>
                 <TableCell>{format(+requestDate, 'LLL dd HH:mm:ss')}</TableCell>
@@ -50,20 +50,18 @@ export const SlowestRequests: React.FC<{ data: SlowestRequestMetric[] }> = ({
                     </div>
                   </div>
                 </TableCell>
-                <TableCell>{apiName}</TableCell>
-                <TableCell>{resolver.source}</TableCell>
                 <TableCell>
                   <Tooltip
                     title={<PrettyQueryJSON query={query} />}
-                    placement="left"
+                    placement="top"
                   >
-                    <span> {resolver.path} </span>
+                    <span> {apiName} </span>
                   </Tooltip>
                 </TableCell>
+                <TableCell>{ip}</TableCell>
                 <TableCell>
-                  {resolver.error?.extensions?.statusText ||
-                    resolver.error ||
-                    'SUCCESS'}
+                  {' '}
+                  {error ? (error as Error).message || error : 'SUCCESS'}
                 </TableCell>
               </TableRow>
             );

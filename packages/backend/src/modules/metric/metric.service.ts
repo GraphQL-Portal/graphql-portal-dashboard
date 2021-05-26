@@ -216,32 +216,15 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
    * @param filters Metric filters
    */
   public async getSlowestRequests(
-    filters: IMetricFilter
-  ): Promise<ISlowestRequest[]> {
+    filters: IAggregateFilters
+  ): Promise<IRequestMetricDocument[]> {
     return this.requestMetricModel.aggregate([
       {
         $match: this.makeMatchFromFilters(filters),
       },
       {
-        $unwind: '$resolvers',
-      },
-      {
         $sort: {
           latency: -1,
-        },
-      },
-      {
-        $group: {
-          _id: '$resolvers.path',
-          latency: { $first: '$latency' },
-          error: { $first: '$error' },
-          nodeId: { $first: '$nodeId' },
-          query: { $first: '$query' },
-          requestDate: { $first: '$requestDate' },
-          responseDate: { $first: '$responseDate' },
-          requestId: { $first: '$requestId' },
-          resolver: { $first: '$resolvers' },
-          apiDef: { $first: '$apiDef' },
         },
       },
       {
@@ -255,11 +238,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       {
         $addFields: {
           apiName: { $arrayElemAt: ['$apiDefs.name', 0] },
-        },
-      },
-      {
-        $sort: {
-          latency: -1,
         },
       },
       {

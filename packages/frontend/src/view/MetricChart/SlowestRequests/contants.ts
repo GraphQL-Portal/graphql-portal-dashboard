@@ -2,8 +2,7 @@ export const TABLE_HEAD = [
   'DATE',
   'LATENCY',
   'API NAME',
-  'SOURCE NAME',
-  'QUERY NAME',
+  'IP ADDRESS',
   'STATUS',
 ];
 

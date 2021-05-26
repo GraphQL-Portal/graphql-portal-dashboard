@@ -21,17 +21,24 @@ type ApiActivity {
   count: Int
 }
 
-type SlowestRequest {
-  latency: Int
-  error: String
+type RequestMetric {
+  requestId: String
   nodeId: String
+  latency: Int
   query: JSONObject
+  userAgent: String
+  ip: String
+  resolvers: [Resolver]
+  request: JSONObject
+  geo: JSONObject
+  rawResponseBody: String
   requestDate: String
   responseDate: String
-  requestId: String
-  resolver: Resolver
-  apiDef: String
+  contentLength: Int
+  error: JSONObject
   apiName: String
+  apiDef: String
+  user: String
 }
 
 type Resolver {
@@ -61,7 +68,7 @@ input MetricFilter {
 
 type Query {
   getApiActivity(filters: MetricAggregateFilters!): [ApiActivity]
-  getSlowestRequests(filters: MetricFilter!): [SlowestRequest]
+  getSlowestRequests(filters: MetricAggregateFilters!): [RequestMetric]
   getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): [APIMetric]
   getCountryMetrics(
     filters: MetricAggregateFilters!

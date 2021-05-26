@@ -307,8 +307,7 @@ describe('MetricService', () => {
       ]);
     });
     it('getSlowestRequests', async () => {
-      const apiDef = randomObjectId();
-      const slowestRequests = [{ _id: 'getJSONGeolocationDataByIp' }];
+      const slowestRequests = [{ _id: randomObjectId() }];
       const spyAggregate = jest
         .spyOn((metricService as any).requestMetricModel, 'aggregate')
         .mockResolvedValue(slowestRequests);
@@ -316,7 +315,7 @@ describe('MetricService', () => {
         startDate: new Date(),
         endDate: new Date(),
         user: randomObjectId(),
-        apiDef,
+        apiDef: randomObjectId(),
       });
 
       expect(spyAggregate).toBeCalledTimes(1);

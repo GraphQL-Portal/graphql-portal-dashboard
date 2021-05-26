@@ -26,10 +26,18 @@ describe('MetricResolver', () => {
   let userService: UserService;
   let user: IUser & ITokens;
   let admin: IUser & ITokens;
+  const date = +new Date();
 
-  const filters: IMetricFilter = {
+  const metricFilters: IMetricFilter = {
     apiDef: 'apiDef',
     sourceId: 'sourceId',
+  };
+
+  const aggregateFilters: IAggregateFilters = {
+    apiDef: 'apiDef',
+    sourceId: 'sourceId',
+    startDate: date,
+    endDate: date,
   };
 
   beforeAll(async () => {
@@ -118,7 +126,7 @@ describe('MetricResolver', () => {
     describe('getSlowestRequests', () => {
       it('should call getSlowestRequests', async () => {
         await graphQlRequest(
-          `query getSlowestRequests($filters: MetricFilter!) {
+          `query getSlowestRequests($filters: MetricAggregateFilters!) {
             getSlowestRequests(filters: $filters) {
               query
               apiName
@@ -126,12 +134,14 @@ describe('MetricResolver', () => {
             }
           }`,
           {
-            filters,
+            filters: aggregateFilters,
           }
         ).expect(HttpStatus.OK);
 
         expect(metricService.getSlowestRequests).toHaveBeenCalledTimes(1);
-        expect(metricService.getSlowestRequests).toHaveBeenCalledWith(filters);
+        expect(metricService.getSlowestRequests).toHaveBeenCalledWith(
+          aggregateFilters
+        );
       });
     });
 
@@ -147,14 +157,14 @@ describe('MetricResolver', () => {
           }`,
           {
             chunks,
-            filters,
+            filters: metricFilters,
           }
         ).expect(HttpStatus.OK);
 
         expect(metricService.getChunkedAPIMetrics).toHaveBeenCalledTimes(1);
         expect(metricService.getChunkedAPIMetrics).toHaveBeenCalledWith(
           chunks,
-          { ...filters, user: user._id }
+          { ...metricFilters, user: user._id }
         );
       });
     });
@@ -163,12 +173,6 @@ describe('MetricResolver', () => {
       it('should call getCountryMetrics', async () => {
         const startDate = +new Date();
         const endDate = startDate;
-        const filters: IAggregateFilters = {
-          apiDef: 'apiDef',
-          sourceId: 'sourceId',
-          startDate,
-          endDate,
-        };
 
         await graphQlRequest(
           `query getCountryMetrics($filters: MetricAggregateFilters!, $limit: Int) {
@@ -177,13 +181,13 @@ describe('MetricResolver', () => {
             }
           }`,
           {
-            filters,
+            filters: aggregateFilters,
           }
         ).expect(HttpStatus.OK);
 
         expect(metricService.getCountryMetrics).toHaveBeenCalledTimes(1);
         expect(metricService.getCountryMetrics).toHaveBeenCalledWith(
-          { ...filters, user: user._id },
+          { ...aggregateFilters, user: user._id },
           undefined
         );
       });

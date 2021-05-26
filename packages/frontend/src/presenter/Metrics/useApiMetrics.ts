@@ -20,6 +20,8 @@ export const useApiMetrics = (apiDef: string) => {
       },
       slowestRequestsFilters: {
         apiDef,
+        startDate,
+        endDate,
       },
       countryFilters: {
         startDate,
