@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.13.0
+
+### Patch Changes
+
+- bdb0ded: Dependencies update
+
 ## 0.12.1
 
 ### Patch Changes
