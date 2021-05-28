@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.13.1
+
+### Patch Changes
+
+- 33c4775: lib compiler option added
+
 ## 0.13.0
 
 ### Patch Changes
