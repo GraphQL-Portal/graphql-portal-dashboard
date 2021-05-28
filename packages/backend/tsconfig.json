@@ -5,6 +5,7 @@
     "moduleResolution": "Node",
     "module": "CommonJS",
     "target": "ES2019",
+    "lib": ["ES2019"],
     "sourceMap": true,
     "esModuleInterop": true,
     "declaration": true,
