@@ -2209,7 +2209,23 @@
     soap "0.37.0"
     soap-graphql "0.1.1"
 
-"@graphql-mesh/thrift@0.7.9", "@graphql-mesh/thrift@^0.7.0":
+"@graphql-mesh/thrift@0.7.10":
+  version "0.7.10"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.10.tgz#07440db5d6f059925d51e4eb4927d5d8aade8cef"
+  integrity sha512-Jq6Tnewxr0udQ2W5RfQ6UvoIN/rI+7Vr8x/u+V1NT6Z+poXqsWWKxYAgpepDh1sIgRcQ1f91uHA6zA8tekxM0g==
+  dependencies:
+    "@ardatan/aggregate-error" "0.0.6"
+    "@creditkarma/thrift-client" "0.17.2"
+    "@creditkarma/thrift-parser" "1.2.0"
+    "@creditkarma/thrift-server-core" "0.17.2"
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.12.0"
+    fetchache "0.1.1"
+    graphql-scalars "1.9.3"
+    thrift "0.14.1"
+    url-join "4.0.1"
+
+"@graphql-mesh/thrift@^0.7.0":
   version "0.7.9"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.9.tgz#dc302d2801ed4a5396b4e180dd42026b0e2fec02"
   integrity sha512-o05C2ZWgcToIFGgGl/NZC1usfkl2lYlMbSl+PubHFN40JKCWYeLIfWkdffBSEfue0Vz+gTWgPEHRVaSSNfiC5Q==
