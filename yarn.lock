@@ -1896,13 +1896,13 @@
     "@graphql-mesh/utils" "0.11.4"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.17.9":
-  version "0.17.9"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.17.9.tgz#2b99f72d0b4f0ad207002ec6690f91cf6b90407c"
-  integrity sha512-BCAZGuCuBTlPuI3yzrTvm5gEV30RbEeLWXeN306b/QqfGxbqAM5dq37UASN91gLz8k7n6Fg2INvraAAsgfjBlA==
+"@graphql-mesh/graphql@0.17.10":
+  version "0.17.10"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.17.10.tgz#3b436f69eb106a52fb976a69e08d68d08e3c5187"
+  integrity sha512-9G8ll1mVPMbobf3vzJH73alyH+W1vd85cwtQC622aNCNSMEIZegMXjK4sc+Lq2wjBK9gLfRwhnK9EhDwrj/VXQ==
   dependencies:
     "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.11.4"
+    "@graphql-mesh/utils" "0.12.0"
     "@graphql-tools/url-loader" "6.10.1"
     "@graphql-tools/wrap" "7.0.8"
 
