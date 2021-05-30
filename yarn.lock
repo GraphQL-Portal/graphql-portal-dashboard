@@ -2405,7 +2405,18 @@
     lower-case "2.0.2"
     upper-case "2.0.2"
 
-"@graphql-mesh/transform-prefix@0.6.47", "@graphql-mesh/transform-prefix@^0.6.34":
+"@graphql-mesh/transform-prefix@0.6.48":
+  version "0.6.48"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-prefix/-/transform-prefix-0.6.48.tgz#f6056c45212346c6f966fd18f1a0224c5b0c1859"
+  integrity sha512-OQZt5CtycAx9lDuIgTm7CwO+vVws3wlw4J1WLLnr5OffiQhIf8e74zO7yQFxYgvWIf+MsoId2jM8KDimo6E1cw==
+  dependencies:
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.12.0"
+    "@graphql-tools/delegate" "7.1.5"
+    "@graphql-tools/utils" "7.10.0"
+    "@graphql-tools/wrap" "7.0.8"
+
+"@graphql-mesh/transform-prefix@^0.6.34":
   version "0.6.47"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-prefix/-/transform-prefix-0.6.47.tgz#31989f751ecc9d6d707d88aa53c0069518584409"
   integrity sha512-xF4s+k/ZlmYjGQNMVJrX3O07HGnaTFPXBmVBfT/HQpa+2JqlZtwUxqlI1lO/8ls/+LwucQyIDIAc02x1Qr3zuA==
