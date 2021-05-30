@@ -2277,7 +2277,19 @@
     "@graphql-tools/utils" "7.9.1"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/transform-extend@0.6.14", "@graphql-mesh/transform-extend@^0.6.1":
+"@graphql-mesh/transform-extend@0.6.15":
+  version "0.6.15"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-extend/-/transform-extend-0.6.15.tgz#2de3c61bece6452e17191a7b0af84d9ee09dd24d"
+  integrity sha512-OPvY0fAafTe1UYmh9NZGsN72cK7Q4sq11IimgbvIwKYtCmrW7t3fLuFG2Ipv/0K/grUB5eUqjnBz0hKSMDsKOQ==
+  dependencies:
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.12.0"
+    "@graphql-tools/code-file-loader" "6.3.1"
+    "@graphql-tools/graphql-file-loader" "6.2.7"
+    "@graphql-tools/load" "6.2.8"
+    "@graphql-tools/merge" "6.2.14"
+
+"@graphql-mesh/transform-extend@^0.6.1":
   version "0.6.14"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-extend/-/transform-extend-0.6.14.tgz#44a63ff105281d912cd74e8582f4be6b2c611572"
   integrity sha512-B3Zy3n2ixikruVbrPgQVwEwbU18jKU1GsPjJLEwPTSjtBA7n1bejbc1O+zBIbTkyrLUbP2ave68AtGijvJIEFw==
@@ -2845,7 +2857,7 @@
     "@graphql-tools/utils" "^7.7.0"
     tslib "~2.2.0"
 
-"@graphql-tools/merge@^6.2.11", "@graphql-tools/merge@^6.2.12", "@graphql-tools/merge@^6.2.14":
+"@graphql-tools/merge@6.2.14", "@graphql-tools/merge@^6.2.11", "@graphql-tools/merge@^6.2.12", "@graphql-tools/merge@^6.2.14":
   version "6.2.14"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.14.tgz#694e2a2785ba47558e5665687feddd2935e9d94e"
   integrity sha512-RWT4Td0ROJai2eR66NHejgf8UwnXJqZxXgDWDI+7hua5vNA2OW8Mf9K1Wav1ZkjWnuRp4ztNtkZGie5ISw55ow==
