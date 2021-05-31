@@ -5,6 +5,7 @@ export const QUERY_METRICS = gql`
   query getAPIMetrics(
     $chunks: [Timestamp]
     $filters: MetricFilter!
+    $slowestRequestsFilters: MetricAggregateFilters!
     $countryFilters: MetricAggregateFilters!
     $limit: Int
   ) {
@@ -18,6 +19,24 @@ export const QUERY_METRICS = gql`
     getCountryMetrics(filters: $countryFilters, limit: $limit) {
       country
       count
+    }
+    getSlowestRequests(filters: $slowestRequestsFilters) {
+      requestId
+      nodeId
+      query
+      userAgent
+      ip
+      request
+      geo
+      rawResponseBody
+      requestDate
+      responseDate
+      latency
+      contentLength
+      error
+      apiName
+      apiDef
+      user
     }
   }
 `;

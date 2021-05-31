@@ -306,6 +306,21 @@ describe('MetricService', () => {
         },
       ]);
     });
+    it('getSlowestRequests', async () => {
+      const slowestRequests = [{ _id: randomObjectId() }];
+      const spyAggregate = jest
+        .spyOn((metricService as any).requestMetricModel, 'aggregate')
+        .mockResolvedValue(slowestRequests);
+      const data = await metricService.getSlowestRequests({
+        startDate: new Date(),
+        endDate: new Date(),
+        user: randomObjectId(),
+        apiDef: randomObjectId(),
+      });
+
+      expect(spyAggregate).toBeCalledTimes(1);
+      expect(data).toMatchObject(slowestRequests);
+    });
     it('getApiActivity', async () => {
       const apiDef = randomObjectId();
       const spyAggregate = jest

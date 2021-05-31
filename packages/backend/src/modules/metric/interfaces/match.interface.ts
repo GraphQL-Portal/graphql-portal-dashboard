@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb';
 
 export default interface IMatch {
-  requestDate: {
+  requestDate?: {
     $gte?: Date;
     $lte?: Date;
   };

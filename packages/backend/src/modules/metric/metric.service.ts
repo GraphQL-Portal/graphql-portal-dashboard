@@ -35,6 +35,7 @@ import {
   IMetricFilter,
   IReducedResolver,
   ISentResponse,
+  ISlowestRequest,
 } from './interfaces';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import { RedisClient } from '../../common/types';
@@ -134,7 +135,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
           from: 'apidefs',
           localField: 'apiDef',
           foreignField: '_id',
-          as: 'apiNames',
+          as: 'apiDefs',
         },
       },
       { $unwind: '$apiDef' },
@@ -173,7 +174,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
             {
               $group: {
                 _id: '$apiDef',
-                value: { $first: { $arrayElemAt: ['$apiNames.name', 0] } },
+                value: { $first: { $arrayElemAt: ['$apiDefs.name', 0] } },
               },
             },
           ],
@@ -207,6 +208,42 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
         ...values,
       })
     );
+  }
+
+  /**
+   * Gets 10 slowest requests grouped by field name
+   *
+   * @param filters Metric filters
+   */
+  public async getSlowestRequests(
+    filters: IAggregateFilters
+  ): Promise<IRequestMetricDocument[]> {
+    return this.requestMetricModel.aggregate([
+      {
+        $match: this.makeMatchFromFilters(filters),
+      },
+      {
+        $sort: {
+          latency: -1,
+        },
+      },
+      {
+        $lookup: {
+          from: 'apidefs',
+          localField: 'apiDef',
+          foreignField: '_id',
+          as: 'apiDefs',
+        },
+      },
+      {
+        $addFields: {
+          apiName: { $arrayElemAt: ['$apiDefs.name', 0] },
+        },
+      },
+      {
+        $limit: 10,
+      },
+    ]);
   }
 
   /**
@@ -594,15 +631,17 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
-  private makeMatchFromFilters(filters: IAggregateFilters): IMatch {
-    const match: IMatch = {
-      requestDate: {},
-    };
+  private makeMatchFromFilters(
+    filters: IAggregateFilters | IMetricFilter
+  ): IMatch {
+    const match: IMatch = {};
     const filterToFunction = {
       startDate: (value: Date | number): void => {
+        if (!match.requestDate) match.requestDate = {};
         match.requestDate.$gte = new Date(value);
       },
       endDate: (value: Date | number): void => {
+        if (!match.requestDate) match.requestDate = {};
         match.requestDate.$lte = new Date(value);
       },
       sourceId: (value: string): void => {
