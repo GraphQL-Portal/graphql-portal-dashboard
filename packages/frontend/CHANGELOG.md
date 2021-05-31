@@ -1,5 +1,16 @@
 # graphql-portal-dashboard-frontend
 
+## 0.13.0
+
+### Minor Changes
+
+- d0502b6: Response sample accepts json string
+
+### Patch Changes
+
+- bdb0ded: Dependencies update
+- d8d7ca3: fix array dependencies
+
 ## 0.12.0
 
 ### Minor Changes
