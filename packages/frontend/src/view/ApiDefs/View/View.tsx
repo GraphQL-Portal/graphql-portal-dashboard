@@ -10,11 +10,13 @@ import {
   DeclinedAPI as DeclinedAPIProps,
   InitializedAPI as InitializedAPIProps,
   ReadyAPI as ReadyAPIProps,
+  HealthCheckFailedAPI as HealthCheckFailedAPIProps,
 } from '../../../types';
 import { InitializedAPI } from './InitializedAPI';
 import { DeclinedAPI } from './DeclinedAPI';
 import { ReadyAPI } from './ReadyAPI';
 import { DisabledAPI } from './DisabledAPI';
+import { HealthCheckFailedAPI } from './HealthCheckFailedAPI';
 import { ApiDefStatus } from '@graphql-portal/types';
 
 export const ViewAPI: React.FC = () => {
@@ -28,6 +30,7 @@ export const ViewAPI: React.FC = () => {
     loading,
     apiEndpoint,
     refetch,
+    apiHealthCheckFailed,
   } = useViewAPI();
 
   if (loading) return <Loading />;
@@ -35,18 +38,17 @@ export const ViewAPI: React.FC = () => {
   let ApiComponent:
     | React.FC<DeclinedAPIProps>
     | React.FC<InitializedAPIProps>
-    | React.FC<ReadyAPIProps>;
+    | React.FC<ReadyAPIProps>
+    | React.FC<HealthCheckFailedAPIProps>;
 
-  switch (status) {
-    case ApiDefStatus.INITIALIZED:
-      ApiComponent = InitializedAPI;
-      break;
-    case ApiDefStatus.DECLINED:
-      ApiComponent = DeclinedAPI;
-      break;
-    default:
-      ApiComponent = ReadyAPI;
-      break;
+  if (status === ApiDefStatus.INITIALIZED) {
+    ApiComponent = InitializedAPI;
+  } else if (status === ApiDefStatus.DECLINED) {
+    ApiComponent = DeclinedAPI;
+  } else if (apiHealthCheckFailed) {
+    ApiComponent = HealthCheckFailedAPI;
+  } else {
+    ApiComponent = ReadyAPI;
   }
 
   return (

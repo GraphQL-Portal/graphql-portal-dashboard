@@ -27,12 +27,11 @@ export type UseApiByIdHook = () => Omit<
 > &
   ReturnType<UseTabsHook> & {
     api: ApiDef;
+    apiHealthCheckFailed: boolean;
     apiEndpoint: string;
   };
 
-export type UseUpdateDataSourcesHook = (
-  props: EditApiTab
-) => {
+export type UseUpdateDataSourcesHook = (props: EditApiTab) => {
   onSubmit: OnSubmit;
   options: SelectOption[];
   connected: any[];
@@ -46,6 +45,7 @@ export type UseViewAPIHook = () => Omit<ReturnType<UseApiByIdHook>, 'api'> & {
   refetch: Refetch | undefined;
   name: string;
   apiEndpoint: string;
+  apiHealthCheckFailed: boolean;
   enabled: boolean;
   status: string;
 };
@@ -88,9 +88,7 @@ export type UseIPFilteringHook = (
   enableIPFiltering: boolean;
 };
 
-export type UseWebhooksHook = (
-  params: Pick<ApiDefFormMethods, 'control'>
-) => {
+export type UseWebhooksHook = (params: Pick<ApiDefFormMethods, 'control'>) => {
   hooks: FieldArray;
   addHook: FieldArrayAppend;
   removeHook: FieldArrayRemove;
@@ -139,9 +137,10 @@ export type UseUpdateWebhooksHook = (
 ) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors' | 'register'> &
   ReturnType<UseWebhooksHook> & { onSubmit: OnSubmit };
 
-export type UseAdditionalResolverHook = (
-  props: EditApiTab
-) => Pick<AdditionalResolverFormMethods, 'register' | 'errors' | 'control'> & {
+export type UseAdditionalResolverHook = (props: EditApiTab) => Pick<
+  AdditionalResolverFormMethods,
+  'register' | 'errors' | 'control'
+> & {
   onSubmit: OnSubmit;
   resolvers: FieldArray;
   sources: DataSource[];
@@ -149,19 +148,17 @@ export type UseAdditionalResolverHook = (
   onRemoveResolver: FieldArrayRemove;
 };
 
-export type UseCacheHook = (
-  props: EditApiTab
-) => Pick<CacheTransformFormMethods, 'register' | 'errors' | 'control'> & {
+export type UseCacheHook = (props: EditApiTab) => Pick<
+  CacheTransformFormMethods,
+  'register' | 'errors' | 'control'
+> & {
   onSubmit: OnSubmit;
   cache: FieldArray;
   onAddCache: FieldArrayAppend;
   onRemoveCache: FieldArrayRemove;
 };
 
-export type UseEnableApiHook = (props: {
-  api: ApiDef;
-  refetch: Refetch;
-}) => {
+export type UseEnableApiHook = (props: { api: ApiDef; refetch: Refetch }) => {
   onChange(value: boolean): void;
   value: boolean;
   disabled: boolean;

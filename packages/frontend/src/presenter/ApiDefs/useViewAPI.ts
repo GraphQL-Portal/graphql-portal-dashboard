@@ -1,9 +1,18 @@
 import { UseViewAPIHook } from '../../types';
 import { useApiById } from './useApiById';
 import { createFetcher } from './helpers';
+import { ApiDefStatus } from '@graphql-portal/types';
 
 export const useViewAPI: UseViewAPIHook = () => {
-  const { api, loading, tab, onChange, apiEndpoint, refetch } = useApiById();
+  const {
+    api,
+    loading,
+    tab,
+    onChange,
+    apiEndpoint,
+    apiHealthCheckFailed,
+    refetch,
+  } = useApiById();
 
   const fetcher = !loading
     ? createFetcher(apiEndpoint, {
@@ -12,7 +21,11 @@ export const useViewAPI: UseViewAPIHook = () => {
       })
     : (body: any) => Promise.resolve(body);
 
-  const { name = '', enabled = false, status } = api || {};
+  const {
+    name = '',
+    enabled = false,
+    status = ApiDefStatus.INITIALIZED,
+  } = api || {};
 
   return {
     tab,
@@ -24,5 +37,6 @@ export const useViewAPI: UseViewAPIHook = () => {
     status,
     refetch,
     apiEndpoint,
+    apiHealthCheckFailed,
   };
 };
