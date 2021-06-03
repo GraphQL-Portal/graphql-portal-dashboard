@@ -1,7 +1,7 @@
 import { useMutation, gql } from '@apollo/client';
 
 import { QUERY_API_DEFS } from '../queries';
-import { MutationHook } from '../../../types';
+import { MutationHook, MutationOptions } from '../../../types';
 
 const UPDATE_API_DEF = gql`
   mutation updateApiDef(
@@ -23,11 +23,13 @@ const UPDATE_API_DEF = gql`
   }
 `;
 
-export const useUpdateApiDef: MutationHook<'updateApiDef'> = (options = {}) => {
-  const [updateApiDef] = useMutation(UPDATE_API_DEF, {
+export const useUpdateApiDef = (
+  options: MutationOptions = {}
+): ReturnType<MutationHook<'updateApiDef'>> & { loading: boolean } => {
+  const [updateApiDef, { loading }] = useMutation(UPDATE_API_DEF, {
     refetchQueries: [{ query: QUERY_API_DEFS }],
     ...options,
   });
 
-  return { updateApiDef };
+  return { updateApiDef, loading };
 };

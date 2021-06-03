@@ -29,7 +29,7 @@ export const useUpdateGeneral: UseUpdateGeneralHook = ({ api, refetch }) => {
 
   const { auth_header_name = '', auth_tokens = [] } = authentication || {};
 
-  const { updateApiDef } = useUpdateApiDef({
+  const { updateApiDef, loading } = useUpdateApiDef({
     onCompleted() {
       refetch();
       showSuccessToast(`API ${name} successfully updated`);
@@ -81,6 +81,7 @@ export const useUpdateGeneral: UseUpdateGeneralHook = ({ api, refetch }) => {
 
   return {
     onSubmit: handleSubmit(onSubmit),
+    loading,
     register,
     control,
     errors,

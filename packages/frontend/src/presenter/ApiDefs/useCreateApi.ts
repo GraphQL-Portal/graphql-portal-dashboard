@@ -45,7 +45,7 @@ export const useCreateApi: UseCreateApiDefHook = () => {
   const { push } = useHistory();
   const { tour } = useTourContext();
   const { showSuccessToast, showErrorToast } = useToast();
-  const { createApiDef } = useCreateApiDef({
+  const { createApiDef, loading } = useCreateApiDef({
     onCompleted() {
       push(ROUTES.APIS);
       showSuccessToast('Successfully created new API');
@@ -55,18 +55,12 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     },
   });
 
-  const {
-    control,
-    errors,
-    handleSubmit,
-    watch,
-    setValue,
-    register,
-  } = useForm<ApiDefForm>({
-    mode: 'onSubmit',
-    defaultValues: tour.isStarted ? tour.api : defaultValues,
-    resolver: vestResolver(suite),
-  });
+  const { control, errors, handleSubmit, watch, setValue, register } =
+    useForm<ApiDefForm>({
+      mode: 'onSubmit',
+      defaultValues: tour.isStarted ? tour.api : defaultValues,
+      resolver: vestResolver(suite),
+    });
 
   const {
     options,
@@ -75,7 +69,6 @@ export const useCreateApi: UseCreateApiDefHook = () => {
     onAddSource,
     onRemoveSource,
     sourceTable,
-    loading,
   } = useDSPart({ control, watch, setValue });
 
   const ipMethods = useIPFiltering({ control });

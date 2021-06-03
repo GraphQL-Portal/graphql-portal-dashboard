@@ -15,6 +15,7 @@ export const GeneralTab: React.FC<Props> = (props) => {
     addToken,
     removeToken,
     register,
+    loading,
   } = useUpdateGeneral(props);
   const { form } = useStyles();
 
@@ -28,7 +29,9 @@ export const GeneralTab: React.FC<Props> = (props) => {
         addToken={addToken}
         removeToken={removeToken}
       />
-      <PrimaryButton type="submit">Update general info</PrimaryButton>
+      <PrimaryButton loading={loading} type="submit">
+        Update general info
+      </PrimaryButton>
     </form>
   );
 };

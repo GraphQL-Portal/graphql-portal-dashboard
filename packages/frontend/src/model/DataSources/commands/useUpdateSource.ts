@@ -11,7 +11,7 @@ const UPDATE_SOURCE = gql`
 `;
 
 export const useUpdateSource = (options: MutationOptions = {}) => {
-  const [updateSource] = useMutation(UPDATE_SOURCE, options || {});
+  const [updateSource, { loading }] = useMutation(UPDATE_SOURCE, options || {});
 
-  return { updateSource };
+  return { updateSource, loading };
 };

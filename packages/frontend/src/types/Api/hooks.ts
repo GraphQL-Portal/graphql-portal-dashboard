@@ -30,9 +30,7 @@ export type UseApiByIdHook = () => Omit<
     apiEndpoint: string;
   };
 
-export type UseUpdateDataSourcesHook = (
-  props: EditApiTab
-) => {
+export type UseUpdateDataSourcesHook = (props: EditApiTab) => {
   onSubmit: OnSubmit;
   options: SelectOption[];
   connected: any[];
@@ -88,9 +86,7 @@ export type UseIPFilteringHook = (
   enableIPFiltering: boolean;
 };
 
-export type UseWebhooksHook = (
-  params: Pick<ApiDefFormMethods, 'control'>
-) => {
+export type UseWebhooksHook = (params: Pick<ApiDefFormMethods, 'control'>) => {
   hooks: FieldArray;
   addHook: FieldArrayAppend;
   removeHook: FieldArrayRemove;
@@ -100,9 +96,13 @@ export type UseCreateApiDefHook = () => Pick<
   ApiDefFormMethods,
   'register' | 'control' | 'errors'
 > &
-  Omit<ReturnType<UseDSPartHook>, 'sourceTable' | 'sourceFields'> & {
+  Omit<
+    ReturnType<UseDSPartHook>,
+    'sourceTable' | 'sourceFields' | 'loading'
+  > & {
     onSubmit: OnSubmit;
     tokenFields: FieldArray;
+    loading: boolean;
     addToken: FieldArrayAppend;
     removeToken: FieldArrayRemove;
     disableSelectDatasources: boolean;
@@ -117,6 +117,7 @@ export type UseUpdateGeneralHook = (
   | 'register'
   | 'control'
   | 'errors'
+  | 'loading'
   | 'tokenFields'
   | 'addToken'
   | 'removeToken'
@@ -139,9 +140,10 @@ export type UseUpdateWebhooksHook = (
 ) => Pick<ReturnType<UseCreateApiDefHook>, 'control' | 'errors' | 'register'> &
   ReturnType<UseWebhooksHook> & { onSubmit: OnSubmit };
 
-export type UseAdditionalResolverHook = (
-  props: EditApiTab
-) => Pick<AdditionalResolverFormMethods, 'register' | 'errors' | 'control'> & {
+export type UseAdditionalResolverHook = (props: EditApiTab) => Pick<
+  AdditionalResolverFormMethods,
+  'register' | 'errors' | 'control'
+> & {
   onSubmit: OnSubmit;
   resolvers: FieldArray;
   sources: DataSource[];
@@ -149,19 +151,17 @@ export type UseAdditionalResolverHook = (
   onRemoveResolver: FieldArrayRemove;
 };
 
-export type UseCacheHook = (
-  props: EditApiTab
-) => Pick<CacheTransformFormMethods, 'register' | 'errors' | 'control'> & {
+export type UseCacheHook = (props: EditApiTab) => Pick<
+  CacheTransformFormMethods,
+  'register' | 'errors' | 'control'
+> & {
   onSubmit: OnSubmit;
   cache: FieldArray;
   onAddCache: FieldArrayAppend;
   onRemoveCache: FieldArrayRemove;
 };
 
-export type UseEnableApiHook = (props: {
-  api: ApiDef;
-  refetch: Refetch;
-}) => {
+export type UseEnableApiHook = (props: { api: ApiDef; refetch: Refetch }) => {
   onChange(value: boolean): void;
   value: boolean;
   disabled: boolean;

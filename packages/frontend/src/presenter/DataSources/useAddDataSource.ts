@@ -25,16 +25,10 @@ export const useAddDataSource = () => {
     ? { name, handler: handler.openapi, transforms, sourceSchema }
     : INITIAL_STATE;
 
-  const {
-    state,
-    step,
-    completed,
-    updateState,
-    completeStep,
-    setStep,
-  } = useEditDataSource(steps.length - 1, initialState);
+  const { state, step, completed, updateState, completeStep, setStep } =
+    useEditDataSource(steps.length - 1, initialState);
 
-  const { createSource } = useCreateSource({
+  const { createSource, loading } = useCreateSource({
     onCompleted() {
       clearSource();
       showSuccessToast('Successfully created new data-source');
@@ -64,6 +58,7 @@ export const useAddDataSource = () => {
     completed,
     completeStep,
     setStep,
+    loading,
     text: {
       title: 'Configure a data-source',
       button: 'Add data-source',

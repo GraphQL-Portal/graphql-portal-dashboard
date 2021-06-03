@@ -31,6 +31,7 @@ export const CreateApi: React.FC = () => {
     control,
     errors,
     onSubmit,
+    loading,
     options,
     tokenFields,
     addToken,
@@ -116,6 +117,7 @@ export const CreateApi: React.FC = () => {
               <PrimaryButton
                 data-tour={selectors.MY_APIS_CREATE_FORM_CREATE_NEW_BUTTON}
                 type="submit"
+                loading={loading}
               >
                 Create new API
               </PrimaryButton>
