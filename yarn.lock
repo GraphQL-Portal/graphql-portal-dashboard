@@ -3737,10 +3737,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@maxmind/geoip2-node@2.3.2":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-2.3.2.tgz#a0aaf8452693491e815021fe16e692959490ba6d"
-  integrity sha512-a1TSZt3uWe7yrgE2WMdTItK6XuG2Aj125cAXA+JuT2nomv3oqIK8XXg9iJVpzNXAYRV72XO0+zY+3HluOGgF3w==
+"@maxmind/geoip2-node@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-3.0.0.tgz#5c487322c8be899d62d1d6e765e8daa9d5eaa4c6"
+  integrity sha512-3k5KgROVyVcs/40c552J7BOdtS45Exz0TBsVEXw4kfLFe/NeRPVsm6drbEgvdO+PklKhZjxGvvDtzuwB1pc0nQ==
   dependencies:
     camelcase-keys "^6.0.1"
     ip6addr "^0.2.3"
