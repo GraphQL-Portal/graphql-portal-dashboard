@@ -58,7 +58,7 @@
     "@graphql-portal/slack": "0.2.3",
     "@graphql-portal/stripe": "0.2.3",
     "@graphql-portal/twitter": "0.3.3",
-    "@graphql-portal/types": "1.1.2",
+    "@graphql-portal/types": "1.1.3",
     "@graphql-portal/weatherbit": "0.2.3",
     "@maxmind/geoip2-node": "2.3.2",
     "@nestjs/common": "7.6.17",
