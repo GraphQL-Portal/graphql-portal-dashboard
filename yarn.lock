@@ -1889,12 +1889,12 @@
     lodash "4.17.21"
     param-case "3.0.4"
 
-"@graphql-mesh/fhir@0.10.12":
-  version "0.10.12"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/fhir/-/fhir-0.10.12.tgz#9795708a5f71bef0872a928c5c6f4f23ad6c5450"
-  integrity sha512-Zw1XIo68zmDWSa+gpU/LoBWv3hq2urXGyuKT7iGYMdqZ3zp8kxZfcN2L4poCzJlamhSfnoB91dI+r8/EaQ87Rg==
+"@graphql-mesh/fhir@0.10.13":
+  version "0.10.13"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/fhir/-/fhir-0.10.13.tgz#5071f22881dcd802cc7f925c1baaa4d8d1449985"
+  integrity sha512-NiKlv+EeYG8BOGiVea0WW+K/vtqyERVI0s0D+/cWYmt9jIKpgHfd/4ojD5/Jn6itHHP1Uizq42srx9KrqgoT6w==
   dependencies:
-    "@graphql-mesh/json-schema" "0.16.0"
+    "@graphql-mesh/json-schema" "0.16.1"
     "@graphql-mesh/types" "0.42.0"
     "@graphql-mesh/utils" "0.12.0"
     url-join "4.0.1"
@@ -1985,6 +1985,23 @@
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.16.0.tgz#76e5ffc9f76a6e5d92bd62e06c229cffe0946f42"
   integrity sha512-QrgbpgiGaRoY4XCXxL458GP7LftUhDb20fCBSYlYXs/e6v/p01uWOxdNm0uVOnD7VArihSm8lQT+Af2mxc46WQ==
+  dependencies:
+    "@ardatan/aggregate-error" "0.0.6"
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.12.0"
+    ajv "8.5.0"
+    graphql-compose "8.1.0"
+    graphql-scalars "1.9.3"
+    lodash "4.17.21"
+    pascal-case "3.1.2"
+    qs "6.10.1"
+    to-json-schema "0.2.5"
+    url-join "4.0.1"
+
+"@graphql-mesh/json-schema@0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.16.1.tgz#ff0b94fa28369639a89a8fe3d0f9a81abde837b1"
+  integrity sha512-d8NyfzklgpDe6vIiSZZipy5AIzVqhm6LZG1pIlYTDvGuRmrILRXd7hu8Iee1LOJmcJlecHz6RiOliGaMEbdE1w==
   dependencies:
     "@ardatan/aggregate-error" "0.0.6"
     "@graphql-mesh/types" "0.42.0"
