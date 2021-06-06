@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.14.0
+
+### Minor Changes
+
+- 1eeef41: Slowest requests chart added
+
 ## 0.13.0
 
 ### Minor Changes
