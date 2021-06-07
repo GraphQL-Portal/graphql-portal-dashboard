@@ -50,6 +50,7 @@ describe('MetricResolver', () => {
         getChunkedAPIMetrics: jest.fn().mockImplementation(() => {}),
         getCountryMetrics: jest.fn().mockImplementation(() => {}),
         getSlowestRequests: jest.fn().mockImplementation(() => {}),
+        getApiAndSourcesLatencies: jest.fn().mockImplementation(() => {}),
       })
       .compile();
 
@@ -163,6 +164,30 @@ describe('MetricResolver', () => {
 
         expect(metricService.getChunkedAPIMetrics).toHaveBeenCalledTimes(1);
         expect(metricService.getChunkedAPIMetrics).toHaveBeenCalledWith(
+          chunks,
+          { ...metricFilters, user: user._id }
+        );
+      });
+    });
+
+    describe('getApiAndSourcesLatencies', () => {
+      const chunks = [new Date().toString(), new Date().toString()];
+
+      it('should call getApiAndSourcesLatencies', async () => {
+        await graphQlRequest(
+          `query getApiAndSourcesLatencies($chunks: [Timestamp], $filters: MetricFilter!) {
+            getApiAndSourcesLatencies(chunks: $chunks, filters: $filters)
+          }`,
+          {
+            chunks,
+            filters: metricFilters,
+          }
+        ).expect(HttpStatus.OK);
+
+        expect(metricService.getApiAndSourcesLatencies).toHaveBeenCalledTimes(
+          1
+        );
+        expect(metricService.getApiAndSourcesLatencies).toHaveBeenCalledWith(
           chunks,
           { ...metricFilters, user: user._id }
         );
