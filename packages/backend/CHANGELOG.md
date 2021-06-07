@@ -1,5 +1,15 @@
 # graphql-portal-dashboard-backend
 
+## 0.14.0
+
+### Minor Changes
+
+- 1eeef41: Slowest requests chart added
+
+### Patch Changes
+
+- 0be8674: downgrade jest, ts-jest
+
 ## 0.13.2
 
 ### Patch Changes
