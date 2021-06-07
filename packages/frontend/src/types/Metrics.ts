@@ -43,6 +43,7 @@ export type FullApiMetric = {
   getChunkedAPIMetrics: ApiMetric[];
   getCountryMetrics: CountryMetric[];
   getSlowestRequests: SlowestRequestMetric[];
+  getApiAndSourcesLatencies: Record<string, number>[];
 };
 
 export type CountryChart = {

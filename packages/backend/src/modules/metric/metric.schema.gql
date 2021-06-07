@@ -70,6 +70,7 @@ type Query {
   getApiActivity(filters: MetricAggregateFilters!): [ApiActivity]
   getSlowestRequests(filters: MetricAggregateFilters!): [RequestMetric]
   getChunkedAPIMetrics(chunks: [Timestamp], filters: MetricFilter!): [APIMetric]
+  getApiAndSourcesLatencies(chunks: [Timestamp], filters: MetricFilter!): [JSONObject]
   getCountryMetrics(
     filters: MetricAggregateFilters!
     limit: Int

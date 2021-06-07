@@ -20,6 +20,7 @@ export const QUERY_METRICS = gql`
       country
       count
     }
+    getApiAndSourcesLatencies(chunks: $chunks, filters: $filters)
     getSlowestRequests(filters: $slowestRequestsFilters) {
       requestId
       nodeId

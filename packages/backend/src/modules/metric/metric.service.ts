@@ -211,6 +211,80 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
   }
 
   /**
+   * User's API and Sources latencies for "Api Activity" page
+   */
+  public async getApiAndSourcesLatencies(
+    chunks: Date[],
+    filters: IMetricFilter
+  ): Promise<Record<string, number>[]> {
+    const boundaries = chunks.map((v) => new Date(v));
+    const def = chunks[chunks.length - 1];
+
+    const aggregationQuery = [
+      {
+        $match: this.makeMatchFromFilters({
+          ...filters,
+          startDate: chunks[0],
+          endDate: chunks[chunks.length - 1],
+        }),
+      },
+      {
+        $bucket: {
+          groupBy: '$requestDate',
+          boundaries,
+          default: def,
+          output: {
+            avgLatency: { $avg: '$latency' },
+            resolvers: { $push: '$resolvers' },
+          },
+        },
+      },
+    ];
+
+    const data = await this.requestMetricModel.aggregate(aggregationQuery);
+    const sources: { [key: string]: number } = {};
+
+    const result = data.reduce((acc, { _id, resolvers, avgLatency }) => {
+      const sourcesToLatencies: { [key: string]: number[] } = resolvers
+        .flat(2)
+        .reduce(
+          (
+            acc: Record<string, number[]>,
+            resolver: { source: string; latency: number }
+          ) => {
+            if (!acc[resolver.source]) acc[resolver.source] = [];
+            sources[resolver.source] = 0;
+            acc[resolver.source].push(resolver.latency);
+            return acc;
+          },
+          {}
+        );
+
+      // compute avarage latency for each source
+      const sourceAvgLatencies = Object.entries(sourcesToLatencies).reduce<
+        Record<string, number>
+      >((acc, [key, values]) => {
+        acc[key] = values.reduce((a, b) => a + b) / values.length;
+        return acc;
+      }, {});
+
+      const chunk = new Date(_id).toISOString();
+      acc[chunk] = { ...sourceAvgLatencies, avgLatency };
+      return acc;
+    }, {});
+
+    return chunks.map((chunk) => {
+      const chunkData = result[new Date(chunk).toISOString()] || {};
+      return {
+        chunk,
+        avgLatency: 0,
+        ...sources,
+        ...chunkData,
+      };
+    });
+  }
+
+  /**
    * Gets 10 slowest requests grouped by field name
    *
    * @param filters Metric filters

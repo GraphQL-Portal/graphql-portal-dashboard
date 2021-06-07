@@ -321,6 +321,53 @@ describe('MetricService', () => {
       expect(spyAggregate).toBeCalledTimes(1);
       expect(data).toMatchObject(slowestRequests);
     });
+    it('getApiAndSourcesLatencies', async () => {
+      const chunk = new Date();
+      const aggregationResult = [
+        {
+          _id: chunk,
+          avgLatency: 1000,
+          resolvers: [
+            [
+              {
+                source: 'source1',
+                latency: 100,
+              },
+              {
+                source: 'source2',
+                latency: 1500,
+              },
+            ],
+            [
+              {
+                source: 'source1',
+                latency: 1500,
+              },
+            ],
+          ],
+        },
+      ];
+      const spyAggregate = jest
+        .spyOn((metricService as any).requestMetricModel, 'aggregate')
+        .mockResolvedValue(aggregationResult);
+
+      const data = await metricService.getApiAndSourcesLatencies([chunk], {
+        startDate: new Date(),
+        endDate: new Date(),
+        user: randomObjectId(),
+        apiDef: randomObjectId(),
+      });
+
+      expect(spyAggregate).toBeCalledTimes(1);
+      expect(data).toMatchObject([
+        {
+          avgLatency: 1000,
+          chunk: chunk.toISOString(),
+          source1: 800,
+          source2: 1500,
+        },
+      ]);
+    });
     it('getApiActivity', async () => {
       const apiDef = randomObjectId();
       const spyAggregate = jest
