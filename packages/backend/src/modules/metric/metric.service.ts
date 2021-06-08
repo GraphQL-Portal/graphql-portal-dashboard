@@ -234,7 +234,6 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
           boundaries,
           default: def,
           output: {
-            avgLatency: { $avg: '$latency' },
             resolvers: { $push: '$resolvers' },
           },
         },
@@ -244,7 +243,7 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
     const data = await this.requestMetricModel.aggregate(aggregationQuery);
     const sources: { [key: string]: number } = {};
 
-    const result = data.reduce((acc, { _id, resolvers, avgLatency }) => {
+    const chunkLatencies = data.reduce((acc, { _id, resolvers }) => {
       const sourcesToLatencies: { [key: string]: number[] } = resolvers
         .flat(2)
         .reduce(
@@ -269,17 +268,16 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
       }, {});
 
       const chunk = new Date(_id).toISOString();
-      acc[chunk] = { ...sourceAvgLatencies, avgLatency };
+      acc[chunk] = sourceAvgLatencies;
       return acc;
     }, {});
 
     return chunks.map((chunk) => {
-      const chunkData = result[new Date(chunk).toISOString()] || {};
+      const latencies = chunkLatencies[new Date(chunk).toISOString()] || {};
       return {
         chunk,
-        avgLatency: 0,
         ...sources,
-        ...chunkData,
+        ...latencies,
       };
     });
   }

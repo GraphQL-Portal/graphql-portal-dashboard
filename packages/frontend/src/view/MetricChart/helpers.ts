@@ -17,6 +17,16 @@ export const formatDateForRange =
 export const formatter = (value: number, name: string): string =>
   `${Math.round(value)}${CHART_SUFFIX[name] || ''}`;
 
-const r = () => Math.floor(Math.random() * 256);
-
-export const randomColor = (): string => `rgb(${r()}, ${r()}, ${r()})`;
+export const readableColors = [
+  'rgb(205, 125, 222)',
+  'rgb(84, 194, 202)',
+  'rgb(79, 232, 45)',
+  'rgb(7, 101, 18)',
+  'rgb(185, 138, 114)',
+  'rgb(93, 156, 80)',
+  'rgb(90, 68, 94)',
+  'rgb(121, 161, 46)',
+  'rgb(241, 228, 60)',
+  'rgb(122, 182, 82)',
+  'rgb(199, 176, 62)',
+];

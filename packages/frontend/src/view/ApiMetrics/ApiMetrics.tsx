@@ -68,18 +68,18 @@ export const ApiMetrics: React.FC = () => {
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title="Success and Failure" />
-          <SuccessFailureChart
-            data={getChunkedAPIMetrics || []}
+          <WidgetHeader title="Source Latencies" />
+          <SourcesLatenciesChart
+            data={getApiAndSourcesLatencies || []}
             range={range}
           />
         </HugeWidget>
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title="Source latencies" />
-          <SourcesLatenciesChart
-            data={getApiAndSourcesLatencies || []}
+          <WidgetHeader title="Success and Failure" />
+          <SuccessFailureChart
+            data={getChunkedAPIMetrics || []}
             range={range}
           />
         </HugeWidget>

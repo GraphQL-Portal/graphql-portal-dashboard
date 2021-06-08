@@ -11,7 +11,7 @@ import {
 } from 'recharts';
 import { useTheme } from '@material-ui/core';
 
-import { formatDateForRange, formatter, randomColor } from './helpers';
+import { formatDateForRange, formatter, readableColors } from './helpers';
 
 export const SourcesLatenciesChart: React.FC<any> = ({ data, range }: any) => {
   const formattedWithRange = formatDateForRange(range);
@@ -20,14 +20,24 @@ export const SourcesLatenciesChart: React.FC<any> = ({ data, range }: any) => {
   const tickStyles = { fill: palette.text.secondary, fontSize: 12 };
 
   const lines = Object.keys(data[0] || {}).filter(
-    (key) => !['avgLatency', 'chunk'].includes(key)
+    (key) => !['chunk'].includes(key)
   );
-  const sourceLines = lines.map((line) => (
+
+  const emptyLine = (
+    <Line
+      yAxisId="latency"
+      type="monotone"
+      dataKey={'No source metrics found'}
+      stroke={palette.primary.light}
+    />
+  );
+
+  const sourceLines = lines.map((line, i) => (
     <Line
       yAxisId="latency"
       type="monotone"
       dataKey={line}
-      stroke={randomColor()}
+      stroke={readableColors[i % readableColors.length]}
     />
   ));
 
@@ -55,13 +65,7 @@ export const SourcesLatenciesChart: React.FC<any> = ({ data, range }: any) => {
           orientation="right"
           tick={tickStyles}
         />
-        <Line
-          yAxisId="latency"
-          type="monotone"
-          dataKey="avgLatency"
-          stroke={palette.secondary.main}
-        />
-        {sourceLines}
+        {lines.length ? sourceLines : emptyLine}
         <Tooltip
           labelStyle={{
             color: palette.background.default,
