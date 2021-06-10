@@ -27,6 +27,7 @@ export type UseApiByIdHook = () => Omit<
 > &
   ReturnType<UseTabsHook> & {
     api: ApiDef;
+    apiHealthCheckFailed: boolean;
     apiEndpoint: string;
   };
 
@@ -44,6 +45,7 @@ export type UseViewAPIHook = () => Omit<ReturnType<UseApiByIdHook>, 'api'> & {
   refetch: Refetch | undefined;
   name: string;
   apiEndpoint: string;
+  apiHealthCheckFailed: boolean;
   enabled: boolean;
   status: string;
 };

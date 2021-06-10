@@ -93,6 +93,10 @@ export type DeclinedAPI = {
   name: string;
 };
 
+export type HealthCheckFailedAPI = {
+  name: string;
+};
+
 export type AdditionalResolvers = Omit<
   ReturnType<UseAdditionalResolverHook>,
   'onSubmit'
