@@ -11,7 +11,7 @@ const CREATE_SOURCE = gql`
 `;
 
 export const useCreateSource = (options: MutationOptions = {}) => {
-  const [createSource] = useMutation(CREATE_SOURCE, options);
+  const [createSource, { loading }] = useMutation(CREATE_SOURCE, options);
 
-  return { createSource };
+  return { createSource, loading };
 };

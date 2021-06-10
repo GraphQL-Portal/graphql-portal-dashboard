@@ -14,10 +14,10 @@ const CREATE_API_DEF = gql`
 `;
 
 export const useCreateApiDef = (options: MutationOptions) => {
-  const [createApiDef] = useMutation(CREATE_API_DEF, {
+  const [createApiDef, { loading }] = useMutation(CREATE_API_DEF, {
     refetchQueries: [{ query: QUERY_API_DEFS }],
     ...options,
   });
 
-  return { createApiDef };
+  return { createApiDef, loading };
 };

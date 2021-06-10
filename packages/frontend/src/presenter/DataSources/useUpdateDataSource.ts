@@ -27,7 +27,7 @@ export const useUpdateDataSource = () => {
     unpackHandler(initialState || INITIAL_STATE, key || '')
   );
 
-  const { updateSource } = useUpdateSource({
+  const { updateSource, loading } = useUpdateSource({
     onCompleted() {
       clearSource();
       showSuccessToast(`Successfully updated ${state.name} data-source`);
@@ -57,6 +57,7 @@ export const useUpdateDataSource = () => {
     completed,
     completeStep,
     setStep,
+    loading,
     text: {
       title: 'Edit a data-source',
       button: 'Update data-source',

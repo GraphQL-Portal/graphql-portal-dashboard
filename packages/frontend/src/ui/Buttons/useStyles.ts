@@ -11,4 +11,7 @@ export const useStyles = makeStyles(({ spacing }: Theme) => ({
       height: '100%',
     },
   },
+  loaderWrapper: {
+    marginLeft: '10px',
+  },
 }));

@@ -40,6 +40,7 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
     completed,
     text,
     steps,
+    loading,
   } = hook();
   const { visibleOverflow } = useStyles({});
 
@@ -83,6 +84,7 @@ export const AddDataSource: React.FC<{ mode: 'add' | 'update' }> = ({
         <HugeWidget className={visibleOverflow}>
           <WidgetHeader title={text.title}>
             <PrimaryButton
+              loading={loading}
               data-tour={selectors.DATA_SOURCE_ADD_BUTTON}
               disabled={isDisabled}
               onClick={onSubmit}

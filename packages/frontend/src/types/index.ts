@@ -28,3 +28,4 @@ export * from './Widgets';
 export * from './Tour';
 export * from './Tooltip';
 export * from './HelpTooltip';
+export * from './Loading';
