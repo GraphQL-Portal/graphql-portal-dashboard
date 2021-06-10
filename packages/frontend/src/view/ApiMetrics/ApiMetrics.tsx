@@ -68,7 +68,7 @@ export const ApiMetrics: React.FC = () => {
       </WidgetRow>
       <WidgetRow>
         <HugeWidget>
-          <WidgetHeader title="Source Latencies" />
+          <WidgetHeader title="Average Latency per Data Source" />
           <SourcesLatenciesChart
             data={getApiAndSourcesLatencies || []}
             range={range}
