@@ -18,6 +18,7 @@ import {
   SuccessFailureChart,
   CountryChart,
   SlowestRequests,
+  SourcesLatenciesChart,
 } from '../MetricChart';
 
 import { useStyles } from './useStyles';
@@ -26,8 +27,12 @@ export const ApiMetrics: React.FC = () => {
   const { widget } = useStyles();
   const { data, range, onSetRange } = useApiActivityMetrics();
 
-  const { getChunkedAPIMetrics, getCountryMetrics, getSlowestRequests } =
-    data || {};
+  const {
+    getChunkedAPIMetrics,
+    getCountryMetrics,
+    getSlowestRequests,
+    getApiAndSourcesLatencies,
+  } = data || {};
 
   return (
     <>
@@ -57,6 +62,15 @@ export const ApiMetrics: React.FC = () => {
           <WidgetHeader title="Latency and Request" />
           <LatencyRequestChart
             data={getChunkedAPIMetrics || []}
+            range={range}
+          />
+        </HugeWidget>
+      </WidgetRow>
+      <WidgetRow>
+        <HugeWidget>
+          <WidgetHeader title="Average Latency per Data Source" />
+          <SourcesLatenciesChart
+            data={getApiAndSourcesLatencies || []}
             range={range}
           />
         </HugeWidget>

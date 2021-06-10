@@ -47,6 +47,19 @@ export default class MetricResolver {
 
   @Query()
   @Roles([RolesEnum.USER])
+  public getApiAndSourcesLatencies(
+    @AuthorizationParam('_id') user: string,
+    @Args('chunks') chunks: Date[],
+    @Args('filters') filters: IMetricFilter
+  ): Promise<Record<string, number>[]> {
+    return this.metricService.getApiAndSourcesLatencies(chunks, {
+      ...filters,
+      user,
+    });
+  }
+
+  @Query()
+  @Roles([RolesEnum.USER])
   public getCountryMetrics(
     @AuthorizationParam('_id') user: string,
     @Args('filters') filters: IAggregateFilters,
