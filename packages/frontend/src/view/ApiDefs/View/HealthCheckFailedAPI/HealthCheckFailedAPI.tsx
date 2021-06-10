@@ -6,7 +6,8 @@ export const HealthCheckFailedAPI: React.FC<Props> = ({ name }) => {
     <EmptyContainer>
       <EmptyIcon />
       <EmptyText>
-        Health check failed for {name} API <Emoji label="dizzy face"> 😵</Emoji>{' '}
+        {name} API is not available at the moment. Try to refresh the page in a
+        couple of seconds <Emoji label="dizzy face"> 😵</Emoji>{' '}
       </EmptyText>
     </EmptyContainer>
   );
