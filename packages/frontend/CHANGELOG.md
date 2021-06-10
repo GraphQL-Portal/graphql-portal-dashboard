@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.16.0
+
+### Minor Changes
+
+- 47f17dd: new API view on failed health check added
+
 ## 0.15.0
 
 ### Minor Changes
