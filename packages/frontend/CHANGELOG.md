@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.15.0
+
+### Minor Changes
+
+- 865fd16: Added loading state to primary button
+
 ## 0.14.0
 
 ### Minor Changes
