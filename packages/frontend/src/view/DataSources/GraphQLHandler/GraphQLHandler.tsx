@@ -68,10 +68,24 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       <HandlerRow>
         <HandlerCol>
           <FormLabel
-            label="Use SSE instead of WebSocked for subscriptions"
+            label="Use SSE instead of WebSocket for subscriptions"
             control={
               <Controller
                 name="useSSEForSubscription"
+                control={control}
+                render={(props) => <Checkbox {...props} color="primary" />}
+              />
+            }
+          />
+        </HandlerCol>
+      </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <FormLabel
+            label='Use legacy web socket protocol "subscriptions-transport-ws" instead of the more current "graphql-ws"'
+            control={
+              <Controller
+                name="useWebSocketLegacyProtocol"
                 control={control}
                 render={(props) => <Checkbox {...props} color="primary" />}
               />

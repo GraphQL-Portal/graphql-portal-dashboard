@@ -1,7 +1,7 @@
 import { UseViewAPIHook } from '../../types';
 import { useApiById } from './useApiById';
-import { createFetcher } from './helpers';
 import { ApiDefStatus } from '@graphql-portal/types';
+import { createGraphiQLFetcher } from '@graphiql/toolkit';
 
 export const useViewAPI: UseViewAPIHook = () => {
   const {
@@ -15,9 +15,9 @@ export const useViewAPI: UseViewAPIHook = () => {
   } = useApiById();
 
   const fetcher = !loading
-    ? createFetcher(apiEndpoint, {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+    ? createGraphiQLFetcher({
+        url: apiEndpoint,
+        subscriptionUrl: apiEndpoint.replace('http', 'ws'),
       })
     : (body: any) => Promise.resolve(body);
 
