@@ -85,6 +85,6 @@ jobs:
       - name: Stop container
         run: docker stop $(docker ps -q)
       - name: Push image
-        run: docker push -all-tags $(docker images -q)
+        run: docker push --all-tags $(docker images -q)
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
