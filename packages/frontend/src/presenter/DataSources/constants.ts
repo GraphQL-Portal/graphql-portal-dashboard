@@ -36,6 +36,8 @@ const HANDLERS_LIST = [
   'FusionCreatorAccountInformationPSD2STETHandler',
 ];
 
+export const HANDLERS_WITH_OMITTED_HANDLER_PROP = ['IPAPIHandler'];
+
 const TRANSFORMS_LIST = [
   'filterSchema',
   'namingConvention',
