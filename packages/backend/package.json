@@ -1,6 +1,6 @@
 {
   "name": "graphql-portal-dashboard-backend",
-  "version": "0.14.1",
+  "version": "0.16.1",
   "description": "Backend part of graphql-portal-dashboard",
   "author": "code.store",
   "private": true,
