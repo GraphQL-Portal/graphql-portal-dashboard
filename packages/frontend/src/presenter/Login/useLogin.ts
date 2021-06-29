@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 import { vestResolver } from '@hookform/resolvers/vest';
 import { ApolloError } from '@apollo/client';
 import vest, { test } from 'vest';
@@ -8,6 +9,11 @@ import { useFormErrors } from '../../model/Hooks';
 import { useLogin as login } from '../../model/Login/commands';
 import { UA } from '../../model/providers/Auth/constants';
 import { LoginForm, UseLoginHook } from '../../types';
+import {
+  autoLoginEnabled,
+  defaultAdminEmail,
+  defaultAdminPassword,
+} from '../../model/providers/State/config';
 import enforce, { isCorrectPassword } from '../validation';
 
 const suite = vest.create('login_form', ({ email, password }: LoginForm) => {
@@ -27,8 +33,8 @@ const isDevelopment = NODE_ENV === 'development';
 
 const INITIAL_VALUES = isDevelopment
   ? {
-      email: 'admin@example.com',
-      password: 'Secret123!',
+      email: defaultAdminEmail,
+      password: defaultAdminPassword,
     }
   : {
       email: undefined,
@@ -61,6 +67,18 @@ export const useLogin: UseLoginHook = () => {
       },
     });
   };
+
+  useEffect(() => {
+    if (autoLoginEnabled) {
+      onLogin({
+        variables: {
+          email: defaultAdminEmail,
+          password: defaultAdminPassword,
+          device: UA,
+        },
+      });
+    }
+  });
 
   return {
     register,

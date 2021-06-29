@@ -1,5 +1,17 @@
 # graphql-portal-dashboard-backend
 
+## 0.17.0
+
+### Patch Changes
+
+- 399c63b: deps update, sources without 2 step moved to consts
+
+## 0.16.1
+
+### Patch Changes
+
+- 706d4ca: patch neo4j
+
 ## 0.14.1
 
 ### Patch Changes

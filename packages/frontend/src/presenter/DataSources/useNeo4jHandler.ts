@@ -14,7 +14,7 @@ const suite = vest.create('neo4j_handler', ({ url, password, username }) => {
     'url',
     'Please enter valid URL for the Neo4j instance (example: neo4j://localhost)',
     () => {
-      enforce(url).matches(/^neo4j:\/\/(.*)?/);
+      enforce(url).matches(/^(neo4j|bolt):\/\/(.*)?/);
     }
   );
 
@@ -33,7 +33,6 @@ const NEO4J_DEFAULT_STATE = {
   password: undefined,
   database: undefined,
   typeDefs: undefined,
-  cacheIntrospection: false,
   alwaysIncludeRelationships: false,
 };
 

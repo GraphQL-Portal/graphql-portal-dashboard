@@ -11,10 +11,9 @@ import { SelectOption } from '../Forms';
 import { AnyTable, NOOP } from '../General';
 import { UseTabsHook } from '../Tabs';
 import { DataSource } from '../DataSource';
-import GraphiQL from 'graphiql';
+import GraphiQL, { Fetcher } from 'graphiql';
 import { ApiDef, ApiDefAndGateways } from './data';
 import { EditApiTab } from './components';
-import { Fetcher } from './methods';
 import {
   AdditionalResolverFormMethods,
   ApiDefFormMethods,

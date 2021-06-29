@@ -1,10 +1,10 @@
+import { Fetcher } from 'graphiql';
 import { Refetch } from '../Apollo';
 import { ControlType } from '../HookForm';
 import { SelectOption } from '../Forms';
 import { NOOP } from '../General';
 import { DataSource } from '../DataSource';
 import { ApiDef } from './data';
-import { Fetcher } from './methods';
 import {
   UseAdditionalResolverHook,
   UseCacheHook,

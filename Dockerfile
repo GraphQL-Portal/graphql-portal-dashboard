@@ -41,5 +41,7 @@ ENV REDIS_CONNECTION_STRING "redis://localhost:6379"
 ENV MONGODB_CONNECTION_STRING "mongodb://localhost:27017/graphql-portal-dashboard"
 ENV REACT_APP_DASHBOARD_URL "http://localhost:3030/graphql"
 ENV REACT_APP_DASHBOARD_WS_URL "$REACT_APP_DASHBOARD_URL"
+ENV REACT_APP_DEFAULT_ADMIN_EMAIL "admin@example.com"
+ENV REACT_APP_DEFAULT_ADMIN_PASSWORD "Secret123!"
 
 CMD ["concurrently", "--kill-others-on-fail", "\"serve -s packages/frontend/build -l 8080\"", "\"yarn workspace graphql-portal-dashboard-backend migrate && yarn start:prod\""]
