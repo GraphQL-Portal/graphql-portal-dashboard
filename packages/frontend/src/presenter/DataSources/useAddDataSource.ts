@@ -20,7 +20,7 @@ export const useAddDataSource = () => {
   } = useTourContext();
   const { name, handler, transforms, sourceSchema } = tourState;
   const { source = {}, clearSource } = useDataSourceContext();
-  const steps = getSourceSteps(source);
+  const steps = getSourceSteps(source?.key);
   const initialState = isStarted
     ? { name, handler: handler.openapi, transforms, sourceSchema }
     : INITIAL_STATE;

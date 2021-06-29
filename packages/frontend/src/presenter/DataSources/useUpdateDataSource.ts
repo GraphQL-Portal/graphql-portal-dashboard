@@ -12,7 +12,7 @@ export const useUpdateDataSource = () => {
   const { state: initialState, key } = source || {};
   const { _id } = initialState || {};
 
-  const steps = getSourceSteps(source);
+  const steps = getSourceSteps(key);
 
   const {
     state,

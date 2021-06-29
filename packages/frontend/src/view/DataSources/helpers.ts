@@ -2,14 +2,15 @@ import {
   AVAILABLE_HANDLERS,
   HANDLERS_DESCRIPTIONS,
   HANDLERS_LABELS,
+  HANDLERS_WITH_OMITTED_HANDLER_PROP,
 } from '../../presenter/DataSources/constants';
 import { getHandlerKey } from '../../presenter/DataSources/helpers';
-import { DataSource, SourceStep } from '../../types';
+import { DataSource } from '../../types';
 import {
   ADD_SOURCE_STEPS,
   ADD_SOURCE_STEPS_WITH_CONFIGURATION,
 } from './constants';
-import { compose, getProp, getObjPropOr, objectKeys } from '../../utils';
+import { compose, getProp, getObjPropOr } from '../../utils';
 
 export const getError = (errors: any) => (field: string) => !!errors?.[field];
 
@@ -36,8 +37,8 @@ export const formatHandlerType: (handler: DataSource) => string = compose(
   getHandlerKey
 );
 
-export const getSourceSteps = (source: SourceStep) => {
-  return objectKeys(source?.connector?.properties || {}).length > 0
-    ? ADD_SOURCE_STEPS_WITH_CONFIGURATION
-    : ADD_SOURCE_STEPS;
+export const getSourceSteps = (handler: string) => {
+  return HANDLERS_WITH_OMITTED_HANDLER_PROP.includes(handler)
+    ? ADD_SOURCE_STEPS
+    : ADD_SOURCE_STEPS_WITH_CONFIGURATION;
 };

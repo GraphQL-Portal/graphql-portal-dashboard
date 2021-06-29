@@ -2479,10 +2479,10 @@
     "@graphql-mesh/openapi" "^0.16.0"
     graphql "^15.4.0"
 
-"@graphql-portal/gateway@0.23.0":
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.23.0.tgz#d3c09789e543eda58b7d0164d1c3cec9fea7373d"
-  integrity sha512-b8GqrTJQj0AB50UiLabBK6d1WkOiP6sym+B1lDvnUAp9DkgvFju7NXtUyLUSs8HYWa9vafJmyBtA5XY6j5pUsw==
+"@graphql-portal/gateway@0.23.1":
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/gateway/-/gateway-0.23.1.tgz#68a341e401d4776bf99584dd75fb48f23dcc5743"
+  integrity sha512-GlnMG+ObLIzc4S4gL2YAve5iFURrb2HMUK+g9Qul8KY4gyvB0eTpCS1eGCHxYGSmUVKukCPuJBJEDlbqJslXgQ==
   dependencies:
     "@graphql-inspector/core" "^2.3.0"
     "@graphql-mesh/cli" "^0.30.2"
@@ -2516,8 +2516,8 @@
     "@graphql-mesh/utils" "^0.12.0"
     "@graphql-portal/config" "^0.11.8"
     "@graphql-portal/dashboard" "^0.1.14"
-    "@graphql-portal/logger" "^0.7.11"
-    "@graphql-portal/types" "^1.1.2"
+    "@graphql-portal/logger" "^0.7.13"
+    "@graphql-portal/types" "^1.1.4"
     "@graphql-tools/code-file-loader" "^6.3.1"
     "@graphql-tools/graphql-file-loader" "^6.2.7"
     "@graphql-tools/load" "^6.2.8"
@@ -2552,7 +2552,15 @@
     ws "^7.4.6"
     yaml "^1.10.0"
 
-"@graphql-portal/ip-api@0.1.3", "@graphql-portal/ip-api@^0.1.3":
+"@graphql-portal/ip-api@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.1.4.tgz#a2e6301130e500f858012e91045522433fb881fb"
+  integrity sha512-BdNPweQbGkrzttf4pUGDkjNsRCJYoa/XFKuoa075nvKgKZY5Kq8oi5mceGdNrE1bCi1DyGfPrkCMBN32jytW4w==
+  dependencies:
+    "@graphql-mesh/openapi" "^0.16.0"
+    graphql "^15.4.0"
+
+"@graphql-portal/ip-api@^0.1.3":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.1.3.tgz#d538c4d1cb9ae9bbb955a10c7dcc61d98e0606a0"
   integrity sha512-PL1ttxt20Ehoy+SX+2H+VEuk+jwuKj3HXpOitTKOK6sLU6K7DDdOW6axUoY+1sZNy+ahvpauWRzKT061Kmf+Xg==
@@ -2560,12 +2568,24 @@
     "@graphql-mesh/openapi" "^0.16.0"
     graphql "^15.4.0"
 
-"@graphql-portal/logger@^0.7.11", "@graphql-portal/logger@^0.7.12", "@graphql-portal/logger@^0.7.8":
+"@graphql-portal/logger@^0.7.12", "@graphql-portal/logger@^0.7.8":
   version "0.7.12"
   resolved "https://registry.yarnpkg.com/@graphql-portal/logger/-/logger-0.7.12.tgz#5a2b50df4d4bb5a66ec7700c27a1bb8e1e222f8a"
   integrity sha512-SfwTkE37Rc+LkN4lPrPmJSdTYSqsjqF67kt6o4y9nmRTl3L0xcMGNMpOE+34bU1EuPfh4TohdVvo3OXJAIlT1A==
   dependencies:
     "@graphql-portal/types" "1.1.3"
+    chalk "4.1.1"
+    fast-safe-stringify "^2.0.7"
+    ioredis "^4.23.0"
+    winston "3.3.3"
+    winston-transport "^4.4.0"
+
+"@graphql-portal/logger@^0.7.13":
+  version "0.7.13"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/logger/-/logger-0.7.13.tgz#c18c6e5519cc5a5a0613f0d1c46c25025b6f2d9c"
+  integrity sha512-FgoiF6dY0vLa6E8hUP0iy8Mweep9IcLlyzZRU05Yo7qYsgWVV6VtNvWjpF1+BHyzWmSBj44IuuZ5qrqshyaIAw==
+  dependencies:
+    "@graphql-portal/types" "1.1.4"
     chalk "4.1.1"
     fast-safe-stringify "^2.0.7"
     ioredis "^4.23.0"
@@ -2602,13 +2622,21 @@
     "@graphql-mesh/openapi" "^0.16.0"
     "@graphql-mesh/types" "0.40.0"
 
-"@graphql-portal/types@1.1.3", "@graphql-portal/types@^1.0.0", "@graphql-portal/types@^1.1.2", "@graphql-portal/types@^1.1.3":
+"@graphql-portal/types@1.1.3", "@graphql-portal/types@^1.0.0", "@graphql-portal/types@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-1.1.3.tgz#5d530d804b6b8519301d886669a59216ce3e1f62"
   integrity sha512-xKirRYmUY2NSqrhA81PtIzXiZn4B6V/7SBd8prAIK8awzBGvPd37KUF2KhnLZ0sW4gO9xYY8ptQs0M9eC7Nieg==
   dependencies:
     "@graphql-portal/datasources" "^0.1.5"
     ajv "8.5.0"
+
+"@graphql-portal/types@1.1.4", "@graphql-portal/types@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-1.1.4.tgz#988e00b4ab7061d9a0d9e3422a7f755a5f719966"
+  integrity sha512-Ga/KF+ugpsJsjE6q+XqdXSU8snGV4dCGJyzrGS5KJg4BsNmsH0N0Pi19hg25ju0TzqPAXv3fNfSyt2UwZVS1xw==
+  dependencies:
+    "@graphql-portal/datasources" "^0.1.5"
+    ajv "8.6.0"
 
 "@graphql-portal/weatherbit@0.2.3", "@graphql-portal/weatherbit@^0.2.3":
   version "0.2.3"
