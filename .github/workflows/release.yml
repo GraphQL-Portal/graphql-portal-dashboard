@@ -79,11 +79,11 @@ jobs:
             ghcr.io/graphql-portal/graphql-portal-dashboard:latest
             ghcr.io/graphql-portal/graphql-portal-dashboard:0.x
       - name: Run container
-        run: docker run -d -t gqlportal/dashboard:latest
+        run: docker run -d -t gqlportal/dashboard:0.x
       - name: Health check
-        run: docker exec $(docker ps -q) curl localhost:8080
+        run: docker exec -d $(docker ps -l -q) curl localhost:8080
       - name: Stop container
-        run: docker stop $(docker ps -q)
+        run: docker stop $(docker ps -l -q)
       - name: Push image
         run: docker push --all-tags $(docker images -q)
       - name: Image digest
