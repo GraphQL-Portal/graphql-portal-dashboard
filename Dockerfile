@@ -16,10 +16,6 @@ COPY packages/backend/config ./packages/backend/config
 RUN yarn install --frozen-lockfile # --silent
 RUN yarn global add serve concurrently
 
-# Install bash and curl for CI
-RUN apk --update add bash
-RUN apk --no-cache add curl
-
 # Build
 COPY ./ ./
 RUN yarn build
