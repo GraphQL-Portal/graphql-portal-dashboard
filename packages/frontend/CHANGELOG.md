@@ -1,5 +1,15 @@
 # graphql-portal-dashboard-frontend
 
+## 0.17.0
+
+### Minor Changes
+
+- 35478c1: Fetcher changed
+
+### Patch Changes
+
+- 399c63b: deps update, sources without 2 step moved to consts
+
 ## 0.16.1
 
 ### Patch Changes
