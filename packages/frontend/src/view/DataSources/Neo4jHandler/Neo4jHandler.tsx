@@ -91,21 +91,6 @@ export const Neo4jHandler: React.FC<HandlerStep> = (props) => {
           />
         </HandlerCol>
       </HandlerRow>
-      <HandlerRow>
-        <HandlerCol>
-          <FormLabel
-            label="Cache introspection"
-            control={
-              <Controller
-                name="cacheIntrospection"
-                control={control}
-                defaultValue={false}
-                render={(props) => <Checkbox {...props} color="primary" />}
-              />
-            }
-          />
-        </HandlerCol>
-      </HandlerRow>
       <PrimaryButton type="submit">Save Handler</PrimaryButton>
     </form>
   );
