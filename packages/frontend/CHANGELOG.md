@@ -1,5 +1,15 @@
 # graphql-portal-dashboard-frontend
 
+## 0.18.0
+
+### Minor Changes
+
+- 9807de8: auto login effect added
+
+### Patch Changes
+
+- bbac066: fix env vars
+
 ## 0.17.0
 
 ### Minor Changes
