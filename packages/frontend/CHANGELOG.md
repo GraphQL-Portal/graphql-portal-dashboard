@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.16.1
+
+### Patch Changes
+
+- 706d4ca: fixed neo4j url validation and removed introspection
+
 ## 0.16.0
 
 ### Minor Changes
