@@ -71,6 +71,20 @@ export const OpenapiHandler: React.FC<HandlerStep> = (props) => {
           />
         </HandlerCol>
       </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <FormLabel
+            label="Ignore self-signed certificate error"
+            control={
+              <Controller
+                name="rejectUnauthorized"
+                control={control}
+                render={(props) => <Checkbox {...props} color="primary" />}
+              />
+            }
+          />
+        </HandlerCol>
+      </HandlerRow>
       <ObjectArray
         title="Schema Headers"
         name="schemaHeaders"

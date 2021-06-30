@@ -95,6 +95,7 @@ const JSON_SCHEMA_DEFAULT_STATE = {
   schemaHeaders: undefined,
   operationHeaders: undefined,
   operations: undefined,
+  rejectUnauthorized: false,
 };
 
 const OPERATION_DEFAULT_VALUE = {

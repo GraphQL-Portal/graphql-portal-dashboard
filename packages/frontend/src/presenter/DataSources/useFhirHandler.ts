@@ -25,9 +25,13 @@ export const useFhirHandler: UseFhirHandlerHook = ({
   updateState,
   step,
 }) => {
-  const defaultValues = Object.assign({}, { endpoint: '' }, state.handler);
+  const defaultValues = Object.assign(
+    {},
+    { endpoint: '', rejectUnauthorized: false },
+    state.handler
+  );
 
-  const { handleSubmit, errors, register } = useForm<FhirForm>({
+  const { handleSubmit, errors, register, control } = useForm<FhirForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -41,5 +45,6 @@ export const useFhirHandler: UseFhirHandlerHook = ({
     onSubmit: handleSubmit(onSubmit),
     errors,
     register,
+    control,
   };
 };

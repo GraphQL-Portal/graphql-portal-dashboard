@@ -14,6 +14,7 @@ const GRAPHQL_DEFAULT_STATE = {
   schemaHeaders: [],
   operationHeaders: [],
   useGETForQueries: false,
+  rejectUnauthorized: false,
   useSSEForSubscription: false,
   useWebSocketLegacyProtocol: false,
   multipart: false,

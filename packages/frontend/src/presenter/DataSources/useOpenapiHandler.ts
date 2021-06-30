@@ -19,6 +19,7 @@ const OPENAPI_DEFAULT_STATE = {
   addLimitArgument: undefined,
   genericPayloadArgName: undefined,
   selectQueryOrMutationField: undefined,
+  rejectUnauthorized: false,
 };
 
 const suite = vest.create('graphql_handler', ({ source }) => {
@@ -44,17 +45,12 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
 
   const disableInputs = tour.isStarted;
 
-  const {
-    handleSubmit,
-    errors,
-    control,
-    register,
-    formState,
-  } = useForm<OpenapiForm>({
-    resolver: vestResolver(suite),
-    reValidateMode: 'onSubmit',
-    defaultValues,
-  });
+  const { handleSubmit, errors, control, register, formState } =
+    useForm<OpenapiForm>({
+      resolver: vestResolver(suite),
+      reValidateMode: 'onSubmit',
+      defaultValues,
+    });
   const { dirtyFields } = formState;
   useFormErrors(errors);
 
@@ -95,13 +91,8 @@ export const useOpenapiHandler: UseOpenapiDataSourceHook = ({
   });
 
   const onSubmit = (handler: OpenapiForm) => {
-    const {
-      schemaHeaders,
-      operationHeaders,
-      qs,
-      baseUrl,
-      ...cleared
-    } = clearEmptyFields(handler);
+    const { schemaHeaders, operationHeaders, qs, baseUrl, ...cleared } =
+      clearEmptyFields(handler);
 
     const clearBaseUrl = baseUrl === '' && !dirtyFields.baseUrl;
     updateState(

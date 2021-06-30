@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Input, PrimaryButton } from '../../../ui';
+import { Checkbox, FormLabel, Input, PrimaryButton } from '../../../ui';
 import { useSoapHandler } from '../../../presenter/DataSources';
 import { HandlerStep } from '../../../types';
 import { HandlerCol, HandlerRow } from '../Layout';
+import { Controller } from 'react-hook-form';
 
 export const SoapHandler: React.FC<HandlerStep> = (props) => {
-  const { register, errors, onSubmit } = useSoapHandler(props);
+  const { register, errors, onSubmit, control } = useSoapHandler(props);
 
   return (
     <form noValidate autoComplete="off" onSubmit={onSubmit}>
@@ -73,6 +74,20 @@ export const SoapHandler: React.FC<HandlerStep> = (props) => {
             label="Security Certificate Private Key"
             name="securityCert.privateKey"
             fullWidth
+          />
+        </HandlerCol>
+      </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <FormLabel
+            label="Ignore self-signed certificate error"
+            control={
+              <Controller
+                name="rejectUnauthorized"
+                control={control}
+                render={(props) => <Checkbox {...props} color="primary" />}
+              />
+            }
           />
         </HandlerCol>
       </HandlerRow>

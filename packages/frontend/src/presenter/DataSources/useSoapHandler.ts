@@ -26,6 +26,7 @@ const suite = vest.create(
 
 const SOAP_DEFAULT_STATE = {
   wsdl: '',
+  rejectUnauthorized: false,
   basicAuth: {
     username: '',
     password: '',
@@ -43,7 +44,7 @@ export const useSoapHandler: UseSoapHandlerHook = ({
   step,
 }) => {
   const defaultValues = Object.assign({}, SOAP_DEFAULT_STATE, state.handler);
-  const { handleSubmit, errors, register } = useForm<SoapForm>({
+  const { handleSubmit, errors, register, control } = useForm<SoapForm>({
     resolver: vestResolver(suite),
     reValidateMode: 'onSubmit',
     defaultValues,
@@ -57,5 +58,6 @@ export const useSoapHandler: UseSoapHandlerHook = ({
     onSubmit: handleSubmit(onSubmit),
     errors,
     register,
+    control,
   };
 };
