@@ -4520,7 +4520,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@17.0.13", "@types/react@*":
+"@types/react@*", "@types/react@17.0.13":
   version "17.0.13"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.13.tgz#6b7c9a8f2868586ad87d941c02337c6888fb874f"
   integrity sha512-D/G3PiuqTfE3IMNjLn/DCp6umjVCSvtZTPdtAFy5+Ved6CsdRvivfKeCzw79W4AatShtU4nGqgvOv5Gro534vQ==
@@ -4645,7 +4645,12 @@
   resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.0.0.tgz#365f1bf936aeaddd0856fc41aa1d6f82d88ee5b3"
   integrity sha512-WAy5txG7aFX8Vw3sloEKp5p/t/Xt8jD3GRD9DacnFv6Vo8ubudAsRTXgxpQwU0mpzY/H8U4db3roDuCMjShBmw==
 
-"@types/validator@13.1.4", "@types/validator@^13.1.3":
+"@types/validator@13.6.1":
+  version "13.6.1"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.6.1.tgz#2a9b5c1a26fdef985ebca467ed3127181153c3e2"
+  integrity sha512-8afZ2LAE1bgl/Dp6FGN4i7G7ujeeNvSWBKhByFAO8/MZPQn91h535oW44OqOOysdEYwfAMPaTMAZkRszb3IOng==
+
+"@types/validator@^13.1.3":
   version "13.1.4"
   resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.1.4.tgz#d2e3c27523ce1b5d9dc13d16cbce65dc4db2adbe"
   integrity sha512-19C02B8mr53HufY7S+HO/EHBD7a/R22IwEwyqiHaR19iwL37dN3o0M8RianVInfSSqP7InVSg/o0mUATM4JWsQ==
