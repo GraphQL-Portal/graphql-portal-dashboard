@@ -4,6 +4,9 @@ LABEL Description="GraphQL Portal Dashboard" Vendor="GraphQL Portal"
 
 WORKDIR /usr/app
 
+# Install global packages
+RUN yarn global add serve concurrently
+
 # Copy all package.json files, including those from backend
 COPY package.json ./
 COPY yarn.lock ./
@@ -14,14 +17,6 @@ COPY packages/backend/config ./packages/backend/config
 
 # Install packages
 RUN yarn install --frozen-lockfile # --silent
-RUN yarn global add serve concurrently
-
-# Build
-COPY ./ ./
-RUN yarn build
-
-EXPOSE 3030
-EXPOSE 8080
 
 ENV NODE_ENV production
 ENV DASHBOARD_SECRET ""
@@ -40,4 +35,14 @@ ENV REACT_APP_DASHBOARD_WS_URL "$REACT_APP_DASHBOARD_URL"
 ENV REACT_APP_DEFAULT_ADMIN_EMAIL "admin@example.com"
 ENV REACT_APP_DEFAULT_ADMIN_PASSWORD "Secret123!"
 
-CMD ["concurrently", "--kill-others-on-fail", "\"serve -s packages/frontend/build -l 8080\"", "\"yarn workspace graphql-portal-dashboard-backend migrate && yarn start:prod\""]
+# Build
+COPY ./ ./
+RUN yarn build
+
+EXPOSE 3030
+EXPOSE 8080
+
+ADD start.sh ./
+RUN chmod +x ./start.sh
+
+CMD ["./start.sh"]
