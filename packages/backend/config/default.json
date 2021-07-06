@@ -24,11 +24,20 @@
       "chunk": 100,
       "delay": 5000
     },
+    "mail": {
+      "driver": "sendgrid",
+      "from": "no-reply@example"
+    },
     "sendgrid": {
-      "senderEmail": "no-reply@example",
       "apiKey": "SG.example",
       "confirmationTemplateId": "confirmationTemplateId",
       "resetPasswordTemplateId": "resetPasswordTemplateId"
+    },
+    "smtp": {
+      "host": "no-reply@example",
+      "port": "587",
+      "user": "user",
+      "pass": "pass"
     },
     "maxmind": {
       "dbPath": "",

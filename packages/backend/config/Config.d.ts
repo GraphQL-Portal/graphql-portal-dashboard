@@ -39,7 +39,7 @@ declare module 'node-config-ts' {
     salt: string;
     defaultAdmin: DefaultAdmin;
     metrics: Metrics;
-    sendgrid: Sendgrid;
+    mail: Mail;
     maxmind: Maxmind;
   }
   interface Maxmind {
@@ -48,10 +48,15 @@ declare module 'node-config-ts' {
     accountId: string;
   }
   interface Sendgrid {
-    senderEmail: string;
     apiKey: string;
     confirmationTemplateId: string;
     resetPasswordTemplateId: string;
+  }
+  interface SMTP {
+    host: string;
+    port: string;
+    user: string;
+    pass: string;
   }
   interface Metrics {
     enabled: boolean;
@@ -65,6 +70,12 @@ declare module 'node-config-ts' {
   interface GraphQL {
     playground: boolean;
     debug: boolean;
+  }
+  interface Mail {
+    from: string;
+    driver: 'smtp' | 'sendgrid';
+    sendgrid: Sendgrid;
+    smtp: SMTP;
   }
   export const config: Config;
   export type Config = IConfig;
