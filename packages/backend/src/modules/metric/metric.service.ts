@@ -10,6 +10,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
+import { boolean } from 'boolean';
 import {
   LocationRecord,
   PostalRecord,
@@ -72,10 +73,12 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
 
   public init(): void {
     const {
-      enabled = true,
       chunk = 100,
       delay = 5000,
+      enabled: metricsEnabled = true,
     } = config.application.metrics;
+
+    const enabled = boolean(metricsEnabled);
 
     if (!enabled) return;
 

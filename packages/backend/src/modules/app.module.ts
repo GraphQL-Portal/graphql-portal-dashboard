@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { config } from 'node-config-ts';
 import { join } from 'path';
+import { boolean } from 'boolean';
 import AccessControlGuard from '../common/guards/access-control-service.guard';
 import RolesGuard from '../common/guards/roles.guard';
 import { LoggerModule } from '../common/logger';
@@ -36,9 +37,9 @@ const imports = [
   ),
   GraphQLModule.forRoot({
     installSubscriptionHandlers: true,
-    playground: config.application.graphQL.playground,
+    playground: boolean(config.application.graphQL.playground),
     introspection: config.application.graphQL.debug,
-    debug: config.application.graphQL.debug,
+    debug: boolean(config.application.graphQL.debug),
     typePaths: ['./**/*.gql'],
     context: ({ req }) => ({ req }),
   }),
@@ -50,7 +51,7 @@ const imports = [
   MetricModule,
   LogModule,
 ];
-if (config.application.serveStatic) {
+if (boolean(config.application.serveStatic)) {
   imports.push(
     ServeStaticModule.forRoot({
       renderPath: '/',
