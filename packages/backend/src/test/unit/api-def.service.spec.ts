@@ -57,7 +57,7 @@ describe('ApiDefService', () => {
       const onMock = jest.spyOn(redisService, 'on').mockResolvedValueOnce(1);
       await app.init();
 
-      expect(onMock).toHaveBeenCalledTimes(2);
+      expect(onMock).toHaveBeenCalledTimes(100);
       expect(onMock.mock.calls).toEqual(
         expect.arrayContaining([
           expect.arrayContaining([
