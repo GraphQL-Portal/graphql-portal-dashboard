@@ -1,11 +1,16 @@
 import Sendgrid from '@sendgrid/mail';
-import { MailService, Template } from './mail';
+import {
+  Mail,
+  getHTML,
+  getSubject,
+  getConfirmationUrl,
+  getResetPasswordUrl,
+} from './common';
+import { MailService } from './mail';
 
 export type SendGridConfig = {
   apiKey: string;
   from: string;
-  clientHost: string;
-  publicHost: string;
 };
 
 export class SendgridMailService extends MailService {
@@ -13,7 +18,7 @@ export class SendgridMailService extends MailService {
   private readonly config: SendGridConfig;
 
   public constructor(config: SendGridConfig) {
-    super(config.publicHost, config.clientHost);
+    super();
     this.sendgrid.setApiKey(config.apiKey);
     this.config = config;
   }
@@ -26,11 +31,11 @@ export class SendgridMailService extends MailService {
     await this.sendgrid.send({
       from: this.config.from,
       to: email,
-      subject: 'Account confirmation on GraphQL Portal',
+      subject: getSubject(Mail.CONFIRMATION),
       hideWarnings: true,
-      html: this.getHTML(Template.CONFIRMATION, {
+      html: getHTML(Mail.CONFIRMATION, {
         firstName,
-        confirmationUrl: this.getConfirmationUrl(code, email),
+        confirmationUrl: getConfirmationUrl(code, email),
       }),
     });
   }
@@ -43,11 +48,11 @@ export class SendgridMailService extends MailService {
     await this.sendgrid.send({
       from: this.config.from,
       to: email,
-      subject: 'Reset password on GraphQL Portal',
+      subject: getSubject(Mail.RESET_PASSWORD),
       hideWarnings: true,
-      html: this.getHTML(Template.RESET_PASSWORD, {
+      html: getHTML(Mail.RESET_PASSWORD, {
         firstName,
-        resetPasswordUrl: this.getResetPasswordUrl(code, email),
+        resetPasswordUrl: getResetPasswordUrl(code, email),
       }),
     });
   }

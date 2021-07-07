@@ -1,6 +1,13 @@
 import nodemailer, { Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
-import { MailService, Template } from './mail';
+import { MailService } from './mail';
+import {
+  Mail,
+  getHTML,
+  getSubject,
+  getConfirmationUrl,
+  getResetPasswordUrl,
+} from './common';
 
 export type SMTPConfig = {
   from: string;
@@ -8,8 +15,6 @@ export type SMTPConfig = {
   port: number;
   user: string;
   pass: string;
-  clientHost: string;
-  publicHost: string;
 };
 
 export class SMTPMailService extends MailService {
@@ -17,7 +22,7 @@ export class SMTPMailService extends MailService {
   private readonly config: SMTPConfig;
 
   public constructor(config: SMTPConfig) {
-    super(config.publicHost, config.clientHost);
+    super();
     this.transporter = nodemailer.createTransport({
       host: config.host,
       port: config.port,
@@ -36,11 +41,11 @@ export class SMTPMailService extends MailService {
   ): Promise<void> {
     await this.transporter.sendMail({
       to: email,
-      subject: 'Account confirmation on GraphQL Portal',
+      subject: getSubject(Mail.CONFIRMATION),
       from: this.config.from,
-      html: this.getHTML(Template.CONFIRMATION, {
+      html: getHTML(Mail.CONFIRMATION, {
         firstName,
-        confirmationUrl: this.getConfirmationUrl(code, email),
+        confirmationUrl: getConfirmationUrl(code, email),
       }),
     });
   }
@@ -53,10 +58,10 @@ export class SMTPMailService extends MailService {
     await this.transporter.sendMail({
       to: email,
       from: this.config.from,
-      subject: 'Reset password on GraphQL Portal',
-      html: this.getHTML(Template.RESET_PASSWORD, {
+      subject: getSubject(Mail.RESET_PASSWORD),
+      html: getHTML(Mail.RESET_PASSWORD, {
         firstName,
-        resetPasswordUrl: this.getResetPasswordUrl(code, email),
+        resetPasswordUrl: getResetPasswordUrl(code, email),
       }),
     });
   }
