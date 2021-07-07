@@ -47,16 +47,20 @@ declare module 'node-config-ts' {
     licenseKey: string;
     accountId: string;
   }
-  interface Sendgrid {
-    apiKey: string;
-    confirmationTemplateId: string;
-    resetPasswordTemplateId: string;
+  interface Mail {
+    driver: string;
+    from: string;
+    sendgrid: Sendgrid;
+    smtp: Smtp;
   }
-  interface SMTP {
+  interface Smtp {
     host: string;
     port: string;
     user: string;
     pass: string;
+  }
+  interface Sendgrid {
+    apiKey: string;
   }
   interface Metrics {
     enabled: boolean;
@@ -70,12 +74,6 @@ declare module 'node-config-ts' {
   interface GraphQL {
     playground: boolean;
     debug: boolean;
-  }
-  interface Mail {
-    from: string;
-    driver: 'smtp' | 'sendgrid';
-    sendgrid: Sendgrid;
-    smtp: SMTP;
   }
   export const config: Config;
   export type Config = IConfig;

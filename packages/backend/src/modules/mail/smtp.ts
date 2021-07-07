@@ -1,6 +1,6 @@
 import nodemailer, { Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
-import { MailService } from './abstract';
+import { MailService, Template } from './mail';
 
 export type SMTPConfig = {
   from: string;
@@ -8,15 +8,17 @@ export type SMTPConfig = {
   port: number;
   user: string;
   pass: string;
+  clientHost: string;
+  publicHost: string;
 };
 
 export class SMTPMailService extends MailService {
   private readonly transporter: Transporter<SMTPTransport.SentMessageInfo>;
+  private readonly config: SMTPConfig;
 
   public constructor(config: SMTPConfig) {
-    super();
+    super(config.publicHost, config.clientHost);
     this.transporter = nodemailer.createTransport({
-      from: config.from,
       host: config.host,
       port: config.port,
       auth: {
@@ -24,6 +26,7 @@ export class SMTPMailService extends MailService {
         pass: config.pass,
       },
     });
+    this.config = config;
   }
 
   public async sendEmailConfirmationCode(
@@ -31,10 +34,14 @@ export class SMTPMailService extends MailService {
     firstName: string,
     code: string
   ): Promise<void> {
-    this.transporter.sendMail({
+    await this.transporter.sendMail({
       to: email,
-      subject: 'Email confirmation',
-      html: this.getConfirmationCodeTemplate(email, firstName, code),
+      subject: 'Account confirmation on GraphQL Portal',
+      from: this.config.from,
+      html: this.getHTML(Template.CONFIRMATION, {
+        firstName,
+        confirmationUrl: this.getConfirmationUrl(code, email),
+      }),
     });
   }
 
@@ -43,26 +50,14 @@ export class SMTPMailService extends MailService {
     firstName: string,
     code: string
   ): Promise<void> {
-    this.transporter.sendMail({
+    await this.transporter.sendMail({
       to: email,
-      subject: 'Reset password',
-      html: this.getResetPasswordTemplate(email, firstName, code),
+      from: this.config.from,
+      subject: 'Reset password on GraphQL Portal',
+      html: this.getHTML(Template.RESET_PASSWORD, {
+        firstName,
+        resetPasswordUrl: this.getResetPasswordUrl(code, email),
+      }),
     });
-  }
-
-  private getConfirmationCodeTemplate(
-    email: string,
-    firstName: string,
-    code: string
-  ): string {
-    return '';
-  }
-
-  private getResetPasswordTemplate(
-    email: string,
-    firstName: string,
-    code: string
-  ): string {
-    return '';
   }
 }

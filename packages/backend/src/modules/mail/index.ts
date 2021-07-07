@@ -1,4 +1,4 @@
-import { MailService } from './abstract';
+import { MailService } from './mail';
 import { config } from 'node-config-ts';
 import { SendgridMailService } from './sendgrid';
 import { SMTPMailService } from './smtp';
@@ -8,16 +8,12 @@ let instance: MailService;
 const getMailService = (): MailService => {
   if (instance) return instance;
 
-  const driver = config.application.mail.driver;
+  const { driver } = config.application.mail;
 
   if (driver === 'sendgrid') {
     instance = new SendgridMailService({
       apiKey: config.application.mail.sendgrid.apiKey,
       from: config.application.mail.from,
-      resetPasswordTemplateId:
-        config.application.mail.sendgrid.resetPasswordTemplateId,
-      confirmationTemplateId:
-        config.application.mail.sendgrid.confirmationTemplateId,
       clientHost: config.client.host,
       publicHost: config.application.publicHost,
     });
@@ -28,6 +24,8 @@ const getMailService = (): MailService => {
       port: Number.parseInt(config.application.mail.smtp.port),
       user: config.application.mail.smtp.user,
       pass: config.application.mail.smtp.pass,
+      clientHost: config.client.host,
+      publicHost: config.application.publicHost,
     });
   } else {
     throw new Error(`Unknown mail driver ${driver}`);

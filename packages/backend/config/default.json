@@ -3,7 +3,7 @@
   "application": {
     "env": "default",
     "host": "localhost",
-    "publicHost": "https://localhost:3030",
+    "publicHost": "http://localhost:3030",
     "port": 3030,
     "useSwaggerUi": true,
     "graphQL": {
@@ -26,18 +26,16 @@
     },
     "mail": {
       "driver": "sendgrid",
-      "from": "no-reply@example"
-    },
-    "sendgrid": {
-      "apiKey": "SG.example",
-      "confirmationTemplateId": "confirmationTemplateId",
-      "resetPasswordTemplateId": "resetPasswordTemplateId"
-    },
-    "smtp": {
-      "host": "no-reply@example",
-      "port": "587",
-      "user": "user",
-      "pass": "pass"
+      "from": "no-reply@example",
+      "sendgrid": {
+        "apiKey": "SG.example"
+      },
+      "smtp": {
+        "host": "smtp.sendgrid.net",
+        "port": "587",
+        "user": "apikey",
+        "pass": "SG.example"
+      }
     },
     "maxmind": {
       "dbPath": "",
@@ -49,7 +47,7 @@
     "secret": ""
   },
   "client": {
-    "host": "localhost:8080"
+    "host": "http://localhost:8080"
   },
   "db": {
     "redis": {
