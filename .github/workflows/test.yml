@@ -22,8 +22,11 @@ jobs:
       - name: Apt update
         run: sudo apt update
 
-      - name: Install libssl1.0.0
-        run: sudo apt-get install libssl1.0.0
+      - name: Show libss
+        run: sudo apt list libssl
+
+      - name: Install libssl1.1
+        run: sudo apt install libssl1.1
 
       - name: Use Node 14
         uses: actions/setup-node@master
