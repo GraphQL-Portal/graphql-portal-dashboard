@@ -19,24 +19,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Show ubuntu
-        run: lsb_release -a
-
-      - name: Cat source.list
-        run: cat /etc/apt/sources.list
-
-      - name: Edit sources.list
-        run: sudo su -c "echo 'deb http://security.ubuntu.com/ubuntu xenial-security main' >> /etc/apt/sources.list"
-
-      - name: Cat source.list
-        run: cat /etc/apt/sources.list
-
-      - name: Apt update
-        run: sudo apt update
-
-      - name: Apt update
-        run: sudo apt install libssl1.0.0
-
       - name: Use Node 14
         uses: actions/setup-node@master
         with:
@@ -67,9 +49,3 @@ jobs:
 
       - name: Test
         run: yarn test
-
-      - name: Show mongod
-        run: ls ./packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries
-
-      - name: Mongod
-        run: ./packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries/3.6.3/mongod
