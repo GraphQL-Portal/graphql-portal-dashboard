@@ -51,4 +51,4 @@ jobs:
         run: yarn test
 
       - name: Mongod
-        run: ./node_modules/.cache/mongodb-memory-server/mongodb-binaries/4.0.3/mongod
+        run: .packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries/4.0.3/mongod
