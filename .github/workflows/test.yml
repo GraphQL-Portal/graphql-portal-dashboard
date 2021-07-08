@@ -19,8 +19,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install libcurl3
-        run: sudo apt-get install libcurl3
+      - name: Install libcurl4
+        run: sudo apt-get install libcurl4
 
       - name: Use Node 14
         uses: actions/setup-node@master
