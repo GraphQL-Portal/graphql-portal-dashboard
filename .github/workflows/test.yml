@@ -19,16 +19,36 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install libcurl4
-        run: sudo apt-get install libcurl4
-
       - name: Use Node 14
         uses: actions/setup-node@master
         with:
           node-version: 14
+
+      - name: Get Yarn cache
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Yarn cache
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-14-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-14-yarn-
+
+      - name: MongoDB Memory Server cache
+        uses: actions/cache@v2
+        id: mongodb-memory-cache
+        with:
+          path: .packages/backend/node_modules/.cache/mongodb-memory-server
+          key: ${{ runner.os }}-14-mongo-${{ hashFiles('.packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries/*/mongod') }}
 
       - name: Install dependencies with Yarn
         run: yarn install --ignore-engines
 
       - name: Test
         run: yarn test
+
+      - name: Mongod
+        run: ./node_modules/.cache/mongodb-memory-server/mongodb-binaries/4.0.3/mongod
