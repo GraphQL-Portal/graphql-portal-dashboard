@@ -19,7 +19,7 @@
     "start:debug": "yarn workspace graphql-portal-dashboard-backend start:debug",
     "start": "concurrently --kill-others-on-fail 'yarn backend' 'yarn frontend'",
     "clear": "rm -rf node_modules && yarn frontend:clear && yarn backend:clear",
-    "test": "yarn backend:test",
+    "test": "yarn backend:test --debug --no-cache",
     "lint": "eslint \"./packages/**/*.ts\" --fix",
     "prettier": "prettier --write \"./packages/**/*.{ts,tsx}\" --config .prettierrc.json",
     "postinstall": "husky install && patch-package",
