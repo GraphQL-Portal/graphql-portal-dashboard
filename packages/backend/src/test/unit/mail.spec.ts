@@ -16,11 +16,8 @@ jest.mock('nodemailer', () => ({
 }));
 
 describe('Mail', () => {
-  const from = 'from';
-  const publicHost = 'http://localhost:3030';
-  const clientHost = 'http://localhost:8080';
   const smtpConfig = {
-    from,
+    from: 'from-smtp',
     host: 'host',
     port: 587,
     auth: {
@@ -28,14 +25,10 @@ describe('Mail', () => {
       pass: 'pass',
     },
     secure: false,
-    clientHost,
-    publicHost,
   };
   const sendgridConfig = {
-    from,
+    from: 'from-sendgrid',
     apiKey: 'apiKey',
-    clientHost,
-    publicHost,
   };
   const email = 'test@test.com';
   const firstName = 'test';
@@ -90,7 +83,7 @@ describe('Mail', () => {
 
         expect(Sendgrid.send).toBeCalledTimes(1);
         expect(Sendgrid.send).toBeCalledWith({
-          from,
+          from: sendgridConfig.from,
           to: email,
           subject: subjects[Mail.CONFIRMATION],
           hideWarnings: true,
@@ -109,7 +102,7 @@ describe('Mail', () => {
 
         expect(Sendgrid.send).toBeCalledTimes(1);
         expect(Sendgrid.send).toBeCalledWith({
-          from,
+          from: sendgridConfig.from,
           to: email,
           subject: subjects[Mail.RESET_PASSWORD],
           hideWarnings: true,
@@ -124,14 +117,7 @@ describe('Mail', () => {
       smtpMailService = new SMTPMailService(smtpConfig);
 
       expect(nodemailer.createTransport).toBeCalledTimes(1);
-      expect(nodemailer.createTransport).toBeCalledWith({
-        host: smtpConfig.host,
-        port: smtpConfig.port,
-        auth: {
-          user: smtpConfig.auth.user,
-          pass: smtpConfig.auth.pass,
-        },
-      });
+      expect(nodemailer.createTransport).toBeCalledWith(smtpConfig);
     });
 
     describe('sendEmailConfirmationCode', () => {
@@ -140,7 +126,7 @@ describe('Mail', () => {
 
         expect(transport.sendMail).toBeCalledTimes(1);
         expect(transport.sendMail).toBeCalledWith({
-          from,
+          from: smtpConfig.from,
           to: email,
           subject: subjects[Mail.CONFIRMATION],
           html: expect.any(String),
@@ -158,7 +144,7 @@ describe('Mail', () => {
 
         expect(transport.sendMail).toBeCalledTimes(1);
         expect(transport.sendMail).toBeCalledWith({
-          from,
+          from: smtpConfig.from,
           to: email,
           subject: subjects[Mail.RESET_PASSWORD],
           html: expect.any(String),
