@@ -13,10 +13,11 @@ export type SMTPConfig = {
   from: string;
   host: string;
   port: number;
-  user: string;
-  pass: string;
+  auth: {
+    user: string;
+    pass: string;
+  };
   secure: boolean;
-  authMethod: string;
 };
 
 export class SMTPMailService extends MailService {
@@ -25,16 +26,7 @@ export class SMTPMailService extends MailService {
 
   public constructor(config: SMTPConfig) {
     super();
-    this.transporter = nodemailer.createTransport({
-      host: config.host,
-      port: config.port,
-      secure: config.secure,
-      authMethod: config.authMethod,
-      auth: {
-        user: config.user,
-        pass: config.pass,
-      },
-    });
+    this.transporter = nodemailer.createTransport(config);
     this.config = config;
   }
 

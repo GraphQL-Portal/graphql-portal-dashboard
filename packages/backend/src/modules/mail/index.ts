@@ -2,6 +2,7 @@ import { MailService } from './mail';
 import { config } from 'node-config-ts';
 import { SendgridMailService } from './sendgrid';
 import { SMTPMailService } from './smtp';
+import { DefaultMailService } from './default';
 
 let instance: MailService;
 
@@ -20,17 +21,10 @@ const getMailService = (): MailService => {
   } else if (driver === 'smtp') {
     instance = new SMTPMailService({
       from: config.application.mail.from,
-      host: config.application.mail.smtp.host,
-      port: Number.parseInt(config.application.mail.smtp.port),
-      user: config.application.mail.smtp.user,
-      pass: config.application.mail.smtp.pass,
-      clientHost: config.client.host,
-      publicHost: config.application.publicHost,
-      secure: config.application.mail.smtp.secure,
-      authMethod: config.application.mail.smtp.authMethod,
+      ...config.application.mail.smtp,
     });
   } else {
-    throw new Error(`Unknown mail driver ${driver}`);
+    instance = new DefaultMailService();
   }
   return instance;
 };

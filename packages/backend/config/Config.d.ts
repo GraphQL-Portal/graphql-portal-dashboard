@@ -55,11 +55,13 @@ declare module 'node-config-ts' {
   }
   interface Smtp {
     host: string;
-    port: string;
+    port: number;
+    auth: Auth;
+    secure: boolean;
+  }
+  interface Auth {
     user: string;
     pass: string;
-    secure: boolean;
-    authMethod: string;
   }
   interface Sendgrid {
     apiKey: string;

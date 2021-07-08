@@ -25,18 +25,19 @@
       "delay": 5000
     },
     "mail": {
-      "driver": "sendgrid",
+      "driver": "",
       "from": "no-reply@example",
       "sendgrid": {
         "apiKey": "SG.example"
       },
       "smtp": {
         "host": "smtp.sendgrid.net",
-        "port": "587",
-        "user": "apikey",
-        "pass": "SG.example",
-        "secure": false,
-        "authMethod": "PLAIN"
+        "port": 587,
+        "auth": {
+          "user": "apikey",
+          "pass": "SG.example"
+        },
+        "secure": false
       }
     },
     "maxmind": {
