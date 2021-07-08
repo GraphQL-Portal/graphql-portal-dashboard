@@ -23,12 +23,13 @@ describe('Mail', () => {
     from,
     host: 'host',
     port: 587,
-    user: 'user',
-    pass: 'pass',
+    auth: {
+      user: 'user',
+      pass: 'pass',
+    },
+    secure: false,
     clientHost,
     publicHost,
-    secure: false,
-    authMethod: 'PLAIN',
   };
   const sendgridConfig = {
     from,
@@ -127,8 +128,8 @@ describe('Mail', () => {
         host: smtpConfig.host,
         port: smtpConfig.port,
         auth: {
-          user: smtpConfig.user,
-          pass: smtpConfig.pass,
+          user: smtpConfig.auth.user,
+          pass: smtpConfig.auth.pass,
         },
       });
     });

@@ -13,11 +13,21 @@
     },
     "serveStatic": "@@SERVE_STATIC",
     "jwtSecret": "@@JWT_SECRET",
-    "sendgrid": {
-      "senderEmail": "@@SENDGRID_SENDER_EMAIL",
-      "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",
-      "apiKey": "@@SENDGRID_API_KEY",
-      "resetPasswordTemplateId": "@@SENDGRID_RESET_PASSWORD_TEMPLATE"
+    "mail": {
+      "driver": "@@MAIL_DRIVER",
+      "from": "@@MAIL_FROM",
+      "sendgrid": {
+        "apiKey": "@@SENDGRID_API_KEY"
+      },
+      "smtp": {
+        "host": "@@SMTP_HOST",
+        "port": "@@SMTP_PORT",
+        "auth": {
+          "user": "@@SMTP_USER",
+          "pass": "@@SMTP_PASS"
+        },
+        "secure": "@@SMTP_SECURE"
+      }
     },
     "maxmind": {
       "dbPath": "@@MAXMIND_DB_PATH",

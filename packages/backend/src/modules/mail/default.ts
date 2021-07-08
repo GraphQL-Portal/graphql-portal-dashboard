@@ -31,7 +31,7 @@ export class DefaultMailService extends MailService {
     code: string
   ): Promise<void> {
     logger.log(
-      `Resset password url is ${getResetPasswordUrl(code, email)}`,
+      `Reset password url is ${getResetPasswordUrl(code, email)}`,
       `${this.constructor.name}:${this.sendEmailConfirmationCode.name}`
     );
   }

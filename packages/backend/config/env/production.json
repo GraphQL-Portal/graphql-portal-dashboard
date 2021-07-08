@@ -20,11 +20,21 @@
       "licenseKey": "@@MAXMIND_LICENSE_KEY",
       "accountId": "@@MAXMIND_ACCOUNT_ID"
     },
-    "sendgrid": {
-      "senderEmail": "@@SENDGRID_SENDER_EMAIL",
-      "confirmationTemplateId": "@@SENDGRID_CONFIRMATION_TEMPLATE",
-      "resetPasswordTemplateId": "@@SENDGRID_RESET_PASSWORD_TEMPLATE",
-      "apiKey": "@@SENDGRID_API_KEY"
+    "mail": {
+      "driver": "@@MAIL_DRIVER",
+      "from": "@@MAIL_FROM",
+      "sendgrid": {
+        "apiKey": "@@SENDGRID_API_KEY"
+      },
+      "smtp": {
+        "host": "@@SMTP_HOST",
+        "port": "@@SMTP_PORT",
+        "auth": {
+          "user": "@@SMTP_USER",
+          "pass": "@@SMTP_PASS"
+        },
+        "secure": "@@SMTP_SECURE"
+      }
     },
     "defaultAdmin": {
       "email": "@@DEFAULT_ADMIN_EMAIL",
