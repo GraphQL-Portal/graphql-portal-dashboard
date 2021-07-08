@@ -128,6 +128,8 @@ export default class UserService {
   }
 
   public async createDefaultUser(): Promise<void> {
+    if (process.env.NODE_ENV?.includes('test')) return;
+
     const { email, password } = config.application.defaultAdmin;
 
     if (

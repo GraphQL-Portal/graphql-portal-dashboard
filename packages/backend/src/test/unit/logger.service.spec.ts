@@ -7,13 +7,14 @@ jest.mock('ioredis');
 describe('LoggerService', () => {
   let loggerService: LoggerService;
   let spiedPrintMessage: jest.MockedFunction<any>;
+  let app: TestingModule;
 
   const context = 'logger.service.spec';
   const logMethods = Object.values(LogLevel);
 
   beforeAll(async () => {
     process.env.NODE_ENV = 'testing';
-    const app: TestingModule = await Test.createTestingModule({
+    app = await Test.createTestingModule({
       imports: [
         LoggerModule.forRoot({
           application: {
@@ -30,7 +31,11 @@ describe('LoggerService', () => {
       .mockImplementation(() => {});
   });
 
-  afterEach(() => {
+  afterAll(async () => {
+    await app.close();
+  });
+
+  afterEach(async () => {
     jest.clearAllMocks();
   });
 

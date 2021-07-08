@@ -1,6 +1,5 @@
 import { MetricsChannels } from '@graphql-portal/types';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
 import { AnyMetric, AnyResolverMetric } from '../../modules/metric/interfaces';
 import AppModule from '../../modules/app.module';
@@ -49,8 +48,6 @@ describe('MetricService', () => {
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
 
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
-
     metricService = app.get<MetricService>(MetricService);
     apiDefService = app.get<ApiDefService>(ApiDefService);
     (metricService as any).maxmind = maxmind;
@@ -59,7 +56,6 @@ describe('MetricService', () => {
   afterAll(async () => {
     jest.clearAllTimers();
     jest.useRealTimers();
-    await mongoose.connection.close();
     await app.close();
   });
 
@@ -361,8 +357,7 @@ describe('MetricService', () => {
       expect(spyAggregate).toBeCalledTimes(1);
       expect(data).toMatchObject([
         {
-          avgLatency: 1000,
-          chunk: chunk.toISOString(),
+          chunk,
           source1: 800,
           source2: 1500,
         },
