@@ -15,6 +15,8 @@ export type SMTPConfig = {
   port: number;
   user: string;
   pass: string;
+  secure: boolean;
+  authMethod: string;
 };
 
 export class SMTPMailService extends MailService {
@@ -26,6 +28,8 @@ export class SMTPMailService extends MailService {
     this.transporter = nodemailer.createTransport({
       host: config.host,
       port: config.port,
+      secure: config.secure,
+      authMethod: config.authMethod,
       auth: {
         user: config.user,
         pass: config.pass,

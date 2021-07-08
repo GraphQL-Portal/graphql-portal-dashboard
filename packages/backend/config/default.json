@@ -34,7 +34,9 @@
         "host": "smtp.sendgrid.net",
         "port": "587",
         "user": "apikey",
-        "pass": "SG.example"
+        "pass": "SG.example",
+        "secure": false,
+        "authMethod": "PLAIN"
       }
     },
     "maxmind": {

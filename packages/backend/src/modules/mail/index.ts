@@ -26,6 +26,8 @@ const getMailService = (): MailService => {
       pass: config.application.mail.smtp.pass,
       clientHost: config.client.host,
       publicHost: config.application.publicHost,
+      secure: config.application.mail.smtp.secure,
+      authMethod: config.application.mail.smtp.authMethod,
     });
   } else {
     throw new Error(`Unknown mail driver ${driver}`);

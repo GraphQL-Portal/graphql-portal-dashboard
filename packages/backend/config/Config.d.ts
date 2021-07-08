@@ -58,6 +58,8 @@ declare module 'node-config-ts' {
     port: string;
     user: string;
     pass: string;
+    secure: boolean;
+    authMethod: string;
   }
   interface Sendgrid {
     apiKey: string;

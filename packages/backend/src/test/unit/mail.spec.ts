@@ -27,6 +27,8 @@ describe('Mail', () => {
     pass: 'pass',
     clientHost,
     publicHost,
+    secure: false,
+    authMethod: 'PLAIN',
   };
   const sendgridConfig = {
     from,
