@@ -51,7 +51,7 @@ jobs:
         run: yarn test
 
       - name: Show mongod
-        run: ls .packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries
+        run: ls ./packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries
 
       - name: Mongod
-        run: .packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries/3.6.3/mongod
+        run: ./packages/backend/node_modules/.cache/mongodb-memory-server/mongodb-binaries/3.6.3/mongod
