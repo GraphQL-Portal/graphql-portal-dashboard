@@ -26,7 +26,7 @@ jobs:
         run: cat /etc/apt/sources.list
 
       - name: Edit sources.list
-        run: echo 'deb http://security.ubuntu.com/ubuntu xenial-security main' >> /etc/apt/sources.list
+        run: sudo echo 'deb http://security.ubuntu.com/ubuntu xenial-security main' >> /etc/apt/sources.list
 
       - name: Cat source.list
         run: cat /etc/apt/sources.list
