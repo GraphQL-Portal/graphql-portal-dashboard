@@ -19,14 +19,23 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Show ubuntu
+        run: lsb_release -a
+
+      - name: Cat source.list
+        run: cat /etc/apt/sources.list
+
+      - name: Edit sources.list
+        run: echo 'deb http://security.ubuntu.com/ubuntu xenial-security main' >> /etc/apt/sources.list
+
+      - name: Cat source.list
+        run: cat /etc/apt/sources.list
+
       - name: Apt update
         run: sudo apt update
 
-      - name: Show libss
-        run: sudo apt list libssl
-
-      - name: Install libssl1.1
-        run: sudo apt install libssl1.1
+      - name: Apt update
+        run: sudo apt install libssl1.0.0
 
       - name: Use Node 14
         uses: actions/setup-node@master
