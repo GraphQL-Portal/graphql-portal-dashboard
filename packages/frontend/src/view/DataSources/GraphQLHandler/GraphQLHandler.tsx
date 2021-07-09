@@ -82,6 +82,20 @@ export const GraphQLHandler: React.FC<HandlerStep> = (props) => {
       <HandlerRow>
         <HandlerCol>
           <FormLabel
+            label="Ignore self-signed certificate error"
+            control={
+              <Controller
+                name="rejectUnauthorized"
+                control={control}
+                render={(props) => <Checkbox {...props} color="primary" />}
+              />
+            }
+          />
+        </HandlerCol>
+      </HandlerRow>
+      <HandlerRow>
+        <HandlerCol>
+          <FormLabel
             label='Use legacy web socket protocol "subscriptions-transport-ws" instead of the more current "graphql-ws"'
             control={
               <Controller

@@ -37,9 +37,10 @@ type OnFormSubmit = {
   onSubmit: OnSubmit;
 };
 
-export type UseOpenapiDataSourceHook = (
-  props: HandlerStep
-) => Pick<OpenapiFormMethods, 'register' | 'errors' | 'control'> & {
+export type UseOpenapiDataSourceHook = (props: HandlerStep) => Pick<
+  OpenapiFormMethods,
+  'register' | 'errors' | 'control'
+> & {
   onSubmit: OnSubmit;
   schemaFields: FieldArray<ObjectArrayItem>;
   appendSchemaField: FieldArrayAppend;
@@ -56,18 +57,20 @@ export type UseOpenapiDataSourceHook = (
   disableInputs: boolean;
 };
 
-export type UsePrefixTransformHook = (
-  props: TransformStep
-) => Pick<PrefixFormMethods, 'control' | 'errors' | 'register'> &
+export type UsePrefixTransformHook = (props: TransformStep) => Pick<
+  PrefixFormMethods,
+  'control' | 'errors' | 'register'
+> &
   OnFormSubmit & {
     ignoredTypes: FieldArray<StringArrayItem>;
     addIgnoredTypes: FieldArrayAppend;
     removeIgnoredTypes: FieldArrayRemove;
   };
 
-export type UseRenameTransformHook = (
-  props: TransformStep
-) => Pick<RenameFormMethods, 'control' | 'errors' | 'register'> &
+export type UseRenameTransformHook = (props: TransformStep) => Pick<
+  RenameFormMethods,
+  'control' | 'errors' | 'register'
+> &
   OnFormSubmit & {
     items: FieldArray<RenameTransformObject>;
     onAdd: FieldArrayAppend;
@@ -98,9 +101,10 @@ export type UseStripeHandlerHook = (
   props: HandlerStep
 ) => Pick<StripeFormMethods, 'errors' | 'register'> & OnFormSubmit;
 
-export type UseJsonSchemaHook = (
-  props: HandlerStep
-) => Pick<JsonSchemaFormMethods, 'errors' | 'control' | 'register'> &
+export type UseJsonSchemaHook = (props: HandlerStep) => Pick<
+  JsonSchemaFormMethods,
+  'errors' | 'control' | 'register'
+> &
   OnFormSubmit & {
     schemaFields: FieldArray<ObjectArrayItem>;
     appendSchemaField: FieldArrayAppend;
@@ -113,9 +117,10 @@ export type UseJsonSchemaHook = (
     removeOperation: FieldArrayRemove;
   };
 
-export type UseFilterTransformHook = (
-  props: TransformStep
-) => Pick<FilterTransformFormMethods, 'register' | 'errors' | 'control'> &
+export type UseFilterTransformHook = (props: TransformStep) => Pick<
+  FilterTransformFormMethods,
+  'register' | 'errors' | 'control'
+> &
   OnFormSubmit & {
     filters: FieldArray<ObjectArrayItem>;
     onAddFilter: NOOP;
@@ -136,7 +141,7 @@ export type UseContentfulHandlerHook = (
 
 export type UseFhirHandlerHook = (
   props: HandlerStep
-) => Pick<FhirFormMethods, 'errors' | 'register'> & OnFormSubmit;
+) => Pick<FhirFormMethods, 'errors' | 'register' | 'control'> & OnFormSubmit;
 
 export type UseNeo4JHandlerHook = (
   props: HandlerStep
@@ -144,7 +149,7 @@ export type UseNeo4JHandlerHook = (
 
 export type UseSoapHandlerHook = (
   props: HandlerStep
-) => Pick<SoapFormMethods, 'errors' | 'register'> & OnFormSubmit;
+) => Pick<SoapFormMethods, 'errors' | 'register' | 'control'> & OnFormSubmit;
 
 export type UseAddDataSourceNameHook = (
   props: NameStep

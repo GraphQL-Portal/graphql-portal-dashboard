@@ -26,6 +26,7 @@ const ODATA_DEFAULT_STATE = {
   baseUrl: '',
   batch: '',
   expandNavProps: false,
+  rejectUnauthorized: false,
   metadata: '',
   operationHeaders: [],
   schemaHeaders: [],
