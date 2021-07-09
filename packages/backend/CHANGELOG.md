@@ -1,5 +1,17 @@
 # graphql-portal-dashboard-backend
 
+## 0.19.0
+
+### Minor Changes
+
+- c930ab4: SMTP support
+
+### Patch Changes
+
+- 9f37471: types
+- d11e780: convert boolean strings to boolean
+- 6f9bea9: backward compatibility, warning for deprecated config
+
 ## 0.17.0
 
 ### Patch Changes

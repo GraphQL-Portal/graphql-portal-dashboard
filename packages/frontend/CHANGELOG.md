@@ -1,5 +1,12 @@
 # graphql-portal-dashboard-frontend
 
+## 0.19.0
+
+### Minor Changes
+
+- c7fe65b: React use env
+- c0a510a: Ignore self signed certificate error property
+
 ## 0.18.0
 
 ### Minor Changes
