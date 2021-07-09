@@ -1,5 +1,6 @@
-import { MailService } from './mail';
 import { config } from 'node-config-ts';
+import { boolean } from 'boolean';
+import { MailService } from './mail';
 import { SendgridMailService } from './sendgrid';
 import { SMTPMailService } from './smtp';
 import { DefaultMailService } from './default';
@@ -26,6 +27,7 @@ const getMailService = (): MailService => {
     instance = new SMTPMailService({
       from: config.application.mail.from,
       ...config.application.mail.smtp,
+      secure: boolean(config.application.mail.smtp.secure),
     });
   } else {
     instance = new DefaultMailService();
