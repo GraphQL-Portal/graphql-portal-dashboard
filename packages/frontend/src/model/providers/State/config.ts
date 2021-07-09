@@ -1,10 +1,13 @@
+const runtimeEnv = (window as any).env || {};
+const env = Object.assign({}, process.env, runtimeEnv);
+
 const {
   REACT_APP_DASHBOARD_URL,
   REACT_APP_DASHBOARD_WS_URL,
   REACT_APP_AUTO_LOGIN_ENABLED,
   REACT_APP_DEFAULT_ADMIN_EMAIL,
   REACT_APP_DEFAULT_ADMIN_PASSWORD,
-} = process.env;
+} = env;
 
 export const URI = REACT_APP_DASHBOARD_URL || 'http://localhost:3030/graphql';
 export const wsURI =
