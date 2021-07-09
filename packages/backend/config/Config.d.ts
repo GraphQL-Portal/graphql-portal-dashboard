@@ -40,6 +40,7 @@ declare module 'node-config-ts' {
     defaultAdmin: DefaultAdmin;
     metrics: Metrics;
     sendgrid: Sendgrid;
+    mail: Mail;
     maxmind: Maxmind;
   }
   interface Maxmind {
@@ -47,11 +48,28 @@ declare module 'node-config-ts' {
     licenseKey: string;
     accountId: string;
   }
-  interface Sendgrid {
-    senderEmail: string;
+  interface Mail {
+    driver: string;
+    from: string;
+    sendgrid: Sendgrid2;
+    smtp: Smtp;
+  }
+  interface Smtp {
+    host: string;
+    port: number;
+    auth: Auth;
+    secure: boolean;
+  }
+  interface Auth {
+    user: string;
+    pass: string;
+  }
+  interface Sendgrid2 {
     apiKey: string;
-    confirmationTemplateId: string;
-    resetPasswordTemplateId: string;
+  }
+  interface Sendgrid {
+    apiKey: string;
+    senderEmail: string;
   }
   interface Metrics {
     enabled: boolean;

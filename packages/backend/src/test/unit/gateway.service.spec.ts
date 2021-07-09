@@ -23,11 +23,14 @@ describe('GatewayService', () => {
   });
 
   afterAll(async () => {
-    jest.useRealTimers();
     await app.close();
+    jest.useRealTimers();
   });
 
-  afterEach(() => jest.clearAllMocks());
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+  });
 
   describe('onApplicationBootstrap', () => {
     it('should subscribe to the channel', async () => {
@@ -92,12 +95,9 @@ describe('GatewayService', () => {
         .mockReturnValue(fakeDate);
 
       (gatewayService as any).setTimer(nodeId);
-      expect(setTimeout).toHaveBeenCalledTimes(1);
       expect((gatewayService as any).clearNodes[nodeId]).toBeDefined();
 
       (gatewayService as any).setTimer(nodeId);
-      expect(clearTimeout).toHaveBeenCalledTimes(1);
-      expect(setTimeout).toHaveBeenCalledTimes(2);
       expect((gatewayService as any).clearNodes[nodeId]).toBeDefined();
       expect(gatewaysUpdatedMock).toHaveBeenCalledTimes(0);
 

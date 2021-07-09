@@ -226,8 +226,11 @@ describe('UserService', () => {
       const spyCreateNewCodeAndDeletePrevious = jest
         .spyOn(userService as any, 'createNewCodeAndDeletePrevious')
         .mockResolvedValue(codeEntity);
-      const spySendgridSend = jest
-        .spyOn((userService as any).sendgrid, 'send')
+      const spySendEmail = jest
+        .spyOn(
+          (userService as any).mailService,
+          'sendResetPasswordInstructions'
+        )
         .mockImplementation(() => {});
 
       await userService.resetPasswordRequest(user.email);
@@ -239,17 +242,12 @@ describe('UserService', () => {
         user.email,
         CodeTypes.RESET_PASSWORD
       );
-      expect(spySendgridSend).toBeCalledTimes(1);
-      expect(spySendgridSend).toBeCalledWith({
-        from: config.application.sendgrid.senderEmail,
-        to: user.email,
-        templateId: config.application.sendgrid.resetPasswordTemplateId,
-        dynamicTemplateData: {
-          resetPasswordUrl: `${config.client.host}/reset-password?code=${codeEntity.code}&email=${user.email}`,
-          firstName: user.firstName,
-        },
-        hideWarnings: true,
-      });
+      expect(spySendEmail).toBeCalledTimes(1);
+      expect(spySendEmail).toBeCalledWith(
+        user.email,
+        user.firstName,
+        codeEntity.code
+      );
     });
 
     it('resetPassword: success', async () => {
@@ -360,8 +358,8 @@ describe('UserService', () => {
       const spyCreate = jest
         .spyOn(userService as any, 'createNewCodeAndDeletePrevious')
         .mockResolvedValue(codeEntity);
-      const spySendgridSend = jest
-        .spyOn((userService as any).sendgrid, 'send')
+      const spySendEmail = jest
+        .spyOn((userService as any).mailService, 'sendEmailConfirmationCode')
         .mockImplementation(() => {});
       await userService.sendEmailConfirmationCode(user.email);
 
@@ -370,17 +368,12 @@ describe('UserService', () => {
         user.email,
         CodeTypes.EMAIL_CONFIRMATION
       );
-      expect(spySendgridSend).toBeCalledTimes(1);
-      expect(spySendgridSend).toBeCalledWith({
-        from: config.application.sendgrid.senderEmail,
-        to: user.email,
-        templateId: config.application.sendgrid.confirmationTemplateId,
-        dynamicTemplateData: {
-          confirmationUrl: `${config.application.publicHost}/user/confirm-email?code=${codeEntity.code}&email=${user.email}`,
-          firstName: user.firstName,
-        },
-        hideWarnings: true,
-      });
+      expect(spySendEmail).toBeCalledTimes(1);
+      expect(spySendEmail).toBeCalledWith(
+        user.email,
+        user.firstName,
+        codeEntity.code
+      );
     });
   });
 

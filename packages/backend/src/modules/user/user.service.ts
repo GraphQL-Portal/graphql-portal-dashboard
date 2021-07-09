@@ -1,6 +1,5 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import Sendgrid from '@sendgrid/mail';
 import { AuthenticationError, UserInputError } from 'apollo-server-express';
 import { Model } from 'mongoose';
 import { config } from 'node-config-ts';
@@ -10,13 +9,14 @@ import IUser from '../../common/interface/user.interface';
 import { LoggerService } from '../../common/logger';
 import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
 import { IUserDocument } from '../../data/schema/user.schema';
+import getMailService from '../mail';
 import { CodeExpirationTime, CodeTypes } from './enum';
 import ITokens from './interfaces/tokens.interface';
 import TokenService from './token.service';
 
 @Injectable()
 export default class UserService {
-  private readonly sendgrid = Sendgrid;
+  private readonly mailService = getMailService();
   private readonly defaultAdmin = {
     email: 'admin@example.com',
     password: 'Secret123!',
@@ -29,9 +29,7 @@ export default class UserService {
     private readonly logger: LoggerService,
     @Inject(forwardRef(() => TokenService))
     private readonly tokenService: TokenService
-  ) {
-    this.sendgrid.setApiKey(config.application.sendgrid.apiKey);
-  }
+  ) {}
 
   private async onModuleInit(): Promise<void> {
     await this.createDefaultUser();
@@ -130,6 +128,8 @@ export default class UserService {
   }
 
   public async createDefaultUser(): Promise<void> {
+    if (process.env.NODE_ENV?.includes('test')) return;
+
     const { email, password } = config.application.defaultAdmin;
 
     if (
@@ -172,16 +172,12 @@ export default class UserService {
       CodeTypes.RESET_PASSWORD
     );
 
-    await this.sendgrid.send({
-      from: config.application.sendgrid.senderEmail,
-      to: email,
-      templateId: config.application.sendgrid.resetPasswordTemplateId,
-      dynamicTemplateData: {
-        resetPasswordUrl: `${config.client.host}/reset-password?code=${codeEntity.code}&email=${email}`,
-        firstName: user.firstName || user.email,
-      },
-      hideWarnings: true,
-    });
+    const firstName = user.firstName || email;
+    await this.mailService.sendResetPasswordInstructions(
+      email,
+      firstName,
+      codeEntity.code
+    );
 
     return true;
   }
@@ -241,16 +237,12 @@ export default class UserService {
       CodeTypes.EMAIL_CONFIRMATION
     );
 
-    await this.sendgrid.send({
-      from: config.application.sendgrid.senderEmail,
-      to: email,
-      templateId: config.application.sendgrid.confirmationTemplateId,
-      dynamicTemplateData: {
-        confirmationUrl: `${config.application.publicHost}/user/confirm-email?code=${codeEntity.code}&email=${email}`,
-        firstName: user.firstName || email,
-      },
-      hideWarnings: true,
-    });
+    const firstName = user.firstName || email;
+    await this.mailService.sendEmailConfirmationCode(
+      email,
+      firstName,
+      codeEntity.code
+    );
   }
 
   public async isEmailNotConfirmed(email: string): Promise<boolean> {
