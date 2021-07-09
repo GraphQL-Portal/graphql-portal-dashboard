@@ -13,6 +13,10 @@
     },
     "serveStatic": "@@SERVE_STATIC",
     "jwtSecret": "@@JWT_SECRET",
+    "sendgrid": {
+      "senderEmail": "@@SENDGRID_SENDER_EMAIL",
+      "apiKey": "@@SENDGRID_API_KEY"
+    },
     "mail": {
       "driver": "@@MAIL_DRIVER",
       "from": "@@MAIL_FROM",

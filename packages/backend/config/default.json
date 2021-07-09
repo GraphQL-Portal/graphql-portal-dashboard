@@ -24,6 +24,10 @@
       "chunk": 100,
       "delay": 5000
     },
+    "sendgrid": {
+      "apiKey": "SG.example",
+      "senderEmail": "no-reply@example"
+    },
     "mail": {
       "driver": "",
       "from": "no-reply@example",

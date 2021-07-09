@@ -17,6 +17,10 @@
       "licenseKey": "@@MAXMIND_LICENSE_KEY",
       "accountId": "@@MAXMIND_ACCOUNT_ID"
     },
+    "sendgrid": {
+      "senderEmail": "@@SENDGRID_SENDER_EMAIL",
+      "apiKey": "@@SENDGRID_API_KEY"
+    },
     "mail": {
       "driver": "@@MAIL_DRIVER",
       "from": "@@MAIL_FROM",

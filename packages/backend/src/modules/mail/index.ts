@@ -12,9 +12,13 @@ const getMailService = (): MailService => {
   const { driver } = config.application.mail;
 
   if (driver === 'sendgrid') {
+    // config.application.sendgrid used for backward compatibility, have to remove later
     instance = new SendgridMailService({
-      apiKey: config.application.mail.sendgrid.apiKey,
-      from: config.application.mail.from,
+      apiKey:
+        config.application.mail.sendgrid.apiKey ||
+        config.application.sendgrid.apiKey,
+      from:
+        config.application.mail.from || config.application.sendgrid.senderEmail,
       clientHost: config.client.host,
       publicHost: config.application.publicHost,
     });

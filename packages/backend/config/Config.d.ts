@@ -39,6 +39,7 @@ declare module 'node-config-ts' {
     salt: string;
     defaultAdmin: DefaultAdmin;
     metrics: Metrics;
+    sendgrid: Sendgrid;
     mail: Mail;
     maxmind: Maxmind;
   }
@@ -50,7 +51,7 @@ declare module 'node-config-ts' {
   interface Mail {
     driver: string;
     from: string;
-    sendgrid: Sendgrid;
+    sendgrid: Sendgrid2;
     smtp: Smtp;
   }
   interface Smtp {
@@ -63,8 +64,12 @@ declare module 'node-config-ts' {
     user: string;
     pass: string;
   }
+  interface Sendgrid2 {
+    apiKey: string;
+  }
   interface Sendgrid {
     apiKey: string;
+    senderEmail: string;
   }
   interface Metrics {
     enabled: boolean;
