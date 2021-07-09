@@ -1,31 +1,40 @@
-import { MailService } from './mail';
 import { config } from 'node-config-ts';
+import { boolean } from 'boolean';
+import { MailService } from './mail';
 import { SendgridMailService } from './sendgrid';
 import { SMTPMailService } from './smtp';
 import { DefaultMailService } from './default';
+import { logger } from '../../common/logger';
 
 let instance: MailService;
+
+const context = 'MailService';
 
 const getMailService = (): MailService => {
   if (instance) return instance;
 
-  const { driver } = config.application.mail;
+  const { mail, sendgrid } = config.application;
 
-  if (driver === 'sendgrid') {
-    // config.application.sendgrid used for backward compatibility, have to remove later
+  // TODO: remove deprecated sendgrid config in 1-2 versions
+  const isDeprecatedSendgridUsed =
+    Object.values(sendgrid).filter(Boolean).length > 0;
+  if (mail.driver === 'sendgrid' || isDeprecatedSendgridUsed) {
+    if (isDeprecatedSendgridUsed) {
+      logger.warn(
+        'config:application:sendgrid is deprecated, use config:application:mail instead',
+        context
+      );
+    }
+
     instance = new SendgridMailService({
-      apiKey:
-        config.application.mail.sendgrid.apiKey ||
-        config.application.sendgrid.apiKey,
-      from:
-        config.application.mail.from || config.application.sendgrid.senderEmail,
-      clientHost: config.client.host,
-      publicHost: config.application.publicHost,
+      apiKey: mail.sendgrid.apiKey || sendgrid.apiKey,
+      from: mail.from || sendgrid.senderEmail,
     });
-  } else if (driver === 'smtp') {
+  } else if (mail.driver === 'smtp') {
     instance = new SMTPMailService({
-      from: config.application.mail.from,
-      ...config.application.mail.smtp,
+      from: mail.from,
+      ...mail.smtp,
+      secure: boolean(mail.smtp.secure),
     });
   } else {
     instance = new DefaultMailService();

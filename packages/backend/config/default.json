@@ -25,21 +25,21 @@
       "delay": 5000
     },
     "sendgrid": {
-      "apiKey": "SG.example",
-      "senderEmail": "no-reply@example"
+      "apiKey": "",
+      "senderEmail": ""
     },
     "mail": {
       "driver": "",
       "from": "no-reply@example",
       "sendgrid": {
-        "apiKey": "SG.example"
+        "apiKey": ""
       },
       "smtp": {
-        "host": "smtp.sendgrid.net",
+        "host": "",
         "port": 587,
         "auth": {
-          "user": "apikey",
-          "pass": "SG.example"
+          "user": "",
+          "pass": ""
         },
         "secure": false
       }

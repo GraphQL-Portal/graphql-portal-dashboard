@@ -1,10 +1,6 @@
-import { config } from 'node-config-ts';
-import { LoggerService } from '../../common/logger';
+import { logger } from '../../common/logger';
 import { getConfirmationUrl, getResetPasswordUrl } from './common';
 import { MailService } from './mail';
-
-const logger = new LoggerService(config);
-
 export class DefaultMailService extends MailService {
   public constructor() {
     super();
