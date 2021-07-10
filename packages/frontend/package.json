@@ -79,7 +79,7 @@
     "@testing-library/user-event": "13.1.9",
     "@types/isomorphic-fetch": "0.0.35",
     "@types/jest": "26.0.24",
-    "@types/js-cookie": "2.2.6",
+    "@types/js-cookie": "2.2.7",
     "@types/jsoneditor": "8.6.0",
     "@types/node": "14.17.4",
     "@types/react": "17.0.13",
