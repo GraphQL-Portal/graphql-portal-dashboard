@@ -2642,14 +2642,6 @@
     "@graphql-portal/datasources" "^0.1.5"
     ajv "8.5.0"
 
-"@graphql-portal/types@1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-1.1.4.tgz#988e00b4ab7061d9a0d9e3422a7f755a5f719966"
-  integrity sha512-Ga/KF+ugpsJsjE6q+XqdXSU8snGV4dCGJyzrGS5KJg4BsNmsH0N0Pi19hg25ju0TzqPAXv3fNfSyt2UwZVS1xw==
-  dependencies:
-    "@graphql-portal/datasources" "^0.1.5"
-    ajv "8.6.0"
-
 "@graphql-portal/types@1.2.0", "@graphql-portal/types@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@graphql-portal/types/-/types-1.2.0.tgz#17e719a56f6cc99e25f958d4d69a9edccdeef0f6"
