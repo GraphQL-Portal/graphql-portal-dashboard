@@ -4574,10 +4574,10 @@
   resolved "https://registry.yarnpkg.com/@types/md5-file/-/md5-file-4.0.2.tgz#c7241e88f4aa17218c774befb0fc34f33f21fe36"
   integrity sha512-8gacRfEqLrmZ6KofpFfxyjsm/LYepeWUWUJGaf5A9W9J5B2/dRZMdkDqFDL6YDa9IweH12IO76jO7mpsK2B3wg==
 
-"@types/migrate-mongo@8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@types/migrate-mongo/-/migrate-mongo-8.1.0.tgz#2332beeb5a780f9bed28fa690ba6a87f1445c642"
-  integrity sha512-dmw6PY9pQNKXtHApQZ6BPT/DVAgJboSqHGj1x/f1anrjZSewT4pb7lkZ5r/3tEhQirPidcNzmQlRUHq+R8wV2g==
+"@types/migrate-mongo@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@types/migrate-mongo/-/migrate-mongo-8.1.1.tgz#f3a6c7c52c11fe60367fc9c9158815e8625fc348"
+  integrity sha512-Vp7VrCvWXFpflrYIpULeXdXkeh4Gf/uARwU6lnjb9wV0iVNAlafMFpx5Hjpk7tFfHoG1321RJOJY2H0llXuXEA==
   dependencies:
     "@types/mongodb" "*"
 
