@@ -1,8 +1,12 @@
 import Sendgrid from '@sendgrid/mail';
 import nodemailer from 'nodemailer';
-import { SMTPMailService } from '../../modules/mail/smtp';
-import { getHTML, Mail, subjects } from '../../modules/mail/common';
-import { SendgridMailService } from '../../modules/mail/sendgrid';
+import {
+  ConfirmationEmail,
+  ResetPasswordEmail,
+  Email,
+  SMTPMailService,
+  SendgridMailService,
+} from '../../modules/mail';
 
 const transport = { sendMail: jest.fn() };
 
@@ -31,8 +35,13 @@ describe('Mail', () => {
     apiKey: 'apiKey',
   };
   const email = 'test@test.com';
+  const redirectUrl = 'http://redirect.com';
   const firstName = 'test';
-  const code = 'code';
+  const emailEntity: Email = {
+    html: 'html',
+    to: 'to',
+    subject: 'subject',
+  } as any;
 
   let sendgridMailService: SendgridMailService;
   let smtpMailService: SMTPMailService;
@@ -40,27 +49,27 @@ describe('Mail', () => {
   afterEach(() => jest.clearAllMocks());
 
   describe('Common', () => {
-    describe('getHTML', () => {
-      it('should return correct confirmation email', () => {
-        const confirmationUrl = 'https://confirmation.com';
-        const firstName = 'firstName';
-        const html = getHTML(Mail.CONFIRMATION, {
-          confirmationUrl,
+    describe('ConfirmationEmail', () => {
+      it('should return correct html of confirmation email', () => {
+        const { html, to, subject } = new ConfirmationEmail(email, {
           firstName,
+          redirectUrl,
         });
-        expect(html).toMatch(`href="${confirmationUrl}"`);
+        expect(html).toMatch(`href="${redirectUrl}"`);
         expect(html).toMatch(`Hi ${firstName}`);
+        expect(to).toBe(email);
+        expect(subject).toBeDefined();
       });
 
-      it('should return correct reset password email', () => {
-        const resetPasswordUrl = 'https://reset-password.com';
-        const firstName = 'firstName';
-        const html = getHTML(Mail.RESET_PASSWORD, {
-          resetPasswordUrl,
+      it('should return correct html of reset password email', () => {
+        const { html, to, subject } = new ResetPasswordEmail(email, {
           firstName,
+          redirectUrl,
         });
-        expect(html).toMatch(`href="${resetPasswordUrl}"`);
+        expect(html).toMatch(`href="${redirectUrl}"`);
         expect(html).toMatch(`Hi ${firstName}`);
+        expect(to).toBe(email);
+        expect(subject).toBeDefined();
       });
     });
   });
@@ -73,40 +82,17 @@ describe('Mail', () => {
       expect(Sendgrid.setApiKey).toBeCalledWith(sendgridConfig.apiKey);
     });
 
-    describe('sendEmailConfirmationCode', () => {
+    describe('send', () => {
       it('should call send with correct args', async () => {
-        await sendgridMailService.sendEmailConfirmationCode(
-          email,
-          firstName,
-          code
-        );
+        await sendgridMailService.send(emailEntity);
 
         expect(Sendgrid.send).toBeCalledTimes(1);
         expect(Sendgrid.send).toBeCalledWith({
           from: sendgridConfig.from,
-          to: email,
-          subject: subjects[Mail.CONFIRMATION],
           hideWarnings: true,
-          html: expect.any(String),
-        });
-      });
-    });
-
-    describe('sendResetPasswordInstructions', () => {
-      it('should set apiKey and call send with correct args', async () => {
-        await sendgridMailService.sendResetPasswordInstructions(
-          email,
-          firstName,
-          code
-        );
-
-        expect(Sendgrid.send).toBeCalledTimes(1);
-        expect(Sendgrid.send).toBeCalledWith({
-          from: sendgridConfig.from,
-          to: email,
-          subject: subjects[Mail.RESET_PASSWORD],
-          hideWarnings: true,
-          html: expect.any(String),
+          to: emailEntity.to,
+          subject: emailEntity.subject,
+          html: emailEntity.html,
         });
       });
     });
@@ -120,34 +106,16 @@ describe('Mail', () => {
       expect(nodemailer.createTransport).toBeCalledWith(smtpConfig);
     });
 
-    describe('sendEmailConfirmationCode', () => {
-      it('should set apiKey and call send with correct args', async () => {
-        await smtpMailService.sendEmailConfirmationCode(email, firstName, code);
+    describe('send', () => {
+      it('should call send with correct args', async () => {
+        await smtpMailService.send(emailEntity);
 
         expect(transport.sendMail).toBeCalledTimes(1);
         expect(transport.sendMail).toBeCalledWith({
           from: smtpConfig.from,
-          to: email,
-          subject: subjects[Mail.CONFIRMATION],
-          html: expect.any(String),
-        });
-      });
-    });
-
-    describe('sendResetPasswordInstructions', () => {
-      it('should set apiKey and call send with correct args', async () => {
-        await smtpMailService.sendResetPasswordInstructions(
-          email,
-          firstName,
-          code
-        );
-
-        expect(transport.sendMail).toBeCalledTimes(1);
-        expect(transport.sendMail).toBeCalledWith({
-          from: smtpConfig.from,
-          to: email,
-          subject: subjects[Mail.RESET_PASSWORD],
-          html: expect.any(String),
+          to: emailEntity.to,
+          subject: emailEntity.subject,
+          html: emailEntity.html,
         });
       });
     });

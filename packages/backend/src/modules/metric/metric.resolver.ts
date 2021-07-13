@@ -9,7 +9,7 @@ import {
 } from './interfaces';
 import MetricService from './metric.service';
 import ICountryMetric from './interfaces/country-metric.interface';
-import { IRequestMetricDocument } from 'src/data/schema/request-metric.schema';
+import { IRequestMetricDocument } from '../../data/schema/request-metric.schema';
 
 @Resolver('Metric')
 export default class MetricResolver {

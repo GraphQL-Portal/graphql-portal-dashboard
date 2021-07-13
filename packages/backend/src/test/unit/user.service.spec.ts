@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { ConfirmationEmail, ResetPasswordEmail } from '../../modules/mail';
 import Roles from '../../common/enum/roles.enum';
 import { randomEmail, randomString } from '../../common/tool';
 import { IUserDocument } from '../../data/schema/user.schema';
@@ -213,10 +214,7 @@ describe('UserService', () => {
         .spyOn(userService as any, 'createNewCodeAndDeletePrevious')
         .mockResolvedValue(codeEntity);
       const spySendEmail = jest
-        .spyOn(
-          (userService as any).mailService,
-          'sendResetPasswordInstructions'
-        )
+        .spyOn((userService as any).mailService, 'send')
         .mockImplementation(() => {});
 
       await userService.resetPasswordRequest(user.email);
@@ -229,11 +227,14 @@ describe('UserService', () => {
         CodeTypes.RESET_PASSWORD
       );
       expect(spySendEmail).toBeCalledTimes(1);
-      expect(spySendEmail).toBeCalledWith(
-        user.email,
-        user.firstName,
-        codeEntity.code
-      );
+
+      const resetPasswordEmail = spySendEmail.mock.calls[0][0];
+      expect(resetPasswordEmail).toMatchObject({
+        to: user.email,
+        redirectUrl: expect.any(String),
+        html: expect.any(String),
+      });
+      expect(resetPasswordEmail).toBeInstanceOf(ResetPasswordEmail);
     });
 
     it('resetPassword: success', async () => {
@@ -345,7 +346,7 @@ describe('UserService', () => {
         .spyOn(userService as any, 'createNewCodeAndDeletePrevious')
         .mockResolvedValue(codeEntity);
       const spySendEmail = jest
-        .spyOn((userService as any).mailService, 'sendEmailConfirmationCode')
+        .spyOn((userService as any).mailService, 'send')
         .mockImplementation(() => {});
       await userService.sendEmailConfirmationCode(user.email);
 
@@ -355,11 +356,14 @@ describe('UserService', () => {
         CodeTypes.EMAIL_CONFIRMATION
       );
       expect(spySendEmail).toBeCalledTimes(1);
-      expect(spySendEmail).toBeCalledWith(
-        user.email,
-        user.firstName,
-        codeEntity.code
-      );
+
+      const confirmationEmail = spySendEmail.mock.calls[0][0];
+      expect(confirmationEmail).toMatchObject({
+        to: user.email,
+        redirectUrl: expect.any(String),
+        html: expect.any(String),
+      });
+      expect(confirmationEmail).toBeInstanceOf(ConfirmationEmail);
     });
   });
 

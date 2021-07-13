@@ -9,14 +9,14 @@ import IUser from '../../common/interface/user.interface';
 import { LoggerService } from '../../common/logger';
 import { IConfirmationCodeDocument } from '../../data/schema/confirmation-code.schema';
 import { IUserDocument } from '../../data/schema/user.schema';
-import getMailService from '../mail';
+import { ResetPasswordEmail, ConfirmationEmail, mailService } from '../mail';
 import { CodeExpirationTime, CodeTypes } from './enum';
 import ITokens from './interfaces/tokens.interface';
 import TokenService from './token.service';
 
 @Injectable()
 export default class UserService {
-  private readonly mailService = getMailService();
+  private readonly mailService = mailService;
   private readonly defaultAdmin = {
     email: 'admin@example.com',
     password: 'Secret123!',
@@ -172,14 +172,18 @@ export default class UserService {
       CodeTypes.RESET_PASSWORD
     );
 
-    const firstName = user.firstName || email;
-    await this.mailService.sendResetPasswordInstructions(
-      email,
-      firstName,
-      codeEntity.code
-    );
+    const resetPasswordEmail = new ResetPasswordEmail(email, {
+      firstName: user.firstName || email,
+      redirectUrl: this.getResetPasswordUrl(codeEntity.code, email),
+    });
+
+    await this.mailService.send(resetPasswordEmail);
 
     return true;
+  }
+
+  private getResetPasswordUrl(code: string, email: string): string {
+    return `${config.client.host}/reset-password?code=${code}&email=${email}`;
   }
 
   public async changePassword(
@@ -237,12 +241,16 @@ export default class UserService {
       CodeTypes.EMAIL_CONFIRMATION
     );
 
-    const firstName = user.firstName || email;
-    await this.mailService.sendEmailConfirmationCode(
-      email,
-      firstName,
-      codeEntity.code
-    );
+    const confirmationEmail = new ConfirmationEmail(email, {
+      firstName: user.firstName || email,
+      redirectUrl: this.getConfirmationUrl(codeEntity.code, email),
+    });
+
+    await this.mailService.send(confirmationEmail);
+  }
+
+  private getConfirmationUrl(code: string, email: string): string {
+    return `${config.application.publicHost}/user/confirm-email?code=${code}&email=${email}`;
   }
 
   public async isEmailNotConfirmed(email: string): Promise<boolean> {
