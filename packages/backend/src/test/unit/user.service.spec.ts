@@ -1,6 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
-import { config } from 'node-config-ts';
 import Roles from '../../common/enum/roles.enum';
 import { randomEmail, randomString } from '../../common/tool';
 import { IUserDocument } from '../../data/schema/user.schema';
@@ -13,11 +11,6 @@ import { createUser, randomObjectId } from '../common';
 
 jest.mock('ioredis');
 
-jest.mock('@sendgrid/mail', () => ({
-  setApiKey: jest.fn(),
-  send: jest.fn(),
-}));
-
 describe('UserService', () => {
   let app: TestingModule;
   let userService: UserService;
@@ -28,7 +21,6 @@ describe('UserService', () => {
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     userService = app.get<UserService>(UserService);
     tokenService = app.get<TokenService>(TokenService);
@@ -205,12 +197,6 @@ describe('UserService', () => {
 
     it('changePassword: fail', async () => {
       const newPassword = 'newpassword';
-      const mockedUser = {
-        isValidPassword: jest.fn().mockReturnValue(false),
-      };
-      const spyFindByEmail = jest
-        .spyOn(userService, 'findByEmail')
-        .mockResolvedValue(mockedUser as any);
 
       await expect(async () =>
         userService.changePassword(user.email, user.password, newPassword)

@@ -1,7 +1,6 @@
 import { ApiDefStatus, Channel } from '@graphql-portal/types';
 
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import IApiDef from '../../common/interface/api-def.interface';
 import { randomString } from '../../common/tool';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
@@ -35,7 +34,6 @@ describe('ApiDefService', () => {
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     sourceService = app.get<SourceService>(SourceService);
     apiDefService = app.get<ApiDefService>(ApiDefService);

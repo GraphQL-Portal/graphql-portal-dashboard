@@ -32,7 +32,9 @@ export default class UserService {
   ) {}
 
   private async onModuleInit(): Promise<void> {
-    await this.createDefaultUser();
+    if (!process.env.NODE_ENV?.includes('test')) {
+      await this.createDefaultUser();
+    }
   }
 
   public async login(
@@ -128,8 +130,6 @@ export default class UserService {
   }
 
   public async createDefaultUser(): Promise<void> {
-    if (process.env.NODE_ENV?.includes('test')) return;
-
     const { email, password } = config.application.defaultAdmin;
 
     if (

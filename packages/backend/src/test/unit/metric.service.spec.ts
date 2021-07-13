@@ -8,8 +8,6 @@ import { randomObjectId } from '../common';
 import { IApiDefDocument } from '../../data/schema/api-def.schema';
 import ApiDefService from '../../modules/api-def/api-def.service';
 
-jest.useFakeTimers();
-
 jest.mock('ioredis');
 
 describe('MetricService', () => {
@@ -54,12 +52,17 @@ describe('MetricService', () => {
   });
 
   afterAll(async () => {
-    jest.clearAllTimers();
     jest.useRealTimers();
+    jest.clearAllTimers();
     await app.close();
   });
 
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   afterEach(() => {
+    jest.clearAllMocks();
     jest.restoreAllMocks();
   });
 

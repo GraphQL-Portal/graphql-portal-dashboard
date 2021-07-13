@@ -1,6 +1,5 @@
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
@@ -60,7 +59,6 @@ describe('MetricResolver', () => {
     await app.init();
 
     request = requestTo(app);
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     metricService = app.get<MetricService>(MetricService);
     userService = app.get<UserService>(UserService);
 

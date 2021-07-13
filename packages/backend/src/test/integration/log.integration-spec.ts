@@ -1,6 +1,5 @@
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import Roles from '../../common/enum/roles.enum';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
@@ -35,7 +34,6 @@ describe('LogResolver', () => {
     await app.init();
 
     request = requestTo(app);
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     logService = app.get<LogService>(LogService);
     userService = app.get<UserService>(UserService);

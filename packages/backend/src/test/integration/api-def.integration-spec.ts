@@ -1,6 +1,5 @@
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import { config } from 'node-config-ts';
 import Roles from '../../common/enum/roles.enum';
 import supertest from 'supertest';
@@ -60,7 +59,6 @@ describe('ApiDefResolver', () => {
     await app.init();
 
     request = requestTo(app);
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     apiDefService = app.get<ApiDefService>(ApiDefService);
     userService = app.get<UserService>(UserService);
     tokenService = app.get<TokenService>(TokenService);

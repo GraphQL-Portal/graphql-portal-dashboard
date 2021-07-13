@@ -3,8 +3,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import AppModule from '../../modules/app.module';
 import LogService from '../../modules/log/log.service';
 
-jest.useFakeTimers();
-
 jest.mock('ioredis');
 
 describe('LogService', () => {
@@ -22,7 +20,6 @@ describe('LogService', () => {
   });
 
   afterAll(async () => {
-    jest.useRealTimers();
     await app.close();
   });
 

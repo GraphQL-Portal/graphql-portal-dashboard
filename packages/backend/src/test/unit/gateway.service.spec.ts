@@ -6,8 +6,6 @@ import GatewayService from '../../modules/gateway/gateway.service';
 import RedisService from '../../modules/redis/redis.service';
 import GatewayStatusTimers from '../../common/enum/gateway-status-timers.enum';
 
-jest.useFakeTimers();
-
 jest.mock('ioredis');
 
 describe('GatewayService', () => {
@@ -23,8 +21,13 @@ describe('GatewayService', () => {
   });
 
   afterAll(async () => {
-    await app.close();
+    jest.clearAllTimers();
     jest.useRealTimers();
+    await app.close();
+  });
+
+  beforeEach(() => {
+    jest.useFakeTimers();
   });
 
   afterEach(() => {

@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import { randomString } from '../../common/tool';
 import TokenService from '../../modules/user/token.service';
 import AppModule from '../../modules/app.module';
@@ -26,7 +25,6 @@ describe('TokenService', () => {
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     tokenService = app.get<TokenService>(TokenService);
     userService = app.get<UserService>(UserService);

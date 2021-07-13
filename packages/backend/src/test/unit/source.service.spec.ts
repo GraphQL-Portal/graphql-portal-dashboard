@@ -1,6 +1,5 @@
 import { SourceConfig } from '@graphql-portal/types';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import { ISourceDocument } from '../../data/schema/source.schema';
 import ApiDefService from '../../modules/api-def/api-def.service';
 import AppModule from '../../modules/app.module';
@@ -31,7 +30,6 @@ describe('SourceService', () => {
 
   beforeAll(async () => {
     app = await Test.createTestingModule({ imports: [AppModule] }).compile();
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
 
     sourceService = app.get<SourceService>(SourceService);
     apiDefService = app.get<ApiDefService>(ApiDefService);

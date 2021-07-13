@@ -1,6 +1,5 @@
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
 import IUser from '../../common/interface/user.interface';
@@ -47,7 +46,6 @@ describe('SourceResolver', () => {
     await app.init();
 
     request = requestTo(app);
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     sourceService = app.get<SourceService>(SourceService);
     userService = app.get<UserService>(UserService);
 

@@ -1,6 +1,5 @@
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import * as mongoose from 'mongoose';
 import supertest from 'supertest';
 import HeadersEnum from '../../common/enum/headers.enum';
 import IGateway from '../../common/interface/gateway.interface';
@@ -45,7 +44,6 @@ describe('GatewayResolver', () => {
     await app.init();
 
     request = requestTo(app);
-    await Promise.all(mongoose.connections.map((c) => c.db?.dropDatabase()));
     gatewayService = app.get<GatewayService>(GatewayService);
 
     userService = app.get<UserService>(UserService);
