@@ -3697,10 +3697,10 @@
   dependencies:
     path-to-regexp "0.1.7"
 
-"@nestjs/swagger@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.0.0.tgz#9856989c6253d8d8093601fdab67fc7c915e2b57"
-  integrity sha512-LWKDmiEwNzIIaWj1Tq2x+RXTZdN4trhaafI0pA3JtBosYlx1klgzsrV/vsNvcTnD2RNd9P5u8yRPApJVpSWr5A==
+"@nestjs/swagger@5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.0.4.tgz#cc3be175b14e5b1d2d443d38d5808261d44d8f9e"
+  integrity sha512-TNMYrY4ZkpIiBf11eZSS5OKGv/bBBcW6UoIVf6sesk9Ry4muErxjz0OZansrF9o7GrlvBz/YsJSgDnIQURFXaA==
   dependencies:
     "@nestjs/mapped-types" "1.0.0"
     lodash "4.17.21"
