@@ -17175,10 +17175,10 @@ react@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-reactour@1.18.5:
-  version "1.18.5"
-  resolved "https://registry.yarnpkg.com/reactour/-/reactour-1.18.5.tgz#ef066b788acc5a0f4665ae051ac5565753844bd8"
-  integrity sha512-ccIASwdZ+QCofyV8iuebH/K+bFSAl0fWOILle3LfQ7bpDgPN8gROs5sfJzNEo6G4P3pviTxhS78Jhd6L6/jj5A==
+reactour@1.18.6:
+  version "1.18.6"
+  resolved "https://registry.yarnpkg.com/reactour/-/reactour-1.18.6.tgz#b8027c9d3a8b42079c483042717adc5b61bfc50e"
+  integrity sha512-6Dm3bkqf3wKfzLL6laMez2xVO6iZ9o5CFG4Na1ttE0OcdJ2VriY/aOeHSPW6O7kwnDqiy4z+sdvzhqaHuVl0fg==
   dependencies:
     "@rooks/use-mutation-observer" "4.11.2"
     classnames "2.3.1"
