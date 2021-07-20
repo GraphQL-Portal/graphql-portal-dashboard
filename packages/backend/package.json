@@ -69,7 +69,7 @@
     "@nestjs/serve-static": "2.2.2",
     "@nestjs/swagger": "5.0.4",
     "@sendgrid/mail": "7.4.5",
-    "apollo-server-express": "2.25.2",
+    "apollo-server-express": "3.0.2",
     "boolean": "3.1.2",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",
