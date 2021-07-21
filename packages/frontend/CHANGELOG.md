@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-frontend
 
+## 0.19.1
+
+### Patch Changes
+
+- c0d7b2c: getGatewayUrl fix, refactoring emails
+
 ## 0.19.0
 
 ### Minor Changes
