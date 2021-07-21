@@ -1,9 +1,5 @@
 import { GetSteps } from '../../types';
-import {
-  getDataTourSelector,
-  stopPropagation,
-  stopPropagationAction,
-} from './helpers';
+import { getDataTourSelector, stopPropagationAction } from './helpers';
 import { LetsCreateDataSource, MyApisExampleApi } from './StepElements';
 
 export const selectors = {
@@ -91,7 +87,7 @@ export const getSteps: GetSteps = ({
       content: 'We have found OpenAPI data connector.',
       style,
       action(node) {
-        node.addEventListener('click', stopPropagation);
+        stopPropagationAction(node);
         if (!tour.DATA_CONNECTORS_SEARCH_VALUE) {
           setTourField('DATA_CONNECTORS_SEARCH_VALUE', 'OpenAPI');
         }

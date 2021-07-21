@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactTour from 'reactour';
 import { getSteps } from './constants';
 import { useTourContext } from '../../model/providers';
@@ -20,12 +20,10 @@ export const Tour: React.FC = () => {
   const theme = useTheme();
   const { tour, setTourField, endTour } = useTourContext();
   const [currentStep, setCurrentStep] = useState(0);
-  const [isNextButtonDisabled, setNextButtonDisabled] = useState(false);
   const { tourWrapper } = useStyles();
 
   const addOnceListenerToNode: AddOnceListenerToNode = (domNode, func) => {
     function listener(e: any) {
-      setNextButtonDisabled(false);
       func(domNode, e);
       domNode?.removeEventListener('click', listener);
     }
@@ -48,7 +46,6 @@ export const Tour: React.FC = () => {
   };
 
   const goToNextStep: GoToNextStep = (selector) => {
-    if (isNextButtonDisabled) return;
     document
       .querySelector(steps[currentStep].selector!)
       ?.removeEventListener('click', stopPropagation);
@@ -66,9 +63,9 @@ export const Tour: React.FC = () => {
     tour,
   });
 
-  useEffect(() => {
-    setNextButtonDisabled(!!steps[currentStep].buttonDisabled);
-  }, [steps, currentStep]);
+  const buttonDisabled = !!steps[currentStep].buttonDisabled;
+
+  const nextStepFn = buttonDisabled ? () => {} : () => goToNextStep();
 
   return (
     <>
@@ -77,14 +74,14 @@ export const Tour: React.FC = () => {
         isOpen={tour.isStarted}
         steps={steps}
         goToStep={currentStep}
-        nextStep={() => goToNextStep()}
+        nextStep={nextStepFn}
         onRequestClose={() => endTour(currentStep === steps.length - 1)}
         closeWithMask={false}
         showNavigation={false}
         disableDotsNavigation={true}
         disableKeyboardNavigation={true}
         className={tourWrapper}
-        nextButton={<NextButton isDisabled={isNextButtonDisabled} />}
+        nextButton={<NextButton isDisabled={buttonDisabled} />}
         prevButton={EmptyElement}
         badgeContent={(current, total) => `${current}/${total}`}
         accentColor={theme.palette.primary.dark}
