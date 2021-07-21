@@ -7,7 +7,7 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { ISourceDocument } from 'src/data/schema/source.schema';
+import { ISourceDocument } from '../../data/schema/source.schema';
 import {
   AccessControl,
   AuthorizationParam,

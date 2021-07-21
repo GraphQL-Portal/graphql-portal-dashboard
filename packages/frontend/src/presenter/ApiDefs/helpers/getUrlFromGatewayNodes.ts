@@ -17,7 +17,8 @@ export const getUrlFromGatewayNodes = (
   nodes: Gateway[] = [],
   endpoint: string = ''
 ): string => {
-  const { listenPort, listenHostname, servername } = nodes[0] || {};
+  const { listenPort, listenHostname, servername } =
+    nodes[nodes.length - 1] || {};
 
   let uri = REACT_APP_DASHBOARD_GW_HOSTNAME || servername || '';
   if (!uri && listenPort && listenHostname) {
