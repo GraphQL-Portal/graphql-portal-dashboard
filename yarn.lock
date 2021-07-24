@@ -20149,10 +20149,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vest@3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/vest/-/vest-3.2.3.tgz#834781cbbba5f8529513660e81f540f927f468bc"
-  integrity sha512-fB05C57gmmwQ4/ZPUE8jMgcGty1ra44zua5ph3hYrkhOgk3q995BrzSJU7m5oa4y8eyaVzBAqj0yHXHGrsFP8Q==
+vest@3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/vest/-/vest-3.2.4.tgz#76f41ffc673e8212fb5775e19270e96a38da74c1"
+  integrity sha512-zAkDYPR2kupiyzdC7OrIzCwlxuBB4fLSDb8IZOOytl4Wu0XgsDX66DahUjIqqcadCoofz7e/F2hnSKhDfBklxA==
 
 vm-browserify@^1.0.1:
   version "1.1.2"
