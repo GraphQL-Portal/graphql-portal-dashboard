@@ -2398,7 +2398,19 @@
     graphql-transform-federation "2.2.0"
     lodash "4.17.21"
 
-"@graphql-mesh/transform-filter-schema@0.10.17", "@graphql-mesh/transform-filter-schema@^0.10.3":
+"@graphql-mesh/transform-filter-schema@0.10.18":
+  version "0.10.18"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-filter-schema/-/transform-filter-schema-0.10.18.tgz#2e3cec8d4322628d6da5b4f332ce862da6f0a156"
+  integrity sha512-/wfhpVt2Br9dzqAYd6t4zLuoMHrrowNwBvPCiOvKCCdJIm1tYfF24Jv6/Yv9KdTosgdbp0Zdfipe4CKARximIg==
+  dependencies:
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    "@graphql-tools/delegate" "8.0.2"
+    "@graphql-tools/utils" "8.0.0"
+    "@graphql-tools/wrap" "8.0.2"
+    micromatch "4.0.4"
+
+"@graphql-mesh/transform-filter-schema@^0.10.3":
   version "0.10.17"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-filter-schema/-/transform-filter-schema-0.10.17.tgz#4ac267109e8ec5dbba9c77b7b84ccfa4f5a02746"
   integrity sha512-flfMwEPSyohk3fcOe6xyPI+Uccm3j0DOskt1GYFZGxN3o6rZfwQo44S62PrNEQijcDfx4sVrzvBzGPYWe0NNbA==
