@@ -2433,7 +2433,21 @@
     "@graphql-tools/utils" "7.10.0"
     faker "5.5.3"
 
-"@graphql-mesh/transform-naming-convention@0.6.49", "@graphql-mesh/transform-naming-convention@^0.6.34":
+"@graphql-mesh/transform-naming-convention@0.6.50":
+  version "0.6.50"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.6.50.tgz#82a6b6a5c06f2ddbad0d98246eb72a025222c08e"
+  integrity sha512-fWTAnASJ4avsEEYJGBMvGR/OxDRh1od7u10UStkNXcWkhEfWjj5JVgd64K4csowM42yLPO5wMgwb8/8I0vJWAg==
+  dependencies:
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    "@graphql-tools/delegate" "8.0.2"
+    "@graphql-tools/utils" "8.0.0"
+    "@graphql-tools/wrap" "8.0.2"
+    change-case "4.1.2"
+    lower-case "2.0.2"
+    upper-case "2.0.2"
+
+"@graphql-mesh/transform-naming-convention@^0.6.34":
   version "0.6.49"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.6.49.tgz#7368c7a38346c415f54d1f0e0b20afc3a57868ca"
   integrity sha512-rmid4zVEWctfTg+9bO7g4zUXq0UXzPtglUtHMhJ2FTF5Aa+bgn9vfGsmJ8knDqc9AR9Vnm8v8tW66WmzWaZzKw==
