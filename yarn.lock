@@ -2205,7 +2205,21 @@
     graphql-compose-mongoose "9.3.1"
     graphql-compose-pagination "8.1.0"
 
-"@graphql-mesh/mysql@0.10.9", "@graphql-mesh/mysql@^0.10.0":
+"@graphql-mesh/mysql@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.11.0.tgz#1193a151d05f690157f8c62360f10a043a7d436f"
+  integrity sha512-sE8eZDbdOXcmWbkJ+KBVD2EfYER2D8A8iNjSAcpLtU5P6bN4Qt2mhC7delZrU+hI+psXB4/N3iiDXnmWwBDkiQ==
+  dependencies:
+    "@graphql-mesh/store" "0.1.0"
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    graphql-compose "9.0.2"
+    graphql-fields "2.0.3"
+    graphql-scalars "1.10.0"
+    mysql "2.18.1"
+    mysql-utilities "1.1.3"
+
+"@graphql-mesh/mysql@^0.10.0":
   version "0.10.9"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.10.9.tgz#f422e50904336cefcce7f6675c5c2fd759c83c8e"
   integrity sha512-hnLHXuANh4RThrfmhHwx1AaG7TCGt8K0TxogvW0DK7strlPIEhgLPuE0lgrw3NnvzVJ7Pt/NO0ibuv2/ocwmSw==
@@ -15269,6 +15283,13 @@ mysql-utilities@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/mysql-utilities/-/mysql-utilities-1.1.2.tgz#b90bd941e1b7c17ac548f0ec3e91b13e19490835"
   integrity sha512-rziGXKxwLKzRO8pDM+T3jv+TgyGHRSeO48DvTFR4SiOMHVb6oo4aZunlTGO5K0behIq830D0rARgP6p2Ig8vBw==
+  dependencies:
+    mysql "^2.18.1"
+
+mysql-utilities@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/mysql-utilities/-/mysql-utilities-1.1.3.tgz#b153573019739d5aa4563b8310fc7ba7ff1e3945"
+  integrity sha512-QcGhlui+kovxYBrKzy0LB6e8UBSEV/9LhDTUlR4eNBcJEg7u5OU1/VvTqKEoq5AOxWOjPja8x/XgPeTIRmHnZA==
   dependencies:
     mysql "^2.18.1"
 
