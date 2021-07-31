@@ -102,6 +102,14 @@
     apollo-graphql "^0.9.3"
     lodash.xorby "^4.7.0"
 
+"@apollo/federation@0.27.0":
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.27.0.tgz#2ee13b28cff94817ff07bb02215aa764d8becba3"
+  integrity sha512-hMeRN9IPsIn+5J5SmWof0ODbvRjRj8mBNqbsm9Zjkqjbw6RTlcx90taMk7cYhcd/E+uTyLQt5cOSRVBx53cxbQ==
+  dependencies:
+    apollo-graphql "^0.9.3"
+    lodash.xorby "^4.7.0"
+
 "@apollo/gateway@0.28.2":
   version "0.28.2"
   resolved "https://registry.yarnpkg.com/@apollo/gateway/-/gateway-0.28.2.tgz#af05fd745d08dae19be208224f73d0b76bc498bb"
@@ -2365,7 +2373,21 @@
     "@graphql-tools/load" "6.2.8"
     "@graphql-tools/merge" "6.2.14"
 
-"@graphql-mesh/transform-federation@0.5.15", "@graphql-mesh/transform-federation@^0.5.1":
+"@graphql-mesh/transform-federation@0.5.16":
+  version "0.5.16"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.5.16.tgz#ab9eaef8690f5cc246afc8cc551ea3cdd8191ba7"
+  integrity sha512-vO4BQQBp6sk5SWfPlF8xs9EUXIVqacpnxyS7MHnY9k6phvNYq4Dnqo12smORdDKj2Z9Hy4btummhHiO52GNY9A==
+  dependencies:
+    "@apollo/federation" "0.27.0"
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    "@graphql-tools/delegate" "8.0.2"
+    "@graphql-tools/stitching-directives" "2.0.2"
+    "@graphql-tools/utils" "8.0.0"
+    graphql-transform-federation "2.2.0"
+    lodash "4.17.21"
+
+"@graphql-mesh/transform-federation@^0.5.1":
   version "0.5.15"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.5.15.tgz#67f94714322a92509e6605576950cc91a35ec24b"
   integrity sha512-pnI0+wEvoMoU3KZR7IRd1r6QAyEpMifL0sONnk7S89u8dMplhYFCkd3l94dZpjnMcd/HPHCBC4zH5158S7Zh2g==
@@ -3169,6 +3191,15 @@
     "@graphql-tools/utils" "^7.7.0"
     "@graphql-tools/wrap" "^7.0.6"
     tslib "~2.2.0"
+
+"@graphql-tools/stitching-directives@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/stitching-directives/-/stitching-directives-2.0.2.tgz#9e3b35387ccfa61e744ec258e24c8c4e492846f3"
+  integrity sha512-UVTpayecmp7ys4yQcfn53ys4L7Bgn/u/gTR286nIvvepRYowaGPATbxvtsRtRGF4xY2dgkUhq4dgP6ct0XDWYg==
+  dependencies:
+    "@graphql-tools/delegate" "8.0.2"
+    "@graphql-tools/utils" "^8.0.0"
+    tslib "~2.3.0"
 
 "@graphql-tools/url-loader@6.10.1", "@graphql-tools/url-loader@^6.3.2":
   version "6.10.1"
