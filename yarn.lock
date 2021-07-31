@@ -56,6 +56,38 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
+"@apidevtools/json-schema-ref-parser@9.0.9", "@apidevtools/json-schema-ref-parser@^9.0.6":
+  version "9.0.9"
+  resolved "https://registry.yarnpkg.com/@apidevtools/json-schema-ref-parser/-/json-schema-ref-parser-9.0.9.tgz#d720f9256e3609621280584f2b47ae165359268b"
+  integrity sha512-GBD2Le9w2+lVFoc4vswGI/TjkNIZSVp7+9xPf+X3uidBfWnAeUWmquteSyt0+VCrhNMWj/FTABISQrD3Z/YA+w==
+  dependencies:
+    "@jsdevtools/ono" "^7.1.3"
+    "@types/json-schema" "^7.0.6"
+    call-me-maybe "^1.0.1"
+    js-yaml "^4.1.0"
+
+"@apidevtools/openapi-schemas@^2.0.4":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@apidevtools/openapi-schemas/-/openapi-schemas-2.1.0.tgz#9fa08017fb59d80538812f03fc7cac5992caaa17"
+  integrity sha512-Zc1AlqrJlX3SlpupFGpiLi2EbteyP7fXmUOGup6/DnkRgjP9bgMM/ag+n91rsv0U1Gpz0H3VILA/o3bW7Ua6BQ==
+
+"@apidevtools/swagger-methods@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@apidevtools/swagger-methods/-/swagger-methods-3.0.2.tgz#b789a362e055b0340d04712eafe7027ddc1ac267"
+  integrity sha512-QAkD5kK2b1WfjDS/UQn/qQkbwF31uqRjPTrsCs5ZG9BQGAkjwvqGFjjPqAuzac/IYzpPtRzjCP1WrTuAIjMrXg==
+
+"@apidevtools/swagger-parser@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@apidevtools/swagger-parser/-/swagger-parser-10.0.2.tgz#f4145afb7c3a3bafe0376f003b5c3bdeae17a952"
+  integrity sha512-JFxcEyp8RlNHgBCE98nwuTkZT6eNFPc1aosWV6wPcQph72TSEEu1k3baJD4/x1qznU+JiDdz8F5pTwabZh+Dhg==
+  dependencies:
+    "@apidevtools/json-schema-ref-parser" "^9.0.6"
+    "@apidevtools/openapi-schemas" "^2.0.4"
+    "@apidevtools/swagger-methods" "^3.0.2"
+    "@jsdevtools/ono" "^7.1.3"
+    call-me-maybe "^1.0.1"
+    z-schema "^4.2.3"
+
 "@apollo/client@3.4.1":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.4.1.tgz#e55cf8fd64eeff38860f55bee40c4cc626bb31dc"
@@ -2266,7 +2298,27 @@
     undici "3.3.6"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.16.10", "@graphql-mesh/openapi@^0.16.0":
+"@graphql-mesh/openapi@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.18.0.tgz#e6478bb77e210dd5869d302de38bbee82d5965ba"
+  integrity sha512-Bxk7HtxOeMrCiP68DJB4FFhghA9FbqEdFGwmPel0gT19MDCFG4MwngiwIYs1MxsHYxR9Bwv1k9fLXF+oFQtKUA==
+  dependencies:
+    "@graphql-mesh/store" "0.1.0"
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    deep-equal "2.0.5"
+    form-urlencoded "6.0.4"
+    graphql-scalars "1.10.0"
+    graphql-subscriptions "1.2.1"
+    json-ptr "2.2.0"
+    jsonpath-plus "6.0.1"
+    openapi-diff "0.23.4"
+    openapi-types "9.1.0"
+    pluralize "8.0.0"
+    swagger2openapi "7.0.8"
+    url-join "4.0.1"
+
+"@graphql-mesh/openapi@^0.16.0":
   version "0.16.10"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.16.10.tgz#8a0b3a366dccda5a5809b2242c64745e290f9d90"
   integrity sha512-JIQ4OZ2KO2Y96ju/ACbnvegOQXskne1tjtnd5U7ExWv5/AEMGnQGUosa5qxxnWFgbUcVuUgcFxvfUbvqOXgz1g==
@@ -3942,6 +3994,11 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@josephg/resolvable/-/resolvable-1.0.1.tgz#69bc4db754d79e1a2f17a650d3466e038d94a5eb"
   integrity sha512-CtzORUwWTTOTqfVtHaKRJ0I1kNQd1bpn3sUh8I3nJDVY+5/M/Oe1DnEWzPQvqq/xPIIkzzzIP7mfCoAjFRvDhg==
+
+"@jsdevtools/ono@^7.1.3":
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/@jsdevtools/ono/-/ono-7.1.3.tgz#9df03bbd7c696a5c58885c34aa06da41c8543796"
+  integrity sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==
 
 "@json-schema-tools/meta-schema@1.6.19":
   version "1.6.19"
@@ -8019,10 +8076,20 @@ commander@4.1.1, commander@^4.0.1, commander@^4.1.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
 
-commander@^2.19.0, commander@^2.20.0, commander@^2.20.3:
+commander@^2.19.0, commander@^2.20.0, commander@^2.20.3, commander@^2.7.1:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
+
+commander@^5.0.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
+  integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
+
+commander@^6.1.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
+  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
 commander@^7.2.0:
   version "7.2.0"
@@ -13750,14 +13817,14 @@ js-yaml@4.0.0:
   dependencies:
     argparse "^2.0.1"
 
-js-yaml@4.1.0:
+js-yaml@4.1.0, js-yaml@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
   integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
   dependencies:
     argparse "^2.0.1"
 
-js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.6.1:
+js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.14.0, js-yaml@^3.6.1:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
   integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
@@ -13843,6 +13910,30 @@ json-ptr@2.2.0:
   integrity sha512-w9f6/zhz4kykltXMG7MLJWMajxiPj0q+uzQPR1cggNAE/sXoq/C5vjUb/7QNcC3rJsVIIKy37ALTXy1O+3c8QQ==
   dependencies:
     tslib "^2.2.0"
+
+json-schema-diff@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/json-schema-diff/-/json-schema-diff-0.16.0.tgz#ee703abe7d23983244c0cfd7f11daca60fd31454"
+  integrity sha512-jNpsidxig8D9WdK1O4hMkcqtnNiGgtk9gxKQfhGGJT9EhOVKLR6YZX+Ft81nz1Rp5FXS4XNwgtGUMUICx3cBYA==
+  dependencies:
+    ajv "^6.12.3"
+    commander "^5.0.0"
+    json-schema-ref-parser "^9.0.6"
+    json-schema-spec-types "^0.1.2"
+    lodash "^4.17.19"
+    verror "^1.10.0"
+
+json-schema-ref-parser@^9.0.6:
+  version "9.0.9"
+  resolved "https://registry.yarnpkg.com/json-schema-ref-parser/-/json-schema-ref-parser-9.0.9.tgz#66ea538e7450b12af342fa3d5b8458bc1e1e013f"
+  integrity sha512-qcP2lmGy+JUoQJ4DOQeLaZDqH9qSkeGCK3suKWxJXS82dg728Mn3j97azDMaOUmJAN4uCq91LdPx4K7E8F1a7Q==
+  dependencies:
+    "@apidevtools/json-schema-ref-parser" "9.0.9"
+
+json-schema-spec-types@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/json-schema-spec-types/-/json-schema-spec-types-0.1.2.tgz#c4dac1c8b70c99f19b24afedb210e1dfc48665e2"
+  integrity sha512-MDl8fA8ONckmQOm2+eXKJaFJNvxk7eGin+XFofNjS3q3PRKSoEvgMVb0ehOpCAYkUiLoMiqdU7obV7AmzAmyLw==
 
 json-schema-traverse@^0.4.1:
   version "0.4.1"
@@ -13954,6 +14045,16 @@ jsonpath-plus@5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-5.0.7.tgz#95fb437ebb69c67595208711a69c95735cbff45b"
   integrity sha512-7TS6wsiw1s2UMK/A6nA4n0aUJuirCVhJ87nWX5je5MPOl0z5VTr2qs7nMP8NZ2ed3rlt6kePTqddgVPE9F0i0w==
+
+jsonpath-plus@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/jsonpath-plus/-/jsonpath-plus-6.0.1.tgz#9a3e16cedadfab07a3d8dc4e8cd5df4ed8f49c4d"
+  integrity sha512-EvGovdvau6FyLexFH2OeXfIITlgIbgZoAZe3usiySeaIDm5QS+A10DKNpaPBBqqRSZr2HN6HVNXxtwUAr2apEw==
+
+jsonpointer@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.1.0.tgz#501fb89986a2389765ba09e6053299ceb4f2c2cc"
+  integrity sha512-CXcRvMyTlnR53xMcKnuMzfCA5i/nfblTnnr74CZb6C4vG39eu6w51t7nKmU5MfLfbTgGItliNyjO/ciNPDqClg==
 
 jsonrepair@^2.2.1:
   version "2.2.1"
@@ -15642,6 +15743,17 @@ oas-resolver@^2.5.4, oas-resolver@^2.5.5:
     yaml "^1.10.0"
     yargs "^17.0.1"
 
+oas-resolver@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/oas-resolver/-/oas-resolver-2.5.6.tgz#10430569cb7daca56115c915e611ebc5515c561b"
+  integrity sha512-Yx5PWQNZomfEhPPOphFbZKi9W93CocQj18NlD2Pa4GWZzdZpSJvYwoiuurRI7m3SpcChrnO08hkuQDL3FGsVFQ==
+  dependencies:
+    node-fetch-h2 "^2.3.0"
+    oas-kit-common "^1.0.8"
+    reftools "^1.1.9"
+    yaml "^1.10.0"
+    yargs "^17.0.1"
+
 oas-schema-walker@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/oas-schema-walker/-/oas-schema-walker-1.1.5.tgz#74c3cd47b70ff8e0b19adada14455b5d3ac38a22"
@@ -15658,6 +15770,20 @@ oas-validator@^5.0.5:
     oas-resolver "^2.5.5"
     oas-schema-walker "^1.1.5"
     reftools "^1.1.8"
+    should "^13.2.1"
+    yaml "^1.10.0"
+
+oas-validator@^5.0.8:
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/oas-validator/-/oas-validator-5.0.8.tgz#387e90df7cafa2d3ffc83b5fb976052b87e73c28"
+  integrity sha512-cu20/HE5N5HKqVygs3dt94eYJfBi0TsZvPVXDhbXQHiEityDN+RROTleefoKRKKJ9dFAF2JBkDHgvWj0sjKGmw==
+  dependencies:
+    call-me-maybe "^1.0.1"
+    oas-kit-common "^1.0.8"
+    oas-linter "^3.2.2"
+    oas-resolver "^2.5.6"
+    oas-schema-walker "^1.1.5"
+    reftools "^1.1.9"
     should "^13.2.1"
     yaml "^1.10.0"
 
@@ -15819,6 +15945,33 @@ open@7.4.2, open@^7.0.2, open@^7.4.2:
   dependencies:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
+
+openapi-diff@0.23.4:
+  version "0.23.4"
+  resolved "https://registry.yarnpkg.com/openapi-diff/-/openapi-diff-0.23.4.tgz#194f0a030c48319262f9bda1fa37a7b589c85c6b"
+  integrity sha512-vDyQeqWZW2bG16BdddwabYaoGaY8PmUantSCqf46BzKAuG8d/5OguPi82NRHT2ZCSVXZCiZh/H7xA3GChxgDnA==
+  dependencies:
+    commander "^6.1.0"
+    js-yaml "^3.14.0"
+    json-schema-diff "^0.16.0"
+    jsonpointer "^4.1.0"
+    lodash "^4.17.20"
+    openapi3-ts "^2.0.0"
+    request "^2.88.2"
+    swagger-parser "^10.0.2"
+    verror "^1.10.0"
+
+openapi-types@9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/openapi-types/-/openapi-types-9.1.0.tgz#a2ab0acc5198c1725f83d7cbe063efd1bcd0479e"
+  integrity sha512-mhXh8QN8sbErlxfxBeZ/pzgvmDn443p8CXlxwGSi2bWANZAFvjLPI0PoGjqHW+JdBbXg6uvmvM81WXaweh/SVA==
+
+openapi3-ts@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/openapi3-ts/-/openapi3-ts-2.0.1.tgz#b270aecea09e924f1886bc02a72608fca5a98d85"
+  integrity sha512-v6X3iwddhi276siej96jHGIqTx3wzVfMTmpGJEQDt7GPI7pI6sywItURLzpEci21SBRpPN/aOWSF5mVfFVNmcg==
+  dependencies:
+    yaml "^1.10.0"
 
 opentracing@>=0.12.1, opentracing@^0.14.4, opentracing@^0.14.5:
   version "0.14.5"
@@ -18055,6 +18208,11 @@ reftools@^1.1.8:
   resolved "https://registry.yarnpkg.com/reftools/-/reftools-1.1.8.tgz#cc08fd67eb913d779fd330657d010cc080c7d643"
   integrity sha512-Yvz9NH8uFHzD/AXX82Li1GdAP6FzDBxEZw+njerNBBQv/XHihqsWAjNfXtaq4QD2l4TEZVnp4UbktdYSegAM3g==
 
+reftools@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/reftools/-/reftools-1.1.9.tgz#e16e19f662ccd4648605312c06d34e5da3a2b77e"
+  integrity sha512-OVede/NQE13xBQ+ob5CKd5KyeJYU2YInb1bmV4nRoOfquZPkAkxuOXicSe1PvqIuZZ4kD13sPKBbR7UFDmli6w==
+
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.2.0.tgz#e5de7111d655e7ba60c057dbe9ff37c87e65cdec"
@@ -18212,7 +18370,7 @@ request-ip@^2.1.3:
   dependencies:
     is_js "^0.9.0"
 
-request@>=2.9.0, request@^2.88.0:
+request@>=2.9.0, request@^2.88.0, request@^2.88.2:
   version "2.88.2"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
   integrity sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
@@ -19718,6 +19876,13 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+swagger-parser@^10.0.2:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/swagger-parser/-/swagger-parser-10.0.2.tgz#d7f18faa09c9c145e938977c9bd6c3435998b667"
+  integrity sha512-9jHkHM+QXyLGFLk1DkXBwV+4HyNm0Za3b8/zk/+mjr8jgOSiqm3FOTHBSDsBjtn9scdL+8eWcHdupp2NLM8tDw==
+  dependencies:
+    "@apidevtools/swagger-parser" "10.0.2"
+
 swagger2openapi@7.0.5:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/swagger2openapi/-/swagger2openapi-7.0.5.tgz#9f622d8bc3a281aad850386994c0dc35d18654a8"
@@ -19734,6 +19899,23 @@ swagger2openapi@7.0.5:
     reftools "^1.1.8"
     yaml "^1.10.0"
     yargs "^16.1.1"
+
+swagger2openapi@7.0.8:
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/swagger2openapi/-/swagger2openapi-7.0.8.tgz#12c88d5de776cb1cbba758994930f40ad0afac59"
+  integrity sha512-upi/0ZGkYgEcLeGieoz8gT74oWHA0E7JivX7aN9mAf+Tc7BQoRBvnIGHoPDw+f9TXTW4s6kGYCZJtauP6OYp7g==
+  dependencies:
+    call-me-maybe "^1.0.1"
+    node-fetch "^2.6.1"
+    node-fetch-h2 "^2.3.0"
+    node-readfiles "^0.2.0"
+    oas-kit-common "^1.0.8"
+    oas-resolver "^2.5.6"
+    oas-schema-walker "^1.1.5"
+    oas-validator "^5.0.8"
+    reftools "^1.1.9"
+    yaml "^1.10.0"
+    yargs "^17.0.1"
 
 swap-case@^2.0.2:
   version "2.0.2"
@@ -20763,7 +20945,7 @@ validator@13.0.0:
   resolved "https://registry.yarnpkg.com/validator/-/validator-13.0.0.tgz#0fb6c6bb5218ea23d368a8347e6d0f5a70e3bcab"
   integrity sha512-anYx5fURbgF04lQV18nEQWZ/3wHGnxiKdG4aL8J+jEDsm98n/sU/bey+tYk6tnGJzm7ioh5FoqrAiQ6m03IgaA==
 
-validator@13.6.0, validator@^13.5.2:
+validator@13.6.0, validator@^13.5.2, validator@^13.6.0:
   version "13.6.0"
   resolved "https://registry.yarnpkg.com/validator/-/validator-13.6.0.tgz#1e71899c14cdc7b2068463cb24c1cc16f6ec7059"
   integrity sha512-gVgKbdbHgtxpRyR8K0O6oFZPhhB5tT1jeEHZR0Znr9Svg03U0+r9DXWMrnRAB+HtCStDQKlaIZm42tVsVjqtjg==
@@ -20800,7 +20982,7 @@ vendors@^1.0.0:
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.4.tgz#e2b800a53e7a29b93506c3cf41100d16c4c4ad8e"
   integrity sha512-/juG65kTL4Cy2su4P8HjtkTxk6VmJDiOPBufWniqQ6wknac6jNiXS9vU+hO3wgusiyqWlzTbVHi0dyJqRONg3w==
 
-verror@1.10.0:
+verror@1.10.0, verror@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/verror/-/verror-1.10.0.tgz#3a105ca17053af55d6e270c1f8288682e18da400"
   integrity sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA=
@@ -21620,6 +21802,17 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+z-schema@^4.2.3:
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/z-schema/-/z-schema-4.2.4.tgz#73102a49512179b12a8ec50b1daa676b984da6e4"
+  integrity sha512-YvBeW5RGNeNzKOUJs3rTL4+9rpcvHXt5I051FJbOcitV8bl40pEfcG0Q+dWSwS0/BIYrMZ/9HHoqLllMkFhD0w==
+  dependencies:
+    lodash.get "^4.4.2"
+    lodash.isequal "^4.5.0"
+    validator "^13.6.0"
+  optionalDependencies:
+    commander "^2.7.1"
 
 zen-observable-ts@^0.8.21:
   version "0.8.21"
