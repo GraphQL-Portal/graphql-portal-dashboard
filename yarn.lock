@@ -2277,7 +2277,18 @@
     date-fns "2.21.3"
     graphql-fields "2.0.3"
 
-"@graphql-mesh/transform-encapsulate@0.1.47", "@graphql-mesh/transform-encapsulate@^0.1.31":
+"@graphql-mesh/transform-encapsulate@0.1.48":
+  version "0.1.48"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-encapsulate/-/transform-encapsulate-0.1.48.tgz#041d44aa7f269d75a149349c8da5ec95434aca99"
+  integrity sha512-7D0ebhHnI1z/0FdK04VlPbZT0qvQBtgwq4vJ1JaOuxRf/vhkI1cqd1PUfEosWDNP42D8xET8nltZ9TB3Fgp2Sw==
+  dependencies:
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    "@graphql-tools/delegate" "8.0.2"
+    "@graphql-tools/utils" "8.0.0"
+    "@graphql-tools/wrap" "8.0.2"
+
+"@graphql-mesh/transform-encapsulate@^0.1.31":
   version "0.1.47"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-encapsulate/-/transform-encapsulate-0.1.47.tgz#9965d057b89b42786b8f5063d438efdc4cb58acf"
   integrity sha512-4lJpimW+1HRHuwON7EpnShSZbttKhA1Tc+mqzM07koVSzD0Lgi5bLKj0oxl3fQE77i1C1EyZyTHSRlQvL3eBMA==
@@ -3153,6 +3164,17 @@
     "@graphql-tools/utils" "^7.8.1"
     tslib "~2.2.0"
     value-or-promise "1.0.6"
+
+"@graphql-tools/wrap@8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.0.2.tgz#0a13d9232961207532c723c80eeec1c7208dc1ad"
+  integrity sha512-Vf8fF1nn47HE4Kw2PU+bUMBalyPU4n1l3yHalfhvZIhaZlQJrwdlhT3ZWd65d1LTB8bpYnY/fjY/Ul5EuiSfpA==
+  dependencies:
+    "@graphql-tools/delegate" "8.0.2"
+    "@graphql-tools/schema" "^8.0.0"
+    "@graphql-tools/utils" "^8.0.0"
+    tslib "~2.3.0"
+    value-or-promise "1.0.10"
 
 "@graphql-typed-document-node/core@3.1.0", "@graphql-typed-document-node/core@^3.0.0":
   version "3.1.0"
