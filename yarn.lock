@@ -2483,7 +2483,18 @@
     "@graphql-tools/utils" "7.10.0"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/transform-rename@0.8.19", "@graphql-mesh/transform-rename@^0.8.5":
+"@graphql-mesh/transform-rename@0.8.20":
+  version "0.8.20"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-rename/-/transform-rename-0.8.20.tgz#fc6c80fa816a163c70f9643177c4c68a0cd4f93f"
+  integrity sha512-ISGEOL5jlduza7npH2R3DpdML9uBZpyFpF45RNZuQQBALljEo90eIYnhQMDleYhBhgDMND3amrotxTm6TaV9kA==
+  dependencies:
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    "@graphql-tools/delegate" "8.0.2"
+    "@graphql-tools/utils" "8.0.0"
+    "@graphql-tools/wrap" "8.0.2"
+
+"@graphql-mesh/transform-rename@^0.8.5":
   version "0.8.19"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-rename/-/transform-rename-0.8.19.tgz#f7a2f67063cf7a9fe734ee52b8a95b46d837a8e1"
   integrity sha512-8t0Bojy2WRdlYSTHHXSYrGiDrYR+mG1rXJXSkIu0IWxoPgmXS6CHVJW8jeDl0REEpgaD8tb21cDAhngLGQ+eQA==
