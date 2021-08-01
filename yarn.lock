@@ -2266,7 +2266,18 @@
     mysql-utilities "1.1.2"
     pascal-case "3.1.2"
 
-"@graphql-mesh/neo4j@0.11.6", "@graphql-mesh/neo4j@^0.11.0":
+"@graphql-mesh/neo4j@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.12.0.tgz#c79065116f499a79f9f584d71d520da45baf62f9"
+  integrity sha512-eGOOB04SX1U18uEIjAtAa5WJIiOWBaccHZ4xZKpMfV8e4HE183YMpGr5BouNa+OeuEh4GeAsvtWa6Qf0mM8n3A==
+  dependencies:
+    "@graphql-mesh/store" "0.1.0"
+    "@graphql-mesh/types" "0.43.0"
+    "@graphql-mesh/utils" "0.13.0"
+    neo4j-driver "4.3.1"
+    neo4j-graphql-js "2.19.4"
+
+"@graphql-mesh/neo4j@^0.11.0":
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.6.tgz#db7a03ca7cbdbcf4c63bfb2e4d6b858bfbb5ca92"
   integrity sha512-1/zbAv2+sI8aUwUIRjS9ZFbUn3tT/C5Iw6oeRWoHvgHuiT1ngBKz9TJn7bUjUFcUJriKRKeCRQ6oRvxSUsDe8Q==
@@ -15532,7 +15543,7 @@ neo4j-driver@4.2.3:
     text-encoding-utf-8 "^1.0.2"
     uri-js "^4.4.0"
 
-neo4j-driver@^4.2.1:
+neo4j-driver@4.3.1, neo4j-driver@^4.2.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/neo4j-driver/-/neo4j-driver-4.3.1.tgz#897c812abf631b5a520162bb1d71d6a1b320d231"
   integrity sha512-7MguiDpGWoj10wfQvi7HRLBif39Sz67w5zOyhaDG8OcHfJbU+onlnGfE81AOlOlYSj/JSv196K1RcFXuJMZv8Q==
@@ -15546,6 +15557,21 @@ neo4j-graphql-js@2.19.2:
   version "2.19.2"
   resolved "https://registry.yarnpkg.com/neo4j-graphql-js/-/neo4j-graphql-js-2.19.2.tgz#0f2d14317646ee8cdb52822723c9dff857a5d43f"
   integrity sha512-V6RVPt+4fNS6rr2FQY0YWq9de/WFNI8fL0+6hVBBY8TUZaDzioBVML73/M6UOOh/+idLKTPT0opXAam33y305Q==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    "@babel/runtime-corejs2" "^7.5.5"
+    apollo-server-errors "^2.4.1"
+    debug "^4.1.1"
+    graphql "^15.4.0"
+    graphql-auth-directives "^2.2.2"
+    graphql-tools "^7.0.2"
+    lodash "^4.17.19"
+    neo4j-driver "^4.2.1"
+
+neo4j-graphql-js@2.19.4:
+  version "2.19.4"
+  resolved "https://registry.yarnpkg.com/neo4j-graphql-js/-/neo4j-graphql-js-2.19.4.tgz#0d721cb32227e8f2083631bd16efd60aebfd3060"
+  integrity sha512-Na7c4yMLco+2WhgbWlRIGH/sa2C8rwWOS/5BHVqv0AM1lwaf83pu1m5dwxo6nKse4Q9YJKGFUovMJW5ZASTTYg==
   dependencies:
     "@babel/runtime" "^7.5.5"
     "@babel/runtime-corejs2" "^7.5.5"
