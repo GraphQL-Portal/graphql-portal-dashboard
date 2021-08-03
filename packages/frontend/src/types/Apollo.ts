@@ -19,16 +19,14 @@ export type Refetch = (
 export type AError = ApolloError;
 
 export type MutationFunction = (
-  options?: MutationFunctionOptions<any, RecordStringAny> | undefined
+  options?: MutationFunctionOptions<any, RecordStringAny, any, any> | undefined
 ) => Promise<FetchResult<any, RecordStringAny, RecordStringAny>>;
 
 export type MutationHook<T extends string> = (
   options: MutationOptions
 ) => Record<T, MutationFunction>;
 
-export type QueryHook<T> = (
-  options?: QueryOptions
-) => {
+export type QueryHook<T> = (options?: QueryOptions) => {
   data: T;
   loading: boolean;
   error?: ApolloError;
