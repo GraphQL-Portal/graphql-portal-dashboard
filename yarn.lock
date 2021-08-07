@@ -2168,20 +2168,20 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.17.0.tgz#c3225e20e1cce00fc8bc4a5e6da5f125ea1b3442"
-  integrity sha512-9OWZ6Yjcc3SloO3MmPutBJErpTWhBGQaVUn57nYyRpCFkWo8hpReAWhXGRGEYSlBvspEp0p5kXIu83aXTltdsQ==
+"@graphql-mesh/json-schema@0.17.3":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.17.3.tgz#19ad7d68c6f1eb322f8fd1c9aa0f07c5c87d502e"
+  integrity sha512-olcJjqEPaSAk10TKqTK87rT3/DxvVMs8r90BOJYW2ZnV6LOjyhGhqIVj/mY5PQ3fLPNR3BJRpiRnMPCE85JzfQ==
   dependencies:
-    "@graphql-mesh/store" "0.1.0"
-    "@graphql-mesh/types" "0.43.0"
-    "@graphql-mesh/utils" "0.13.0"
-    "@graphql-tools/utils" "8.0.0"
+    "@graphql-mesh/store" "0.1.3"
+    "@graphql-mesh/types" "0.44.2"
+    "@graphql-mesh/utils" "0.13.3"
+    "@graphql-tools/utils" "8.0.2"
     ajv "8.6.2"
     ajv-formats "2.1.0"
     graphql-compose "9.0.1"
     graphql-scalars "1.10.0"
-    json-machete "0.0.1"
+    json-machete "0.0.4"
     pascal-case "3.1.2"
     qs "6.10.1"
     to-json-schema "0.2.5"
@@ -14031,12 +14031,12 @@ json-bigint-patch@0.0.4:
   resolved "https://registry.yarnpkg.com/json-bigint-patch/-/json-bigint-patch-0.0.4.tgz#9c1cb80ec364fa685061e1afb7abcc9a7fb6f6f0"
   integrity sha512-OCmozd929JDOvIfik3lObvbAWpEQl1lVYJbBf0iWJzqlEeRgf3VnVJZXUR4RB206tZIROnEGiCng+62UVWu8Iw==
 
-json-machete@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.0.1.tgz#aaa8e8d30ce00f7be8ae2c686fad7783b470402a"
-  integrity sha512-mkJl0RlznNPZUJ0+5fbG0uhsRxfqOD7YFudMWo4RD2JxUYQPowNenFlhjmZeVBhZL5ySLtVDHorjUipq0oZU0g==
+json-machete@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.0.4.tgz#88a6e118f8f873c6e16b01d5c1b7ed055a942aaa"
+  integrity sha512-84P24/qtgB5sOcxwsYh0xVgxdNiYgYqme/uVqK8IpLmYXWIY8pbkkjYdQjenwZd+Egs7QmOHZ845gb9yqb3p6g==
   dependencies:
-    "@graphql-mesh/utils" "0.13.0"
+    "@graphql-mesh/utils" "0.13.3"
     "@json-schema-tools/meta-schema" "1.6.19"
     json-ptr "2.2.0"
 
