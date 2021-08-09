@@ -2399,7 +2399,18 @@
     "@n1ru4l/graphql-live-query" "0.7.1"
     "@n1ru4l/in-memory-live-query-store" "0.6.5"
 
-"@graphql-mesh/soap@0.7.10", "@graphql-mesh/soap@^0.7.0":
+"@graphql-mesh/soap@0.7.14":
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/soap/-/soap-0.7.14.tgz#01df81f21e2ebfd3282bb7dbf9934018d4239d4b"
+  integrity sha512-oB1T1sedy0FLD3MDAJDEAkpUE5SHy34x4RyHolIbTsq5Vfaoy7NM+Ob+aXe4gaXNB/Js5bYOrbnwLv1m6LXTFQ==
+  dependencies:
+    "@graphql-mesh/store" "0.1.3"
+    "@graphql-mesh/types" "0.44.2"
+    "@graphql-mesh/utils" "0.13.3"
+    graphql-scalars "1.10.0"
+    soap "0.40.0"
+
+"@graphql-mesh/soap@^0.7.0":
   version "0.7.10"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/soap/-/soap-0.7.10.tgz#5aac2918e212f3d06e62c9a78658a82a89791a0c"
   integrity sha512-SXYINusjJ5uOA6BMdVLvkjKlEcEt9wpBtO98EvBFddM13RStTXydLvySGuTuGQhqQY7C5hecKhOb/uhrBtbwYw==
@@ -6781,6 +6792,13 @@ axe-core@^4.0.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.2.2.tgz#0c987d82c8b82b4b9b7a945f1b5ef0d8fed586ed"
   integrity sha512-OKRkKM4ojMEZRJ5UNJHmq9tht7cEnRnqKG6KyB/trYws00Xtkv12mHtlJ0SK7cmuNbrU8dPUova3ELTuilfBbw==
 
+axios-ntlm@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/axios-ntlm/-/axios-ntlm-1.1.6.tgz#242971c9b8ee1e548e8507b22c37e15ae3f798ab"
+  integrity sha512-82tpPDjnTWijSfihRinNxvxhmagsgMHWffMgKrWNtD6zt2DbhLOuOa85gWhAK0u4khhhMXwoDsi+gXaUtqTZoQ==
+  dependencies:
+    axios "^0.21.1"
+
 axios@0.21.1, axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
@@ -11138,7 +11156,7 @@ get-stream@^5.0.0:
   dependencies:
     pump "^3.0.0"
 
-get-stream@^6.0.0:
+get-stream@^6.0.0, get-stream@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-6.0.1.tgz#a262d8eef67aced57c2852ad6167526a43cbf7b7"
   integrity sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==
@@ -19316,6 +19334,21 @@ soap@0.38.0:
     sax ">=0.6"
     strip-bom "^3.0.0"
     uuid "^8.3.0"
+    xml-crypto "^2.1.0"
+
+soap@0.40.0:
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/soap/-/soap-0.40.0.tgz#c0d95520dd3528593ff0c12bd1c959620d2089b6"
+  integrity sha512-66GjEXIWyRsc24RXtzzoVaXtHzd3+DRy0PsXxMGrqGU26mqKfORbtDLFJIyp2OXcCHch5pM0LkXUXI/d/KouNw==
+  dependencies:
+    axios "^0.21.1"
+    axios-ntlm "^1.1.6"
+    debug "^4.3.1"
+    get-stream "^6.0.1"
+    lodash "^4.17.21"
+    sax ">=0.6"
+    strip-bom "^3.0.0"
+    uuid "^8.3.2"
     xml-crypto "^2.1.0"
 
 sockjs-client@^1.5.0:
