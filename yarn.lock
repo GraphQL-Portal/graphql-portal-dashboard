@@ -2305,7 +2305,27 @@
     neo4j-driver "4.2.3"
     neo4j-graphql-js "2.19.2"
 
-"@graphql-mesh/odata@0.11.8", "@graphql-mesh/odata@^0.11.0":
+"@graphql-mesh/odata@0.12.5":
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/odata/-/odata-0.12.5.tgz#5f0ab901f94984d518b74f0e242a7ed67f71d9bf"
+  integrity sha512-0a+nldN29ZkIvRvzvdDnMSTXLKkAvM+/wCZL7bzTw+t2IFUWCciArqhvEb0k2Zi84HUoUtcc12QVAHjKgu8EJQ==
+  dependencies:
+    "@graphql-mesh/store" "0.1.3"
+    "@graphql-mesh/types" "0.44.2"
+    "@graphql-mesh/utils" "0.13.3"
+    "@graphql-tools/utils" "8.0.2"
+    cross-fetch "3.1.4"
+    dataloader "2.0.0"
+    fast-xml-parser "3.19.0"
+    graphql-compose "9.0.2"
+    graphql-parse-resolve-info "4.12.0"
+    graphql-scalars "1.10.0"
+    http-string-parser "0.0.6"
+    pascal-case "3.1.2"
+    undici "4.3.1"
+    url-join "4.0.1"
+
+"@graphql-mesh/odata@^0.11.0":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/odata/-/odata-0.11.8.tgz#6344e5e77e0015f01f9fab612eae59b1c6f9a1c8"
   integrity sha512-toyhvUhDxC+qMmCHb36HaUDEEGXLqsx89q7R0o1iNV+713NhEnPormgirxlG441KYtDt1R7yP4asVcepxZwxwA==
@@ -11543,6 +11563,14 @@ graphql-parse-resolve-info@4.11.0:
   version "4.11.0"
   resolved "https://registry.yarnpkg.com/graphql-parse-resolve-info/-/graphql-parse-resolve-info-4.11.0.tgz#e2c67080ab01876faec8a1067c6df3db6526e67b"
   integrity sha512-vIylHwlhtUz7y4UkXlwGRNIf1O2GhONRsZPYcz8SP+zI5Klp0aiulM4sQ7aEVJNbrqvzGj6cxthJLm+sys0dog==
+  dependencies:
+    debug "^4.1.1"
+    tslib "^2.0.1"
+
+graphql-parse-resolve-info@4.12.0:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/graphql-parse-resolve-info/-/graphql-parse-resolve-info-4.12.0.tgz#b5e83c1f56236660dee2cee9541ba70463e859a9"
+  integrity sha512-sQyJeWCzFQwLj8SdgrWeAQG46Nc+VLxof91/AtvEVdbvFCvb+S6OoA4OtIp5OpWBrFo+JzW6LIKifNHXtRKPpA==
   dependencies:
     debug "^4.1.1"
     tslib "^2.0.1"
@@ -20790,6 +20818,11 @@ undici@3.3.6:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/undici/-/undici-3.3.6.tgz#06d3b97b7eeff46bce6f8a71079c09f64dd59dc1"
   integrity sha512-/j3YTZ5AobMB4ZrTY72mzM54uFUX32v0R/JRW9G2vOyF1uSKYAx+WT8dMsAcRS13TOFISv094TxIyWYk+WEPsA==
+
+undici@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-4.3.1.tgz#f576638a3d6e157210a87c02b006236243c86780"
+  integrity sha512-Oy61gPuXBE4Em/1t8QeKOSHGSqbPHLW1iRbCztbyHuKusz5j7d7b4Z9Xi8b7yFqHyCNe57SSDjBgmSUjfPCymw==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
