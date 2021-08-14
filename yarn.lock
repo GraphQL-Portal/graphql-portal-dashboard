@@ -2685,13 +2685,13 @@
     "@graphql-tools/resolvers-composition" "6.2.8"
     "@graphql-tools/schema" "7.1.5"
 
-"@graphql-mesh/transform-snapshot@0.10.4":
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.4.tgz#2e5806af74ce3749aafc9178ac6686d280485e2f"
-  integrity sha512-M4nbgZByaeFSjjOKDYW0kEmwd2vfiRUzysdHBkGArWPzqqsKAgp9c8EZGX6H8wn+fPhClZUoU2VlsVARO0+f/w==
+"@graphql-mesh/transform-snapshot@0.10.6":
+  version "0.10.6"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.6.tgz#87d59c02c12ebbb4c7f6d0a7489edb0daafa2848"
+  integrity sha512-cJ2ey5iVgEQFYAxyi/qHEOiX763VwGEm/BZr0Lc6F6xWY8dxaMmzv2P4Zz8d5HEP62Pw5fgkQ824saS70BX+hQ==
   dependencies:
-    "@graphql-mesh/types" "0.44.2"
-    "@graphql-mesh/utils" "0.13.3"
+    "@graphql-mesh/types" "0.45.0"
+    "@graphql-mesh/utils" "0.13.5"
     "@graphql-tools/resolvers-composition" "6.3.2"
     "@graphql-tools/schema" "8.0.3"
     "@graphql-tools/utils" "8.0.2"
@@ -2734,16 +2734,6 @@
   dependencies:
     "@graphql-tools/delegate" "7.1.5"
     "@graphql-tools/utils" "7.9.1"
-    "@graphql-typed-document-node/core" "3.1.0"
-    fetchache "0.1.1"
-
-"@graphql-mesh/types@0.44.2":
-  version "0.44.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.44.2.tgz#a6a9d345bdbef91f07a48ec211f8a4c01cc2ca66"
-  integrity sha512-2MUtKmGBFNCv1fUXaks8L2xIztRyDVlclm8nx24VsdEc/9N85TuPee1hsJ9aisoC78FvyzQicaBull9cjOmY/Q==
-  dependencies:
-    "@graphql-tools/delegate" "8.0.7"
-    "@graphql-tools/utils" "8.0.2"
     "@graphql-typed-document-node/core" "3.1.0"
     fetchache "0.1.1"
 
@@ -2791,29 +2781,6 @@
     graphql-jit "0.5.1"
     is-url "1.2.4"
     js-yaml "4.1.0"
-    object-hash "2.2.0"
-    tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.13.3":
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.13.3.tgz#859d75bc824c23d60e7201d28569dc1cb335c6a1"
-  integrity sha512-GhGlssG6WsBCSeizKG7SnpgbgZCcumpxjrKeWmKkbOH3NdkKqhG58iI4tvja6vumwQbnYfFdVlx3mw/Z59AOEg==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.44.2"
-    "@graphql-tools/delegate" "8.0.7"
-    "@graphql-tools/utils" "8.0.2"
-    "@graphql-typed-document-node/core" "3.1.0"
-    chalk "4.1.2"
-    cross-fetch "3.1.4"
-    date-fns "2.23.0"
-    fetchache "0.1.1"
-    flatstr "1.0.12"
-    graphql-jit "0.5.2"
-    graphql-subscriptions "1.2.1"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
     object-hash "2.2.0"
     tiny-lru "7.0.6"
 
