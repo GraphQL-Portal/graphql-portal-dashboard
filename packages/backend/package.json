@@ -118,7 +118,7 @@
     "eslint-plugin-jest": "24.4.0",
     "jest": "27.0.6",
     "jest-runner-eslint": "0.10.1",
-    "supertest": "6.1.4",
+    "supertest": "6.1.5",
     "ts-jest": "27.0.4",
     "ts-loader": "9.2.5",
     "ts-node": "10.2.0",
