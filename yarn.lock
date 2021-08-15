@@ -2324,14 +2324,14 @@
     undici "3.3.6"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.18.7":
-  version "0.18.7"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.18.7.tgz#864ded4b5b8a298e1d7ee0c6f2c4409ba799b56c"
-  integrity sha512-1er4RtP5JbFGJ+rWP1rFyNoyvxi/zg7ZTtyOh57YCod23hIvqag5LU8a3MVBhRa6s1PAyjzN4dTTE6+8TOLQ9A==
+"@graphql-mesh/openapi@0.18.8":
+  version "0.18.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.18.8.tgz#09d8926c4c2040e23399367c3b480f454426bb4f"
+  integrity sha512-w2LLWrjI4t+OrGJ7wPjzL1K5NQvWCi4tBTQofo8D5XjnKG4EqZgzidHo8zf39EpiG1cYcpQYK0UdZqm456fOow==
   dependencies:
-    "@graphql-mesh/store" "0.1.5"
-    "@graphql-mesh/types" "0.45.0"
-    "@graphql-mesh/utils" "0.13.5"
+    "@graphql-mesh/store" "0.1.6"
+    "@graphql-mesh/types" "0.45.1"
+    "@graphql-mesh/utils" "0.13.6"
     deep-equal "2.0.5"
     form-urlencoded "6.0.4"
     graphql-scalars "1.10.0"
