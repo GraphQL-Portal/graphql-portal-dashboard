@@ -64,7 +64,7 @@
     "@nestjs/common": "8.0.6",
     "@nestjs/core": "8.0.6",
     "@nestjs/graphql": "8.0.2",
-    "@nestjs/mongoose": "8.0.0",
+    "@nestjs/mongoose": "8.0.1",
     "@nestjs/platform-express": "8.0.6",
     "@nestjs/serve-static": "2.2.2",
     "@nestjs/swagger": "5.0.9",
