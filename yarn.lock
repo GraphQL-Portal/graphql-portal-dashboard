@@ -2224,14 +2224,14 @@
     "@graphql-tools/wrap" "7.0.8"
     fetchache "0.1.1"
 
-"@graphql-mesh/mongoose@0.8.6":
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/mongoose/-/mongoose-0.8.6.tgz#8d9f9fd749455a290b2a4e43ec13ebe1f7af6780"
-  integrity sha512-+/0S26osv4cnlgw5sL4eLm3nzZi6D1KX9kk2qebVWhhpAqKD+6uDkonDgQCePMOz6By2x/NEVySIL4OVdJaX9A==
+"@graphql-mesh/mongoose@0.8.7":
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/mongoose/-/mongoose-0.8.7.tgz#bc4711891a67011fd86f64f1833bfcb467fc1ba0"
+  integrity sha512-ss/8Sba5L23m37VGeQcCbQhXpRfsy4QFjlixVw9YzHuH6aQarnepe9cncPj4BwGH33oWj1IvPLd6LAqlj1GLgA==
   dependencies:
-    "@graphql-mesh/types" "0.45.1"
-    "@graphql-mesh/utils" "0.13.6"
-    "@graphql-tools/stitching-directives" "2.0.8"
+    "@graphql-mesh/types" "0.45.2"
+    "@graphql-mesh/utils" "0.13.7"
+    "@graphql-tools/stitching-directives" "2.0.11"
     graphql-compose "9.0.2"
     graphql-compose-connection "8.2.1"
     graphql-compose-mongoose "9.5.2"
@@ -3476,6 +3476,15 @@
     "@graphql-tools/utils" "^7.7.0"
     "@graphql-tools/wrap" "^7.0.6"
     tslib "~2.2.0"
+
+"@graphql-tools/stitching-directives@2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/stitching-directives/-/stitching-directives-2.0.11.tgz#3cc89049270fd988d93775dd2bd677cfc58f7e7f"
+  integrity sha512-y1JChdbRijkRtj3KLravIUnvKUJU3VplN7AmejZvZNERJvps67RhW0LtnygOD3MdgJHRxguzMFWbWGcGPLzS6w==
+  dependencies:
+    "@graphql-tools/delegate" "^8.1.0"
+    "@graphql-tools/utils" "^8.1.1"
+    tslib "~2.3.0"
 
 "@graphql-tools/stitching-directives@2.0.8":
   version "2.0.8"
