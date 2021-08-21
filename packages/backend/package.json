@@ -36,7 +36,7 @@
     "@graphql-mesh/postgraphile": "0.12.8",
     "@graphql-mesh/soap": "0.7.10",
     "@graphql-mesh/thrift": "0.7.17",
-    "@graphql-mesh/transform-cache": "0.9.8",
+    "@graphql-mesh/transform-cache": "0.9.9",
     "@graphql-mesh/transform-encapsulate": "0.1.54",
     "@graphql-mesh/transform-extend": "0.6.22",
     "@graphql-mesh/transform-federation": "0.5.22",
