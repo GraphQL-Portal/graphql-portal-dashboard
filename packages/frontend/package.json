@@ -26,7 +26,7 @@
     "jsoneditor": "9.5.3",
     "jsoneditor-react": "3.1.1",
     "react": "17.0.2",
-    "react-copy-to-clipboard": "5.0.3",
+    "react-copy-to-clipboard": "5.0.4",
     "react-dom": "17.0.2",
     "react-helmet": "6.1.0",
     "react-hook-form": "6.15.8",
