@@ -4100,10 +4100,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@maxmind/geoip2-node@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-3.1.0.tgz#f9146425a4daeb166606d5b5ad6f834f4394ec1f"
-  integrity sha512-BfW+r+qOuC1YnNuZl9oAPxzRpP0aQC/6HMTXPbqNOL8xyqmpxu8e+m9dpF+U7L0U3NqS5u4ZtUUGfohh3Nl3ig==
+"@maxmind/geoip2-node@3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-3.2.0.tgz#684b981d4aaa83a2b0f0eada75d6a2a0175fca64"
+  integrity sha512-S1VGzFPl0QyExr3Usu3yK8AMyKHlXRooiiMja4C8EVLhkCg0L5NTbLm9f4XChZ0QKxtDvZou/XHRrAKq3/RV9w==
   dependencies:
     camelcase-keys "^7.0.0"
     ip6addr "^0.2.3"
