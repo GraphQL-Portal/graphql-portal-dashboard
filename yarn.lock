@@ -2138,14 +2138,14 @@
     "@graphql-tools/url-loader" "6.10.1"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/grpc@0.15.7":
-  version "0.15.7"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.15.7.tgz#8026e86b4d15cbd790856b233de99a9ccfbc1bb7"
-  integrity sha512-K56UIRSyDKy1eQpoqJ0IxnqMzEp5RvXtxmnZA2AQ/yIQAXevjr+VCXWJAjveQ+d6U58UXcBBo9J8r5lVkByY7Q==
+"@graphql-mesh/grpc@0.15.10":
+  version "0.15.10"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.15.10.tgz#87278b615d6a2e67adea1ef6528d4193f1c9d111"
+  integrity sha512-Ev0nBBI6bavm6WDoqWPvOp/BDRNA/KnPciC0bV/CS1kpPYf1/UXZBTQ0L9H50XtS7KItqHJbusfM87j8/kPHZA==
   dependencies:
-    "@graphql-mesh/store" "0.1.7"
-    "@graphql-mesh/types" "0.45.2"
-    "@graphql-mesh/utils" "0.13.7"
+    "@graphql-mesh/store" "0.1.10"
+    "@graphql-mesh/types" "0.47.0"
+    "@graphql-mesh/utils" "0.16.0"
     "@grpc/grpc-js" "^1.1.7"
     "@grpc/proto-loader" "0.6.4"
     globby "11.0.4"
