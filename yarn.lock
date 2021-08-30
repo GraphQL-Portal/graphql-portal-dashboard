@@ -7451,17 +7451,17 @@ bson@^1.1.4:
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.1.6.tgz#fb819be9a60cd677e0853aee4ca712a785d6618a"
   integrity sha512-EvVNVeGo4tHxwi8L6bPj3y3itEvStdwvvlojVxxbyYfoaxJ6keLgrTuKdyfEAszFK+H3olzBuafE0yoh0D1gdg==
 
+bson@^4.2.2, bson@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-4.5.1.tgz#02e9d649ce017ab14ed258737756c11809963d6c"
+  integrity sha512-XqFP74pbTVLyLy5KFxVfTUyRrC1mgOlmu/iXHfXqfCKT59jyP9lwbotGfbN59cHBRbJSamZNkrSopjv+N0SqAA==
+  dependencies:
+    buffer "^5.6.0"
+
 bson@^4.4.0:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/bson/-/bson-4.4.1.tgz#682c3cb8b90b222414ce14ef8398154ba2cc21bc"
   integrity sha512-Uu4OCZa0jouQJCKOk1EmmyqtdWAP5HVLru4lQxTwzJzxT+sJ13lVpEZU/MATDxtHiekWMAL84oQY3Xn1LpJVSg==
-  dependencies:
-    buffer "^5.6.0"
-
-bson@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/bson/-/bson-4.5.1.tgz#02e9d649ce017ab14ed258737756c11809963d6c"
-  integrity sha512-XqFP74pbTVLyLy5KFxVfTUyRrC1mgOlmu/iXHfXqfCKT59jyP9lwbotGfbN59cHBRbJSamZNkrSopjv+N0SqAA==
   dependencies:
     buffer "^5.6.0"
 
@@ -9096,7 +9096,7 @@ debug@4, "debug@>=3 <5", debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1:
   dependencies:
     ms "2.1.2"
 
-debug@4.3.2, debug@^4.2.0:
+debug@4.3.2, debug@4.x, debug@^4.2.0:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
   integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
@@ -15450,19 +15450,6 @@ mongodb-memory-server@6.9.6:
   dependencies:
     mongodb-memory-server-core "6.9.6"
 
-mongodb@3.6.11:
-  version "3.6.11"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.11.tgz#8a59a0491a92b00a8c925f72ed9d9a5b054aebb2"
-  integrity sha512-4Y4lTFHDHZZdgMaHmojtNAlqkvddX2QQBEN0K//GzxhGwlI9tZ9R0vhbjr1Decw+TF7qK0ZLjQT292XgHRRQgw==
-  dependencies:
-    bl "^2.2.1"
-    bson "^1.1.4"
-    denque "^1.4.1"
-    optional-require "^1.0.3"
-    safe-buffer "^5.1.2"
-  optionalDependencies:
-    saslprep "^1.0.0"
-
 mongodb@3.6.8:
   version "3.6.8"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.8.tgz#3e2632af81915b3ff99b7681121ca0895e8ed407"
@@ -15516,22 +15503,18 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@5.13.8:
-  version "5.13.8"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.13.8.tgz#1477c306b9f1d1c737ad95ce1b4acac9aec4a421"
-  integrity sha512-z3d+qei9Dem/LxRcJi0cdGPKzQnYk71oHEsEfYm17JA/vLiAbJiGuBS2hW7vkd9afkPAqu3KsPZh2ax0c5iPQw==
+mongoose@6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.0.3.tgz#81e8cc1b17d6787f95bddf37390b644895bc1daa"
+  integrity sha512-0gu3Z34j3VdvGnqcs0lZdRnE0agiuERvXKkSrKjGqXsZS+ym5v9Oq1dQUuhtOYPQGtlpHpeVYjHHY+2sn5CMrg==
   dependencies:
-    "@types/mongodb" "^3.5.27"
-    bson "^1.1.4"
+    bson "^4.2.2"
     kareem "2.3.2"
-    mongodb "3.6.11"
-    mongoose-legacy-pluralize "1.0.2"
+    mongodb "4.1.1"
     mpath "0.8.3"
-    mquery "3.2.5"
+    mquery "4.0.0"
     ms "2.1.2"
-    optional-require "1.0.x"
     regexp-clone "1.0.0"
-    safe-buffer "5.2.1"
     sift "13.5.2"
     sliced "1.0.1"
 
@@ -15579,6 +15562,15 @@ mquery@3.2.5:
     debug "3.1.0"
     regexp-clone "^1.0.0"
     safe-buffer "5.1.2"
+    sliced "1.0.1"
+
+mquery@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/mquery/-/mquery-4.0.0.tgz#6c62160ad25289e99e0840907757cdfd62bde775"
+  integrity sha512-nGjm89lHja+T/b8cybAby6H0YgA4qYC/lx6UlwvHGqvTq8bDaNeCwl1sY8uRELrNbVWJzIihxVd+vphGGn1vBw==
+  dependencies:
+    debug "4.x"
+    regexp-clone "^1.0.0"
     sliced "1.0.1"
 
 ms@2.0.0:
@@ -16254,7 +16246,7 @@ optimize-css-assets-webpack-plugin@5.0.4:
     cssnano "^4.1.10"
     last-call-webpack-plugin "^3.0.0"
 
-optional-require@1.0.x, optional-require@^1.0.3:
+optional-require@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/optional-require/-/optional-require-1.0.3.tgz#275b8e9df1dc6a17ad155369c2422a440f89cb07"
   integrity sha512-RV2Zp2MY2aeYK5G+B/Sps8lW5NHAzE5QClbFP15j+PWmP+T9PxlJXBOOLoSAdgwFvS4t0aMR4vpedMkbHfh0nA==
