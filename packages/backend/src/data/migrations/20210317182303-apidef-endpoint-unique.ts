@@ -4,12 +4,12 @@ import { getArrayDuplicates } from '../../common/tool';
 const index: any = { endpoint: 1 };
 
 export const up = async (db: Db): Promise<void> => {
-  const apiDefsCollection = await db.collection('apidefs');
-  const apiDefs: {
+  const apiDefsCollection = await db.collection<{
     _id: string;
     name: string;
     endpoint: string;
-  }[] = await apiDefsCollection.find().toArray();
+  }>('apidefs');
+  const apiDefs = await apiDefsCollection.find().toArray();
   const duplicates = getArrayDuplicates(
     apiDefs.map((apiDef) => apiDef.endpoint)
   );
