@@ -295,7 +295,12 @@ export default class MetricService implements OnModuleInit, OnModuleDestroy {
   ): Promise<IRequestMetricDocument[]> {
     return this.requestMetricModel.aggregate([
       {
-        $match: this.makeMatchFromFilters(filters),
+        $match: {
+          ...this.makeMatchFromFilters(filters),
+          latency: {
+            $exists: true,
+          },
+        },
       },
       {
         $sort: {
