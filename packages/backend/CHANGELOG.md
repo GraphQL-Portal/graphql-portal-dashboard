@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.19.3
+
+### Patch Changes
+
+- b17ceff7: gateway, handlers versions
+
 ## 0.19.1
 
 ### Patch Changes
