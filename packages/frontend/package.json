@@ -23,7 +23,7 @@
     "graphql": "15.5.2",
     "isomorphic-fetch": "3.0.0",
     "js-cookie": "3.0.1",
-    "jsoneditor": "9.5.4",
+    "jsoneditor": "9.5.5",
     "jsoneditor-react": "3.1.1",
     "react": "17.0.2",
     "react-copy-to-clipboard": "5.0.4",
