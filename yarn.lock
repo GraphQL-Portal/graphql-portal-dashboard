@@ -2820,12 +2820,12 @@
     ws "^8.0.0"
     yaml "^1.10.0"
 
-"@graphql-portal/ip-api@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.1.4.tgz#a2e6301130e500f858012e91045522433fb881fb"
-  integrity sha512-BdNPweQbGkrzttf4pUGDkjNsRCJYoa/XFKuoa075nvKgKZY5Kq8oi5mceGdNrE1bCi1DyGfPrkCMBN32jytW4w==
+"@graphql-portal/ip-api@0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/ip-api/-/ip-api-0.1.5.tgz#3b4cc416658c855df9a420ba2b6c3c8371e71aab"
+  integrity sha512-XDDXjktNvIM6B2RRkj/fLZAsxMe9aJHMAGU89AAzGX4KSQbChcPm/7PfcPoIwBSghfy6PHHJoLk+EJD2NQYJvg==
   dependencies:
-    "@graphql-mesh/openapi" "^0.16.0"
+    "@graphql-mesh/openapi" "0.16.10"
     graphql "^15.4.0"
 
 "@graphql-portal/ip-api@^0.1.3":
