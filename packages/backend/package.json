@@ -78,7 +78,7 @@
     "date-fns": "2.23.0",
     "envsub": "4.0.7",
     "express": "4.17.1",
-    "graphql": "15.5.1",
+    "graphql": "15.5.2",
     "graphql-redis-subscriptions": "2.4.0",
     "ioredis": "4.27.8",
     "jsonwebtoken": "8.5.1",
