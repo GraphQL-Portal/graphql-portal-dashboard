@@ -2087,7 +2087,7 @@
     lodash "4.17.21"
     param-case "3.0.4"
 
-"@graphql-mesh/fhir@^0.10.0":
+"@graphql-mesh/fhir@0.10.13", "@graphql-mesh/fhir@^0.10.0":
   version "0.10.13"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/fhir/-/fhir-0.10.13.tgz#5071f22881dcd802cc7f925c1baaa4d8d1449985"
   integrity sha512-NiKlv+EeYG8BOGiVea0WW+K/vtqyERVI0s0D+/cWYmt9jIKpgHfd/4ojD5/Jn6itHHP1Uizq42srx9KrqgoT6w==
@@ -2097,7 +2097,7 @@
     "@graphql-mesh/utils" "0.12.0"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@^0.17.0":
+"@graphql-mesh/graphql@0.17.10", "@graphql-mesh/graphql@^0.17.0":
   version "0.17.10"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.17.10.tgz#3b436f69eb106a52fb976a69e08d68d08e3c5187"
   integrity sha512-9G8ll1mVPMbobf3vzJH73alyH+W1vd85cwtQC622aNCNSMEIZegMXjK4sc+Lq2wjBK9gLfRwhnK9EhDwrj/VXQ==
@@ -2107,7 +2107,7 @@
     "@graphql-tools/url-loader" "6.10.1"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/grpc@^0.12.0":
+"@graphql-mesh/grpc@0.12.2", "@graphql-mesh/grpc@^0.12.0":
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.12.2.tgz#893b12be2e7f2ed3e3f7f580c17382f9f040dca5"
   integrity sha512-T4nRx1OHlRQzZMgnN2JLWdspKHSu2yqjrTYR8OSavC8jbcsUrF8VLhbtJhZdb/1HOQT648VRPB/ARPOvNUbX+g==
@@ -2165,7 +2165,7 @@
     "@graphql-tools/wrap" "7.0.8"
     fetchache "0.1.1"
 
-"@graphql-mesh/mongoose@^0.8.0":
+"@graphql-mesh/mongoose@0.8.10", "@graphql-mesh/mongoose@^0.8.0":
   version "0.8.10"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/mongoose/-/mongoose-0.8.10.tgz#f31599c97b093216665231392719c9cd6bf5bd05"
   integrity sha512-7IOt7Uh8DKtCP6D188CY4OSfbi1TjF3u23DNDN0AR4DNLd7wx7okJKHhFe7f9HTACo7n60BrK7X9J+HUpZacbQ==
@@ -2178,7 +2178,7 @@
     graphql-compose-mongoose "9.5.4"
     graphql-compose-pagination "8.3.0"
 
-"@graphql-mesh/mysql@^0.10.0":
+"@graphql-mesh/mysql@0.10.9", "@graphql-mesh/mysql@^0.10.0":
   version "0.10.9"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.10.9.tgz#f422e50904336cefcce7f6675c5c2fd759c83c8e"
   integrity sha512-hnLHXuANh4RThrfmhHwx1AaG7TCGt8K0TxogvW0DK7strlPIEhgLPuE0lgrw3NnvzVJ7Pt/NO0ibuv2/ocwmSw==
@@ -2193,7 +2193,7 @@
     mysql-utilities "1.1.2"
     pascal-case "3.1.2"
 
-"@graphql-mesh/neo4j@^0.11.0":
+"@graphql-mesh/neo4j@0.11.6", "@graphql-mesh/neo4j@^0.11.0":
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.6.tgz#db7a03ca7cbdbcf4c63bfb2e4d6b858bfbb5ca92"
   integrity sha512-1/zbAv2+sI8aUwUIRjS9ZFbUn3tT/C5Iw6oeRWoHvgHuiT1ngBKz9TJn7bUjUFcUJriKRKeCRQ6oRvxSUsDe8Q==
@@ -2206,7 +2206,7 @@
     neo4j-driver "4.2.3"
     neo4j-graphql-js "2.19.2"
 
-"@graphql-mesh/odata@^0.11.0":
+"@graphql-mesh/odata@0.11.8", "@graphql-mesh/odata@^0.11.0":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/odata/-/odata-0.11.8.tgz#6344e5e77e0015f01f9fab612eae59b1c6f9a1c8"
   integrity sha512-toyhvUhDxC+qMmCHb36HaUDEEGXLqsx89q7R0o1iNV+713NhEnPormgirxlG441KYtDt1R7yP4asVcepxZwxwA==
@@ -2269,7 +2269,7 @@
     "@n1ru4l/graphql-live-query" "0.7.1"
     "@n1ru4l/in-memory-live-query-store" "0.6.5"
 
-"@graphql-mesh/soap@^0.7.0":
+"@graphql-mesh/soap@0.7.10", "@graphql-mesh/soap@^0.7.0":
   version "0.7.10"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/soap/-/soap-0.7.10.tgz#5aac2918e212f3d06e62c9a78658a82a89791a0c"
   integrity sha512-SXYINusjJ5uOA6BMdVLvkjKlEcEt9wpBtO98EvBFddM13RStTXydLvySGuTuGQhqQY7C5hecKhOb/uhrBtbwYw==
@@ -2279,7 +2279,7 @@
     soap "0.38.0"
     soap-graphql "0.1.1"
 
-"@graphql-mesh/thrift@^0.7.0":
+"@graphql-mesh/thrift@0.7.10", "@graphql-mesh/thrift@^0.7.0":
   version "0.7.10"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.10.tgz#07440db5d6f059925d51e4eb4927d5d8aade8cef"
   integrity sha512-Jq6Tnewxr0udQ2W5RfQ6UvoIN/rI+7Vr8x/u+V1NT6Z+poXqsWWKxYAgpepDh1sIgRcQ1f91uHA6zA8tekxM0g==
