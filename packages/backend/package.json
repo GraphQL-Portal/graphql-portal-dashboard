@@ -56,7 +56,7 @@
     "@graphql-portal/ip-api": "0.1.5",
     "@graphql-portal/salesforce": "0.1.5",
     "@graphql-portal/slack": "0.2.4",
-    "@graphql-portal/stripe": "0.2.3",
+    "@graphql-portal/stripe": "0.2.4",
     "@graphql-portal/twitter": "0.3.3",
     "@graphql-portal/types": "1.2.0",
     "@graphql-portal/weatherbit": "0.2.3",
