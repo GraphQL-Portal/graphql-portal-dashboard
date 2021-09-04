@@ -2904,7 +2904,15 @@
   dependencies:
     "@graphql-mesh/openapi" "^0.16.0"
 
-"@graphql-portal/twitter@0.3.3", "@graphql-portal/twitter@^0.3.3":
+"@graphql-portal/twitter@0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.3.4.tgz#908f88e9ef654a51479eb9aae1e7ccb9eda335e1"
+  integrity sha512-PYwoIQxGnHj0Nlis+pgsZJktDaGR5IlhJf+bKWK/POHQqKXH9G3Kfjx7qcy0BHrZ1gIByv+MSfG6RBeHKXECEw==
+  dependencies:
+    "@graphql-mesh/openapi" "0.16.10"
+    "@graphql-mesh/types" "0.42.0"
+
+"@graphql-portal/twitter@^0.3.3":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@graphql-portal/twitter/-/twitter-0.3.3.tgz#92592dfa6a48623dc7957f54bed95cec4b17712a"
   integrity sha512-l5bYcLewyIT3jMspaXGtGHHONozYEUGj4/rK4hQ3IpU+QfQtGinXjujpvKsdpJOnEmPIbSKqRKLcOIScK9mQxQ==
