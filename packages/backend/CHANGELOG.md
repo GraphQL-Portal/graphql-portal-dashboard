@@ -1,5 +1,11 @@
 # graphql-portal-dashboard-backend
 
+## 0.19.4
+
+### Patch Changes
+
+- 3699d01d: update gateway, graphql version
+
 ## 0.19.3
 
 ### Patch Changes
