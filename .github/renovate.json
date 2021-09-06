@@ -10,15 +10,11 @@
     "automerge": false
   },
   "labels": ["dependencies"],
-  "packageRules": [
-    {
-      "excludePackageNames": [
-        "codemirror-graphql",
-        "@shelf/jest-mongodb",
-        "@types/react",
-        "@types/react-dom",
-        "date-fns"
-      ]
-    }
+  "ignoreDeps": [
+    "codemirror-graphql",
+    "@shelf/jest-mongodb",
+    "@types/react",
+    "@types/react-dom",
+    "date-fns"
   ]
 }

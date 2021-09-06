@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "incremental": true,
     "outDir": "dist",
     "moduleResolution": "Node",
