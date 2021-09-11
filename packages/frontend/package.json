@@ -99,7 +99,7 @@
     "eslint-plugin-react": "7.25.1",
     "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-testing-library": "4.12.2",
-    "prettier": "2.3.2"
+    "prettier": "2.4.0"
   },
   "peerDependencies": {
     "@testing-library/dom": "^7.29.0 || ^8.0.0"
