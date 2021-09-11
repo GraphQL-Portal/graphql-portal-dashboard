@@ -11800,11 +11800,6 @@ graphql-ws@^5.1.2:
   resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.2.0.tgz#6c2e8db483f92f3c82b1932951f46060c3e95a1e"
   integrity sha512-7Mm8H8vEuT8LQCSeok4M92uE9LSMHNVHTdPV74bTQJZfKK4jnPmv3Iv26fMOhJaju54lvTY2mPlCzdb/uux82w==
 
-graphql@15.5.2:
-  version "15.5.2"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.2.tgz#efa19f8f2bf1a48eb7d5c85bf17e144ba8bb0480"
-  integrity sha512-dZjLPWNQqYv0dqV2RNbiFed0LtSp6yd4jchsDGnuhDKa9OQHJYCfovaOEvY91w9gqbYO7Se9LKDTl3xxYva/3w==
-
 graphql@15.5.3:
   version "15.5.3"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.3.tgz#c72349017d5c9f5446a897fe6908b3186db1da00"
