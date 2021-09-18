@@ -2501,7 +2501,19 @@
     "@graphql-tools/wrap" "7.0.8"
     micromatch "4.0.4"
 
-"@graphql-mesh/transform-mock@0.10.11", "@graphql-mesh/transform-mock@^0.10.0":
+"@graphql-mesh/transform-mock@0.10.13":
+  version "0.10.13"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.10.13.tgz#bf63d93f4f16575c69ab3760979b7e11cdcd2910"
+  integrity sha512-1+PUwGD/fWDGLoW5hW4kTeq0IjfnmbZF1GEjzu8u6yCrwFeFllZVWE7+1W8fhlYpjg4B/E5yThzV9Jo6CPmQ/Q==
+  dependencies:
+    "@graphql-mesh/types" "0.49.0"
+    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-tools/mock" "8.3.1"
+    "@graphql-tools/utils" "8.2.2"
+    faker "5.5.3"
+    graphql-scalars "1.10.1"
+
+"@graphql-mesh/transform-mock@^0.10.0":
   version "0.10.11"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.10.11.tgz#3af0d1f3e00da68734ef3f1e00e5e0fd824d708d"
   integrity sha512-G2NXD/HF4aW2Zyqbat9A383VqOypczT4BV+xo+LvnDbjhm7SUcgAcY64v6IYdWxubTVn4mFTfFNC2A9fYEy4Iw==
@@ -3414,16 +3426,7 @@
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
 
-"@graphql-tools/mock@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-7.0.0.tgz#b43858f47fedfbf7d8bbbf7d33e6acb64b8b7da7"
-  integrity sha512-ShO8D9HudgnhqoWeKb3iejGtPV8elFqSO1U0O70g3FH3W/CBW2abXfuyodBUevXVGIjyqzfkNzVtpIE0qiOVVQ==
-  dependencies:
-    "@graphql-tools/schema" "^7.0.0"
-    "@graphql-tools/utils" "^7.0.0"
-    tslib "~2.0.1"
-
-"@graphql-tools/mock@^8.1.2":
+"@graphql-tools/mock@8.3.1", "@graphql-tools/mock@^8.1.2":
   version "8.3.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.3.1.tgz#da89829e91d7492d6559efdfe1c5426a20e033ed"
   integrity sha512-iJ3GeQ10Vqa0Tg4QJHiulxUUI4r84RAvltM3Sc+XPj07QlrLzMHOHO/goO7FC4TN2/HVncj7pWHwrmLPT9du/Q==
@@ -3432,6 +3435,15 @@
     "@graphql-tools/utils" "^8.2.0"
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
+
+"@graphql-tools/mock@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-7.0.0.tgz#b43858f47fedfbf7d8bbbf7d33e6acb64b8b7da7"
+  integrity sha512-ShO8D9HudgnhqoWeKb3iejGtPV8elFqSO1U0O70g3FH3W/CBW2abXfuyodBUevXVGIjyqzfkNzVtpIE0qiOVVQ==
+  dependencies:
+    "@graphql-tools/schema" "^7.0.0"
+    "@graphql-tools/utils" "^7.0.0"
+    tslib "~2.0.1"
 
 "@graphql-tools/module-loader@^6.2.5":
   version "6.2.7"
