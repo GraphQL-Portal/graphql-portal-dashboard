@@ -2160,7 +2160,25 @@
     "@graphql-tools/url-loader" "6.10.1"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/grpc@0.12.2", "@graphql-mesh/grpc@^0.12.0":
+"@graphql-mesh/grpc@0.15.12":
+  version "0.15.12"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.15.12.tgz#4bb2b913def4d0c80b901e587f174165d8c0d097"
+  integrity sha512-RIJX+YQadOgAfp2dBfqkycivIhUaid6uqQ1u3dAc9oBwBXEQLbi5cmBKfoJKVKqB3JOmWBibLmxcqGyZJ4AVUQ==
+  dependencies:
+    "@graphql-mesh/store" "0.1.12"
+    "@graphql-mesh/types" "0.49.0"
+    "@graphql-mesh/utils" "0.16.2"
+    "@grpc/grpc-js" "^1.1.7"
+    "@grpc/proto-loader" "0.6.5"
+    globby "11.0.4"
+    graphql-compose "9.0.3"
+    graphql-scalars "1.10.1"
+    grpc-reflection-js "0.1.2"
+    lodash "4.17.21"
+    long "4.0.0"
+    protobufjs "6.11.2"
+
+"@graphql-mesh/grpc@^0.12.0":
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.12.2.tgz#893b12be2e7f2ed3e3f7f580c17382f9f040dca5"
   integrity sha512-T4nRx1OHlRQzZMgnN2JLWdspKHSu2yqjrTYR8OSavC8jbcsUrF8VLhbtJhZdb/1HOQT648VRPB/ARPOvNUbX+g==
@@ -3768,6 +3786,17 @@
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@grpc/proto-loader/-/proto-loader-0.6.1.tgz#ad63e8c7d2a23b0175c78eebc26dedf6b0af0b0b"
   integrity sha512-4DIvEOZhw5nGj3RQngIoiMXRsre3InEH136krZTcirs/G2em3WMXdtx4Lqlnb4E2ertbWGs5gPeVDKU5BHffXw==
+  dependencies:
+    "@types/long" "^4.0.1"
+    lodash.camelcase "^4.3.0"
+    long "^4.0.0"
+    protobufjs "^6.10.0"
+    yargs "^16.1.1"
+
+"@grpc/proto-loader@0.6.5":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@grpc/proto-loader/-/proto-loader-0.6.5.tgz#f23c7cb3e7076a8702f40c2b6678f06fb9950a55"
+  integrity sha512-GZdzyVQI1Bln/kCzIYgTKu+rQJ5dno0gVrfmLe4jqQu7T2e7svSwJzpCBqVU5hhBSJP3peuPjOMWsj5GR61YmQ==
   dependencies:
     "@types/long" "^4.0.1"
     lodash.camelcase "^4.3.0"
@@ -11624,7 +11653,7 @@ globby@11.0.3:
     merge2 "^1.3.0"
     slash "^3.0.0"
 
-globby@^11.0.0, globby@^11.0.3:
+globby@11.0.4, globby@^11.0.0, globby@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/globby/-/globby-11.0.4.tgz#2cbaff77c2f2a62e71e9b2813a67b97a3a3001a5"
   integrity sha512-9O4MVG9ioZJ08ffbcyVYyLOJLk5JQ688pJ4eMGLpdWLHq/Wr1D9BlriLQyL0E+jbkuePVZXYFj47QM/v093wHg==
@@ -12098,6 +12127,17 @@ grpc-reflection-js@0.1.1:
   integrity sha512-md/xkCE4iSrmqz6rtV+rHep6kdMtfRu0Zjrcb9eAnrzMhpP18P/Xwde91iLeXuNEwymrEkMiymNy9JFrKS7hBw==
   dependencies:
     "@grpc/grpc-js" "^1.1.7"
+    "@types/google-protobuf" "^3.7.2"
+    "@types/lodash.set" "^4.3.6"
+    google-protobuf "^3.12.2"
+    lodash.set "^4.3.2"
+    protobufjs "^6.9.0"
+
+grpc-reflection-js@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/grpc-reflection-js/-/grpc-reflection-js-0.1.2.tgz#c1dda07a488771bd9238697428c48da9bdcb6667"
+  integrity sha512-ecLGJDCoRRyTNQ2jQYLsMQ0H9a/ZZ/6brU+6haGPS8GpQ93uYoFOc60ptO3bebS3xRPJQSIiSZClkBS5L9PYuw==
+  dependencies:
     "@types/google-protobuf" "^3.7.2"
     "@types/lodash.set" "^4.3.6"
     google-protobuf "^3.12.2"
@@ -15146,15 +15186,15 @@ loglevel@^1.6.1, loglevel@^1.6.7, loglevel@^1.6.8:
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.7.1.tgz#005fde2f5e6e47068f935ff28573e125ef72f197"
   integrity sha512-Hesni4s5UkWkwCGJMQGAh71PaLUmKFM60dHvq0zi/vDhhrzuk+4GgNbTXJ12YYQJn6ZKBDNIjYcuQGKudvqrIw==
 
+long@4.0.0, long@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+  integrity sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
+
 long@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/long/-/long-2.4.0.tgz#9fa180bb1d9500cdc29c4156766a1995e1f4524f"
   integrity sha1-n6GAux2VAM3CnEFWdmoZleH0Uk8=
-
-long@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
-  integrity sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
@@ -18004,7 +18044,7 @@ protobufjs@6.10.2:
     "@types/node" "^13.7.0"
     long "^4.0.0"
 
-protobufjs@^6.10.0, protobufjs@^6.10.2, protobufjs@^6.9.0, protobufjs@~6.11.0:
+protobufjs@6.11.2, protobufjs@^6.10.0, protobufjs@^6.10.2, protobufjs@^6.9.0, protobufjs@~6.11.0:
   version "6.11.2"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.11.2.tgz#de39fabd4ed32beaa08e9bb1e30d08544c1edf8b"
   integrity sha512-4BQJoPooKJl2G9j3XftkIXjoC9C0Av2NOrWmbLWT1vH32GcSUHjM0Arra6UfTsVyfMAuFzaLucXn1sadxJydAw==
