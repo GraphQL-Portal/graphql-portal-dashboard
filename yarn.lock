@@ -2617,16 +2617,16 @@
     "@graphql-tools/resolvers-composition" "6.3.5"
     "@graphql-tools/schema" "8.1.2"
 
-"@graphql-mesh/transform-snapshot@0.10.11":
-  version "0.10.11"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.11.tgz#4e5ef1b84d489a13d4b2cf3f7fcc6b16f64212cd"
-  integrity sha512-PQHKy+Mu1YDkGdo37CE2ORtRPMp/4vtapPl5kvPw07zfZdRWUKOl9/qLdnFsDlkV8/Gv0iknQe8czijB6asUEQ==
+"@graphql-mesh/transform-snapshot@0.10.13":
+  version "0.10.13"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.13.tgz#ce83f1bbdba4e020e910835d20bed9cae002634b"
+  integrity sha512-yxegQwjIfnjb4kmmGwcw7oZj1eij0x+5s8oM8HttW99MyySfpYvIuKTfO2phJ4zxvM+p41iG4CMZHX+EdT3xzw==
   dependencies:
-    "@graphql-mesh/types" "0.47.0"
-    "@graphql-mesh/utils" "0.16.0"
-    "@graphql-tools/resolvers-composition" "6.3.5"
-    "@graphql-tools/schema" "8.1.2"
-    "@graphql-tools/utils" "8.1.2"
+    "@graphql-mesh/types" "0.49.0"
+    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-tools/resolvers-composition" "6.4.0"
+    "@graphql-tools/schema" "8.2.0"
+    "@graphql-tools/utils" "8.2.2"
 
 "@graphql-mesh/transform-snapshot@^0.10.0":
   version "0.10.0"
