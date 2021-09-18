@@ -2194,15 +2194,15 @@
     "@graphql-tools/wrap" "7.0.8"
     fetchache "0.1.1"
 
-"@graphql-mesh/mongoose@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/mongoose/-/mongoose-0.9.0.tgz#fb29322cce55e67886ee53b480eaff48adfdf542"
-  integrity sha512-lYuZBANAktdV+a/qXpEf0qh0+SVZeMkJjuQseaRtj5uCmqDwWgPzd5rbCBs9y/IfZEROM8Q2gUT4bTAySOpDog==
+"@graphql-mesh/mongoose@0.9.2":
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/mongoose/-/mongoose-0.9.2.tgz#9d8a2e520abb9a506151737354e49b6fac4204ea"
+  integrity sha512-XpVfJdqDvXe4VnPcwDxBZgdT/NkPhLGf/WOZSBEu7Bc/hmpqwhsnRccCjl0O91FNeaWuDRc7eUIUJ8gjmZEQVw==
   dependencies:
-    "@graphql-mesh/types" "0.47.0"
-    "@graphql-mesh/utils" "0.16.0"
-    "@graphql-tools/stitching-directives" "2.0.11"
-    graphql-compose "9.0.2"
+    "@graphql-mesh/types" "0.49.0"
+    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-tools/stitching-directives" "2.1.1"
+    graphql-compose "9.0.3"
     graphql-compose-connection "8.2.1"
     graphql-compose-mongoose "9.6.0"
     graphql-compose-pagination "8.3.0"
@@ -3549,6 +3549,15 @@
   dependencies:
     "@graphql-tools/delegate" "^8.1.0"
     "@graphql-tools/utils" "^8.1.1"
+    tslib "~2.3.0"
+
+"@graphql-tools/stitching-directives@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/stitching-directives/-/stitching-directives-2.1.1.tgz#7c5d40bbdf0ebd114408e36b6074446361898302"
+  integrity sha512-RgnijzFRKORYIcqzvoO+TA4sXRTgGb7AuOWjVl5pyqu/JRfQZ3zThIzq/+20XyjtPxfZloObOx+6L4HnPKk9WA==
+  dependencies:
+    "@graphql-tools/delegate" "^8.2.0"
+    "@graphql-tools/utils" "^8.2.0"
     tslib "~2.3.0"
 
 "@graphql-tools/url-loader@6.10.1", "@graphql-tools/url-loader@^6.3.2":
@@ -5356,6 +5365,11 @@
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
+
+"@types/object-path@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@types/object-path/-/object-path-0.11.1.tgz#eea5b357518597fc9c0a067ea3147f599fc1514f"
+  integrity sha512-219LSCO9HPcoXcRTC6DbCs0FRhZgBnEMzf16RRqkT40WbkKx3mOeQuz3e2XqbfhOz/AHfbru0kzB1n1RCAsIIg==
 
 "@types/object-path@^0.11.0":
   version "0.11.0"
@@ -11642,6 +11656,15 @@ graphql-compose@9.0.2:
     graphql-type-json "0.3.2"
     object-path "0.11.5"
 
+graphql-compose@9.0.3:
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-compose/-/graphql-compose-9.0.3.tgz#57aeafb8f663f3769cb3509048dee5c573ba6369"
+  integrity sha512-kul0p/roHLycru4iHxfWCi4nWUi3Ea4HNwlwDHEpfMbAVsJEQS1tq02Ne1JoDCg/9ADFOJLo3Sf/07C5uupUYw==
+  dependencies:
+    "@types/object-path" "0.11.1"
+    graphql-type-json "0.3.2"
+    object-path "0.11.7"
+
 graphql-cost-analysis@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/graphql-cost-analysis/-/graphql-cost-analysis-1.0.3.tgz#25b97c8e638c7e538af5ba9bcf6012cda74420ce"
@@ -16172,7 +16195,7 @@ object-path@0.11.5, object-path@^0.11.5:
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.5.tgz#d4e3cf19601a5140a55a16ad712019a9c50b577a"
   integrity sha512-jgSbThcoR/s+XumvGMTMf81QVBmah+/Q7K7YduKeKVWL7N111unR2d6pZZarSk6kY/caeNxUDyxOvMWyzoU2eg==
 
-object-path@^0.11.4:
+object-path@0.11.7, object-path@^0.11.4:
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.7.tgz#5f211161f34bb395e4b13a5f565b79d933b6f65d"
   integrity sha512-T4evaK9VfGGQskXBDILcn6F90ZD+WO3OwRFFQ2rmZdUH4vQeDBpiolTpVlPY2yj5xSepyILTjDyM6UvbbdHMZw==
