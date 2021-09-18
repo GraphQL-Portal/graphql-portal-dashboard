@@ -101,7 +101,16 @@
     apollo-graphql "^0.9.3"
     lodash.xorby "^4.7.0"
 
-"@apollo/federation@0.29.0", "@apollo/federation@^0.29.0":
+"@apollo/federation@0.32.0":
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.32.0.tgz#be83d3e72f40bf1c520860c540a53b414cd71bbf"
+  integrity sha512-t2RS4ziaXd+j6rx9quGWIK/1W20K6jIaApAoUwtxW2EkWrKnqoX4gCBrTh3KdQb3V64SmTbM4CjRyNSDWf1oXg==
+  dependencies:
+    apollo-graphql "^0.9.3"
+    apollo-server-types "^3.0.2"
+    lodash.xorby "^4.7.0"
+
+"@apollo/federation@^0.29.0":
   version "0.29.0"
   resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.29.0.tgz#ef06e77fff639a7fb4a6c19caef604a2aef74f94"
   integrity sha512-QxhomJbfaGk2zzXyJSzbRTtMVCrneo5Iuok8dN1Mklmhxx3XPdZhAq4cOWU4bSl90ZphRJCPIdrz4j9CIC0k4Q==
@@ -2443,17 +2452,17 @@
     "@graphql-tools/load" "6.2.8"
     "@graphql-tools/merge" "6.2.14"
 
-"@graphql-mesh/transform-federation@0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.6.2.tgz#45db6d32b2f47758594928dae579376d9c9b533c"
-  integrity sha512-6VrbCDyJs/mIeM/3Mz0V3h61m+Sh4nNi2k7WxKghpf5TEGLIpBsmtavLoj3PWaxHNZpq5FBs4hG0veW+fRFqEQ==
+"@graphql-mesh/transform-federation@0.6.4":
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.6.4.tgz#303eda779d660e9da25bebf4e803b9afb46cbe40"
+  integrity sha512-2nmK5xhKIdSeWzA0TXcsUF4EblUPK1A9WBCDQ0yUWwen/RdAgzBeZV5l0+tLbsZD9c64p6tTBgXLgwq7Oqm6bQ==
   dependencies:
-    "@apollo/federation" "0.29.0"
-    "@graphql-mesh/types" "0.47.0"
-    "@graphql-mesh/utils" "0.16.0"
-    "@graphql-tools/delegate" "8.1.1"
-    "@graphql-tools/stitching-directives" "2.0.11"
-    "@graphql-tools/utils" "8.1.2"
+    "@apollo/federation" "0.32.0"
+    "@graphql-mesh/types" "0.49.0"
+    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-tools/delegate" "8.2.1"
+    "@graphql-tools/stitching-directives" "2.1.1"
+    "@graphql-tools/utils" "8.2.2"
     graphql-transform-federation "2.2.0"
     lodash "4.17.21"
 
