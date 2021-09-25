@@ -86,7 +86,7 @@
     "mongodb": "4.1.2",
     "mongoose": "5.13.9",
     "node-config-ts": "3.1.0",
-    "nodemailer": "6.6.3",
+    "nodemailer": "6.6.5",
     "pupa": "2.1.1",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
