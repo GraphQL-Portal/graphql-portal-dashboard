@@ -16,7 +16,7 @@
     "@uiw/react-codemirror": "3.2.1",
     "ajv": "8.6.3",
     "clsx": "1.1.1",
-    "codemirror": "5.62.3",
+    "codemirror": "5.63.0",
     "codemirror-graphql": "0.15.2",
     "date-fns": "2.23.0",
     "graphiql": "1.4.2",
