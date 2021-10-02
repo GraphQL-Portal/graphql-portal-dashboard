@@ -2170,17 +2170,17 @@
     "@graphql-mesh/utils" "0.12.0"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.18.12":
-  version "0.18.12"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.18.12.tgz#120a60d118e1ee46a847846777f61a498482b46e"
-  integrity sha512-VWe8eA2xO2wSRL7ka2RVbG/TLN6kTofiOWME3xIYktbu2acIDer7R5/FtJO57kW3aK5t5NVboMd37esIJxLdAw==
+"@graphql-mesh/graphql@0.18.13":
+  version "0.18.13"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.18.13.tgz#2389a9cfe33034a35f13f474edde521dd5a94d8d"
+  integrity sha512-ULoqvSCRxje+aMkfTVXkjH7V7Loo3neFkThbdCSlQUe3irTe2Kpvor78NP8itrTO0HAg+5bD6xeGeajW0qF/gw==
   dependencies:
-    "@graphql-mesh/store" "0.1.12"
+    "@graphql-mesh/store" "0.1.13"
     "@graphql-mesh/types" "0.49.0"
-    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-mesh/utils" "0.16.3"
     "@graphql-tools/delegate" "8.2.1"
     "@graphql-tools/url-loader" "7.2.0"
-    "@graphql-tools/wrap" "8.1.0"
+    "@graphql-tools/wrap" "8.1.1"
 
 "@graphql-mesh/graphql@^0.17.0":
   version "0.17.10"
@@ -2468,6 +2468,15 @@
     "@graphql-inspector/core" "2.9.0"
     "@graphql-mesh/utils" "0.16.2"
     "@graphql-tools/utils" "8.2.2"
+
+"@graphql-mesh/store@0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.1.13.tgz#21ee5b3b0d80e76c257583a22a909e7e58ea440a"
+  integrity sha512-NNk/MLb4AmDiGMqdUThNtaNkAgKWgAql6OS9scur4Pkb64zEEza2j2uOievENWsgSjChoumFrAIqeCkPdQeJrA==
+  dependencies:
+    "@graphql-inspector/core" "2.9.0"
+    "@graphql-mesh/utils" "0.16.3"
+    "@graphql-tools/utils" "8.2.3"
 
 "@graphql-mesh/thrift@0.7.23":
   version "0.7.23"
@@ -2916,6 +2925,29 @@
     chalk "4.1.2"
     cross-fetch "3.1.4"
     date-fns "2.23.0"
+    fetchache "0.1.1"
+    flatstr "1.0.12"
+    graphql-jit "0.5.2"
+    graphql-subscriptions "1.2.1"
+    is-url "1.2.4"
+    js-yaml "4.1.0"
+    lodash "4.17.21"
+    object-hash "2.2.0"
+    tiny-lru "7.0.6"
+
+"@graphql-mesh/utils@0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.16.3.tgz#3ca4d4936532e22347d940b74c648684f21d1ada"
+  integrity sha512-Agc7PQYc+1i2polNWxE5PvSayxed2u/5HGhlNK1tfrE7KuY98ULaFwSZnoJdtCJGhANDQV7udZUbYdUrgk4AHA==
+  dependencies:
+    "@ardatan/string-interpolation" "1.2.12"
+    "@graphql-mesh/types" "0.49.0"
+    "@graphql-tools/delegate" "8.2.1"
+    "@graphql-tools/utils" "8.2.3"
+    "@graphql-typed-document-node/core" "3.1.0"
+    chalk "4.1.2"
+    cross-fetch "3.1.4"
+    date-fns "2.24.0"
     fetchache "0.1.1"
     flatstr "1.0.12"
     graphql-jit "0.5.2"
@@ -3809,6 +3841,13 @@
   dependencies:
     tslib "~2.3.0"
 
+"@graphql-tools/utils@8.2.3":
+  version "8.2.3"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.2.3.tgz#9d7b9e7e116d11d26c2687f4d9cfb2b54568838b"
+  integrity sha512-RR+aiusf2gIfnPmrDIH1uA45QuPiHB54RD+BmWyMcl88tWAjeJtqZeWPqUTq/1EXrNeocJAJQqogHV4Fbbzx3A==
+  dependencies:
+    tslib "~2.3.0"
+
 "@graphql-tools/utils@^8.0.0", "@graphql-tools/utils@^8.2.0":
   version "8.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.2.1.tgz#381e79fa04041f91f132d252216adcb3970e3c1e"
@@ -3849,6 +3888,17 @@
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.1.0.tgz#2e618c78de910725130e5231666ca69a75f6cf99"
   integrity sha512-WLT/bFewOIY8KJMzgOJSM/02fXJSFktFvI+JRu39wDH+hwFy1y7pFC0Bs1TP8B/hAEJ+t9+7JspX0LQWAUFjDg==
+  dependencies:
+    "@graphql-tools/delegate" "^8.2.0"
+    "@graphql-tools/schema" "^8.2.0"
+    "@graphql-tools/utils" "^8.2.0"
+    tslib "~2.3.0"
+    value-or-promise "1.0.10"
+
+"@graphql-tools/wrap@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.1.1.tgz#7003033372d6ef984065028430429655614af899"
+  integrity sha512-Z2ylFug2iHMbpcc2Bs/avNTKmhoJrUO6l0JrQbgiZZJWBaBz6yw+fyfL/kCLQluiU5/SXsvUxxPGBQ9tqb864g==
   dependencies:
     "@graphql-tools/delegate" "^8.2.0"
     "@graphql-tools/schema" "^8.2.0"
@@ -9460,6 +9510,11 @@ date-fns@2.23.0, date-fns@^2.23.0:
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
   integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
+
+date-fns@2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.24.0.tgz#7d86dc0d93c87b76b63d213b4413337cfd1c105d"
+  integrity sha512-6ujwvwgPID6zbI0o7UbURi2vlLDR9uP26+tW6Lg+Ji3w7dd0i3DOcjcClLjLPranT60SSEFBwdSyYwn/ZkPIuw==
 
 date-fns@^2.16.1:
   version "2.21.1"
