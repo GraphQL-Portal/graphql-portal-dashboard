@@ -5404,10 +5404,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.30.tgz#44cb52f32a809734ca562e685c6473b5754a7818"
   integrity sha512-sqm9g7mHlPY/43fcSNrCYfOeX9zkTTK+euO5E6+CVijSMm5tTjkVdwdqRkY3ljjIAf8679vps5jKUoJBCLsMDA==
 
-"@types/jsoneditor@8.6.1":
-  version "8.6.1"
-  resolved "https://registry.yarnpkg.com/@types/jsoneditor/-/jsoneditor-8.6.1.tgz#956e964e4bffa1e1462d1de54261aa034acf4574"
-  integrity sha512-kzSO4r6MONfhEL9F74q/mrxsFULBy5xminvdN04g1mwZUxI2F6OzOFns5P5DAMjCJ/eQrfwWyZ0fp/zxIyNAJw==
+"@types/jsoneditor@8.6.2":
+  version "8.6.2"
+  resolved "https://registry.yarnpkg.com/@types/jsoneditor/-/jsoneditor-8.6.2.tgz#f5bbbaf194260ddeb21cd48e1eeef77e05b66962"
+  integrity sha512-ZzL6XANCYEWtYMfD5DLM5yjJdJ+cnuqtxOaJ5vV521HIDOuSyJM7eH8GXB72HL6HCZclqRr7Ix4UnHKeSS4WjA==
   dependencies:
     "@types/ace" "*"
     ajv "^6.12.0"
