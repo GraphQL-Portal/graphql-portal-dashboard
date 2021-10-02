@@ -2622,15 +2622,15 @@
     "@graphql-tools/wrap" "7.0.8"
     micromatch "4.0.4"
 
-"@graphql-mesh/transform-mock@0.10.13":
-  version "0.10.13"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.10.13.tgz#bf63d93f4f16575c69ab3760979b7e11cdcd2910"
-  integrity sha512-1+PUwGD/fWDGLoW5hW4kTeq0IjfnmbZF1GEjzu8u6yCrwFeFllZVWE7+1W8fhlYpjg4B/E5yThzV9Jo6CPmQ/Q==
+"@graphql-mesh/transform-mock@0.10.14":
+  version "0.10.14"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.10.14.tgz#25e10a5830dd89dd41bbc0263a61cc85e788e1da"
+  integrity sha512-pIzyENoZD6hzu8z9XLZtSBGfDMHrdp4UczyiPiOG4b5YCJM8AcM5tY117VmOeK2aBriBDU4OwC8vuIFmip2rDw==
   dependencies:
     "@graphql-mesh/types" "0.49.0"
-    "@graphql-mesh/utils" "0.16.2"
-    "@graphql-tools/mock" "8.3.1"
-    "@graphql-tools/utils" "8.2.2"
+    "@graphql-mesh/utils" "0.16.3"
+    "@graphql-tools/mock" "8.4.0"
+    "@graphql-tools/utils" "8.2.3"
     faker "5.5.3"
     graphql-scalars "1.10.1"
 
@@ -3580,13 +3580,13 @@
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
 
-"@graphql-tools/mock@8.3.1", "@graphql-tools/mock@^8.1.2":
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.3.1.tgz#da89829e91d7492d6559efdfe1c5426a20e033ed"
-  integrity sha512-iJ3GeQ10Vqa0Tg4QJHiulxUUI4r84RAvltM3Sc+XPj07QlrLzMHOHO/goO7FC4TN2/HVncj7pWHwrmLPT9du/Q==
+"@graphql-tools/mock@8.4.0":
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.4.0.tgz#c4a5d0c35cc5760b99b3e062145f36ac9cfe9ffb"
+  integrity sha512-RKcqmw7P5pC2ULh2/kg/erxxsd7lEV/wnI5jNgahkCw8wiSC8OI3SwNMwjfrlpYogs7eEhiXi7Ix6abCiFUURw==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
-    "@graphql-tools/utils" "^8.2.0"
+    "@graphql-tools/utils" "^8.2.3"
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
 
@@ -3598,6 +3598,16 @@
     "@graphql-tools/schema" "^7.0.0"
     "@graphql-tools/utils" "^7.0.0"
     tslib "~2.0.1"
+
+"@graphql-tools/mock@^8.1.2":
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.3.1.tgz#da89829e91d7492d6559efdfe1c5426a20e033ed"
+  integrity sha512-iJ3GeQ10Vqa0Tg4QJHiulxUUI4r84RAvltM3Sc+XPj07QlrLzMHOHO/goO7FC4TN2/HVncj7pWHwrmLPT9du/Q==
+  dependencies:
+    "@graphql-tools/schema" "^8.2.0"
+    "@graphql-tools/utils" "^8.2.0"
+    fast-json-stable-stringify "^2.1.0"
+    tslib "~2.3.0"
 
 "@graphql-tools/module-loader@^6.2.5":
   version "6.2.7"
