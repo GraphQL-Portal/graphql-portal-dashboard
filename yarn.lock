@@ -2738,16 +2738,16 @@
     "@graphql-tools/resolvers-composition" "6.3.5"
     "@graphql-tools/schema" "8.1.2"
 
-"@graphql-mesh/transform-snapshot@0.10.13":
-  version "0.10.13"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.13.tgz#ce83f1bbdba4e020e910835d20bed9cae002634b"
-  integrity sha512-yxegQwjIfnjb4kmmGwcw7oZj1eij0x+5s8oM8HttW99MyySfpYvIuKTfO2phJ4zxvM+p41iG4CMZHX+EdT3xzw==
+"@graphql-mesh/transform-snapshot@0.10.14":
+  version "0.10.14"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.14.tgz#6cf874a64ae21dd4d6d5de18a3671909a618e838"
+  integrity sha512-Sg3SmnzfihBi4fO8PMfjJlRnlper20m7Palrmn5JaU4YIU1sHWZ39AaPlgqz+gCNa85nfkBU2zcCpowj7bbQKA==
   dependencies:
     "@graphql-mesh/types" "0.49.0"
-    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-mesh/utils" "0.16.3"
     "@graphql-tools/resolvers-composition" "6.4.0"
     "@graphql-tools/schema" "8.2.0"
-    "@graphql-tools/utils" "8.2.2"
+    "@graphql-tools/utils" "8.2.3"
 
 "@graphql-mesh/transform-snapshot@^0.10.0":
   version "0.10.0"
@@ -2889,29 +2889,6 @@
     "@graphql-mesh/types" "0.47.0"
     "@graphql-tools/delegate" "8.1.1"
     "@graphql-tools/utils" "8.1.2"
-    "@graphql-typed-document-node/core" "3.1.0"
-    chalk "4.1.2"
-    cross-fetch "3.1.4"
-    date-fns "2.23.0"
-    fetchache "0.1.1"
-    flatstr "1.0.12"
-    graphql-jit "0.5.2"
-    graphql-subscriptions "1.2.1"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
-    object-hash "2.2.0"
-    tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.16.2":
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.16.2.tgz#554d93d0ab8bddbd4515b3fb7901b95e46173197"
-  integrity sha512-2HZq6BqULSox0cCk4UvGZY9TLNTl3cW2NfOaGSMr2/Ztv8tVevP9wKw7SY0NvXEI3KpJyLkPY2i+/jVUvyx9kg==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.49.0"
-    "@graphql-tools/delegate" "8.2.1"
-    "@graphql-tools/utils" "8.2.2"
     "@graphql-typed-document-node/core" "3.1.0"
     chalk "4.1.2"
     cross-fetch "3.1.4"
