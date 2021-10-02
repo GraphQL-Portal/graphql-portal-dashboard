@@ -2549,16 +2549,16 @@
     "@graphql-tools/utils" "7.10.0"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/transform-extend@0.6.28":
-  version "0.6.28"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-extend/-/transform-extend-0.6.28.tgz#bf3826ac76eb5156e76dd1b80d49181a49b05ade"
-  integrity sha512-4VeUbAJYcU76oD9C9JNrwH90UI6FwV6o6TDHrHTi0qc0bT17/KFva0txR9BS8E8m/bNJMR6xn7DsNfYuVbOYww==
+"@graphql-mesh/transform-extend@0.6.29":
+  version "0.6.29"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-extend/-/transform-extend-0.6.29.tgz#4d106aef6acd3c51a94cb09a2147819d92ffaa1e"
+  integrity sha512-0sJlfyqISYhTPKDipeyxUNLzLkFJlW/OrOMhFx5GAnzVecI4rLwuXlIaBko0rJ1o+pug9GzfA8hImUreHDzyzg==
   dependencies:
     "@graphql-mesh/types" "0.49.0"
-    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-mesh/utils" "0.16.3"
     "@graphql-tools/code-file-loader" "7.1.0"
     "@graphql-tools/graphql-file-loader" "7.1.0"
-    "@graphql-tools/load" "7.3.0"
+    "@graphql-tools/load" "7.3.2"
     "@graphql-tools/schema" "8.2.0"
 
 "@graphql-mesh/transform-extend@^0.6.1":
@@ -3516,13 +3516,13 @@
     unixify "1.0.0"
     valid-url "1.0.9"
 
-"@graphql-tools/load@7.3.0":
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.3.0.tgz#dc4177bb4b7ae537c833a2fcd97ab07b6c789c65"
-  integrity sha512-ZVipT7yzOpf/DJ2sLI3xGwnULVFp/icu7RFEgDo2ZX0WHiS7EjWZ0cegxEm87+WN4fMwpiysRLzWx67VIHwKGA==
+"@graphql-tools/load@7.3.2":
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.3.2.tgz#0edd9c0b464111968bfca148457a4c97e23fc030"
+  integrity sha512-tB03MGOlgKkoP6YyzIl/saTYshuLWxQy2JebhYL6gy3XsWmSE7ae1WAL3p+G0pyfw66HaMu905omyulu1VkfXw==
   dependencies:
     "@graphql-tools/schema" "8.2.0"
-    "@graphql-tools/utils" "^8.2.0"
+    "@graphql-tools/utils" "^8.2.3"
     p-limit "3.1.0"
     tslib "~2.3.0"
 
@@ -3839,7 +3839,7 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-tools/utils@8.2.4":
+"@graphql-tools/utils@8.2.4", "@graphql-tools/utils@^8.2.3":
   version "8.2.4"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.2.4.tgz#89f92c8dc0cdb6b9f32c90e904aa90e66a2e0a58"
   integrity sha512-uB+JL7CqTKJ2Q5zXA+a2la1cA8YYPcc0RHO/3mK54hxlZa2Z5/9k9XrNfMof4LZQefTaBM7M6QWtaxGklJln4A==
