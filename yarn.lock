@@ -2315,14 +2315,14 @@
     graphql-compose-mongoose "9.5.4"
     graphql-compose-pagination "8.3.0"
 
-"@graphql-mesh/mysql@0.12.11":
-  version "0.12.11"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.12.11.tgz#2325e16e05ca3707e24675cfbcb06c38ec4110d8"
-  integrity sha512-bKtERWCxMboaJ5+NyzFVf5+DzM6jHnwj68hl3vUk+k8nZN6efHVfHyduY8mdTHit2MjCPrn/xDbOoIN+0W6QQg==
+"@graphql-mesh/mysql@0.12.12":
+  version "0.12.12"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.12.12.tgz#6d52805abdf231684e8809589df9fee2b509f0df"
+  integrity sha512-k/DNUeypetsphXse99l2hlMUVHU0Uz/01jAQX3Cbx38qF6Xg0jgR2h8Z1sZJU25weGIHb9A0fOh2dDBUAQqTjQ==
   dependencies:
-    "@graphql-mesh/store" "0.1.12"
+    "@graphql-mesh/store" "0.1.13"
     "@graphql-mesh/types" "0.49.0"
-    "@graphql-mesh/utils" "0.16.2"
+    "@graphql-mesh/utils" "0.16.3"
     graphql-compose "9.0.3"
     graphql-fields "2.0.3"
     graphql-scalars "1.10.1"
