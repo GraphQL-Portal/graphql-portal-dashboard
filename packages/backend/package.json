@@ -42,7 +42,7 @@
     "@graphql-mesh/transform-federation": "0.6.8",
     "@graphql-mesh/transform-filter-schema": "0.11.6",
     "@graphql-mesh/transform-mock": "0.10.17",
-    "@graphql-mesh/transform-naming-convention": "0.6.63",
+    "@graphql-mesh/transform-naming-convention": "0.6.66",
     "@graphql-mesh/transform-prefix": "0.7.3",
     "@graphql-mesh/transform-rename": "0.9.12",
     "@graphql-mesh/transform-resolvers-composition": "0.10.13",
