@@ -36,7 +36,7 @@
     "@graphql-mesh/thrift": "0.7.27",
     "@graphql-mesh/grpc": "0.15.16",
     "@graphql-mesh/mysql": "0.12.12",
-    "@graphql-mesh/transform-cache": "0.9.15",
+    "@graphql-mesh/transform-cache": "0.9.18",
     "@graphql-mesh/transform-encapsulate": "0.1.64",
     "@graphql-mesh/transform-extend": "0.6.32",
     "@graphql-mesh/transform-federation": "0.6.5",
