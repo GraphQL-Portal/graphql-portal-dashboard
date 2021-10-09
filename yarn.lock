@@ -2520,17 +2520,17 @@
     thrift "0.14.1"
     url-join "4.0.1"
 
-"@graphql-mesh/transform-cache@0.9.15":
-  version "0.9.15"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.9.15.tgz#b5832d7e61f7d17ac2ff05054d8eb04a6692634b"
-  integrity sha512-v67EnHykh9eaNyT7kZqTvNU5OE3Bfy+Eqw3evkf2wDeZNrrXV7b8eONVDRJ4grAvny86sJFh2vPFwLBC1lA7Ww==
+"@graphql-mesh/transform-cache@0.9.18":
+  version "0.9.18"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.9.18.tgz#277f9dd1ca4d22d79b415b792fcccedf31a7c0ce"
+  integrity sha512-IlGBYadmhATZM/qOheE4jmCq9/QUgF2APkyWtEj0vc3ON+Q4i39F83Q8ZTGuBSvzPVUvVC03C5pvE9fAsbtTXg==
   dependencies:
-    "@graphql-mesh/types" "0.49.0"
-    "@graphql-mesh/utils" "0.16.3"
+    "@graphql-mesh/types" "0.51.0"
+    "@graphql-mesh/utils" "0.17.2"
     "@graphql-tools/resolvers-composition" "6.4.0"
     "@graphql-tools/schema" "8.2.0"
-    "@graphql-tools/utils" "8.2.3"
-    date-fns "2.24.0"
+    "@graphql-tools/utils" "8.2.5"
+    date-fns "2.25.0"
 
 "@graphql-mesh/transform-cache@^0.9.0":
   version "0.9.0"
