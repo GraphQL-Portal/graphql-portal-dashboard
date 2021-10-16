@@ -2487,20 +2487,20 @@
     "@graphql-mesh/utils" "0.18.1"
     "@graphql-tools/utils" "8.3.0"
 
-"@graphql-mesh/thrift@0.7.27":
-  version "0.7.27"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.27.tgz#127faf06d1e841efbc0b6657f6f99b7e816d2887"
-  integrity sha512-TxjvQAc/dhzYyBVnlDrdAoTvIaw+7V8KI9peM0tr2ddFnwqo93rM3OADaSq4HH86wSo9etOn4/3kgo/N70/Zfg==
+"@graphql-mesh/thrift@0.7.30":
+  version "0.7.30"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.7.30.tgz#4aa4e1608f9ad291e05250d7b0381edca227d63f"
+  integrity sha512-SzEPsCIpLMsCUzwTu7oqLkVi90DZrplLEZ3HqssYfez4Pt5xsz2VyjYTowK4G1pJ/OFL2TjvatplaWMVYI87zw==
   dependencies:
     "@creditkarma/thrift-client" "0.17.2"
     "@creditkarma/thrift-parser" "1.2.0"
     "@creditkarma/thrift-server-core" "0.17.2"
-    "@graphql-mesh/store" "0.1.16"
-    "@graphql-mesh/types" "0.51.0"
-    "@graphql-mesh/utils" "0.17.2"
-    "@graphql-tools/utils" "8.2.5"
+    "@graphql-mesh/store" "0.1.18"
+    "@graphql-mesh/types" "0.53.0"
+    "@graphql-mesh/utils" "0.18.1"
+    "@graphql-tools/utils" "8.3.0"
     fetchache "0.1.1"
-    graphql-scalars "1.11.0"
+    graphql-scalars "1.12.0"
     thrift "0.15.0"
     url-join "4.0.1"
 
