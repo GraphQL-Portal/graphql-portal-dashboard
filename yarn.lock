@@ -2201,19 +2201,19 @@
     "@graphql-tools/url-loader" "6.10.1"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/grpc@0.15.16":
-  version "0.15.16"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.15.16.tgz#874eff58dec0d2810b203babbe266e5919c9a1ad"
-  integrity sha512-YeATyc+5aQJ6mTUrKjy/0rHreq8SG+Shhn/9mR1a5kk2N1+Y8R2BHsrDqsxcq3Axg4V+ZqeK/St0BoSZcdbxaQ==
+"@graphql-mesh/grpc@0.15.19":
+  version "0.15.19"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.15.19.tgz#d5e642aed4d5c6ad59dcb1f8a9f126dedf9cc995"
+  integrity sha512-5J2tPP48fXGZ/XOGRUwlIMq9dYJPc+tkyf2yPrTDmNBQ11NQ/ulMrn1Vty9GXsaWNNVTsg6EmwEqqljxf+RNng==
   dependencies:
-    "@graphql-mesh/store" "0.1.16"
-    "@graphql-mesh/types" "0.51.0"
-    "@graphql-mesh/utils" "0.17.2"
+    "@graphql-mesh/store" "0.1.18"
+    "@graphql-mesh/types" "0.53.0"
+    "@graphql-mesh/utils" "0.18.1"
     "@grpc/grpc-js" "^1.1.7"
     "@grpc/proto-loader" "0.6.5"
     globby "11.0.4"
     graphql-compose "9.0.3"
-    graphql-scalars "1.11.0"
+    graphql-scalars "1.12.0"
     grpc-reflection-js "0.1.2"
     lodash "4.17.21"
     long "4.0.0"
@@ -12324,6 +12324,13 @@ graphql-scalars@1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.11.0.tgz#e1aaa373075e66dce793e8d21c0a8694371de2fb"
   integrity sha512-DAzsuXur8mQx2vlEnpt2+ru7erD31A/htt14L8nijR71UB3PEtHCK98wd/bEitLt4ViuKlevSUSz7i+ssAxDIA==
+  dependencies:
+    tslib "~2.3.0"
+
+graphql-scalars@1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.12.0.tgz#87f93708a41a3f3af8a6f1437a1c056c8c70f27e"
+  integrity sha512-/SIT+GwEPP67x0ftOxSyZq5dZlAoK3rHKaTisAcUK2hWaTKJyE0lT0TJu2mzOMFAjxQV01pEH+w+dtMBOmPDgA==
   dependencies:
     tslib "~2.3.0"
 
