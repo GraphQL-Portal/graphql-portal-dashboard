@@ -133,11 +133,12 @@
     apollo-graphql "^0.9.3"
     lodash.xorby "^4.7.0"
 
-"@apollo/federation@0.33.0":
-  version "0.33.0"
-  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.33.0.tgz#73e3ead912844c5c99beecfa6eadd5fea9ccda32"
-  integrity sha512-Zywqb6Zv12/PVl7K/jtDgcJFghg02fqqDHyGbHBhf0+WdNvI9QqRvOY433BuZw/NYcRUbz9cPEAG5JCRB2K83w==
+"@apollo/federation@0.33.2":
+  version "0.33.2"
+  resolved "https://registry.yarnpkg.com/@apollo/federation/-/federation-0.33.2.tgz#9e83705377e60fe38524327115915b50395b379d"
+  integrity sha512-UwzLHPFXQfFPvHRugPcxVaXeWlFM3MQnkB+KmepT10VzErJPGsfFJ9dAnLSy2xlWysmI0AN95J8oLo+6fmkunA==
   dependencies:
+    "@apollo/subgraph" "^0.1.1"
     apollo-graphql "^0.9.3"
     apollo-server-types "^3.0.2"
     lodash.xorby "^4.7.0"
@@ -199,6 +200,13 @@
     chalk "^4.1.0"
     deep-equal "^2.0.5"
     pretty-format "^26.0.0"
+
+"@apollo/subgraph@^0.1.1":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.1.2.tgz#ea2e9c46a88012c22a2cd696f4e0f4b4c4608eb1"
+  integrity sha512-vrPtpayvJkLdqc/iLjhXi+W9HQ+Avnb2a8ylaZb0lsm9p0y1H5QxNDhC3SHhdYRvBnNeqgxE+OGYG1rHldMQIQ==
+  dependencies:
+    apollo-graphql "^0.9.3"
 
 "@apollographql/apollo-tools@^0.5.0", "@apollographql/apollo-tools@^0.5.1":
   version "0.5.1"
@@ -2591,17 +2599,17 @@
     "@graphql-tools/load" "6.2.8"
     "@graphql-tools/merge" "6.2.14"
 
-"@graphql-mesh/transform-federation@0.6.8":
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.6.8.tgz#ee7628246a3bf278c46572850c8cded03cb08750"
-  integrity sha512-RkV3EYl4GyBEGxEZPbtF34vCsCubFfmK/35vg4qOt3EY3pn0SHIP8ykTsBNiH9si+YXd6frExXd3Os2Boay4Dw==
+"@graphql-mesh/transform-federation@0.6.10":
+  version "0.6.10"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.6.10.tgz#ad4160cd3cd6fcb3569a84b349c1d9ea39c1fc57"
+  integrity sha512-/D0Jwc5Lq80iJR9t3GdXxjoqzW1jkfXfzCowJusaLd+EvdCW43gWBbDMzDLWPZngYN0XoEH8BgfFsznkPHdf9w==
   dependencies:
-    "@apollo/federation" "0.33.0"
-    "@graphql-mesh/types" "0.51.0"
-    "@graphql-mesh/utils" "0.17.2"
-    "@graphql-tools/delegate" "8.2.2"
+    "@apollo/federation" "0.33.2"
+    "@graphql-mesh/types" "0.53.0"
+    "@graphql-mesh/utils" "0.18.1"
+    "@graphql-tools/delegate" "8.2.3"
     "@graphql-tools/stitching-directives" "2.1.1"
-    "@graphql-tools/utils" "8.2.5"
+    "@graphql-tools/utils" "8.3.0"
     graphql-transform-federation "2.2.0"
     lodash "4.17.21"
 
