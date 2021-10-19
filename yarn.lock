@@ -2640,17 +2640,17 @@
     "@graphql-tools/wrap" "7.0.8"
     micromatch "4.0.4"
 
-"@graphql-mesh/transform-mock@0.10.17":
-  version "0.10.17"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.10.17.tgz#4ed0d01886ae9c236d81c2e6d7c69d406565e34c"
-  integrity sha512-bAn8MyfCxXc6nvar64ycywswztJ/9Onu2nnceAb5SC4zKccuXITXrbNF7nbeZsyw/c17vByEIUWyWryF3MilTA==
+"@graphql-mesh/transform-mock@0.10.20":
+  version "0.10.20"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.10.20.tgz#167c4c17bed72fc86e58e43362947c60da505381"
+  integrity sha512-iNr9AQ7mYXJ2AIWOLiKZnbBmwI3tWnC1h1jFnODvVXyE6zFoE+cCcYgltarvo9+S6R7XhDVQysEwWN2vNAZg4g==
   dependencies:
-    "@graphql-mesh/types" "0.51.0"
-    "@graphql-mesh/utils" "0.17.2"
+    "@graphql-mesh/types" "0.53.0"
+    "@graphql-mesh/utils" "0.18.1"
     "@graphql-tools/mock" "8.4.0"
-    "@graphql-tools/utils" "8.2.5"
+    "@graphql-tools/utils" "8.3.0"
     faker "5.5.3"
-    graphql-scalars "1.11.0"
+    graphql-scalars "1.12.0"
 
 "@graphql-mesh/transform-mock@^0.10.0":
   version "0.10.11"
