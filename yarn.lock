@@ -10600,12 +10600,12 @@ eslint-plugin-es@^3.0.0:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
 
-eslint-plugin-flowtype@5.10.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.10.0.tgz#7764cc63940f215bf3f0bd2d9a1293b2b9b2b4bb"
-  integrity sha512-vcz32f+7TP+kvTUyMXZmCnNujBQZDNmcqPImw8b9PZ+16w1Qdm6ryRuYZYVaG9xRqqmAPr2Cs9FAX5gN+x/bjw==
+eslint-plugin-flowtype@6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-6.1.1.tgz#3358705e9285a53e4cc1b50ec7ab753d8ae07e3b"
+  integrity sha512-5RodSeZvKh1N0kppB9dSSO0ZqB8rHjdX9BUTVQUBnEzR3QU5aQVKEUlBJE7I7U7rhbJMxe3aHPmt/jD4+5Ya6g==
   dependencies:
-    lodash "^4.17.15"
+    lodash "^4.17.21"
     string-natural-compare "^3.0.1"
 
 eslint-plugin-flowtype@^5.2.0:
