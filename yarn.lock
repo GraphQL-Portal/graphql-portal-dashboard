@@ -2083,15 +2083,6 @@
     object-inspect "1.10.3"
     tslib "^2.0.0"
 
-"@graphql-inspector/core@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@graphql-inspector/core/-/core-3.0.1.tgz#60d475469ac890a873c6c30a25e5d5edaf484577"
-  integrity sha512-Yas9XY6JXQ3p2SmVV80K4rsBw9fTkJG+o0NdRQzvXsBm1/YLwqw1be0Tk2awPYypKEhkZr5s5psf7mVVFKNPSw==
-  dependencies:
-    dependency-graph "0.11.0"
-    object-inspect "1.10.3"
-    tslib "^2.0.0"
-
 "@graphql-inspector/core@3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@graphql-inspector/core/-/core-3.0.2.tgz#715149382c6381ea91bd4a9ba0ab36899e2f4608"
@@ -2404,22 +2395,22 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.18.18":
-  version "0.18.18"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.18.18.tgz#6278ffc73a9354b511b4cd5a179b0256261514df"
-  integrity sha512-HwRfHQdZxjEdV08PvqioI+N14EecQmZxlQClsWTijJ7HhDgSJgLWUN46THX4tiZ2WXHEa/eTfvWPtne2rHE2Og==
+"@graphql-mesh/openapi@0.19.2":
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.19.2.tgz#cee63bb94daca2eacff18700412eb24a77534ab0"
+  integrity sha512-CBnOxHC2RRK8+G/DWhHWjb60UjH9uc2YR/nWtdP/ZCO7F3n4CT9IbVsko3O7T3MrUN0pK83f7+C3v3vxRd2AeQ==
   dependencies:
-    "@graphql-mesh/store" "0.1.16"
-    "@graphql-mesh/types" "0.51.0"
-    "@graphql-mesh/utils" "0.17.2"
-    "@graphql-tools/utils" "8.2.5"
+    "@graphql-mesh/store" "0.1.18"
+    "@graphql-mesh/types" "0.53.0"
+    "@graphql-mesh/utils" "0.18.1"
+    "@graphql-tools/utils" "8.3.0"
     deep-equal "2.0.5"
     form-urlencoded "6.0.4"
-    graphql-scalars "1.11.0"
+    graphql-scalars "1.12.0"
     graphql-subscriptions "1.2.1"
     json-ptr "2.2.0"
     jsonpath-plus "6.0.1"
-    openapi-diff "0.23.4"
+    openapi-diff "0.23.5"
     openapi-types "9.3.0"
     pluralize "8.0.0"
     swagger2openapi "7.0.8"
@@ -2470,15 +2461,6 @@
     "@graphql-inspector/core" "2.7.0"
     "@graphql-mesh/utils" "0.16.0"
     "@graphql-tools/utils" "8.1.2"
-
-"@graphql-mesh/store@0.1.16":
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.1.16.tgz#3ed087936676e31c2a7eb2cc7bf6d40e3557abee"
-  integrity sha512-eJfUHILIULwpCqPdLguU+vvIjUkUULk/+WJnr9IDUY/kWgSY6Oup9JRpPD8NIGj7Z8iDqjY4KTgi/chQDwsoiw==
-  dependencies:
-    "@graphql-inspector/core" "3.0.1"
-    "@graphql-mesh/utils" "0.17.2"
-    "@graphql-tools/utils" "8.2.5"
 
 "@graphql-mesh/store@0.1.18":
   version "0.1.18"
@@ -6782,7 +6764,7 @@ ajv@8.6.2:
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
-ajv@8.6.3:
+ajv@8.6.3, ajv@^8.6.0:
   version "8.6.3"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.6.3.tgz#11a66527761dc3e9a3845ea775d2d3c0414e8764"
   integrity sha512-SMJOdDP6LqTkD0Uq8qLi+gMwSt0imXLSV080qFVwJCpH9U6Mb+SUGHAXM0KNbcBPguytWyvFxcHgMLe2D2XSpw==
@@ -8827,15 +8809,10 @@ commander@^2.19.0, commander@^2.20.0, commander@^2.20.3, commander@^2.7.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
-  integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
-
-commander@^6.1.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
-  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
+commander@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
+  integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
 commander@^8.1.0:
   version "8.1.0"
@@ -12371,13 +12348,6 @@ graphql-scalars@1.10.0:
   dependencies:
     tslib "~2.2.0"
 
-graphql-scalars@1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.11.0.tgz#e1aaa373075e66dce793e8d21c0a8694371de2fb"
-  integrity sha512-DAzsuXur8mQx2vlEnpt2+ru7erD31A/htt14L8nijR71UB3PEtHCK98wd/bEitLt4ViuKlevSUSz7i+ssAxDIA==
-  dependencies:
-    tslib "~2.3.0"
-
 graphql-scalars@1.12.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.12.0.tgz#87f93708a41a3f3af8a6f1437a1c056c8c70f27e"
@@ -14834,14 +14804,14 @@ js-yaml@4.0.0:
   dependencies:
     argparse "^2.0.1"
 
-js-yaml@4.1.0, js-yaml@^4.1.0:
+js-yaml@4.1.0, js-yaml@^4.0.0, js-yaml@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
   integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
   dependencies:
     argparse "^2.0.1"
 
-js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.14.0, js-yaml@^3.6.1:
+js-yaml@^3.13.0, js-yaml@^3.13.1, js-yaml@^3.6.1:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
   integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
@@ -14928,16 +14898,16 @@ json-ptr@2.2.0:
   dependencies:
     tslib "^2.2.0"
 
-json-schema-diff@^0.16.0:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/json-schema-diff/-/json-schema-diff-0.16.0.tgz#ee703abe7d23983244c0cfd7f11daca60fd31454"
-  integrity sha512-jNpsidxig8D9WdK1O4hMkcqtnNiGgtk9gxKQfhGGJT9EhOVKLR6YZX+Ft81nz1Rp5FXS4XNwgtGUMUICx3cBYA==
+json-schema-diff@^0.17.1:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/json-schema-diff/-/json-schema-diff-0.17.1.tgz#5e0992f12aa86dbec0528b9104c7d02858ce5092"
+  integrity sha512-bBflcH+NRM/bKbw2G0WIh0ltCZb3PCyruTdopx3hZaXSHKM1+F7ILfDzyl9CxbLAS40/6EhkBYQUMFBefhBkgg==
   dependencies:
-    ajv "^6.12.3"
-    commander "^5.0.0"
+    ajv "^8.6.0"
+    commander "^7.2.0"
     json-schema-ref-parser "^9.0.6"
     json-schema-spec-types "^0.1.2"
-    lodash "^4.17.19"
+    lodash "^4.17.20"
     verror "^1.10.0"
 
 json-schema-ref-parser@^9.0.6:
@@ -17055,14 +17025,14 @@ open@7.4.2, open@^7.0.2, open@^7.4.2:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-openapi-diff@0.23.4:
-  version "0.23.4"
-  resolved "https://registry.yarnpkg.com/openapi-diff/-/openapi-diff-0.23.4.tgz#194f0a030c48319262f9bda1fa37a7b589c85c6b"
-  integrity sha512-vDyQeqWZW2bG16BdddwabYaoGaY8PmUantSCqf46BzKAuG8d/5OguPi82NRHT2ZCSVXZCiZh/H7xA3GChxgDnA==
+openapi-diff@0.23.5:
+  version "0.23.5"
+  resolved "https://registry.yarnpkg.com/openapi-diff/-/openapi-diff-0.23.5.tgz#a4fa4505bbe5686a9a9040e7ad799f3390909b27"
+  integrity sha512-dXK5NhB9nY33X4S4OLHIbT/yJUwD6sAfjotFvGjXR5x76Vi6Jcq0adNnPg0GmB9Mtc4CY0oH3ut5lHVbeKD18w==
   dependencies:
-    commander "^6.1.0"
-    js-yaml "^3.14.0"
-    json-schema-diff "^0.16.0"
+    commander "^8.2.0"
+    js-yaml "^4.0.0"
+    json-schema-diff "^0.17.1"
     jsonpointer "^4.1.0"
     lodash "^4.17.20"
     openapi3-ts "^2.0.0"
