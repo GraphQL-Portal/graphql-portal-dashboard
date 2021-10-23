@@ -2395,17 +2395,17 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.19.2":
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.19.2.tgz#cee63bb94daca2eacff18700412eb24a77534ab0"
-  integrity sha512-CBnOxHC2RRK8+G/DWhHWjb60UjH9uc2YR/nWtdP/ZCO7F3n4CT9IbVsko3O7T3MrUN0pK83f7+C3v3vxRd2AeQ==
+"@graphql-mesh/openapi@0.19.3":
+  version "0.19.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.19.3.tgz#7c81894993e1cd3c89cd478d70c2be79c6919ef8"
+  integrity sha512-RGwfEyk1FKQ2t5YvskoOkqeWuWQ0JalltXuIx/aXD/Yo2flDXzqBUGUxVdyZUl+nX7cEBLMum4HfhpV01XzWuA==
   dependencies:
-    "@graphql-mesh/store" "0.1.18"
+    "@graphql-mesh/store" "0.1.19"
     "@graphql-mesh/types" "0.53.0"
-    "@graphql-mesh/utils" "0.18.1"
-    "@graphql-tools/utils" "8.3.0"
+    "@graphql-mesh/utils" "0.19.0"
+    "@graphql-tools/utils" "8.5.0"
     deep-equal "2.0.5"
-    form-urlencoded "6.0.4"
+    form-urlencoded "6.0.5"
     graphql-scalars "1.12.0"
     graphql-subscriptions "1.2.1"
     json-ptr "2.2.0"
@@ -3815,15 +3815,6 @@
   dependencies:
     "@graphql-tools/delegate" "^8.1.0"
     "@graphql-tools/utils" "^8.1.1"
-    tslib "~2.3.0"
-
-"@graphql-tools/stitching-directives@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/stitching-directives/-/stitching-directives-2.1.1.tgz#7c5d40bbdf0ebd114408e36b6074446361898302"
-  integrity sha512-RgnijzFRKORYIcqzvoO+TA4sXRTgGb7AuOWjVl5pyqu/JRfQZ3zThIzq/+20XyjtPxfZloObOx+6L4HnPKk9WA==
-  dependencies:
-    "@graphql-tools/delegate" "^8.2.0"
-    "@graphql-tools/utils" "^8.2.0"
     tslib "~2.3.0"
 
 "@graphql-tools/stitching-directives@2.2.0":
@@ -11768,6 +11759,11 @@ form-urlencoded@6.0.4:
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-6.0.4.tgz#62305ea704bb86e1c8b946d1aae5a34e02b6634f"
   integrity sha512-39GnqmnZkThJBXiKhBCrBGPKiwFHDgi3lcGO3SfURjXoz9x8quxNRTiIWViYN+QzQXxxl/uyKm+i+0PCj7Aqbw==
+
+form-urlencoded@6.0.5:
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/form-urlencoded/-/form-urlencoded-6.0.5.tgz#61263c5cb6806523d0c6124318a9bcb612b7742b"
+  integrity sha512-7M7IhZNujsHqjYovM1WTSqcAVOqfvgF8acu6ok1ct1a00l6LVrmagJKkOdRUH/PYKEDOZ7ZAw/Mtq1/Q8CuRTQ==
 
 formidable@^1.2.2:
   version "1.2.2"
