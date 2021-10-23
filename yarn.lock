@@ -2195,18 +2195,18 @@
     "@graphql-tools/url-loader" "6.10.1"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/grpc@0.15.19":
-  version "0.15.19"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.15.19.tgz#d5e642aed4d5c6ad59dcb1f8a9f126dedf9cc995"
-  integrity sha512-5J2tPP48fXGZ/XOGRUwlIMq9dYJPc+tkyf2yPrTDmNBQ11NQ/ulMrn1Vty9GXsaWNNVTsg6EmwEqqljxf+RNng==
+"@graphql-mesh/grpc@0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/grpc/-/grpc-0.16.1.tgz#ec9decf65e1dfcf6f629b0cf77952df7ca3e3b8e"
+  integrity sha512-8sL0zL8PrspOzMu+4neWYQy9J1gAgge7Rshv9jgSAwQDawGpZ5fxjMgGXC0DGmzx54ZbxPDeRWrBz4qaz0Gmog==
   dependencies:
-    "@graphql-mesh/store" "0.1.18"
+    "@graphql-mesh/store" "0.1.19"
     "@graphql-mesh/types" "0.53.0"
-    "@graphql-mesh/utils" "0.18.1"
+    "@graphql-mesh/utils" "0.19.0"
     "@grpc/grpc-js" "^1.1.7"
-    "@grpc/proto-loader" "0.6.5"
+    "@grpc/proto-loader" "0.6.6"
     globby "11.0.4"
-    graphql-compose "9.0.3"
+    graphql-compose "9.0.4"
     graphql-scalars "1.12.0"
     grpc-reflection-js "0.1.2"
     lodash "4.17.21"
@@ -4042,10 +4042,10 @@
     protobufjs "^6.10.0"
     yargs "^16.1.1"
 
-"@grpc/proto-loader@0.6.5":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@grpc/proto-loader/-/proto-loader-0.6.5.tgz#f23c7cb3e7076a8702f40c2b6678f06fb9950a55"
-  integrity sha512-GZdzyVQI1Bln/kCzIYgTKu+rQJ5dno0gVrfmLe4jqQu7T2e7svSwJzpCBqVU5hhBSJP3peuPjOMWsj5GR61YmQ==
+"@grpc/proto-loader@0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@grpc/proto-loader/-/proto-loader-0.6.6.tgz#d8e51ea808ec5fa54d9defbecbf859336fb2da71"
+  integrity sha512-cdMaPZ8AiFz6ua6PUbP+LKbhwJbFXnrQ/mlnKGUyzDUZ3wp7vPLksnmLCBX6SHgSmjX7CbNVNLFYD5GmmjO4GQ==
   dependencies:
     "@types/long" "^4.0.1"
     lodash.camelcase "^4.3.0"
@@ -12230,15 +12230,6 @@ graphql-compose@9.0.2:
     graphql-type-json "0.3.2"
     object-path "0.11.5"
 
-graphql-compose@9.0.3:
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/graphql-compose/-/graphql-compose-9.0.3.tgz#57aeafb8f663f3769cb3509048dee5c573ba6369"
-  integrity sha512-kul0p/roHLycru4iHxfWCi4nWUi3Ea4HNwlwDHEpfMbAVsJEQS1tq02Ne1JoDCg/9ADFOJLo3Sf/07C5uupUYw==
-  dependencies:
-    "@types/object-path" "0.11.1"
-    graphql-type-json "0.3.2"
-    object-path "0.11.7"
-
 graphql-compose@9.0.4:
   version "9.0.4"
   resolved "https://registry.yarnpkg.com/graphql-compose/-/graphql-compose-9.0.4.tgz#b4b584cbbdf7df123fe3d7e3ee913e1918c8ecb7"
@@ -16951,15 +16942,15 @@ object-path@0.11.5, object-path@^0.11.5:
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.5.tgz#d4e3cf19601a5140a55a16ad712019a9c50b577a"
   integrity sha512-jgSbThcoR/s+XumvGMTMf81QVBmah+/Q7K7YduKeKVWL7N111unR2d6pZZarSk6kY/caeNxUDyxOvMWyzoU2eg==
 
-object-path@0.11.7, object-path@^0.11.4:
-  version "0.11.7"
-  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.7.tgz#5f211161f34bb395e4b13a5f565b79d933b6f65d"
-  integrity sha512-T4evaK9VfGGQskXBDILcn6F90ZD+WO3OwRFFQ2rmZdUH4vQeDBpiolTpVlPY2yj5xSepyILTjDyM6UvbbdHMZw==
-
 object-path@0.11.8:
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.8.tgz#ed002c02bbdd0070b78a27455e8ae01fc14d4742"
   integrity sha512-YJjNZrlXJFM42wTBn6zgOJVar9KFJvzx6sTWDte8sWZF//cnjl0BxHNpfZx+ZffXX63A9q0b1zsFiBX4g4X5KA==
+
+object-path@^0.11.4:
+  version "0.11.7"
+  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.7.tgz#5f211161f34bb395e4b13a5f565b79d933b6f65d"
+  integrity sha512-T4evaK9VfGGQskXBDILcn6F90ZD+WO3OwRFFQ2rmZdUH4vQeDBpiolTpVlPY2yj5xSepyILTjDyM6UvbbdHMZw==
 
 object-visit@^1.0.0:
   version "1.0.1"
