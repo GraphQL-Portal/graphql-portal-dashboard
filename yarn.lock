@@ -2749,16 +2749,16 @@
     "@graphql-tools/resolvers-composition" "6.3.5"
     "@graphql-tools/schema" "8.1.2"
 
-"@graphql-mesh/transform-snapshot@0.10.19":
-  version "0.10.19"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.19.tgz#87fd15378ef3042feb61b22515054d83b11f184f"
-  integrity sha512-uqCRnRs3ceGpmHSam9CZhNNGhD/t+F2qMGF683XfVysWhcGhPk6wQXrtdlkcrsAsrBgisdD5/FD+UoBSpY0naA==
+"@graphql-mesh/transform-snapshot@0.10.20":
+  version "0.10.20"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.10.20.tgz#b7e525f13bfe94b83546071c1694adee730012a1"
+  integrity sha512-8NdgbAVV+Z8jjhGjS+Nm54S6ubGmwwwLV4ylIVQtwBXQ/0f1jccQqA65knpH/iQqZLA6u1yjohZxMaq1UF6/nA==
   dependencies:
     "@graphql-mesh/types" "0.53.0"
-    "@graphql-mesh/utils" "0.18.1"
+    "@graphql-mesh/utils" "0.19.0"
     "@graphql-tools/resolvers-composition" "6.4.0"
-    "@graphql-tools/schema" "8.2.0"
-    "@graphql-tools/utils" "8.3.0"
+    "@graphql-tools/schema" "8.3.0"
+    "@graphql-tools/utils" "8.5.0"
 
 "@graphql-mesh/transform-snapshot@^0.10.0":
   version "0.10.0"
@@ -3785,7 +3785,7 @@
     tslib "~2.3.0"
     value-or-promise "1.0.10"
 
-"@graphql-tools/schema@^8.3.0":
+"@graphql-tools/schema@8.3.0", "@graphql-tools/schema@^8.3.0":
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.3.0.tgz#ddf4297859c6d7ac1ebbbd91460260ed424115db"
   integrity sha512-OJD4Q1Xa3sffRiHzy0sskZz9ZWeqaujINfoim4CTk5Y9es1LS+WnKi25wVhmL2SGzzmKuAv7oDn+dpQAlM+Gfw==
@@ -3815,15 +3815,6 @@
   dependencies:
     "@graphql-tools/delegate" "^8.1.0"
     "@graphql-tools/utils" "^8.1.1"
-    tslib "~2.3.0"
-
-"@graphql-tools/stitching-directives@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/stitching-directives/-/stitching-directives-2.1.1.tgz#7c5d40bbdf0ebd114408e36b6074446361898302"
-  integrity sha512-RgnijzFRKORYIcqzvoO+TA4sXRTgGb7AuOWjVl5pyqu/JRfQZ3zThIzq/+20XyjtPxfZloObOx+6L4HnPKk9WA==
-  dependencies:
-    "@graphql-tools/delegate" "^8.2.0"
-    "@graphql-tools/utils" "^8.2.0"
     tslib "~2.3.0"
 
 "@graphql-tools/stitching-directives@2.2.0":
