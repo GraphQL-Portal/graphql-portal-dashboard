@@ -2546,17 +2546,17 @@
     "@graphql-tools/utils" "7.10.0"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/transform-extend@0.6.34":
-  version "0.6.34"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-extend/-/transform-extend-0.6.34.tgz#f24cda495198d9fe743bd82430f6f26a283fefbf"
-  integrity sha512-1ULHGM7NZQDPU782e+ic3cq6hhk79l98QwMqK078XW8UZ5dEGfR3Y0IWu0eN+b3RjxJNzFueFrfljzSw9muAuw==
+"@graphql-mesh/transform-extend@0.6.35":
+  version "0.6.35"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-extend/-/transform-extend-0.6.35.tgz#32fe80546aea59544864e1cb365453577119192a"
+  integrity sha512-tjNzDTHBTHmNxoCEAVF08o/xL/9fOt/4NG2eiyFPjUFVD96VGvISlife4GxU0S65YV+2LI8WHeyO6RILjp81Sw==
   dependencies:
     "@graphql-mesh/types" "0.53.0"
-    "@graphql-mesh/utils" "0.18.1"
+    "@graphql-mesh/utils" "0.19.0"
     "@graphql-tools/code-file-loader" "7.2.1"
     "@graphql-tools/graphql-file-loader" "7.3.1"
-    "@graphql-tools/load" "7.3.2"
-    "@graphql-tools/schema" "8.2.0"
+    "@graphql-tools/load" "7.4.0"
+    "@graphql-tools/schema" "8.3.0"
 
 "@graphql-mesh/transform-extend@^0.6.1":
   version "0.6.15"
@@ -2893,29 +2893,6 @@
     fetchache "0.1.1"
     flatstr "1.0.12"
     graphql-jit "0.5.2"
-    graphql-subscriptions "1.2.1"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
-    object-hash "2.2.0"
-    tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.18.1":
-  version "0.18.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.18.1.tgz#93973466648ab977bff7882e50e0f53eee8fc937"
-  integrity sha512-J3pJ9jFSVYBQkb+6dnPCYYqPy8MR6CgjjBsDPskz5LU08vtkba7UmMav3d90rAnzgJiqDGdgr7GCljK7CNw6JA==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.53.0"
-    "@graphql-tools/delegate" "8.2.3"
-    "@graphql-tools/utils" "8.3.0"
-    "@graphql-typed-document-node/core" "3.1.0"
-    chalk "4.1.2"
-    cross-fetch "3.1.4"
-    date-fns "2.25.0"
-    fetchache "0.1.1"
-    flatstr "1.0.12"
-    graphql-jit "0.6.0"
     graphql-subscriptions "1.2.1"
     is-url "1.2.4"
     js-yaml "4.1.0"
@@ -3576,13 +3553,13 @@
     unixify "1.0.0"
     valid-url "1.0.9"
 
-"@graphql-tools/load@7.3.2":
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.3.2.tgz#0edd9c0b464111968bfca148457a4c97e23fc030"
-  integrity sha512-tB03MGOlgKkoP6YyzIl/saTYshuLWxQy2JebhYL6gy3XsWmSE7ae1WAL3p+G0pyfw66HaMu905omyulu1VkfXw==
+"@graphql-tools/load@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/load/-/load-7.4.0.tgz#259e2b0b5efe1b7d1834ca462ff22785a42e5c7e"
+  integrity sha512-f1RpBa/TIHIRxzcmL+pRj+021P8lx1Tu0gQ/6tzEHMlvh8AhPchXlOiASWBWDVo0J7+fSL+KQrlVORQ7VVMT0w==
   dependencies:
-    "@graphql-tools/schema" "8.2.0"
-    "@graphql-tools/utils" "^8.2.3"
+    "@graphql-tools/schema" "8.3.0"
+    "@graphql-tools/utils" "^8.4.0"
     p-limit "3.1.0"
     tslib "~2.3.0"
 
