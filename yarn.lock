@@ -2698,16 +2698,16 @@
     "@graphql-tools/utils" "7.10.0"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/transform-rename@0.9.17":
-  version "0.9.17"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-rename/-/transform-rename-0.9.17.tgz#2f340d5f7d9842040112d3d67ed98bc9d3ac2d8a"
-  integrity sha512-jnW6RWN2GyvBXqgAClhCQjk35byg/Yb9+rUuFXcq4wEIiJFDMuiq7MgZ02oKEbMdXwxhhmsk6h5lysI8AcozJg==
+"@graphql-mesh/transform-rename@0.9.18":
+  version "0.9.18"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-rename/-/transform-rename-0.9.18.tgz#93f394228029487bfbfb45128bd446df67ec40f5"
+  integrity sha512-1mp/XDnDA881Emvx4d0IJd+Q6TlCFVNm1fczD92KPNIe8K6rncmIq1Zal1wdAl7km17WLrIBy87CK/CFivv7YA==
   dependencies:
     "@graphql-mesh/types" "0.53.0"
-    "@graphql-mesh/utils" "0.18.1"
-    "@graphql-tools/delegate" "8.2.3"
-    "@graphql-tools/utils" "8.3.0"
-    "@graphql-tools/wrap" "8.1.1"
+    "@graphql-mesh/utils" "0.19.0"
+    "@graphql-tools/delegate" "8.4.0"
+    "@graphql-tools/utils" "8.5.0"
+    "@graphql-tools/wrap" "8.3.0"
 
 "@graphql-mesh/transform-rename@^0.8.5":
   version "0.8.19"
@@ -3415,7 +3415,7 @@
     tslib "~2.3.0"
     value-or-promise "1.0.11"
 
-"@graphql-tools/delegate@8.4.0", "@graphql-tools/delegate@^8.3.0":
+"@graphql-tools/delegate@8.4.0", "@graphql-tools/delegate@^8.3.0", "@graphql-tools/delegate@^8.4.0":
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/delegate/-/delegate-8.4.0.tgz#630c7e30b8b0f4039bc453082d6f77501488a9b6"
   integrity sha512-FtMN1+q6aNahg0AGCEndUpfdOZ6O7OnIsLTauMPEG/vrwoIlMb8tn+qBRlGrWWxyUPKBSD31T74EWM3Tq/bBaQ==
@@ -4013,6 +4013,17 @@
     "@graphql-tools/utils" "^8.2.0"
     tslib "~2.3.0"
     value-or-promise "1.0.10"
+
+"@graphql-tools/wrap@8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.3.0.tgz#ae40302965176614adde80fd1e3ea93b87d3219d"
+  integrity sha512-DB9Rc/GHAAPizarlCAeo7KzZLN0VaMB+9XG6Pm8IfoNNYHq1I6czlzskHGd+U5nkXUhkuHFlV2QnersxhyJkHA==
+  dependencies:
+    "@graphql-tools/delegate" "^8.4.0"
+    "@graphql-tools/schema" "^8.3.0"
+    "@graphql-tools/utils" "^8.5.0"
+    tslib "~2.3.0"
+    value-or-promise "1.0.11"
 
 "@graphql-tools/wrap@^8.1.0":
   version "8.1.0"
