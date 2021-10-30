@@ -2247,16 +2247,16 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.21.6":
-  version "0.21.6"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.21.6.tgz#5326a1522ee91bfae494bffa08eee1e5e3663ee2"
-  integrity sha512-go5HGxfQTdJVpqyQ6c4oJoc76KH4V/fY0WdlTGalOYRjqyHhLpMMq5WIaS3TwKB67kr/x091oHfQSL8J+sQWeQ==
+"@graphql-mesh/json-schema@0.21.7":
+  version "0.21.7"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.21.7.tgz#7d275a7f1feddd0362debabe2e2969d1d7c8b27a"
+  integrity sha512-bwnu4dobaNBRZgv5YO0SrdFHAwyVuowSqRtug3pH08VfIsRQQVl3SXXVeoF6IOfuGPno373frA/x3HM0xlf4uw==
   dependencies:
     "@graphql-mesh/store" "0.1.19"
     "@graphql-mesh/types" "0.53.0"
     "@graphql-mesh/utils" "0.19.0"
     "@graphql-tools/utils" "8.5.0"
-    "@omnigraph/json-schema" "0.1.6"
+    "@omnigraph/json-schema" "0.1.7"
     graphql-compose "9.0.4"
     json-machete "0.0.21"
 
@@ -4768,10 +4768,10 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@omnigraph/json-schema@0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.1.6.tgz#f2e99f37f1d4a3973a08360d05a90a13ab231a55"
-  integrity sha512-0Q+Pw35jq4tPYOtD2Wmy7ui7gwKDYeuVA1vAOqv5nmw9gjhEJ0wblzrBOHJ7aXI54cvvQHH6FBgZc30BQJuQGA==
+"@omnigraph/json-schema@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.1.7.tgz#054b8fb02557253377410032a9dbf3863a803240"
+  integrity sha512-60IDiLHhX3oPANKxUIQXNewkkTkzL9nmNxmNKX7RtVxUfwe7LhA/gouMknltTJKsTgqa17eL0cqM1sdtMSlWGg==
   dependencies:
     "@graphql-mesh/types" "0.53.0"
     "@graphql-mesh/utils" "0.19.0"
