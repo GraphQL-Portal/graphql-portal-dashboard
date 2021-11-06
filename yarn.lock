@@ -2506,16 +2506,16 @@
     thrift "0.14.1"
     url-join "4.0.1"
 
-"@graphql-mesh/transform-cache@0.9.21":
-  version "0.9.21"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.9.21.tgz#dccd325ae61e78c09eefd0d42fb001f9412b16c2"
-  integrity sha512-GuqfFF0e/XdW2KXcWXnV1AzQPDlF5v6nEQhLnZaMNGxXKGG8wGMHQN3Eus/upCK9LacgCllGijuYZXwB6LWSSQ==
+"@graphql-mesh/transform-cache@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.10.0.tgz#7173adf70d9383bb1db9f56efa811d9111ef7ba5"
+  integrity sha512-WGjODX+Sx3bLEUGvL5sJEgw+cvF0Ni3kYtzAd9cZtLCqVrLfH6mx8JQQVBDIsdSD/htStpJNaHDbii9blxeIBg==
   dependencies:
-    "@graphql-mesh/types" "0.53.0"
-    "@graphql-mesh/utils" "0.19.0"
-    "@graphql-tools/resolvers-composition" "6.4.0"
-    "@graphql-tools/schema" "8.3.0"
-    "@graphql-tools/utils" "8.5.0"
+    "@graphql-mesh/types" "0.54.0"
+    "@graphql-mesh/utils" "0.20.0"
+    "@graphql-tools/resolvers-composition" "6.4.1"
+    "@graphql-tools/schema" "8.3.1"
+    "@graphql-tools/utils" "8.5.2"
     date-fns "2.25.0"
 
 "@graphql-mesh/transform-cache@^0.9.0":
@@ -3777,6 +3777,16 @@
     micromatch "^4.0.4"
     tslib "~2.3.0"
 
+"@graphql-tools/resolvers-composition@6.4.1":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/resolvers-composition/-/resolvers-composition-6.4.1.tgz#4704b2933851bf7b9a3ae4004424b23d073018a7"
+  integrity sha512-2NRcrs8l4X8nxCjZ9Tgxas/np+FpYH01JpHNkk6y76vQyKsF1oKTtx7oDDS9qbp6IXaA2aojrGT6lkD6mYwXig==
+  dependencies:
+    "@graphql-tools/utils" "^8.5.1"
+    lodash "4.17.21"
+    micromatch "^4.0.4"
+    tslib "~2.3.0"
+
 "@graphql-tools/schema@7.1.5", "@graphql-tools/schema@^7.0.0", "@graphql-tools/schema@^7.1.4", "@graphql-tools/schema@^7.1.5":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-7.1.5.tgz#07b24e52b182e736a6b77c829fc48b84d89aa711"
@@ -3816,7 +3826,7 @@
     tslib "~2.3.0"
     value-or-promise "1.0.11"
 
-"@graphql-tools/schema@^8.3.1":
+"@graphql-tools/schema@8.3.1", "@graphql-tools/schema@^8.3.1":
   version "8.3.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.3.1.tgz#1ee9da494d2da457643b3c93502b94c3c4b68c74"
   integrity sha512-3R0AJFe715p4GwF067G5i0KCr/XIdvSfDLvTLEiTDQ8V/hwbOHEKHKWlEBHGRQwkG5lwFQlW1aOn7VnlPERnWQ==
