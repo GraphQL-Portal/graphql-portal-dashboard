@@ -37,7 +37,7 @@
     "reactour": "1.18.6",
     "recharts": "2.1.6",
     "styled-components": "5.3.3",
-    "subscriptions-transport-ws": "0.9.19",
+    "subscriptions-transport-ws": "0.11.0",
     "typescript": "4.4.4",
     "validator": "13.7.0",
     "vest": "3.2.8",
