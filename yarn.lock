@@ -2300,17 +2300,17 @@
     graphql-compose-mongoose "9.5.4"
     graphql-compose-pagination "8.3.0"
 
-"@graphql-mesh/mysql@0.13.4":
-  version "0.13.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.13.4.tgz#07e2280cd60db5cfe0222920872a786ae4707d78"
-  integrity sha512-qAFCS9kIep9WIbZa1IuWLqTjRZdHDpJDG9/F1UuazFcXZ0arwioCa2c7oUmr8HCrwxOIM0Dl0oZH3qCRwlQpkw==
+"@graphql-mesh/mysql@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/mysql/-/mysql-0.14.0.tgz#f0d5afda0a1251377e547a4a0ac90d226fe0b3b7"
+  integrity sha512-VVdx9GbrKjW4uyIs5YnFIWvKbcQRh/TJYg1JTB3k/Q5qMaYHHcQ95eqfp4RPSVQ9dD1c7c4aVIT+Bt8dcvX/MQ==
   dependencies:
-    "@graphql-mesh/store" "0.1.19"
-    "@graphql-mesh/types" "0.53.0"
-    "@graphql-mesh/utils" "0.19.0"
+    "@graphql-mesh/store" "0.2.0"
+    "@graphql-mesh/types" "0.54.0"
+    "@graphql-mesh/utils" "0.20.0"
     graphql-compose "9.0.4"
     graphql-fields "2.0.3"
-    graphql-scalars "1.12.0"
+    graphql-scalars "1.13.1"
     mysql "2.18.1"
     mysql-utilities "1.1.3"
 
