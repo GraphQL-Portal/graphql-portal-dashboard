@@ -2488,14 +2488,14 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.21.0":
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.21.0.tgz#dcf61a6dd5417d341e737adacbbf3275389875fa"
-  integrity sha512-X9kgsmalP+uAfIZncrOl6EKjiLgThrbyUJK3DEhP5Tic/jaAEvIwoayxUrFCRyi314ur2tEJuSfjRdnPCPw4pA==
+"@graphql-mesh/openapi@0.21.1":
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.21.1.tgz#d67b8d346f197d30322153abc9a95256aeb0f819"
+  integrity sha512-AhCaa55cK7w/hd+NItOLJQ5Grhid3UtBKgfZGR9XBrSPePx7XZISok5/VmVGklSpwCmsMXDEEiwn7SlvCXsxMg==
   dependencies:
-    "@graphql-mesh/store" "0.2.2"
-    "@graphql-mesh/types" "0.54.1"
-    "@graphql-mesh/utils" "0.21.0"
+    "@graphql-mesh/store" "0.2.3"
+    "@graphql-mesh/types" "0.55.0"
+    "@graphql-mesh/utils" "0.21.1"
     "@graphql-tools/utils" "8.5.3"
     deep-equal "2.0.5"
     form-urlencoded "6.0.5"
