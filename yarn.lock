@@ -12534,10 +12534,10 @@ graphql-query-complexity@^0.7.0:
   dependencies:
     lodash.get "^4.4.2"
 
-graphql-redis-subscriptions@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/graphql-redis-subscriptions/-/graphql-redis-subscriptions-2.4.0.tgz#a18e3bfe2351f1a74ba9cfa5db40fdc4981a08fb"
-  integrity sha512-McIJK9R8sVbjTlkkaFMRAG5dOF6CPEPO+8PcyHlKARd64d4h4bwl0q/DnR2RA494ZrfykEvFWAnwuIM45470Vw==
+graphql-redis-subscriptions@2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/graphql-redis-subscriptions/-/graphql-redis-subscriptions-2.4.2.tgz#338e77bd180cc5bfc810699ff5f0f5fdc380f90d"
+  integrity sha512-zMd1G6uZcEvqHZ6PsQ63BfRtw5Bg4cccql1pfkEQsj1vXVWe4p+o8DqNfd9DDUFXIqhHpqkSeN/49BlIwud4Ag==
   dependencies:
     iterall "^1.3.0"
   optionalDependencies:
