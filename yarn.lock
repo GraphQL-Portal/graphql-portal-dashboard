@@ -2749,17 +2749,17 @@
     "@graphql-tools/wrap" "7.0.8"
     micromatch "4.0.4"
 
-"@graphql-mesh/transform-mock@0.11.3":
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.11.3.tgz#77075e7f8a31fee83476e8b66c7e41be85cbee69"
-  integrity sha512-sf6YzrZ7rPhZt8FRlBNXXTU5MAugumm1zoAIj6jFgHmzfBszHg7y0FQQ1jPEbB/ErVMEHfpoYxoyqT7o0GOa8w==
+"@graphql-mesh/transform-mock@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.12.0.tgz#b7041d57c6c040cf6d26c7a84c877af4e9d8d287"
+  integrity sha512-SUquioSMg1Q1mZwWw/Ep80Ny5jioZCucjcoPYupQxh78kkeXk917QoHTYTdRgV1KrERaR2NJLTZn8lnY1ibRqQ==
   dependencies:
-    "@graphql-mesh/types" "0.55.0"
-    "@graphql-mesh/utils" "0.21.1"
-    "@graphql-tools/mock" "8.4.2"
+    "@graphql-mesh/types" "0.56.0"
+    "@graphql-mesh/utils" "0.22.0"
+    "@graphql-tools/mock" "8.4.3"
     "@graphql-tools/utils" "8.5.3"
     faker "5.5.3"
-    graphql-scalars "1.13.1"
+    graphql-scalars "1.13.6"
 
 "@graphql-mesh/transform-mock@^0.10.0":
   version "0.10.11"
@@ -3789,10 +3789,10 @@
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
 
-"@graphql-tools/mock@8.4.2":
-  version "8.4.2"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.4.2.tgz#301b8baf47588bf1cd87de4ad2130eb9f406781b"
-  integrity sha512-2v4v99mWUB1by+6Bk01PoJCUVnYoNSOT0E5VvFRf5oMwJPaRKLAbC+IjZaRoen1tWpVrg+3Coub7co8jyhvm/Q==
+"@graphql-tools/mock@8.4.3":
+  version "8.4.3"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.4.3.tgz#9d4838ba583969ae70c187e5cdb5cf286e266cd7"
+  integrity sha512-jj7obzDz4FAfmIGSh1Mo6cUs9d8MSaN6TH/iju3Qyuz6CZ6NLuJrWOg50ysEUgkT4Y/Aey8SlWOf/U15Z7qWYw==
   dependencies:
     "@graphql-tools/schema" "^8.3.1"
     "@graphql-tools/utils" "^8.5.1"
@@ -12549,13 +12549,6 @@ graphql-scalars@1.10.0:
   integrity sha512-LONlj8FfhA2iGpkZJWf5e4PVAHXxnZEHSOEvowLYvNXl/TNnhIck8VmE+lren/aa6GKrG+lZufo5lgnyjxcF6g==
   dependencies:
     tslib "~2.2.0"
-
-graphql-scalars@1.13.1:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.13.1.tgz#564828af796d7a31e1895f8bbb912bad70c977d1"
-  integrity sha512-FGMQqY+X/AQ+WV77eSNspZqU9q/Q4mIZMeo8xsLWGgbOpIHlxWuWq3fVzbgo2XKOC+wXT1CJupY1PGU2PtzFCg==
-  dependencies:
-    tslib "~2.3.0"
 
 graphql-scalars@1.13.6:
   version "1.13.6"
