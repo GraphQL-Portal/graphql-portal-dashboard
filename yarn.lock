@@ -2773,13 +2773,13 @@
     faker "5.5.3"
     graphql-scalars "1.10.0"
 
-"@graphql-mesh/transform-naming-convention@0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.7.3.tgz#a27f40b51bd21e0c316bc224664b4d189354be95"
-  integrity sha512-2jMuD4CvTiGIOehKdeHjzG+YlH7W8cZDxYHWwwc5eHlF97jykqlhpHg/2b7qdQuOxnSkIdVTBH9UCwXFLlROAg==
+"@graphql-mesh/transform-naming-convention@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.8.0.tgz#b959b3c3bd74f58c24528a07351af30799ea0e87"
+  integrity sha512-+0wqI1Q2SX2ZRHdyOkV8fqeb6bovV5MpVkMFUtUi0sEfFFYNteLcsnRtgCkGkW1lD3S61bw4nXTcCnY4DRWYwg==
   dependencies:
-    "@graphql-mesh/types" "0.55.0"
-    "@graphql-mesh/utils" "0.21.1"
+    "@graphql-mesh/types" "0.56.0"
+    "@graphql-mesh/utils" "0.22.0"
     "@graphql-tools/delegate" "8.4.2"
     "@graphql-tools/utils" "8.5.3"
     "@graphql-tools/wrap" "8.3.2"
