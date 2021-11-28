@@ -2860,13 +2860,13 @@
     "@graphql-tools/utils" "7.10.0"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/transform-resolvers-composition@0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-resolvers-composition/-/transform-resolvers-composition-0.12.0.tgz#974689dcb615bdeacfff40cefaba5578d295dc3b"
-  integrity sha512-JL7hVo0ZIXM2U1AQ/Xhiv4e9nVtXKe4nPkAbMYWVhkE6t0WhYYT+es3yYe1MqebKlrdwQfeLxL9mWuYoeVN4sw==
+"@graphql-mesh/transform-resolvers-composition@0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-resolvers-composition/-/transform-resolvers-composition-0.12.1.tgz#45e1471d868f6796b4442eb19c39ccc3c87e6b3b"
+  integrity sha512-UMiliRNT7dET7h5nx15Ls83ulzHp1aj28s+JEZpp13JlggDMx6P3R4z0dsu9+AYNzlREPrIcpAzapJR3eTJNFg==
   dependencies:
     "@graphql-mesh/types" "0.56.0"
-    "@graphql-mesh/utils" "0.22.0"
+    "@graphql-mesh/utils" "0.22.1"
     "@graphql-tools/resolvers-composition" "6.4.1"
     "@graphql-tools/schema" "8.3.1"
 
@@ -3039,29 +3039,6 @@
     flatstr "1.0.12"
     graphql-jit "0.5.2"
     graphql-subscriptions "1.2.1"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
-    object-hash "2.2.0"
-    tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.22.0":
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.22.0.tgz#db4234b662f61aabc078dea12db46d026abd3d22"
-  integrity sha512-VZMYGvizxgOlGXCj6WmoFESrvrAVshZNGBd0e3ZBDrGq6FuyyF1BTBx6VHoXIm0j5OIj/rX1wYvPJyjEshBwKg==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.56.0"
-    "@graphql-tools/delegate" "8.4.2"
-    "@graphql-tools/utils" "8.5.3"
-    "@graphql-typed-document-node/core" "3.1.0"
-    chalk "4.1.2"
-    cross-undici-fetch "0.0.26"
-    date-fns "2.25.0"
-    fetchache "0.1.1"
-    flatstr "1.0.12"
-    graphql-jit "0.7.1"
-    graphql-subscriptions "2.0.0"
     is-url "1.2.4"
     js-yaml "4.1.0"
     lodash "4.17.21"
@@ -9894,11 +9871,6 @@ date-fns@2.23.0, date-fns@^2.23.0:
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
   integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
-
-date-fns@2.25.0:
-  version "2.25.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
-  integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
 
 date-fns@2.26.0:
   version "2.26.0"
