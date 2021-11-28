@@ -44,7 +44,7 @@
     "@graphql-mesh/transform-mock": "0.12.1",
     "@graphql-mesh/transform-naming-convention": "0.8.1",
     "@graphql-mesh/transform-prefix": "0.9.0",
-    "@graphql-mesh/transform-rename": "0.11.0",
+    "@graphql-mesh/transform-rename": "0.11.1",
     "@graphql-mesh/transform-resolvers-composition": "0.12.0",
     "@graphql-mesh/transform-snapshot": "0.13.0",
     "@graphql-portal/contentful": "0.1.3",
