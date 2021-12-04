@@ -5868,10 +5868,10 @@
   resolved "https://registry.yarnpkg.com/@types/lru-cache/-/lru-cache-5.1.0.tgz#57f228f2b80c046b4a1bd5cac031f81f207f4f03"
   integrity sha512-RaE0B+14ToE4l6UqdarKPnXwVDuigfFv+5j9Dze/Nqr23yyuqdNvzcZi3xB+3Agvi5R4EOgAksfv3lXX4vBt9w==
 
-"@types/migrate-mongo@8.1.2":
-  version "8.1.2"
-  resolved "https://registry.yarnpkg.com/@types/migrate-mongo/-/migrate-mongo-8.1.2.tgz#040fac8c17e7aa268dfb617dcc937edef9b21af2"
-  integrity sha512-vaWxnVQtIXECrWDjsAf9RB/vO4ESZ94j5zgk5vByXwL6+hwcNJHyXPvxqKUrQ2oXG16+Z0SZo+0PaxL49nARVw==
+"@types/migrate-mongo@8.1.3":
+  version "8.1.3"
+  resolved "https://registry.yarnpkg.com/@types/migrate-mongo/-/migrate-mongo-8.1.3.tgz#ec2f8cd8e816ac1fddbe0c8259c4f248e28567a9"
+  integrity sha512-oK9ykWQtxOuRbowLWHDQlBjlx6VB6EIGjh8cWsJTZNm8kBXm/1wUYv1Bifp+I1vTRj1b8PqCMgc8LmEPB9WhzA==
   dependencies:
     "@types/mongodb" "^3.6.20"
 
