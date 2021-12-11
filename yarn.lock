@@ -2804,13 +2804,13 @@
     graphql-transform-federation "2.2.0"
     lodash "4.17.21"
 
-"@graphql-mesh/transform-filter-schema@0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-filter-schema/-/transform-filter-schema-0.14.1.tgz#4d8cad4946bae040f637019d8b57398efbe7e9db"
-  integrity sha512-3OIQMNzHzRz2OJ8Sn9hnk++ubdrk69vUfzJ45D+MAwbs9GX9WN9m+s2TSskSJ8jW31qPi19E1B2ngokHcUQpAQ==
+"@graphql-mesh/transform-filter-schema@0.14.2":
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-filter-schema/-/transform-filter-schema-0.14.2.tgz#30cdb500448fc407269cefc8a3512adeed9c6a01"
+  integrity sha512-q/vtTlbSXklvb8c5oHeSNhjz3Vqdf2pYzLvgx8QM/Knq4cF1B8RRZOdEIN8SztMblUu2HrcDkTOtDfUTXSv4RQ==
   dependencies:
     "@graphql-mesh/types" "0.56.0"
-    "@graphql-mesh/utils" "0.22.1"
+    "@graphql-mesh/utils" "0.22.2"
     "@graphql-tools/delegate" "8.4.2"
     "@graphql-tools/utils" "8.5.3"
     "@graphql-tools/wrap" "8.3.2"
