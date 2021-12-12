@@ -2944,13 +2944,13 @@
     "@graphql-tools/resolvers-composition" "6.3.5"
     "@graphql-tools/schema" "8.1.2"
 
-"@graphql-mesh/transform-snapshot@0.13.1":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.13.1.tgz#91396dcbfa9b4b080b51578d133f644d185fa85d"
-  integrity sha512-IW62ibFHkolE4JbvivbOqnmMCYZEKErJFCRDPQS1+MVMe+zuiNFQjfcTxTQdDFBehU12J5HGZyS4mHVNoVH9Nw==
+"@graphql-mesh/transform-snapshot@0.13.2":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.13.2.tgz#9717ae57667ff3945a61498f0bda6efc3caae425"
+  integrity sha512-29ek9t2InIF1WW81RFs3BhJoj3s1GKuWGmTDEUUj6zpq79t7pSwIilj4ToWF9WIoF+NpLKYGeqQ4eml/nrFqkg==
   dependencies:
     "@graphql-mesh/types" "0.56.0"
-    "@graphql-mesh/utils" "0.22.1"
+    "@graphql-mesh/utils" "0.22.2"
     "@graphql-tools/resolvers-composition" "6.4.1"
     "@graphql-tools/schema" "8.3.1"
     "@graphql-tools/utils" "8.5.3"
@@ -3103,29 +3103,6 @@
     flatstr "1.0.12"
     graphql-jit "0.5.2"
     graphql-subscriptions "1.2.1"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
-    object-hash "2.2.0"
-    tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.22.1":
-  version "0.22.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.22.1.tgz#f3c02b88210f08f04ba42cd3527b3b411a984220"
-  integrity sha512-h3xukFSed5d2iqQ4eJM+xUhx0++rqi1C4M6blbqFb70hDgkeFoqSH53AW/uAdOb2SOdttC7/uWjUkio6Id8Aeg==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.56.0"
-    "@graphql-tools/delegate" "8.4.2"
-    "@graphql-tools/utils" "8.5.3"
-    "@graphql-typed-document-node/core" "3.1.1"
-    chalk "4.1.2"
-    cross-undici-fetch "0.0.26"
-    date-fns "2.26.0"
-    fetchache "0.1.1"
-    flatstr "1.0.12"
-    graphql-jit "0.7.1"
-    graphql-subscriptions "2.0.0"
     is-url "1.2.4"
     js-yaml "4.1.0"
     lodash "4.17.21"
@@ -9458,16 +9435,6 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-cross-undici-fetch@0.0.26, cross-undici-fetch@^0.0.26:
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.0.26.tgz#29d93d56609f4d2334f9d5333d23ef7a242842a7"
-  integrity sha512-aMDRrLbWr0TGXfY92stlV+XOGpskeqFmWmrKSWsnc8w6gK5LPE83NBh7O7N6gCb2xjwHcm1Yn2nBXMEVH2RBcA==
-  dependencies:
-    abort-controller "^3.0.0"
-    form-data "^4.0.0"
-    node-fetch "^2.6.5"
-    undici "^4.9.3"
-
 cross-undici-fetch@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.1.tgz#c3f8666d59a95248115e28029b58d1472a3ebcb2"
@@ -9476,6 +9443,16 @@ cross-undici-fetch@0.1.1:
     abort-controller "^3.0.0"
     form-data-encoder "^1.7.1"
     formdata-node "^4.3.1"
+    node-fetch "^2.6.5"
+    undici "^4.9.3"
+
+cross-undici-fetch@^0.0.26:
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.0.26.tgz#29d93d56609f4d2334f9d5333d23ef7a242842a7"
+  integrity sha512-aMDRrLbWr0TGXfY92stlV+XOGpskeqFmWmrKSWsnc8w6gK5LPE83NBh7O7N6gCb2xjwHcm1Yn2nBXMEVH2RBcA==
+  dependencies:
+    abort-controller "^3.0.0"
+    form-data "^4.0.0"
     node-fetch "^2.6.5"
     undici "^4.9.3"
 
@@ -9942,11 +9919,6 @@ date-fns@2.23.0, date-fns@^2.23.0:
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
   integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
-
-date-fns@2.26.0:
-  version "2.26.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.26.0.tgz#fa45305543c392c4f914e50775fd2a4461e60fbd"
-  integrity sha512-VQI812dRi3cusdY/fhoBKvc6l2W8BPWU1FNVnFH9Nttjx4AFBRzfSVb/Eyc7jBT6e9sg1XtAGsYpBQ6c/jygbg==
 
 date-fns@2.27.0:
   version "2.27.0"
@@ -12601,19 +12573,6 @@ graphql-jit@0.5.2:
   resolved "https://registry.yarnpkg.com/graphql-jit/-/graphql-jit-0.5.2.tgz#f1fe88e106f6e5b6daa43f9f9a021f733697aee6"
   integrity sha512-8XNFsdFTUujjqu2q26Vkh4U6ZJ5dKZ2KxtiuCe95VlHK9Xn4+yz1P/nOj7ipZvXhMG4/s2gwoEhkSig9IEoahQ==
   dependencies:
-    fast-json-stringify "^1.13.0"
-    generate-function "^2.3.1"
-    json-schema "^0.2.3"
-    lodash.memoize "^4.1.2"
-    lodash.merge "4.6.2"
-    lodash.mergewith "4.6.2"
-
-graphql-jit@0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/graphql-jit/-/graphql-jit-0.7.1.tgz#d27052da0c8f39937e114de9fb4163fec3a661fc"
-  integrity sha512-j2hYKtT+qpNAgnLP7xwRIpAQd8FnHgSobS+n8eUy28t15JjUO2qecfsvovI/WdDEt1rGmhROg1e1j3BAsmwtiQ==
-  dependencies:
-    "@graphql-typed-document-node/core" "3.1.0"
     fast-json-stringify "^1.13.0"
     generate-function "^2.3.1"
     json-schema "^0.2.3"
