@@ -2600,16 +2600,16 @@
     swagger2openapi "7.0.5"
     url-join "4.0.1"
 
-"@graphql-mesh/openapi@0.22.2":
-  version "0.22.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.22.2.tgz#c74d0efd920b6cfc1802cdd0a9c0e0ed31125bff"
-  integrity sha512-TySKvqe7wcSkOVUzBOb2H3IEUt6IcoVLqxPu8rUdR/EalVs4XqrVJRBzQ7dAW0jbTgW3lFEInrbV/V6QzleZuQ==
+"@graphql-mesh/openapi@0.23.0":
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/openapi/-/openapi-0.23.0.tgz#7a3dfde0dd0260f25e655f1905e0fb6afee7b260"
+  integrity sha512-NIOXABBDihotW1mKdQGEnkyjCLw7VcCM5dr+/qoBobPskH6KwzPx5Hpk0qP2ASd/jIp7CtDqptX//42s35m0Kw==
   dependencies:
     "@graphql-mesh/store" "0.3.5"
     "@graphql-mesh/types" "0.57.0"
     "@graphql-mesh/utils" "0.24.1"
-    "@graphql-tools/utils" "8.5.4"
-    cross-undici-fetch "0.1.4"
+    "@graphql-tools/utils" "8.5.5"
+    cross-undici-fetch "0.1.12"
     deep-equal "2.0.5"
     form-urlencoded "6.0.5"
     graphql-scalars "1.14.1"
