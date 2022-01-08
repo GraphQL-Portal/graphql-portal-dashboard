@@ -2926,16 +2926,16 @@
     date-fns "2.21.3"
     graphql-fields "2.0.3"
 
-"@graphql-mesh/transform-encapsulate@0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-encapsulate/-/transform-encapsulate-0.3.5.tgz#b3f7dd9f52160f6320370c03be42a421df9e3cc9"
-  integrity sha512-yvdG3Uwu+c56KzKHg5Gz0hgc0p6kZC7yjIL/xpv0ZyyOJmn6dzTjcsgK54pxw38H+AKAyjcjnsBTKiNC8bQJrw==
+"@graphql-mesh/transform-encapsulate@0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-encapsulate/-/transform-encapsulate-0.3.8.tgz#6fced7880d861f8684afd2d5a236070223d73001"
+  integrity sha512-n8StqEVI5DbUvlj2pddtkn5WZue35OI/gTh1oQrMDfaE6z3v2/S2h+j1pAIb8E5YYwn5vr7J/G4vUjQSmcGFhg==
   dependencies:
-    "@graphql-mesh/types" "0.57.0"
-    "@graphql-mesh/utils" "0.24.1"
+    "@graphql-mesh/types" "0.57.2"
+    "@graphql-mesh/utils" "0.26.0"
     "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/utils" "8.5.4"
-    "@graphql-tools/wrap" "8.3.2"
+    "@graphql-tools/utils" "8.6.0"
+    "@graphql-tools/wrap" "8.3.3"
 
 "@graphql-mesh/transform-encapsulate@^0.1.31":
   version "0.1.47"
