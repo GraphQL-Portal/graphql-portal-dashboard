@@ -3073,16 +3073,16 @@
     lower-case "2.0.2"
     upper-case "2.0.2"
 
-"@graphql-mesh/transform-prefix@0.9.5":
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-prefix/-/transform-prefix-0.9.5.tgz#1f9efc64515165876c19470d88836b217b4040e5"
-  integrity sha512-DjDo99TjJvvfZ5baM+TqpppMoq3rr8PWUX+WWG8bvNfzfck7Z2YEVRujB2zjqUFaU4payw5hqZ97FfLCM5qPuQ==
+"@graphql-mesh/transform-prefix@0.9.8":
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-prefix/-/transform-prefix-0.9.8.tgz#d635aaab1ffb576f3af5fe69686a0461dccda1ee"
+  integrity sha512-UJMR1LYqQUZ2zebWKmUzwk5V/TdkRMJgKsip/W+oHU4ZmNMUwlbYyoLyfnV+wmG6XrPYyySJ02/UyinbQ4/JiQ==
   dependencies:
-    "@graphql-mesh/types" "0.57.0"
-    "@graphql-mesh/utils" "0.24.1"
+    "@graphql-mesh/types" "0.57.2"
+    "@graphql-mesh/utils" "0.26.0"
     "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/utils" "8.5.4"
-    "@graphql-tools/wrap" "8.3.2"
+    "@graphql-tools/utils" "8.6.0"
+    "@graphql-tools/wrap" "8.3.3"
 
 "@graphql-mesh/transform-prefix@^0.6.34":
   version "0.6.48"
