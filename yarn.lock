@@ -2566,17 +2566,17 @@
     "@graphql-mesh/utils" "0.12.0"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.20.9":
-  version "0.20.9"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.20.9.tgz#3adb3e589a1197dd01c559d4883d3b592f42185f"
-  integrity sha512-TlU7glSW7c93CzUNpQLfQQjAUCMdp0MQ747KYkyFNQ6sXjZeAKVms78OM6UGAskcu9vEIOCYh8Vl5P2LghzeBA==
+"@graphql-mesh/graphql@0.20.12":
+  version "0.20.12"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.20.12.tgz#b765a1708f542b1b5a864265b0ff2891196ac5d5"
+  integrity sha512-+CZFd0t1bu7ufh07gPsLAHxC4AaaerlgFfgOsQLxLerJUgFl0vMhJuAf8/Q4tARGFfk79Zn/rW7grXItqvJUXA==
   dependencies:
-    "@graphql-mesh/store" "0.3.5"
-    "@graphql-mesh/types" "0.57.0"
-    "@graphql-mesh/utils" "0.24.1"
+    "@graphql-mesh/store" "0.3.8"
+    "@graphql-mesh/types" "0.57.2"
+    "@graphql-mesh/utils" "0.26.0"
     "@graphql-tools/delegate" "8.4.3"
     "@graphql-tools/url-loader" "7.7.0"
-    "@graphql-tools/wrap" "8.3.2"
+    "@graphql-tools/wrap" "8.3.3"
 
 "@graphql-mesh/graphql@^0.17.0":
   version "0.17.10"
@@ -2858,6 +2858,15 @@
     "@graphql-inspector/core" "3.0.2"
     "@graphql-mesh/utils" "0.24.1"
     "@graphql-tools/utils" "8.5.4"
+
+"@graphql-mesh/store@0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.3.8.tgz#4273758e232ed99b130bea13a957693f868a22a3"
+  integrity sha512-7MlL6lvZ6rW/d4+1wEQpy5IZXj6/Uu/RLt4+qcwzRRGwJ1GJfACSyTwB5la1GSF10Y4LO4GQn2EpBBMZhDU9Rg==
+  dependencies:
+    "@graphql-inspector/core" "3.0.2"
+    "@graphql-mesh/utils" "0.26.0"
+    "@graphql-tools/utils" "8.6.0"
 
 "@graphql-mesh/thrift@0.8.9":
   version "0.8.9"
@@ -3210,6 +3219,16 @@
     "@graphql-typed-document-node/core" "3.1.1"
     fetchache "0.1.1"
 
+"@graphql-mesh/types@0.57.2":
+  version "0.57.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.57.2.tgz#e7b724984243d0e62f1eee3d9438550d2756d03c"
+  integrity sha512-v4Jo+ZWgdJ7lEvBHTIM4zgUuDpTbtFBRCo29WsRHTi10Wuluumv6oub8CEfLcU3CBcagJeYUjvTZ3lOr5mts9w==
+  dependencies:
+    "@graphql-tools/delegate" "8.4.3"
+    "@graphql-tools/utils" "8.6.0"
+    "@graphql-typed-document-node/core" "3.1.1"
+    fetchache "0.1.1"
+
 "@graphql-mesh/utils@0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.10.0.tgz#d369dd405fc88078f1f987395437651095c806ba"
@@ -3306,6 +3325,29 @@
     chalk "4.1.2"
     cross-undici-fetch "0.1.4"
     date-fns "2.27.0"
+    fetchache "0.1.1"
+    flatstr "1.0.12"
+    graphql-jit "0.7.2"
+    graphql-subscriptions "2.0.0"
+    is-url "1.2.4"
+    js-yaml "4.1.0"
+    lodash "4.17.21"
+    object-hash "2.2.0"
+    tiny-lru "7.0.6"
+
+"@graphql-mesh/utils@0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.26.0.tgz#97a91017e324a3a54e1f30d313d83a78d20195db"
+  integrity sha512-gZpe+qR88uA4SRlWtbQPH0qqREZfrqAx9wTDMv5drR7OTVGPNgnOSMf8GTJTovAErg/klWG6NXJKIAaJGDkGnQ==
+  dependencies:
+    "@ardatan/string-interpolation" "1.2.12"
+    "@graphql-mesh/types" "0.57.2"
+    "@graphql-tools/delegate" "8.4.3"
+    "@graphql-tools/utils" "8.6.0"
+    "@graphql-typed-document-node/core" "3.1.1"
+    chalk "4.1.2"
+    cross-undici-fetch "0.1.13"
+    date-fns "2.28.0"
     fetchache "0.1.1"
     flatstr "1.0.12"
     graphql-jit "0.7.2"
@@ -4348,6 +4390,13 @@
   dependencies:
     tslib "~2.3.0"
 
+"@graphql-tools/utils@8.6.0":
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.6.0.tgz#f424256a1f3b87d1dcf6f9f675739b2d3627be33"
+  integrity sha512-rnk+RHaOCeWnfekeQGRh5ycXK1ZAI7Nm0pbeLjA3SiysTdqhWyxNCp5ON4Mvtlid84OY/KB253fQq/2rotznCA==
+  dependencies:
+    tslib "~2.3.0"
+
 "@graphql-tools/utils@^8.0.0", "@graphql-tools/utils@^8.2.0":
   version "8.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.2.1.tgz#381e79fa04041f91f132d252216adcb3970e3c1e"
@@ -4395,6 +4444,17 @@
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.3.2.tgz#d3bcecb7529d071e4ecc4dfc75b9566e3da79d4f"
   integrity sha512-7DcOBFB+Dd84x9dxSm7qS4iJONMyfLnCJb8A19vGPffpu4SMJ3sFcgwibKFu5l6mMUiigKgXna2RRgWI+02bKQ==
+  dependencies:
+    "@graphql-tools/delegate" "^8.4.2"
+    "@graphql-tools/schema" "^8.3.1"
+    "@graphql-tools/utils" "^8.5.3"
+    tslib "~2.3.0"
+    value-or-promise "1.0.11"
+
+"@graphql-tools/wrap@8.3.3":
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.3.3.tgz#014aa04a6cf671ffe477516255d1134777da056a"
+  integrity sha512-TpXN1S4Cv+oMA1Zsg9Nu4N9yrFxLuJkX+CTtSRrrdfETGHIxqfyDkm5slPDCckxP+RILA00g8ny2jzsYyNvX1w==
   dependencies:
     "@graphql-tools/delegate" "^8.4.2"
     "@graphql-tools/schema" "^8.3.1"
@@ -9758,6 +9818,17 @@ cross-undici-fetch@0.1.12:
     node-fetch "^2.6.5"
     undici "^4.9.3"
 
+cross-undici-fetch@0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.13.tgz#807d17ce5c524c21bc0a6486e97ecccb901c6529"
+  integrity sha512-nF+g932BrKPoK0RZQKRA9S2IKXeveGPJlaUWXyUEGjjSpAdxBhEHDrMDbiksP2iSNe8O5vn1bN3tTvrd6+yFSg==
+  dependencies:
+    abort-controller "^3.0.0"
+    form-data-encoder "^1.7.1"
+    formdata-node "^4.3.1"
+    node-fetch "^2.6.5"
+    undici "^4.9.3"
+
 cross-undici-fetch@0.1.4, cross-undici-fetch@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.4.tgz#6058950dc6bf451f81a51582258f4e5a5a01b702"
@@ -10247,6 +10318,11 @@ date-fns@2.27.0:
   version "2.27.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.27.0.tgz#e1ff3c3ddbbab8a2eaadbb6106be2929a5a2d92b"
   integrity sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==
+
+date-fns@2.28.0:
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
+  integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
 
 date-fns@^2.16.1:
   version "2.21.1"
