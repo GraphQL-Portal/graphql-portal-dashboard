@@ -3012,15 +3012,15 @@
     "@graphql-tools/wrap" "7.0.8"
     micromatch "4.0.4"
 
-"@graphql-mesh/transform-mock@0.12.5":
-  version "0.12.5"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.12.5.tgz#1527672a577c0b42890494e8d35526c50ad1563d"
-  integrity sha512-ATxLXI7aRiJ6mkPg/B/Llw13Z9DwG4Hzq1mKVmJ6hFjxzSeNV8p8X6dlh/SPvVGYzlAC/KTDEV5ysh/4PCekWg==
+"@graphql-mesh/transform-mock@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.13.0.tgz#8cb03d54d6e605791a0cad2a257ca16383c74f03"
+  integrity sha512-DU8r0hPE7UcHeNFYwqTLjydO0JfARMyAlg7sDckgUPj/FHpm+7lXT2f3KVSK336iSsa+iDp6+iCUvOsYIiyZUg==
   dependencies:
-    "@graphql-mesh/types" "0.57.0"
-    "@graphql-mesh/utils" "0.24.1"
-    "@graphql-tools/mock" "8.4.4"
-    "@graphql-tools/utils" "8.5.4"
+    "@graphql-mesh/types" "0.57.2"
+    "@graphql-mesh/utils" "0.26.0"
+    "@graphql-tools/mock" "8.5.1"
+    "@graphql-tools/utils" "8.6.0"
     faker "5.5.3"
     graphql-scalars "1.14.1"
 
@@ -3200,16 +3200,6 @@
     "@graphql-typed-document-node/core" "3.1.0"
     fetchache "0.1.1"
 
-"@graphql-mesh/types@0.57.0":
-  version "0.57.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.57.0.tgz#3c39bc1348331251b47520684789c1f516894d40"
-  integrity sha512-JmgU6liQ/0sseYV/r7xQdUb6EES7+cFx6JiQ588qQugIffT+biWHpCu1Nt+M6Q4McWXDcgH9Fcat1alQNc9iQg==
-  dependencies:
-    "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/utils" "8.5.4"
-    "@graphql-typed-document-node/core" "3.1.1"
-    fetchache "0.1.1"
-
 "@graphql-mesh/types@0.57.2":
   version "0.57.2"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.57.2.tgz#e7b724984243d0e62f1eee3d9438550d2756d03c"
@@ -3297,29 +3287,6 @@
     flatstr "1.0.12"
     graphql-jit "0.5.2"
     graphql-subscriptions "1.2.1"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
-    object-hash "2.2.0"
-    tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.24.1":
-  version "0.24.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.24.1.tgz#90ecd67e5d9e5d38ff33058c9951608ca5b9164f"
-  integrity sha512-k+tmb7m28/W6AnzqFeooTzdmujenUYtIyzQ7BcwBN+EGldy3s8tedjIBDrggpHzUlxW24+/rtAW06+GT1VlrwQ==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.57.0"
-    "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/utils" "8.5.4"
-    "@graphql-typed-document-node/core" "3.1.1"
-    chalk "4.1.2"
-    cross-undici-fetch "0.1.4"
-    date-fns "2.27.0"
-    fetchache "0.1.1"
-    flatstr "1.0.12"
-    graphql-jit "0.7.2"
-    graphql-subscriptions "2.0.0"
     is-url "1.2.4"
     js-yaml "4.1.0"
     lodash "4.17.21"
@@ -4084,13 +4051,13 @@
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
 
-"@graphql-tools/mock@8.4.4":
-  version "8.4.4"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.4.4.tgz#857eaae73b53a1e72ebec9b602ceb0e31e64a38a"
-  integrity sha512-lRdU6XaKxZk7qv4G+1IhbVF7gvb3AaOQUC3Xx1M0/1/fRwt+zcUOWzgC/LNjxAIOI2T8Eh9eqKyQXBIWbTA02Q==
+"@graphql-tools/mock@8.5.1":
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/mock/-/mock-8.5.1.tgz#379d18eafdcb65486beb8f9247b33b7b693c53aa"
+  integrity sha512-cwwqGs9Rofev1JdMheAseqM/rw1uw4CYb35vv3Kcv2bbyiPF+490xdlHqFeIazceotMFxC60LlQztwb64rsEnw==
   dependencies:
     "@graphql-tools/schema" "^8.3.1"
-    "@graphql-tools/utils" "^8.5.1"
+    "@graphql-tools/utils" "^8.6.0"
     fast-json-stable-stringify "^2.1.0"
     tslib "~2.3.0"
 
@@ -4374,13 +4341,6 @@
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.5.3.tgz#404062e62cae9453501197039687749c4885356e"
   integrity sha512-HDNGWFVa8QQkoQB0H1lftvaO1X5xUaUDk1zr1qDe0xN1NL0E/CrQdJ5UKLqOvH4hkqVUPxQsyOoAZFkaH6rLHg==
-  dependencies:
-    tslib "~2.3.0"
-
-"@graphql-tools/utils@8.5.4":
-  version "8.5.4"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.5.4.tgz#9dadbd2fad2115ab5cde546d1353e41ef3d139a0"
-  integrity sha512-ViupMJH590be75tCiyHs/wgJ2KPbWMzc+jopen6P6MliHWoqRlGWMMvYQE1hDj25v4fxObCVq20maQCow0T9nQ==
   dependencies:
     tslib "~2.3.0"
 
@@ -9803,17 +9763,6 @@ cross-undici-fetch@0.1.13:
     node-fetch "^2.6.5"
     undici "^4.9.3"
 
-cross-undici-fetch@0.1.4, cross-undici-fetch@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.4.tgz#6058950dc6bf451f81a51582258f4e5a5a01b702"
-  integrity sha512-jIcyxjQ6mEvUS3y2yhIVktOR7wlGZuyjFAK8woo7pMb+BR1f2ylfTxsN01UPwhqT8gtYPmZ2rPdyoInr1Cdrrw==
-  dependencies:
-    abort-controller "^3.0.0"
-    form-data-encoder "^1.7.1"
-    formdata-node "^4.3.1"
-    node-fetch "^2.6.5"
-    undici "^4.9.3"
-
 cross-undici-fetch@^0.0.26:
   version "0.0.26"
   resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.0.26.tgz#29d93d56609f4d2334f9d5333d23ef7a242842a7"
@@ -9821,6 +9770,17 @@ cross-undici-fetch@^0.0.26:
   dependencies:
     abort-controller "^3.0.0"
     form-data "^4.0.0"
+    node-fetch "^2.6.5"
+    undici "^4.9.3"
+
+cross-undici-fetch@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.4.tgz#6058950dc6bf451f81a51582258f4e5a5a01b702"
+  integrity sha512-jIcyxjQ6mEvUS3y2yhIVktOR7wlGZuyjFAK8woo7pMb+BR1f2ylfTxsN01UPwhqT8gtYPmZ2rPdyoInr1Cdrrw==
+  dependencies:
+    abort-controller "^3.0.0"
+    form-data-encoder "^1.7.1"
+    formdata-node "^4.3.1"
     node-fetch "^2.6.5"
     undici "^4.9.3"
 
@@ -10287,11 +10247,6 @@ date-fns@2.23.0, date-fns@^2.23.0:
   version "2.23.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
   integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
-
-date-fns@2.27.0:
-  version "2.27.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.27.0.tgz#e1ff3c3ddbbab8a2eaadbb6106be2929a5a2d92b"
-  integrity sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==
 
 date-fns@2.28.0:
   version "2.28.0"
