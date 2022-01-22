@@ -2640,18 +2640,18 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.23.3":
-  version "0.23.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.23.3.tgz#57cb2eccb091f4d7d02dba6afaedb3c4c68a9c2e"
-  integrity sha512-6qKraXBlbAxQqCaI+vMyXmtzl3xR7BLgslvjhXlKrhApLmG99kcv19lzB1PuTAp1kp9ktVQlxtu8lN44JpulIA==
+"@graphql-mesh/json-schema@0.23.4":
+  version "0.23.4"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.23.4.tgz#278d6a586cf80c16014c4d1c58bbe9a56f485d73"
+  integrity sha512-IGicMGIFWoWur4IwuT2RbUpuoWt0QQjal2kT74Uk3YIIFgJkuGE5QtP1SUZaarq2GIElLt56Qo9pP1daIVCeJQ==
   dependencies:
     "@graphql-mesh/store" "0.3.8"
     "@graphql-mesh/types" "0.57.2"
     "@graphql-mesh/utils" "0.26.0"
     "@graphql-tools/utils" "8.6.1"
-    "@omnigraph/json-schema" "0.11.0"
+    "@omnigraph/json-schema" "0.11.1"
     graphql-compose "9.0.6"
-    json-machete "0.3.5"
+    json-machete "0.3.6"
 
 "@graphql-mesh/merger-federation@^0.9.0":
   version "0.9.11"
@@ -5262,23 +5262,23 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@omnigraph/json-schema@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.11.0.tgz#08b1b86e3f1886c8897fb36827f64c060fde725e"
-  integrity sha512-Uqslf0VuIZsYyHnLq+lrI8exkM//rqGL+K1Mz/hCu3DrL87vOw3ZhhCEeP8SemB/9jwrS+VnWNSp/j/Id1hfow==
+"@omnigraph/json-schema@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.11.1.tgz#ad49552f53b053de46ebb21b3317129d3c03415d"
+  integrity sha512-vXZ6X1vvZ7SUEKAO80X6Ggwk92jsj9HaQxbdXsvgAxD1xTiXxdKMLHqL8cUUKhgVSyjTtczt2nOCJUvyvcTdgQ==
   dependencies:
     "@graphql-mesh/types" "0.57.2"
     "@graphql-mesh/utils" "0.26.0"
     "@graphql-tools/utils" "8.6.1"
-    ajv "8.8.2"
+    ajv "8.9.0"
     ajv-formats "2.1.1"
-    cross-undici-fetch "0.1.14"
+    cross-undici-fetch "0.1.16"
     graphql-compose "9.0.6"
     graphql-scalars "1.14.1"
     graphql-upload "13.0.0"
-    json-machete "0.3.5"
+    json-machete "0.3.6"
     pascal-case "3.1.2"
-    qs "6.10.2"
+    qs "6.10.3"
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
@@ -7250,6 +7250,16 @@ ajv@8.8.2:
   version "8.8.2"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.8.2.tgz#01b4fef2007a28bf75f0b7fc009f62679de4abbb"
   integrity sha512-x9VuX+R/jcFj1DHo/fCp99esgGDWiHENrKxaCENuCxpoMCmAt/COCGVDwA7kleEpEzJjDnvh3yGoOuLu0Dtllw==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
+    uri-js "^4.2.2"
+
+ajv@8.9.0:
+  version "8.9.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.9.0.tgz#738019146638824dea25edcf299dcba1b0e7eb18"
+  integrity sha512-qOKJyNj/h+OWx7s5DePL6Zu1KeM9jPZhwBqs+7DzP6bGOvqzVCSf0xueYmVuaC/oQ/VtS2zLMLHdQFbkka+XDQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -9784,10 +9794,10 @@ cross-undici-fetch@0.1.13:
     node-fetch "^2.6.5"
     undici "^4.9.3"
 
-cross-undici-fetch@0.1.14:
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.14.tgz#4d990cf85ce7c65c42873c05f3e595bbe97c747b"
-  integrity sha512-DDR6F34whCOwwBnZoqqIPZwpYzz418BPNXdDMdz0NFjTxNT+kMNLINTjZA3TxU469JbXSVTzfNpdTxUQN6MjhQ==
+cross-undici-fetch@0.1.16:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.16.tgz#48ce18c701c7cf8053afe3c1d7e4d62a1952e0cc"
+  integrity sha512-VoL+4GLbq2R7cfpM3wc3RClV6boUAjbpZ485YHsIeBnWYUi4osdDZhh1ohk9+BjrLvAvwmvQwZC5rTEIVQ2eVQ==
   dependencies:
     abort-controller "^3.0.0"
     form-data-encoder "^1.7.1"
@@ -15705,14 +15715,14 @@ json-bigint-patch@0.0.4:
   resolved "https://registry.yarnpkg.com/json-bigint-patch/-/json-bigint-patch-0.0.4.tgz#9c1cb80ec364fa685061e1afb7abcc9a7fb6f6f0"
   integrity sha512-OCmozd929JDOvIfik3lObvbAWpEQl1lVYJbBf0iWJzqlEeRgf3VnVJZXUR4RB206tZIROnEGiCng+62UVWu8Iw==
 
-json-machete@0.3.5:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.3.5.tgz#440fc97e46eb6c3090ad7cb9fe047eb086c06133"
-  integrity sha512-Zx4QYTHGEvKGQ0QsiJP0MF8laiGX3zOzUZknLUC/P7kJt0/3/IzL9fh+bd6lMYEc+W5hEYSBhjBWNEqDUJ/l6Q==
+json-machete@0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.3.6.tgz#ada9bee9b597d475a4b7419daa03574adf325ca3"
+  integrity sha512-5WyB3y7SaVm6Saz7RTklQrJdJYruG6MspubLgmp80+u8DYK3pGfFgLtP+8EzODPCTKQYYOfqmgYTEtpy0kd2EA==
   dependencies:
     "@graphql-mesh/utils" "0.26.0"
     "@json-schema-tools/meta-schema" "1.6.19"
-    cross-undici-fetch "0.1.13"
+    cross-undici-fetch "0.1.16"
     json-ptr "3.0.1"
     to-json-schema "0.2.5"
     url-join "4.0.1"
@@ -19632,10 +19642,10 @@ qs@6.10.1:
   dependencies:
     side-channel "^1.0.4"
 
-qs@6.10.2:
-  version "6.10.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.2.tgz#c1431bea37fc5b24c5bdbafa20f16bdf2a4b9ffe"
-  integrity sha512-mSIdjzqznWgfd4pMii7sHtaYF8rx8861hBO80SraY5GT0XQibWZWJSid0avzHGkDIZLImux2S5mXO0Hfct2QCw==
+qs@6.10.3, qs@^6.10.1:
+  version "6.10.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.3.tgz#d6cde1b2ffca87b5aa57889816c5f81535e22e8e"
+  integrity sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==
   dependencies:
     side-channel "^1.0.4"
 
@@ -19653,13 +19663,6 @@ qs@6.9.6:
   version "6.9.6"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.6.tgz#26ed3c8243a431b2924aca84cc90471f35d5a0ee"
   integrity sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==
-
-qs@^6.10.1:
-  version "6.10.3"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.3.tgz#d6cde1b2ffca87b5aa57889816c5f81535e22e8e"
-  integrity sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==
-  dependencies:
-    side-channel "^1.0.4"
 
 qs@~6.5.2:
   version "6.5.2"
