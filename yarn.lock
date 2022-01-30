@@ -3063,15 +3063,15 @@
     lower-case "2.0.2"
     upper-case "2.0.2"
 
-"@graphql-mesh/transform-prefix@0.9.8":
-  version "0.9.8"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-prefix/-/transform-prefix-0.9.8.tgz#d635aaab1ffb576f3af5fe69686a0461dccda1ee"
-  integrity sha512-UJMR1LYqQUZ2zebWKmUzwk5V/TdkRMJgKsip/W+oHU4ZmNMUwlbYyoLyfnV+wmG6XrPYyySJ02/UyinbQ4/JiQ==
+"@graphql-mesh/transform-prefix@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-prefix/-/transform-prefix-0.10.0.tgz#283ebd217c7f37479ca060f1c861b4adde3eb2f2"
+  integrity sha512-M65rcgTcaJvjqAUP1z7EeECSA+hFKhxxHpes4GHJ2eALep7OckhAcAWkpHNg5cOkUrvTf0MLWuKB7tAw4L50Yw==
   dependencies:
-    "@graphql-mesh/types" "0.57.2"
-    "@graphql-mesh/utils" "0.26.0"
+    "@graphql-mesh/types" "0.58.0"
+    "@graphql-mesh/utils" "0.26.1"
     "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/utils" "8.6.0"
+    "@graphql-tools/utils" "8.6.1"
     "@graphql-tools/wrap" "8.3.3"
 
 "@graphql-mesh/transform-prefix@^0.6.34":
@@ -3199,16 +3199,6 @@
     "@graphql-typed-document-node/core" "3.1.0"
     fetchache "0.1.1"
 
-"@graphql-mesh/types@0.57.2":
-  version "0.57.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.57.2.tgz#e7b724984243d0e62f1eee3d9438550d2756d03c"
-  integrity sha512-v4Jo+ZWgdJ7lEvBHTIM4zgUuDpTbtFBRCo29WsRHTi10Wuluumv6oub8CEfLcU3CBcagJeYUjvTZ3lOr5mts9w==
-  dependencies:
-    "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/utils" "8.6.0"
-    "@graphql-typed-document-node/core" "3.1.1"
-    fetchache "0.1.1"
-
 "@graphql-mesh/types@0.58.0":
   version "0.58.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.58.0.tgz#d15ac4ca0a1364067169610f60a881b37781c744"
@@ -3296,29 +3286,6 @@
     flatstr "1.0.12"
     graphql-jit "0.5.2"
     graphql-subscriptions "1.2.1"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
-    object-hash "2.2.0"
-    tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.26.0":
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.26.0.tgz#97a91017e324a3a54e1f30d313d83a78d20195db"
-  integrity sha512-gZpe+qR88uA4SRlWtbQPH0qqREZfrqAx9wTDMv5drR7OTVGPNgnOSMf8GTJTovAErg/klWG6NXJKIAaJGDkGnQ==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.57.2"
-    "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/utils" "8.6.0"
-    "@graphql-typed-document-node/core" "3.1.1"
-    chalk "4.1.2"
-    cross-undici-fetch "0.1.13"
-    date-fns "2.28.0"
-    fetchache "0.1.1"
-    flatstr "1.0.12"
-    graphql-jit "0.7.2"
-    graphql-subscriptions "2.0.0"
     is-url "1.2.4"
     js-yaml "4.1.0"
     lodash "4.17.21"
@@ -4376,13 +4343,6 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-tools/utils@8.6.0", "@graphql-tools/utils@^8.6.0":
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.6.0.tgz#f424256a1f3b87d1dcf6f9f675739b2d3627be33"
-  integrity sha512-rnk+RHaOCeWnfekeQGRh5ycXK1ZAI7Nm0pbeLjA3SiysTdqhWyxNCp5ON4Mvtlid84OY/KB253fQq/2rotznCA==
-  dependencies:
-    tslib "~2.3.0"
-
 "@graphql-tools/utils@8.6.1":
   version "8.6.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.6.1.tgz#52c7eb108f2ca2fd01bdba8eef85077ead1bf882"
@@ -4415,6 +4375,13 @@
   version "8.5.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.5.5.tgz#019ddb99719feb19602afdb537c06e463df674a9"
   integrity sha512-y7zRXWIUI73X+9/rf/0KzrNFMlpRKFfzLiwdbIeWwgLs+NV9vfUOoVkX8luXX6LwQxhSypHATMiwZGM2ro/wJA==
+  dependencies:
+    tslib "~2.3.0"
+
+"@graphql-tools/utils@^8.6.0":
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.6.0.tgz#f424256a1f3b87d1dcf6f9f675739b2d3627be33"
+  integrity sha512-rnk+RHaOCeWnfekeQGRh5ycXK1ZAI7Nm0pbeLjA3SiysTdqhWyxNCp5ON4Mvtlid84OY/KB253fQq/2rotznCA==
   dependencies:
     tslib "~2.3.0"
 
@@ -9784,17 +9751,6 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
-
-cross-undici-fetch@0.1.13:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.13.tgz#807d17ce5c524c21bc0a6486e97ecccb901c6529"
-  integrity sha512-nF+g932BrKPoK0RZQKRA9S2IKXeveGPJlaUWXyUEGjjSpAdxBhEHDrMDbiksP2iSNe8O5vn1bN3tTvrd6+yFSg==
-  dependencies:
-    abort-controller "^3.0.0"
-    form-data-encoder "^1.7.1"
-    formdata-node "^4.3.1"
-    node-fetch "^2.6.5"
-    undici "^4.9.3"
 
 cross-undici-fetch@0.1.16:
   version "0.1.16"
