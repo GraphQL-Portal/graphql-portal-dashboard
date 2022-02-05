@@ -2565,16 +2565,16 @@
     "@graphql-mesh/utils" "0.12.0"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.20.13":
-  version "0.20.13"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.20.13.tgz#3241dfb3d58ee46773ed41e75d36f33d3a5eb28e"
-  integrity sha512-7QCqEj9U2S7iyOzvSpuUKqehqiy0HOQ3086HVi0yVFUPuhlXi+mZS9fxey1tZFXLV2F0OGyyGaLH+2jozb26Sw==
+"@graphql-mesh/graphql@0.20.16":
+  version "0.20.16"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.20.16.tgz#db9cddd3a71aa2fbf79e2da21c89dc22b7c330a9"
+  integrity sha512-0PoEeqX2510e1ZtdhwTLrAEMFGYqYyDd2hqyJEOICF3iWYZjSA5H0eYzYZTfI9GkspNd8b5kH5ZGIdeZbKKvAg==
   dependencies:
-    "@graphql-mesh/store" "0.3.9"
-    "@graphql-mesh/types" "0.58.0"
-    "@graphql-mesh/utils" "0.26.1"
+    "@graphql-mesh/store" "0.3.12"
+    "@graphql-mesh/types" "0.61.0"
+    "@graphql-mesh/utils" "0.26.4"
     "@graphql-tools/delegate" "8.4.3"
-    "@graphql-tools/url-loader" "7.7.0"
+    "@graphql-tools/url-loader" "7.7.1"
     "@graphql-tools/wrap" "8.3.3"
 
 "@graphql-mesh/graphql@^0.17.0":
@@ -2848,6 +2848,15 @@
     "@graphql-inspector/core" "2.7.0"
     "@graphql-mesh/utils" "0.16.0"
     "@graphql-tools/utils" "8.1.2"
+
+"@graphql-mesh/store@0.3.12":
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.3.12.tgz#c090e298297b9f476eac3f18ba93a0bfea550e3f"
+  integrity sha512-CutZeICTpvzTxcmCaBCRx/3LHxsRq+7+UdfyH8TW44ZlMbBK5R60RQVoAWBSCmLfMpB8BBzr/0v2vkM7HK+G/Q==
+  dependencies:
+    "@graphql-inspector/core" "3.0.2"
+    "@graphql-mesh/utils" "0.26.4"
+    "@graphql-tools/utils" "8.6.1"
 
 "@graphql-mesh/store@0.3.9":
   version "0.3.9"
@@ -4260,10 +4269,10 @@
     valid-url "1.0.9"
     ws "7.4.5"
 
-"@graphql-tools/url-loader@7.7.0":
-  version "7.7.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/url-loader/-/url-loader-7.7.0.tgz#504f0030c75b61bca4ac07da49e8cd872c316972"
-  integrity sha512-mBBb+aJqI4E0MVEzyfi76Pi/G6lGxGTVt/tP1YtKJly7UnonNoWOtDusdL3zIVAGhGgLsNrLbGhLDbwSd6TV6A==
+"@graphql-tools/url-loader@7.7.1":
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/url-loader/-/url-loader-7.7.1.tgz#2faabdc1d2c47edc8edc9cc938eee2767189869f"
+  integrity sha512-K/5amdeHtKYI976HVd/AXdSNvLL7vx5QVjMlwN0OHeYyxSgC+UOH+KkS7cshYgL13SekGu0Mxbg9ABfgQ34ECA==
   dependencies:
     "@graphql-tools/delegate" "^8.4.1"
     "@graphql-tools/utils" "^8.5.1"
@@ -4271,7 +4280,7 @@
     "@n1ru4l/graphql-live-query" "^0.9.0"
     "@types/websocket" "^1.0.4"
     "@types/ws" "^8.0.0"
-    cross-undici-fetch "^0.1.4"
+    cross-undici-fetch "^0.1.19"
     dset "^3.1.0"
     extract-files "^11.0.0"
     graphql-sse "^1.0.1"
@@ -9807,16 +9816,17 @@ cross-undici-fetch@^0.0.26:
     node-fetch "^2.6.5"
     undici "^4.9.3"
 
-cross-undici-fetch@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.4.tgz#6058950dc6bf451f81a51582258f4e5a5a01b702"
-  integrity sha512-jIcyxjQ6mEvUS3y2yhIVktOR7wlGZuyjFAK8woo7pMb+BR1f2ylfTxsN01UPwhqT8gtYPmZ2rPdyoInr1Cdrrw==
+cross-undici-fetch@^0.1.19:
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.23.tgz#254c5f7d11f0e462a57187db94383ee6ca9f1525"
+  integrity sha512-PxSFKt7owZrL/WWowlOXVyD86HcUXePQ0853p/6DGktaONK10hVixV9RmqPaEsdrCTJkeBDlnXFT2tp6db0K0g==
   dependencies:
     abort-controller "^3.0.0"
     form-data-encoder "^1.7.1"
     formdata-node "^4.3.1"
-    node-fetch "^2.6.5"
+    node-fetch "^2.6.7"
     undici "^4.9.3"
+    web-streams-polyfill "^3.2.0"
 
 crypto-browserify@^3.11.0:
   version "3.12.0"
@@ -17458,6 +17468,13 @@ node-fetch@^2.6.5:
   version "2.6.6"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.6.tgz#1751a7c01834e8e1697758732e9efb6eeadfaf89"
   integrity sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==
+  dependencies:
+    whatwg-url "^5.0.0"
+
+node-fetch@^2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
 
