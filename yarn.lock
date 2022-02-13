@@ -3011,13 +3011,13 @@
     "@graphql-tools/wrap" "7.0.8"
     micromatch "4.0.4"
 
-"@graphql-mesh/transform-mock@0.13.4":
-  version "0.13.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.13.4.tgz#6b01a9e6549ca2305b6ac8b597ca54e95ec7598a"
-  integrity sha512-3L3YmRJ7M/eo60f+TPvdQ/UF6aNcdHb/abp3mChppb9WQR/g5YufEzA5cWLyTagfKJTqBTLnK2ryug+KP9L8UQ==
+"@graphql-mesh/transform-mock@0.13.5":
+  version "0.13.5"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-mock/-/transform-mock-0.13.5.tgz#0b67611e50480e95faf4e38656617a970a85fe62"
+  integrity sha512-V0VGHLcAPH0YcdSPi4javlDJgxdyxPNSOl7EYlJGe4zI4sThzPVDtcYg+qTLST3MR+0O00wQ0/wNidaKbUZwSw==
   dependencies:
     "@graphql-mesh/types" "0.61.0"
-    "@graphql-mesh/utils" "0.26.4"
+    "@graphql-mesh/utils" "0.27.0"
     "@graphql-tools/mock" "8.5.1"
     "@graphql-tools/utils" "8.6.1"
     faker "5.5.3"
