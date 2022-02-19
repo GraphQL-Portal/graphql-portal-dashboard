@@ -2648,18 +2648,18 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.24.5":
-  version "0.24.5"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.24.5.tgz#9216b280432189e5b141f1473852391233fb5ed6"
-  integrity sha512-Ux2mtr8+y/NJag7m3vXk/NZmDuzBovHcjwS+vCAUOXTbPhmk+1XEyeRhKel29zdyjUoZSVa7FBjFaeYhVp2gfA==
+"@graphql-mesh/json-schema@0.24.8":
+  version "0.24.8"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.24.8.tgz#68ff5373735dcc67891b21a9bc1ff8b0ba2c3706"
+  integrity sha512-GLNuoheANI6IQobfShMFFk30QrumveMce2nMEjJTdYkdSJW0Se8ZPkhQXPHx7MI6H/cjPUus7q+Js44MUsa96w==
   dependencies:
-    "@graphql-mesh/store" "0.3.13"
-    "@graphql-mesh/types" "0.61.0"
-    "@graphql-mesh/utils" "0.27.0"
+    "@graphql-mesh/store" "0.3.15"
+    "@graphql-mesh/types" "0.62.1"
+    "@graphql-mesh/utils" "0.27.2"
     "@graphql-tools/utils" "8.6.1"
-    "@omnigraph/json-schema" "0.13.4"
-    graphql-compose "9.0.6"
-    json-machete "0.5.1"
+    "@omnigraph/json-schema" "0.14.0"
+    graphql-compose "9.0.7"
+    json-machete "0.5.3"
 
 "@graphql-mesh/merger-federation@^0.9.0":
   version "0.9.11"
@@ -5357,21 +5357,21 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@omnigraph/json-schema@0.13.4":
-  version "0.13.4"
-  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.13.4.tgz#b0e7947a8cbc5477965f9ef32c51ee6541b53668"
-  integrity sha512-D7W+ckqJV0YkhKGYKR0XEhyYY1ZdqcVe+dp+MUe3dNqOV31d6HddmzEljhmQt7RyykcxPHbn7SuyicqdP+5P5g==
+"@omnigraph/json-schema@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.14.0.tgz#fb73ed828c73eb83b9455dd28cb73ec76517f98b"
+  integrity sha512-hpseQrd4ge5FHPEWK+edLZZAK7DRc15KY+Rtuq+QZIDpCfALeR/4zh/kcZOVG95nNLcg7NkTnWeSRA9USDmwIA==
   dependencies:
-    "@graphql-mesh/types" "0.61.0"
-    "@graphql-mesh/utils" "0.27.0"
+    "@graphql-mesh/types" "0.62.1"
+    "@graphql-mesh/utils" "0.27.2"
     "@graphql-tools/utils" "8.6.1"
-    ajv "8.9.0"
+    ajv "8.10.0"
     ajv-formats "2.1.1"
-    cross-undici-fetch "0.1.16"
-    graphql-compose "9.0.6"
+    cross-undici-fetch "0.1.24"
+    graphql-compose "9.0.7"
     graphql-scalars "1.14.1"
     graphql-upload "13.0.0"
-    json-machete "0.5.1"
+    json-machete "0.5.3"
     pascal-case "3.1.2"
     qs "6.10.3"
     to-json-schema "0.2.5"
@@ -15813,15 +15813,15 @@ json-bigint-patch@0.0.4:
   resolved "https://registry.yarnpkg.com/json-bigint-patch/-/json-bigint-patch-0.0.4.tgz#9c1cb80ec364fa685061e1afb7abcc9a7fb6f6f0"
   integrity sha512-OCmozd929JDOvIfik3lObvbAWpEQl1lVYJbBf0iWJzqlEeRgf3VnVJZXUR4RB206tZIROnEGiCng+62UVWu8Iw==
 
-json-machete@0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.5.1.tgz#8634878c386c25e3155d62842cba95eee12c535a"
-  integrity sha512-L6S+aWoM7WTLz0VKqNivYaqb0IQjAjEwJ3K5mdK/rt0be3ScYstDnIa2WhTdd8Djd6mdJSv+lkbt7XrS7MEkHg==
+json-machete@0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.5.3.tgz#73972b1c573b9da9297f7ef594246bd958556a2d"
+  integrity sha512-bIVZVm8Ryp22nDiKQAWpCoogNTI5NsWNeANJleUmuXgu1VC2o998Ey9prohUqZP3g5B6QWD6uqUCY8+ICQTa4w==
   dependencies:
-    "@graphql-mesh/utils" "0.27.0"
+    "@graphql-mesh/utils" "0.27.2"
     "@json-schema-tools/meta-schema" "1.6.19"
-    cross-undici-fetch "0.1.16"
-    json-ptr "3.0.1"
+    cross-undici-fetch "0.1.24"
+    json-ptr "3.1.0"
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
@@ -15842,10 +15842,10 @@ json-ptr@2.2.0:
   dependencies:
     tslib "^2.2.0"
 
-json-ptr@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/json-ptr/-/json-ptr-3.0.1.tgz#b4f53bbc13ef0d7eacf675770a4bd8c16453463d"
-  integrity sha512-hrZ4tElT8huJUH3OwOK+d7F8PRqw09QnGM3Mm3GmqKWDyCCPCG8lGHxXOwQAj0VOxzLirOds07Kz10B5F8M8EA==
+json-ptr@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/json-ptr/-/json-ptr-3.1.0.tgz#374f5122716d555226f5675ae097ac115a0efc64"
+  integrity sha512-KMsG905wFbHHTnvd66MHCNo0E43UPalKt2zQUbBtWrDYKk/3vE/4u8lfWDdIyPEoMXxOFJO1lsBs6xPBXKxeVw==
 
 json-schema-diff@^0.17.1:
   version "0.17.1"
