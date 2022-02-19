@@ -216,12 +216,10 @@
     deep-equal "^2.0.5"
     pretty-format "^26.0.0"
 
-"@apollo/subgraph@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.1.5.tgz#ae5a1c686c97b7a2c3f7575d570f5c004578e2fd"
-  integrity sha512-i1uU9llldGMV7GcBOUQRqnbGfgOpc6nrOVw93oKlugZq5R00q8y/RX8KgvMfdXZyr4MJ2/gO6Kw7LzbjCKU+Kw==
-  dependencies:
-    apollo-graphql "^0.9.5"
+"@apollo/subgraph@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.3.1.tgz#33e2ca8f87a8b0bb988888de794361db04cedd95"
+  integrity sha512-MWqzfZEcvN86iwwgsgkFnkoBvv/wCdw/qyXjayuZ4wwQgVZ8NpFNbUxjRC0MwKNHwBU/ZH1oDHOnC8WbUuUMsg==
 
 "@apollographql/apollo-tools@^0.5.0", "@apollographql/apollo-tools@^0.5.1":
   version "0.5.1"
@@ -2980,15 +2978,15 @@
     "@graphql-tools/load" "6.2.8"
     "@graphql-tools/merge" "6.2.14"
 
-"@graphql-mesh/transform-federation@0.8.13":
-  version "0.8.13"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.8.13.tgz#f610ae36369d8e31f1b1a3564366e31e7d91abe6"
-  integrity sha512-pVwFolMgG84mLZn5ztuF+1WXnpxt44M4rUYlmnXIx5GlB4uQykcQ8yy1IaWEcR9/uvpk11/CxwLbLpVyX4rzEw==
+"@graphql-mesh/transform-federation@0.8.15":
+  version "0.8.15"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.8.15.tgz#f3aedc3a56218db7a4d03d11b84cf362ef47ccd2"
+  integrity sha512-9ISMvJz11QCB99AOU1dkQvFvZAbYNmqNVRcaZVyT4ZYrOjM8O4RuE75jaRch6h5+wrwcdSeaQxqaKL3Yr2cV3g==
   dependencies:
-    "@apollo/subgraph" "0.1.5"
-    "@graphql-mesh/types" "0.61.0"
-    "@graphql-mesh/utils" "0.27.0"
-    "@graphql-tools/delegate" "8.4.3"
+    "@apollo/subgraph" "0.3.1"
+    "@graphql-mesh/types" "0.62.1"
+    "@graphql-mesh/utils" "0.27.2"
+    "@graphql-tools/delegate" "8.5.0"
     "@graphql-tools/stitching-directives" "2.2.1"
     "@graphql-tools/utils" "8.6.1"
     graphql-transform-federation "2.2.0"
@@ -7513,15 +7511,6 @@ apollo-graphql@^0.9.0, apollo-graphql@^0.9.3:
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/apollo-graphql/-/apollo-graphql-0.9.3.tgz#1ca6f625322ae10a66f57a39642849a07a7a5dc9"
   integrity sha512-rcAl2E841Iko4kSzj4Pt3PRBitmyq1MvoEmpl04TQSpGnoVgl1E/ZXuLBYxMTSnEAm7umn2IsoY+c6Ll9U/10A==
-  dependencies:
-    core-js-pure "^3.10.2"
-    lodash.sortby "^4.7.0"
-    sha.js "^2.4.11"
-
-apollo-graphql@^0.9.5:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/apollo-graphql/-/apollo-graphql-0.9.5.tgz#9113483ca7f7fa49ee9e9a299c45d30b1cf3bf61"
-  integrity sha512-RGt5k2JeBqrmnwRM0VOgWFiGKlGJMfmiif/4JvdaEqhMJ+xqe/9cfDYzXfn33ke2eWixsAbjEbRfy8XbaN9nTw==
   dependencies:
     core-js-pure "^3.10.2"
     lodash.sortby "^4.7.0"
