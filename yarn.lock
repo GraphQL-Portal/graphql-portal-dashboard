@@ -2572,17 +2572,17 @@
     "@graphql-mesh/utils" "0.12.0"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.20.17":
-  version "0.20.17"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.20.17.tgz#8dbe5fe0688c411c2623ac46e88b740e2956094d"
-  integrity sha512-/MYEDBzcOVo5WEKK9f7Z2vXpD8D4xZjGb9oHrsSCAMmxYLa1tOt59/qd6xkJEX1hKPAELl4GbltmVf0djHrRnQ==
+"@graphql-mesh/graphql@0.20.19":
+  version "0.20.19"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.20.19.tgz#dc400fcf67e20cceb2e3e14920ad73062005d2d1"
+  integrity sha512-kIqx86uBllv+H5Xp9H6LKDqEaBF9NvFbe/SAguWvj3/rYjZLJbNc5N5gJ+vzdWer8VPvOnLWbv8WLuwxwr+Hqw==
   dependencies:
-    "@graphql-mesh/store" "0.3.13"
-    "@graphql-mesh/types" "0.61.0"
-    "@graphql-mesh/utils" "0.27.0"
-    "@graphql-tools/delegate" "8.4.3"
+    "@graphql-mesh/store" "0.3.15"
+    "@graphql-mesh/types" "0.62.1"
+    "@graphql-mesh/utils" "0.27.2"
+    "@graphql-tools/delegate" "8.5.0"
     "@graphql-tools/url-loader" "7.7.1"
-    "@graphql-tools/wrap" "8.3.3"
+    "@graphql-tools/wrap" "8.4.0"
 
 "@graphql-mesh/graphql@^0.17.0":
   version "0.17.10"
