@@ -2876,21 +2876,21 @@
     "@graphql-mesh/utils" "0.27.2"
     "@graphql-tools/utils" "8.6.1"
 
-"@graphql-mesh/thrift@0.8.17":
-  version "0.8.17"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.8.17.tgz#bc6290f05ef2168ace62526bdb75daadb520f10b"
-  integrity sha512-gbRPkMGoAYttW+nT7vzia4qwcH1MxiXNHzzNJVAwVEZLu75f/L+s50EA2VtIFw5jUZeP+SR0o/Ik24lzthFt+Q==
+"@graphql-mesh/thrift@0.8.19":
+  version "0.8.19"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/thrift/-/thrift-0.8.19.tgz#a98dc7a53a821c4c24406b41491f26a3ea7df510"
+  integrity sha512-F9czqFJJrewDtewUYq0dQzPqa8nOOa18j/EgjVpwTBNRlqd9wWMTjvrtAYXUaqDJ5/NGoAmyR2VImePRvyHJnw==
   dependencies:
     "@creditkarma/thrift-client" "0.17.2"
     "@creditkarma/thrift-parser" "1.2.0"
     "@creditkarma/thrift-server-core" "0.17.2"
-    "@graphql-mesh/store" "0.3.13"
-    "@graphql-mesh/types" "0.61.0"
-    "@graphql-mesh/utils" "0.27.0"
+    "@graphql-mesh/store" "0.3.15"
+    "@graphql-mesh/types" "0.62.1"
+    "@graphql-mesh/utils" "0.27.2"
     "@graphql-tools/utils" "8.6.1"
     fetchache "0.1.1"
     graphql-scalars "1.14.1"
-    thrift "0.15.0"
+    thrift "0.16.0"
     url-join "4.0.1"
 
 "@graphql-mesh/thrift@^0.7.0":
@@ -22334,16 +22334,16 @@ thrift@0.14.1:
     q "^1.5.0"
     ws "^5.2.2"
 
-thrift@0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/thrift/-/thrift-0.15.0.tgz#9c502ab3763e12b93e33c8b4e5c1e0e12ed864cf"
-  integrity sha512-RvuFCwHD8bAHIh0Evlr+8QJui/zzistIj9k668jX6jGvDF1OyOmI5TvY+YnqI/VQxpiE2OCGucYJs/nz/CfldA==
+thrift@0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/thrift/-/thrift-0.16.0.tgz#6497711610aa32d2f94fc2546f88ee4ff6e4106c"
+  integrity sha512-W8DpGyTPlIaK3f+e1XOCLxefaUWXtrOXAaVIDbfYhmVyriYeAKgsBVFNJUV1F9SQ2SPt2sG44AZQxSGwGj/3VA==
   dependencies:
     browser-or-node "^1.2.1"
     isomorphic-ws "^4.0.1"
     node-int64 "^0.4.0"
     q "^1.5.0"
-    ws "^5.2.2"
+    ws "^5.2.3"
 
 thriftrw@^3.5.0:
   version "3.12.0"
@@ -23903,7 +23903,7 @@ ws@8.3.0, ws@^8.3.0:
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.0.tgz#0033bafea031fb9df041b2026fc72a571ca44691"
   integrity sha512-6ezXvzOZupqKj4jUqbQ9tXuJNo+BR2gU8fFRk3XCP3e0G6WT414u5ELe6Y0vtp7kmSJ3F7YWObSNr1ESsgi4vw==
 
-ws@^5.2.2:
+ws@^5.2.2, ws@^5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-5.2.3.tgz#05541053414921bc29c63bee14b8b0dd50b07b3d"
   integrity sha512-jZArVERrMsKUatIdnLzqvcfydI85dvd/Fp1u/VOpfdDWQ4c9qWXe+VIeAbQ5FrDwciAkr+lzofXLz3Kuf26AOA==
