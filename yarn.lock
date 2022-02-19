@@ -2909,13 +2909,13 @@
     thrift "0.14.1"
     url-join "4.0.1"
 
-"@graphql-mesh/transform-cache@0.11.14":
-  version "0.11.14"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.11.14.tgz#52bda06db644c660d814a0f9947d204360dd7a52"
-  integrity sha512-C1kg1GEAPO5ppL7kpADTHY6Dg/rXkvs9RzdRfhXEtKbZlosrHYzqUFAlAP7R/sNXeUb4x6FzWwaPdxaLomih6g==
+"@graphql-mesh/transform-cache@0.11.16":
+  version "0.11.16"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.11.16.tgz#f5df8cf1e2605b11c0da2e6c4695f887886667cd"
+  integrity sha512-edk6p+T262ZNsoTpJ9ZOjQ88pQTuJSVHPI+Ya7cHqcjeFGqDNWjHsdI/sjtNdGnUPoGGzXG37VK1RuDLjeHxVw==
   dependencies:
-    "@graphql-mesh/types" "0.61.0"
-    "@graphql-mesh/utils" "0.27.0"
+    "@graphql-mesh/types" "0.62.1"
+    "@graphql-mesh/utils" "0.27.2"
     "@graphql-tools/resolvers-composition" "6.4.1"
     "@graphql-tools/schema" "8.3.1"
     "@graphql-tools/utils" "8.6.1"
