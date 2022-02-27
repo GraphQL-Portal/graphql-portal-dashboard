@@ -3030,16 +3030,16 @@
     "@graphql-tools/utils" "7.10.0"
     "@graphql-tools/wrap" "7.0.8"
 
-"@graphql-mesh/transform-rename@0.12.4":
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-rename/-/transform-rename-0.12.4.tgz#35436df510a248eaf02a3889991f3cf2005f3e95"
-  integrity sha512-3Vz5DwEwxAgfYjU63D9FNrormKJLpWuhFnVbu6yXUCmTSl3mr0fNLgQrntVAWvkxdmnNyznq6qSCCnEQioPnPw==
+"@graphql-mesh/transform-rename@0.12.9":
+  version "0.12.9"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-rename/-/transform-rename-0.12.9.tgz#6679706680f68782ed45e4b091cd1885ddbd5d76"
+  integrity sha512-Ia2xNXCn8uwAHoGgKgPyS7fDji6XhfJnJb2W+mlFtcxfNpslYSO1anTH98+L96HzWyXdVdilyfDIx8NqIxb7yg==
   dependencies:
-    "@graphql-mesh/types" "0.62.1"
-    "@graphql-mesh/utils" "0.27.2"
-    "@graphql-tools/delegate" "8.5.0"
-    "@graphql-tools/utils" "8.6.1"
-    "@graphql-tools/wrap" "8.4.0"
+    "@graphql-mesh/types" "0.64.0"
+    "@graphql-mesh/utils" "0.27.6"
+    "@graphql-tools/delegate" "8.5.1"
+    "@graphql-tools/utils" "8.6.2"
+    "@graphql-tools/wrap" "8.4.2"
     graphql-scalars "1.14.1"
 
 "@graphql-mesh/transform-rename@^0.8.5":
@@ -3793,7 +3793,7 @@
     tslib "~2.3.0"
     value-or-promise "1.0.11"
 
-"@graphql-tools/delegate@8.5.0", "@graphql-tools/delegate@^8.5.0":
+"@graphql-tools/delegate@8.5.0":
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/delegate/-/delegate-8.5.0.tgz#f835b413f9277a07dd6db09d401fbec1ee76af0b"
   integrity sha512-P2LLahWpv8eFrqXQi9v/NDLxLBKAugd3rmB8lxeTnCqma19ZM/VaSpvGAgGyjjHKQe097mAeBEkM/7uYbG/NFg==
@@ -4422,7 +4422,7 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-tools/utils@8.5.3", "@graphql-tools/utils@^8.5.3":
+"@graphql-tools/utils@8.5.3":
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.5.3.tgz#404062e62cae9453501197039687749c4885356e"
   integrity sha512-HDNGWFVa8QQkoQB0H1lftvaO1X5xUaUDk1zr1qDe0xN1NL0E/CrQdJ5UKLqOvH4hkqVUPxQsyOoAZFkaH6rLHg==
@@ -4499,17 +4499,6 @@
     "@graphql-tools/utils" "^8.1.1"
     tslib "~2.3.0"
     value-or-promise "1.0.10"
-
-"@graphql-tools/wrap@8.4.0":
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.4.0.tgz#8fb2aa950ab68abe1fb63b6d62fc5b8fc4f8b025"
-  integrity sha512-fPB3+UnxLIPWDfMvAfBQnGmm8rrejeQjmCy7h9avWHBbkEELcvtrSWnKAvoKowe+WR9PVDM15XQ/PQvcddV0kQ==
-  dependencies:
-    "@graphql-tools/delegate" "^8.5.0"
-    "@graphql-tools/schema" "^8.3.1"
-    "@graphql-tools/utils" "^8.5.3"
-    tslib "~2.3.0"
-    value-or-promise "1.0.11"
 
 "@graphql-tools/wrap@8.4.2", "@graphql-tools/wrap@^8.4.2":
   version "8.4.2"
