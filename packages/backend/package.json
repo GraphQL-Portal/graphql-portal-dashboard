@@ -70,7 +70,7 @@
     "@nestjs/swagger": "5.2.0",
     "@sendgrid/mail": "7.6.1",
     "apollo-server-express": "2.25.3",
-    "boolean": "3.1.4",
+    "boolean": "3.2.0",
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",
     "class-validator-mongo-object-id": "1.2.0",
