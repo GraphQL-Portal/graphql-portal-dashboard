@@ -12844,10 +12844,10 @@ graphile-utils@^4.11.2:
     graphql ">=0.9 <0.14 || ^14.0.2 || ^15.4.0"
     tslib "^2.0.1"
 
-graphiql@1.5.20:
-  version "1.5.20"
-  resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-1.5.20.tgz#6d85f7e921676cced881b1a2ea22caa211ed9c1d"
-  integrity sha512-cHXWN8W1npsQxY0N0hxfPzqWyP572Xiz04O1KANslS9uvlCaQ0YBfmUExRnPr85qI1a4s701wlkFwUViQHukoQ==
+graphiql@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-1.6.0.tgz#04f248049e02f971c9a079e4b6a2df2da992cefc"
+  integrity sha512-VUxnzehiv5BiJzoHQOL7CVFfVjMidate93wSRvFotW7gZluF6PQE45B+LeVWLMRoC59KIUcL+6gtgLHJ5FssvA==
   dependencies:
     "@graphiql/toolkit" "^0.4.2"
     codemirror "^5.58.2"
