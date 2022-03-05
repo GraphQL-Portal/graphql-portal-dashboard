@@ -2573,16 +2573,16 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.24.12":
-  version "0.24.12"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.24.12.tgz#0e9a888782e7ed2268038f145bc4653a5f023c55"
-  integrity sha512-RNJb82mIZ08KXU7UjzgAD+Kjlm6culOISi0Us/6vB4OlrOMHnKTX6ThIQgUJw9svVXED7KkQ7xIqF/pvrs7nnQ==
+"@graphql-mesh/json-schema@0.24.14":
+  version "0.24.14"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.24.14.tgz#aab4f3c178cdcd4ed1297909b0e1102b71d8b3f6"
+  integrity sha512-Q8iZIN4G2VJ7U8ggTpZ4R2RoYzChk+Uf8ctwaah49SOlqz2nz/ecfcnKpqPoaPrK2OfbXZkXnLPfy4XeQTODnA==
   dependencies:
     "@graphql-mesh/store" "0.3.19"
     "@graphql-mesh/types" "0.64.0"
     "@graphql-mesh/utils" "0.27.6"
     "@graphql-tools/utils" "8.6.2"
-    "@omnigraph/json-schema" "0.15.0"
+    "@omnigraph/json-schema" "0.16.0"
     graphql-compose "9.0.7"
     json-machete "0.5.7"
 
@@ -5238,10 +5238,10 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@omnigraph/json-schema@0.15.0":
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.15.0.tgz#75ea35f844ba7270e02faaee29cc8206943b0089"
-  integrity sha512-jb1TKMZlr+VXkomUzbTcLGvnvKEdm9KxgWKg3cfks6oL6O3Lsk9TIya6xHpwl25to88kN5Xk+MpJh5y0Q73X4A==
+"@omnigraph/json-schema@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.16.0.tgz#712e05077301a38d285587c30b0a3597f4b597f6"
+  integrity sha512-7jUewSeuv3uFE95PnLdgZ+GR4C7+29wVukBDfSr8QC1d3JkgCHAl3WM8kIGPZhyfelsMWluJHICF9OWtfg6F1g==
   dependencies:
     "@graphql-mesh/types" "0.64.0"
     "@graphql-mesh/utils" "0.27.6"
@@ -5250,8 +5250,7 @@
     ajv-formats "2.1.1"
     cross-undici-fetch "0.1.25"
     graphql-compose "9.0.7"
-    graphql-scalars "1.14.1"
-    graphql-upload "13.0.0"
+    graphql-scalars "1.15.0"
     json-machete "0.5.7"
     pascal-case "3.1.2"
     qs "6.10.3"
@@ -13204,16 +13203,6 @@ graphql-upload@12.0.0, graphql-upload@^12.0.0:
     isobject "^4.0.0"
     object-path "^0.11.5"
 
-graphql-upload@13.0.0:
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/graphql-upload/-/graphql-upload-13.0.0.tgz#1a255b64d3cbf3c9f9171fa62a8fb0b9b59bb1d9"
-  integrity sha512-YKhx8m/uOtKu4Y1UzBFJhbBGJTlk7k4CydlUUiNrtxnwZv0WigbRHP+DVhRNKt7u7DXOtcKZeYJlGtnMXvreXA==
-  dependencies:
-    busboy "^0.3.1"
-    fs-capacitor "^6.2.0"
-    http-errors "^1.8.1"
-    object-path "^0.11.8"
-
 graphql-ws@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.0.0.tgz#30f55a649f8dc825c51b6f7cfc05e513688c4f8d"
@@ -13601,7 +13590,7 @@ http-errors@1.8.0, http-errors@^1.5.1, http-errors@^1.7.3, http-errors@^1.8.0:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
 
-http-errors@1.8.1, http-errors@^1.8.1:
+http-errors@1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.8.1.tgz#7c3f28577cbc8a207388455dbd62295ed07bd68c"
   integrity sha512-Kpk9Sm7NmI+RHhnj6OIWDI1d6fIoFAtFt9RLaTMRlg/8w49juAStsrBgp0Dp4OdxdVbRIeKhtCUvoi/RuAhO4g==
@@ -17771,11 +17760,6 @@ object-path@^0.11.4:
   version "0.11.7"
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.7.tgz#5f211161f34bb395e4b13a5f565b79d933b6f65d"
   integrity sha512-T4evaK9VfGGQskXBDILcn6F90ZD+WO3OwRFFQ2rmZdUH4vQeDBpiolTpVlPY2yj5xSepyILTjDyM6UvbbdHMZw==
-
-object-path@^0.11.8:
-  version "0.11.8"
-  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.8.tgz#ed002c02bbdd0070b78a27455e8ae01fc14d4742"
-  integrity sha512-YJjNZrlXJFM42wTBn6zgOJVar9KFJvzx6sTWDte8sWZF//cnjl0BxHNpfZx+ZffXX63A9q0b1zsFiBX4g4X5KA==
 
 object-visit@^1.0.0:
   version "1.0.1"
