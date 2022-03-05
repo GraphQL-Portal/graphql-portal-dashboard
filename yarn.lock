@@ -2969,18 +2969,18 @@
     faker "5.5.3"
     graphql-scalars "1.10.0"
 
-"@graphql-mesh/transform-naming-convention@0.10.9":
-  version "0.10.9"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.10.9.tgz#452a2307d0d12f4f406ac26a42ab9dee0fa4a7ac"
-  integrity sha512-8+uRIIRPMKNBsMQ6TO/YWJRns45+0LgMRltiiCTMt8ryTy9o6iCcJD3rYDCoEGWNCnzIw5MeQJrTUnTZWqYLtA==
+"@graphql-mesh/transform-naming-convention@0.10.10":
+  version "0.10.10"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.10.10.tgz#209e05aecb185e0b3e877be62f886c20e19003b7"
+  integrity sha512-ghJ5liD/uY1B6p0LqJy89DvOa7eeBK0isOislza/o9SD5KydaT1WGa0X2kbhsnInT8pzblW8UDxUA8CmhEMsNQ==
   dependencies:
     "@graphql-mesh/types" "0.64.0"
     "@graphql-mesh/utils" "0.27.6"
     "@graphql-tools/delegate" "8.5.1"
     "@graphql-tools/utils" "8.6.2"
-    "@graphql-tools/wrap" "8.4.2"
+    "@graphql-tools/wrap" "8.4.3"
     change-case "4.1.2"
-    graphql-scalars "1.14.1"
+    graphql-scalars "1.15.0"
     lower-case "2.0.2"
     upper-case "2.0.2"
 
@@ -4372,6 +4372,17 @@
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.4.2.tgz#7179ea573686939c6002b200e273cf0e55d6323b"
   integrity sha512-U6vpfOhp+uyTNsDi1wbk0dpCn6oJ3CmRS2EUpyuzHQDC7YQgAElxn5Wl/eDsKmhJGzGDODKY9M6yHAEH/tRrPQ==
+  dependencies:
+    "@graphql-tools/delegate" "^8.5.1"
+    "@graphql-tools/schema" "^8.3.2"
+    "@graphql-tools/utils" "^8.6.2"
+    tslib "~2.3.0"
+    value-or-promise "1.0.11"
+
+"@graphql-tools/wrap@8.4.3":
+  version "8.4.3"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-8.4.3.tgz#cb7d703c41cebe3c32b999d3a28c17e3eac12783"
+  integrity sha512-2bd3GtlqV72idEphLTM8SRiSxEDrMPGE556faW8N5Q2qK7qlCEu9AQK0HNKWKdtEPTHqahndZtIPcdpNN6xGig==
   dependencies:
     "@graphql-tools/delegate" "^8.5.1"
     "@graphql-tools/schema" "^8.3.2"
@@ -13128,6 +13139,13 @@ graphql-scalars@1.14.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.14.1.tgz#546a12ac2901e17202f354c71e336942feb9afa2"
   integrity sha512-IrJ2SI9IkCmWHyr7yIvtPNGWTWF3eTS+iNnw1DQMmEtsOgs1dUmT0ge+8M1+1xm+q3/5ZqB95yUYyThDyOTE+Q==
+  dependencies:
+    tslib "~2.3.0"
+
+graphql-scalars@1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/graphql-scalars/-/graphql-scalars-1.15.0.tgz#798b9aa12bcbe56be32d62aadc2cd67e22ba63c4"
+  integrity sha512-uLi71egHsfF+A4XmnltPYRUnvy8uBsobRjhW6aBi305gpE/v52xkuKcjygV0CqeqdvRKmFhczh9HRx1lho2MRw==
   dependencies:
     tslib "~2.3.0"
 
