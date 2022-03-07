@@ -2573,18 +2573,18 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.24.14":
-  version "0.24.14"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.24.14.tgz#aab4f3c178cdcd4ed1297909b0e1102b71d8b3f6"
-  integrity sha512-Q8iZIN4G2VJ7U8ggTpZ4R2RoYzChk+Uf8ctwaah49SOlqz2nz/ecfcnKpqPoaPrK2OfbXZkXnLPfy4XeQTODnA==
+"@graphql-mesh/json-schema@0.24.15":
+  version "0.24.15"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.24.15.tgz#e46a511f7c4b9047ac6b09e29b9970ccfd23f944"
+  integrity sha512-xWrhJu8zFtTGeTaUxOmIZXbEfW9D2niMhOQ9u63SDzDgolc/TSC4tNpc2cC62sp/5BaF/dLjvN7PpjkEvgijYw==
   dependencies:
-    "@graphql-mesh/store" "0.3.19"
-    "@graphql-mesh/types" "0.64.0"
-    "@graphql-mesh/utils" "0.27.6"
+    "@graphql-mesh/store" "0.3.20"
+    "@graphql-mesh/types" "0.64.1"
+    "@graphql-mesh/utils" "0.27.7"
     "@graphql-tools/utils" "8.6.2"
-    "@omnigraph/json-schema" "0.16.0"
+    "@omnigraph/json-schema" "0.16.1"
     graphql-compose "9.0.7"
-    json-machete "0.5.7"
+    json-machete "0.5.8"
 
 "@graphql-mesh/merger-federation@^0.9.0":
   version "0.9.11"
@@ -5281,20 +5281,20 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@omnigraph/json-schema@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.16.0.tgz#712e05077301a38d285587c30b0a3597f4b597f6"
-  integrity sha512-7jUewSeuv3uFE95PnLdgZ+GR4C7+29wVukBDfSr8QC1d3JkgCHAl3WM8kIGPZhyfelsMWluJHICF9OWtfg6F1g==
+"@omnigraph/json-schema@0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.16.1.tgz#f030239c0fede8724cf0174395ee561b5ff112a1"
+  integrity sha512-3Onx46xTbGCqw5UTMoWJZNMljBmQeDAspvu8Fnkxu3YTqjy9lEA3urleKk8kNg1R496lUUyMU+m1CZYWL3/9sA==
   dependencies:
-    "@graphql-mesh/types" "0.64.0"
-    "@graphql-mesh/utils" "0.27.6"
+    "@graphql-mesh/types" "0.64.1"
+    "@graphql-mesh/utils" "0.27.7"
     "@graphql-tools/utils" "8.6.2"
     ajv "8.10.0"
     ajv-formats "2.1.1"
     cross-undici-fetch "0.1.25"
     graphql-compose "9.0.7"
     graphql-scalars "1.15.0"
-    json-machete "0.5.7"
+    json-machete "0.5.8"
     pascal-case "3.1.2"
     qs "6.10.3"
     to-json-schema "0.2.5"
@@ -15674,12 +15674,12 @@ json-bigint-patch@0.0.4:
   resolved "https://registry.yarnpkg.com/json-bigint-patch/-/json-bigint-patch-0.0.4.tgz#9c1cb80ec364fa685061e1afb7abcc9a7fb6f6f0"
   integrity sha512-OCmozd929JDOvIfik3lObvbAWpEQl1lVYJbBf0iWJzqlEeRgf3VnVJZXUR4RB206tZIROnEGiCng+62UVWu8Iw==
 
-json-machete@0.5.7:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.5.7.tgz#e2b78e28e11e9e2e828d556ba75d9a91742b3319"
-  integrity sha512-sOJf98vuldsONmfYRqavwN/925Ga3KJZeAIEf1FEOmZelnU1RuX522BTkStvptcSBDuneqR/t/1V6Qe2oVoFXg==
+json-machete@0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.5.8.tgz#74aa94b762bb2f34f18d98962773281d242aff1d"
+  integrity sha512-770TjHZsC7qFv6pwhJDEV8X8NcL3LYK9fAQqYKJwAU21ZmhyzWTUOnCxzzCV3Wf5yESC7fc04X7dnSwOVc4PUQ==
   dependencies:
-    "@graphql-mesh/utils" "0.27.6"
+    "@graphql-mesh/utils" "0.27.7"
     "@json-schema-tools/meta-schema" "1.6.19"
     cross-undici-fetch "0.1.25"
     json-ptr "3.1.0"
