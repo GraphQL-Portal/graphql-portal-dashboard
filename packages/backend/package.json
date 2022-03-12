@@ -97,7 +97,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "8.2.2",
-    "@nestjs/schematics": "8.0.7",
+    "@nestjs/schematics": "8.0.8",
     "@nestjs/testing": "8.4.0",
     "@shelf/jest-mongodb": "1.3.4",
     "@types/cli-color": "2.0.2",
