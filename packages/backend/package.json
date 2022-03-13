@@ -27,7 +27,7 @@
     "@graphql-mesh/fhir": "0.10.13",
     "@graphql-mesh/graphql": "0.21.3",
     "@graphql-mesh/json-schema": "0.25.4",
-    "@graphql-mesh/mongoose": "0.10.29",
+    "@graphql-mesh/mongoose": "0.10.30",
     "@graphql-mesh/neo4j": "0.11.6",
     "@graphql-mesh/odata": "0.11.8",
     "@graphql-mesh/openapi": "0.23.20",
