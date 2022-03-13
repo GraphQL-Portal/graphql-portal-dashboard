@@ -2552,18 +2552,19 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/json-schema@0.25.3":
-  version "0.25.3"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.25.3.tgz#8ae7037870073c161e2487ce3b619865fa0c59b9"
-  integrity sha512-E3LQrT0AFm+1cmPsnzE2t0TfefmWN+8GsJcmTVqOd3LwhEdpod2VU6sMrt9z1SgRohiLNCibaYyV82rMAb3T0A==
+"@graphql-mesh/json-schema@0.25.4":
+  version "0.25.4"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.25.4.tgz#80c4478abceed2e27e5c859d9f6685225b070dde"
+  integrity sha512-ARbThM+vP8pszDghxCe49nquoeWrUUH+thA5MeWtPDknIx5NRENiuZC7bpkQSZrCr8FjMl/45VHYX3lJjm+Tqg==
   dependencies:
-    "@graphql-mesh/store" "0.3.25"
-    "@graphql-mesh/types" "0.66.2"
-    "@graphql-mesh/utils" "0.28.2"
+    "@graphql-mesh/store" "0.3.26"
+    "@graphql-mesh/types" "0.66.3"
+    "@graphql-mesh/utils" "0.28.3"
     "@graphql-tools/utils" "8.6.2"
-    "@omnigraph/json-schema" "0.17.3"
+    "@json-schema-tools/meta-schema" "1.6.19"
+    "@omnigraph/json-schema" "0.17.4"
     graphql-compose "9.0.7"
-    json-machete "0.5.13"
+    json-machete "0.5.14"
     tslib "^2.3.1"
 
 "@graphql-mesh/merger-federation@^0.9.0":
@@ -2773,6 +2774,17 @@
   dependencies:
     "@graphql-inspector/core" "3.1.1"
     "@graphql-mesh/utils" "0.28.2"
+    "@graphql-tools/utils" "8.6.2"
+    tslib "^2.3.1"
+
+"@graphql-mesh/store@0.3.26":
+  version "0.3.26"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.3.26.tgz#3f217ec8fa1bbd22d59e0f009c9e0b3e3fad5893"
+  integrity sha512-9oPbG77CPeV/nzW8emcEb1ypy47OqQa8JXOGeF0V+koCV7HTiSQ34sWNPc60Ek3NQ11sK7mSUQq00S9+JEhhFg==
+  dependencies:
+    "@graphql-inspector/core" "3.1.1"
+    "@graphql-mesh/types" "0.66.3"
+    "@graphql-mesh/utils" "0.28.3"
     "@graphql-tools/utils" "8.6.2"
     tslib "^2.3.1"
 
@@ -3144,6 +3156,18 @@
     fetchache "0.1.1"
     tslib "^2.3.1"
 
+"@graphql-mesh/types@0.66.3":
+  version "0.66.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.66.3.tgz#431e63eba1476537b32469c2421a6b62157042fd"
+  integrity sha512-1rcDwoMy6qaG2bJeNXfEEyT9+n6yuKx7vWUiBK3RAOnrwwQcNOmfk+FqKLT8i+90GUVgmmZHtV0pjG7+A1ji1A==
+  dependencies:
+    "@graphql-mesh/store" "0.3.26"
+    "@graphql-tools/delegate" "8.5.2"
+    "@graphql-tools/utils" "8.6.2"
+    "@graphql-typed-document-node/core" "3.1.1"
+    fetchache "0.1.1"
+    tslib "^2.3.1"
+
 "@graphql-mesh/utils@0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.10.0.tgz#d369dd405fc88078f1f987395437651095c806ba"
@@ -3250,6 +3274,31 @@
     lodash "4.17.21"
     object-hash "3.0.0"
     tiny-lru "8.0.1"
+    tslib "^2.3.1"
+
+"@graphql-mesh/utils@0.28.3":
+  version "0.28.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.28.3.tgz#a61155c09970e2740329081ae9f9553af9626f61"
+  integrity sha512-Sxf3PvFSkztPF5yKMj6dD4yo5gdbhN0ib/3CpT/KvWNqg9AmkYPZHREm2SX/iuaDqhbw66wYVx50L7DlstGgmA==
+  dependencies:
+    "@ardatan/string-interpolation" "1.2.12"
+    "@graphql-mesh/types" "0.66.3"
+    "@graphql-tools/delegate" "8.5.2"
+    "@graphql-tools/utils" "8.6.2"
+    "@graphql-typed-document-node/core" "3.1.1"
+    chalk "4.1.2"
+    cross-undici-fetch "0.1.25"
+    date-fns "2.28.0"
+    fetchache "0.1.1"
+    file-uri-to-path "2.0.0"
+    flatstr "1.0.12"
+    graphql-jit "0.7.3"
+    graphql-subscriptions "2.0.0"
+    is-url "1.2.4"
+    js-yaml "4.1.0"
+    lodash "4.17.21"
+    object-hash "3.0.0"
+    tiny-lru "8.0.2"
     tslib "^2.3.1"
 
 "@graphql-portal/config@^0.12.0":
@@ -5250,20 +5299,21 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@omnigraph/json-schema@0.17.3":
-  version "0.17.3"
-  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.17.3.tgz#0435edecc5feff5f8c675f820824dd7c840c9a12"
-  integrity sha512-mEHNrmPgOt+eelGrXKTAOjUT5lm5XoQbeW6ayBYzzMmtrCz1B9wEp5q4yVMP5r3XyHal1nRaz+AHKM/PvtSUGg==
+"@omnigraph/json-schema@0.17.4":
+  version "0.17.4"
+  resolved "https://registry.yarnpkg.com/@omnigraph/json-schema/-/json-schema-0.17.4.tgz#e29cad6585ff7d097d435f1c14658802d59eac9d"
+  integrity sha512-8y6pnpDaI4JmHc8zkE2ZterO8oPNkh8jO0Lv3e6lFwFcVK8WGdD3i7ycLUj/kATMjISAir+Gx9ylHwZJygXcsA==
   dependencies:
-    "@graphql-mesh/types" "0.66.2"
-    "@graphql-mesh/utils" "0.28.2"
+    "@graphql-mesh/types" "0.66.3"
+    "@graphql-mesh/utils" "0.28.3"
     "@graphql-tools/utils" "8.6.2"
+    "@json-schema-tools/meta-schema" "1.6.19"
     ajv "8.10.0"
     ajv-formats "2.1.1"
     cross-undici-fetch "0.1.25"
     graphql-compose "9.0.7"
     graphql-scalars "1.15.0"
-    json-machete "0.5.13"
+    json-machete "0.5.14"
     lodash "4.17.21"
     pascal-case "3.1.2"
     qs "6.10.3"
@@ -15638,12 +15688,12 @@ json-bigint-patch@0.0.4:
   resolved "https://registry.yarnpkg.com/json-bigint-patch/-/json-bigint-patch-0.0.4.tgz#9c1cb80ec364fa685061e1afb7abcc9a7fb6f6f0"
   integrity sha512-OCmozd929JDOvIfik3lObvbAWpEQl1lVYJbBf0iWJzqlEeRgf3VnVJZXUR4RB206tZIROnEGiCng+62UVWu8Iw==
 
-json-machete@0.5.13:
-  version "0.5.13"
-  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.5.13.tgz#9496be3766c29668a57bbe1bcea10ed243cfc770"
-  integrity sha512-H83Ilk4EEn0H2AZcpM9dbGzXDEgd9ftGUx09EUuiK0+EHdbGASSOyU7jv84wmSyAWXUdIM7od9gZt5XKGL8bUQ==
+json-machete@0.5.14:
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/json-machete/-/json-machete-0.5.14.tgz#f1851812cd45b3e8e27c35b094d9246d3b8cc8b2"
+  integrity sha512-pTHqCx4CuvCjMz9k/ezZ04myZvRpICpcv4fF+Fvm9RhokRmjsgb7FQCKMM8MqLjFm7v76t/IufSdwtYm0cSxMQ==
   dependencies:
-    "@graphql-mesh/utils" "0.28.2"
+    "@graphql-mesh/utils" "0.28.3"
     "@json-schema-tools/meta-schema" "1.6.19"
     cross-undici-fetch "0.1.25"
     json-ptr "3.1.0"
@@ -22307,6 +22357,11 @@ tiny-lru@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-8.0.1.tgz#c1d77d806e68035aaa2253e253d212291240ece2"
   integrity sha512-eBIAYA0BzSjxBedCaO0CSjertD+u+IvNuFkyD7ESf+qjqHKBr5wFqvEYl91+ZQd7jjq2pO6/fBVwFgb6bxvorw==
+
+tiny-lru@8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-8.0.2.tgz#812fccbe6e622ded552e3ff8a4c3b5ff34a85e4c"
+  integrity sha512-ApGvZ6vVvTNdsmt676grvCkUCGwzG9IqXma5Z07xJgiC5L7akUMof5U8G2JTI9Rz/ovtVhJBlY6mNhEvtjzOIg==
 
 tiny-warning@^1.0.0, tiny-warning@^1.0.2, tiny-warning@^1.0.3:
   version "1.0.3"
