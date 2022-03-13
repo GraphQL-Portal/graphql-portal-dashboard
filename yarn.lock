@@ -2476,16 +2476,17 @@
     "@graphql-mesh/utils" "0.12.0"
     url-join "4.0.1"
 
-"@graphql-mesh/graphql@0.21.2":
-  version "0.21.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.21.2.tgz#9c2c8bb9c1ba22e08494a8e044abbbbeeec78f1c"
-  integrity sha512-jgvMJOSXX3x+hb3Yv5l2VUkKSRjePg33eETx5/N7PgAy2F8GhX3dEes2V8wU0sHBQ24wOGLMbKWcuxSj0nYXbw==
+"@graphql-mesh/graphql@0.21.3":
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/graphql/-/graphql-0.21.3.tgz#b9db32d9d714deed8a42c38ef2c30a3485448d17"
+  integrity sha512-OPPRgPvGbGIz27+XWtg44SbUr+zmiQd+K2YE3qdQixevcS/vLiUeFwP18RPdvgpKPkcQT5yhj2U6XQVx3TLs8g==
   dependencies:
-    "@graphql-mesh/store" "0.3.25"
-    "@graphql-mesh/types" "0.66.2"
-    "@graphql-mesh/utils" "0.28.2"
+    "@graphql-mesh/store" "0.3.26"
+    "@graphql-mesh/types" "0.66.3"
+    "@graphql-mesh/utils" "0.28.3"
     "@graphql-tools/delegate" "8.5.2"
-    "@graphql-tools/url-loader" "7.8.0"
+    "@graphql-tools/url-loader" "7.9.1"
+    "@graphql-tools/utils" "8.6.2"
     "@graphql-tools/wrap" "8.4.3"
     tslib "^2.3.1"
 
@@ -4263,10 +4264,10 @@
     valid-url "1.0.9"
     ws "7.4.5"
 
-"@graphql-tools/url-loader@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/url-loader/-/url-loader-7.8.0.tgz#f2e6f093dd283734a8d81cc6515898199f897170"
-  integrity sha512-4j5X40hpYInM5J7KbURSspEJCi6tPqvEE2kyBOyP0C0YIOYtKgUJTAryjbBXqr+HWGyEwJ2zuQ2cQdVMn8l78A==
+"@graphql-tools/url-loader@7.9.1":
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/url-loader/-/url-loader-7.9.1.tgz#e13c7f5b01e4812327feee8d97f76be8d7f25a43"
+  integrity sha512-UYKc0f8jw+MODDb79XKOG8wyvRCG/7KBYtRUfUKed4LBjftjZfF5VovAbF3axiTuzt2FSyPRu8YMEQ7kypkc8g==
   dependencies:
     "@graphql-tools/delegate" "^8.5.1"
     "@graphql-tools/utils" "^8.6.2"
@@ -4284,7 +4285,6 @@
     subscriptions-transport-ws "^0.11.0"
     sync-fetch "^0.3.1"
     tslib "^2.3.0"
-    valid-url "^1.0.9"
     value-or-promise "^1.0.11"
     ws "^8.3.0"
 
@@ -23135,7 +23135,7 @@ v8-to-istanbul@^8.1.0:
     convert-source-map "^1.6.0"
     source-map "^0.7.3"
 
-valid-url@1.0.9, valid-url@^1.0.9:
+valid-url@1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/valid-url/-/valid-url-1.0.9.tgz#1c14479b40f1397a75782f115e4086447433a200"
   integrity sha1-HBRHm0DxOXp1eC8RXkCGRHQzogA=
