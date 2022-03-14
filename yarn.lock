@@ -2937,16 +2937,16 @@
     graphql-transform-federation "2.2.0"
     lodash "4.17.21"
 
-"@graphql-mesh/transform-filter-schema@0.14.26":
-  version "0.14.26"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-filter-schema/-/transform-filter-schema-0.14.26.tgz#fcb2c3b792440f09d8467a2cce7759328f803880"
-  integrity sha512-k6i/7O2Swc+t7FUs8kdLSRriPV0ytkIwbHXWppOIZb3QVxfA8bPiUoxvkLcjD2UPt0Dl7Lw8G18hpg9r/plWPQ==
+"@graphql-mesh/transform-filter-schema@0.14.29":
+  version "0.14.29"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-filter-schema/-/transform-filter-schema-0.14.29.tgz#d0087e216ee6472f4f1cae6458956b3f13474c9d"
+  integrity sha512-3PuVWRPR/PCi3QvpwWt9Ww41jkhrKO7KxeNxlIjAtto/EhlzpR5vUuaRlNmar4i1xnsV0pb55JhWl8B2CF2sAg==
   dependencies:
-    "@graphql-mesh/types" "0.66.2"
-    "@graphql-mesh/utils" "0.28.2"
-    "@graphql-tools/delegate" "8.5.2"
+    "@graphql-mesh/types" "0.66.5"
+    "@graphql-mesh/utils" "0.28.5"
+    "@graphql-tools/delegate" "8.5.3"
     "@graphql-tools/utils" "8.6.2"
-    "@graphql-tools/wrap" "8.4.3"
+    "@graphql-tools/wrap" "8.4.4"
     micromatch "4.0.4"
     tslib "^2.3.1"
 
