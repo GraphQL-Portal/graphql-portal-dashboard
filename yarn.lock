@@ -193,10 +193,10 @@
     deep-equal "^2.0.5"
     pretty-format "^26.0.0"
 
-"@apollo/subgraph@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.3.1.tgz#33e2ca8f87a8b0bb988888de794361db04cedd95"
-  integrity sha512-MWqzfZEcvN86iwwgsgkFnkoBvv/wCdw/qyXjayuZ4wwQgVZ8NpFNbUxjRC0MwKNHwBU/ZH1oDHOnC8WbUuUMsg==
+"@apollo/subgraph@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-0.3.3.tgz#0f9b2fa560d59c6b3c1994bfe84ceb81ccbd9720"
+  integrity sha512-VH8B0IEa960ajMApWPs0eu/kH28tDUbuXgGJN2ZUo9hIo6LtyPfDRATtHlMr2SeW1Vh3ukiZE3BW78zrtTHCUA==
 
 "@apollographql/apollo-tools@^0.5.0", "@apollographql/apollo-tools@^0.5.1":
   version "0.5.1"
@@ -2911,15 +2911,15 @@
     "@graphql-tools/load" "6.2.8"
     "@graphql-tools/merge" "6.2.14"
 
-"@graphql-mesh/transform-federation@0.8.25":
-  version "0.8.25"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.8.25.tgz#f733a2892bb3ac0ec295888c9ed58b469d2bb71c"
-  integrity sha512-niOkQZN868WcDXwYUZI0DUJ8LinJw0Yi3m3TzVxAijtt/yXlO3GaOB17ZCenupGy+iZjDkzRBEEW0WDKKFbfyA==
+"@graphql-mesh/transform-federation@0.8.29":
+  version "0.8.29"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.8.29.tgz#8d06e2eeebf00d7434f2675a73f93b735627f4fa"
+  integrity sha512-9GdaXxvdqCbygX1bo7AszHIajzTpZ7DVlLGjuKVXJSPTk8hWREMhAScq/GrXyOF8CtW1l241w+WqNNMz0qr5+A==
   dependencies:
-    "@apollo/subgraph" "0.3.1"
-    "@graphql-mesh/types" "0.66.2"
-    "@graphql-mesh/utils" "0.28.2"
-    "@graphql-tools/delegate" "8.5.2"
+    "@apollo/subgraph" "0.3.3"
+    "@graphql-mesh/types" "0.66.5"
+    "@graphql-mesh/utils" "0.28.5"
+    "@graphql-tools/delegate" "8.5.3"
     "@graphql-tools/stitching-directives" "2.2.2"
     "@graphql-tools/utils" "8.6.2"
     graphql-transform-federation "2.2.0"
