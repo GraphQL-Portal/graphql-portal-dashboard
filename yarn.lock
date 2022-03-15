@@ -2987,16 +2987,16 @@
     faker "5.5.3"
     graphql-scalars "1.10.0"
 
-"@graphql-mesh/transform-naming-convention@0.10.16":
-  version "0.10.16"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.10.16.tgz#70d09ef36495f26c447e43e26b3063773961e553"
-  integrity sha512-4mxT6LRoswtjQSQ6EgWMAnd9crkBX6msK8fZURwFrr+M1oWzriNDCqcA6u0c8xFB/Anr7+7usqJLBnQwv29eJg==
+"@graphql-mesh/transform-naming-convention@0.10.19":
+  version "0.10.19"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-naming-convention/-/transform-naming-convention-0.10.19.tgz#0d89dfe3821cf58b85e6c4e8a2e290f676b3cdbf"
+  integrity sha512-85z1gMC0t3Vos0wbyyfIh5qTd30gsLbhuCJRNey3jMWlVrzqtFOBzzkQ5IwL+jJUcmDtPcwJl0mT/Y8oQ+mqHA==
   dependencies:
-    "@graphql-mesh/types" "0.66.2"
-    "@graphql-mesh/utils" "0.28.2"
-    "@graphql-tools/delegate" "8.5.2"
+    "@graphql-mesh/types" "0.66.5"
+    "@graphql-mesh/utils" "0.28.5"
+    "@graphql-tools/delegate" "8.5.3"
     "@graphql-tools/utils" "8.6.2"
-    "@graphql-tools/wrap" "8.4.3"
+    "@graphql-tools/wrap" "8.4.4"
     change-case "4.1.2"
     graphql-scalars "1.15.0"
     lower-case "2.0.2"
