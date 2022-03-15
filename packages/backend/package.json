@@ -45,7 +45,7 @@
     "@graphql-mesh/transform-naming-convention": "0.10.19",
     "@graphql-mesh/transform-prefix": "0.11.18",
     "@graphql-mesh/transform-rename": "0.12.18",
-    "@graphql-mesh/transform-resolvers-composition": "0.12.25",
+    "@graphql-mesh/transform-resolvers-composition": "0.12.28",
     "@graphql-mesh/transform-snapshot": "0.13.25",
     "@graphql-portal/contentful": "0.1.3",
     "@graphql-portal/crunchbase": "0.1.4",
