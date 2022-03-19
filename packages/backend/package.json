@@ -37,7 +37,7 @@
     "@graphql-mesh/grpc": "0.19.26",
     "@graphql-mesh/mysql": "0.14.36",
     "@graphql-mesh/transform-cache": "0.11.33",
-    "@graphql-mesh/transform-encapsulate": "0.3.29",
+    "@graphql-mesh/transform-encapsulate": "0.3.33",
     "@graphql-mesh/transform-extend": "0.9.28",
     "@graphql-mesh/transform-federation": "0.8.29",
     "@graphql-mesh/transform-filter-schema": "0.14.29",
