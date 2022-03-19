@@ -2946,17 +2946,17 @@
     "@graphql-tools/load" "6.2.8"
     "@graphql-tools/merge" "6.2.14"
 
-"@graphql-mesh/transform-federation@0.8.29":
-  version "0.8.29"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.8.29.tgz#8d06e2eeebf00d7434f2675a73f93b735627f4fa"
-  integrity sha512-9GdaXxvdqCbygX1bo7AszHIajzTpZ7DVlLGjuKVXJSPTk8hWREMhAScq/GrXyOF8CtW1l241w+WqNNMz0qr5+A==
+"@graphql-mesh/transform-federation@0.8.33":
+  version "0.8.33"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-federation/-/transform-federation-0.8.33.tgz#7361f7383f78d775ef25d3ee1e325964ad61ad8e"
+  integrity sha512-Xk4BWjBYBA581GGi9PPRe0Mj46l4Tns488yvh9fR41LZ95kcc5EjVcbKxjZMrYcvrLh9tdYY+zsY7P82cLfxoA==
   dependencies:
     "@apollo/subgraph" "0.3.3"
-    "@graphql-mesh/types" "0.66.5"
-    "@graphql-mesh/utils" "0.28.5"
-    "@graphql-tools/delegate" "8.5.3"
-    "@graphql-tools/stitching-directives" "2.2.2"
-    "@graphql-tools/utils" "8.6.2"
+    "@graphql-mesh/types" "0.68.0"
+    "@graphql-mesh/utils" "0.30.2"
+    "@graphql-tools/delegate" "8.5.4"
+    "@graphql-tools/stitching-directives" "2.2.4"
+    "@graphql-tools/utils" "8.6.3"
     graphql-transform-federation "2.2.0"
     lodash "4.17.21"
     tslib "^2.3.1"
@@ -4415,15 +4415,6 @@
   dependencies:
     "@graphql-tools/delegate" "^8.1.0"
     "@graphql-tools/utils" "^8.1.1"
-    tslib "~2.3.0"
-
-"@graphql-tools/stitching-directives@2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/stitching-directives/-/stitching-directives-2.2.2.tgz#e02630d3b8d6eb8e200e0387f65493286faca4b5"
-  integrity sha512-J/+4Jvq4MoLeY6n4vOm/qhrE8NvCXPUdPmoxscdem4bmwCS+Pb4hg7DBxtP3c6Oz+e11PvAQpq0EMKE9scXC1Q==
-  dependencies:
-    "@graphql-tools/delegate" "^8.5.1"
-    "@graphql-tools/utils" "^8.6.2"
     tslib "~2.3.0"
 
 "@graphql-tools/stitching-directives@2.2.4":
