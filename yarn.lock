@@ -2860,16 +2860,16 @@
     thrift "0.14.1"
     url-join "4.0.1"
 
-"@graphql-mesh/transform-cache@0.11.33":
-  version "0.11.33"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.11.33.tgz#b1c80763f048fd5c84a62b620abaae924556e7b9"
-  integrity sha512-syIoHvvTkB36KbXqHA2Vkp8853bGjs403Bv2veUd8D5Ro9NmWrncGr/DgBU5KnC9YluEGHuhQPnfPinBGt5BbQ==
+"@graphql-mesh/transform-cache@0.11.37":
+  version "0.11.37"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-cache/-/transform-cache-0.11.37.tgz#455bb7fe9cd12a200c5c44cfc34dfb9546eefcc1"
+  integrity sha512-JPk6O3KrjKWf/dawothv7Oez/PuQxHhKt4DKlQXx6It2GthfUvkACYstyuyzq+CdIYzkWnzKPsJnds3etS7jpA==
   dependencies:
-    "@graphql-mesh/types" "0.68.0"
-    "@graphql-mesh/utils" "0.30.2"
-    "@graphql-tools/resolvers-composition" "6.4.3"
-    "@graphql-tools/schema" "8.3.3"
-    "@graphql-tools/utils" "8.6.3"
+    "@graphql-mesh/types" "0.69.0"
+    "@graphql-mesh/utils" "0.32.2"
+    "@graphql-tools/resolvers-composition" "6.4.5"
+    "@graphql-tools/schema" "8.3.5"
+    "@graphql-tools/utils" "8.6.5"
     date-fns "2.28.0"
     tslib "^2.3.1"
 
@@ -4212,6 +4212,16 @@
   integrity sha512-nHAACTfVd/OQRk2zdx151xtwdSug0z5RCj/yfz9CDoS+h2ytqQ7uxRZQByUIEFWhr3i2lotliQiZ9jQ/v3n3Xg==
   dependencies:
     "@graphql-tools/utils" "8.6.3"
+    lodash "4.17.21"
+    micromatch "^4.0.4"
+    tslib "~2.3.0"
+
+"@graphql-tools/resolvers-composition@6.4.5":
+  version "6.4.5"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/resolvers-composition/-/resolvers-composition-6.4.5.tgz#81c5d0cfbfaab39305869606f6b968af7d46e998"
+  integrity sha512-RNA0KF5LKUUo/k9Kxvuk0v8F9SRblXGMT7O+lq69GVP0broTw0cAk55La9LKDgna5SJjIdXR2IVCTTZPBO3oxg==
+  dependencies:
+    "@graphql-tools/utils" "8.6.5"
     lodash "4.17.21"
     micromatch "^4.0.4"
     tslib "~2.3.0"
