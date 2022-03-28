@@ -2805,17 +2805,6 @@
     "@graphql-mesh/utils" "0.16.0"
     "@graphql-tools/utils" "8.1.2"
 
-"@graphql-mesh/store@0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.4.2.tgz#8cea33ca109e330ebf2b000b23b212c88e703065"
-  integrity sha512-/8GEdz47od+Pxpr0IHVj5HAzSbosF8lToiLit4YPBUV60mviGlgCL6ADNEZh6c0G7H8zKM/9ZL6IoRNK5RgHdA==
-  dependencies:
-    "@graphql-inspector/core" "3.1.1"
-    "@graphql-mesh/types" "0.68.0"
-    "@graphql-mesh/utils" "0.30.2"
-    "@graphql-tools/utils" "8.6.3"
-    tslib "^2.3.1"
-
 "@graphql-mesh/store@0.6.2":
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.6.2.tgz#5ff5b804be174716ae778e460bb2c1361b9e240f"
@@ -3114,16 +3103,17 @@
     "@graphql-tools/resolvers-composition" "6.3.5"
     "@graphql-tools/schema" "8.1.2"
 
-"@graphql-mesh/transform-snapshot@0.13.32":
-  version "0.13.32"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.13.32.tgz#799e278de452051eddad2ae179ed60ba5f8415aa"
-  integrity sha512-0oZZYKKmB5vnQQRmXvfzhGfZ7fxO98NfHiz14Up7D8jVvll3KM/Lz4ME4iZPXJSv2mW/3PtgLrgHwa+VK1R1qg==
+"@graphql-mesh/transform-snapshot@0.14.3":
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-snapshot/-/transform-snapshot-0.14.3.tgz#d2258c9f478018d49feebce98771d26aa04cf584"
+  integrity sha512-8cPwTYrJrRXvtM8mKYPQt1nXfIqDAV/M8g3haBUSfre4DAAk6di5ZWzg/l4gChNS/ABeZyISWEc604njQMOV6Q==
   dependencies:
-    "@graphql-mesh/types" "0.68.0"
-    "@graphql-mesh/utils" "0.30.2"
-    "@graphql-tools/resolvers-composition" "6.4.3"
-    "@graphql-tools/schema" "8.3.3"
-    "@graphql-tools/utils" "8.6.3"
+    "@graphql-mesh/cross-helpers" "0.1.0"
+    "@graphql-mesh/types" "0.69.0"
+    "@graphql-mesh/utils" "0.32.2"
+    "@graphql-tools/resolvers-composition" "6.4.5"
+    "@graphql-tools/schema" "8.3.5"
+    "@graphql-tools/utils" "8.6.5"
     tslib "^2.3.1"
 
 "@graphql-mesh/transform-snapshot@^0.10.0":
@@ -3186,18 +3176,6 @@
     "@graphql-tools/utils" "8.1.2"
     "@graphql-typed-document-node/core" "3.1.0"
     fetchache "0.1.1"
-
-"@graphql-mesh/types@0.68.0":
-  version "0.68.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.68.0.tgz#21c57f989331f9538c42fef2340bae4b04aa030a"
-  integrity sha512-m7sJa5AXXirnRV+qAlXqOo/PBfVLnSqGU7ZGBgQEU7PnK2Uiew90tlS74xBnUfnO2AaFC1/IrgFQhWy3oQ8MmA==
-  dependencies:
-    "@graphql-mesh/store" "0.4.2"
-    "@graphql-tools/delegate" "8.5.4"
-    "@graphql-tools/utils" "8.6.3"
-    "@graphql-typed-document-node/core" "3.1.1"
-    fetchache "0.1.1"
-    tslib "^2.3.1"
 
 "@graphql-mesh/types@0.69.0":
   version "0.69.0"
@@ -3293,31 +3271,6 @@
     lodash "4.17.21"
     object-hash "2.2.0"
     tiny-lru "7.0.6"
-
-"@graphql-mesh/utils@0.30.2":
-  version "0.30.2"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.30.2.tgz#ca2db0c1889e7527b0086648eb2eb687fc65905d"
-  integrity sha512-5GTOWtwEQ3x/ZtR1AZH32JcVqn56iy1kjpZq+iSM5SuoU7G5iZYambkQUTOsiZY0RSi9JvmM6rt6LyKVM66E+w==
-  dependencies:
-    "@ardatan/string-interpolation" "1.2.12"
-    "@graphql-mesh/types" "0.68.0"
-    "@graphql-tools/delegate" "8.5.4"
-    "@graphql-tools/utils" "8.6.3"
-    "@graphql-typed-document-node/core" "3.1.1"
-    chalk "4.1.2"
-    cross-undici-fetch "0.1.25"
-    date-fns "2.28.0"
-    fetchache "0.1.1"
-    file-uri-to-path "2.0.0"
-    flatstr "1.0.12"
-    graphql-jit "0.7.3"
-    graphql-subscriptions "2.0.0"
-    is-url "1.2.4"
-    js-yaml "4.1.0"
-    lodash "4.17.21"
-    object-hash "3.0.0"
-    tiny-lru "8.0.2"
-    tslib "^2.3.1"
 
 "@graphql-mesh/utils@0.32.2":
   version "0.32.2"
@@ -3640,16 +3593,6 @@
     dataloader "2.0.0"
     tslib "~2.1.0"
 
-"@graphql-tools/batch-execute@8.3.3":
-  version "8.3.3"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/batch-execute/-/batch-execute-8.3.3.tgz#71088500d5d4865d3530cc15921cc106c41602b1"
-  integrity sha512-22q/uCMUf+z3EWoM3ZM6DopDBGkni2TsfUb/mJIysunh5u8btAuXeju++De7RFwwUw+awdJXfunFQJG+OoH5Dg==
-  dependencies:
-    "@graphql-tools/utils" "8.6.3"
-    dataloader "2.0.0"
-    tslib "~2.3.0"
-    value-or-promise "1.0.11"
-
 "@graphql-tools/batch-execute@8.4.1":
   version "8.4.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/batch-execute/-/batch-execute-8.4.1.tgz#bc5e96ad22c545676da523bae3c3dc94e57bdf3e"
@@ -3806,19 +3749,6 @@
     dataloader "2.0.0"
     tslib "~2.3.0"
     value-or-promise "1.0.10"
-
-"@graphql-tools/delegate@8.5.4":
-  version "8.5.4"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/delegate/-/delegate-8.5.4.tgz#9af9bac0111e90129d963dd1c999ca540b366fcd"
-  integrity sha512-+3BCgSPCp/HoeOBjhz6X7RY7HMCNBanz/wkxo0/e4rk8TqJ3sjZCH470SHvsxCsBIlMwx4FYwkmxePgX/V+0Cg==
-  dependencies:
-    "@graphql-tools/batch-execute" "8.3.3"
-    "@graphql-tools/schema" "8.3.3"
-    "@graphql-tools/utils" "8.6.3"
-    dataloader "2.0.0"
-    graphql-executor "0.0.19"
-    tslib "~2.3.0"
-    value-or-promise "1.0.11"
 
 "@graphql-tools/delegate@8.7.0":
   version "8.7.0"
@@ -4088,14 +4018,6 @@
     "@graphql-tools/utils" "^7.7.0"
     tslib "~2.2.0"
 
-"@graphql-tools/merge@8.2.4":
-  version "8.2.4"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.2.4.tgz#f903545e5693c75418f95671bca1be6bc51bfa53"
-  integrity sha512-hiNRTsS948F+BB4Q7CZXLaGFOIHQzmimVq3EEI/+PQZsPb7kYDzg0Ow0GyV4conDdEiooLqHf7I1dWzTYwvs0A==
-  dependencies:
-    "@graphql-tools/utils" "8.6.3"
-    tslib "~2.3.0"
-
 "@graphql-tools/merge@8.2.6":
   version "8.2.6"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.2.6.tgz#7fb615fa9c143c3151ff025e501d52bd48186d19"
@@ -4210,16 +4132,6 @@
     micromatch "^4.0.4"
     tslib "~2.3.0"
 
-"@graphql-tools/resolvers-composition@6.4.3":
-  version "6.4.3"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/resolvers-composition/-/resolvers-composition-6.4.3.tgz#71c552e5d57aca83635a0e008bb8ee71857e4755"
-  integrity sha512-nHAACTfVd/OQRk2zdx151xtwdSug0z5RCj/yfz9CDoS+h2ytqQ7uxRZQByUIEFWhr3i2lotliQiZ9jQ/v3n3Xg==
-  dependencies:
-    "@graphql-tools/utils" "8.6.3"
-    lodash "4.17.21"
-    micromatch "^4.0.4"
-    tslib "~2.3.0"
-
 "@graphql-tools/resolvers-composition@6.4.5":
   version "6.4.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/resolvers-composition/-/resolvers-composition-6.4.5.tgz#81c5d0cfbfaab39305869606f6b968af7d46e998"
@@ -4266,16 +4178,6 @@
   dependencies:
     "@graphql-tools/merge" "^8.2.1"
     "@graphql-tools/utils" "^8.5.1"
-    tslib "~2.3.0"
-    value-or-promise "1.0.11"
-
-"@graphql-tools/schema@8.3.3":
-  version "8.3.3"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.3.3.tgz#b69ea495026976f16e697253f08aa7905e7f6265"
-  integrity sha512-OrRLU9/7UmkDemeyNUy62uH+FofgV3bpVVZJprc9bhe3gZsY7kQNIdY7H1unINlepjLvGOgk7u7iLo2+EhjyWw==
-  dependencies:
-    "@graphql-tools/merge" "8.2.4"
-    "@graphql-tools/utils" "8.6.3"
     tslib "~2.3.0"
     value-or-promise "1.0.11"
 
@@ -4457,13 +4359,6 @@
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.5.3.tgz#404062e62cae9453501197039687749c4885356e"
   integrity sha512-HDNGWFVa8QQkoQB0H1lftvaO1X5xUaUDk1zr1qDe0xN1NL0E/CrQdJ5UKLqOvH4hkqVUPxQsyOoAZFkaH6rLHg==
-  dependencies:
-    tslib "~2.3.0"
-
-"@graphql-tools/utils@8.6.3":
-  version "8.6.3"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.6.3.tgz#ce9fc9adce4d45b229e314a2261290a88a252aed"
-  integrity sha512-CNyP7Uu7dlVMQ32IpHWOxz4yic9BYXXVkDhG0UdTKSszvzHdgMilemE9MpUrGzzBPsTe3aYTtNGyPUkyh9yTXA==
   dependencies:
     tslib "~2.3.0"
 
@@ -9914,18 +9809,6 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-cross-undici-fetch@0.1.25:
-  version "0.1.25"
-  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.25.tgz#8c6826dd0ffbb45fcb1a554be5984e0eaef7f3ba"
-  integrity sha512-KS6hm/VuRO+3jIrg4uidz3mQ8NWvCbiTTOg3yoH30zuGVUvjqZlnXw66h0kuzyfP21hDkrdIbufXCW6BAQdSNw==
-  dependencies:
-    abort-controller "^3.0.0"
-    form-data-encoder "^1.7.1"
-    formdata-node "^4.3.1"
-    node-fetch "^2.6.7"
-    undici "^4.9.3"
-    web-streams-polyfill "^3.2.0"
-
 cross-undici-fetch@0.1.27:
   version "0.1.27"
   resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.27.tgz#7a004937d3782f2efd7f21f947e66983faea6b0c"
@@ -13100,11 +12983,6 @@ graphql-depth-limit@^1.1.0:
   integrity sha512-+3B2BaG8qQ8E18kzk9yiSdAa75i/hnnOwgSeAxVJctGQPvmeiLtqKOYF6HETCyRjiF7Xfsyal0HbLlxCQkgkrw==
   dependencies:
     arrify "^1.0.1"
-
-graphql-executor@0.0.19:
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/graphql-executor/-/graphql-executor-0.0.19.tgz#cab902c91444181944a6bbb3e6cab7107b933f33"
-  integrity sha512-AFOcsk/yMtl9jcO/f/0Our7unWxJ5m3FS5HjWfsXRHCyjjaubXpSHiOZO/hSYv6brayIrupDoVAzCuJpBc3elg==
 
 graphql-executor@0.0.22:
   version "0.0.22"
