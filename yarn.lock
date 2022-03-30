@@ -2687,7 +2687,20 @@
     mysql-utilities "1.1.2"
     pascal-case "3.1.2"
 
-"@graphql-mesh/neo4j@0.11.6", "@graphql-mesh/neo4j@^0.11.0":
+"@graphql-mesh/neo4j@0.16.41":
+  version "0.16.41"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.16.41.tgz#f52f8d08a89b5dbfa49f015bcebf62ef0ac69a8d"
+  integrity sha512-zqz6ZYHcLJS6Y89S5hjFXS4r+WsbWW9NL1IY4+35UEHZ6s06gM/rT3NNJ0mepg3UFzrfy8edUfz2aes5/UCWCg==
+  dependencies:
+    "@graphql-mesh/store" "0.7.0"
+    "@graphql-mesh/types" "0.70.0"
+    "@graphql-mesh/utils" "0.33.0"
+    "@graphql-tools/utils" "8.6.5"
+    neo4j-driver "4.4.5"
+    neo4j-graphql-js "2.19.4"
+    tslib "^2.3.1"
+
+"@graphql-mesh/neo4j@^0.11.0":
   version "0.11.6"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/neo4j/-/neo4j-0.11.6.tgz#db7a03ca7cbdbcf4c63bfb2e4d6b858bfbb5ca92"
   integrity sha512-1/zbAv2+sI8aUwUIRjS9ZFbUn3tT/C5Iw6oeRWoHvgHuiT1ngBKz9TJn7bUjUFcUJriKRKeCRQ6oRvxSUsDe8Q==
@@ -2814,6 +2827,18 @@
     "@graphql-mesh/cross-helpers" "0.1.0"
     "@graphql-mesh/types" "0.69.0"
     "@graphql-mesh/utils" "0.32.2"
+    "@graphql-tools/utils" "8.6.5"
+    tslib "^2.3.1"
+
+"@graphql-mesh/store@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/store/-/store-0.7.0.tgz#35d22b730f1a4930d6fedacf69a3f4beaf21df32"
+  integrity sha512-1GYvwuXbO4AN1AY9HlQH7wIwaF7PnaJFkRYPlQ6TC5i5E5CqaYn3J8EYm8Rl5iEn9ouMcPKH8tXh5Gk6WJi2sQ==
+  dependencies:
+    "@graphql-inspector/core" "3.1.1"
+    "@graphql-mesh/cross-helpers" "0.1.0"
+    "@graphql-mesh/types" "0.70.0"
+    "@graphql-mesh/utils" "0.33.0"
     "@graphql-tools/utils" "8.6.5"
     tslib "^2.3.1"
 
@@ -3189,6 +3214,18 @@
     fetchache "0.1.1"
     tslib "^2.3.1"
 
+"@graphql-mesh/types@0.70.0":
+  version "0.70.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/types/-/types-0.70.0.tgz#350f3478f4f40c26fa37fa2b6dc1e85883cc3de5"
+  integrity sha512-eRJIm5djlhXN3iGdm+8d5kXvLm0EgkQgthzqoOllLcyKiRMc46JIWjPmxJ3LlgM+VvfgRLxwYbsIx1/1FOK/CA==
+  dependencies:
+    "@graphql-mesh/store" "0.7.0"
+    "@graphql-tools/delegate" "8.7.0"
+    "@graphql-tools/utils" "8.6.5"
+    "@graphql-typed-document-node/core" "3.1.1"
+    fetchache "0.1.1"
+    tslib "^2.3.1"
+
 "@graphql-mesh/utils@0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.10.0.tgz#d369dd405fc88078f1f987395437651095c806ba"
@@ -3285,6 +3322,32 @@
     "@graphql-typed-document-node/core" "3.1.1"
     chalk "4.1.2"
     cross-undici-fetch "0.1.27"
+    date-fns "2.28.0"
+    fetchache "0.1.1"
+    file-uri-to-path "2.0.0"
+    flatstr "1.0.12"
+    graphql-jit "0.7.3"
+    graphql-subscriptions "2.0.0"
+    is-url "1.2.4"
+    js-yaml "4.1.0"
+    lodash "4.17.21"
+    object-hash "3.0.0"
+    tiny-lru "8.0.2"
+    tslib "^2.3.1"
+
+"@graphql-mesh/utils@0.33.0":
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/utils/-/utils-0.33.0.tgz#09ba9165f966c39c51e7866b319bec6c839daeb2"
+  integrity sha512-zXp/8BywCzYijhThAsxqR/Mal3+YJtZbnV2n/TKYQT7ucE2ydnfrJbyflqnfCLJTNaWKk16AGIEeLat7QusMBg==
+  dependencies:
+    "@ardatan/string-interpolation" "1.2.12"
+    "@graphql-mesh/cross-helpers" "0.1.0"
+    "@graphql-mesh/types" "0.70.0"
+    "@graphql-tools/delegate" "8.7.0"
+    "@graphql-tools/utils" "8.6.5"
+    "@graphql-typed-document-node/core" "3.1.1"
+    chalk "4.1.2"
+    cross-undici-fetch "0.1.28"
     date-fns "2.28.0"
     fetchache "0.1.1"
     file-uri-to-path "2.0.0"
@@ -8697,6 +8760,14 @@ buffer@^5.5.0, buffer@^5.6.0, buffer@^5.7.0:
     base64-js "^1.3.1"
     ieee754 "^1.1.13"
 
+buffer@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
+  integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
+  dependencies:
+    base64-js "^1.3.1"
+    ieee754 "^1.2.1"
+
 bufrw@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/bufrw/-/bufrw-1.3.0.tgz#28d6cfdaf34300376836310f5c31d57eeb40c8fa"
@@ -9819,6 +9890,18 @@ cross-undici-fetch@0.1.27:
     formdata-node "^4.3.1"
     node-fetch "^2.6.7"
     undici "^4.9.3"
+    web-streams-polyfill "^3.2.0"
+
+cross-undici-fetch@0.1.28:
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/cross-undici-fetch/-/cross-undici-fetch-0.1.28.tgz#40b7071b9ab2d1d6aff889836205e1972092e8d1"
+  integrity sha512-/nLMyVE5IC9PQdBtmgjpGZfK0wo8UupomAPx+7HlbEgVDkZOa9xCiZP9goo5aLYofP0gHXgovjXdXrE2obANag==
+  dependencies:
+    abort-controller "^3.0.0"
+    form-data-encoder "^1.7.1"
+    formdata-node "^4.3.1"
+    node-fetch "^2.6.7"
+    undici "^5.0.0"
     web-streams-polyfill "^3.2.0"
 
 cross-undici-fetch@^0.0.26:
@@ -13812,7 +13895,7 @@ identity-obj-proxy@3.0.0:
   dependencies:
     harmony-reflect "^1.4.6"
 
-ieee754@^1.1.13, ieee754@^1.1.4:
+ieee754@^1.1.13, ieee754@^1.1.4, ieee754@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
@@ -17534,10 +17617,24 @@ neo4j-driver-bolt-connection@^4.3.1:
     neo4j-driver-core "^4.3.1"
     text-encoding-utf-8 "^1.0.2"
 
+neo4j-driver-bolt-connection@^4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/neo4j-driver-bolt-connection/-/neo4j-driver-bolt-connection-4.4.5.tgz#9f8853c1e117fab15834df367338d7515a58372f"
+  integrity sha512-CMRc4LXle20AesrqZzhDsHTgNnHqEwF7rYvNiDKC40gA2F6QrKcp+4tg17dhrptWd5C2mOWaP4WoytZt8tMlAA==
+  dependencies:
+    buffer "^6.0.3"
+    neo4j-driver-core "^4.4.5"
+    string_decoder "^1.3.0"
+
 neo4j-driver-core@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/neo4j-driver-core/-/neo4j-driver-core-4.3.1.tgz#5d92ae3f9ee48e3af2b4a085503368b15a195a98"
   integrity sha512-FV194GxpPvgNpettGUMit6hxbMOkBR42j1K6xwfLvm25XYaZJMJzE0ezqS0Vp0G6etUqhUQChh7WYLdTMIztpQ==
+
+neo4j-driver-core@^4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/neo4j-driver-core/-/neo4j-driver-core-4.4.5.tgz#5b1e1c7fb9cc0cd323ca33639f1ae8bacfabb949"
+  integrity sha512-gG22aP7pSDtrP6+fVODd0X6oufRl05M0Z5Q5DT9KSXYJxVCB1rlRiIjORX6rX2M0n2tX5n8XZjeh+io7mhDRsQ==
 
 neo4j-driver@4.2.3:
   version "4.2.3"
@@ -17548,6 +17645,16 @@ neo4j-driver@4.2.3:
     rxjs "^6.6.3"
     text-encoding-utf-8 "^1.0.2"
     uri-js "^4.4.0"
+
+neo4j-driver@4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/neo4j-driver/-/neo4j-driver-4.4.5.tgz#136b7517e2f82a7d5dd7ef249d53037f6faa1f51"
+  integrity sha512-oY510+rE6Cu8hAYaELc0/0XkVCKvdo5ZkKvQT+gbfBFiD9SPoVGYdSkCzIAhH9+0Tpwu1OQIASQpnnz8J28R/A==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    neo4j-driver-bolt-connection "^4.4.5"
+    neo4j-driver-core "^4.4.5"
+    rxjs "^6.6.3"
 
 neo4j-driver@^4.2.1:
   version "4.3.1"
@@ -17563,6 +17670,21 @@ neo4j-graphql-js@2.19.2:
   version "2.19.2"
   resolved "https://registry.yarnpkg.com/neo4j-graphql-js/-/neo4j-graphql-js-2.19.2.tgz#0f2d14317646ee8cdb52822723c9dff857a5d43f"
   integrity sha512-V6RVPt+4fNS6rr2FQY0YWq9de/WFNI8fL0+6hVBBY8TUZaDzioBVML73/M6UOOh/+idLKTPT0opXAam33y305Q==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    "@babel/runtime-corejs2" "^7.5.5"
+    apollo-server-errors "^2.4.1"
+    debug "^4.1.1"
+    graphql "^15.4.0"
+    graphql-auth-directives "^2.2.2"
+    graphql-tools "^7.0.2"
+    lodash "^4.17.19"
+    neo4j-driver "^4.2.1"
+
+neo4j-graphql-js@2.19.4:
+  version "2.19.4"
+  resolved "https://registry.yarnpkg.com/neo4j-graphql-js/-/neo4j-graphql-js-2.19.4.tgz#0d721cb32227e8f2083631bd16efd60aebfd3060"
+  integrity sha512-Na7c4yMLco+2WhgbWlRIGH/sa2C8rwWOS/5BHVqv0AM1lwaf83pu1m5dwxo6nKse4Q9YJKGFUovMJW5ZASTTYg==
   dependencies:
     "@babel/runtime" "^7.5.5"
     "@babel/runtime-corejs2" "^7.5.5"
@@ -22003,7 +22125,7 @@ string.prototype.trimstart@^1.0.3, string.prototype.trimstart@^1.0.4:
     call-bind "^1.0.2"
     define-properties "^1.1.3"
 
-string_decoder@^1.0.0, string_decoder@^1.1.1:
+string_decoder@^1.0.0, string_decoder@^1.1.1, string_decoder@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.3.0.tgz#42f114594a46cf1a8e30b0a84f56c78c3edac21e"
   integrity sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==
@@ -23088,6 +23210,11 @@ undici@^4.9.3:
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/undici/-/undici-4.9.5.tgz#6531b6b2587c2c42d77c0dded83d058a328775f8"
   integrity sha512-t59IFVYiMnFThboJL9izqwsDEfSbZDPZ/8iCYBCkEFLy63x9m4YaNt0E+r5+X993syC9M0W/ksusZC9YuAamMg==
+
+undici@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.0.0.tgz#3c1e08c7f0df90c485d5d8dbb0517e11e34f2090"
+  integrity sha512-VhUpiZ3No1DOPPQVQnsDZyfcbTTcHdcgWej1PdFnSvOeJmOVDgiOHkunJmBLfmjt4CqgPQddPVjSWW0dsTs5Yg==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
