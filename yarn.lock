@@ -90,22 +90,23 @@
     call-me-maybe "^1.0.1"
     z-schema "^5.0.1"
 
-"@apollo/client@3.5.10":
-  version "3.5.10"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.5.10.tgz#43463108a6e07ae602cca0afc420805a19339a71"
-  integrity sha512-tL3iSpFe9Oldq7gYikZK1dcYxp1c01nlSwtsMz75382HcI6fvQXyFXUCJTTK3wgO2/ckaBvRGw7VqjFREdVoRw==
+"@apollo/client@3.6.1":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.6.1.tgz#2578aa3c06e4b8c41060936b9e508beb1abc1bab"
+  integrity sha512-WGC7n2IS7GIbCCfVvu58Qncmj6qUBYbI/DxPVHGffDuY5y5l+OI2YIr5UXyR8+G9Ly1d6iYbX6l6l+Rw6F6gHA==
   dependencies:
-    "@graphql-typed-document-node/core" "^3.0.0"
+    "@graphql-typed-document-node/core" "^3.1.1"
     "@wry/context" "^0.6.0"
     "@wry/equality" "^0.5.0"
     "@wry/trie" "^0.3.0"
-    graphql-tag "^2.12.3"
+    graphql-tag "^2.12.6"
     hoist-non-react-statics "^3.3.2"
     optimism "^0.16.1"
     prop-types "^15.7.2"
     symbol-observable "^4.0.0"
-    ts-invariant "^0.9.4"
+    ts-invariant "^0.10.0"
     tslib "^2.3.0"
+    use-sync-external-store "^1.0.0"
     zen-observable-ts "^1.2.0"
 
 "@apollo/client@^3.2.5", "@apollo/client@~3.2.5 || ~3.3.0":
@@ -13125,10 +13126,10 @@ graphql-tag@^2.11.0, graphql-tag@^2.12.0:
   dependencies:
     tslib "^2.1.0"
 
-graphql-tag@^2.12.3:
-  version "2.12.5"
-  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.12.5.tgz#5cff974a67b417747d05c8d9f5f3cb4495d0db8f"
-  integrity sha512-5xNhP4063d16Pz3HBtKprutsPrmHZi5IdUGOWRxA2B6VF7BIRGOHZ5WQvDmJXZuPcBg7rYwaFxvQYjqkSdR3TQ==
+graphql-tag@^2.12.6:
+  version "2.12.6"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.12.6.tgz#d441a569c1d2537ef10ca3d1633b48725329b5f1"
+  integrity sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==
   dependencies:
     tslib "^2.1.0"
 
@@ -22715,6 +22716,13 @@ tryer@^1.0.1:
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
 
+ts-invariant@^0.10.0:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.10.1.tgz#df002059ffcc3f94b5064fa74e32796434cd1b06"
+  integrity sha512-dOmY3naALBtNyK+nrVGzD8DVxSJ9OIHragItZ3XvxGORNAZL6uszgQYaD3PW+TPh2NWNsOpuQUxznuvTkmcdqw==
+  dependencies:
+    tslib "^2.1.0"
+
 ts-invariant@^0.4.0:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.4.4.tgz#97a523518688f93aafad01b0e80eb803eb2abd86"
@@ -22726,13 +22734,6 @@ ts-invariant@^0.7.0:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.7.5.tgz#f9658719f9a7737b117d09820d952aacf6263f9c"
   integrity sha512-qfVyqTYWEqADMtncLqwpUdMjMSXnsqOeqGtj1LeJNFDjz8oqZ1YxLEp29YCOq65z0LgEiERqQ8ThVjnfibJNpg==
-  dependencies:
-    tslib "^2.1.0"
-
-ts-invariant@^0.9.4:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/ts-invariant/-/ts-invariant-0.9.4.tgz#42ac6c791aade267dd9dc65276549df5c5d71cac"
-  integrity sha512-63jtX/ZSwnUNi/WhXjnK8kz4cHHpYS60AnmA6ixz17l7E12a5puCWFlNpkne5Rl0J8TBPVHpGjsj4fxs8ObVLQ==
   dependencies:
     tslib "^2.1.0"
 
@@ -23229,6 +23230,11 @@ use-sidecar@^1.0.5:
   dependencies:
     detect-node-es "^1.1.0"
     tslib "^1.9.3"
+
+use-sync-external-store@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.1.0.tgz#3343c3fe7f7e404db70f8c687adf5c1652d34e82"
+  integrity sha512-SEnieB2FPKEVne66NpXPd1Np4R1lTNKfjuy3XdIoPQKYBAFdzbzSZlSn1KJZUiihQLQC5Znot4SBz1EOTBwQAQ==
 
 use@^3.1.0:
   version "3.1.1"
