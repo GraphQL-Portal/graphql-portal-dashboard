@@ -9261,10 +9261,10 @@ codemirror@5.63.0:
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.63.0.tgz#070a699108badd9c118b7261ac2e9793acdbb149"
   integrity sha512-KlLWRPggDg2rBD1Mx7/EqEhaBdy+ybBCVh/efgjBDsPpMeEu6MbTAJzIT4TuCzvmbTEgvKOGzVT6wdBTNusqrg==
 
-codemirror@5.65.5:
-  version "5.65.5"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.5.tgz#f38f0e29945c3464df0c81f946fcd9a063fa2024"
-  integrity sha512-HNyhvGLnYz5c+kIsB9QKVitiZUevha3ovbIYaQiGzKo7ECSL/elWD9RXt3JgNr0NdnyqE9/Rc/7uLfkJQL638w==
+codemirror@5.65.6:
+  version "5.65.6"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.6.tgz#fc313797331cbeb3bcab0652d1ec9d0f40c23ab5"
+  integrity sha512-zNihMSMoDxK9Gqv9oEyDT8oM51rcRrQ+IEo2zyS48gJByBq5Fj8XuNEguMra+MuIOuh6lkpnLUJeL70DoTt6yw==
 
 codemirror@^5.65.3:
   version "5.65.3"
