@@ -2223,12 +2223,12 @@
   dependencies:
     tslib "^2.0.1"
 
-"@graphiql/react@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@graphiql/react/-/react-0.6.0.tgz#5def1c8f5f5ef7e65f6cf97c47ecc6bfc9fbff38"
-  integrity sha512-eC4K2Bzrih+NMOXcOGXxTcqJz9Hcowp/Hx9TSOWUczSifI309kVhBEuHVa/Fnqqw04WyvL6Wvn92gUlRak51Qg==
+"@graphiql/react@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphiql/react/-/react-0.10.0.tgz#8d888949dc6c9ddebe0817aeba3e2c164bfbb1bb"
+  integrity sha512-8Xo1O6SQps6R+mOozN7Ht85/07RwyXgJcKNeR2dWPkJz/1Lww8wVHIKM/AUpo0Aaoh6Ps3UK9ep8DDRfBT4XrQ==
   dependencies:
-    "@graphiql/toolkit" "^0.6.0"
+    "@graphiql/toolkit" "^0.6.1"
     codemirror "^5.65.3"
     codemirror-graphql "^1.3.2"
     copy-to-clipboard "^3.2.0"
@@ -2237,10 +2237,10 @@
     markdown-it "^12.2.0"
     set-value "^4.1.0"
 
-"@graphiql/toolkit@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@graphiql/toolkit/-/toolkit-0.6.0.tgz#e508e58f305a976222f6adb84ab0ec748c26ab60"
-  integrity sha512-mbAwbt4lw2bFp9QW3NLVmh/r/ymczlcqvXk1HfvuC7Ma4h0yzrJiQauJyh1/gF5kjqevcRSquvP/YQJSvh1u6w==
+"@graphiql/toolkit@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@graphiql/toolkit/-/toolkit-0.6.1.tgz#ab2ae0a401ef5a6334a5573397608c2c5867c79d"
+  integrity sha512-rRjbHko6aSg1RWGr3yOJQqEV1tKe8yw9mDSr/18B+eDhVLQ30yyKk2NznFUT9NmIDzWFGR2pH/0lbBhHKmUCqw==
   dependencies:
     "@n1ru4l/push-pull-async-iterable-iterator" "^3.1.0"
     meros "^1.1.4"
@@ -12979,13 +12979,13 @@ graphile-utils@^4.11.2:
     graphql ">=0.9 <0.14 || ^14.0.2 || ^15.4.0"
     tslib "^2.0.1"
 
-graphiql@1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-1.10.0.tgz#2f869fe394fca76c7257444f80c5a2661d863ecc"
-  integrity sha512-OkhTLRzR8gwpePYLlosr0U3i9rPBmHQMHqm7pABjJ7gHfHi3UuokUAJ+tkKfv2cRHkJXB80Fp31ZAcCL6uG2tg==
+graphiql@1.11.5:
+  version "1.11.5"
+  resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-1.11.5.tgz#daf0de27b704f17c9d87ce56eea0fdcd7a370269"
+  integrity sha512-NI92XdSVwXTsqzJc6ykaAkKVMeC8IRRp3XzkxVQwtqDsZlVKtR2ZnssXNYt05TMGbi1ehoipn9tFywVohOlHjg==
   dependencies:
-    "@graphiql/react" "^0.6.0"
-    "@graphiql/toolkit" "^0.6.0"
+    "@graphiql/react" "^0.10.0"
+    "@graphiql/toolkit" "^0.6.1"
     entities "^2.0.0"
     graphql-language-service "^5.0.6"
     markdown-it "^12.2.0"
