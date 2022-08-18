@@ -1638,13 +1638,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.15.4":
-  version "7.15.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
-  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
@@ -6682,13 +6675,13 @@
     "@typescript-eslint/types" "4.33.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/react-codemirror@3.2.7":
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.2.7.tgz#c22648fddeb8836061b9a824f87db24f27067caf"
-  integrity sha512-aSQKN76Phj6v0okTs/MRanA9B29yeeemNqBh5pVL7TsSuSsyJS8auhvIDF7PKDxAS/u2I+V13SklA1+yFaiAZg==
+"@uiw/react-codemirror@3.2.8":
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.2.8.tgz#240ea79ecdee223b5e5e0fc8d4921c10a53be56d"
+  integrity sha512-weLAiiUD94KZBPy4VcqUhhXH+tQ9vCYm2MclwOmG3KCOFvBt6fUEPGBzpx51mp1ozjLJPHM7GZwW+gGp56yFpw==
   dependencies:
-    "@babel/runtime" "7.15.4"
-    codemirror "5.63.0"
+    "@babel/runtime" "^7.18.9"
+    codemirror "^5.65.7"
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
@@ -9261,11 +9254,6 @@ codemirror-graphql@^1.3.2:
   dependencies:
     graphql-language-service "^5.0.6"
 
-codemirror@5.63.0:
-  version "5.63.0"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.63.0.tgz#070a699108badd9c118b7261ac2e9793acdbb149"
-  integrity sha512-KlLWRPggDg2rBD1Mx7/EqEhaBdy+ybBCVh/efgjBDsPpMeEu6MbTAJzIT4TuCzvmbTEgvKOGzVT6wdBTNusqrg==
-
 codemirror@5.65.6:
   version "5.65.6"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.6.tgz#fc313797331cbeb3bcab0652d1ec9d0f40c23ab5"
@@ -9275,6 +9263,11 @@ codemirror@^5.65.3:
   version "5.65.3"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.3.tgz#2d029930d5a293bc5fb96ceea64654803c0d4ac7"
   integrity sha512-kCC0iwGZOVZXHEKW3NDTObvM7pTIyowjty4BUqeREROc/3I6bWbgZDA3fGDwlA+rbgRjvnRnfqs9SfXynel1AQ==
+
+codemirror@^5.65.7:
+  version "5.65.7"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.7.tgz#29af41ce5f4c2b8f1c1e16f4e645ff392823716a"
+  integrity sha512-zb67cXzgugIQmb6tfD4G11ILjYoMfTjwcjn+cWsa4GewlI2adhR/h3kolkoCQTm1msD/1BuqVTKuO09ELsS++A==
 
 collect-v8-coverage@^1.0.0:
   version "1.0.1"
