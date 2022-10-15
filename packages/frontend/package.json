@@ -35,7 +35,7 @@
     "react-router-dom": "5.3.4",
     "react-scripts": "4.0.3",
     "reactour": "1.18.7",
-    "recharts": "2.1.14",
+    "recharts": "2.1.15",
     "styled-components": "5.3.5",
     "subscriptions-transport-ws": "0.11.0",
     "typescript": "4.8.4",
