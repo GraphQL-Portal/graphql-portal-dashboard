@@ -57,7 +57,7 @@
     "patch-package": "6.4.7"
   },
   "devDependencies": {
-    "@changesets/cli": "2.25.0",
+    "@changesets/cli": "2.25.1",
     "@types/http-cache-semantics": "4.0.1",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
