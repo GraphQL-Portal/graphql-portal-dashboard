@@ -5690,14 +5690,13 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@maxmind/geoip2-node@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-3.4.0.tgz#e0b2dd6e46931cbb84ccb46cbb154a5009e75bcc"
-  integrity sha512-XBB+IJSXQRXXHBvwULZu2nOYAPuC0pc77xw/xkDo0cWkBO/L2rUMr+xKGZwj47mFBEiG6tnTMBzxJajEJTrKAg==
+"@maxmind/geoip2-node@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@maxmind/geoip2-node/-/geoip2-node-3.5.0.tgz#f65de05398eddcbab296abd712ea680a2b9e4a1b"
+  integrity sha512-WG2TNxMwDWDOrljLwyZf5bwiEYubaHuICvQRlgz74lE9OZA/z4o+ZT6OisjDBAZh/yRJVNK6mfHqmP5lLlAwsA==
   dependencies:
     camelcase-keys "^7.0.0"
     ip6addr "^0.2.5"
-    lodash.set "^4.3.2"
     maxmind "^4.2.0"
 
 "@microsoft/fetch-event-source@2.0.1":
