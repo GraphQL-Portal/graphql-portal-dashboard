@@ -6774,12 +6774,12 @@
   resolved "https://registry.yarnpkg.com/@types/lru-cache/-/lru-cache-5.1.0.tgz#57f228f2b80c046b4a1bd5cac031f81f207f4f03"
   integrity sha512-RaE0B+14ToE4l6UqdarKPnXwVDuigfFv+5j9Dze/Nqr23yyuqdNvzcZi3xB+3Agvi5R4EOgAksfv3lXX4vBt9w==
 
-"@types/migrate-mongo@8.1.3":
-  version "8.1.3"
-  resolved "https://registry.yarnpkg.com/@types/migrate-mongo/-/migrate-mongo-8.1.3.tgz#ec2f8cd8e816ac1fddbe0c8259c4f248e28567a9"
-  integrity sha512-oK9ykWQtxOuRbowLWHDQlBjlx6VB6EIGjh8cWsJTZNm8kBXm/1wUYv1Bifp+I1vTRj1b8PqCMgc8LmEPB9WhzA==
+"@types/migrate-mongo@8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@types/migrate-mongo/-/migrate-mongo-8.2.0.tgz#1d4f631d0d88642b092302acf4edfca35a5d3dc4"
+  integrity sha512-rhRv9DOSfehHBuana75iRiSeVri7t/UunBjK3hJj49KW3ohNNIfpEd/j4MMqe8kQ3cCZO0yTTZTgT7mB2oQ4cg==
   dependencies:
-    "@types/mongodb" "^3.6.20"
+    mongodb "^4.0.1"
 
 "@types/mime@^1":
   version "1.3.2"
@@ -6800,14 +6800,6 @@
   version "3.6.18"
   resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.6.18.tgz#7524c462fc7e3b67892afda8211cd045edee65eb"
   integrity sha512-JSVFt9p0rTfZ4EgzXmVHUB3ue00xe3CRbQho8nXfImzEDDM4O7I3po1bwbWl/EIbLENxUreZxqLOc8lvcnLVPA==
-  dependencies:
-    "@types/bson" "*"
-    "@types/node" "*"
-
-"@types/mongodb@^3.6.20":
-  version "3.6.20"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.6.20.tgz#b7c5c580644f6364002b649af1c06c3c0454e1d2"
-  integrity sha512-WcdpPJCakFzcWWD9juKoZbRtQxKIMYF/JIAM4JrNHrMcnJL6/a2NWjXxW7fo9hxboxxkg+icff8d7+WIEvKgYQ==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
