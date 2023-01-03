@@ -70,7 +70,7 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "5.2.0",
     "eslint-plugin-testing-library": "4.12.4",
-    "husky": "6.0.0",
+    "husky": "8.0.3",
     "lint-staged": "11.2.6",
     "pinst": "2.1.6",
     "prettier": "2.8.0",
