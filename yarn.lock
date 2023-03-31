@@ -5806,10 +5806,10 @@
   resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-1.0.0.tgz#52a0441795f6da8144a35970d3ebc19281f31cfd"
   integrity sha512-26AW5jHadLXtvHs+M+Agd9KZ92dDlBrmD0rORlBlvn2KvsWs4JRaKl2mUsrW7YsdZeAu3Hc4ukqyYyDdyCmMWQ==
 
-"@nestjs/mapped-types@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-1.0.1.tgz#78b62041c7a407db4a90eb140567321602bed18e"
-  integrity sha512-NFvofzSinp00j5rzUd4tf+xi9od6383iY0JP7o0Bnu1fuItAUkWBgc4EKuIQ3D+c2QI3i9pG1kDWAeY27EMGtg==
+"@nestjs/mapped-types@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-1.2.2.tgz#d9ddb143776e309dbc1a518ac1607fddac1e140e"
+  integrity sha512-3dHxLXs3M0GPiriAcCFFJQHoDFUuzTD5w6JDhE7TyfT89YKpe6tcCCIqOZWdXmt9AZjjK30RkHRSFF+QEnWFQg==
 
 "@nestjs/mongoose@8.0.1":
   version "8.0.1"
@@ -5856,14 +5856,16 @@
   dependencies:
     path-to-regexp "0.1.7"
 
-"@nestjs/swagger@5.2.1":
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.2.1.tgz#0fbd5dbc84aeebc2912009cce1309d4bebe9a52c"
-  integrity sha512-7dNa08WCnTsW/oAk3Ujde+z64JMfNm19DhpXasFR8oJp/9pggYAbYU927HpA+GJsSFJX6adjIRZsCKUqaGWznw==
+"@nestjs/swagger@6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-6.3.0.tgz#2963395a398374c25548a012eb15f03f53ad6e53"
+  integrity sha512-Gnig189oa1tD+h0BYIfUwhp/wvvmTn6iO3csR2E4rQrDTgCxSxZDlNdfZo3AC+Rmf8u0KX4ZAX1RZN1qXTtC7A==
   dependencies:
-    "@nestjs/mapped-types" "1.0.1"
+    "@nestjs/mapped-types" "1.2.2"
+    js-yaml "4.1.0"
     lodash "4.17.21"
     path-to-regexp "3.2.0"
+    swagger-ui-dist "4.18.2"
 
 "@nestjs/testing@8.4.7":
   version "8.4.7"
@@ -23343,6 +23345,11 @@ swagger-parser@^10.0.2:
   integrity sha512-nF7oMeL4KypldrQhac8RyHerJeGPD1p2xDh900GPvc+Nk7nWP6jX2FcC7WmkinMoAmoO774+AFXcWsW8gMWEIg==
   dependencies:
     "@apidevtools/swagger-parser" "10.0.3"
+
+swagger-ui-dist@4.18.2:
+  version "4.18.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-4.18.2.tgz#323308f1c1d87a7c22ce3e273c31835eb680a71b"
+  integrity sha512-oVBoBl9Dg+VJw8uRWDxlyUyHoNEDC0c1ysT6+Boy6CTgr2rUcLcfPon4RvxgS2/taNW6O0+US+Z/dlAsWFjOAQ==
 
 swagger2openapi@7.0.5:
   version "7.0.5"
