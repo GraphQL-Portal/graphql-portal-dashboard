@@ -36,7 +36,7 @@
     "react-scripts": "4.0.3",
     "reactour": "1.18.7",
     "recharts": "2.1.16",
-    "styled-components": "5.3.6",
+    "styled-components": "5.3.11",
     "subscriptions-transport-ws": "0.11.0",
     "typescript": "4.9.4",
     "validator": "13.7.0",
