@@ -7407,10 +7407,10 @@
     "@typescript-eslint/types" "4.33.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uiw/react-codemirror@3.2.9":
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.2.9.tgz#1affb6e459e7c1a940d954f8115fc8662fcc6734"
-  integrity sha512-AKkylbD2oMlHmQk9Snlmbfi/f2i20LjBjDjmr4IpE3YjrFxeUvfh5LLpora93c1GBbZeHmpjDilv4lJ0r+oUeQ==
+"@uiw/react-codemirror@3.2.10":
+  version "3.2.10"
+  resolved "https://registry.yarnpkg.com/@uiw/react-codemirror/-/react-codemirror-3.2.10.tgz#a1019556aade7d5e58869ea524f86ac60b604b84"
+  integrity sha512-sSabPpOQFFRAZwm/JZ6gRRqQg0PBPw9nRAT9YepqUSM3TJHQzavZDRDxKF8B9jL+KU24+aKqM/clLlpPPPF5sQ==
   dependencies:
     "@babel/runtime" "^7.18.9"
     codemirror "^5.65.8"
