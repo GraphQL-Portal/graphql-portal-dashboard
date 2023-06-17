@@ -7716,10 +7716,10 @@
   dependencies:
     tslib "^2.1.0"
 
-"@xmldom/xmldom@^0.7.9":
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.9.tgz#7f9278a50e737920e21b297b8a35286e9942c056"
-  integrity sha512-yceMpm/xd4W2a85iqZyO09gTnHvXF6pyiWjD2jcOJs7hRoZtNNOO1eJlhHj1ixA+xip2hOyGn+LgcvLCMo5zXA==
+"@xmldom/xmldom@0.8.7":
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.7.tgz#8b1e39c547013941974d83ad5e9cf5042071a9a0"
+  integrity sha512-sI1Ly2cODlWStkINzqGrZ8K6n+MTSbAeQnAipGyL+KZCXuHaRlj2gyyy8B/9MvsFFqN7XHryQnB2QwhzvJXovg==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -25203,12 +25203,12 @@ ws@^8.0.0:
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.2.1.tgz#bdd92b3c56fdb47d2379b5ae534281922cc5bd12"
   integrity sha512-XkgWpJU3sHU7gX8f13NqTn6KQ85bd1WU7noBHTT8fSohx7OS1TPY8k+cyRPCzFkia7C4mM229yeHr1qK9sM4JQ==
 
-xml-crypto@2.1.5, xml-crypto@^2.1.0:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/xml-crypto/-/xml-crypto-2.1.5.tgz#e201ee51dca18dd9ae158ac101b6e995c983dca8"
-  integrity sha512-xOSJmGFm+BTXmaPYk8pPV3duKo6hJuZ5niN4uMzoNcTlwYs0jAu/N3qY+ud9MhE4N7eMRuC1ayC7Yhmb7MmAWg==
+xml-crypto@3.1.0, xml-crypto@^2.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/xml-crypto/-/xml-crypto-3.1.0.tgz#6baeb46c0f3687a9fd8afd4c7be71c6e6e9accc4"
+  integrity sha512-GPDprzBeCvn2ByTzeX+DOXbQ7V2IHmE6H1WZkrR+5LPrRQrwwYC9RoCYZ2++y2yJTYzRre1qY4gqNjmJLKdQ6Q==
   dependencies:
-    "@xmldom/xmldom" "^0.7.9"
+    "@xmldom/xmldom" "0.8.7"
     xpath "0.0.32"
 
 xml-name-validator@^3.0.0:
