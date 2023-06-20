@@ -11750,10 +11750,10 @@ entities@~2.1.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.1.0.tgz#992d3129cf7df6870b96c57858c249a120f8b8b5"
   integrity sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
 
-envsub@4.0.7:
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/envsub/-/envsub-4.0.7.tgz#41e326a77696a06e44a2250c5a89371da404f311"
-  integrity sha512-Vr2qsbaTeJEstIoT0GlKnoySmvL91b8LI3D/aicuo1styWcNUvfYv3oeFD2lhB1+S6H/e2TvEkZbmhzDM73Okw==
+envsub@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/envsub/-/envsub-4.1.0.tgz#526c95062d8538516896e4f43de8fff069ab67e4"
+  integrity sha512-B44hta3xNFu6+zDhOha1TIrZkQHGDO3G5K8D2sJIkm/s3XyQjxWBGp1B+b/Y74Go1PqMP+cp8moPR4JullnD9Q==
   dependencies:
     bluebird "^3.7.2"
     chalk "^3.0.0"
@@ -11762,6 +11762,7 @@ envsub@4.0.7:
     handlebars "^4.5.3"
     lodash "^4.17.15"
     replace-last "^1.2.6"
+    string.prototype.matchall "^4.0.8"
 
 err-code@^2.0.2:
   version "2.0.3"
