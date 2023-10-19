@@ -53,7 +53,7 @@
     ]
   },
   "dependencies": {
-    "concurrently": "6.5.1",
+    "concurrently": "8.2.2",
     "patch-package": "6.5.0"
   },
   "devDependencies": {
