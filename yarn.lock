@@ -6981,10 +6981,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/reactour@1.18.2":
-  version "1.18.2"
-  resolved "https://registry.yarnpkg.com/@types/reactour/-/reactour-1.18.2.tgz#7b17529be743c3abae61b51e7d435a25b7df3f97"
-  integrity sha512-WFZ+RjmzZG8QzhW0NI0FQ3GsFxcn2kLIEak5R1NAW6PWkIJRCano1nLv81iFxA4qCneXSD1dwSbE6iuWVwCafw==
+"@types/reactour@1.18.5":
+  version "1.18.5"
+  resolved "https://registry.yarnpkg.com/@types/reactour/-/reactour-1.18.5.tgz#0e083ea5e08a534ab38aed74e224d696a344231a"
+  integrity sha512-Pl5yh9bXeXaFcioDk6XVmUzdJGZDAKesVmwoh2KvN/1FXSd9saN8pIprLvfspnXANMcgl3AtSlD4zs0cJIhGIw==
   dependencies:
     "@types/react" "*"
 
@@ -21278,10 +21278,10 @@ react@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-reactour@1.18.7:
-  version "1.18.7"
-  resolved "https://registry.yarnpkg.com/reactour/-/reactour-1.18.7.tgz#86a61869890bc3444c2bf412d30833eb85352525"
-  integrity sha512-kkXy4h5+fieNPzrPYdWiLj6afl+xH2NQw4En9XJD9EwCIGsRmfcppyJ1xwqJDC6JRhPttf+5wUIsUoLSOlk/Ag==
+reactour@1.19.2:
+  version "1.19.2"
+  resolved "https://registry.yarnpkg.com/reactour/-/reactour-1.19.2.tgz#eb181937e528391016791bda77d052e3c0cfd99a"
+  integrity sha512-gbbUiLn8LbpbDW6k+QlVySkblvOICBd3AWMGRKPQghhmuMlOHNqgjW32JrT406lZHUvVlA8+umYD/2MmCHkNOQ==
   dependencies:
     "@rooks/use-mutation-observer" "4.11.2"
     classnames "2.3.1"
