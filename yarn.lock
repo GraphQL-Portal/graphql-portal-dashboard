@@ -7716,10 +7716,15 @@
   dependencies:
     tslib "^2.1.0"
 
-"@xmldom/xmldom@^0.7.9":
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.9.tgz#7f9278a50e737920e21b297b8a35286e9942c056"
-  integrity sha512-yceMpm/xd4W2a85iqZyO09gTnHvXF6pyiWjD2jcOJs7hRoZtNNOO1eJlhHj1ixA+xip2hOyGn+LgcvLCMo5zXA==
+"@xmldom/is-dom-node@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@xmldom/is-dom-node/-/is-dom-node-1.0.1.tgz#83b9f3e1260fb008061c6fa787b93a00f9be0629"
+  integrity sha512-CJDxIgE5I0FH+ttq/Fxy6nRpxP70+e2O048EPe85J2use3XKdatVM7dDVvFNjQudd9B49NPoZ+8PG49zj4Er8Q==
+
+"@xmldom/xmldom@^0.8.10":
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.10.tgz#a1337ca426aa61cef9fe15b5b28e340a72f6fa99"
+  integrity sha512-2WALfTl4xo2SkGCYRt6rDTFfk9R1czmBvUQy12gK2KuRKIpWEhcbbzy8EZXtz/jkRqHX8bFEc6FC1HjX4TUWYw==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -25203,13 +25208,14 @@ ws@^8.0.0:
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.2.1.tgz#bdd92b3c56fdb47d2379b5ae534281922cc5bd12"
   integrity sha512-XkgWpJU3sHU7gX8f13NqTn6KQ85bd1WU7noBHTT8fSohx7OS1TPY8k+cyRPCzFkia7C4mM229yeHr1qK9sM4JQ==
 
-xml-crypto@2.1.5, xml-crypto@^2.1.0:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/xml-crypto/-/xml-crypto-2.1.5.tgz#e201ee51dca18dd9ae158ac101b6e995c983dca8"
-  integrity sha512-xOSJmGFm+BTXmaPYk8pPV3duKo6hJuZ5niN4uMzoNcTlwYs0jAu/N3qY+ud9MhE4N7eMRuC1ayC7Yhmb7MmAWg==
+xml-crypto@5.1.1, xml-crypto@^2.1.0:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/xml-crypto/-/xml-crypto-5.1.1.tgz#5c15e5439a9068cec6d9a22b5ee452a3e0b036a8"
+  integrity sha512-0H7kZnvXt+u6jULEZyXBeYlKB0jOsr4EAhFRiG5aW9GGymuiUWXs1/RTXfmrKqGss7XWpI1DAs3wf5mVjHwpTA==
   dependencies:
-    "@xmldom/xmldom" "^0.7.9"
-    xpath "0.0.32"
+    "@xmldom/is-dom-node" "^1.0.1"
+    "@xmldom/xmldom" "^0.8.10"
+    xpath "^0.0.33"
 
 xml-name-validator@^3.0.0:
   version "3.0.0"
@@ -25226,10 +25232,10 @@ xorshift@^0.2.0:
   resolved "https://registry.yarnpkg.com/xorshift/-/xorshift-0.2.1.tgz#fcd82267e9351c13f0fb9c73307f25331d29c63a"
   integrity sha1-/NgiZ+k1HBPw+5xzMH8lMx0pxjo=
 
-xpath@0.0.32:
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/xpath/-/xpath-0.0.32.tgz#1b73d3351af736e17ec078d6da4b8175405c48af"
-  integrity sha512-rxMJhSIoiO8vXcWvSifKqhvV96GjiD5wYb8/QHdoRyQvraTpp4IEv944nhGausZZ3u7dhQXteZuZbaqfpB7uYw==
+xpath@^0.0.33:
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/xpath/-/xpath-0.0.33.tgz#5136b6094227c5df92002e7c3a13516a5074eb07"
+  integrity sha512-NNXnzrkDrAzalLhIUc01jO2mOzXGXh1JwPgkihcLLzw98c0WgYDmmjSh1Kl3wzaxSVWMuA+fe0WTWOBDWCBmNA==
 
 xss@^1.0.8:
   version "1.0.9"
