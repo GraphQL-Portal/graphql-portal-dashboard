@@ -81,7 +81,7 @@
     "graphql": "15.8.0",
     "graphql-redis-subscriptions": "2.4.2",
     "ioredis": "4.28.5",
-    "jsonwebtoken": "8.5.1",
+    "jsonwebtoken": "9.0.0",
     "migrate-mongo": "8.2.3",
     "mongodb": "4.12.1",
     "mongoose": "5.13.15",
