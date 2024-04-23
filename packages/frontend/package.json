@@ -15,7 +15,7 @@
     "@material-ui/lab": "4.0.0-alpha.61",
     "@uiw/react-codemirror": "3.2.9",
     "ajv": "8.11.0",
-    "clsx": "1.2.1",
+    "clsx": "2.1.1",
     "codemirror": "5.65.10",
     "codemirror-graphql": "0.15.2",
     "date-fns": "2.23.0",
