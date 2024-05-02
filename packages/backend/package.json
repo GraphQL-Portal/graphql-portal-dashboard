@@ -79,7 +79,7 @@
     "envsub": "4.0.7",
     "express": "4.18.2",
     "graphql": "15.8.0",
-    "graphql-redis-subscriptions": "2.4.2",
+    "graphql-redis-subscriptions": "2.6.1",
     "ioredis": "4.28.5",
     "jsonwebtoken": "8.5.1",
     "migrate-mongo": "8.2.3",
