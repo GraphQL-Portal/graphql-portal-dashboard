@@ -93,7 +93,7 @@
     "rxjs": "7.5.7",
     "ts-morph": "12.2.0",
     "type-graphql": "1.1.1",
-    "uuid": "8.3.2"
+    "uuid": "10.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "8.2.8",
