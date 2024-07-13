@@ -89,7 +89,7 @@
     "nodemailer": "6.8.0",
     "pupa": "2.1.1",
     "reflect-metadata": "0.1.13",
-    "rimraf": "3.0.2",
+    "rimraf": "6.0.1",
     "rxjs": "7.5.7",
     "ts-morph": "12.2.0",
     "type-graphql": "1.1.1",
