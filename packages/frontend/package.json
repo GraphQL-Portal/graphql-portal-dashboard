@@ -39,7 +39,7 @@
     "styled-components": "5.3.6",
     "subscriptions-transport-ws": "0.11.0",
     "typescript": "4.9.4",
-    "validator": "13.7.0",
+    "validator": "13.9.0",
     "vest": "3.2.8",
     "web-vitals": "2.1.4"
   },
