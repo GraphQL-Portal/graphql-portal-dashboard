@@ -29,7 +29,7 @@
     "react-copy-to-clipboard": "5.1.0",
     "react-dom": "17.0.2",
     "react-helmet": "6.1.0",
-    "react-hook-form": "6.15.8",
+    "react-hook-form": "7.53.1",
     "react-hotkeys-hook": "3.4.7",
     "react-router": "5.3.4",
     "react-router-dom": "5.3.4",
