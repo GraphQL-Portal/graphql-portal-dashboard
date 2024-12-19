@@ -10293,6 +10293,13 @@ content-type@^1.0.4, content-type@~1.0.4:
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
 
+context@^3.0.33:
+  version "3.0.33"
+  resolved "https://registry.yarnpkg.com/context/-/context-3.0.33.tgz#2b1bcb2dfe22b4a3299f3737b54d9a9544fe8005"
+  integrity sha512-9nBbXhHVKRFLYKk3oa7W+aHt/eiGm5aIMp4Y4IwQsiAO+deRtlJ72EA8m7Cvs3v7gjjBuqKljvt2eyihVHUJoQ==
+  dependencies:
+    vest-utils "^1.3.3"
+
 convert-source-map@1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.7.0.tgz#17a2cb882d7f77d3490585e2ce6c524424a3a442"
@@ -18440,6 +18447,14 @@ mysql@2.18.1, mysql@^2.18.1:
     safe-buffer "5.1.2"
     sqlstring "2.3.1"
 
+n4s@^5.0.28:
+  version "5.0.28"
+  resolved "https://registry.yarnpkg.com/n4s/-/n4s-5.0.28.tgz#c42a66f8c65f8300947cdbe9f794365c1a364199"
+  integrity sha512-64ap7Qn8Oyua2ImIZH6/pkql89qyiTZ4jJqpS2g863++0tgbM4cuv3KJvZqMpa8kY2ovZ4q3cD0/KU4SImjg5g==
+  dependencies:
+    context "^3.0.33"
+    vest-utils "^1.3.3"
+
 nan@^2.12.1:
   version "2.14.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
@@ -24519,6 +24534,13 @@ vary@^1, vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
+vast@^1.0.42:
+  version "1.0.42"
+  resolved "https://registry.yarnpkg.com/vast/-/vast-1.0.42.tgz#6c82b0ae7ea754ee2ba25028650cc5a323ab4db3"
+  integrity sha512-YP3zNDRVZZRuHgUJ5xD7HAF0AFius2KWqIYSAuzA6E4ftPkL+gSQrp9agPM1HgsHS9L7XWoegYxsH81kawztuQ==
+  dependencies:
+    vest-utils "^1.3.3"
+
 vendors@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.4.tgz#e2b800a53e7a29b93506c3cf41100d16c4c4ad8e"
@@ -24533,10 +24555,29 @@ verror@1.10.0, verror@^1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vest@3.2.8:
-  version "3.2.8"
-  resolved "https://registry.yarnpkg.com/vest/-/vest-3.2.8.tgz#be32242af67fed2b5040c70097a36522c7653e1e"
-  integrity sha512-O+GLawwfIO7ESODaJMevsI+LL959dZzjwK6oUYzMTxog+6fZ8U/NPR/ITX6tmECb8EEUVuLkNJ1lGOkoor35SA==
+vest-utils@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/vest-utils/-/vest-utils-1.3.3.tgz#b87a47422a4e195f0608bfaeaa9c5822b0d25e89"
+  integrity sha512-9y+26YXjOpv89QmEXlFrTFLUMwUjAuwpimUVgb8HS3eNuBR3HEY68o4U/sPyGTh3OEvS7N502pX82WDm1zvsaA==
+
+vest@5.4.6:
+  version "5.4.6"
+  resolved "https://registry.yarnpkg.com/vest/-/vest-5.4.6.tgz#2863516ac6fc1bc367e26508afebf30150efccc8"
+  integrity sha512-Q3KQYluxdjnz5/HmR8coHNlXbJPLWMfrwz4wlcqMX4SaJ8qcmy5Ix9NTiQt3hTMrETdj+q+513J/kt+ahdJlLg==
+  dependencies:
+    context "^3.0.33"
+    n4s "^5.0.28"
+    vast "^1.0.42"
+    vest-utils "^1.3.3"
+    vestjs-runtime "^1.5.1"
+
+vestjs-runtime@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/vestjs-runtime/-/vestjs-runtime-1.5.1.tgz#545bef173bbbfa450084912b609ba504bb461b26"
+  integrity sha512-kiXuNJBS/6ZkzMArLuiEBtXe/cMr/8NE4lp6flpLuEzVwXM2nli9UfvQ26lmuvU1/ggPgjJNv/FpSnWofvHYcA==
+  dependencies:
+    context "^3.0.33"
+    vest-utils "^1.3.3"
 
 vm-browserify@^1.0.1:
   version "1.1.2"
