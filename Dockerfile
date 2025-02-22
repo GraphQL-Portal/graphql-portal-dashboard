@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:22-alpine
 
 LABEL Description="GraphQL Portal Dashboard" Vendor="GraphQL Portal"
 
