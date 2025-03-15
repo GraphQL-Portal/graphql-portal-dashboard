@@ -25203,10 +25203,10 @@ ws@^8.0.0:
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.2.1.tgz#bdd92b3c56fdb47d2379b5ae534281922cc5bd12"
   integrity sha512-XkgWpJU3sHU7gX8f13NqTn6KQ85bd1WU7noBHTT8fSohx7OS1TPY8k+cyRPCzFkia7C4mM229yeHr1qK9sM4JQ==
 
-xml-crypto@2.1.5, xml-crypto@^2.1.0:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/xml-crypto/-/xml-crypto-2.1.5.tgz#e201ee51dca18dd9ae158ac101b6e995c983dca8"
-  integrity sha512-xOSJmGFm+BTXmaPYk8pPV3duKo6hJuZ5niN4uMzoNcTlwYs0jAu/N3qY+ud9MhE4N7eMRuC1ayC7Yhmb7MmAWg==
+xml-crypto@2.1.6, xml-crypto@^2.1.0:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/xml-crypto/-/xml-crypto-2.1.6.tgz#c51a016cc8391fc1d9ebd9abc589e4c08b62d652"
+  integrity sha512-jjvpO8vHNV8QFhW5bMypP+k4BjBqHe/HrpIwpPcdUnUTIJakSIuN96o3Sdah4tKu2z64kM/JHEH8iEHGCc6Gyw==
   dependencies:
     "@xmldom/xmldom" "^0.7.9"
     xpath "0.0.32"
