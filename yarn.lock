@@ -5140,10 +5140,12 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hookform/resolvers@1.3.8":
-  version "1.3.8"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.3.8.tgz#32e733f92b25eaddf53d72a6246a233cd53ea387"
-  integrity sha512-mEUqsqbx5S78+uN1tVS1vrgaFEeh4cbFzBs0tuzvWmJFGSSDaqf0Z9SoKvrDFXl8eBIQvADA6H4vsbUYnlXuxw==
+"@hookform/resolvers@7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-7.0.1.tgz#2d8d3dce6031083eede37326707e317e85944c73"
+  integrity sha512-F3aM0dDWsRGmFjnnXjogaGLwP7gY2HA6/c5qp4v4Im/UV7pTNkX+WAjcOlM1V0PE0zoMzuPqCyaYtMzUhoFToA==
+  dependencies:
+    "@standard-schema/utils" "^0.3.0"
 
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
@@ -6092,6 +6094,11 @@
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@sphinxxxx/color-conversion/-/color-conversion-2.2.2.tgz#03ecc29279e3c0c832f6185a5bfa3497858ac8ca"
   integrity sha512-XExJS3cLqgrmNBIP3bBw6+1oQ1ksGjFh0+oClDKFYpCCqx/hlqwWO5KO/S63fzUo67SxI9dMrF0y5T/Ey7h8Zw==
+
+"@standard-schema/utils@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@standard-schema/utils/-/utils-0.3.0.tgz#3d5e608f16c2390c10528e98e59aef6bf73cae7b"
+  integrity sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==
 
 "@surma/rollup-plugin-off-main-thread@^1.1.1":
   version "1.4.2"
